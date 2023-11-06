@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.stats.stat &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.stats.stat</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..layer</span> <span class="kn">import</span> <span class="n">layer</span>
+<span class="kn">from</span> <span class="nn">..mapping</span> <span class="kn">import</span> <span class="n">aes</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Registry</span><span class="p">,</span>
+    <span class="n">check_required_aesthetics</span><span class="p">,</span>
+    <span class="n">copy_keys</span><span class="p">,</span>
+    <span class="n">data_mapping_as_kwargs</span><span class="p">,</span>
+    <span class="n">groupby_apply</span><span class="p">,</span>
+    <span class="n">is_string</span><span class="p">,</span>
+    <span class="n">remove_missing</span><span class="p">,</span>
+    <span class="n">uniquecols</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.iapi</span> <span class="kn">import</span> <span class="n">pos_scales</span>
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Aes</span><span class="p">,</span>
+        <span class="n">DataLike</span><span class="p">,</span>
+        <span class="n">EvalEnvironment</span><span class="p">,</span>
+        <span class="n">Geom</span><span class="p">,</span>
+        <span class="n">Layout</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="stat">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat">[docs]</a>
+<span class="k">class</span> <span class="nc">stat</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Registry</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class of all stats&quot;&quot;&quot;</span>
+
+    <span class="n">__base__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">REQUIRED_AES</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">DEFAULT_AES</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">NON_MISSING_AES</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">DEFAULT_PARAMS</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Should the values produced by the statistic also</span>
+    <span class="c1"># be transformed in the second pass when recently</span>
+    <span class="c1"># added statistics are trained to the scales</span>
+    <span class="n">retransform</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Stats may modify existing columns or create extra</span>
+    <span class="c1"># columns.</span>
+    <span class="c1">#</span>
+    <span class="c1"># Any extra columns that may be created by the stat</span>
+    <span class="c1"># should be specified in this set</span>
+    <span class="c1"># see: stat_bin</span>
+    <span class="n">CREATES</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1"># Documentation for the aesthetics. It ie added under the</span>
+    <span class="c1"># documentation for mapping parameter. Use {aesthetics_table}</span>
+    <span class="c1"># placeholder to insert a table for all the aesthetics and</span>
+    <span class="c1"># their default values.</span>
+    <span class="n">_aesthetics_doc</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{aesthetics_table}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Plot namespace, it gets its value when the plot is being</span>
+    <span class="c1"># built.</span>
+    <span class="n">environment</span><span class="p">:</span> <span class="n">EvalEnvironment</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="p">:</span> <span class="n">Aes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">DataLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">data_mapping_as_kwargs</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">mapping</span><span class="p">),</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>  <span class="c1"># Will be used to create the geom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">copy_keys</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">ae</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="stat.from_geom">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.from_geom">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">:</span> <span class="n">Geom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">stat</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an instantiated stat object</span>
+
+<span class="sd">        stats should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geom : geom</span>
+<span class="sd">            `geom`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : stat</span>
+<span class="sd">            A stat object</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        :class:`PlotnineError` if unable to create a `stat`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;stat&quot;</span><span class="p">]</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">_kwargs</span>
+        <span class="c1"># More stable when reloading modules than</span>
+        <span class="c1"># using issubclass</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;compute_layer&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">name</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">stat</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">name</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">stat</span><span class="p">):</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">elif</span> <span class="n">is_string</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;stat_&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;stat_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown stat of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">valid_kwargs</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">klass</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span> <span class="o">|</span> <span class="n">klass</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="p">)</span> <span class="o">&amp;</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">valid_kwargs</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">klass</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">stat</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the self.data dataframe</span>
+
+<span class="sd">        stats should not override this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span>
+
+        <span class="c1"># don&#39;t make a _kwargs and environment</span>
+        <span class="n">shallow</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;_kwargs&quot;</span><span class="p">,</span> <span class="s2">&quot;environment&quot;</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">shallow</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="stat.aesthetics">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.aesthetics">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">aesthetics</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a set of all non-computed aesthetics for this stat.</span>
+
+<span class="sd">        stats should not override this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aesthetics</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">REQUIRED_AES</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">calculated</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="o">**</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">)</span><span class="o">.</span><span class="n">_calculated</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">calculated</span><span class="p">):</span>
+            <span class="n">aesthetics</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ae</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">aesthetics</span></div>
+
+
+<div class="viewcode-block" id="stat.use_defaults">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.use_defaults">[docs]</a>
+    <span class="k">def</span> <span class="nf">use_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Combine data with defaults and set aesthetics from parameters</span>
+
+<span class="sd">        stats should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">missing</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">REQUIRED_AES</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span>
+
+        <span class="n">missing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="stat.setup_params">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.setup_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overide this to verify or adjust parameters</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Parameters used by the stats.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span></div>
+
+
+<div class="viewcode-block" id="stat.setup_data">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.setup_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overide to modify data before compute_layer is called</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dataframe</span>
+<span class="sd">            Data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="stat.finish_layer">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.finish_layer">[docs]</a>
+    <span class="k">def</span> <span class="nf">finish_layer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modify data after the aesthetics have been mapped</span>
+
+<span class="sd">        This can be used by stats that require access to the mapped</span>
+<span class="sd">        values of the computed aesthetics, part 3 as shown below.</span>
+
+<span class="sd">            1. stat computes and creates variables</span>
+<span class="sd">            2. variables mapped to aesthetics</span>
+<span class="sd">            3. stat sees and modifies data according to the</span>
+<span class="sd">               aesthetic values</span>
+
+<span class="sd">        The default to is to do nothing.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data for the layer</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Paremeters</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Modified data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="stat.compute_layer">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.compute_layer">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_layer</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate statistics for this layers</span>
+
+<span class="sd">        This is the top-most computation method for the</span>
+<span class="sd">        stat. It does not do any computations, but it</span>
+<span class="sd">        knows how to verify the data, partition it call the</span>
+<span class="sd">        next computation method and merge results.</span>
+
+<span class="sd">        stats should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : panda.DataFrame</span>
+<span class="sd">            Data points for all objects in a layer.</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Stat parameters</span>
+<span class="sd">        layout : plotnine.layout.Layout</span>
+<span class="sd">            Panel layout information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">check_required_aesthetics</span><span class="p">(</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">REQUIRED_AES</span><span class="p">,</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">remove_missing</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="n">na_rm</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;na_rm&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="nb">vars</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">REQUIRED_AES</span> <span class="o">|</span> <span class="bp">cls</span><span class="o">.</span><span class="n">NON_MISSING_AES</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="n">finite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">pdata</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Compute function helper</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c1"># Given data belonging to a specific panel, grab</span>
+            <span class="c1"># the corresponding scales and call the method</span>
+            <span class="c1"># that does the real computation</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pdata</span>
+            <span class="n">pscales</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">get_scales</span><span class="p">(</span><span class="n">pdata</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">compute_panel</span><span class="p">(</span><span class="n">pdata</span><span class="p">,</span> <span class="n">pscales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">groupby_apply</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;PANEL&quot;</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="stat.compute_panel">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.compute_panel">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_panel</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">pos_scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the statistics for all the groups</span>
+
+<span class="sd">        Return the results in a single dataframe.</span>
+
+<span class="sd">        This is a default function that can be overriden</span>
+<span class="sd">        by individual stats</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            data for the computing</span>
+<span class="sd">        scales : dataclass</span>
+<span class="sd">            x (``scales.x``) and y (``scales.y``) scale objects.</span>
+<span class="sd">            The most likely reason to use scale information is</span>
+<span class="sd">            to find out the physical size of a scale. e.g::</span>
+
+<span class="sd">                range_x = scales.x.dimension()</span>
+
+<span class="sd">        params : dict</span>
+<span class="sd">            The parameters for the stat. It includes default</span>
+<span class="sd">            values if user did not set a particular parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)()</span>
+
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">old</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">):</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">compute_group</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">unique</span> <span class="o">=</span> <span class="n">uniquecols</span><span class="p">(</span><span class="n">old</span><span class="p">)</span>
+            <span class="n">missing</span> <span class="o">=</span> <span class="n">unique</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">unique</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">missing</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span>  <span class="c1"># pyright: ignore</span>
+                <span class="n">drop</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="c1"># concat can have problems with empty dataframes that</span>
+            <span class="c1"># have an index</span>
+            <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">empty</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)()</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">new</span><span class="p">,</span> <span class="n">u</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Note: If the data coming in has columns with non-unique</span>
+        <span class="c1"># values with-in group(s), this implementation loses the</span>
+        <span class="c1"># columns. Individual stats may want to do some preparation</span>
+        <span class="c1"># before then fall back on this implementation or override</span>
+        <span class="c1"># it completely.</span>
+        <span class="k">return</span> <span class="n">stats</span></div>
+
+
+<div class="viewcode-block" id="stat.compute_group">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.compute_group">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_group</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">pos_scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate statistics for the group</span>
+
+<span class="sd">        All stats should implement this method</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data for a group</span>
+<span class="sd">        scales : types.SimpleNamespace</span>
+<span class="sd">            x (``scales.x``) and y (``scales.y``) scale objects.</span>
+<span class="sd">            The most likely reason to use scale information is</span>
+<span class="sd">            to find out the physical size of a scale. e.g::</span>
+
+<span class="sd">                range_x = scales.x.dimension()</span>
+
+<span class="sd">        params : dict</span>
+<span class="sd">            Parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add layer representing stat object on the right</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gg : ggplot</span>
+<span class="sd">            ggplot object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : ggplot</span>
+<span class="sd">            ggplot object with added layer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gg</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_layer</span><span class="p">()</span>  <span class="c1"># Add layer</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+<div class="viewcode-block" id="stat.to_layer">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat.to_layer">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make a layer that represents this stat</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : layer</span>
+<span class="sd">            Layer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create, geom from stat, then layer from geom</span>
+        <span class="kn">from</span> <span class="nn">..geoms.geom</span> <span class="kn">import</span> <span class="n">geom</span>
+
+        <span class="k">return</span> <span class="n">layer</span><span class="o">.</span><span class="n">from_geom</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">from_stat</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span></div>
+</div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

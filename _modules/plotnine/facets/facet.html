@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.facets.facet &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.facets.facet</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">types</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas.api.types</span> <span class="k">as</span> <span class="nn">pdtypes</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..scales.scales</span> <span class="kn">import</span> <span class="n">Scales</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">cross_join</span><span class="p">,</span> <span class="n">match</span>
+<span class="kn">from</span> <span class="nn">.strips</span> <span class="kn">import</span> <span class="n">Strips</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+
+    <span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.iapi</span> <span class="kn">import</span> <span class="n">layout_details</span><span class="p">,</span> <span class="n">panel_view</span>
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Axes</span><span class="p">,</span>
+        <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">EvalEnvironment</span><span class="p">,</span>
+        <span class="n">Figure</span><span class="p">,</span>
+        <span class="n">Ggplot</span><span class="p">,</span>
+        <span class="n">Layers</span><span class="p">,</span>
+        <span class="n">Layout</span><span class="p">,</span>
+        <span class="n">Scale</span><span class="p">,</span>
+        <span class="n">Theme</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="facet">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet">[docs]</a>
+<span class="k">class</span> <span class="nc">facet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all facets</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scales : str in ``[&#39;fixed&#39;, &#39;free&#39;, &#39;free_x&#39;, &#39;free_y&#39;]``</span>
+<span class="sd">        Whether ``x`` or ``y`` scales should be allowed (free)</span>
+<span class="sd">        to vary according to the data along the rows or the</span>
+<span class="sd">        columns. Default is ``&#39;fixed&#39;``.</span>
+<span class="sd">    shrink : bool</span>
+<span class="sd">        Whether to shrink the scales to the output of the</span>
+<span class="sd">        statistics instead of the raw data. Default is ``True``.</span>
+<span class="sd">    labeller : str | function</span>
+<span class="sd">        How to label the facets. If it is a ``str``, it should</span>
+<span class="sd">        be one of ``&#39;label_value&#39;`` ``&#39;label_both&#39;`` or</span>
+<span class="sd">        ``&#39;label_context&#39;``. Default is ``&#39;label_value&#39;``</span>
+<span class="sd">    as_table : bool</span>
+<span class="sd">        If ``True``, the facets are laid out like a table with</span>
+<span class="sd">        the highest values at the bottom-right. If ``False``</span>
+<span class="sd">        the facets are laid out like a plot with the highest</span>
+<span class="sd">        value a the top-right. Default it ``True``.</span>
+<span class="sd">    drop : bool</span>
+<span class="sd">        If ``True``, all factor levels not used in the data</span>
+<span class="sd">        will automatically be dropped. If ``False``, all</span>
+<span class="sd">        factor levels will be shown, regardless of whether</span>
+<span class="sd">        or not they appear in the data. Default is ``True``.</span>
+<span class="sd">    dir : str in ``[&#39;h&#39;, &#39;v&#39;]``</span>
+<span class="sd">        Direction in which to layout the panels. ``h`` for</span>
+<span class="sd">        horizontal and ``v`` for vertical.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: number of columns</span>
+    <span class="n">ncol</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="c1">#: number of rows</span>
+    <span class="n">nrow</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">as_table</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">shrink</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1">#: Which axis scales are free</span>
+    <span class="n">free</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span>
+    <span class="c1">#: A dict of parameters created depending on the data</span>
+    <span class="c1">#: (Intended for extensions)</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="c1"># Theme object, automatically updated before drawing the plot</span>
+    <span class="n">theme</span><span class="p">:</span> <span class="n">Theme</span>
+    <span class="c1"># Figure object on which the facet panels are created</span>
+    <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span>
+    <span class="c1"># coord object, automatically updated before drawing the plot</span>
+    <span class="n">coordinates</span><span class="p">:</span> <span class="n">Coord</span>
+    <span class="c1"># layout object, automatically updated before drawing the plot</span>
+    <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span>
+    <span class="c1"># Axes</span>
+    <span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]</span>
+    <span class="c1"># The first and last axes according to how MPL creates them.</span>
+    <span class="c1"># Used for labelling the x and y axes,</span>
+    <span class="n">first_ax</span><span class="p">:</span> <span class="n">Axes</span>
+    <span class="n">last_ax</span><span class="p">:</span> <span class="n">Axes</span>
+    <span class="c1"># Number of facet variables along the horizontal axis</span>
+    <span class="n">num_vars_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Number of facet variables along the vertical axis</span>
+    <span class="n">num_vars_y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># ggplot object that the facet belongs to</span>
+    <span class="n">plot</span><span class="p">:</span> <span class="n">Ggplot</span>
+    <span class="c1"># Facet strips</span>
+    <span class="n">strips</span><span class="p">:</span> <span class="n">Strips</span>
+    <span class="c1"># Control the relative size of multiple facets</span>
+    <span class="c1"># Use a subclass to change the default.</span>
+    <span class="c1"># See: facet_grid for an example</span>
+    <span class="n">space</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">,</span> <span class="s2">&quot;free&quot;</span><span class="p">,</span> <span class="s2">&quot;free_x&quot;</span><span class="p">,</span> <span class="s2">&quot;free_y&quot;</span><span class="p">]</span>
+        <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="s2">&quot;fixed&quot;</span>
+
+    <span class="n">grid_spec</span><span class="p">:</span> <span class="n">GridSpec</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scales</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">,</span> <span class="s2">&quot;free&quot;</span><span class="p">,</span> <span class="s2">&quot;free_x&quot;</span><span class="p">,</span> <span class="s2">&quot;free_y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+        <span class="n">shrink</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">labeller</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+            <span class="s2">&quot;label_value&quot;</span><span class="p">,</span> <span class="s2">&quot;label_both&quot;</span><span class="p">,</span> <span class="s2">&quot;label_context&quot;</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;label_value&quot;</span><span class="p">,</span>
+        <span class="n">as_table</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">drop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="nb">dir</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;h&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">.labelling</span> <span class="kn">import</span> <span class="n">as_labeller</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">shrink</span> <span class="o">=</span> <span class="n">shrink</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeller</span> <span class="o">=</span> <span class="n">as_labeller</span><span class="p">(</span><span class="n">labeller</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">as_table</span> <span class="o">=</span> <span class="n">as_table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">drop</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="nb">dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">free</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">scales</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;free_x&quot;</span><span class="p">,</span> <span class="s2">&quot;free&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">scales</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;free_y&quot;</span><span class="p">,</span> <span class="s2">&quot;free&quot;</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">:</span> <span class="n">Ggplot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add facet to ggplot object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">facet</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">gg</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+<div class="viewcode-block" id="facet.set_properties">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.set_properties">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">:</span> <span class="n">Ggplot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy required properties from ggplot object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="n">gg</span><span class="o">.</span><span class="n">axs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">gg</span><span class="o">.</span><span class="n">coordinates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">gg</span><span class="o">.</span><span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">gg</span><span class="o">.</span><span class="n">layout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="n">gg</span><span class="o">.</span><span class="n">theme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strips</span> <span class="o">=</span> <span class="n">Strips</span><span class="o">.</span><span class="n">from_facet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="facet.setup_data">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.setup_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Allow the facet to manipulate the data</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : list of dataframes</span>
+<span class="sd">            Data for each of the layers</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        data : list of dataframes</span>
+<span class="sd">            Data for each of the layers</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method will be called after :meth:`setup_params`,</span>
+<span class="sd">        therefore the `params` property will be set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="facet.setup_params">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.setup_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create facet parameters</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : list of dataframes</span>
+<span class="sd">            Plot data and data for the layers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+    <span class="k">def</span> <span class="nf">init_scales</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">layout</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">x_scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Scale</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Scale</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">:</span>
+        <span class="n">scales</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">x_scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s2">&quot;SCALE_X&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">scales</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Scales</span><span class="p">([</span><span class="n">x_scale</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+
+        <span class="k">if</span> <span class="n">y_scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s2">&quot;SCALE_Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">scales</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Scales</span><span class="p">([</span><span class="n">y_scale</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+
+        <span class="k">return</span> <span class="n">scales</span>
+
+<div class="viewcode-block" id="facet.map">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.map">[docs]</a>
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign a data points to panels</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : DataFrame</span>
+<span class="sd">            Data for a layer</span>
+<span class="sd">        layout : DataFrame</span>
+<span class="sd">            As returned by self.compute_layout</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        data : DataFrame</span>
+<span class="sd">            Data with all points mapped to the panels</span>
+<span class="sd">            on which they will be plotted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="facet.compute_layout">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.compute_layout">[docs]</a>
+    <span class="k">def</span> <span class="nf">compute_layout</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute layout</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : Dataframes</span>
+<span class="sd">            Dataframe for a each layer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="facet.finish_data">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.finish_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">finish_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modify data before it is drawn out by the geom</span>
+
+<span class="sd">        The default is to return the data without modification.</span>
+<span class="sd">        Subclasses should override this method as the require.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : DataFrame</span>
+<span class="sd">            A single layer&#39;s data.</span>
+<span class="sd">        layout : Layout</span>
+<span class="sd">            Layout</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        data : DataFrame</span>
+<span class="sd">            Modified layer data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="facet.train_position_scales">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.train_position_scales">[docs]</a>
+    <span class="k">def</span> <span class="nf">train_position_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">layers</span><span class="p">:</span> <span class="n">Layers</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">facet</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute ranges for the x and y scales</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_layout</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">layout</span>
+        <span class="n">panel_scales_x</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">panel_scales_x</span>
+        <span class="n">panel_scales_y</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">panel_scales_y</span>
+
+        <span class="c1"># loop over each layer, training x and y scales in turn</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">match_id</span> <span class="o">=</span> <span class="n">match</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">],</span> <span class="n">_layout</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">panel_scales_x</span><span class="p">:</span>
+                <span class="n">x_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="nb">set</span><span class="p">(</span><span class="n">panel_scales_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="c1"># the scale index for each data point</span>
+                <span class="n">SCALE_X</span> <span class="o">=</span> <span class="n">_layout</span><span class="p">[</span><span class="s2">&quot;SCALE_X&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">match_id</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                <span class="n">panel_scales_x</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x_vars</span><span class="p">,</span> <span class="n">SCALE_X</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">panel_scales_y</span><span class="p">:</span>
+                <span class="n">y_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="nb">set</span><span class="p">(</span><span class="n">panel_scales_y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="c1"># the scale index for each data point</span>
+                <span class="n">SCALE_Y</span> <span class="o">=</span> <span class="n">_layout</span><span class="p">[</span><span class="s2">&quot;SCALE_Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">match_id</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                <span class="n">panel_scales_y</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">y_vars</span><span class="p">,</span> <span class="n">SCALE_Y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="facet.make_ax_strips">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.make_ax_strips">[docs]</a>
+    <span class="k">def</span> <span class="nf">make_ax_strips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout_info</span><span class="p">:</span> <span class="n">layout_details</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Strips</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create strips for the facet</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        layout_info : dict-like</span>
+<span class="sd">            Layout information. Row from the layout table</span>
+
+<span class="sd">        ax : axes</span>
+<span class="sd">            Axes to label</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Strips</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="facet.set_limits_breaks_and_labels">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.set_limits_breaks_and_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_limits_breaks_and_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add limits, breaks and labels to the axes</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ranges : dict-like</span>
+<span class="sd">            range information for the axes</span>
+<span class="sd">        ax : Axes</span>
+<span class="sd">            Axes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.._mpl.ticker</span> <span class="kn">import</span> <span class="n">MyFixedFormatter</span>
+
+        <span class="k">def</span> <span class="nf">_inf_to_none</span><span class="p">(</span>
+            <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Replace infinities with None</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="c1"># limits</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">_inf_to_none</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">range</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">_inf_to_none</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">range</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">)</span>
+
+        <span class="c1"># breaks, labels</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">breaks</span><span class="p">,</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">breaks</span><span class="p">,</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># minor breaks</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># When you manually set the tick labels MPL changes the locator</span>
+        <span class="c1"># so that it no longer reports the x &amp; y positions</span>
+        <span class="c1"># Fixes https://github.com/has2k1/plotnine/issues/187</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">MyFixedFormatter</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">labels</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">MyFixedFormatter</span><span class="p">(</span><span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">labels</span><span class="p">))</span>
+
+        <span class="n">_property</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">property</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;axis_text_x&quot;</span><span class="p">,</span> <span class="s2">&quot;margin&quot;</span><span class="p">)</span>
+        <span class="n">pad_x</span> <span class="o">=</span> <span class="n">margin</span><span class="o">.</span><span class="n">get_as</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+
+        <span class="n">margin</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;axis_text_y&quot;</span><span class="p">,</span> <span class="s2">&quot;margin&quot;</span><span class="p">)</span>
+        <span class="n">pad_y</span> <span class="o">=</span> <span class="n">margin</span><span class="o">.</span><span class="n">get_as</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad_x</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad_y</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">facet</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the dataframe and environment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span>
+
+        <span class="c1"># don&#39;t make a deepcopy of the figure &amp; the axes</span>
+        <span class="n">shallow</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;figure&quot;</span><span class="p">,</span> <span class="s2">&quot;axs&quot;</span><span class="p">,</span> <span class="s2">&quot;first_ax&quot;</span><span class="p">,</span> <span class="s2">&quot;last_ax&quot;</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">shallow</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_create_subplots</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">:</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create suplots and return axs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
+
+        <span class="n">num_panels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">axsarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nrow</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span>
+        <span class="n">default_space</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncol</span><span class="p">)],</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nrow</span><span class="p">)],</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">space</span> <span class="o">==</span> <span class="s2">&quot;fixed&quot;</span><span class="p">:</span>
+                <span class="n">space</span> <span class="o">=</span> <span class="n">default_space</span>
+            <span class="c1"># TODO: Implement &#39;free&#39;, &#39;free_x&#39; &amp; &#39;free_y&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">space</span> <span class="o">=</span> <span class="n">default_space</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">&quot;x&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">space</span><span class="p">:</span>
+                <span class="n">space</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_space</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">&quot;y&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">space</span><span class="p">:</span>
+                <span class="n">space</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_space</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">space</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncol</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The number of x-ratios for the facet space sizes &quot;</span>
+                <span class="s2">&quot;should match the number of columns.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">space</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nrow</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The number of y-ratios for the facet space sizes &quot;</span>
+                <span class="s2">&quot;should match the number of rows.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">gs</span> <span class="o">=</span> <span class="n">GridSpec</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nrow</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ncol</span><span class="p">,</span>
+            <span class="n">height_ratios</span><span class="o">=</span><span class="n">space</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+            <span class="n">width_ratios</span><span class="o">=</span><span class="n">space</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_spec</span> <span class="o">=</span> <span class="n">gs</span>
+
+        <span class="c1"># Create axes</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nrow</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncol</span><span class="p">):</span>
+                <span class="n">axsarr</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Rearrange axes</span>
+        <span class="c1"># They are ordered to match the positions in the layout table</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">==</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span>
+            <span class="n">order</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_table</span><span class="p">:</span>
+                <span class="n">axsarr</span> <span class="o">=</span> <span class="n">axsarr</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">==</span> <span class="s2">&quot;v&quot;</span><span class="p">:</span>
+            <span class="n">order</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_table</span><span class="p">:</span>
+                <span class="n">axsarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">row</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">axsarr</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bad value `dir=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="si">}</span><span class="s2">&#39;` for direction&quot;</span><span class="p">)</span>
+
+        <span class="n">axs</span> <span class="o">=</span> <span class="n">axsarr</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+
+        <span class="c1"># Delete unused axes</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[</span><span class="n">num_panels</span><span class="p">:]:</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[:</span><span class="n">num_panels</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">axs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="facet.make_axes">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet.make_axes">[docs]</a>
+    <span class="k">def</span> <span class="nf">make_axes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">:</span> <span class="n">Coord</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create and return Matplotlib axes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_subplots</span><span class="p">(</span><span class="n">figure</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># Used for labelling the x and y axes, the first and</span>
+        <span class="c1"># last axes according to how MPL creates them.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_ax</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_ax</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span>
+        <span class="k">return</span> <span class="n">axs</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_aspect_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the aspect_ratio</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="s2">&quot;aspect_ratio&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">aspect_ratio</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+            <span class="c1"># If the panels have different limits the coordinates</span>
+            <span class="c1"># cannot compute a common aspect ratio</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">free</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">free</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]:</span>
+                <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">aspect</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">panel_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">aspect_ratio</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">combine_vars</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+    <span class="n">environment</span><span class="p">:</span> <span class="n">EvalEnvironment</span><span class="p">,</span>
+    <span class="nb">vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">drop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate all combinations of data needed for facetting</span>
+
+<span class="sd">    The first data frame in the list should be the default data</span>
+<span class="sd">    for the plot. Other data frames in the list are ones that are</span>
+<span class="sd">    added to the layers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="c1"># For each layer, compute the facet values</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">eval_facet_vars</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Form the base data frame which contains all combinations</span>
+    <span class="c1"># of facetting variables that appear in the data</span>
+    <span class="n">has_all</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">has_all</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+            <span class="s2">&quot;At least one layer must contain all variables &quot;</span>
+            <span class="s2">&quot;used for facetting&quot;</span>
+        <span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">has_all</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">drop</span><span class="p">:</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">unique_combs</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+
+    <span class="c1"># sorts according to order of factor levels</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    <span class="c1"># Systematically add on missing combinations</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">has_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="nb">list</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">columns</span><span class="p">))]</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="p">:,</span> <span class="nb">list</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">drop</span><span class="p">:</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="n">unique_combs</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+
+        <span class="n">base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">base</span><span class="p">,</span> <span class="n">cross_join</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Faceting variables must have at least one value&quot;</span><span class="p">)</span>
+
+    <span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base</span>
+
+
+<span class="k">def</span> <span class="nf">unique_combs</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate all possible combinations of the values in the columns</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_unique</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">pdtypes</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+    <span class="c1"># List of unique values from every column</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">(</span><span class="n">_unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">lst</span><span class="p">))</span>
+    <span class="n">_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="c1"># preserve the column dtypes</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+        <span class="n">_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># pyright: ignore</span>
+    <span class="k">return</span> <span class="n">_df</span>
+
+
+<span class="k">def</span> <span class="nf">layout_null</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Layout Null</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;PANEL&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">&quot;ROW&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;COL&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;SCALE_X&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;SCALE_Y&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;AXIS_X&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;AXIS_Y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">layout</span>
+
+
+<span class="k">def</span> <span class="nf">add_missing_facets</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">layout</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="nb">vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">facet_vals</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add missing facets</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># When in a dataframe some layer does not have all</span>
+    <span class="c1"># the facet variables, add the missing facet variables</span>
+    <span class="c1"># and create new data where the points(duplicates) are</span>
+    <span class="c1"># present in all the facets</span>
+    <span class="n">missing_facets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">facet_vals</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+    <span class="k">if</span> <span class="n">missing_facets</span><span class="p">:</span>
+        <span class="n">to_add</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">missing_facets</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+        <span class="n">to_add</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># a point for each facet, [0, 1, ..., n-1, 0, 1, ..., n-1, ...]</span>
+        <span class="n">data_rep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">to_add</span><span class="p">))</span>
+        <span class="c1"># a facet for each point, [0, 0, 0, 1, 1, 1, ... n-1, n-1, n-1]</span>
+        <span class="n">facet_rep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">to_add</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">data_rep</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">facet_vals</span> <span class="o">=</span> <span class="n">facet_vals</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">data_rep</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">to_add</span> <span class="o">=</span> <span class="n">to_add</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">facet_rep</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">facet_vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">facet_vals</span><span class="p">,</span> <span class="n">to_add</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">facet_vals</span>
+
+
+<span class="k">def</span> <span class="nf">eval_facet_vars</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">env</span><span class="p">:</span> <span class="n">EvalEnvironment</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate facet variables</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : DataFrame</span>
+<span class="sd">        Factet dataframe</span>
+<span class="sd">    vars : list</span>
+<span class="sd">        Facet variables</span>
+<span class="sd">    env : environment</span>
+<span class="sd">        Plot environment</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    facet_vals : DataFrame</span>
+<span class="sd">        Facet values that correspond to the specified</span>
+<span class="sd">        variables.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># To allow expressions in facet formula</span>
+    <span class="k">def</span> <span class="nf">I</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">with_outer_namespace</span><span class="p">({</span><span class="s2">&quot;I&quot;</span><span class="p">:</span> <span class="n">I</span><span class="p">})</span>
+    <span class="n">facet_vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="c1"># This is a limited solution. If a keyword is</span>
+            <span class="c1"># part of an expression it will fail in the</span>
+            <span class="c1"># else statement below</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">isidentifier</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="c1"># All other non-statements</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Statements</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">inner_namespace</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="n">facet_vals</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+
+    <span class="k">return</span> <span class="n">facet_vals</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

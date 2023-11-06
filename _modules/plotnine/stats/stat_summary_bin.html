@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.stats.stat_summary_bin &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.stats.stat_summary_bin</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..doctools</span> <span class="kn">import</span> <span class="n">document</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">..scales.scale</span> <span class="kn">import</span> <span class="n">scale_discrete</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">groupby_apply</span>
+<span class="kn">from</span> <span class="nn">.binning</span> <span class="kn">import</span> <span class="n">fuzzybreaks</span>
+<span class="kn">from</span> <span class="nn">.stat</span> <span class="kn">import</span> <span class="n">stat</span>
+<span class="kn">from</span> <span class="nn">.stat_summary</span> <span class="kn">import</span> <span class="n">make_summary_fun</span>
+
+
+<div class="viewcode-block" id="stat_summary_bin">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat_summary_bin.html#plotnine.stats.stat_summary_bin">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">stat_summary_bin</span><span class="p">(</span><span class="n">stat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Summarise y values at x intervals</span>
+
+<span class="sd">    {usage}</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {common_parameters}</span>
+<span class="sd">    binwidth : float or tuple, optional (default: None)</span>
+<span class="sd">        The width of the bins. The default is to use bins bins that</span>
+<span class="sd">        cover the range of the data. You should always override this</span>
+<span class="sd">        value, exploring multiple widths to find the best to illustrate</span>
+<span class="sd">        the stories in your data.</span>
+<span class="sd">    bins : int or tuple, optional (default: 30)</span>
+<span class="sd">        Number of bins. Overridden by binwidth.</span>
+<span class="sd">    breaks : array-like(s), optional (default: None)</span>
+<span class="sd">        Bin boundaries. This supercedes the ``binwidth``, ``bins``</span>
+<span class="sd">        and ``boundary`` arguments.</span>
+<span class="sd">    boundary : float or tuple, optional (default: None)</span>
+<span class="sd">        A boundary between two bins. As with center, things are</span>
+<span class="sd">        shifted when boundary is outside the range of the data.</span>
+<span class="sd">        For example, to center on integers, use :py:`width=1` and</span>
+<span class="sd">        :py:`boundary=0.5`, even if 1 is outside the range of the</span>
+<span class="sd">        data. At most one of center and boundary may be specified.</span>
+<span class="sd">    fun_data : str or function, optional</span>
+<span class="sd">        One of</span>
+<span class="sd">        :py:`[&#39;mean_cl_boot&#39;, &#39;mean_cl_normal&#39;, &#39;mean_sdl&#39;, &#39;median_hilow&#39;,</span>
+<span class="sd">        &#39;mean_se&#39;]` or any function that takes a array and returns a</span>
+<span class="sd">        dataframe with three rows indexed as ``y``, ``ymin`` and ``ymax``.</span>
+<span class="sd">        Defaults to :py:`&#39;mean_se&#39;`.</span>
+<span class="sd">    fun_y : function, optional (default: None)</span>
+<span class="sd">        Any function that takes an array-like and returns a single value</span>
+<span class="sd">    fun_ymax : function, optional (default: None)</span>
+<span class="sd">        Any function that takes an array-like and returns a single value</span>
+<span class="sd">    fun_args : dict, optional (default: None)</span>
+<span class="sd">        Arguments to any of the functions. Provided the names of the</span>
+<span class="sd">        arguments of the different functions are in not conflict, the</span>
+<span class="sd">        arguments will be assigned to the right functions. If there is</span>
+<span class="sd">        a conflict, create a wrapper function that resolves the</span>
+<span class="sd">        ambiguity in the argument names.</span>
+<span class="sd">    random_state : int or ~numpy.random.RandomState, optional</span>
+<span class="sd">        Seed or Random number generator to use. If ``None``, then</span>
+<span class="sd">        numpy global generator :class:`numpy.random` is used.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The *binwidth*, *bins*, *breaks* and *bounary* arguments can be a</span>
+<span class="sd">    tuples with two values (``(xaxis-value, yaxis-value)``) of the</span>
+<span class="sd">    required type.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    plotnine.geoms.geom_pointrange</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    </span><span class="si">{aesthetics_table}</span>
+
+<span class="s2">    .. rubric:: Options for computed aesthetics</span>
+
+<span class="s2">    ::</span>
+
+<span class="s2">        &#39;bin&#39;    # bin identifier</span>
+<span class="s2">        &#39;width&#39;  # bin width</span>
+<span class="s2">        &#39;ymin&#39;   # ymin computed by the summary function</span>
+<span class="s2">        &#39;ymax&#39;   # ymax computed by the summary function</span>
+
+<span class="s2">    Calculated aesthetics are accessed using the `after_stat` function.</span>
+<span class="s2">    e.g. :py:`after_stat(&#39;ymin&#39;)`.</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="n">REQUIRED_AES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">}</span>
+    <span class="n">DEFAULT_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;geom&quot;</span><span class="p">:</span> <span class="s2">&quot;pointrange&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;na_rm&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;breaks&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;boundary&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_data&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_y&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_ymin&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_ymax&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_args&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">CREATES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">setup_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;fun_data&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_y&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_ymax&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">):</span>
+            <span class="n">PlotnineWarning</span><span class="p">(</span>
+                <span class="s2">&quot;No summary function, supplied, defaulting to mean_se()&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mean_se&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="s2">&quot;random_state&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;random_state&quot;</span><span class="p">]:</span>
+                <span class="n">random_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;random_state&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_state</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">][</span><span class="s2">&quot;random_state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_state</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_group</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;breaks&quot;</span><span class="p">]</span>
+        <span class="n">binwidth</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span>
+        <span class="n">boundary</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;boundary&quot;</span><span class="p">]</span>
+
+        <span class="n">func</span> <span class="o">=</span> <span class="n">make_summary_fun</span><span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_data&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_y&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_ymin&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_ymax&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">breaks</span> <span class="o">=</span> <span class="n">fuzzybreaks</span><span class="p">(</span><span class="n">scales</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">breaks</span><span class="p">,</span> <span class="n">boundary</span><span class="p">,</span> <span class="n">binwidth</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>  <span class="c1"># pyright: ignore</span>
+            <span class="n">bins</span><span class="o">=</span><span class="n">breaks</span><span class="p">,</span>  <span class="c1"># pyright: ignore</span>
+            <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># pyright: ignore</span>
+            <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">func_wrapper</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Add `bin` column to each summary result.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="c1"># This is a plyr::ddply</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">groupby_apply</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="n">func_wrapper</span><span class="p">)</span>
+        <span class="n">centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">breaks</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">breaks</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
+        <span class="n">bin_centers</span> <span class="o">=</span> <span class="n">centers</span><span class="p">[</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bin_centers</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scales</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">scale_discrete</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">breaks</span><span class="p">)[</span><span class="n">bins</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">out</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

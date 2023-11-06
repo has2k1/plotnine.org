@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.themes.theme &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.themes.theme</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">overload</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..options</span> <span class="kn">import</span> <span class="n">get_option</span><span class="p">,</span> <span class="n">set_option</span>
+<span class="kn">from</span> <span class="nn">.themeable</span> <span class="kn">import</span> <span class="n">Themeables</span><span class="p">,</span> <span class="n">themeable</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="n">Axes</span><span class="p">,</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">Ggplot</span>
+
+<span class="c1"># All complete themes are initiated with these rcparams. They</span>
+<span class="c1"># can be overridden.</span>
+<span class="n">default_rcparams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;axes.axisbelow&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font.sans-serif&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DejaVu Sans&quot;</span><span class="p">,</span>  <span class="c1"># MPL ships with this one</span>
+        <span class="s2">&quot;Avant Garde&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Computer Modern Sans serif&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Arial&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;font.serif&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Times&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Palatino&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;New Century Schoolbook&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bookman&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Computer Modern Roman&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Times New Roman&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;lines.antialiased&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;patch.antialiased&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="theme">
+<a class="viewcode-back" href="../../../generated/plotnine.themes.theme.html#plotnine.themes.theme">[docs]</a>
+<span class="k">class</span> <span class="nc">theme</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for themes</span>
+
+<span class="sd">    In general, only complete themes should subclass this class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    complete : bool</span>
+<span class="sd">        Themes that are complete will override any existing themes.</span>
+<span class="sd">        themes that are not complete (ie. partial) will add to or</span>
+<span class="sd">        override specific elements of the current theme. e.g::</span>
+
+<span class="sd">            theme_gray() + theme_xkcd()</span>
+
+<span class="sd">        will be completely determined by :class:`theme_xkcd`, but::</span>
+
+<span class="sd">            theme_gray() + theme(axis_text_x=element_text(angle=45))</span>
+
+<span class="sd">        will only modify the x-axis text.</span>
+
+<span class="sd">    kwargs: dict</span>
+<span class="sd">        kwargs are :ref:`themeables &lt;themeables&gt;`. The themeables are</span>
+<span class="sd">        elements that are subclasses of `themeable`. Many themeables</span>
+<span class="sd">        are defined using theme elements i.e</span>
+
+<span class="sd">            - :class:`element_line`</span>
+<span class="sd">            - :class:`element_rect`</span>
+<span class="sd">            - :class:`element_text`</span>
+
+<span class="sd">        These simply bind together all the aspects of a themeable</span>
+<span class="sd">        that can be themed. See</span>
+<span class="sd">        :class:`~plotnine.themes.themeable.themeable`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    When subclassing, make sure to call :python:`theme.__init__`.</span>
+<span class="sd">    After which you can customise :python:`self._rcParams` within</span>
+<span class="sd">    the ``__init__`` method of the new theme. The ``rcParams``</span>
+<span class="sd">    should not be modified after that.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># This is set when the figure is created,</span>
+    <span class="c1"># it is useful at legend drawing time and</span>
+    <span class="c1"># when applying the theme.</span>
+    <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span>
+    <span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]</span>
+    <span class="n">complete</span><span class="p">:</span> <span class="nb">bool</span>
+
+    <span class="c1"># Dictionary to collect matplotlib objects that will</span>
+    <span class="c1"># be targeted for theming by the themeables</span>
+    <span class="c1"># It is initialised in the plot context and removed at</span>
+    <span class="c1"># the end of it.</span>
+    <span class="n">_targets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">complete</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="c1"># Generate themeables keyword parameters with</span>
+        <span class="c1">#</span>
+        <span class="c1">#     from plotnine.themes.themeable import themeable</span>
+        <span class="c1">#     for name in themeable.registry():</span>
+        <span class="c1">#         print(f&#39;{name}=None,&#39;)</span>
+        <span class="n">axis_title_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_title_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_text_legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_text_colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_subtitle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_caption</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_text_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_text_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_text_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_text_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_line_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_line_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_line</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_minor_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_minor_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_major_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_major_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_major</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_minor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_major_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_major_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_minor_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_minor_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_major</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid_minor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_grid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">line</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_background</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_box_background</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_background</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_border</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_background</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_background_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_background_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_background</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_length_major</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_length_minor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_pad_major</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_pad_minor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_direction_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_direction_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">axis_ticks_direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_spacing_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_spacing_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">plot_margin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">panel_ontop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">aspect_ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">dpi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">figure_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_box</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_box_margin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_box_just</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_key_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_key_height</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_key_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_margin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_box_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_title_align</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_entry_spacing_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_entry_spacing_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">legend_entry_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_align_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_align_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">strip_align</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">subplots_adjust</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span> <span class="o">=</span> <span class="n">Themeables</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">complete</span> <span class="o">=</span> <span class="n">complete</span>
+
+        <span class="k">if</span> <span class="n">complete</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rcParams</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">default_rcparams</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rcParams</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Themeables</span>
+        <span class="n">official_themeables</span> <span class="o">=</span> <span class="n">themeable</span><span class="o">.</span><span class="n">registry</span><span class="p">()</span>
+        <span class="n">locals_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">locals_args</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">official_themeables</span>
+        <span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">themeable</span><span class="o">.</span><span class="n">from_class_name</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+
+        <span class="c1"># Unofficial themeables (for extensions)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if themes are equal</span>
+
+<span class="sd">        Mostly for testing purposes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># criteria for equality are</span>
+        <span class="c1"># - Equal themeables</span>
+        <span class="c1"># - Equal rcParams</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">themeables</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rcParams</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">rcParams</span>
+        <span class="k">return</span> <span class="n">c1</span> <span class="ow">and</span> <span class="n">c2</span>
+
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply this theme, then apply additional modifications in order.</span>
+
+<span class="sd">        This method will be called once after plot has completed.</span>
+<span class="sd">        Subclasses that override this method should make sure that the</span>
+<span class="sd">        base class method is called.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">th</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup theme &amp; figure for before drawing</span>
+
+<span class="sd">        1. The figure is modified with to the theme settings</span>
+<span class="sd">           that it are required before drawing.</span>
+<span class="sd">        2. Give contained objects of the theme/themeables a</span>
+<span class="sd">           reference to the theme.</span>
+
+<span class="sd">        This method will be called once with a figure object</span>
+<span class="sd">        before any plotting has completed. Subclasses that</span>
+<span class="sd">        override this method should make sure that the base</span>
+<span class="sd">        class method is called.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">element_text</span>
+
+        <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">th</span><span class="o">.</span><span class="n">setup_figure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">theme_element</span><span class="p">,</span> <span class="n">element_text</span><span class="p">):</span>
+                <span class="n">th</span><span class="o">.</span><span class="n">theme_element</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rcParams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return rcParams dict for this theme.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Subclasses should not need to override this method method as long as</span>
+<span class="sd">        self._rcParams is constructed properly.</span>
+
+<span class="sd">        rcParams are used during plotting. Sometimes the same theme can be</span>
+<span class="sd">        achieved by setting rcParams before plotting or a apply</span>
+<span class="sd">        after plotting. The choice of how to implement it is is a matter of</span>
+<span class="sd">        convenience in that case.</span>
+
+<span class="sd">        There are certain things can only be themed after plotting. There</span>
+<span class="sd">        may not be an rcParam to control the theme or the act of plotting</span>
+<span class="sd">        may cause an entity to come into existence before it can be themed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rcParams</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rcParams</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+            <span class="c1"># deepcopy raises an error for objects that are drived from or</span>
+            <span class="c1"># composed of matplotlib.transform.TransformNode.</span>
+            <span class="c1"># Not desirable, but probably requires upstream fix.</span>
+            <span class="c1"># In particular, XKCD uses matplotlib.patheffects.withStrok</span>
+            <span class="n">rcParams</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rcParams</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">rcParams</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rcParams</span>
+
+    <span class="k">def</span> <span class="nf">add_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">theme</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add themes together</span>
+
+<span class="sd">        Subclasses should not override this method.</span>
+
+<span class="sd">        This will be called when adding two instances of class &#39;theme&#39;</span>
+<span class="sd">        together.</span>
+<span class="sd">        A complete theme will annihilate any previous themes. Partial themes</span>
+<span class="sd">        can be added together and can be added to a complete theme.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">complete</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">other</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">themeables</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">theme</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add other theme to this theme</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Adding theme failed. </span><span class="si">{</span><span class="n">other</span><span class="si">}</span><span class="s2"> is not a theme&quot;</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_theme</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">theme</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Ggplot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ggplot</span><span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">theme</span> <span class="o">|</span> <span class="n">Ggplot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span> <span class="o">|</span> <span class="n">Ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add theme to ggplot object or to another theme</span>
+
+<span class="sd">        This will be called in one of two ways::</span>
+
+<span class="sd">             ggplot() + theme()</span>
+<span class="sd">             theme1() + theme2()</span>
+
+<span class="sd">        In both cases, `self` is the :class:`theme`</span>
+<span class="sd">        on the right hand side.</span>
+
+<span class="sd">        Subclasses should not override this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># ggplot() + theme, get theme</span>
+        <span class="c1"># if hasattr(other, &#39;theme&#39;):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">:</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># If no theme has been added yet,</span>
+                <span class="c1"># we modify the default theme</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">theme</span> <span class="ow">or</span> <span class="n">theme_get</span><span class="p">()</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">add_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">other</span>
+        <span class="c1"># theme1 + theme2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">:</span>
+                <span class="c1"># e.g. other + theme_gray()</span>
+                <span class="k">return</span> <span class="bp">self</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># e.g. other + theme(...)</span>
+                <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">add_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">theme</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add theme to theme</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_theme</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span>
+
+        <span class="n">shallow</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;figure&quot;</span><span class="p">,</span> <span class="s2">&quot;_targets&quot;</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">shallow</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+
+<div class="viewcode-block" id="theme_get">
+<a class="viewcode-back" href="../../../generated/plotnine.themes.theme_get.html#plotnine.themes.theme_get">[docs]</a>
+<span class="k">def</span> <span class="nf">theme_get</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the default theme</span>
+
+<span class="sd">    The default theme is the one set (using :func:`theme_set`) by</span>
+<span class="sd">    the user. If none has been set, then :class:`theme_gray` is</span>
+<span class="sd">    the default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">.theme_gray</span> <span class="kn">import</span> <span class="n">theme_gray</span>
+
+    <span class="n">_theme</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;current_theme&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_theme</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="n">_theme</span> <span class="o">=</span> <span class="n">_theme</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_theme</span> <span class="ow">or</span> <span class="n">theme_gray</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="theme_set">
+<a class="viewcode-back" href="../../../generated/plotnine.themes.theme_set.html#plotnine.themes.theme_set">[docs]</a>
+<span class="k">def</span> <span class="nf">theme_set</span><span class="p">(</span><span class="n">new</span><span class="p">:</span> <span class="n">theme</span> <span class="o">|</span> <span class="n">Type</span><span class="p">[</span><span class="n">theme</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">theme</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Change the current(default) theme</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    new : theme</span>
+<span class="sd">        New default theme</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : theme</span>
+<span class="sd">        Previous theme</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">theme</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Expecting object to be a theme&quot;</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="p">:</span> <span class="n">theme</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;current_theme&quot;</span><span class="p">)</span>
+    <span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;current_theme&quot;</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="theme_update">
+<a class="viewcode-back" href="../../../generated/plotnine.themes.theme_update.html#plotnine.themes.theme_update">[docs]</a>
+<span class="k">def</span> <span class="nf">theme_update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">themeable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modify elements of the current theme</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    kwargs : dict</span>
+<span class="sd">        Theme elements</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">theme_set</span><span class="p">(</span><span class="n">theme_get</span><span class="p">()</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

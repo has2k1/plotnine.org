@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.ggplot &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739a9dc4" />
+    <script src="../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../api.html">API</a></li>
+                <li><a href="../../gallery.html">Gallery</a></li>
+                <li><a href="../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.ggplot</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">SimpleNamespace</span> <span class="k">as</span> <span class="n">NS</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.coords</span> <span class="kn">import</span> <span class="n">coord_cartesian</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span><span class="p">,</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">.facets</span> <span class="kn">import</span> <span class="n">facet_null</span>
+<span class="kn">from</span> <span class="nn">.facets.layout</span> <span class="kn">import</span> <span class="n">Layout</span>
+<span class="kn">from</span> <span class="nn">.geoms.geom_blank</span> <span class="kn">import</span> <span class="n">geom_blank</span>
+<span class="kn">from</span> <span class="nn">.guides.guides</span> <span class="kn">import</span> <span class="n">guides</span>
+<span class="kn">from</span> <span class="nn">.iapi</span> <span class="kn">import</span> <span class="n">mpl_save_view</span>
+<span class="kn">from</span> <span class="nn">.layer</span> <span class="kn">import</span> <span class="n">Layers</span>
+<span class="kn">from</span> <span class="nn">.mapping.aes</span> <span class="kn">import</span> <span class="n">aes</span><span class="p">,</span> <span class="n">make_labels</span>
+<span class="kn">from</span> <span class="nn">.options</span> <span class="kn">import</span> <span class="n">get_option</span>
+<span class="kn">from</span> <span class="nn">.scales.scales</span> <span class="kn">import</span> <span class="n">Scales</span>
+<span class="kn">from</span> <span class="nn">.themes.theme</span> <span class="kn">import</span> <span class="n">theme</span><span class="p">,</span> <span class="n">theme_get</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">from_inches</span><span class="p">,</span>
+    <span class="n">get_ipython</span><span class="p">,</span>
+    <span class="n">is_data_like</span><span class="p">,</span>
+    <span class="n">order_as_data_mapping</span><span class="p">,</span>
+    <span class="n">to_inches</span><span class="p">,</span>
+    <span class="n">ungroup</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Axes</span><span class="p">,</span>
+        <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">DataLike</span><span class="p">,</span>
+        <span class="n">EvalEnvironment</span><span class="p">,</span>
+        <span class="n">Facet</span><span class="p">,</span>
+        <span class="n">Figure</span><span class="p">,</span>
+        <span class="n">Layer</span><span class="p">,</span>
+        <span class="n">PlotAddable</span><span class="p">,</span>
+        <span class="n">Theme</span><span class="p">,</span>
+        <span class="n">Watermark</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="ggplot">
+<a class="viewcode-back" href="../../generated/plotnine.ggplot.html#plotnine.ggplot">[docs]</a>
+<span class="k">class</span> <span class="nc">ggplot</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new ggplot object</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : dataframe</span>
+<span class="sd">        Default data for plot. Every layer that does not</span>
+<span class="sd">        have data of its own will use this one.</span>
+<span class="sd">    mapping : aes</span>
+<span class="sd">        Default aesthetics mapping for the plot. These will be used</span>
+<span class="sd">        by all layers unless specifically overridden.</span>
+<span class="sd">    environment : ~patsy.Eval.EvalEnvironment</span>
+<span class="sd">        If a variable defined in the aesthetic mapping is not</span>
+<span class="sd">        found in the data, ggplot will look for it in this</span>
+<span class="sd">        namespace. It defaults to using the environment/namespace.</span>
+<span class="sd">        in which `ggplot()` is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span>
+    <span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]</span>
+    <span class="n">theme</span><span class="p">:</span> <span class="n">Theme</span>
+    <span class="n">facet</span><span class="p">:</span> <span class="n">Facet</span>
+    <span class="n">coordinates</span><span class="p">:</span> <span class="n">Coord</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">DataLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="p">:</span> <span class="n">aes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">environment</span><span class="p">:</span> <span class="n">EvalEnvironment</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">patsy.eval</span> <span class="kn">import</span> <span class="n">EvalEnvironment</span>
+
+        <span class="c1"># Allow some sloppiness</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">order_as_data_mapping</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="n">mapping</span> <span class="k">if</span> <span class="n">mapping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">aes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">facet</span> <span class="o">=</span> <span class="n">facet_null</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">make_labels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">Layers</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">guides</span> <span class="o">=</span> <span class="n">guides</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scales</span> <span class="o">=</span> <span class="n">Scales</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="n">theme_get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">:</span> <span class="n">Coord</span> <span class="o">=</span> <span class="n">coord_cartesian</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">environment</span> <span class="ow">or</span> <span class="n">EvalEnvironment</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watermarks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Watermark</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># build artefacts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_objs</span> <span class="o">=</span> <span class="n">NS</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print/show the plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Return and empty string so that print(p) is &quot;pretty&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print/show the plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">dpi</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">get_dpi</span><span class="p">()</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">figure</span><span class="o">.</span><span class="n">get_figwidth</span><span class="p">()</span> <span class="o">*</span> <span class="n">dpi</span><span class="p">)</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">figure</span><span class="o">.</span><span class="n">get_figheight</span><span class="p">()</span> <span class="o">*</span> <span class="n">dpi</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Figure Size: (</span><span class="si">{</span><span class="n">W</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">H</span><span class="si">}</span><span class="s2">)&gt;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the dataframe and environment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span>
+
+        <span class="c1"># don&#39;t make a deepcopy of data, or environment</span>
+        <span class="n">shallow</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;figure&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;_build_objs&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">shallow</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">PlotAddable</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">PlotAddable</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add other to ggplot object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : object or Sequence</span>
+<span class="sd">            Either an object that knows how to &quot;radd&quot;</span>
+<span class="sd">            itself to a ggplot, or a list of such objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">other</span><span class="p">:</span>
+                <span class="n">item</span><span class="o">.</span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">elif</span> <span class="n">other</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">PlotAddable</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">PlotAddable</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add to ggplot from a list</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : object or Sequence</span>
+<span class="sd">            Either an object that knows how to &quot;radd&quot;</span>
+<span class="sd">            itself to a ggplot, or a list of such objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__iadd__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__rrshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">DataLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overload the &gt;&gt; operator to receive a dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="n">ungroup</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_data_like</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">other</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;`&gt;&gt;` failed, ggplot object has data.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Unknown type of data -- </span><span class="si">{!r}</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="ggplot.draw">
+<a class="viewcode-back" href="../../generated/plotnine.ggplot.html#plotnine.ggplot.draw">[docs]</a>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Render the complete plot</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        show : bool (default: False)</span>
+<span class="sd">            Whether to show the plot.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        fig : ~matplotlib.figure.Figure</span>
+<span class="sd">            Matplotlib figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">._mpl.layout_engine</span> <span class="kn">import</span> <span class="n">PlotnineLayoutEngine</span>
+
+        <span class="c1"># Do not draw if drawn already.</span>
+        <span class="c1"># This prevents a needless error when reusing</span>
+        <span class="c1"># figure &amp; axes in the jupyter notebook.</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;figure&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
+
+        <span class="c1"># Prevent against any modifications to the users</span>
+        <span class="c1"># ggplot object. Do the copy here as we may/may not</span>
+        <span class="c1"># assign a default theme</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">plot_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+
+            <span class="c1"># setup</span>
+            <span class="n">figure</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_figure</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_parameters</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">strips</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+
+            <span class="c1"># Drawing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_layers</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_breaks_and_labels</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_legend</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_figure_texts</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_watermarks</span><span class="p">()</span>
+
+            <span class="c1"># Artist object theming</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+            <span class="n">figure</span><span class="o">.</span><span class="n">set_layout_engine</span><span class="p">(</span><span class="n">PlotnineLayoutEngine</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_draw_using_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw onto already created figure and axes</span>
+
+<span class="sd">        This is can be used to draw animation frames,</span>
+<span class="sd">        or inset plots. It is intended to be used</span>
+<span class="sd">        after the key plot has been drawn.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        figure : ~matplotlib.figure.Figure</span>
+<span class="sd">            Matplotlib figure</span>
+<span class="sd">        axs : array_like</span>
+<span class="sd">            Array of Axes onto which to draw the plots</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">._mpl.layout_engine</span> <span class="kn">import</span> <span class="n">PlotnineLayoutEngine</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span>
+        <span class="k">with</span> <span class="n">plot_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+
+            <span class="c1"># setup</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_parameters</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">strips</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+
+            <span class="c1"># drawing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_layers</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_breaks_and_labels</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_legend</span><span class="p">()</span>
+
+            <span class="c1"># artist theming</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+            <span class="n">figure</span><span class="o">.</span><span class="n">set_layout_engine</span><span class="p">(</span><span class="n">PlotnineLayoutEngine</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build ggplot for rendering.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method modifies the ggplot object. The caller is</span>
+<span class="sd">        responsible for making a copy and using that to make</span>
+<span class="sd">        the method call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="bp">self</span> <span class="o">+=</span> <span class="n">geom_blank</span><span class="p">()</span>
+
+        <span class="n">layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_objs</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span>
+        <span class="n">scales</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_objs</span><span class="o">.</span><span class="n">scales</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scales</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_objs</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span>
+
+        <span class="c1"># Update the label information for the plot</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">update_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Give each layer a copy of the data, the mappings and</span>
+        <span class="c1"># the execution environment</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Initialise panels, add extra data for margins &amp; missing</span>
+        <span class="c1"># facetting variables, and add on a PANEL variable to data</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Compute aesthetics to produce data with generalised</span>
+        <span class="c1"># variable names</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">compute_aesthetics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Transform data using all scales</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
+
+        <span class="c1"># Make sure missing (but required) aesthetics are added</span>
+        <span class="n">scales</span><span class="o">.</span><span class="n">add_missing</span><span class="p">((</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+
+        <span class="c1"># Map and train positions so that statistics have access</span>
+        <span class="c1"># to ranges and all positions are numeric</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">train_position</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">scales</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">map_position</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+
+        <span class="c1"># Apply and map statistics</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">compute_statistic</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">map_statistic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Prepare data in geoms</span>
+        <span class="c1"># e.g. from y and width to ymin and ymax</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">setup_data</span><span class="p">()</span>
+
+        <span class="c1"># Apply position adjustments</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">compute_position</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># Reset position scales, then re-train and map.  This</span>
+        <span class="c1"># ensures that facets have control over the range of</span>
+        <span class="c1"># a plot.</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">reset_position_scales</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">train_position</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">scales</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">map_position</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+
+        <span class="c1"># Train and map non-position scales</span>
+        <span class="n">npscales</span> <span class="o">=</span> <span class="n">scales</span><span class="o">.</span><span class="n">non_position_scales</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">npscales</span><span class="p">):</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">npscales</span><span class="p">)</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">npscales</span><span class="p">)</span>
+
+        <span class="c1"># Train coordinate system</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setup_panel_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
+
+        <span class="c1"># fill in the defaults</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">use_defaults</span><span class="p">()</span>
+
+        <span class="c1"># Allow stats to modify the layer data</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">finish_statistics</span><span class="p">()</span>
+
+        <span class="c1"># Allow layout to modify data before rendering</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">finish_data</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setup_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set facet properties</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># facet</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># layout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axs</span>
+        <span class="c1"># theme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axs</span>
+
+    <span class="k">def</span> <span class="nf">_create_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Figure</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create Matplotlib figure and axes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+        <span class="c1"># Good for development</span>
+        <span class="k">if</span> <span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;close_all_figures&quot;</span><span class="p">):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+        <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># pyright: ignore</span>
+        <span class="n">axs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">make_axes</span><span class="p">(</span>
+            <span class="n">figure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span>
+        <span class="k">return</span> <span class="n">figure</span><span class="p">,</span> <span class="n">axs</span>
+
+    <span class="k">def</span> <span class="nf">_draw_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw the main plot(s) onto the axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Draw the geoms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_breaks_and_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw breaks and labels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 1. Draw facet labels a.k.a strip text</span>
+        <span class="c1"># 2. Decorate the axes</span>
+        <span class="c1">#      - xaxis &amp; yaxis breaks, labels, limits, ...</span>
+        <span class="c1">#</span>
+        <span class="c1"># pidx is the panel index (location left to right, top to bottom)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">strips</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">layout_info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">get_details</span><span class="p">():</span>
+            <span class="n">pidx</span> <span class="o">=</span> <span class="n">layout_info</span><span class="o">.</span><span class="n">panel_index</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axs</span><span class="p">[</span><span class="n">pidx</span><span class="p">]</span>
+            <span class="n">panel_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">panel_params</span><span class="p">[</span><span class="n">pidx</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">facet</span><span class="o">.</span><span class="n">set_limits_breaks_and_labels</span><span class="p">(</span><span class="n">panel_params</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+            <span class="c1"># Remove unnecessary ticks and labels</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">layout_info</span><span class="o">.</span><span class="n">axis_x</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span>
+                    <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">layout_info</span><span class="o">.</span><span class="n">axis_y</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span>
+                    <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">layout_info</span><span class="o">.</span><span class="n">axis_x</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">layout_info</span><span class="o">.</span><span class="n">axis_y</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw legend onto the figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.offsetbox</span> <span class="kn">import</span> <span class="n">AnchoredOffsetbox</span>
+
+        <span class="n">legend_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">guides</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">legend_box</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">anchored_box</span> <span class="o">=</span> <span class="n">AnchoredOffsetbox</span><span class="p">(</span>
+            <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">legend_box</span><span class="p">,</span>
+            <span class="n">pad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;stretch&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">bbox_transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">transFigure</span><span class="p">,</span>
+            <span class="n">borderpad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">anchored_box</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mf">90.1</span><span class="p">)</span>
+        <span class="n">anchored_box</span><span class="o">.</span><span class="n">set_in_layout</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;legend_background&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">anchored_box</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">anchored_box</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_figure_texts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw title, x label, y label and caption onto the figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
+        <span class="n">theme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span>
+
+        <span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;caption&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">subtitle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subtitle&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get the axis labels (default or specified by user)</span>
+        <span class="c1"># and let the coordinate modify them e.g. flip</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">set_xy_labels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># The locations are handled by the layout manager</span>
+        <span class="n">text_title</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="n">text_caption</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">caption</span><span class="p">)</span>
+        <span class="n">text_subtitle</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">subtitle</span><span class="p">)</span>
+        <span class="n">text_x</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">text_y</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;plot_title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_title</span>
+        <span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;plot_caption&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_caption</span>
+        <span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;plot_subtitle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_subtitle</span>
+        <span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;axis_title_x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_x</span>
+        <span class="n">theme</span><span class="o">.</span><span class="n">_targets</span><span class="p">[</span><span class="s2">&quot;axis_title_y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_y</span>
+
+    <span class="k">def</span> <span class="nf">_draw_watermarks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw watermark onto figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">wm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">watermarks</span><span class="p">:</span>
+            <span class="n">wm</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_save_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make a filename for use by the save method</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ext : str</span>
+<span class="sd">            Extension e.g. png, pdf, ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hash_token</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;plotnine-save-</span><span class="si">{</span><span class="n">hash_token</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">:</span> <span class="n">Layer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update label data for the ggplot</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        layer : layer</span>
+<span class="sd">            New layer that has just been added to the ggplot</span>
+<span class="sd">            object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">make_labels</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">make_labels</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">stat</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">)</span>
+        <span class="n">mapping</span><span class="o">.</span><span class="n">add_defaults</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">add_defaults</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ggplot.save_helper">
+<a class="viewcode-back" href="../../generated/plotnine.ggplot.html#plotnine.ggplot.save_helper">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_helper</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">ggplot</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="n">dpi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limitsize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mpl_save_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create MPL figure that will be saved</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method has the same arguments as :meth:`ggplot.save`.</span>
+<span class="sd">        Use it to get access to the figure that will be saved.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig_kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="nb">format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">}</span>
+
+        <span class="c1"># filename, depends on the object</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ext</span> <span class="o">=</span> <span class="nb">format</span> <span class="k">if</span> <span class="nb">format</span> <span class="k">else</span> <span class="s2">&quot;pdf&quot;</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_filename</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="n">filename</span>
+
+        <span class="n">fig_kwargs</span><span class="p">[</span><span class="s2">&quot;fname&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+
+        <span class="c1"># Preserve the users object</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># The figure size should be known by the theme</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="n">to_inches</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="n">to_inches</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+            <span class="bp">self</span> <span class="o">+=</span> <span class="n">theme</span><span class="p">(</span><span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="p">(</span>
+            <span class="n">width</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">or</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">height</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;You must specify both width and height&quot;</span><span class="p">)</span>
+
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="s2">&quot;figure_size&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">limitsize</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">25</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Dimensions (</span><span class="si">{</span><span class="n">width</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">height</span><span class="si">=}</span><span class="s2">) exceed 25 inches &quot;</span>
+                <span class="s2">&quot;(height and width are specified in inches/cm/mm, &quot;</span>
+                <span class="s2">&quot;not pixels). If you are sure you want these &quot;</span>
+                <span class="s2">&quot;dimensions, use &#39;limitsize=False&#39;.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">_w</span> <span class="o">=</span> <span class="n">from_inches</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+            <span class="n">_h</span> <span class="o">=</span> <span class="n">from_inches</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+            <span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="n">_w</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">_h</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2"> image.&quot;</span><span class="p">,</span> <span class="n">PlotnineWarning</span><span class="p">)</span>
+            <span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filename: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">PlotnineWarning</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dpi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theme</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+
+        <span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mpl_save_view</span><span class="p">(</span><span class="n">figure</span><span class="p">,</span> <span class="n">fig_kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ggplot.save">
+<a class="viewcode-back" href="../../generated/plotnine.ggplot.html#plotnine.ggplot.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="n">dpi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limitsize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save a ggplot object as an image file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str | pathlib.Path, optional</span>
+<span class="sd">            File name to write the plot to. If not specified, a name</span>
+<span class="sd">            like “plotnine-save-&lt;hash&gt;.&lt;format&gt;” is used.</span>
+<span class="sd">        format : str</span>
+<span class="sd">            Image format to use, automatically extract from</span>
+<span class="sd">            file name extension.</span>
+<span class="sd">        path : str</span>
+<span class="sd">            Path to save plot to (if you just want to set path and</span>
+<span class="sd">            not filename).</span>
+<span class="sd">        width : number, optional</span>
+<span class="sd">            Width (defaults to value set by the theme). If specified</span>
+<span class="sd">            the `height` must also be given.</span>
+<span class="sd">        height : number, optional</span>
+<span class="sd">            Height (defaults to value set by the theme). If specified</span>
+<span class="sd">            the `width` must also be given.</span>
+<span class="sd">        units : str</span>
+<span class="sd">            Units for width and height when either one is explicitly</span>
+<span class="sd">            specified (in, cm, or mm).</span>
+<span class="sd">        dpi : float</span>
+<span class="sd">            DPI to use for raster graphics. If None, defaults to using</span>
+<span class="sd">            the `dpi` of theme, if none is set then a `dpi` of 100.</span>
+<span class="sd">        limitsize : bool</span>
+<span class="sd">            If ``True`` (the default), ggsave will not save images</span>
+<span class="sd">            larger than 50x50 inches, to prevent the common error</span>
+<span class="sd">            of specifying dimensions in pixels.</span>
+<span class="sd">        verbose : bool</span>
+<span class="sd">            If ``True``, print the saving information.</span>
+<span class="sd">        kwargs : dict</span>
+<span class="sd">            Additional arguments to pass to matplotlib `savefig()`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_helper</span><span class="p">(</span>
+            <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
+            <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">,</span>
+            <span class="n">limitsize</span><span class="o">=</span><span class="n">limitsize</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">sv</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">**</span><span class="n">sv</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="n">ggsave</span> <span class="o">=</span> <span class="n">ggplot</span><span class="o">.</span><span class="n">save</span>
+
+
+<div class="viewcode-block" id="save_as_pdf_pages">
+<a class="viewcode-back" href="../../generated/plotnine.ggplot.save_as_pdf_pages.html#plotnine.save_as_pdf_pages">[docs]</a>
+<span class="k">def</span> <span class="nf">save_as_pdf_pages</span><span class="p">(</span>
+    <span class="n">plots</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">ggplot</span><span class="p">],</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save multiple :class:`ggplot` objects to a PDF file, one per page.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    plots : collection or generator of :class:`ggplot`</span>
+<span class="sd">        Plot objects to write to file. `plots` may be either a</span>
+<span class="sd">        collection such as a :py:class:`list` or :py:class:`set`:</span>
+
+<span class="sd">        &gt;&gt;&gt; base_plot = ggplot(…)</span>
+<span class="sd">        &gt;&gt;&gt; plots = [base_plot + ggtitle(&#39;%d of 3&#39; % i) for i in range(1, 3)]</span>
+<span class="sd">        &gt;&gt;&gt; save_as_pdf_pages(plots)</span>
+
+<span class="sd">        or, a generator that yields :class:`ggplot` objects:</span>
+
+<span class="sd">        &gt;&gt;&gt; def myplots():</span>
+<span class="sd">        &gt;&gt;&gt;     for i in range(1, 3):</span>
+<span class="sd">        &gt;&gt;&gt;         yield ggplot(…) + ggtitle(&#39;%d of 3&#39; % i)</span>
+<span class="sd">        &gt;&gt;&gt; save_as_pdf_pages(myplots())</span>
+
+<span class="sd">    filename : :py:class:`str`, optional</span>
+<span class="sd">        File name to write the plot to. If not specified, a name</span>
+<span class="sd">        like “plotnine-save-&lt;hash&gt;.pdf” is used.</span>
+<span class="sd">    path : :py:class:`str`, optional</span>
+<span class="sd">        Path to save plot to (if you just want to set path and</span>
+<span class="sd">        not filename).</span>
+<span class="sd">    verbose : :py:class:`bool`</span>
+<span class="sd">        If ``True``, print the saving information.</span>
+<span class="sd">    kwargs : :py:class:`dict`</span>
+<span class="sd">        Additional arguments to pass to</span>
+<span class="sd">        :py:meth:`matplotlib.figure.Figure.savefig`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Using pandas&#39; :meth:`~pandas.DataFrame.groupby` methods, tidy data</span>
+<span class="sd">    can be “faceted” across pages:</span>
+
+<span class="sd">    &gt;&gt;&gt; from plotnine.data import mtcars</span>
+<span class="sd">    &gt;&gt;&gt; def facet_pages(column)</span>
+<span class="sd">    &gt;&gt;&gt;     base_plot = [</span>
+<span class="sd">    &gt;&gt;&gt;         aes(x=&#39;wt&#39;, y=&#39;mpg&#39;, label=&#39;name&#39;),</span>
+<span class="sd">    &gt;&gt;&gt;         geom_text(),</span>
+<span class="sd">    &gt;&gt;&gt;         ]</span>
+<span class="sd">    &gt;&gt;&gt;     for label, group_data in mtcars.groupby(column):</span>
+<span class="sd">    &gt;&gt;&gt;         yield ggplot(group_data) + base_plot + ggtitle(label)</span>
+<span class="sd">    &gt;&gt;&gt; save_as_pdf_pages(facet_pages(&#39;cyl&#39;))</span>
+
+<span class="sd">    Unlike :meth:`ggplot.save`, :meth:`save_as_pdf_pages` does not</span>
+<span class="sd">    process arguments for `height` or `width`. To set the figure size,</span>
+<span class="sd">    add :class:`~plotnine.themes.themeable.figure_size` to the theme</span>
+<span class="sd">    for some or all of the objects in `plots`:</span>
+
+<span class="sd">    &gt;&gt;&gt; plot = ggplot(…)</span>
+<span class="sd">    &gt;&gt;&gt; # The following are equivalent</span>
+<span class="sd">    &gt;&gt;&gt; plot.save(&#39;filename.pdf&#39;, height=6, width=8)</span>
+<span class="sd">    &gt;&gt;&gt; save_as_pdf_pages([plot + theme(figure_size=(8, 6))])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.backends.backend_pdf</span> <span class="kn">import</span> <span class="n">PdfPages</span>
+
+    <span class="c1"># as in ggplot.save()</span>
+    <span class="n">fig_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bbox_inches&quot;</span><span class="p">:</span> <span class="s2">&quot;tight&quot;</span><span class="p">}</span>
+    <span class="n">fig_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># If plots is already an iterator, this is a no-op; otherwise</span>
+    <span class="c1"># convert a list, etc. to an iterator</span>
+    <span class="n">plots</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">plots</span><span class="p">)</span>
+
+    <span class="c1"># filename, depends on the object</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Take the first element from the iterator, store it, and</span>
+        <span class="c1"># use it to generate a file name</span>
+        <span class="n">peek</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">plots</span><span class="p">)]</span>
+        <span class="n">plots</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(</span><span class="n">peek</span><span class="p">,</span> <span class="n">plots</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">peek</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_save_filename</span><span class="p">(</span><span class="s2">&quot;pdf&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="n">filename</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filename: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">PlotnineWarning</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">PdfPages</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">pdf</span><span class="p">:</span>
+        <span class="c1"># Re-add the first element to the iterator, if it was removed</span>
+        <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+            <span class="c1"># Save as a page in the PDF file</span>
+            <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="o">**</span><span class="n">fig_kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">plot_context</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Context to setup the environment within with the plot is built</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    plot : ggplot</span>
+<span class="sd">        ggplot object to be built within the context.</span>
+<span class="sd">    show : bool (default: False)</span>
+<span class="sd">        Whether to show (``plt.show()``) the plot before the context</span>
+<span class="sd">        exits.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Default to retina unless user chooses otherwise</span>
+    <span class="n">_IPYTHON_CONFIG</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;InlineBackend&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;figure_format&quot;</span><span class="p">:</span> <span class="s2">&quot;retina&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close_figures&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;print_figure_kwargs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;bbox_inches&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">_ip_config_inlinebackend</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">:</span> <span class="n">ggplot</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="n">show</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plot_context</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enclose in matplolib &amp; pandas environments</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">_targets</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rc_context</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rc_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">rcParams</span><span class="p">)</span>
+        <span class="c1"># Pandas deprecated is_copy, and when we create new dataframes</span>
+        <span class="c1"># from slices we do not want complaints. We always uses the</span>
+        <span class="c1"># new frames knowing that they are separate from the original.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pd_option_context</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span>
+            <span class="s2">&quot;mode.chained_assignment&quot;</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rc_context</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pd_option_context</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_enter_ipython</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Exit matplotlib &amp; pandas environments</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+        <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># There is an exception, close any figure</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">,</span> <span class="s2">&quot;figure&quot;</span><span class="p">):</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rc_context</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pd_option_context</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exit_ipython</span><span class="p">()</span>
+        <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="p">,</span> <span class="s2">&quot;_targets&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_enter_ipython</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup ipython parameters in for the plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ip</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;InlineBackend&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_IPYTHON_CONFIG</span><span class="p">[</span><span class="s2">&quot;InlineBackend&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ip</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">InlineBackend</span><span class="p">:</span>  <span class="c1"># pyright: ignore</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ip_config_inlinebackend</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+                <span class="n">ip</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;InlineBackend.</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_exit_ipython</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Undo ipython parameters in for the plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ip</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;InlineBackend&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_config_inlinebackend</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">ip</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;InlineBackend&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># pyright: ignore</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ip_config_inlinebackend</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

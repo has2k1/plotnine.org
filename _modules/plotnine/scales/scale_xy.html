@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.scales.scale_xy &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.scales.scale_xy</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..doctools</span> <span class="kn">import</span> <span class="n">document</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..iapi</span> <span class="kn">import</span> <span class="n">range_view</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">alias</span><span class="p">,</span> <span class="n">array_kind</span><span class="p">,</span> <span class="n">match</span>
+<span class="kn">from</span> <span class="nn">._expand</span> <span class="kn">import</span> <span class="n">expand_range</span>
+<span class="kn">from</span> <span class="nn">.range</span> <span class="kn">import</span> <span class="n">RangeContinuous</span>
+<span class="kn">from</span> <span class="nn">.scale</span> <span class="kn">import</span> <span class="n">scale_continuous</span><span class="p">,</span> <span class="n">scale_datetime</span><span class="p">,</span> <span class="n">scale_discrete</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Trans</span><span class="p">,</span>
+        <span class="n">TupleFloat2</span><span class="p">,</span>
+        <span class="n">TupleFloat4</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># positions scales have a couple of differences (quirks) that</span>
+<span class="c1"># make necessary to override some of the scale_discrete and</span>
+<span class="c1"># scale_continuous methods</span>
+<span class="c1">#</span>
+<span class="c1"># scale_position_discrete and scale_position_continuous</span>
+<span class="c1"># are intermediate base classes where the required overriding</span>
+<span class="c1"># is done</span>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_position_discrete</span><span class="p">(</span><span class="n">scale_discrete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for discrete position scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    limits : array_like, optional</span>
+<span class="sd">        Limits of the scale. For discrete scale, these are</span>
+<span class="sd">        the categories (unique values) of the variable.</span>
+<span class="sd">        For scales that deal with categoricals, these may</span>
+<span class="sd">        be a subset or superset of the categories.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># All positions have no guide</span>
+    <span class="n">guide</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Keeps two ranges, range and range_c</span>
+    <span class="n">range_c</span><span class="p">:</span> <span class="n">RangeContinuous</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span> <span class="o">=</span> <span class="n">RangeContinuous</span><span class="p">()</span>
+        <span class="n">scale_discrete</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Can&#39;t reset discrete scale because</span>
+        <span class="c1"># no way to recover values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series</span><span class="p">):</span>
+        <span class="c1"># The discrete position scale is capable of doing</span>
+        <span class="c1"># training for continuous data.</span>
+        <span class="c1"># This complicates training and mapping, but makes it</span>
+        <span class="c1"># possible to place objects at non-integer positions,</span>
+        <span class="c1"># as is necessary for jittering etc.</span>
+        <span class="k">if</span> <span class="n">array_kind</span><span class="o">.</span><span class="n">continuous</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Discrete values are converted into integers starting</span>
+        <span class="c1"># at 1</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+        <span class="k">if</span> <span class="n">array_kind</span><span class="o">.</span><span class="n">discrete</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+            <span class="c1"># TODO: Rewrite without using numpy</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">match</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">limits</span><span class="p">,</span> <span class="n">nomatch</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="c1"># Deal with missing data</span>
+                <span class="c1"># - Insert NaN where there is no match</span>
+                <span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">seq</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">seq</span>
+        <span class="k">return</span> <span class="n">series</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># discrete range</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">):</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+            <span class="c1"># Functions that return iterators e.g. reversed</span>
+            <span class="k">if</span> <span class="nb">iter</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span> <span class="ow">is</span> <span class="n">limits</span><span class="p">:</span>
+                <span class="n">limits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">limits</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Lost, do not know what the limits are.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@limits</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the phyical size of the scale</span>
+
+<span class="sd">        Unlike limits, this always returns a numeric vector of length 2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">mizani.bounds</span> <span class="kn">import</span> <span class="n">expand_range_distinct</span>
+
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>  <span class="c1"># only continuous</span>
+            <span class="k">return</span> <span class="n">expand_range_distinct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">expand</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>  <span class="c1"># only discrete</span>
+            <span class="c1"># FIXME: I think this branch should not exist</span>
+            <span class="k">return</span> <span class="n">expand_range_distinct</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">limits</span><span class="p">)),</span> <span class="n">expand</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># both</span>
+            <span class="c1"># e.g categorical bar plot have discrete items, but</span>
+            <span class="c1"># are plot on a continuous x scale</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
+                    <span class="n">expand_range_distinct</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">)),</span> <span class="n">expand</span><span class="p">),</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">expand_limits</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">expand</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="n">TupleFloat4</span><span class="p">,</span>
+        <span class="n">coord_limits</span><span class="p">:</span> <span class="n">TupleFloat2</span><span class="p">,</span>
+        <span class="n">trans</span><span class="p">:</span> <span class="n">Trans</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">range_view</span><span class="p">:</span>
+        <span class="c1"># Turn discrete limits into a tuple of continuous limits</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="n">climits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">climits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">range</span>
+
+        <span class="k">if</span> <span class="n">coord_limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># - Override None in coord_limits</span>
+            <span class="c1"># - Expand limits in coordinate space</span>
+            <span class="c1"># - Remove any computed infinite values &amp;</span>
+            <span class="n">c0</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">coord_limits</span>
+            <span class="n">climits</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">climits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">c0</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c0</span><span class="p">,</span>
+                <span class="n">climits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">c1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c1</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Expand discrete range</span>
+        <span class="n">rv_d</span> <span class="o">=</span> <span class="n">expand_range</span><span class="p">(</span><span class="n">climits</span><span class="p">,</span> <span class="n">expand</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">rv_d</span>
+
+        <span class="c1"># Expand continuous range</span>
+        <span class="n">no_expand</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_expansion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">rv_c</span> <span class="o">=</span> <span class="n">expand_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range_c</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">no_expand</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+
+        <span class="c1"># Merge the ranges</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="n">range_view</span><span class="p">(</span>
+            <span class="nb">range</span><span class="o">=</span><span class="p">(</span>
+                <span class="nb">min</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="n">rv_d</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">rv_c</span><span class="o">.</span><span class="n">range</span><span class="p">)),</span>
+                <span class="nb">max</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="n">rv_d</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">rv_c</span><span class="o">.</span><span class="n">range</span><span class="p">)),</span>
+            <span class="p">),</span>
+            <span class="n">range_coord</span><span class="o">=</span><span class="p">(</span>
+                <span class="nb">min</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="n">rv_d</span><span class="o">.</span><span class="n">range_coord</span><span class="p">,</span> <span class="n">rv_c</span><span class="o">.</span><span class="n">range_coord</span><span class="p">)),</span>
+                <span class="nb">max</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="n">rv_d</span><span class="o">.</span><span class="n">range_coord</span><span class="p">,</span> <span class="n">rv_c</span><span class="o">.</span><span class="n">range_coord</span><span class="p">)),</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">rv</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rv</span><span class="o">.</span><span class="n">range</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">rv</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+        <span class="n">rv</span><span class="o">.</span><span class="n">range_coord</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rv</span><span class="o">.</span><span class="n">range_coord</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">rv</span><span class="o">.</span><span class="n">range_coord</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rv</span>
+
+
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_position_continuous</span><span class="p">(</span><span class="n">scale_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for continuous position scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># All positions have no guide</span>
+    <span class="n">guide</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Position aesthetics don&#39;t map, because the coordinate</span>
+        <span class="c1"># system takes care of it.</span>
+        <span class="c1"># But the continuous scale has to deal with out of bound points</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">series</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+        <span class="n">scaled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oob</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">limits</span><span class="p">)</span>
+        <span class="n">scaled</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">scaled</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">na_value</span>
+        <span class="k">return</span> <span class="n">scaled</span>
+
+
+<div class="viewcode-block" id="scale_x_discrete">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_discrete.html#plotnine.scales.scale_x_discrete">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_discrete</span><span class="p">(</span><span class="n">scale_position_discrete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Discrete x position</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="s2">&quot;xend&quot;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_discrete">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_discrete.html#plotnine.scales.scale_y_discrete">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_discrete</span><span class="p">(</span><span class="n">scale_position_discrete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Discrete y position</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="s2">&quot;yend&quot;</span><span class="p">]</span></div>
+
+
+
+<span class="c1"># Not part of the user API</span>
+<span class="n">alias</span><span class="p">(</span><span class="s2">&quot;scale_x_ordinal&quot;</span><span class="p">,</span> <span class="n">scale_x_discrete</span><span class="p">)</span>
+<span class="n">alias</span><span class="p">(</span><span class="s2">&quot;scale_y_ordinal&quot;</span><span class="p">,</span> <span class="n">scale_y_discrete</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="scale_x_continuous">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_continuous.html#plotnine.scales.scale_x_continuous">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_continuous</span><span class="p">(</span><span class="n">scale_position_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="s2">&quot;xend&quot;</span><span class="p">,</span> <span class="s2">&quot;xintercept&quot;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_continuous">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_continuous.html#plotnine.scales.scale_y_continuous">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_continuous</span><span class="p">(</span><span class="n">scale_position_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ymin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ymax&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;yend&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;yintercept&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ymin_final&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ymax_final&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="p">]</span>  <span class="c1"># pyright: ignore</span></div>
+
+
+
+<span class="c1"># Transformed scales</span>
+<div class="viewcode-block" id="scale_x_datetime">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_datetime.html#plotnine.scales.scale_x_datetime">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_datetime</span><span class="p">(</span><span class="n">scale_datetime</span><span class="p">,</span> <span class="n">scale_x_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position for datetime data points</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_datetime">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_datetime.html#plotnine.scales.scale_y_datetime">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_datetime</span><span class="p">(</span><span class="n">scale_datetime</span><span class="p">,</span> <span class="n">scale_y_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position for datetime data points</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<span class="n">alias</span><span class="p">(</span><span class="s2">&quot;scale_x_date&quot;</span><span class="p">,</span> <span class="n">scale_x_datetime</span><span class="p">)</span>
+<span class="n">alias</span><span class="p">(</span><span class="s2">&quot;scale_y_date&quot;</span><span class="p">,</span> <span class="n">scale_y_datetime</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="scale_x_timedelta">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_timedelta.html#plotnine.scales.scale_x_timedelta">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_timedelta</span><span class="p">(</span><span class="n">scale_x_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position for timedelta data points</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;pd_timedelta&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_timedelta">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_timedelta.html#plotnine.scales.scale_y_timedelta">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_timedelta</span><span class="p">(</span><span class="n">scale_y_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position for timedelta data points</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;pd_timedelta&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_x_sqrt">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_sqrt.html#plotnine.scales.scale_x_sqrt">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_sqrt</span><span class="p">(</span><span class="n">scale_x_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position sqrt transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;sqrt&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_sqrt">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_sqrt.html#plotnine.scales.scale_y_sqrt">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_sqrt</span><span class="p">(</span><span class="n">scale_y_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position sqrt transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;sqrt&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_x_log10">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_log10.html#plotnine.scales.scale_x_log10">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_log10</span><span class="p">(</span><span class="n">scale_x_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position log10 transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;log10&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_log10">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_log10.html#plotnine.scales.scale_y_log10">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_log10</span><span class="p">(</span><span class="n">scale_y_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position log10 transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;log10&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_x_reverse">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_x_reverse.html#plotnine.scales.scale_x_reverse">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_x_reverse</span><span class="p">(</span><span class="n">scale_x_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous x position reverse transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;reverse&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="scale_y_reverse">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale_y_reverse.html#plotnine.scales.scale_y_reverse">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_y_reverse</span><span class="p">(</span><span class="n">scale_y_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Continuous y position reverse transformed scale</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;reverse&quot;</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

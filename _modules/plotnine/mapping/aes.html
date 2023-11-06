@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.mapping.aes &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.mapping.aes</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">overload</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..iapi</span> <span class="kn">import</span> <span class="n">labels_view</span>
+<span class="kn">from</span> <span class="nn">.evaluation</span> <span class="kn">import</span> <span class="n">after_stat</span><span class="p">,</span> <span class="n">stage</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;aes&quot;</span><span class="p">]</span>
+
+<span class="n">X_AESTHETICS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="s2">&quot;xend&quot;</span><span class="p">,</span> <span class="s2">&quot;xintercept&quot;</span><span class="p">}</span>
+<span class="n">Y_AESTHETICS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="s2">&quot;yend&quot;</span><span class="p">,</span> <span class="s2">&quot;yintercept&quot;</span><span class="p">}</span>
+
+<span class="n">ALL_AESTHETICS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;alpha&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colour&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;group&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;intercept&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lineheight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;linetype&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shape&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;slope&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stroke&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">X_AESTHETICS</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">Y_AESTHETICS</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">POSITION_AESTHETICS</span> <span class="o">=</span> <span class="n">X_AESTHETICS</span> <span class="o">|</span> <span class="n">Y_AESTHETICS</span>
+
+<span class="n">SCALED_AESTHETICS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alpha&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colour&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;linetype&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shape&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stroke&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">NO_GROUP</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Aesthetics modifying searchers, DEPRECATED</span>
+<span class="n">STAT_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\bstat\(&quot;</span><span class="p">)</span>
+<span class="n">DOTS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\.\.([a-zA-Z0-9_]+)\.\.&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="aes">
+<a class="viewcode-back" href="../../../generated/plotnine.mapping.aes.html#plotnine.mapping.aes">[docs]</a>
+<span class="k">class</span> <span class="nc">aes</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create aesthetic mappings</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : expression | array_like | scalar</span>
+<span class="sd">        x aesthetic mapping</span>
+<span class="sd">    y : expression | array_like | scalar</span>
+<span class="sd">        y aesthetic mapping</span>
+<span class="sd">    **kwargs : dict</span>
+<span class="sd">        Other aesthetic mappings</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Only the **x** and **y** aesthetic mappings can be specified as</span>
+<span class="sd">    positional arguments. All the rest must be keyword arguments.</span>
+
+<span class="sd">    The value of each mapping must be one of:</span>
+
+<span class="sd">    - **string**::</span>
+
+<span class="sd">            import pandas as pd</span>
+<span class="sd">            import numpy as np</span>
+
+<span class="sd">            arr = [11, 12, 13]</span>
+<span class="sd">            df = pd.DataFrame({&#39;alpha&#39;: [1, 2, 3],</span>
+<span class="sd">                               &#39;beta&#39;: [1, 2, 3],</span>
+<span class="sd">                               &#39;gam ma&#39;: [1, 2, 3]})</span>
+
+<span class="sd">            # Refer to a column in a dataframe</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=&#39;beta&#39;))</span>
+
+<span class="sd">    - **array_like**::</span>
+
+<span class="sd">            # A variable</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=arr))</span>
+
+<span class="sd">            # or an inplace list</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=[4, 5, 6]))</span>
+
+<span class="sd">    - **scalar**::</span>
+
+<span class="sd">            # A scalar value/variable</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=4))</span>
+
+<span class="sd">            # The above statement is equivalent to</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=[4, 4, 4]))</span>
+
+<span class="sd">    - **String expression**::</span>
+
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=&#39;2*beta&#39;))</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=&#39;np.sin(beta)&#39;))</span>
+<span class="sd">            ggplot(df, aes(x=&#39;df.index&#39;, y=&#39;beta&#39;))</span>
+
+<span class="sd">            # If `count` is an aesthetic calculated by a stat</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=after_stat(&#39;count&#39;)))</span>
+<span class="sd">            ggplot(df, aes(x=&#39;alpha&#39;, y=after_stat(&#39;count/np.max(count)&#39;)))</span>
+
+<span class="sd">      The strings in the expression can refer to;</span>
+
+<span class="sd">        1. columns in the dataframe</span>
+<span class="sd">        2. variables in the namespace</span>
+<span class="sd">        3. aesthetic values (columns) calculated by the ``stat``</span>
+
+<span class="sd">      with the column names having precedence over the variables.</span>
+<span class="sd">      For expressions, columns in the dataframe that are mapped to</span>
+<span class="sd">      must have names that would be valid python variable names.</span>
+
+<span class="sd">      This is okay::</span>
+
+<span class="sd">        # &#39;gam ma&#39; is a column in the dataframe</span>
+<span class="sd">        ggplot(df, aes(x=&#39;df.index&#39;, y=&#39;gam ma&#39;))</span>
+
+<span class="sd">      While this is not::</span>
+
+<span class="sd">        # &#39;gam ma&#39; is a column in the dataframe, but not</span>
+<span class="sd">        # valid python variable name</span>
+<span class="sd">        ggplot(df, aes(x=&#39;df.index&#39;, y=&#39;np.sin(gam ma)&#39;))</span>
+
+<span class="sd">    ``aes`` has 2 internal methods you can use to transform variables being</span>
+<span class="sd">    mapped.</span>
+
+<span class="sd">        1. ``factor`` - This function turns the variable into a factor.</span>
+<span class="sd">            It is just an alias to ``pd.Categorical``::</span>
+
+<span class="sd">                ggplot(mtcars, aes(x=&#39;factor(cyl)&#39;)) + geom_bar()</span>
+
+<span class="sd">        2. ``reorder`` - This function changes the order of first variable</span>
+<span class="sd">            based on values of the second variable::</span>
+
+<span class="sd">                df = pd.DataFrame({</span>
+<span class="sd">                    &#39;x&#39;: [&#39;b&#39;, &#39;d&#39;, &#39;c&#39;, &#39;a&#39;],</span>
+<span class="sd">                    &#39;y&#39;: [1, 2, 3, 4]</span>
+<span class="sd">                })</span>
+
+<span class="sd">                ggplot(df, aes(&#39;reorder(x, y)&#39;, &#39;y&#39;)) + geom_col()</span>
+
+<span class="sd">    .. rubric:: The group aesthetic</span>
+
+<span class="sd">    ``group`` is a special aesthetic that the user can *map* to.</span>
+<span class="sd">    It is used to group the plotted items. If not specified, it</span>
+<span class="sd">    is automatically computed and in most cases the computed</span>
+<span class="sd">    groups are sufficient. However, there may be cases were it is</span>
+<span class="sd">    handy to map to it.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :func:`after_stat` : For how to map aesthetics to variable calculated</span>
+<span class="sd">        by the stat</span>
+<span class="sd">    :func:`after_scale` : For how to alter aesthetics after the data has been</span>
+<span class="sd">        mapped by the scale.</span>
+<span class="sd">    :class:`stage` : For how to map to evaluate the mapping to aesthetics at</span>
+<span class="sd">        more than one stage of the plot building pipeline.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">rename_aesthetics</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">zip</span><span class="p">((</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">),</span> <span class="n">args</span><span class="p">))</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_deprecated_expr</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_convert_deprecated_expr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle old-style calculated aesthetic expression mappings</span>
+
+<span class="sd">        Just converts them to use `stage` e.g.</span>
+<span class="sd">        &#39;stat(count)&#39; to after_stat(count)</span>
+<span class="sd">        &#39;..count..&#39; to after_stat(count)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">is_calculated_aes</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                    <span class="n">_after_stat</span> <span class="o">=</span> <span class="n">strip_calculated_markers</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">after_stat</span><span class="p">(</span><span class="n">_after_stat</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kwargs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_starting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the subset of aesthetics mapped from the layer data</span>
+
+<span class="sd">        The mapping is a dict of the form ``{name: expr}``, i.e the</span>
+<span class="sd">        stage class has been peeled off.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">):</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">start</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_calculated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return only the aesthetics mapped to calculated statistics</span>
+
+<span class="sd">        The mapping is a dict of the form ``{name: expr}``, i.e the</span>
+<span class="sd">        stage class has been peeled off.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_scaled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return only the aesthetics mapped to after scaling</span>
+
+<span class="sd">        The mapping is a dict of the form ``{name: expr}``, i.e the</span>
+<span class="sd">        stage class has been peeled off.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">after_scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">after_scale</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the environment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+
+        <span class="c1"># Just copy the keys and point to the env</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add aesthetic mappings to ggplot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">make_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+<div class="viewcode-block" id="aes.copy">
+<a class="viewcode-back" href="../../../generated/plotnine.mapping.aes.html#plotnine.mapping.aes.copy">[docs]</a>
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">aes</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="aes.inherit">
+<a class="viewcode-back" href="../../../generated/plotnine.mapping.aes.html#plotnine.mapping.aes.inherit">[docs]</a>
+    <span class="k">def</span> <span class="nf">inherit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">aes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">aes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a  mapping that inherits aesthetics in other</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other: aes | dict[str, Any]</span>
+<span class="sd">            Default aesthetics</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        new : aes</span>
+<span class="sd">            Aesthetic mapping</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">other</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">other</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">new</span></div>
+</div>
+
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span> <span class="nf">rename_aesthetics</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span> <span class="nf">rename_aesthetics</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="o">...</span>
+
+
+<span class="k">def</span> <span class="nf">rename_aesthetics</span><span class="p">(</span>
+    <span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rename aesthetics in obj</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    obj : dict or list</span>
+<span class="sd">        Object that contains aesthetics names</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    obj : dict or list</span>
+<span class="sd">        Object that contains aesthetics names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">new_name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;colour&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="n">new_name</span><span class="p">:</span>
+                <span class="n">obj</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;colour&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">def</span> <span class="nf">is_calculated_aes</span><span class="p">(</span><span class="n">ae</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if Aesthetic expression maps to calculated statistic</span>
+
+<span class="sd">    This function is now only used to identify the deprecated versions</span>
+<span class="sd">    e.g. &quot;..var..&quot; or &quot;stat(var)&quot;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ae : object</span>
+<span class="sd">        Single aesthetic mapping</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(&#39;density&#39;)</span>
+<span class="sd">    False</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(4)</span>
+<span class="sd">    False</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(&#39;..density..&#39;)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(&#39;stat(density)&#39;)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(&#39;stat(100*density)&#39;)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &gt;&gt;&gt; is_calculated_aes(&#39;100*stat(density)&#39;)</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ae</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">(</span><span class="n">STAT_RE</span><span class="p">,</span> <span class="n">DOTS_RE</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">ae</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">strip_stat</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove stat function that mark calculated aesthetics</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : object</span>
+<span class="sd">        Aesthetic value. In most cases this will be a string</span>
+<span class="sd">        but other types will pass through unmodified.</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    out : object</span>
+<span class="sd">        Aesthetic value with the dots removed.</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(&#39;stat(density + stat(count))&#39;)</span>
+<span class="sd">    density + count</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(&#39;stat(density) + 5&#39;)</span>
+<span class="sd">    density + 5</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(&#39;5 + stat(func(density))&#39;)</span>
+<span class="sd">    5 + func(density)</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(&#39;stat(func(density) + var1)&#39;)</span>
+<span class="sd">    func(density) + var1</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(&#39;stat + var1&#39;)</span>
+<span class="sd">    stat + var1</span>
+
+<span class="sd">    &gt;&gt;&gt; strip_stat(4)</span>
+<span class="sd">    4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">strip_hanging_closing_parens</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove leftover  parens</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Use and integer stack to track parens</span>
+        <span class="c1"># and ignore leftover closing parens</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span><span class="p">:</span>
+                <span class="n">stack</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span><span class="p">:</span>
+                <span class="n">stack</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">stack</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="n">stack</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">continue</span>
+            <span class="k">yield</span> <span class="n">c</span>
+
+    <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">STAT_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\bstat\(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">strip_hanging_closing_parens</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">strip_dots</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove dots(if any) that mark calculated aesthetics</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : object</span>
+<span class="sd">        Aesthetic value. In most cases this will be a string</span>
+<span class="sd">        but other types will pass through unmodified.</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    out : object</span>
+<span class="sd">        Aesthetic value with the dots removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">DOTS_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">strip_calculated_markers</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove markers for calculated aesthetics</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : object</span>
+<span class="sd">        Aesthetic value. In most cases this will be a string</span>
+<span class="sd">        but other types will pass through unmodified.</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    out : object</span>
+<span class="sd">        Aesthetic value with the dots removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">strip_stat</span><span class="p">(</span><span class="n">strip_dots</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">aes_to_scale</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Look up the scale that should be used for a given aesthetic</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="s2">&quot;xend&quot;</span><span class="p">,</span> <span class="s2">&quot;xintercept&quot;</span><span class="p">}:</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+    <span class="k">elif</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="s2">&quot;yend&quot;</span><span class="p">,</span> <span class="s2">&quot;yintercept&quot;</span><span class="p">}:</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
+    <span class="k">return</span> <span class="n">var</span>
+
+
+<span class="k">def</span> <span class="nf">is_position_aes</span><span class="p">(</span><span class="n">vars_</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Figure out if an aesthetic is a position aesthetic or not</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">aes_to_scale</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">}</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vars_</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">aes_to_scale</span><span class="p">(</span><span class="n">vars_</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">make_labels</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">aes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">labels_view</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert aesthetic mapping into text labels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_nice_label</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_make_label</span><span class="p">(</span><span class="n">ae</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stage</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_nice_label</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span>
+            <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">after_scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">after_scale</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># return &#39;&#39;</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown mapping&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">after_stat</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_nice_label</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">valid_names</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">(</span><span class="n">labels_view</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">labels_view</span><span class="p">(</span>
+        <span class="o">**</span><span class="p">{</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">ae</span><span class="p">):</span> <span class="n">_make_label</span><span class="p">(</span><span class="n">ae</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ae</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">valid_names</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_valid_aesthetic</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ae</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if `value` looks valid.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : object</span>
+<span class="sd">        Value to check</span>
+<span class="sd">    ae : str</span>
+<span class="sd">        Aesthetic name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        Whether the value is of a valid looking form.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    There are no guarantees that he value is spot on</span>
+<span class="sd">    valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ae</span> <span class="o">==</span> <span class="s2">&quot;linetype&quot;</span><span class="p">:</span>
+        <span class="n">named</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dashdot&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;_&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot; &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">named</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># tuple of the form (offset, (on, off, on, off, ...))</span>
+        <span class="c1"># e.g (0, (1, 2))</span>
+        <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">),</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">),</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">),</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">conditions</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">elif</span> <span class="n">ae</span> <span class="o">==</span> <span class="s2">&quot;shape&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># tuple of the form (numsides, style, angle)</span>
+        <span class="c1"># where style is in the range [0, 3]</span>
+        <span class="c1"># e.g (4, 1, 45)</span>
+        <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">),</span>
+            <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span><span class="p">),</span>
+            <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">conditions</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">elif</span> <span class="n">ae</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">}:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+                <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># For any other aesthetics we return False to allow</span>
+    <span class="c1"># for special cases to be discovered and then coded</span>
+    <span class="c1"># for appropriately.</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">has_groups</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if data is grouped</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : dataframe</span>
+<span class="sd">        Data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        If True, the data has groups.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If any row in the group column is equal to NO_GROUP, then</span>
+    <span class="c1"># the data all of them are and the data has no groups</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">NO_GROUP</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

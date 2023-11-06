@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API Reference &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=739a9dc4" />
+    <script src="_static/documentation_options.js?v=42b28e73"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plotnine.ggplot" href="generated/plotnine.ggplot.html" />
+    <link rel="prev" title="A Grammar of Graphics for Python" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="#">API</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#plot-creation">Plot creation</a><ul>
+<li><a class="reference internal" href="#mapping-aesthetics">Mapping Aesthetics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geoms">geoms</a><ul>
+<li><a class="reference internal" href="#related-to-geoms">Related to geoms</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stats">stats</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#facets">facets</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#scales">scales</a><ul>
+<li><a class="reference internal" href="#base-scales">Base scales</a></li>
+<li><a class="reference internal" href="#alpha-scales">Alpha scales</a></li>
+<li><a class="reference internal" href="#identity-scales">Identity Scales</a></li>
+<li><a class="reference internal" href="#color-and-fill-scales">Color and fill scales</a></li>
+<li><a class="reference internal" href="#manual-scales">Manual scales</a></li>
+<li><a class="reference internal" href="#linetype-scales">Linetype scales</a></li>
+<li><a class="reference internal" href="#shape-scales">Shape scales</a></li>
+<li><a class="reference internal" href="#size-scales">Size scales</a></li>
+<li><a class="reference internal" href="#position-scales">Position scales</a></li>
+<li><a class="reference internal" href="#scale-limits">Scale limits</a></li>
+<li><a class="reference internal" href="#scale-guides">Scale guides</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#positions">positions</a></li>
+<li><a class="reference internal" href="#themes">themes</a><ul>
+<li><a class="reference internal" href="#themeables">Themeables</a></li>
+<li><a class="reference internal" href="#theme-helper-functions-and-classes">Theme helper functions and classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coordinates">coordinates</a></li>
+<li><a class="reference internal" href="#options">options</a></li>
+<li><a class="reference internal" href="#datasets">datasets</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#plot-creation">Plot creation</a><ul>
+<li><a class="reference internal" href="#mapping-aesthetics">Mapping Aesthetics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geoms">geoms</a><ul>
+<li><a class="reference internal" href="#related-to-geoms">Related to geoms</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stats">stats</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#facets">facets</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#scales">scales</a><ul>
+<li><a class="reference internal" href="#base-scales">Base scales</a></li>
+<li><a class="reference internal" href="#alpha-scales">Alpha scales</a></li>
+<li><a class="reference internal" href="#identity-scales">Identity Scales</a></li>
+<li><a class="reference internal" href="#color-and-fill-scales">Color and fill scales</a></li>
+<li><a class="reference internal" href="#manual-scales">Manual scales</a></li>
+<li><a class="reference internal" href="#linetype-scales">Linetype scales</a></li>
+<li><a class="reference internal" href="#shape-scales">Shape scales</a></li>
+<li><a class="reference internal" href="#size-scales">Size scales</a></li>
+<li><a class="reference internal" href="#position-scales">Position scales</a></li>
+<li><a class="reference internal" href="#scale-limits">Scale limits</a></li>
+<li><a class="reference internal" href="#scale-guides">Scale guides</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#positions">positions</a></li>
+<li><a class="reference internal" href="#themes">themes</a><ul>
+<li><a class="reference internal" href="#themeables">Themeables</a></li>
+<li><a class="reference internal" href="#theme-helper-functions-and-classes">Theme helper functions and classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coordinates">coordinates</a></li>
+<li><a class="reference internal" href="#options">options</a></li>
+<li><a class="reference internal" href="#datasets">datasets</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="api-reference">
+<span id="api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
+<section id="plot-creation">
+<h2>Plot creation<a class="headerlink" href="#plot-creation" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.ggplot.html#plotnine.ggplot" title="plotnine.ggplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggplot</span></code></a></p></td>
+<td><p>Create a new ggplot object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.qplot.html#plotnine.qplot" title="plotnine.qplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qplot</span></code></a></p></td>
+<td><p>Quick plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.watermark.watermark.html#plotnine.watermark.watermark" title="plotnine.watermark.watermark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">watermark</span></code></a></p></td>
+<td><p>Add watermark to plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.layer.layer.html#plotnine.layer.layer" title="plotnine.layer.layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></a></p></td>
+<td><p>Layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.animation.PlotnineAnimation.html#plotnine.animation.PlotnineAnimation" title="plotnine.animation.PlotnineAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotnineAnimation</span></code></a></p></td>
+<td><p>Animation using ggplot objects</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.ggplot.save_as_pdf_pages.html#plotnine.ggplot.save_as_pdf_pages" title="plotnine.ggplot.save_as_pdf_pages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_as_pdf_pages</span></code></a></p></td>
+<td><p>Save multiple <a class="reference internal" href="generated/plotnine.ggplot.html#plotnine.ggplot" title="plotnine.ggplot"><code class="xref py py-class docutils literal notranslate"><span class="pre">ggplot</span></code></a> objects to a PDF file, one per page.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="mapping-aesthetics">
+<h3>Mapping Aesthetics<a class="headerlink" href="#mapping-aesthetics" title="Link to this heading">¶</a></h3>
+<p>Aesthetics are the visual properties of a plot. The following functions control
+how the data (and calculations based on the data) is mapped to the aesthetics.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.mapping.aes.html#plotnine.mapping.aes" title="plotnine.mapping.aes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aes</span></code></a></p></td>
+<td><p>Create aesthetic mappings</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.mapping.after_stat.html#plotnine.mapping.after_stat" title="plotnine.mapping.after_stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after_stat</span></code></a></p></td>
+<td><p>Evaluate mapping after statistic has been calculated</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.mapping.after_scale.html#plotnine.mapping.after_scale" title="plotnine.mapping.after_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after_scale</span></code></a></p></td>
+<td><p>Evaluate mapping after variable has been mapped to the scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.mapping.stage.html#plotnine.mapping.stage" title="plotnine.mapping.stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stage</span></code></a></p></td>
+<td><p>Stage allows you evaluating mapping at more than one stage</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="geoms">
+<h2>geoms<a class="headerlink" href="#geoms" title="Link to this heading">¶</a></h2>
+<p>Geometric objects (geoms) are responsible for the visual representation
+of data points. <code class="docutils literal notranslate"><span class="pre">geom_*</span></code> classes determine the kind of geometric
+objects and every plot must have at least one <code class="docutils literal notranslate"><span class="pre">geom</span></code> added to it. The
+distinct visual aspects of the representation are controlled by the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">aes</span></code> mapping.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom" title="plotnine.geoms.geom.geom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom</span></code></a></p></td>
+<td><p>Base class of all Geoms</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_abline.html#plotnine.geoms.geom_abline" title="plotnine.geoms.geom_abline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_abline</span></code></a></p></td>
+<td><p>Lines specified by slope and intercept</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_area.html#plotnine.geoms.geom_area" title="plotnine.geoms.geom_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_area</span></code></a></p></td>
+<td><p>Area plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_bar.html#plotnine.geoms.geom_bar" title="plotnine.geoms.geom_bar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_bar</span></code></a></p></td>
+<td><p>Bar plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_blank.html#plotnine.geoms.geom_blank" title="plotnine.geoms.geom_blank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_blank</span></code></a></p></td>
+<td><p>An empty plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_boxplot.html#plotnine.geoms.geom_boxplot" title="plotnine.geoms.geom_boxplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_boxplot</span></code></a></p></td>
+<td><p>Box and whiskers plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_col.html#plotnine.geoms.geom_col" title="plotnine.geoms.geom_col"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_col</span></code></a></p></td>
+<td><p>Bar plot with base on the x-axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_count.html#plotnine.geoms.geom_count" title="plotnine.geoms.geom_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_count</span></code></a></p></td>
+<td><p>Plot overlapping points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_crossbar.html#plotnine.geoms.geom_crossbar" title="plotnine.geoms.geom_crossbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_crossbar</span></code></a></p></td>
+<td><p>Vertical interval represented by a crossbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_density.html#plotnine.geoms.geom_density" title="plotnine.geoms.geom_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_density</span></code></a></p></td>
+<td><p>Smooth density estimate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_density_2d.html#plotnine.geoms.geom_density_2d" title="plotnine.geoms.geom_density_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_density_2d</span></code></a></p></td>
+<td><p>2D density estimate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_dotplot.html#plotnine.geoms.geom_dotplot" title="plotnine.geoms.geom_dotplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_dotplot</span></code></a></p></td>
+<td><p>Dot plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_errorbar.html#plotnine.geoms.geom_errorbar" title="plotnine.geoms.geom_errorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_errorbar</span></code></a></p></td>
+<td><p>Vertical interval represented as an errorbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_errorbarh.html#plotnine.geoms.geom_errorbarh" title="plotnine.geoms.geom_errorbarh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_errorbarh</span></code></a></p></td>
+<td><p>Horizontal interval represented as an errorbar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_freqpoly.html#plotnine.geoms.geom_freqpoly" title="plotnine.geoms.geom_freqpoly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_freqpoly</span></code></a></p></td>
+<td><p>Frequency polygon</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_bin_2d.html#plotnine.geoms.geom_bin_2d" title="plotnine.geoms.geom_bin_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_bin_2d</span></code></a></p></td>
+<td><p>Heatmap of 2d bin counts</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_histogram.html#plotnine.geoms.geom_histogram" title="plotnine.geoms.geom_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_histogram</span></code></a></p></td>
+<td><p>Histogram</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_hline.html#plotnine.geoms.geom_hline" title="plotnine.geoms.geom_hline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_hline</span></code></a></p></td>
+<td><p>Horizontal line</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_jitter.html#plotnine.geoms.geom_jitter" title="plotnine.geoms.geom_jitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_jitter</span></code></a></p></td>
+<td><p>Scatter plot with points jittered to reduce overplotting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_label.html#plotnine.geoms.geom_label" title="plotnine.geoms.geom_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_label</span></code></a></p></td>
+<td><p>Textual annotations with a background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_line.html#plotnine.geoms.geom_line" title="plotnine.geoms.geom_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_line</span></code></a></p></td>
+<td><p>Connected points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_linerange.html#plotnine.geoms.geom_linerange" title="plotnine.geoms.geom_linerange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_linerange</span></code></a></p></td>
+<td><p>Vertical interval represented by lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_map.html#plotnine.geoms.geom_map" title="plotnine.geoms.geom_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_map</span></code></a></p></td>
+<td><p>Draw map feature</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_path.html#plotnine.geoms.geom_path" title="plotnine.geoms.geom_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_path</span></code></a></p></td>
+<td><p>Connected points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_point.html#plotnine.geoms.geom_point" title="plotnine.geoms.geom_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_point</span></code></a></p></td>
+<td><p>Plot points (Scatter plot)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_pointdensity.html#plotnine.geoms.geom_pointdensity" title="plotnine.geoms.geom_pointdensity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_pointdensity</span></code></a></p></td>
+<td><p>Scatterplot with density estimation at each point</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_pointrange.html#plotnine.geoms.geom_pointrange" title="plotnine.geoms.geom_pointrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_pointrange</span></code></a></p></td>
+<td><p>Vertical interval represented by a line with a point</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_polygon.html#plotnine.geoms.geom_polygon" title="plotnine.geoms.geom_polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_polygon</span></code></a></p></td>
+<td><p>Polygon, a filled path</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_quantile.html#plotnine.geoms.geom_quantile" title="plotnine.geoms.geom_quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_quantile</span></code></a></p></td>
+<td><p>Quantile lines from a quantile regression</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_qq.html#plotnine.geoms.geom_qq" title="plotnine.geoms.geom_qq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_qq</span></code></a></p></td>
+<td><p>Quantile-Quantile plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_qq_line.html#plotnine.geoms.geom_qq_line" title="plotnine.geoms.geom_qq_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_qq_line</span></code></a></p></td>
+<td><p>Quantile-Quantile Line plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_raster.html#plotnine.geoms.geom_raster" title="plotnine.geoms.geom_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_raster</span></code></a></p></td>
+<td><p>Rasterized Rectangles specified using center points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_rect.html#plotnine.geoms.geom_rect" title="plotnine.geoms.geom_rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_rect</span></code></a></p></td>
+<td><p>Rectangles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_ribbon.html#plotnine.geoms.geom_ribbon" title="plotnine.geoms.geom_ribbon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_ribbon</span></code></a></p></td>
+<td><p>Ribbon plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_rug.html#plotnine.geoms.geom_rug" title="plotnine.geoms.geom_rug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_rug</span></code></a></p></td>
+<td><p>Marginal rug plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_segment.html#plotnine.geoms.geom_segment" title="plotnine.geoms.geom_segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_segment</span></code></a></p></td>
+<td><p>Line segments</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_sina.html#plotnine.geoms.geom_sina" title="plotnine.geoms.geom_sina"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_sina</span></code></a></p></td>
+<td><p>Draw a sina plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_smooth.html#plotnine.geoms.geom_smooth" title="plotnine.geoms.geom_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_smooth</span></code></a></p></td>
+<td><p>A smoothed conditional mean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_spoke.html#plotnine.geoms.geom_spoke" title="plotnine.geoms.geom_spoke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_spoke</span></code></a></p></td>
+<td><p>Line segment parameterised by location, direction and distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_step.html#plotnine.geoms.geom_step" title="plotnine.geoms.geom_step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_step</span></code></a></p></td>
+<td><p>Stepped connected points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_text.html#plotnine.geoms.geom_text" title="plotnine.geoms.geom_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_text</span></code></a></p></td>
+<td><p>Textual annotations</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_tile.html#plotnine.geoms.geom_tile" title="plotnine.geoms.geom_tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_tile</span></code></a></p></td>
+<td><p>Rectangles specified using a center points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_violin.html#plotnine.geoms.geom_violin" title="plotnine.geoms.geom_violin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_violin</span></code></a></p></td>
+<td><p>Violin Plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.geom_vline.html#plotnine.geoms.geom_vline" title="plotnine.geoms.geom_vline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_vline</span></code></a></p></td>
+<td><p>Vertical line</p></td>
+</tr>
+</tbody>
+</table>
+<section id="related-to-geoms">
+<h3>Related to geoms<a class="headerlink" href="#related-to-geoms" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.annotate.html#plotnine.geoms.annotate" title="plotnine.geoms.annotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotate</span></code></a>(geom[, x, y, xmin, xmax, xend, ...])</p></td>
+<td><p>Create an annotation layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.annotation_logticks.html#plotnine.geoms.annotation_logticks" title="plotnine.geoms.annotation_logticks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotation_logticks</span></code></a>([sides, alpha, color, ...])</p></td>
+<td><p>Marginal log ticks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.geoms.annotation_stripes.html#plotnine.geoms.annotation_stripes" title="plotnine.geoms.annotation_stripes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotation_stripes</span></code></a>([fill, fill_range, ...])</p></td>
+<td><p>Alternating stripes, centered around each label.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.geoms.arrow.html#plotnine.geoms.arrow" title="plotnine.geoms.arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arrow</span></code></a>([angle, length, ends, type])</p></td>
+<td><p>Define arrow (actually an arrowhead)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.labels.labs.html#plotnine.labels.labs" title="plotnine.labels.labs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labs</span></code></a>(**kwargs)</p></td>
+<td><p>Add labels for aesthetics and/or title</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.labels.xlab.html#plotnine.labels.xlab" title="plotnine.labels.xlab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xlab</span></code></a>(xlab)</p></td>
+<td><p>Create x-axis label</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.labels.ylab.html#plotnine.labels.ylab" title="plotnine.labels.ylab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ylab</span></code></a>(ylab)</p></td>
+<td><p>Create y-axis label</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.labels.ggtitle.html#plotnine.labels.ggtitle" title="plotnine.labels.ggtitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggtitle</span></code></a>(title)</p></td>
+<td><p>Create plot title</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="stats">
+<h2>stats<a class="headerlink" href="#stats" title="Link to this heading">¶</a></h2>
+<p>Statistical transformations (stats) do aggregations and other
+computations on data before it is drawn out. <code class="docutils literal notranslate"><span class="pre">stat_*</span></code> determine
+the type of computation done on the data. Different types of
+computations yield varied results, so a <code class="docutils literal notranslate"><span class="pre">stat</span></code> must be paired
+with a <code class="docutils literal notranslate"><span class="pre">geom</span></code> that can represent all or some of the computations.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat.stat.html#plotnine.stats.stat.stat" title="plotnine.stats.stat.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a></p></td>
+<td><p>Base class of all stats</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_bin.html#plotnine.stats.stat_bin" title="plotnine.stats.stat_bin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_bin</span></code></a></p></td>
+<td><p>Count cases in each interval</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_bin_2d.html#plotnine.stats.stat_bin_2d" title="plotnine.stats.stat_bin_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_bin_2d</span></code></a></p></td>
+<td><p>2 Dimensional bin counts</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_bindot.html#plotnine.stats.stat_bindot" title="plotnine.stats.stat_bindot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_bindot</span></code></a></p></td>
+<td><p>Binning for a dot plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_boxplot.html#plotnine.stats.stat_boxplot" title="plotnine.stats.stat_boxplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_boxplot</span></code></a></p></td>
+<td><p>Compute boxplot statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_count.html#plotnine.stats.stat_count" title="plotnine.stats.stat_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_count</span></code></a></p></td>
+<td><p>Counts the number of cases at each x position</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_density.html#plotnine.stats.stat_density" title="plotnine.stats.stat_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_density</span></code></a></p></td>
+<td><p>Compute density estimate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_density_2d.html#plotnine.stats.stat_density_2d" title="plotnine.stats.stat_density_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_density_2d</span></code></a></p></td>
+<td><p>Compute 2D kernel density estimation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_ecdf.html#plotnine.stats.stat_ecdf" title="plotnine.stats.stat_ecdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_ecdf</span></code></a></p></td>
+<td><p>Emperical Cumulative Density Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_ellipse.html#plotnine.stats.stat_ellipse" title="plotnine.stats.stat_ellipse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_ellipse</span></code></a></p></td>
+<td><p>Calculate normal confidence interval ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_function.html#plotnine.stats.stat_function" title="plotnine.stats.stat_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_function</span></code></a></p></td>
+<td><p>Superimpose a function onto a plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_hull.html#plotnine.stats.stat_hull" title="plotnine.stats.stat_hull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_hull</span></code></a></p></td>
+<td><p>2 Dimensional Convex Hull</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_identity.html#plotnine.stats.stat_identity" title="plotnine.stats.stat_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_identity</span></code></a></p></td>
+<td><p>Identity (do nothing) statistic</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_qq.html#plotnine.stats.stat_qq" title="plotnine.stats.stat_qq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_qq</span></code></a></p></td>
+<td><p>Calculation for quantile-quantile plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_qq_line.html#plotnine.stats.stat_qq_line" title="plotnine.stats.stat_qq_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_qq_line</span></code></a></p></td>
+<td><p>Calculate line through quantile-quantile plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_quantile.html#plotnine.stats.stat_quantile" title="plotnine.stats.stat_quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_quantile</span></code></a></p></td>
+<td><p>Compute quantile regression lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_sina.html#plotnine.stats.stat_sina" title="plotnine.stats.stat_sina"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_sina</span></code></a></p></td>
+<td><p>Compute Sina plot values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_smooth.html#plotnine.stats.stat_smooth" title="plotnine.stats.stat_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_smooth</span></code></a></p></td>
+<td><p>Calculate a smoothed conditional mean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_sum.html#plotnine.stats.stat_sum" title="plotnine.stats.stat_sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_sum</span></code></a></p></td>
+<td><p>Sum unique values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_summary.html#plotnine.stats.stat_summary" title="plotnine.stats.stat_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_summary</span></code></a></p></td>
+<td><p>Calculate summary statistics depending on x</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_summary_bin.html#plotnine.stats.stat_summary_bin" title="plotnine.stats.stat_summary_bin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_summary_bin</span></code></a></p></td>
+<td><p>Summarise y values at x intervals</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_unique.html#plotnine.stats.stat_unique" title="plotnine.stats.stat_unique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_unique</span></code></a></p></td>
+<td><p>Remove duplicates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.stats.stat_ydensity.html#plotnine.stats.stat_ydensity" title="plotnine.stats.stat_ydensity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_ydensity</span></code></a></p></td>
+<td><p>Density estimate</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="facets">
+<h2>facets<a class="headerlink" href="#facets" title="Link to this heading">¶</a></h2>
+<p>Faceting is a way to subset data and plot it on different panels.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.facets.facet.facet.html#plotnine.facets.facet.facet" title="plotnine.facets.facet.facet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">facet</span></code></a></p></td>
+<td><p>Base class for all facets</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.facets.facet_grid.html#plotnine.facets.facet_grid" title="plotnine.facets.facet_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">facet_grid</span></code></a>(facets[, margins, scales, space, ...])</p></td>
+<td><p>Wrap 1D Panels onto 2D surface</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.facets.facet_null.html#plotnine.facets.facet_null" title="plotnine.facets.facet_null"><code class="xref py py-obj docutils literal notranslate"><span class="pre">facet_null</span></code></a>([shrink])</p></td>
+<td><p>A single Panel</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.facets.facet_wrap.html#plotnine.facets.facet_wrap" title="plotnine.facets.facet_wrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">facet_wrap</span></code></a>(facets, *[, nrow, ncol, scales, ...])</p></td>
+<td><p>Wrap 1D Panels onto 2D surface</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.facets.labelling.labeller.html#plotnine.facets.labelling.labeller" title="plotnine.facets.labelling.labeller"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labeller</span></code></a>([rows, cols, multi_line, default])</p></td>
+<td><p>Facet Strip Labelling</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.facets.labelling.as_labeller.html#plotnine.facets.labelling.as_labeller" title="plotnine.facets.labelling.as_labeller"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_labeller</span></code></a>([x, default, multi_line])</p></td>
+<td><p>Coerse to labeller</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.facets.labelling.label_value.html#plotnine.facets.labelling.label_value" title="plotnine.facets.labelling.label_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label_value</span></code></a>(label_info[, multi_line])</p></td>
+<td><p>Keep value as the label</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.facets.labelling.label_both.html#plotnine.facets.labelling.label_both" title="plotnine.facets.labelling.label_both"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label_both</span></code></a>(label_info[, multi_line, sep])</p></td>
+<td><p>Concatenate the facet variable with the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.facets.labelling.label_context.html#plotnine.facets.labelling.label_context" title="plotnine.facets.labelling.label_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label_context</span></code></a>(label_info[, multi_line, sep])</p></td>
+<td><p>Create an unabiguous label string</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scales">
+<h2>scales<a class="headerlink" href="#scales" title="Link to this heading">¶</a></h2>
+<p>Scales control the mapping from data to aesthetics. They take data and
+adjust it to fit the different aspects of the visual sense i.e. length,
+colour, size and shape.</p>
+<section id="base-scales">
+<h3>Base scales<a class="headerlink" href="#base-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale" title="plotnine.scales.scale.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a>(**kwargs)</p></td>
+<td><p>Base class for all scales</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete" title="plotnine.scales.scale.scale_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_discrete</span></code></a>(**kwargs)</p></td>
+<td><p>Base class for all discrete scales</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous" title="plotnine.scales.scale.scale_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_continuous</span></code></a>(**kwargs)</p></td>
+<td><p>Base class for all continuous scales</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale.scale_datetime.html#plotnine.scales.scale.scale_datetime" title="plotnine.scales.scale.scale_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_datetime</span></code></a>(**kwargs)</p></td>
+<td><p>Base class for all date/datetime scales</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alpha-scales">
+<h3>Alpha scales<a class="headerlink" href="#alpha-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha.html#plotnine.scales.scale_alpha" title="plotnine.scales.scale_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha</span></code></a>([range])</p></td>
+<td><p>Continuous Alpha Scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha_discrete.html#plotnine.scales.scale_alpha_discrete" title="plotnine.scales.scale_alpha_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_discrete</span></code></a>(**kwargs)</p></td>
+<td><p>Discrete Alpha Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha_continuous.html#plotnine.scales.scale_alpha_continuous" title="plotnine.scales.scale_alpha_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_continuous</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_alpha.html#plotnine.scales.scale_alpha" title="plotnine.scales.scale_alpha.scale_alpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_alpha</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha_datetime.html#plotnine.scales.scale_alpha_datetime" title="plotnine.scales.scale_alpha_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_datetime</span></code></a>([range])</p></td>
+<td><p>Datetime Alpha Scale</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="identity-scales">
+<h3>Identity Scales<a class="headerlink" href="#identity-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha_identity.html#plotnine.scales.scale_alpha_identity" title="plotnine.scales.scale_alpha_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No alpha scaling</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_identity.html#plotnine.scales.scale_color_identity" title="plotnine.scales.scale_color_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No color scaling</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_colour_identity.html#plotnine.scales.scale_colour_identity" title="plotnine.scales.scale_colour_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_colour_identity</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_color_identity.html#plotnine.scales.scale_color_identity" title="plotnine.scales.scale_identity.scale_color_identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_color_identity</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_identity.html#plotnine.scales.scale_fill_identity" title="plotnine.scales.scale_fill_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No color scaling</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_linetype_identity.html#plotnine.scales.scale_linetype_identity" title="plotnine.scales.scale_linetype_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No linetype scaling</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_shape_identity.html#plotnine.scales.scale_shape_identity" title="plotnine.scales.scale_shape_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No shape scaling</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_identity.html#plotnine.scales.scale_size_identity" title="plotnine.scales.scale_size_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_identity</span></code></a>(**kwargs)</p></td>
+<td><p>No size scaling</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="color-and-fill-scales">
+<h3>Color and fill scales<a class="headerlink" href="#color-and-fill-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_brewer.html#plotnine.scales.scale_color_brewer" title="plotnine.scales.scale_color_brewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_brewer</span></code></a>([type, palette, direction])</p></td>
+<td><p>Sequential, diverging and qualitative discrete color scales</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_cmap.html#plotnine.scales.scale_color_cmap" title="plotnine.scales.scale_color_cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_cmap</span></code></a>([cmap_name, lut])</p></td>
+<td><p>Create color scales using Matplotlib colormaps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_continuous.html#plotnine.scales.scale_color_continuous" title="plotnine.scales.scale_color_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_continuous</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_color_cmap.html#plotnine.scales.scale_color_cmap" title="plotnine.scales.scale_color.scale_color_cmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_color_cmap</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_desaturate.html#plotnine.scales.scale_color_desaturate" title="plotnine.scales.scale_color_desaturate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_desaturate</span></code></a>([color, prop, reverse])</p></td>
+<td><p>Create a desaturated color gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_datetime.html#plotnine.scales.scale_color_datetime" title="plotnine.scales.scale_color_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_datetime</span></code></a>(**kwargs)</p></td>
+<td><p>Datetime color scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_discrete.html#plotnine.scales.scale_color_discrete" title="plotnine.scales.scale_color_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_discrete</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_color_hue.html#plotnine.scales.scale_color_hue" title="plotnine.scales.scale_color.scale_color_hue"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_color_hue</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_distiller.html#plotnine.scales.scale_color_distiller" title="plotnine.scales.scale_color_distiller"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_distiller</span></code></a>([type, palette, ...])</p></td>
+<td><p>Sequential and diverging continuous color scales</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_gradient.html#plotnine.scales.scale_color_gradient" title="plotnine.scales.scale_color_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gradient</span></code></a>([low, high])</p></td>
+<td><p>Create a 2 point color gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_gradient2.html#plotnine.scales.scale_color_gradient2" title="plotnine.scales.scale_color_gradient2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gradient2</span></code></a>([low, mid, high, midpoint])</p></td>
+<td><p>Create a 3 point diverging color gradient</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_gradientn.html#plotnine.scales.scale_color_gradientn" title="plotnine.scales.scale_color_gradientn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gradientn</span></code></a>(colors[, values])</p></td>
+<td><p>Create a n color gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_gray.html#plotnine.scales.scale_color_gray" title="plotnine.scales.scale_color_gray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gray</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_color_grey.html#plotnine.scales.scale_color_grey" title="plotnine.scales.scale_color.scale_color_grey"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_color_grey</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_grey.html#plotnine.scales.scale_color_grey" title="plotnine.scales.scale_color_grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_grey</span></code></a>([start, end])</p></td>
+<td><p>Sequential grey color scale.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_hue.html#plotnine.scales.scale_color_hue" title="plotnine.scales.scale_color_hue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_hue</span></code></a>([h, l, s, color_space])</p></td>
+<td><p>Qualitative color scale with evenly spaced hues</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_brewer.html#plotnine.scales.scale_fill_brewer" title="plotnine.scales.scale_fill_brewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_brewer</span></code></a>([type, palette, direction])</p></td>
+<td><p>Sequential, diverging and qualitative color scales</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_cmap.html#plotnine.scales.scale_fill_cmap" title="plotnine.scales.scale_fill_cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_cmap</span></code></a>([cmap_name, lut])</p></td>
+<td><p>Create color scales using Matplotlib colormaps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_continuous.html#plotnine.scales.scale_fill_continuous" title="plotnine.scales.scale_fill_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_continuous</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_fill_cmap.html#plotnine.scales.scale_fill_cmap" title="plotnine.scales.scale_color.scale_fill_cmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_fill_cmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_datetime.html#plotnine.scales.scale_fill_datetime" title="plotnine.scales.scale_fill_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_datetime</span></code></a>(**kwargs)</p></td>
+<td><p>Datetime fill scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_desaturate.html#plotnine.scales.scale_fill_desaturate" title="plotnine.scales.scale_fill_desaturate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_desaturate</span></code></a>([color, prop, reverse])</p></td>
+<td><p>Create a desaturated color gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_discrete.html#plotnine.scales.scale_fill_discrete" title="plotnine.scales.scale_fill_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_discrete</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_fill_hue.html#plotnine.scales.scale_fill_hue" title="plotnine.scales.scale_color.scale_fill_hue"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_fill_hue</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_distiller.html#plotnine.scales.scale_fill_distiller" title="plotnine.scales.scale_fill_distiller"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_distiller</span></code></a>([type, palette, ...])</p></td>
+<td><p>Sequential, diverging continuous color scales</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_gradient.html#plotnine.scales.scale_fill_gradient" title="plotnine.scales.scale_fill_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gradient</span></code></a>([low, high])</p></td>
+<td><p>Create a 2 point color gradient</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_gradient2.html#plotnine.scales.scale_fill_gradient2" title="plotnine.scales.scale_fill_gradient2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gradient2</span></code></a>([low, mid, high, midpoint])</p></td>
+<td><p>Create a 3 point diverging color gradient</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_gradientn.html#plotnine.scales.scale_fill_gradientn" title="plotnine.scales.scale_fill_gradientn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gradientn</span></code></a>(colors[, values])</p></td>
+<td><p>Create a n color gradient</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_gray.html#plotnine.scales.scale_fill_gray" title="plotnine.scales.scale_fill_gray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gray</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_fill_grey.html#plotnine.scales.scale_fill_grey" title="plotnine.scales.scale_color.scale_fill_grey"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_fill_grey</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_grey.html#plotnine.scales.scale_fill_grey" title="plotnine.scales.scale_fill_grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_grey</span></code></a>([start, end])</p></td>
+<td><p>Sequential grey color scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_hue.html#plotnine.scales.scale_fill_hue" title="plotnine.scales.scale_fill_hue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_hue</span></code></a>([h, l, s, color_space])</p></td>
+<td><p>Qualitative color scale with evenly spaced hues</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="manual-scales">
+<h3>Manual scales<a class="headerlink" href="#manual-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_alpha_manual.html#plotnine.scales.scale_alpha_manual" title="plotnine.scales.scale_alpha_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete alpha scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_color_manual.html#plotnine.scales.scale_color_manual" title="plotnine.scales.scale_color_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete color scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_colour_manual.html#plotnine.scales.scale_colour_manual" title="plotnine.scales.scale_colour_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_colour_manual</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_color_manual.html#plotnine.scales.scale_color_manual" title="plotnine.scales.scale_manual.scale_color_manual"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_color_manual</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_fill_manual.html#plotnine.scales.scale_fill_manual" title="plotnine.scales.scale_fill_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete fill scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_linetype_manual.html#plotnine.scales.scale_linetype_manual" title="plotnine.scales.scale_linetype_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete linetype scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_shape_manual.html#plotnine.scales.scale_shape_manual" title="plotnine.scales.scale_shape_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete shape scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_manual.html#plotnine.scales.scale_size_manual" title="plotnine.scales.scale_size_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_manual</span></code></a>(values, **kwargs)</p></td>
+<td><p>Custom discrete size scale</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="linetype-scales">
+<h3>Linetype scales<a class="headerlink" href="#linetype-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_linetype.html#plotnine.scales.scale_linetype" title="plotnine.scales.scale_linetype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype</span></code></a>(**kwargs)</p></td>
+<td><p>Scale for line patterns</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_linetype_discrete.html#plotnine.scales.scale_linetype_discrete" title="plotnine.scales.scale_linetype_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype_discrete</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_linetype.html#plotnine.scales.scale_linetype" title="plotnine.scales.scale_linetype.scale_linetype"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_linetype</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shape-scales">
+<h3>Shape scales<a class="headerlink" href="#shape-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_shape.html#plotnine.scales.scale_shape" title="plotnine.scales.scale_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape</span></code></a>([unfilled])</p></td>
+<td><p>Scale for shapes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_shape_discrete.html#plotnine.scales.scale_shape_discrete" title="plotnine.scales.scale_shape_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape_discrete</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_shape.html#plotnine.scales.scale_shape" title="plotnine.scales.scale_shape.scale_shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_shape</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="size-scales">
+<h3>Size scales<a class="headerlink" href="#size-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size.html#plotnine.scales.scale_size" title="plotnine.scales.scale_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_size_continuous.html#plotnine.scales.scale_size_continuous" title="plotnine.scales.scale_size.scale_size_continuous"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_size_continuous</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_area.html#plotnine.scales.scale_size_area" title="plotnine.scales.scale_size_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_area</span></code></a>([max_size])</p></td>
+<td><p>Continuous area size scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_continuous.html#plotnine.scales.scale_size_continuous" title="plotnine.scales.scale_size_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_continuous</span></code></a>([range])</p></td>
+<td><p>Continuous area size scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_discrete.html#plotnine.scales.scale_size_discrete" title="plotnine.scales.scale_size_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_discrete</span></code></a>(**kwargs)</p></td>
+<td><p>Discrete area size scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_radius.html#plotnine.scales.scale_size_radius" title="plotnine.scales.scale_size_radius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_radius</span></code></a>([range])</p></td>
+<td><p>Continuous radius size scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_size_datetime.html#plotnine.scales.scale_size_datetime" title="plotnine.scales.scale_size_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_datetime</span></code></a>([range])</p></td>
+<td><p>Datetime area-size scale</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="position-scales">
+<h3>Position scales<a class="headerlink" href="#position-scales" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_continuous.html#plotnine.scales.scale_x_continuous" title="plotnine.scales.scale_x_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_continuous</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_date.html#plotnine.scales.scale_x_date" title="plotnine.scales.scale_x_date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_date</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_x_datetime.html#plotnine.scales.scale_x_datetime" title="plotnine.scales.scale_xy.scale_x_datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_x_datetime</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_datetime.html#plotnine.scales.scale_x_datetime" title="plotnine.scales.scale_x_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_datetime</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position for datetime data points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_discrete.html#plotnine.scales.scale_x_discrete" title="plotnine.scales.scale_x_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_discrete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Discrete x position</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_log10.html#plotnine.scales.scale_x_log10" title="plotnine.scales.scale_x_log10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_log10</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position log10 transformed scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_reverse.html#plotnine.scales.scale_x_reverse" title="plotnine.scales.scale_x_reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_reverse</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position reverse transformed scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_sqrt.html#plotnine.scales.scale_x_sqrt" title="plotnine.scales.scale_x_sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_sqrt</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position sqrt transformed scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_x_timedelta.html#plotnine.scales.scale_x_timedelta" title="plotnine.scales.scale_x_timedelta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_timedelta</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous x position for timedelta data points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_continuous.html#plotnine.scales.scale_y_continuous" title="plotnine.scales.scale_y_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_continuous</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_date.html#plotnine.scales.scale_y_date" title="plotnine.scales.scale_y_date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_date</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.scales.scale_y_datetime.html#plotnine.scales.scale_y_datetime" title="plotnine.scales.scale_xy.scale_y_datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">scale_y_datetime</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_datetime.html#plotnine.scales.scale_y_datetime" title="plotnine.scales.scale_y_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_datetime</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position for datetime data points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_discrete.html#plotnine.scales.scale_y_discrete" title="plotnine.scales.scale_y_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_discrete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Discrete y position</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_log10.html#plotnine.scales.scale_y_log10" title="plotnine.scales.scale_y_log10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_log10</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position log10 transformed scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_reverse.html#plotnine.scales.scale_y_reverse" title="plotnine.scales.scale_y_reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_reverse</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position reverse transformed scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_sqrt.html#plotnine.scales.scale_y_sqrt" title="plotnine.scales.scale_y_sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_sqrt</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position sqrt transformed scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.scale_y_timedelta.html#plotnine.scales.scale_y_timedelta" title="plotnine.scales.scale_y_timedelta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_timedelta</span></code></a>(**kwargs)</p></td>
+<td><p>Continuous y position for timedelta data points</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scale-limits">
+<h3>Scale limits<a class="headerlink" href="#scale-limits" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.lims.html#plotnine.scales.lims" title="plotnine.scales.lims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lims</span></code></a>(**kwargs)</p></td>
+<td><p>Set aesthetic limits</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.xlim.html#plotnine.scales.xlim" title="plotnine.scales.xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xlim</span></code></a>(*limits)</p></td>
+<td><p>Set x-axis limits</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.scales.ylim.html#plotnine.scales.ylim" title="plotnine.scales.ylim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ylim</span></code></a>(*limits)</p></td>
+<td><p>Set y-axis limits</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.scales.expand_limits.html#plotnine.scales.expand_limits" title="plotnine.scales.expand_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expand_limits</span></code></a>(**kwargs)</p></td>
+<td><p>Expand the limits any aesthetic using data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scale-guides">
+<h3>Scale guides<a class="headerlink" href="#scale-guides" title="Link to this heading">¶</a></h3>
+<p>Guides allow you to interpret data represented on a scales.
+Guides include the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axes, legends and colorbars.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.guides.guides.html#plotnine.guides.guides" title="plotnine.guides.guides"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guides</span></code></a>(**kwargs)</p></td>
+<td><p>Guides for each scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.guides.guide.guide.html#plotnine.guides.guide.guide" title="plotnine.guides.guide.guide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guide</span></code></a>(**kwargs)</p></td>
+<td><p>Base class for all guides</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.guides.guide_legend.html#plotnine.guides.guide_legend" title="plotnine.guides.guide_legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guide_legend</span></code></a>(**kwargs)</p></td>
+<td><p>Legend guide</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.guides.guide_colorbar.html#plotnine.guides.guide_colorbar" title="plotnine.guides.guide_colorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guide_colorbar</span></code></a>(**kwargs)</p></td>
+<td><p>Guide colorbar</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="positions">
+<h2>positions<a class="headerlink" href="#positions" title="Link to this heading">¶</a></h2>
+<p>Overlapping objects can be visualized better if their positions
+are adjusted. That is what the <code class="docutils literal notranslate"><span class="pre">position_*</span></code> class do. Each
+<code class="docutils literal notranslate"><span class="pre">geom</span></code> is associated with one position adjustment class.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.positions.position_dodge.html#plotnine.positions.position_dodge" title="plotnine.positions.position_dodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_dodge</span></code></a>([width, preserve])</p></td>
+<td><p>Dodge overlaps and place objects side-by-side</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.positions.position_dodge2.html#plotnine.positions.position_dodge2" title="plotnine.positions.position_dodge2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_dodge2</span></code></a>([width, preserve, padding, ...])</p></td>
+<td><p>Dodge overlaps and place objects side-by-side</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.positions.position_fill.html#plotnine.positions.position_fill" title="plotnine.positions.position_fill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_fill</span></code></a>([vjust, reverse])</p></td>
+<td><p>Normalise stacked objects to unit height</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.positions.position_identity.html#plotnine.positions.position_identity" title="plotnine.positions.position_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_identity</span></code></a>()</p></td>
+<td><p>Do not adjust the position</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.positions.position_jitter.html#plotnine.positions.position_jitter" title="plotnine.positions.position_jitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_jitter</span></code></a>([width, height, random_state])</p></td>
+<td><p>Jitter points to avoid overplotting</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.positions.position_jitterdodge.html#plotnine.positions.position_jitterdodge" title="plotnine.positions.position_jitterdodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_jitterdodge</span></code></a>([jitter_width, ...])</p></td>
+<td><p>Dodge and jitter to minimise overlap</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.positions.position_nudge.html#plotnine.positions.position_nudge" title="plotnine.positions.position_nudge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_nudge</span></code></a>([x, y])</p></td>
+<td><p>Nudge points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.positions.position_stack.html#plotnine.positions.position_stack" title="plotnine.positions.position_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_stack</span></code></a>([vjust, reverse])</p></td>
+<td><p>Stack plotted objects on top of each other</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="themes">
+<h2>themes<a class="headerlink" href="#themes" title="Link to this heading">¶</a></h2>
+<p>Themes control the visual appearance of the non-data elements the plot.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme.html#plotnine.themes.theme" title="plotnine.themes.theme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme</span></code></a>([complete, axis_title_x, ...])</p></td>
+<td><p>Base class for themes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_538.html#plotnine.themes.theme_538" title="plotnine.themes.theme_538"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_538</span></code></a>([base_size, base_family])</p></td>
+<td><p>Theme in the likeness of fivethirtyeight.com plots</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_bw.html#plotnine.themes.theme_bw" title="plotnine.themes.theme_bw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_bw</span></code></a>([base_size, base_family])</p></td>
+<td><p>White background with black gridlines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_classic.html#plotnine.themes.theme_classic" title="plotnine.themes.theme_classic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_classic</span></code></a>([base_size, base_family])</p></td>
+<td><p>A classic-looking theme, with x &amp; y axis lines and no gridlines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_dark.html#plotnine.themes.theme_dark" title="plotnine.themes.theme_dark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_dark</span></code></a>([base_size, base_family])</p></td>
+<td><p>The dark cousin of <a class="reference internal" href="generated/plotnine.themes.theme_light.html#plotnine.themes.theme_light" title="plotnine.themes.theme_light"><code class="xref py py-class docutils literal notranslate"><span class="pre">theme_light</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_gray.html#plotnine.themes.theme_gray" title="plotnine.themes.theme_gray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_gray</span></code></a>([base_size, base_family])</p></td>
+<td><p>A gray background with white gridlines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_grey.html#plotnine.themes.theme_grey" title="plotnine.themes.theme_grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_grey</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.themes.theme_gray.html#plotnine.themes.theme_gray" title="plotnine.themes.theme_gray.theme_gray"><code class="xref py py-class docutils literal notranslate"><span class="pre">theme_gray</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_light.html#plotnine.themes.theme_light" title="plotnine.themes.theme_light"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_light</span></code></a>([base_size, base_family])</p></td>
+<td><p>A theme similar to <a class="reference internal" href="generated/plotnine.themes.theme_linedraw.html#plotnine.themes.theme_linedraw" title="plotnine.themes.theme_linedraw"><code class="xref py py-class docutils literal notranslate"><span class="pre">theme_linedraw</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_linedraw.html#plotnine.themes.theme_linedraw" title="plotnine.themes.theme_linedraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_linedraw</span></code></a>([base_size, base_family])</p></td>
+<td><p>A theme with only black lines of various widths on white backgrounds</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_matplotlib.html#plotnine.themes.theme_matplotlib" title="plotnine.themes.theme_matplotlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_matplotlib</span></code></a>([rc, fname, use_defaults])</p></td>
+<td><p>The default matplotlib look and feel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_minimal.html#plotnine.themes.theme_minimal" title="plotnine.themes.theme_minimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_minimal</span></code></a>([base_size, base_family])</p></td>
+<td><p>A minimalistic theme with no background annotations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_seaborn.html#plotnine.themes.theme_seaborn" title="plotnine.themes.theme_seaborn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_seaborn</span></code></a>([style, context, font, font_scale])</p></td>
+<td><p>Theme for seaborn.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_tufte.html#plotnine.themes.theme_tufte" title="plotnine.themes.theme_tufte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_tufte</span></code></a>([base_size, base_family, ticks])</p></td>
+<td><p>Tufte Maximal Data, Minimal Ink Theme</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_void.html#plotnine.themes.theme_void" title="plotnine.themes.theme_void"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_void</span></code></a>([base_size, base_family])</p></td>
+<td><p>A classic-looking theme, with x &amp; y axis lines and no gridlines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_xkcd.html#plotnine.themes.theme_xkcd" title="plotnine.themes.theme_xkcd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_xkcd</span></code></a>([base_size, scale, length, ...])</p></td>
+<td><p>xkcd theme</p></td>
+</tr>
+</tbody>
+</table>
+<section id="themeables">
+<span id="id1"></span><h3>Themeables<a class="headerlink" href="#themeables" title="Link to this heading">¶</a></h3>
+<p>These define aspects of a plot that can be themed. They
+can be used to create a new theme or modify an existing theme.
+They define the keyword arguments to <a class="reference internal" href="generated/plotnine.themes.theme.html#plotnine.themes.theme" title="plotnine.themes.theme"><code class="xref py py-class docutils literal notranslate"><span class="pre">theme</span></code></a>.
+Users should never create instances of <em>themeable</em>.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.aspect_ratio.html#plotnine.themes.themeable.aspect_ratio" title="plotnine.themes.themeable.aspect_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aspect_ratio</span></code></a></p></td>
+<td><p>Aspect ratio of the panel(s)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_line.html#plotnine.themes.themeable.axis_line" title="plotnine.themes.themeable.axis_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_line</span></code></a></p></td>
+<td><p>x &amp; y axis lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_line_x.html#plotnine.themes.themeable.axis_line_x" title="plotnine.themes.themeable.axis_line_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_line_x</span></code></a></p></td>
+<td><p>x-axis line</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_line_y.html#plotnine.themes.themeable.axis_line_y" title="plotnine.themes.themeable.axis_line_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_line_y</span></code></a></p></td>
+<td><p>y-axis line</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_text.html#plotnine.themes.themeable.axis_text" title="plotnine.themes.themeable.axis_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_text</span></code></a></p></td>
+<td><p>Axis tick labels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_text_x.html#plotnine.themes.themeable.axis_text_x" title="plotnine.themes.themeable.axis_text_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_text_x</span></code></a></p></td>
+<td><p>x-axis tick labels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_text_y.html#plotnine.themes.themeable.axis_text_y" title="plotnine.themes.themeable.axis_text_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_text_y</span></code></a></p></td>
+<td><p>y-axis tick labels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks.html#plotnine.themes.themeable.axis_ticks" title="plotnine.themes.themeable.axis_ticks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks</span></code></a></p></td>
+<td><p>x &amp; y major and minor axis tick lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_direction.html#plotnine.themes.themeable.axis_ticks_direction" title="plotnine.themes.themeable.axis_ticks_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_direction</span></code></a></p></td>
+<td><p>axis tick direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_direction_x.html#plotnine.themes.themeable.axis_ticks_direction_x" title="plotnine.themes.themeable.axis_ticks_direction_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_direction_x</span></code></a></p></td>
+<td><p>x-axis tick direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_direction_y.html#plotnine.themes.themeable.axis_ticks_direction_y" title="plotnine.themes.themeable.axis_ticks_direction_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_direction_y</span></code></a></p></td>
+<td><p>y-axis tick direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_length.html#plotnine.themes.themeable.axis_ticks_length" title="plotnine.themes.themeable.axis_ticks_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_length</span></code></a></p></td>
+<td><p>Axis tick length</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_length_major.html#plotnine.themes.themeable.axis_ticks_length_major" title="plotnine.themes.themeable.axis_ticks_length_major"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_length_major</span></code></a></p></td>
+<td><p>Axis major-tick length</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_length_minor.html#plotnine.themes.themeable.axis_ticks_length_minor" title="plotnine.themes.themeable.axis_ticks_length_minor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_length_minor</span></code></a></p></td>
+<td><p>Axis minor-tick length</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_major.html#plotnine.themes.themeable.axis_ticks_major" title="plotnine.themes.themeable.axis_ticks_major"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_major</span></code></a></p></td>
+<td><p>x &amp; y axis major tick lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_major_x.html#plotnine.themes.themeable.axis_ticks_major_x" title="plotnine.themes.themeable.axis_ticks_major_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_major_x</span></code></a></p></td>
+<td><p>x-axis major tick lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_major_y.html#plotnine.themes.themeable.axis_ticks_major_y" title="plotnine.themes.themeable.axis_ticks_major_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_major_y</span></code></a></p></td>
+<td><p>y-axis major tick lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_minor.html#plotnine.themes.themeable.axis_ticks_minor" title="plotnine.themes.themeable.axis_ticks_minor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_minor</span></code></a></p></td>
+<td><p>x &amp; y axis minor tick lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_minor_x.html#plotnine.themes.themeable.axis_ticks_minor_x" title="plotnine.themes.themeable.axis_ticks_minor_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_minor_x</span></code></a></p></td>
+<td><p>x-axis tick lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_minor_y.html#plotnine.themes.themeable.axis_ticks_minor_y" title="plotnine.themes.themeable.axis_ticks_minor_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_minor_y</span></code></a></p></td>
+<td><p>y-axis minor tick lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_pad.html#plotnine.themes.themeable.axis_ticks_pad" title="plotnine.themes.themeable.axis_ticks_pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_pad</span></code></a></p></td>
+<td><p>Axis tick padding</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_pad_major.html#plotnine.themes.themeable.axis_ticks_pad_major" title="plotnine.themes.themeable.axis_ticks_pad_major"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_pad_major</span></code></a></p></td>
+<td><p>Axis major-tick padding</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_ticks_pad_minor.html#plotnine.themes.themeable.axis_ticks_pad_minor" title="plotnine.themes.themeable.axis_ticks_pad_minor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_ticks_pad_minor</span></code></a></p></td>
+<td><p>Axis minor-tick padding</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_title.html#plotnine.themes.themeable.axis_title" title="plotnine.themes.themeable.axis_title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_title</span></code></a></p></td>
+<td><p>Axis labels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_title_x.html#plotnine.themes.themeable.axis_title_x" title="plotnine.themes.themeable.axis_title_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_title_x</span></code></a></p></td>
+<td><p>x axis label</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.axis_title_y.html#plotnine.themes.themeable.axis_title_y" title="plotnine.themes.themeable.axis_title_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_title_y</span></code></a></p></td>
+<td><p>y axis label</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.dpi.html#plotnine.themes.themeable.dpi" title="plotnine.themes.themeable.dpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpi</span></code></a></p></td>
+<td><p>DPI with which to draw/save the figure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.figure_size.html#plotnine.themes.themeable.figure_size" title="plotnine.themes.themeable.figure_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figure_size</span></code></a></p></td>
+<td><p>Figure size in inches</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_background.html#plotnine.themes.themeable.legend_background" title="plotnine.themes.themeable.legend_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_background</span></code></a></p></td>
+<td><p>Legend background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_box.html#plotnine.themes.themeable.legend_box" title="plotnine.themes.themeable.legend_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_box</span></code></a></p></td>
+<td><p>How to box up multiple legends</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_box_background.html#plotnine.themes.themeable.legend_box_background" title="plotnine.themes.themeable.legend_box_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_box_background</span></code></a></p></td>
+<td><p>Legend box background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_box_just.html#plotnine.themes.themeable.legend_box_just" title="plotnine.themes.themeable.legend_box_just"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_box_just</span></code></a></p></td>
+<td><p>Justification of legend boxes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_box_margin.html#plotnine.themes.themeable.legend_box_margin" title="plotnine.themes.themeable.legend_box_margin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_box_margin</span></code></a></p></td>
+<td><p>Padding between the legends and the box</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_box_spacing.html#plotnine.themes.themeable.legend_box_spacing" title="plotnine.themes.themeable.legend_box_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_box_spacing</span></code></a></p></td>
+<td><p>Spacing between the legend and the plotting area</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_direction.html#plotnine.themes.themeable.legend_direction" title="plotnine.themes.themeable.legend_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_direction</span></code></a></p></td>
+<td><p>Layout items in the legend</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_entry_spacing.html#plotnine.themes.themeable.legend_entry_spacing" title="plotnine.themes.themeable.legend_entry_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_entry_spacing</span></code></a></p></td>
+<td><p>Spacing between two entries in a legend</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_entry_spacing_x.html#plotnine.themes.themeable.legend_entry_spacing_x" title="plotnine.themes.themeable.legend_entry_spacing_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_entry_spacing_x</span></code></a></p></td>
+<td><p>Horizontal spacing between two entries in a legend</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_entry_spacing_y.html#plotnine.themes.themeable.legend_entry_spacing_y" title="plotnine.themes.themeable.legend_entry_spacing_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_entry_spacing_y</span></code></a></p></td>
+<td><p>Vertical spacing between two entries in a legend</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_key.html#plotnine.themes.themeable.legend_key" title="plotnine.themes.themeable.legend_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_key</span></code></a></p></td>
+<td><p>Legend key background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_key_height.html#plotnine.themes.themeable.legend_key_height" title="plotnine.themes.themeable.legend_key_height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_key_height</span></code></a></p></td>
+<td><p>Legend key background height</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_key_size.html#plotnine.themes.themeable.legend_key_size" title="plotnine.themes.themeable.legend_key_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_key_size</span></code></a></p></td>
+<td><p>Legend key background width and height</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_key_width.html#plotnine.themes.themeable.legend_key_width" title="plotnine.themes.themeable.legend_key_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_key_width</span></code></a></p></td>
+<td><p>Legend key background width</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_margin.html#plotnine.themes.themeable.legend_margin" title="plotnine.themes.themeable.legend_margin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_margin</span></code></a></p></td>
+<td><p>Padding between the legend and the inner box</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_position.html#plotnine.themes.themeable.legend_position" title="plotnine.themes.themeable.legend_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_position</span></code></a></p></td>
+<td><p>Location of legend</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_spacing.html#plotnine.themes.themeable.legend_spacing" title="plotnine.themes.themeable.legend_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_spacing</span></code></a></p></td>
+<td><p>Spacing between two adjacent legends</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_text.html#plotnine.themes.themeable.legend_text" title="plotnine.themes.themeable.legend_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_text</span></code></a></p></td>
+<td><p>Legend text</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_text_colorbar.html#plotnine.themes.themeable.legend_text_colorbar" title="plotnine.themes.themeable.legend_text_colorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_text_colorbar</span></code></a></p></td>
+<td><p>Colorbar text</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_text_legend.html#plotnine.themes.themeable.legend_text_legend" title="plotnine.themes.themeable.legend_text_legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_text_legend</span></code></a></p></td>
+<td><p>Legend text for the common legend</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_title.html#plotnine.themes.themeable.legend_title" title="plotnine.themes.themeable.legend_title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_title</span></code></a></p></td>
+<td><p>Legend title</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.legend_title_align.html#plotnine.themes.themeable.legend_title_align" title="plotnine.themes.themeable.legend_title_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend_title_align</span></code></a></p></td>
+<td><p>Alignment of legend title</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.line.html#plotnine.themes.themeable.line" title="plotnine.themes.themeable.line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></a></p></td>
+<td><p>All line elements</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_background.html#plotnine.themes.themeable.panel_background" title="plotnine.themes.themeable.panel_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_background</span></code></a></p></td>
+<td><p>Panel background</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_border.html#plotnine.themes.themeable.panel_border" title="plotnine.themes.themeable.panel_border"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_border</span></code></a></p></td>
+<td><p>Panel border</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid.html#plotnine.themes.themeable.panel_grid" title="plotnine.themes.themeable.panel_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid</span></code></a></p></td>
+<td><p>Grid lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_major.html#plotnine.themes.themeable.panel_grid_major" title="plotnine.themes.themeable.panel_grid_major"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_major</span></code></a></p></td>
+<td><p>Major grid lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_major_x.html#plotnine.themes.themeable.panel_grid_major_x" title="plotnine.themes.themeable.panel_grid_major_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_major_x</span></code></a></p></td>
+<td><p>Vertical major grid lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_major_y.html#plotnine.themes.themeable.panel_grid_major_y" title="plotnine.themes.themeable.panel_grid_major_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_major_y</span></code></a></p></td>
+<td><p>Horizontal major grid lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_minor.html#plotnine.themes.themeable.panel_grid_minor" title="plotnine.themes.themeable.panel_grid_minor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_minor</span></code></a></p></td>
+<td><p>Minor grid lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_minor_x.html#plotnine.themes.themeable.panel_grid_minor_x" title="plotnine.themes.themeable.panel_grid_minor_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_minor_x</span></code></a></p></td>
+<td><p>Vertical minor grid lines</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_grid_minor_y.html#plotnine.themes.themeable.panel_grid_minor_y" title="plotnine.themes.themeable.panel_grid_minor_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_grid_minor_y</span></code></a></p></td>
+<td><p>Horizontal minor grid lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_ontop.html#plotnine.themes.themeable.panel_ontop" title="plotnine.themes.themeable.panel_ontop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_ontop</span></code></a></p></td>
+<td><p>Place panel background &amp; gridlines over/under the data layers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_spacing.html#plotnine.themes.themeable.panel_spacing" title="plotnine.themes.themeable.panel_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_spacing</span></code></a></p></td>
+<td><p>Spacing between the facet panels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_spacing_x.html#plotnine.themes.themeable.panel_spacing_x" title="plotnine.themes.themeable.panel_spacing_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_spacing_x</span></code></a></p></td>
+<td><p>Horizontal spacing between the facet panels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.panel_spacing_y.html#plotnine.themes.themeable.panel_spacing_y" title="plotnine.themes.themeable.panel_spacing_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_spacing_y</span></code></a></p></td>
+<td><p>Vertical spacing between the facet panels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.plot_background.html#plotnine.themes.themeable.plot_background" title="plotnine.themes.themeable.plot_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_background</span></code></a></p></td>
+<td><p>Plot background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.plot_margin.html#plotnine.themes.themeable.plot_margin" title="plotnine.themes.themeable.plot_margin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_margin</span></code></a></p></td>
+<td><p>Plot Margin</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.plot_title.html#plotnine.themes.themeable.plot_title" title="plotnine.themes.themeable.plot_title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_title</span></code></a></p></td>
+<td><p>Plot title</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.rect.html#plotnine.themes.themeable.rect" title="plotnine.themes.themeable.rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rect</span></code></a></p></td>
+<td><p>All rectangle elements</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_background.html#plotnine.themes.themeable.strip_background" title="plotnine.themes.themeable.strip_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_background</span></code></a></p></td>
+<td><p>Facet label background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_background_x.html#plotnine.themes.themeable.strip_background_x" title="plotnine.themes.themeable.strip_background_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_background_x</span></code></a></p></td>
+<td><p>Horizontal facet label background</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_background_y.html#plotnine.themes.themeable.strip_background_y" title="plotnine.themes.themeable.strip_background_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_background_y</span></code></a></p></td>
+<td><p>Vertical facet label background</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_align.html#plotnine.themes.themeable.strip_align" title="plotnine.themes.themeable.strip_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_align</span></code></a></p></td>
+<td><p>Alignment of the strip &amp; its background w.r.t the panel border</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_align_x.html#plotnine.themes.themeable.strip_align_x" title="plotnine.themes.themeable.strip_align_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_align_x</span></code></a></p></td>
+<td><p>Vertical alignment of the strip &amp; its background w.r.t the panel border</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_align_y.html#plotnine.themes.themeable.strip_align_y" title="plotnine.themes.themeable.strip_align_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_align_y</span></code></a></p></td>
+<td><p>Horizontal alignment of the strip &amp; its background w.r.t the panel border</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_text.html#plotnine.themes.themeable.strip_text" title="plotnine.themes.themeable.strip_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_text</span></code></a></p></td>
+<td><p>Facet labels along both axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_text_x.html#plotnine.themes.themeable.strip_text_x" title="plotnine.themes.themeable.strip_text_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_text_x</span></code></a></p></td>
+<td><p>Facet labels along the horizontal axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.strip_text_y.html#plotnine.themes.themeable.strip_text_y" title="plotnine.themes.themeable.strip_text_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_text_y</span></code></a></p></td>
+<td><p>Facet labels along the vertical axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.text.html#plotnine.themes.themeable.text" title="plotnine.themes.themeable.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a></p></td>
+<td><p>All text elements in the plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.title.html#plotnine.themes.themeable.title" title="plotnine.themes.themeable.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
+<td><p>All titles on the plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.themeable.themeable.html#plotnine.themes.themeable.themeable" title="plotnine.themes.themeable.themeable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">themeable</span></code></a></p></td>
+<td><p>Abstract class of things that can be themed.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="theme-helper-functions-and-classes">
+<h3>Theme helper functions and classes<a class="headerlink" href="#theme-helper-functions-and-classes" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_set.html#plotnine.themes.theme_set" title="plotnine.themes.theme_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_set</span></code></a>(new)</p></td>
+<td><p>Change the current(default) theme</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_get.html#plotnine.themes.theme_get" title="plotnine.themes.theme_get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_get</span></code></a>()</p></td>
+<td><p>Return the default theme</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.theme_update.html#plotnine.themes.theme_update" title="plotnine.themes.theme_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme_update</span></code></a>(**kwargs)</p></td>
+<td><p>Modify elements of the current theme</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.element_line.html#plotnine.themes.element_line" title="plotnine.themes.element_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_line</span></code></a>(*[, color, size, linetype, ...])</p></td>
+<td><p>theme element: line</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.themes.element_rect.html#plotnine.themes.element_rect" title="plotnine.themes.element_rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_rect</span></code></a>([fill, color, size, linetype, ...])</p></td>
+<td><p>Theme element: Rectangle</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.themes.element_text.html#plotnine.themes.element_text" title="plotnine.themes.element_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_text</span></code></a>([family, style, weight, color, ...])</p></td>
+<td><p>Theme element: Text</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="coordinates">
+<h2>coordinates<a class="headerlink" href="#coordinates" title="Link to this heading">¶</a></h2>
+<p>Coordinate systems put together the two position scales to produce
+a 2d location.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.coords.coord_cartesian.html#plotnine.coords.coord_cartesian" title="plotnine.coords.coord_cartesian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_cartesian</span></code></a>([xlim, ylim, expand])</p></td>
+<td><p>Cartesian coordinate system</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.coords.coord_equal.html#plotnine.coords.coord_equal" title="plotnine.coords.coord_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_equal</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="generated/plotnine.coords.coord_fixed.html#plotnine.coords.coord_fixed" title="plotnine.coords.coord_fixed.coord_fixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">coord_fixed</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.coords.coord_fixed.html#plotnine.coords.coord_fixed" title="plotnine.coords.coord_fixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_fixed</span></code></a>([ratio, xlim, ylim, expand])</p></td>
+<td><p>Cartesian coordinates with fixed relationship between x and y scales</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.coords.coord_flip.html#plotnine.coords.coord_flip" title="plotnine.coords.coord_flip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_flip</span></code></a>([xlim, ylim, expand])</p></td>
+<td><p>Flipped cartesian coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.coords.coord_trans.html#plotnine.coords.coord_trans" title="plotnine.coords.coord_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_trans</span></code></a>([x, y, xlim, ylim, expand])</p></td>
+<td><p>Transformed cartesian coordinate system</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="options">
+<h2>options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h2>
+<p>When working interactively, some of the options make it convenient to
+create plots that have a common look and feel. Another way to do it,
+to set a default theme using <a class="reference internal" href="generated/plotnine.themes.theme_set.html#plotnine.themes.theme_set" title="plotnine.themes.theme_set"><code class="xref py py-func docutils literal notranslate"><span class="pre">theme_set()</span></code></a>.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.options.aspect_ratio.html#plotnine.options.aspect_ratio" title="plotnine.options.aspect_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aspect_ratio</span></code></a></p></td>
+<td><p>Default aspect ratio used by the themes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.options.base_family.html#plotnine.options.base_family" title="plotnine.options.base_family"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_family</span></code></a></p></td>
+<td><p>The base font family for all text that is part of the theme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.options.base_margin.html#plotnine.options.base_margin" title="plotnine.options.base_margin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_margin</span></code></a></p></td>
+<td><p>A size that is proportional of the figure width and is used by some themes to determine other margins</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.options.close_all_figures.html#plotnine.options.close_all_figures" title="plotnine.options.close_all_figures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_all_figures</span></code></a></p></td>
+<td><p>Development flag, e.g. set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to prevent the queuing up of figures when errors happen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.options.current_theme.html#plotnine.options.current_theme" title="plotnine.options.current_theme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_theme</span></code></a></p></td>
+<td><p>Theme used when none is added to the ggplot object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.options.dpi.html#plotnine.options.dpi" title="plotnine.options.dpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpi</span></code></a></p></td>
+<td><p>Default DPI used by the themes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.options.figure_size.html#plotnine.options.figure_size" title="plotnine.options.figure_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figure_size</span></code></a></p></td>
+<td><p>Default figure size inches</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.options.get_option.html#plotnine.options.get_option" title="plotnine.options.get_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_option</span></code></a>(name)</p></td>
+<td><p>Get package option</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.options.set_option.html#plotnine.options.set_option" title="plotnine.options.set_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_option</span></code></a>(name, value)</p></td>
+<td><p>Set package option</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="datasets">
+<h2>datasets<a class="headerlink" href="#datasets" title="Link to this heading">¶</a></h2>
+<p>These datasets ship with the plotnine and you can import them
+with from the <code class="docutils literal notranslate"><span class="pre">plotnine.data</span></code> sub-package.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.diamonds.html#plotnine.data.diamonds" title="plotnine.data.diamonds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diamonds</span></code></a></p></td>
+<td><p>Prices of 50,000 round cut diamonds</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.economics.html#plotnine.data.economics" title="plotnine.data.economics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">economics</span></code></a></p></td>
+<td><p>US economic time series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.economics_long.html#plotnine.data.economics_long" title="plotnine.data.economics_long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">economics_long</span></code></a></p></td>
+<td><p>US economic time series.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.faithful.html#plotnine.data.faithful" title="plotnine.data.faithful"><code class="xref py py-obj docutils literal notranslate"><span class="pre">faithful</span></code></a></p></td>
+<td><p>Old Faithful Geyser Data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.faithfuld.html#plotnine.data.faithfuld" title="plotnine.data.faithfuld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">faithfuld</span></code></a></p></td>
+<td><p>Old Faithful Geyser Data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.huron.html#plotnine.data.huron" title="plotnine.data.huron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">huron</span></code></a></p></td>
+<td><p>Level of Lake Huron 1875–1972</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.luv_colours.html#plotnine.data.luv_colours" title="plotnine.data.luv_colours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">luv_colours</span></code></a></p></td>
+<td><p>colors in Luv space.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.meat.html#plotnine.data.meat" title="plotnine.data.meat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meat</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.midwest.html#plotnine.data.midwest" title="plotnine.data.midwest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">midwest</span></code></a></p></td>
+<td><p>Midwest demographics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.mpg.html#plotnine.data.mpg" title="plotnine.data.mpg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mpg</span></code></a></p></td>
+<td><p>Fuel economy data from 1999 and 2008 for 38 popular models of car</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.msleep.html#plotnine.data.msleep" title="plotnine.data.msleep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">msleep</span></code></a></p></td>
+<td><p>An updated and expanded version of the mammals sleep dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.mtcars.html#plotnine.data.mtcars" title="plotnine.data.mtcars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mtcars</span></code></a></p></td>
+<td><p>Motor Trend Car Road Tests</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.pageviews.html#plotnine.data.pageviews" title="plotnine.data.pageviews"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pageviews</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.presidential.html#plotnine.data.presidential" title="plotnine.data.presidential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">presidential</span></code></a></p></td>
+<td><p>Terms of 11 presidents from Eisenhower to Obama.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/plotnine.data.seals.html#plotnine.data.seals" title="plotnine.data.seals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seals</span></code></a></p></td>
+<td><p>Vector field of seal movements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/plotnine.data.txhousing.html#plotnine.data.txhousing" title="plotnine.data.txhousing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">txhousing</span></code></a></p></td>
+<td><p>Housing sales in TX.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="_sources/api.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

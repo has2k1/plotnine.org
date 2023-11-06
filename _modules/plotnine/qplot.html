@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.qplot &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739a9dc4" />
+    <script src="../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../api.html">API</a></li>
+                <li><a href="../../gallery.html">Gallery</a></li>
+                <li><a href="../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.qplot</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span><span class="p">,</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">.facets</span> <span class="kn">import</span> <span class="n">facet_grid</span><span class="p">,</span> <span class="n">facet_null</span><span class="p">,</span> <span class="n">facet_wrap</span>
+<span class="kn">from</span> <span class="nn">.facets.facet_grid</span> <span class="kn">import</span> <span class="n">parse_grid_facets</span>
+<span class="kn">from</span> <span class="nn">.facets.facet_wrap</span> <span class="kn">import</span> <span class="n">parse_wrap_facets</span>
+<span class="kn">from</span> <span class="nn">.ggplot</span> <span class="kn">import</span> <span class="n">ggplot</span>
+<span class="kn">from</span> <span class="nn">.labels</span> <span class="kn">import</span> <span class="n">labs</span>
+<span class="kn">from</span> <span class="nn">.mapping.aes</span> <span class="kn">import</span> <span class="n">ALL_AESTHETICS</span><span class="p">,</span> <span class="n">SCALED_AESTHETICS</span><span class="p">,</span> <span class="n">aes</span>
+<span class="kn">from</span> <span class="nn">.scales</span> <span class="kn">import</span> <span class="n">lims</span><span class="p">,</span> <span class="n">scale_x_log10</span><span class="p">,</span> <span class="n">scale_y_log10</span>
+<span class="kn">from</span> <span class="nn">.themes</span> <span class="kn">import</span> <span class="n">theme</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Registry</span><span class="p">,</span> <span class="n">array_kind</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Literal</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="n">DataLike</span><span class="p">,</span> <span class="n">Ggplot</span><span class="p">,</span> <span class="n">TupleFloat2</span>
+
+
+<div class="viewcode-block" id="qplot">
+<a class="viewcode-back" href="../../generated/plotnine.qplot.html#plotnine.qplot">[docs]</a>
+<span class="k">def</span> <span class="nf">qplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">range</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">range</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">DataLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">facets</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">margins</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">geom</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">log</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;xy&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">main</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">xlab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">asp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ggplot</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Quick plot</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : str | array_like</span>
+<span class="sd">        x aesthetic</span>
+<span class="sd">    y : str | array_like</span>
+<span class="sd">        y aesthetic</span>
+<span class="sd">    data : dataframe</span>
+<span class="sd">        Data frame to use (optional). If not specified,</span>
+<span class="sd">        will create one, extracting arrays from the</span>
+<span class="sd">        current environment.</span>
+<span class="sd">    geom : str | list</span>
+<span class="sd">        *geom(s)* to do the drawing. If ``auto``, defaults</span>
+<span class="sd">        to &#39;point&#39; if ``x`` and ``y`` are specified or</span>
+<span class="sd">        &#39;histogram&#39; if only ``x`` is specified.</span>
+<span class="sd">    facets : str</span>
+<span class="sd">        Facets</span>
+<span class="sd">    margins : bool | list[str]</span>
+<span class="sd">        variable names to compute margins for. True will compute</span>
+<span class="sd">        all possible margins. Depends on the facetting.</span>
+<span class="sd">    xlim : tuple</span>
+<span class="sd">        x-axis limits</span>
+<span class="sd">    ylim : tuple</span>
+<span class="sd">        y-axis limits</span>
+<span class="sd">    log : str in ``{&#39;x&#39;, &#39;y&#39;, &#39;xy&#39;}``</span>
+<span class="sd">        Which (if any) variables to log transform.</span>
+<span class="sd">    main : str</span>
+<span class="sd">        Plot title</span>
+<span class="sd">    xlab : str</span>
+<span class="sd">        x-axis label</span>
+<span class="sd">    ylab : str</span>
+<span class="sd">        y-axis label</span>
+<span class="sd">    asp : str | float</span>
+<span class="sd">        The y/x aspect ratio.</span>
+<span class="sd">    **kwargs : dict</span>
+<span class="sd">        Arguments passed on to the geom.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    p : ggplot</span>
+<span class="sd">        ggplot object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">patsy.eval</span> <span class="kn">import</span> <span class="n">EvalEnvironment</span>
+
+    <span class="c1"># Extract all recognizable aesthetic mappings from the parameters</span>
+    <span class="c1"># String values e.g  &quot;I(&#39;red&#39;)&quot;, &quot;I(4)&quot; are not treated as mappings</span>
+    <span class="n">environment</span> <span class="o">=</span> <span class="n">EvalEnvironment</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">aesthetics</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">is_mapping</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return True if value is not enclosed in I() function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;I(&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">I</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="n">I_env</span> <span class="o">=</span> <span class="n">EvalEnvironment</span><span class="p">([{</span><span class="s2">&quot;I&quot;</span><span class="p">:</span> <span class="n">I</span><span class="p">}])</span>
+
+    <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">ALL_AESTHETICS</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">is_mapping</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">aesthetics</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">I_env</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="c1"># List of geoms</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="p">[</span><span class="n">geom</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="c1"># Work out plot data, and modify aesthetics, if necessary</span>
+    <span class="k">def</span> <span class="nf">replace_auto</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">str2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace all occurences of &#39;auto&#39; in with str2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+                <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">str2</span>
+        <span class="k">return</span> <span class="n">lst</span>
+
+    <span class="k">if</span> <span class="s2">&quot;auto&quot;</span> <span class="ow">in</span> <span class="n">geom</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;sample&quot;</span> <span class="ow">in</span> <span class="n">aesthetics</span><span class="p">:</span>
+            <span class="n">replace_auto</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="s2">&quot;qq&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># If x is discrete we choose geom_bar &amp;</span>
+            <span class="c1"># geom_histogram otherwise. But we need to</span>
+            <span class="c1"># evaluate the mapping to find out the dtype</span>
+            <span class="n">env</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">with_outer_namespace</span><span class="p">({</span><span class="s2">&quot;factor&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">})</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">inner_namespace</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Could not evaluate aesthetic &#39;x=</span><span class="si">{}</span><span class="s2">&#39;&quot;</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]))</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="s2">&quot;dtype&quot;</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">array_kind</span><span class="o">.</span><span class="n">discrete</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="n">replace_auto</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">replace_auto</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="s2">&quot;histogram&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sized</span><span class="p">):</span>
+                    <span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aesthetics</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]))</span>
+                    <span class="n">xlab</span> <span class="o">=</span> <span class="s2">&quot;range(len(y))&quot;</span>
+                    <span class="n">ylab</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># We could solve the issue in layer.compute_asthetics</span>
+                    <span class="c1"># but it is not worth the extra complexity</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Cannot infer how long x should be.&quot;</span><span class="p">)</span>
+            <span class="n">replace_auto</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="s2">&quot;point&quot;</span><span class="p">)</span>
+
+    <span class="n">p</span><span class="p">:</span> <span class="n">Ggplot</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="o">**</span><span class="n">aesthetics</span><span class="p">),</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_facet_type</span><span class="p">(</span><span class="n">facets</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span> <span class="s2">&quot;wrap&quot;</span><span class="p">,</span> <span class="s2">&quot;null&quot;</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">PlotnineError</span><span class="p">):</span>
+            <span class="n">parse_grid_facets</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;grid&quot;</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">PlotnineError</span><span class="p">):</span>
+            <span class="n">parse_wrap_facets</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;wrap&quot;</span>
+
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Could not determine the type of faceting, &quot;</span>
+            <span class="s2">&quot;therefore no faceting.&quot;</span><span class="p">,</span>
+            <span class="n">PlotnineWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;null&quot;</span>
+
+    <span class="k">if</span> <span class="n">facets</span><span class="p">:</span>
+        <span class="n">facet_type</span> <span class="o">=</span> <span class="n">get_facet_type</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">facet_type</span> <span class="o">==</span> <span class="s2">&quot;grid&quot;</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">+=</span> <span class="n">facet_grid</span><span class="p">(</span><span class="n">facets</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="n">margins</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">facet_type</span> <span class="o">==</span> <span class="s2">&quot;wrap&quot;</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">+=</span> <span class="n">facet_wrap</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">+=</span> <span class="n">facet_null</span><span class="p">()</span>
+
+    <span class="c1"># Add geoms</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">geom</span><span class="p">:</span>
+        <span class="n">geom_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;geom_</span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">geom_klass</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">[</span><span class="n">geom_name</span><span class="p">]</span>
+        <span class="n">stat_name</span> <span class="o">=</span> <span class="s2">&quot;stat_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geom_klass</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="p">[</span><span class="s2">&quot;stat&quot;</span><span class="p">])</span>
+        <span class="n">stat_klass</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">[</span><span class="n">stat_name</span><span class="p">]</span>
+        <span class="c1"># find params</span>
+        <span class="n">recognized</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span>
+            <span class="n">geom_klass</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="o">|</span> <span class="n">geom_klass</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span>
+            <span class="o">|</span> <span class="n">stat_klass</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="o">|</span> <span class="n">stat_klass</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">recognized</span> <span class="o">=</span> <span class="n">recognized</span> <span class="o">-</span> <span class="n">aesthetics</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">ae</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">recognized</span><span class="p">}</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">geom_klass</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="c1"># pd.Series objects have name attributes. In a dataframe, the</span>
+    <span class="c1"># series have the name of the column.</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">SCALED_AESTHETICS</span> <span class="o">&amp;</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+        <span class="n">labels</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xlab</span> <span class="k">if</span> <span class="n">xlab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+        <span class="n">labels</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ylab</span> <span class="k">if</span> <span class="n">ylab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">y</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">if</span> <span class="n">main</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">labels</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">main</span>
+
+    <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;x&quot;</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">+=</span> <span class="n">scale_x_log10</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s2">&quot;y&quot;</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">+=</span> <span class="n">scale_y_log10</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">labs</span><span class="p">(</span><span class="o">**</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">asp</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">theme</span><span class="p">(</span><span class="n">aspect_ratio</span><span class="o">=</span><span class="n">asp</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">xlim</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">lims</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xlim</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ylim</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">lims</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">p</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

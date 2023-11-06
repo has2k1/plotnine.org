@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.animation &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=739a9dc4" />
+    <script src="../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../api.html">API</a></li>
+                <li><a href="../../gallery.html">Gallery</a></li>
+                <li><a href="../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.animation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">ArtistAnimation</span>
+
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Artist</span><span class="p">,</span>
+        <span class="n">Axes</span><span class="p">,</span>
+        <span class="n">Figure</span><span class="p">,</span>
+        <span class="n">Ggplot</span><span class="p">,</span>
+        <span class="n">Scale</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="PlotnineAnimation">
+<a class="viewcode-back" href="../../generated/plotnine.animation.PlotnineAnimation.html#plotnine.animation.PlotnineAnimation">[docs]</a>
+<span class="k">class</span> <span class="nc">PlotnineAnimation</span><span class="p">(</span><span class="n">ArtistAnimation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Animation using ggplot objects</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    plots : iterable</span>
+<span class="sd">        ggplot objects that make up the the frames of the animation</span>
+<span class="sd">    interval : number, optional</span>
+<span class="sd">       Delay between frames in milliseconds. Defaults to 200.</span>
+<span class="sd">    repeat_delay : number, optional</span>
+<span class="sd">        If the animation in repeated, adds a delay in milliseconds</span>
+<span class="sd">        before repeating the animation. Defaults to `None`.</span>
+<span class="sd">    repeat : bool, optional</span>
+<span class="sd">        Controls whether the animation should repeat when the sequence</span>
+<span class="sd">        of frames is completed. Defaults to `True`.</span>
+<span class="sd">    blit : bool, optional</span>
+<span class="sd">        Controls whether blitting is used to optimize drawing. Defaults</span>
+<span class="sd">        to `False`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    1. The plots should have the same `facet` and</span>
+<span class="sd">       the facet should not have fixed x and y scales.</span>
+<span class="sd">    2. The scales of all the plots should have the same limits. It is</span>
+<span class="sd">       a good idea to create a scale (with limits) for each aesthetic</span>
+<span class="sd">       and add them to all the plots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">plots</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Ggplot</span><span class="p">],</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="n">repeat_delay</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">repeat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">blit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">figure</span><span class="p">,</span> <span class="n">artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draw_plots</span><span class="p">(</span><span class="n">plots</span><span class="p">)</span>
+        <span class="n">ArtistAnimation</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">figure</span><span class="p">,</span>
+            <span class="n">artists</span><span class="p">,</span>
+            <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+            <span class="n">repeat_delay</span><span class="o">=</span><span class="n">repeat_delay</span><span class="p">,</span>
+            <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span>
+            <span class="n">blit</span><span class="o">=</span><span class="n">blit</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_plots</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">plots</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Ggplot</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Figure</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Artist</span><span class="p">]]]:</span>
+        <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s2">&quot;mode.chained_assignment&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__draw_plots</span><span class="p">(</span><span class="n">plots</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__draw_plots</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">plots</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Ggplot</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Figure</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Artist</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot and return the figure and artists</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        plots : iterable</span>
+<span class="sd">            ggplot objects that make up the the frames of the animation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        figure : matplotlib.figure.Figure</span>
+<span class="sd">            Matplotlib figure</span>
+<span class="sd">        artists : list</span>
+<span class="sd">            List of :class:`Matplotlib.artist.Artist`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+        <span class="c1"># For keeping track of artists for each frame</span>
+        <span class="n">artist_offsets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;collections&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;patches&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;texts&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;artists&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">}</span>
+
+        <span class="n">scale_limits</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">def</span> <span class="nf">initialise_artist_offsets</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Initilise artists_offsets arrays to zero</span>
+
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            n : int</span>
+<span class="sd">                Number of axes to initialise artists for.</span>
+<span class="sd">                The artists for each axes are tracked separately.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">artist_type</span> <span class="ow">in</span> <span class="n">artist_offsets</span><span class="p">:</span>
+                <span class="n">artist_offsets</span><span class="p">[</span><span class="n">artist_type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="k">def</span> <span class="nf">get_frame_artists</span><span class="p">(</span><span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Artist</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Artists shown in a given frame</span>
+
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            axs : list[Axes]</span>
+<span class="sd">                Matplotlib axes that have had artists added</span>
+<span class="sd">                to them.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c1"># The axes accumulate artists for all frames</span>
+            <span class="c1"># For each frame we pickup the newly added artists</span>
+            <span class="c1"># We use offsets to mark the end of the previous frame</span>
+            <span class="c1"># e.g ax.collections[start:]</span>
+            <span class="n">frame_artists</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">artist_offsets</span><span class="p">:</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="n">artist_offsets</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+                    <span class="n">new_artists</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">name</span><span class="p">)[</span><span class="n">start</span><span class="p">:]</span>
+                    <span class="n">frame_artists</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_artists</span><span class="p">)</span>
+                    <span class="n">artist_offsets</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_artists</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">frame_artists</span>
+
+        <span class="k">def</span> <span class="nf">set_scale_limits</span><span class="p">(</span><span class="n">scales</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Scale</span><span class="p">]):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Set limits of all the scales in the animation</span>
+
+<span class="sd">            Should be called before :func:`check_scale_limits`.</span>
+
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            scales : list[scales]</span>
+<span class="sd">                List of scales the have been used in building a</span>
+<span class="sd">                ggplot object.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">scales</span><span class="p">:</span>
+                <span class="n">ae</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">scale_limits</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">def</span> <span class="nf">check_scale_limits</span><span class="p">(</span><span class="n">scales</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Scale</span><span class="p">],</span> <span class="n">frame_no</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Check limits of the scales of a plot in the animation</span>
+
+<span class="sd">            Raises a PlotnineError if any of the scales has limits</span>
+<span class="sd">            that do not match those of the first plot/frame.</span>
+
+<span class="sd">            Should be called after :func:`set_scale_limits`.</span>
+
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            scales : list[scales]</span>
+<span class="sd">                List of scales the have been used in building a</span>
+<span class="sd">                ggplot object.</span>
+
+<span class="sd">            frame_no : int</span>
+<span class="sd">                Frame number</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_limits</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">scales</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                    <span class="s2">&quot;All plots must have the same number of scales &quot;</span>
+                    <span class="s2">&quot;as the first plot of the animation.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">scales</span><span class="p">:</span>
+                <span class="n">ae</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">ae</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">scale_limits</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The plot for frame </span><span class="si">{</span><span class="n">frame_no</span><span class="si">}</span><span class="s2"> does not &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;have a scale for the </span><span class="si">{</span><span class="n">ae</span><span class="si">}</span><span class="s2"> aesthetic.&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="n">sc</span><span class="o">.</span><span class="n">limits</span> <span class="o">!=</span> <span class="n">scale_limits</span><span class="p">[</span><span class="n">ae</span><span class="p">]:</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">ae</span><span class="si">}</span><span class="s2"> scale of plot for frame </span><span class="si">{</span><span class="n">frame_no</span><span class="si">}</span><span class="s2"> has &quot;</span>
+                        <span class="s2">&quot;different limits from those of the first frame.&quot;</span>
+                    <span class="p">)</span>
+
+        <span class="n">figure</span><span class="p">:</span> <span class="n">Figure</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">axs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">artists</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">scales</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Will hold the scales of the first frame</span>
+
+        <span class="c1"># The first ggplot creates the figure, axes and the initial</span>
+        <span class="c1"># frame of the animation. The rest of the ggplots draw</span>
+        <span class="c1"># onto the figure and axes created by the first ggplot and</span>
+        <span class="c1"># they create the subsequent frames.</span>
+        <span class="k">for</span> <span class="n">frame_no</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plots</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">figure</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">figure</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+                <span class="n">axs</span> <span class="o">=</span> <span class="n">figure</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()</span>  <span class="c1"># pyright: ignore</span>
+                <span class="n">initialise_artist_offsets</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axs</span><span class="p">))</span>
+                <span class="n">scales</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">_build_objs</span><span class="o">.</span><span class="n">scales</span>
+                <span class="n">set_scale_limits</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">plot</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">_draw_using_figure</span><span class="p">(</span><span class="n">figure</span><span class="p">,</span> <span class="n">axs</span><span class="p">)</span>
+                <span class="n">check_scale_limits</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">frame_no</span><span class="p">)</span>
+            <span class="n">artists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_frame_artists</span><span class="p">(</span><span class="n">axs</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">figure</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># pyright: ignore</span>
+
+        <span class="k">assert</span> <span class="n">figure</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="c1"># Prevent Jupyter from plotting any static figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">figure</span><span class="p">,</span> <span class="n">artists</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

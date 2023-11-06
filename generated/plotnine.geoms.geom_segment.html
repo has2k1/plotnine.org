@@ -1,0 +1,5732 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotnine.geoms.geom_segment &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="plotnine.geoms.geom_sina" href="plotnine.geoms.geom_sina.html" />
+    <link rel="prev" title="plotnine.geoms.geom_rug" href="plotnine.geoms.geom_rug.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">plotnine.geoms.geom_segment</a><ul>
+<li><a class="reference internal" href="#plotnine.geoms.geom_segment"><code class="docutils literal notranslate"><span class="pre">geom_segment</span></code></a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#ranges-of-similar-variables">Ranges of Similar Variables</a></li>
+<li><a class="reference internal" href="#change-in-rank">Change in Rank</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="plotnine-geoms-geom-segment">
+<h1>plotnine.geoms.geom_segment<a class="headerlink" href="#plotnine-geoms-geom-segment" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="plotnine.geoms.geom_segment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">plotnine.geoms.</span></span><span class="sig-name descname"><span class="pre">geom_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Aes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom_segment.html#geom_segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom_segment" title="Link to this definition">¶</a></dt>
+<dd><p>Line segments</p>
+<p class="rubric">Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geom_segment</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span>
+             <span class="n">na_rm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inherit_aes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raster</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">lineend</span><span class="o">=</span><span class="s1">&#39;butt&#39;</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">mapping</span></code> can be positional, the rest must
+be keyword arguments. <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> can be aesthetics (or parameters)
+used by the <code class="docutils literal notranslate"><span class="pre">stat</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aes</span></code>, optional</span></dt><dd><p>Aesthetic mappings created with <code class="xref py py-meth docutils literal notranslate"><span class="pre">aes()</span></code>. If specified and <code class="code python docutils literal notranslate"><span class="n"><span class="pre">inherit</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">aes</span></span><span class="o"><span class="pre">=</span></span><span class="kc"><span class="pre">True</span></span></code>, it is combined with the default mapping for the plot. You must supply mapping if there is no plot mapping.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aesthetic</p></th>
+<th class="head"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>x</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>xend</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>y</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>yend</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>alpha</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="mi"><span class="pre">1</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>color</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="s1"><span class="pre">'black'</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>group</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>linetype</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="s1"><span class="pre">'solid'</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>size</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="mf"><span class="pre">0.5</span></span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>bold</strong> aesthetics are required.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a>, optional</span></dt><dd><p>The data to be displayed in this layer. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code>, the data from from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call is used. If specified, it overrides the data from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call.</p>
+</dd>
+<dt><strong>stat</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-stat"><span class="xref std std-term">stat</span></a>, optional (default: <a class="reference internal" href="plotnine.stats.stat_identity.html#plotnine.stats.stat_identity" title="plotnine.stats.stat_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_identity</span></code></a>)</span></dt><dd><p>The statistical transformation to use on the data for this layer. If it is a string, it must be the registered and known to Plotnine.</p>
+</dd>
+<dt><strong>position</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-position"><span class="xref std std-term">position</span></a>, optional (default: <a class="reference internal" href="plotnine.positions.position_identity.html#plotnine.positions.position_identity" title="plotnine.positions.position_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_identity</span></code></a>)</span></dt><dd><p>Position adjustment. If it is a string, it must be registered and known to Plotnine.</p>
+</dd>
+<dt><strong>na_rm</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code>, removes missing values with a warning. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> silently removes missing values.</p>
+</dd>
+<dt><strong>inherit_aes</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">True</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code>, overrides the default aesthetics.</p>
+</dd>
+<dt><strong>show_legend</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>)</span></dt><dd><p>Whether this layer should be included in the legends. <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code> the default, includes any aesthetics that are mapped. If a <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code> never includes and <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> always includes. A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> can be used to <em>exclude</em> specific aesthetis of the layer from showing in the legend. e.g <code class="code python docutils literal notranslate"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="p"><span class="pre">{</span></span><span class="s1"><span class="pre">'color'</span></span><span class="p"><span class="pre">:</span></span> <span class="kc"><span class="pre">False</span></span><span class="p"><span class="pre">}</span></span></code>, any other aesthetic are included by default.</p>
+</dd>
+<dt><strong>raster</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, draw onto this layer a raster (bitmap) object even ifthe final image is in vector format.</p>
+</dd>
+<dt><strong>lineend</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> (default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">butt</span></code>)</span></dt><dd><p>Line end style, of of <em>butt</em>, <em>round</em> or <em>projecting.</em>
+This option is applied for solid linetypes.</p>
+</dd>
+<dt><strong>arrow</strong><span class="classifier"><a class="reference internal" href="plotnine.geoms.arrow.html#plotnine.geoms.arrow" title="plotnine.geoms.geom_path.arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotnine.geoms.geom_path.arrow</span></code></a> (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>)</span></dt><dd><p>Arrow specification. Default is no arrow.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="plotnine.geoms.arrow.html#plotnine.geoms.arrow" title="plotnine.geoms.geom_path.arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotnine.geoms.geom_path.arrow</span></code></a></dt><dd><p>for adding arrowhead(s) to segments.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: This notebook uses the polars package</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas.api.types</span> <span class="k">as</span> <span class="nn">pdtypes</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">polars</span> <span class="kn">import</span> <span class="n">col</span>
+</pre></div>
+</div>
+</div>
+<section id="ranges-of-similar-variables">
+<h3>Ranges of Similar Variables<a class="headerlink" href="#ranges-of-similar-variables" title="Link to this heading">¶</a></h3>
+<p><em>Comparing the point to point difference of many similar variables</em></p>
+<p>Read the data.</p>
+<p>Source: Pew Research Global Attitudes Spring 2015</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="s1">&#39;data/survey-social-media.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+PSRAID,COUNTRY,Q145,Q146,Q70,Q74
+100000,Ethiopia,Female,35,No,
+100001,Ethiopia,Female,25,No,
+100002,Ethiopia,Male,40,Don’t know,
+100003,Ethiopia,Female,30,Don’t know,
+100004,Ethiopia,Male,22,No,
+100005,Ethiopia,Male,40,No,
+100006,Ethiopia,Female,20,No,
+100007,Ethiopia,Female,18,No,No
+100008,Ethiopia,Male,50,No,
+100009,Ethiopia,Male,35,No,
+100010,Ethiopia,Female,20,No,
+100011,Ethiopia,Female,30,Don’t know,
+100012,Ethiopia,Male,60,No,
+100013,Ethiopia,Male,18,No,
+100014,Ethiopia,Male,40,No,
+100015,Ethiopia,Male,28,Don’t know,
+100016,Ethiopia,Female,55,Don’t know,
+100017,Ethiopia,Male,30,Don’t know,
+100018,Ethiopia,Female,22,No,
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">COUNTRY</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span>
+    <span class="n">Q145</span><span class="o">=</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span>
+    <span class="n">Q146</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span>
+    <span class="n">Q70</span><span class="o">=</span><span class="s1">&#39;use_internet&#39;</span><span class="p">,</span>
+    <span class="n">Q74</span><span class="o">=</span><span class="s1">&#39;use_social_media&#39;</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">scan_csv</span><span class="p">(</span>
+    <span class="s1">&#39;data/survey-social-media.csv&#39;</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">Q146</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span>
+<span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">([</span>
+    <span class="s1">&#39;country&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;use_social_media&#39;</span>
+<span class="p">])</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (10, 3)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+age
+</th>
+<th>
+use_social_media
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+str
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Venezuela&quot;
+</td>
+<td>
+&quot;47&quot;
+</td>
+<td>
+&quot;Yes&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Israel&quot;
+</td>
+<td>
+&quot;63&quot;
+</td>
+<td>
+&quot; &quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Germany&quot;
+</td>
+<td>
+&quot;60&quot;
+</td>
+<td>
+&quot;Yes&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;France&quot;
+</td>
+<td>
+&quot;60&quot;
+</td>
+<td>
+&quot;No&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Philippines&quot;
+</td>
+<td>
+&quot;25&quot;
+</td>
+<td>
+&quot; &quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;China&quot;
+</td>
+<td>
+&quot;40&quot;
+</td>
+<td>
+&quot; &quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Senegal&quot;
+</td>
+<td>
+&quot;20&quot;
+</td>
+<td>
+&quot; &quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Argentina&quot;
+</td>
+<td>
+&quot;47&quot;
+</td>
+<td>
+&quot;Yes&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;India&quot;
+</td>
+<td>
+&quot;53&quot;
+</td>
+<td>
+&quot;No&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Jordan&quot;
+</td>
+<td>
+&quot;24&quot;
+</td>
+<td>
+&quot; &quot;
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Create age groups for users of social media</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yes_no</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">]</span>
+<span class="n">valid_age_groups</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;18-34&#39;</span><span class="p">,</span> <span class="s1">&#39;35-49&#39;</span><span class="p">,</span> <span class="s1">&#39;50+&#39;</span><span class="p">]</span>
+
+<span class="n">rdata</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+    <span class="n">pl</span>
+    <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;34&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="s1">&#39;18-34&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;49&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="s1">&#39;35-49&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="s1">&#39;98&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="s1">&#39;50+&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;country_count&#39;</span><span class="p">)</span>
+<span class="p">])</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">valid_age_groups</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;use_social_media&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">yes_no</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;age_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
+    <span class="c1"># social media use percentage</span>
+    <span class="p">((</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;use_social_media&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">pl</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">),</span>
+
+    <span class="c1"># social media question response rate</span>
+    <span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;use_social_media&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">yes_no</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;country_count&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;smq_response_rate&#39;</span><span class="p">)</span>
+<span class="p">])</span><span class="o">.</span><span class="n">sort</span><span class="p">([</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;age_group&#39;</span><span class="p">])</span>
+
+<span class="n">rdata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 4)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+age_group
+</th>
+<th>
+sm_use_percent
+</th>
+<th>
+smq_response_rate
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Argentina&quot;
+</td>
+<td>
+&quot;18-34&quot;
+</td>
+<td>
+90.883191
+</td>
+<td>
+35.1
+</td>
+</tr>
+<tr>
+<td>
+&quot;Argentina&quot;
+</td>
+<td>
+&quot;35-49&quot;
+</td>
+<td>
+84.40367
+</td>
+<td>
+21.8
+</td>
+</tr>
+<tr>
+<td>
+&quot;Argentina&quot;
+</td>
+<td>
+&quot;50+&quot;
+</td>
+<td>
+67.333333
+</td>
+<td>
+15.0
+</td>
+</tr>
+<tr>
+<td>
+&quot;Australia&quot;
+</td>
+<td>
+&quot;18-34&quot;
+</td>
+<td>
+90.862944
+</td>
+<td>
+19.621514
+</td>
+</tr>
+<tr>
+<td>
+&quot;Australia&quot;
+</td>
+<td>
+&quot;35-49&quot;
+</td>
+<td>
+78.04878
+</td>
+<td>
+20.418327
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Top 14 countries by response rate to the social media question.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">col_format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fmt</span><span class="p">):</span>
+    <span class="c1"># Format useing python formating</span>
+    <span class="c1"># for more control over</span>
+    <span class="k">return</span> <span class="n">col</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">float_to_str_round</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">col_format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{x:.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="n">top</span> <span class="o">=</span> <span class="n">rdata</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;smq_response_rate&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="p">])</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">top_countries</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+
+<span class="n">expr</span> <span class="o">=</span> <span class="n">float_to_str_round</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">)</span>
+<span class="n">expr_pct</span> <span class="o">=</span> <span class="n">expr</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span>
+
+<span class="n">point_data</span> <span class="o">=</span> <span class="n">rdata</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;France&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">expr_pct</span><span class="p">)</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">point_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 5)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+age_group
+</th>
+<th>
+sm_use_percent
+</th>
+<th>
+smq_response_rate
+</th>
+<th>
+sm_use_percent_str
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+str
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Australia&quot;
+</td>
+<td>
+&quot;18-34&quot;
+</td>
+<td>
+90.862944
+</td>
+<td>
+19.621514
+</td>
+<td>
+&quot;91&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Australia&quot;
+</td>
+<td>
+&quot;35-49&quot;
+</td>
+<td>
+78.04878
+</td>
+<td>
+20.418327
+</td>
+<td>
+&quot;78&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Australia&quot;
+</td>
+<td>
+&quot;50+&quot;
+</td>
+<td>
+48.479087
+</td>
+<td>
+52.390438
+</td>
+<td>
+&quot;48&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Canada&quot;
+</td>
+<td>
+&quot;18-34&quot;
+</td>
+<td>
+92.063492
+</td>
+<td>
+25.099602
+</td>
+<td>
+&quot;92&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Canada&quot;
+</td>
+<td>
+&quot;35-49&quot;
+</td>
+<td>
+75.925926
+</td>
+<td>
+21.513944
+</td>
+<td>
+&quot;76&quot;
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segment_data</span> <span class="o">=</span> <span class="n">point_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">),</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">),</span>
+<span class="p">])</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;gap&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
+    <span class="s1">&#39;gap&#39;</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+    <span class="n">float_to_str_round</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;min_str&#39;</span><span class="p">),</span>
+    <span class="n">float_to_str_round</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;max_str&#39;</span><span class="p">),</span>
+    <span class="n">float_to_str_round</span><span class="p">(</span><span class="s1">&#39;gap&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;gap_str&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">segment_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 7)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+min
+</th>
+<th>
+max
+</th>
+<th>
+gap
+</th>
+<th>
+min_str
+</th>
+<th>
+max_str
+</th>
+<th>
+gap_str
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+str
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Russia&quot;
+</td>
+<td>
+76.07362
+</td>
+<td>
+95.151515
+</td>
+<td>
+19.077896
+</td>
+<td>
+&quot;76&quot;
+</td>
+<td>
+&quot;95&quot;
+</td>
+<td>
+&quot;19&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Israel&quot;
+</td>
+<td>
+55.405405
+</td>
+<td>
+88.311688
+</td>
+<td>
+32.906283
+</td>
+<td>
+&quot;55&quot;
+</td>
+<td>
+&quot;88&quot;
+</td>
+<td>
+&quot;33&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;United Kingdom...
+</td>
+<td>
+52.74463
+</td>
+<td>
+86.096257
+</td>
+<td>
+33.351627
+</td>
+<td>
+&quot;53&quot;
+</td>
+<td>
+&quot;86&quot;
+</td>
+<td>
+&quot;33&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;United States&quot;
+</td>
+<td>
+52.597403
+</td>
+<td>
+88.669951
+</td>
+<td>
+36.072548
+</td>
+<td>
+&quot;53&quot;
+</td>
+<td>
+&quot;89&quot;
+</td>
+<td>
+&quot;36&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Canada&quot;
+</td>
+<td>
+53.986333
+</td>
+<td>
+92.063492
+</td>
+<td>
+38.077159
+</td>
+<td>
+&quot;54&quot;
+</td>
+<td>
+&quot;92&quot;
+</td>
+<td>
+&quot;38&quot;
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Format the floating point data that will be plotted into strings</p>
+<p>Set the order of the countries along the y-axis by setting the <code class="docutils literal notranslate"><span class="pre">country</span></code> variable to an ordered categorical.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_expr</span> <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">)</span>
+<span class="n">segment_data</span> <span class="o">=</span> <span class="n">segment_data</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span><span class="n">country_expr</span><span class="p">)</span>
+<span class="n">point_data</span> <span class="o">=</span> <span class="n">point_data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">country_expr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>First plot</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The right column (youngest-oldest gap) location</span>
+<span class="n">xgap</span> <span class="o">=</span> <span class="mi">112</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">()</span>
+ <span class="c1"># Range strip</span>
+ <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#a7a9ac&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># Age group markers</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+     <span class="n">stroke</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+ <span class="p">)</span>
+ <span class="c1"># Age group percentages</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;50+&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent-2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
+ <span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;35-49&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent+2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+     <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span>
+ <span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;18-34&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent+2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+ <span class="p">)</span>
+ <span class="c1"># gap difference</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xgap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;gap_str&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+     <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+     <span class="n">format_string</span><span class="o">=</span><span class="s1">&#39;+</span><span class="si">{}</span><span class="s1">&#39;</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_segment_14_0.png" class="no-scaled-link" src="../_images/geom_segment_14_0.png" style="width: 766px; height: 429px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ggplot: (328973255)&gt;
+</pre></div></div>
+</div>
+<p>Tweak it</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The right column (youngest-oldest gap) location</span>
+<span class="n">xgap</span> <span class="o">=</span> <span class="mi">115</span>
+
+<span class="c1"># Gallery Plot</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">()</span>
+ <span class="c1"># Background Strips                                     # new</span>
+ <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span>
+     <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+     <span class="n">size</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#edece3&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># vertical grid lines along the strips                  # new</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span>
+     <span class="s1">&#39;segment&#39;</span><span class="p">,</span>
+     <span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span>
+     <span class="n">xend</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span>
+     <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">9</span><span class="p">)</span><span class="o">-</span><span class="mf">.25</span><span class="p">,</span>
+     <span class="n">yend</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">9</span><span class="p">)</span> <span class="o">+</span> <span class="mf">.25</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#CCCCCC&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># Range strip</span>
+ <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#a7a9ac&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># Age group markers</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;sm_use_percent&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+     <span class="n">stroke</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+ <span class="p">)</span>
+ <span class="c1"># Age group percentages</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;50+&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent-2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+ <span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;35-49&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent+2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+     <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span>
+ <span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">point_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;18-34&quot;</span><span class="p">),</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sm_use_percent+2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sm_use_percent_str&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+ <span class="p">)</span>
+ <span class="c1"># countries right-hand-size (instead of y-axis)         # new</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span>
+     <span class="n">x</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+     <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+     <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#222222&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># gap difference</span>
+ <span class="o">+</span> <span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="n">xgap</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#edece3&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># new</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span>
+     <span class="n">segment_data</span><span class="p">,</span>
+     <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xgap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;gap_str&#39;</span><span class="p">),</span>
+     <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+     <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+     <span class="n">format_string</span><span class="o">=</span><span class="s1">&#39;+</span><span class="si">{}</span><span class="s1">&#39;</span>
+ <span class="p">)</span>
+ <span class="c1"># Annotations                                            # new</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;50+&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ea9f2f&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;35-49&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#6d6e71&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">85</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;18-34&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#939c49&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xgap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Youngest-</span><span class="se">\n</span><span class="s1">Oldest Gap&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#444444&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;point&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">.3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="n">xend</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">.3</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mf">.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;hline&#39;</span><span class="p">,</span> <span class="n">yintercept</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+ <span class="c1"># Better spacing and color                              # new</span>
+ <span class="o">+</span> <span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">18</span><span class="p">,</span> <span class="n">xgap</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_y_discrete</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#c3ca8c&#39;</span><span class="p">,</span> <span class="s1">&#39;#d1d3d4&#39;</span><span class="p">,</span> <span class="s1">&#39;#f2c480&#39;</span><span class="p">])</span>
+ <span class="o">+</span> <span class="n">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#939c49&#39;</span><span class="p">,</span> <span class="s1">&#39;#6d6e71&#39;</span><span class="p">,</span> <span class="s1">&#39;#ea9f2f&#39;</span><span class="p">])</span>
+ <span class="o">+</span> <span class="n">guides</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">theme_void</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_segment_16_0.png" class="no-scaled-link" src="../_images/geom_segment_16_0.png" style="width: 640px; height: 674px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ggplot: (330813074)&gt;
+</pre></div></div>
+</div>
+<p>Instead of looking at this plot as having a country variable on the <code class="docutils literal notranslate"><span class="pre">y-axis</span></code> and a percentage variable on the <code class="docutils literal notranslate"><span class="pre">x-axis</span></code>, we can view it as having vertically stacked up many <em>indepedent</em> variables, the values of which have a similar scale.</p>
+<p><strong>Protip:</strong> Save a pdf file.</p>
+</section>
+<section id="change-in-rank">
+<h3>Change in Rank<a class="headerlink" href="#change-in-rank" title="Link to this heading">¶</a></h3>
+<p><em>Comparing a group of ranked items at two different times</em></p>
+<p>Read the data.</p>
+<p>Source: World Bank - Infanct Mortality Rate (per 1,000 live births)b</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;data/API_SP.DYN.IMRT.IN_DS2_en_csv_v2/API_SP.DYN.IMRT.IN_DS2_en_csv_v2.csv&#39;</span><span class="p">,</span>
+    <span class="n">skip_rows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">null_values</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Columns as valid python variables</span>
+<span class="n">year_columns</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;y</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;19&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">}}</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span>
+    <span class="s1">&#39;Country Name&#39;</span><span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Country Code&#39;</span><span class="p">:</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">year_columns</span>
+<span class="p">})</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Indicator Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Indicator Code&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 59)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+code
+</th>
+<th>
+y1960
+</th>
+<th>
+y1961
+</th>
+<th>
+y1962
+</th>
+<th>
+y1963
+</th>
+<th>
+y1964
+</th>
+<th>
+y1965
+</th>
+<th>
+y1966
+</th>
+<th>
+y1967
+</th>
+<th>
+y1968
+</th>
+<th>
+y1969
+</th>
+<th>
+y1970
+</th>
+<th>
+y1971
+</th>
+<th>
+y1972
+</th>
+<th>
+y1973
+</th>
+<th>
+y1974
+</th>
+<th>
+y1975
+</th>
+<th>
+y1976
+</th>
+<th>
+y1977
+</th>
+<th>
+y1978
+</th>
+<th>
+y1979
+</th>
+<th>
+y1980
+</th>
+<th>
+y1981
+</th>
+<th>
+y1982
+</th>
+<th>
+y1983
+</th>
+<th>
+y1984
+</th>
+<th>
+y1985
+</th>
+<th>
+y1986
+</th>
+<th>
+y1987
+</th>
+<th>
+y1988
+</th>
+<th>
+y1989
+</th>
+<th>
+y1990
+</th>
+<th>
+y1991
+</th>
+<th>
+y1992
+</th>
+<th>
+y1993
+</th>
+<th>
+y1994
+</th>
+<th>
+y1995
+</th>
+<th>
+y1996
+</th>
+<th>
+y1997
+</th>
+<th>
+y1998
+</th>
+<th>
+y1999
+</th>
+<th>
+y2000
+</th>
+<th>
+y2001
+</th>
+<th>
+y2002
+</th>
+<th>
+y2003
+</th>
+<th>
+y2004
+</th>
+<th>
+y2005
+</th>
+<th>
+y2006
+</th>
+<th>
+y2007
+</th>
+<th>
+y2008
+</th>
+<th>
+y2009
+</th>
+<th>
+y2010
+</th>
+<th>
+y2011
+</th>
+<th>
+y2012
+</th>
+<th>
+y2013
+</th>
+<th>
+y2014
+</th>
+<th>
+y2015
+</th>
+<th>
+y2016
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+str
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Aruba&quot;
+</td>
+<td>
+&quot;ABW&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+</tr>
+<tr>
+<td>
+&quot;Afghanistan&quot;
+</td>
+<td>
+&quot;AFG&quot;
+</td>
+<td>
+null
+</td>
+<td>
+240.5
+</td>
+<td>
+236.3
+</td>
+<td>
+232.3
+</td>
+<td>
+228.5
+</td>
+<td>
+224.6
+</td>
+<td>
+220.7
+</td>
+<td>
+217.0
+</td>
+<td>
+213.3
+</td>
+<td>
+209.8
+</td>
+<td>
+206.1
+</td>
+<td>
+202.2
+</td>
+<td>
+198.2
+</td>
+<td>
+194.3
+</td>
+<td>
+190.3
+</td>
+<td>
+186.6
+</td>
+<td>
+182.6
+</td>
+<td>
+178.7
+</td>
+<td>
+174.5
+</td>
+<td>
+170.4
+</td>
+<td>
+166.1
+</td>
+<td>
+161.8
+</td>
+<td>
+157.5
+</td>
+<td>
+153.2
+</td>
+<td>
+148.7
+</td>
+<td>
+144.5
+</td>
+<td>
+140.2
+</td>
+<td>
+135.7
+</td>
+<td>
+131.3
+</td>
+<td>
+126.8
+</td>
+<td>
+122.5
+</td>
+<td>
+118.3
+</td>
+<td>
+114.4
+</td>
+<td>
+110.9
+</td>
+<td>
+107.7
+</td>
+<td>
+105.0
+</td>
+<td>
+102.7
+</td>
+<td>
+100.7
+</td>
+<td>
+98.9
+</td>
+<td>
+97.2
+</td>
+<td>
+95.4
+</td>
+<td>
+93.4
+</td>
+<td>
+91.2
+</td>
+<td>
+89.0
+</td>
+<td>
+86.7
+</td>
+<td>
+84.4
+</td>
+<td>
+82.3
+</td>
+<td>
+80.4
+</td>
+<td>
+78.6
+</td>
+<td>
+76.8
+</td>
+<td>
+75.1
+</td>
+<td>
+73.4
+</td>
+<td>
+71.7
+</td>
+<td>
+69.9
+</td>
+<td>
+68.1
+</td>
+<td>
+66.3
+</td>
+<td>
+null
+</td>
+</tr>
+<tr>
+<td>
+&quot;Angola&quot;
+</td>
+<td>
+&quot;AGO&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+138.3
+</td>
+<td>
+137.5
+</td>
+<td>
+136.8
+</td>
+<td>
+136.0
+</td>
+<td>
+135.3
+</td>
+<td>
+134.9
+</td>
+<td>
+134.4
+</td>
+<td>
+134.1
+</td>
+<td>
+133.8
+</td>
+<td>
+133.6
+</td>
+<td>
+133.5
+</td>
+<td>
+133.5
+</td>
+<td>
+133.5
+</td>
+<td>
+133.4
+</td>
+<td>
+133.2
+</td>
+<td>
+132.8
+</td>
+<td>
+132.3
+</td>
+<td>
+131.5
+</td>
+<td>
+130.6
+</td>
+<td>
+129.5
+</td>
+<td>
+128.3
+</td>
+<td>
+126.9
+</td>
+<td>
+125.5
+</td>
+<td>
+124.1
+</td>
+<td>
+122.8
+</td>
+<td>
+121.2
+</td>
+<td>
+119.4
+</td>
+<td>
+117.1
+</td>
+<td>
+114.7
+</td>
+<td>
+112.2
+</td>
+<td>
+109.6
+</td>
+<td>
+106.8
+</td>
+<td>
+104.1
+</td>
+<td>
+101.4
+</td>
+<td>
+98.8
+</td>
+<td>
+96.0
+</td>
+<td>
+null
+</td>
+</tr>
+<tr>
+<td>
+&quot;Albania&quot;
+</td>
+<td>
+&quot;ALB&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+73.0
+</td>
+<td>
+68.4
+</td>
+<td>
+64.0
+</td>
+<td>
+59.9
+</td>
+<td>
+56.1
+</td>
+<td>
+52.4
+</td>
+<td>
+49.1
+</td>
+<td>
+45.9
+</td>
+<td>
+43.2
+</td>
+<td>
+40.8
+</td>
+<td>
+38.6
+</td>
+<td>
+36.7
+</td>
+<td>
+35.1
+</td>
+<td>
+33.7
+</td>
+<td>
+32.5
+</td>
+<td>
+31.4
+</td>
+<td>
+30.3
+</td>
+<td>
+29.1
+</td>
+<td>
+27.9
+</td>
+<td>
+26.8
+</td>
+<td>
+25.5
+</td>
+<td>
+24.4
+</td>
+<td>
+23.2
+</td>
+<td>
+22.1
+</td>
+<td>
+21.0
+</td>
+<td>
+20.0
+</td>
+<td>
+19.1
+</td>
+<td>
+18.3
+</td>
+<td>
+17.4
+</td>
+<td>
+16.7
+</td>
+<td>
+16.0
+</td>
+<td>
+15.4
+</td>
+<td>
+14.8
+</td>
+<td>
+14.3
+</td>
+<td>
+13.8
+</td>
+<td>
+13.3
+</td>
+<td>
+12.9
+</td>
+<td>
+12.5
+</td>
+<td>
+null
+</td>
+</tr>
+<tr>
+<td>
+&quot;Andorra&quot;
+</td>
+<td>
+&quot;AND&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+7.5
+</td>
+<td>
+7.0
+</td>
+<td>
+6.5
+</td>
+<td>
+6.1
+</td>
+<td>
+5.6
+</td>
+<td>
+5.2
+</td>
+<td>
+5.0
+</td>
+<td>
+4.6
+</td>
+<td>
+4.3
+</td>
+<td>
+4.1
+</td>
+<td>
+3.9
+</td>
+<td>
+3.7
+</td>
+<td>
+3.5
+</td>
+<td>
+3.3
+</td>
+<td>
+3.2
+</td>
+<td>
+3.1
+</td>
+<td>
+2.9
+</td>
+<td>
+2.8
+</td>
+<td>
+2.7
+</td>
+<td>
+2.6
+</td>
+<td>
+2.5
+</td>
+<td>
+2.4
+</td>
+<td>
+2.3
+</td>
+<td>
+2.2
+</td>
+<td>
+2.1
+</td>
+<td>
+2.1
+</td>
+<td>
+null
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The data includes regional aggregates. To tell apart the regional aggregates we need the metadata. Every row in the data table has a corresponding row in the metadata table. Where the row has regional aggregate data, the <code class="docutils literal notranslate"><span class="pre">Region</span></code> column in the metadata table is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ordered_categorical</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a categorical ordered according to the categories</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">pl</span><span class="o">.</span><span class="n">StringCache</span><span class="p">():</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">)</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Country Code&#39;</span><span class="p">:</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Region&#39;</span><span class="p">:</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IncomeGroup&#39;</span><span class="p">:</span> <span class="s1">&#39;income_group&#39;</span>
+<span class="p">}</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">scan_csv</span><span class="p">(</span>
+    <span class="s1">&#39;data/API_SP.DYN.IMRT.IN_DS2_en_csv_v2/Metadata_Country_API_SP.DYN.IMRT.IN_DS2_en_csv_v2.csv&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span>
+<span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="c1"># Drop the regional aggregate information</span>
+    <span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;income_group&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="n">cat_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;High income&#39;</span><span class="p">,</span> <span class="s1">&#39;Upper middle income&#39;</span><span class="p">,</span> <span class="s1">&#39;Lower middle income&#39;</span><span class="p">,</span> <span class="s1">&#39;Low income&#39;</span><span class="p">]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+    <span class="n">ordered_categorical</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;income_group&#39;</span><span class="p">],</span> <span class="n">cat_order</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">metadata</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (10, 3)</small>
+<thead>
+<tr>
+<th>
+code
+</th>
+<th>
+region
+</th>
+<th>
+income_group
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+cat
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;ABW&quot;
+</td>
+<td>
+&quot;Latin America ...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;AFG&quot;
+</td>
+<td>
+&quot;South Asia&quot;
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;AGO&quot;
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Lower middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;ALB&quot;
+</td>
+<td>
+&quot;Europe &amp; Centr...
+</td>
+<td>
+&quot;Upper middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;AND&quot;
+</td>
+<td>
+&quot;Europe &amp; Centr...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;ARE&quot;
+</td>
+<td>
+&quot;Middle East &amp; ...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;ARG&quot;
+</td>
+<td>
+&quot;Latin America ...
+</td>
+<td>
+&quot;Upper middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;ARM&quot;
+</td>
+<td>
+&quot;Europe &amp; Centr...
+</td>
+<td>
+&quot;Lower middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;ASM&quot;
+</td>
+<td>
+&quot;East Asia &amp; Pa...
+</td>
+<td>
+&quot;Upper middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;ATG&quot;
+</td>
+<td>
+&quot;Latin America ...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Remove the regional aggregates, to create a table with only country data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
+<span class="n">country_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 61)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+code
+</th>
+<th>
+y1960
+</th>
+<th>
+y1961
+</th>
+<th>
+y1962
+</th>
+<th>
+y1963
+</th>
+<th>
+y1964
+</th>
+<th>
+y1965
+</th>
+<th>
+y1966
+</th>
+<th>
+y1967
+</th>
+<th>
+y1968
+</th>
+<th>
+y1969
+</th>
+<th>
+y1970
+</th>
+<th>
+y1971
+</th>
+<th>
+y1972
+</th>
+<th>
+y1973
+</th>
+<th>
+y1974
+</th>
+<th>
+y1975
+</th>
+<th>
+y1976
+</th>
+<th>
+y1977
+</th>
+<th>
+y1978
+</th>
+<th>
+y1979
+</th>
+<th>
+y1980
+</th>
+<th>
+y1981
+</th>
+<th>
+y1982
+</th>
+<th>
+y1983
+</th>
+<th>
+y1984
+</th>
+<th>
+y1985
+</th>
+<th>
+y1986
+</th>
+<th>
+y1987
+</th>
+<th>
+y1988
+</th>
+<th>
+y1989
+</th>
+<th>
+y1990
+</th>
+<th>
+y1991
+</th>
+<th>
+y1992
+</th>
+<th>
+y1993
+</th>
+<th>
+y1994
+</th>
+<th>
+y1995
+</th>
+<th>
+y1996
+</th>
+<th>
+y1997
+</th>
+<th>
+y1998
+</th>
+<th>
+y1999
+</th>
+<th>
+y2000
+</th>
+<th>
+y2001
+</th>
+<th>
+y2002
+</th>
+<th>
+y2003
+</th>
+<th>
+y2004
+</th>
+<th>
+y2005
+</th>
+<th>
+y2006
+</th>
+<th>
+y2007
+</th>
+<th>
+y2008
+</th>
+<th>
+y2009
+</th>
+<th>
+y2010
+</th>
+<th>
+y2011
+</th>
+<th>
+y2012
+</th>
+<th>
+y2013
+</th>
+<th>
+y2014
+</th>
+<th>
+y2015
+</th>
+<th>
+y2016
+</th>
+<th>
+region
+</th>
+<th>
+income_group
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+cat
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Aruba&quot;
+</td>
+<td>
+&quot;ABW&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Latin America ...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Afghanistan&quot;
+</td>
+<td>
+&quot;AFG&quot;
+</td>
+<td>
+null
+</td>
+<td>
+240.5
+</td>
+<td>
+236.3
+</td>
+<td>
+232.3
+</td>
+<td>
+228.5
+</td>
+<td>
+224.6
+</td>
+<td>
+220.7
+</td>
+<td>
+217.0
+</td>
+<td>
+213.3
+</td>
+<td>
+209.8
+</td>
+<td>
+206.1
+</td>
+<td>
+202.2
+</td>
+<td>
+198.2
+</td>
+<td>
+194.3
+</td>
+<td>
+190.3
+</td>
+<td>
+186.6
+</td>
+<td>
+182.6
+</td>
+<td>
+178.7
+</td>
+<td>
+174.5
+</td>
+<td>
+170.4
+</td>
+<td>
+166.1
+</td>
+<td>
+161.8
+</td>
+<td>
+157.5
+</td>
+<td>
+153.2
+</td>
+<td>
+148.7
+</td>
+<td>
+144.5
+</td>
+<td>
+140.2
+</td>
+<td>
+135.7
+</td>
+<td>
+131.3
+</td>
+<td>
+126.8
+</td>
+<td>
+122.5
+</td>
+<td>
+118.3
+</td>
+<td>
+114.4
+</td>
+<td>
+110.9
+</td>
+<td>
+107.7
+</td>
+<td>
+105.0
+</td>
+<td>
+102.7
+</td>
+<td>
+100.7
+</td>
+<td>
+98.9
+</td>
+<td>
+97.2
+</td>
+<td>
+95.4
+</td>
+<td>
+93.4
+</td>
+<td>
+91.2
+</td>
+<td>
+89.0
+</td>
+<td>
+86.7
+</td>
+<td>
+84.4
+</td>
+<td>
+82.3
+</td>
+<td>
+80.4
+</td>
+<td>
+78.6
+</td>
+<td>
+76.8
+</td>
+<td>
+75.1
+</td>
+<td>
+73.4
+</td>
+<td>
+71.7
+</td>
+<td>
+69.9
+</td>
+<td>
+68.1
+</td>
+<td>
+66.3
+</td>
+<td>
+null
+</td>
+<td>
+&quot;South Asia&quot;
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+</tr>
+<tr>
+<td>
+&quot;Angola&quot;
+</td>
+<td>
+&quot;AGO&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+138.3
+</td>
+<td>
+137.5
+</td>
+<td>
+136.8
+</td>
+<td>
+136.0
+</td>
+<td>
+135.3
+</td>
+<td>
+134.9
+</td>
+<td>
+134.4
+</td>
+<td>
+134.1
+</td>
+<td>
+133.8
+</td>
+<td>
+133.6
+</td>
+<td>
+133.5
+</td>
+<td>
+133.5
+</td>
+<td>
+133.5
+</td>
+<td>
+133.4
+</td>
+<td>
+133.2
+</td>
+<td>
+132.8
+</td>
+<td>
+132.3
+</td>
+<td>
+131.5
+</td>
+<td>
+130.6
+</td>
+<td>
+129.5
+</td>
+<td>
+128.3
+</td>
+<td>
+126.9
+</td>
+<td>
+125.5
+</td>
+<td>
+124.1
+</td>
+<td>
+122.8
+</td>
+<td>
+121.2
+</td>
+<td>
+119.4
+</td>
+<td>
+117.1
+</td>
+<td>
+114.7
+</td>
+<td>
+112.2
+</td>
+<td>
+109.6
+</td>
+<td>
+106.8
+</td>
+<td>
+104.1
+</td>
+<td>
+101.4
+</td>
+<td>
+98.8
+</td>
+<td>
+96.0
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Lower middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;Albania&quot;
+</td>
+<td>
+&quot;ALB&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+73.0
+</td>
+<td>
+68.4
+</td>
+<td>
+64.0
+</td>
+<td>
+59.9
+</td>
+<td>
+56.1
+</td>
+<td>
+52.4
+</td>
+<td>
+49.1
+</td>
+<td>
+45.9
+</td>
+<td>
+43.2
+</td>
+<td>
+40.8
+</td>
+<td>
+38.6
+</td>
+<td>
+36.7
+</td>
+<td>
+35.1
+</td>
+<td>
+33.7
+</td>
+<td>
+32.5
+</td>
+<td>
+31.4
+</td>
+<td>
+30.3
+</td>
+<td>
+29.1
+</td>
+<td>
+27.9
+</td>
+<td>
+26.8
+</td>
+<td>
+25.5
+</td>
+<td>
+24.4
+</td>
+<td>
+23.2
+</td>
+<td>
+22.1
+</td>
+<td>
+21.0
+</td>
+<td>
+20.0
+</td>
+<td>
+19.1
+</td>
+<td>
+18.3
+</td>
+<td>
+17.4
+</td>
+<td>
+16.7
+</td>
+<td>
+16.0
+</td>
+<td>
+15.4
+</td>
+<td>
+14.8
+</td>
+<td>
+14.3
+</td>
+<td>
+13.8
+</td>
+<td>
+13.3
+</td>
+<td>
+12.9
+</td>
+<td>
+12.5
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Europe &amp; Centr...
+</td>
+<td>
+&quot;Upper middle i...
+</td>
+</tr>
+<tr>
+<td>
+&quot;Andorra&quot;
+</td>
+<td>
+&quot;AND&quot;
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+null
+</td>
+<td>
+7.5
+</td>
+<td>
+7.0
+</td>
+<td>
+6.5
+</td>
+<td>
+6.1
+</td>
+<td>
+5.6
+</td>
+<td>
+5.2
+</td>
+<td>
+5.0
+</td>
+<td>
+4.6
+</td>
+<td>
+4.3
+</td>
+<td>
+4.1
+</td>
+<td>
+3.9
+</td>
+<td>
+3.7
+</td>
+<td>
+3.5
+</td>
+<td>
+3.3
+</td>
+<td>
+3.2
+</td>
+<td>
+3.1
+</td>
+<td>
+2.9
+</td>
+<td>
+2.8
+</td>
+<td>
+2.7
+</td>
+<td>
+2.6
+</td>
+<td>
+2.5
+</td>
+<td>
+2.4
+</td>
+<td>
+2.3
+</td>
+<td>
+2.2
+</td>
+<td>
+2.1
+</td>
+<td>
+2.1
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Europe &amp; Centr...
+</td>
+<td>
+&quot;High income&quot;
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We are interested in the changes in rank between 1960 and 2015. To plot a reasonable sized graph, we randomly sample 35 countries.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampled_data</span> <span class="o">=</span> <span class="n">country_data</span><span class="o">.</span><span class="n">drop_nulls</span><span class="p">(</span>
+    <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y1960&#39;</span><span class="p">,</span> <span class="s1">&#39;y2015&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">123</span>
+<span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;y1960&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s1">&#39;_rank&#39;</span><span class="p">),</span>
+    <span class="n">col</span><span class="p">(</span><span class="s1">&#39;y2015&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s1">&#39;_rank&#39;</span><span class="p">)</span>
+<span class="p">])</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sampled_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    .dataframe td {
+        white-space: pre;
+    }
+
+    .dataframe td {
+        padding-top: 0;
+    }
+
+    .dataframe td {
+        padding-bottom: 0;
+    }
+
+    .dataframe td {
+        line-height: 95%;
+    }
+</style>
+<table border="1" class="dataframe" >
+<small>shape: (5, 63)</small>
+<thead>
+<tr>
+<th>
+country
+</th>
+<th>
+code
+</th>
+<th>
+y1960
+</th>
+<th>
+y1961
+</th>
+<th>
+y1962
+</th>
+<th>
+y1963
+</th>
+<th>
+y1964
+</th>
+<th>
+y1965
+</th>
+<th>
+y1966
+</th>
+<th>
+y1967
+</th>
+<th>
+y1968
+</th>
+<th>
+y1969
+</th>
+<th>
+y1970
+</th>
+<th>
+y1971
+</th>
+<th>
+y1972
+</th>
+<th>
+y1973
+</th>
+<th>
+y1974
+</th>
+<th>
+y1975
+</th>
+<th>
+y1976
+</th>
+<th>
+y1977
+</th>
+<th>
+y1978
+</th>
+<th>
+y1979
+</th>
+<th>
+y1980
+</th>
+<th>
+y1981
+</th>
+<th>
+y1982
+</th>
+<th>
+y1983
+</th>
+<th>
+y1984
+</th>
+<th>
+y1985
+</th>
+<th>
+y1986
+</th>
+<th>
+y1987
+</th>
+<th>
+y1988
+</th>
+<th>
+y1989
+</th>
+<th>
+y1990
+</th>
+<th>
+y1991
+</th>
+<th>
+y1992
+</th>
+<th>
+y1993
+</th>
+<th>
+y1994
+</th>
+<th>
+y1995
+</th>
+<th>
+y1996
+</th>
+<th>
+y1997
+</th>
+<th>
+y1998
+</th>
+<th>
+y1999
+</th>
+<th>
+y2000
+</th>
+<th>
+y2001
+</th>
+<th>
+y2002
+</th>
+<th>
+y2003
+</th>
+<th>
+y2004
+</th>
+<th>
+y2005
+</th>
+<th>
+y2006
+</th>
+<th>
+y2007
+</th>
+<th>
+y2008
+</th>
+<th>
+y2009
+</th>
+<th>
+y2010
+</th>
+<th>
+y2011
+</th>
+<th>
+y2012
+</th>
+<th>
+y2013
+</th>
+<th>
+y2014
+</th>
+<th>
+y2015
+</th>
+<th>
+y2016
+</th>
+<th>
+region
+</th>
+<th>
+income_group
+</th>
+<th>
+y1960_rank
+</th>
+<th>
+y2015_rank
+</th>
+</tr>
+<tr>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+f64
+</td>
+<td>
+str
+</td>
+<td>
+str
+</td>
+<td>
+cat
+</td>
+<td>
+i64
+</td>
+<td>
+i64
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+&quot;Togo&quot;
+</td>
+<td>
+&quot;TGO&quot;
+</td>
+<td>
+162.4
+</td>
+<td>
+159.4
+</td>
+<td>
+156.4
+</td>
+<td>
+153.5
+</td>
+<td>
+150.5
+</td>
+<td>
+147.7
+</td>
+<td>
+144.7
+</td>
+<td>
+141.8
+</td>
+<td>
+138.8
+</td>
+<td>
+135.8
+</td>
+<td>
+132.8
+</td>
+<td>
+130.0
+</td>
+<td>
+127.2
+</td>
+<td>
+124.4
+</td>
+<td>
+121.8
+</td>
+<td>
+119.2
+</td>
+<td>
+116.6
+</td>
+<td>
+114.1
+</td>
+<td>
+111.7
+</td>
+<td>
+109.2
+</td>
+<td>
+106.9
+</td>
+<td>
+104.8
+</td>
+<td>
+102.7
+</td>
+<td>
+100.7
+</td>
+<td>
+98.9
+</td>
+<td>
+97.1
+</td>
+<td>
+95.5
+</td>
+<td>
+94.0
+</td>
+<td>
+92.6
+</td>
+<td>
+91.4
+</td>
+<td>
+90.2
+</td>
+<td>
+89.0
+</td>
+<td>
+87.9
+</td>
+<td>
+86.8
+</td>
+<td>
+85.5
+</td>
+<td>
+84.2
+</td>
+<td>
+82.8
+</td>
+<td>
+81.2
+</td>
+<td>
+79.6
+</td>
+<td>
+77.9
+</td>
+<td>
+76.2
+</td>
+<td>
+74.4
+</td>
+<td>
+72.6
+</td>
+<td>
+70.8
+</td>
+<td>
+69.1
+</td>
+<td>
+67.4
+</td>
+<td>
+65.7
+</td>
+<td>
+64.1
+</td>
+<td>
+62.5
+</td>
+<td>
+60.9
+</td>
+<td>
+59.3
+</td>
+<td>
+57.9
+</td>
+<td>
+56.5
+</td>
+<td>
+55.0
+</td>
+<td>
+53.6
+</td>
+<td>
+52.3
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+<td>
+33
+</td>
+<td>
+35
+</td>
+</tr>
+<tr>
+<td>
+&quot;Haiti&quot;
+</td>
+<td>
+&quot;HTI&quot;
+</td>
+<td>
+194.8
+</td>
+<td>
+191.5
+</td>
+<td>
+188.3
+</td>
+<td>
+185.2
+</td>
+<td>
+182.2
+</td>
+<td>
+179.1
+</td>
+<td>
+176.0
+</td>
+<td>
+172.9
+</td>
+<td>
+169.8
+</td>
+<td>
+166.6
+</td>
+<td>
+163.4
+</td>
+<td>
+160.1
+</td>
+<td>
+156.6
+</td>
+<td>
+153.0
+</td>
+<td>
+149.5
+</td>
+<td>
+146.0
+</td>
+<td>
+142.6
+</td>
+<td>
+139.2
+</td>
+<td>
+135.8
+</td>
+<td>
+132.5
+</td>
+<td>
+129.4
+</td>
+<td>
+126.2
+</td>
+<td>
+123.0
+</td>
+<td>
+120.0
+</td>
+<td>
+117.1
+</td>
+<td>
+114.3
+</td>
+<td>
+111.5
+</td>
+<td>
+108.8
+</td>
+<td>
+106.1
+</td>
+<td>
+103.5
+</td>
+<td>
+101.0
+</td>
+<td>
+98.4
+</td>
+<td>
+95.8
+</td>
+<td>
+93.1
+</td>
+<td>
+90.4
+</td>
+<td>
+87.8
+</td>
+<td>
+85.1
+</td>
+<td>
+82.4
+</td>
+<td>
+79.9
+</td>
+<td>
+77.4
+</td>
+<td>
+75.0
+</td>
+<td>
+72.8
+</td>
+<td>
+70.7
+</td>
+<td>
+68.9
+</td>
+<td>
+67.2
+</td>
+<td>
+65.6
+</td>
+<td>
+64.1
+</td>
+<td>
+62.7
+</td>
+<td>
+61.3
+</td>
+<td>
+60.0
+</td>
+<td>
+85.5
+</td>
+<td>
+57.5
+</td>
+<td>
+56.2
+</td>
+<td>
+54.8
+</td>
+<td>
+53.5
+</td>
+<td>
+52.2
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Latin America ...
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+<td>
+35
+</td>
+<td>
+34
+</td>
+</tr>
+<tr>
+<td>
+&quot;Gambia, The&quot;
+</td>
+<td>
+&quot;GMB&quot;
+</td>
+<td>
+148.4
+</td>
+<td>
+146.1
+</td>
+<td>
+143.8
+</td>
+<td>
+141.5
+</td>
+<td>
+139.3
+</td>
+<td>
+137.1
+</td>
+<td>
+134.9
+</td>
+<td>
+132.6
+</td>
+<td>
+130.5
+</td>
+<td>
+128.3
+</td>
+<td>
+126.0
+</td>
+<td>
+123.8
+</td>
+<td>
+121.5
+</td>
+<td>
+119.1
+</td>
+<td>
+116.7
+</td>
+<td>
+114.4
+</td>
+<td>
+112.1
+</td>
+<td>
+109.8
+</td>
+<td>
+107.6
+</td>
+<td>
+105.4
+</td>
+<td>
+103.2
+</td>
+<td>
+100.9
+</td>
+<td>
+98.6
+</td>
+<td>
+96.2
+</td>
+<td>
+93.7
+</td>
+<td>
+91.3
+</td>
+<td>
+88.9
+</td>
+<td>
+86.5
+</td>
+<td>
+84.3
+</td>
+<td>
+82.1
+</td>
+<td>
+80.0
+</td>
+<td>
+78.0
+</td>
+<td>
+76.1
+</td>
+<td>
+74.3
+</td>
+<td>
+72.6
+</td>
+<td>
+70.9
+</td>
+<td>
+69.3
+</td>
+<td>
+67.7
+</td>
+<td>
+66.2
+</td>
+<td>
+64.8
+</td>
+<td>
+63.3
+</td>
+<td>
+62.0
+</td>
+<td>
+60.6
+</td>
+<td>
+59.3
+</td>
+<td>
+58.0
+</td>
+<td>
+56.8
+</td>
+<td>
+55.6
+</td>
+<td>
+54.5
+</td>
+<td>
+53.6
+</td>
+<td>
+52.6
+</td>
+<td>
+51.7
+</td>
+<td>
+50.9
+</td>
+<td>
+50.1
+</td>
+<td>
+49.4
+</td>
+<td>
+48.6
+</td>
+<td>
+47.9
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+<td>
+32
+</td>
+<td>
+33
+</td>
+</tr>
+<tr>
+<td>
+&quot;Zimbabwe&quot;
+</td>
+<td>
+&quot;ZWE&quot;
+</td>
+<td>
+92.6
+</td>
+<td>
+90.1
+</td>
+<td>
+87.6
+</td>
+<td>
+85.3
+</td>
+<td>
+82.8
+</td>
+<td>
+80.5
+</td>
+<td>
+78.3
+</td>
+<td>
+76.3
+</td>
+<td>
+74.7
+</td>
+<td>
+73.4
+</td>
+<td>
+72.4
+</td>
+<td>
+71.6
+</td>
+<td>
+71.1
+</td>
+<td>
+70.7
+</td>
+<td>
+70.5
+</td>
+<td>
+70.3
+</td>
+<td>
+70.1
+</td>
+<td>
+69.8
+</td>
+<td>
+69.2
+</td>
+<td>
+68.1
+</td>
+<td>
+66.4
+</td>
+<td>
+64.2
+</td>
+<td>
+61.6
+</td>
+<td>
+58.8
+</td>
+<td>
+56.0
+</td>
+<td>
+53.6
+</td>
+<td>
+51.7
+</td>
+<td>
+50.4
+</td>
+<td>
+49.8
+</td>
+<td>
+50.2
+</td>
+<td>
+51.2
+</td>
+<td>
+52.6
+</td>
+<td>
+54.5
+</td>
+<td>
+56.4
+</td>
+<td>
+58.1
+</td>
+<td>
+60.1
+</td>
+<td>
+61.6
+</td>
+<td>
+62.7
+</td>
+<td>
+63.3
+</td>
+<td>
+63.5
+</td>
+<td>
+63.5
+</td>
+<td>
+63.2
+</td>
+<td>
+62.7
+</td>
+<td>
+61.9
+</td>
+<td>
+61.5
+</td>
+<td>
+61.0
+</td>
+<td>
+60.3
+</td>
+<td>
+59.9
+</td>
+<td>
+58.9
+</td>
+<td>
+57.7
+</td>
+<td>
+55.8
+</td>
+<td>
+54.0
+</td>
+<td>
+49.4
+</td>
+<td>
+48.8
+</td>
+<td>
+47.6
+</td>
+<td>
+46.6
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Low income&quot;
+</td>
+<td>
+19
+</td>
+<td>
+32
+</td>
+</tr>
+<tr>
+<td>
+&quot;Zambia&quot;
+</td>
+<td>
+&quot;ZMB&quot;
+</td>
+<td>
+123.2
+</td>
+<td>
+120.9
+</td>
+<td>
+118.7
+</td>
+<td>
+116.7
+</td>
+<td>
+115.1
+</td>
+<td>
+114.0
+</td>
+<td>
+113.3
+</td>
+<td>
+112.9
+</td>
+<td>
+112.2
+</td>
+<td>
+111.1
+</td>
+<td>
+109.3
+</td>
+<td>
+106.7
+</td>
+<td>
+103.7
+</td>
+<td>
+100.7
+</td>
+<td>
+98.1
+</td>
+<td>
+96.3
+</td>
+<td>
+95.3
+</td>
+<td>
+95.1
+</td>
+<td>
+95.3
+</td>
+<td>
+95.6
+</td>
+<td>
+96.1
+</td>
+<td>
+97.0
+</td>
+<td>
+98.3
+</td>
+<td>
+100.2
+</td>
+<td>
+102.7
+</td>
+<td>
+105.6
+</td>
+<td>
+108.3
+</td>
+<td>
+110.6
+</td>
+<td>
+112.2
+</td>
+<td>
+113.1
+</td>
+<td>
+113.3
+</td>
+<td>
+113.0
+</td>
+<td>
+112.4
+</td>
+<td>
+111.3
+</td>
+<td>
+109.7
+</td>
+<td>
+107.8
+</td>
+<td>
+106.1
+</td>
+<td>
+104.6
+</td>
+<td>
+103.1
+</td>
+<td>
+100.9
+</td>
+<td>
+97.6
+</td>
+<td>
+92.7
+</td>
+<td>
+86.5
+</td>
+<td>
+80.0
+</td>
+<td>
+73.9
+</td>
+<td>
+68.7
+</td>
+<td>
+64.9
+</td>
+<td>
+61.3
+</td>
+<td>
+58.7
+</td>
+<td>
+55.6
+</td>
+<td>
+52.9
+</td>
+<td>
+51.1
+</td>
+<td>
+49.0
+</td>
+<td>
+46.5
+</td>
+<td>
+44.7
+</td>
+<td>
+43.3
+</td>
+<td>
+null
+</td>
+<td>
+&quot;Sub-Saharan Af...
+</td>
+<td>
+&quot;Lower middle i...
+</td>
+<td>
+23
+</td>
+<td>
+31
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>First graph</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">sampled_data</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_y_reverse</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_segment_28_0.png" class="no-scaled-link" src="../_images/geom_segment_28_0.png" style="width: 760px; height: 429px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ggplot: (330848389)&gt;
+</pre></div></div>
+</div>
+<p>It has the form we want, but we need to tweak it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Text colors</span>
+<span class="n">black1</span> <span class="o">=</span> <span class="s1">&#39;#252525&#39;</span>
+<span class="n">black2</span> <span class="o">=</span> <span class="s1">&#39;#222222&#39;</span>
+
+<span class="c1"># Gallery Plot</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">sampled_data</span><span class="p">)</span>
+ <span class="c1"># Slight modifications for the original lines,</span>
+ <span class="c1"># 1. Nudge the text to either sides of the points</span>
+ <span class="c1"># 2. Alter the color and alpha values</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span> <span class="n">nudge_x</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">black1</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span> <span class="n">nudge_x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">black1</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y1960_rank&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;y2015_rank&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;income_group&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+
+ <span class="c1"># Text Annotations</span>
+ <span class="c1">#+ annotate(&#39;text&#39;, x=1, y=0, label=&#39;Rank in 1960&#39;, fontweight=&#39;bold&#39;, ha=&#39;right&#39;, size=10, color=black2)</span>
+ <span class="c1">#+ annotate(&#39;text&#39;, x=2, y=0, label=&#39;Rank in 2015&#39;, fontweight=&#39;bold&#39;, ha=&#39;left&#39;, size=10, color=black2)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lines show change in rank&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">black1</span><span class="p">)</span>
+ <span class="c1">#+ annotate(&#39;label&#39;, x=1.5, y=3, label=&#39;Lower infant\ndeath rates&#39;, size=9, color=black1,</span>
+ <span class="c1">#           label_size=0, fontstyle=&#39;italic&#39;)</span>
+ <span class="c1">#+ annotate(&#39;label&#39;, x=1.5, y=33, label=&#39;Higher infant\ndeath rates&#39;, size=9, color=black1,</span>
+ <span class="c1">#           label_size=0, fontstyle=&#39;italic&#39;)</span>
+
+ <span class="c1"># Prevent country names from being chopped off</span>
+ <span class="o">+</span> <span class="n">lims</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">2.65</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;Income Group&#39;</span><span class="p">)</span>
+ <span class="c1"># Countries with lower rates on top</span>
+ <span class="o">+</span> <span class="n">scale_y_reverse</span><span class="p">()</span>
+ <span class="c1"># Change colors</span>
+ <span class="o">+</span> <span class="n">scale_color_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;qual&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="c1"># Removes all decorations</span>
+ <span class="o">+</span> <span class="n">theme_void</span><span class="p">()</span>
+ <span class="c1"># Changing the figure size prevents the country names from squishing up</span>
+ <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_segment_30_0.png" class="no-scaled-link" src="../_images/geom_segment_30_0.png" style="width: 866px; height: 867px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ggplot: (330832440)&gt;
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/generated/plotnine.geoms.geom_segment.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

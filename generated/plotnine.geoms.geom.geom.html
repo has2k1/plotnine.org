@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotnine.geoms.geom.geom &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="plotnine.geoms.geom_abline" href="plotnine.geoms.geom_abline.html" />
+    <link rel="prev" title="plotnine.mapping.stage" href="plotnine.mapping.stage.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">plotnine.geoms.geom.geom</a><ul>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom"><code class="docutils literal notranslate"><span class="pre">geom</span></code></a><ul>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.DEFAULT_AES"><code class="docutils literal notranslate"><span class="pre">geom.DEFAULT_AES</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.REQUIRED_AES"><code class="docutils literal notranslate"><span class="pre">geom.REQUIRED_AES</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.NON_MISSING_AES"><code class="docutils literal notranslate"><span class="pre">geom.NON_MISSING_AES</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.DEFAULT_PARAMS"><code class="docutils literal notranslate"><span class="pre">geom.DEFAULT_PARAMS</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.mapping"><code class="docutils literal notranslate"><span class="pre">geom.mapping</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.data"><code class="docutils literal notranslate"><span class="pre">geom.data</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.from_stat"><code class="docutils literal notranslate"><span class="pre">geom.from_stat()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.aesthetics"><code class="docutils literal notranslate"><span class="pre">geom.aesthetics()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.setup_data"><code class="docutils literal notranslate"><span class="pre">geom.setup_data()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.use_defaults"><code class="docutils literal notranslate"><span class="pre">geom.use_defaults()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.draw_layer"><code class="docutils literal notranslate"><span class="pre">geom.draw_layer()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.draw_panel"><code class="docutils literal notranslate"><span class="pre">geom.draw_panel()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.draw_group"><code class="docutils literal notranslate"><span class="pre">geom.draw_group()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.draw_unit"><code class="docutils literal notranslate"><span class="pre">geom.draw_unit()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.to_layer"><code class="docutils literal notranslate"><span class="pre">geom.to_layer()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.handle_na"><code class="docutils literal notranslate"><span class="pre">geom.handle_na()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.geoms.geom.geom.draw_legend"><code class="docutils literal notranslate"><span class="pre">geom.draw_legend()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="plotnine-geoms-geom-geom">
+<h1>plotnine.geoms.geom.geom<a class="headerlink" href="#plotnine-geoms-geom-geom" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">plotnine.geoms.geom.</span></span><span class="sig-name descname"><span class="pre">geom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Aes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom" title="Link to this definition">¶</a></dt>
+<dd><p>Base class of all Geoms</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.DEFAULT_AES">
+<span class="sig-name descname"><span class="pre">DEFAULT_AES</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.DEFAULT_AES" title="Link to this definition">¶</a></dt>
+<dd><p>Default aesthetics for the geom</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.REQUIRED_AES">
+<span class="sig-name descname"><span class="pre">REQUIRED_AES</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.REQUIRED_AES" title="Link to this definition">¶</a></dt>
+<dd><p>Required aesthetics for the geom</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.NON_MISSING_AES">
+<span class="sig-name descname"><span class="pre">NON_MISSING_AES</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.NON_MISSING_AES" title="Link to this definition">¶</a></dt>
+<dd><p>Required aesthetics for the geom</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.DEFAULT_PARAMS">
+<span class="sig-name descname"><span class="pre">DEFAULT_PARAMS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.DEFAULT_PARAMS" title="Link to this definition">¶</a></dt>
+<dd><p>Required parameters for the geom</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.mapping">
+<span class="sig-name descname"><span class="pre">mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Aes</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.mapping" title="Link to this definition">¶</a></dt>
+<dd><p>mappings i.e. <code class="code python docutils literal notranslate"><span class="n"><span class="pre">aes</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="s1"><span class="pre">'col1'</span></span><span class="p"><span class="pre">,</span></span> <span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="s1"><span class="pre">'col2'</span></span><span class="p"><span class="pre">)</span></span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataLike</span></em><a class="headerlink" href="#plotnine.geoms.geom.geom.data" title="Link to this definition">¶</a></dt>
+<dd><p>geom/layer specific dataframe</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.from_stat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_stat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="plotnine.stats.stat.stat.html#plotnine.stats.stat.stat" title="plotnine.stats.stat.stat"><span class="pre">stat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#plotnine.geoms.geom.geom" title="plotnine.geoms.geom.geom"><span class="pre">geom</span></a></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.from_stat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.from_stat" title="Link to this definition">¶</a></dt>
+<dd><p>Return an instantiated geom object</p>
+<p>geoms should not override this method.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>stat</strong><span class="classifier"><a class="reference internal" href="../glossary.html#term-stat"><span class="xref std std-term">stat</span></a></span></dt><dd><p><cite>stat</cite></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference internal" href="../glossary.html#term-geom"><span class="xref std std-term">geom</span></a></span></dt><dd><p>A geom object</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotnineError</span></code></dt><dd><p>If unable to create a <cite>geom</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.aesthetics">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aesthetics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.aesthetics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.aesthetics" title="Link to this definition">¶</a></dt>
+<dd><p>Return all the aesthetics for this geom</p>
+<p>geoms should not override this method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.setup_data">
+<span class="sig-name descname"><span class="pre">setup_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.setup_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.setup_data" title="Link to this definition">¶</a></dt>
+<dd><p>Modify the data before drawing takes place</p>
+<p>This function is called <em>before</em> position adjustments are done.
+It is used by geoms to create the final aesthetics used for
+drawing. The base class method does nothing, geoms can override
+this method for two reasons:</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">stat</span></code> does not create all the aesthetics (usually
+position aesthetics) required for drawing the <code class="docutils literal notranslate"><span class="pre">geom</span></code>,
+but those aesthetics can be computed from the available
+data. For example <a class="reference internal" href="plotnine.geoms.geom_boxplot.html#plotnine.geoms.geom_boxplot" title="plotnine.geoms.geom_boxplot"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_boxplot</span></code></a>
+and <a class="reference internal" href="plotnine.geoms.geom_violin.html#plotnine.geoms.geom_violin" title="plotnine.geoms.geom_violin"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_violin</span></code></a>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">geom</span></code> inherits from another <code class="docutils literal notranslate"><span class="pre">geom</span></code> (superclass) which
+does the drawing and the superclass requires certain aesthetics
+to be present in the data. For example
+<a class="reference internal" href="plotnine.geoms.geom_tile.html#plotnine.geoms.geom_tile" title="plotnine.geoms.geom_tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_tile</span></code></a> and
+<a class="reference internal" href="plotnine.geoms.geom_area.html#plotnine.geoms.geom_area" title="plotnine.geoms.geom_area"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_area</span></code></a>.</p></li>
+</ol>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data used for drawing the geom.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data used for drawing the geom.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.use_defaults">
+<span class="sig-name descname"><span class="pre">use_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aes_modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.use_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.use_defaults" title="Link to this definition">¶</a></dt>
+<dd><p>Combine data with defaults and set aesthetics from parameters</p>
+<p>geoms should not override this method.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data used for drawing the geom.</p>
+</dd>
+<dt><strong>aes_modifiers</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Aesthetics</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data used for drawing the geom.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.draw_layer">
+<span class="sig-name descname"><span class="pre">draw_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Coord</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.draw_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.draw_layer" title="Link to this definition">¶</a></dt>
+<dd><p>Draw layer across all panels</p>
+<p>geoms should not override this method.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span></dt><dd><p>DataFrame specific for this layer</p>
+</dd>
+<dt><strong>layout</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Layout</span></code></span></dt><dd><p>Layout object created when the plot is getting
+built</p>
+</dd>
+<dt><strong>coord</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord</span></code></span></dt><dd><p>Type of coordinate axes</p>
+</dd>
+<dt><strong>params</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Combined <em>geom</em> and <em>stat</em> parameters. Also
+includes the stacking order of the layer in
+the plot (<em>zorder</em>)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.draw_panel">
+<span class="sig-name descname"><span class="pre">draw_panel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">panel_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">panel_view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.draw_panel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.draw_panel" title="Link to this definition">¶</a></dt>
+<dd><p>Plot all groups</p>
+<p>For efficiency, geoms that do not need to partition
+different groups before plotting should override this
+method and avoid the groupby.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data to be plotted by this geom. This is the
+dataframe created in the plot_build pipeline.</p>
+</dd>
+<dt><strong>panel_params</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_view</span></code></span></dt><dd><p>The scale information as may be required by the
+axes. At this point, that information is about
+ranges, ticks and labels. Attributes are of interest
+to the geom are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;panel_params.x.range&#39;</span>  <span class="c1"># tuple</span>
+<span class="s1">&#39;panel_params.y.range&#39;</span>  <span class="c1"># tuple</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>coord</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord</span></code></span></dt><dd><p>Coordinate (e.g. coord_cartesian) system of the
+geom.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axes</span></code></span></dt><dd><p>Axes on which to plot.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Combined parameters for the geom and stat. Also
+includes the 'zorder'.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.draw_group">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">panel_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">panel_view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.draw_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.draw_group" title="Link to this definition">¶</a></dt>
+<dd><p>Plot data belonging to a group.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data to be plotted by this geom. This is the
+dataframe created in the plot_build pipeline.</p>
+</dd>
+<dt><strong>panel_params</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_view</span></code></span></dt><dd><p>The scale information as may be required by the
+axes. At this point, that information is about
+ranges, ticks and labels. Keys of interest to
+the geom are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;x_range&#39;</span>  <span class="c1"># tuple</span>
+<span class="s1">&#39;y_range&#39;</span>  <span class="c1"># tuple</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>coord</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord</span></code></span></dt><dd><p>Coordinate (e.g. coord_cartesian) system of the
+geom.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axes</span></code></span></dt><dd><p>Axes on which to plot.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Combined parameters for the geom and stat. Also
+includes the 'zorder'.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.draw_unit">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">panel_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">panel_view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.draw_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.draw_unit" title="Link to this definition">¶</a></dt>
+<dd><p>Plot data belonging to a unit.</p>
+<p>A matplotlib plot function may require that an aethestic
+have a single unique value. e.g. linestyle='dashed' and
+not linestyle=['dashed', 'dotted', ...].
+A single call to such a function can only plot lines with
+the same linestyle. However, if the plot we want has more
+than one line with different linestyles, we need to group
+the lines with the same linestyle and plot them as one
+unit. In this case, draw_group calls this function to do
+the plotting. For an example see
+<a class="reference internal" href="plotnine.geoms.geom_point.html#plotnine.geoms.geom_point" title="plotnine.geoms.geom_point"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_point</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data to be plotted by this geom. This is the
+dataframe created in the plot_build pipeline.</p>
+</dd>
+<dt><strong>panel_params</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel_view</span></code></span></dt><dd><p>The scale information as may be required by the
+axes. At this point, that information is about
+ranges, ticks and labels. Keys of interest to
+the geom are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;x_range&#39;</span>  <span class="c1"># tuple</span>
+<span class="s1">&#39;y_range&#39;</span>  <span class="c1"># tuple</span>
+</pre></div>
+</div>
+<p>In rare cases a geom may need access to the x or y scales.
+Those are available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;scales&#39;</span>   <span class="c1"># SimpleNamespace</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>coord</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord</span></code></span></dt><dd><p>Coordinate (e.g. coord_cartesian) system of the
+geom.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axes</span></code></span></dt><dd><p>Axes on which to plot.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Combined parameters for the geom and stat. Also
+includes the 'zorder'.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.to_layer">
+<span class="sig-name descname"><span class="pre">to_layer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Layer</span></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.to_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.to_layer" title="Link to this definition">¶</a></dt>
+<dd><p>Make a layer that represents this geom</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>out</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></span></dt><dd><p>Layer</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.handle_na">
+<span class="sig-name descname"><span class="pre">handle_na</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.handle_na"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.handle_na" title="Link to this definition">¶</a></dt>
+<dd><p>Remove rows with NaN values</p>
+<p>geoms that infer extra information from missing values
+should override this method. For example
+<a class="reference internal" href="plotnine.geoms.geom_path.html#plotnine.geoms.geom_path" title="plotnine.geoms.geom_path"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_path</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a></span></dt><dd><p>Data without the NaNs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Shows a warning if the any rows are removed and the
+<cite>na_rm</cite> parameter is False. It only takes into account
+the columns of the required aesthetics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.geoms.geom.geom.draw_legend">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.Series</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DrawingArea</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lyr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Layer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DrawingArea</span></span></span><a class="reference internal" href="../_modules/plotnine/geoms/geom.html#geom.draw_legend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom.geom.draw_legend" title="Link to this definition">¶</a></dt>
+<dd><p>Draw a rectangle in the box</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code></a></span></dt><dd><p>Data Row</p>
+</dd>
+<dt><strong>da</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawingArea</span></code></span></dt><dd><p>Canvas</p>
+</dd>
+<dt><strong>lyr</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></span></dt><dd><p>Layer</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawingArea</span></code></span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/generated/plotnine.geoms.geom.geom.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

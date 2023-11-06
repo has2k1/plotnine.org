@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.geoms.annotation_logticks &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.geoms.annotation_logticks</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..coords</span> <span class="kn">import</span> <span class="n">coord_flip</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">..scales.scale</span> <span class="kn">import</span> <span class="n">scale_continuous</span> <span class="k">as</span> <span class="n">ScaleContinuous</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">.annotate</span> <span class="kn">import</span> <span class="n">annotate</span>
+<span class="kn">from</span> <span class="nn">.geom_path</span> <span class="kn">import</span> <span class="n">geom_path</span>
+<span class="kn">from</span> <span class="nn">.geom_rug</span> <span class="kn">import</span> <span class="n">geom_rug</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span>
+
+    <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypeGuard</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.iapi</span> <span class="kn">import</span> <span class="n">panel_view</span>
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">AnyArray</span><span class="p">,</span>
+        <span class="n">Axes</span><span class="p">,</span>
+        <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">Geom</span><span class="p">,</span>
+        <span class="n">Layout</span><span class="p">,</span>
+        <span class="n">Scale</span><span class="p">,</span>
+        <span class="n">Trans</span><span class="p">,</span>
+        <span class="n">TupleFloat2</span><span class="p">,</span>
+        <span class="n">TupleFloat3</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_geom_logticks</span><span class="p">(</span><span class="n">geom_rug</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Internal geom implementing drawing of annotation_logticks</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DEFAULT_AES</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">DEFAULT_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;stat&quot;</span><span class="p">:</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;na_rm&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;sides&quot;</span><span class="p">:</span> <span class="s2">&quot;bl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">&quot;linetype&quot;</span><span class="p">:</span> <span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lengths&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.036</span><span class="p">,</span> <span class="mf">0.0225</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">),</span>
+        <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">draw_legend</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">geom_path</span><span class="o">.</span><span class="n">draw_legend</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw_layer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw ticks on every panel</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">layout</span><span class="o">.</span><span class="n">layout</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">]:</span>
+            <span class="n">ploc</span> <span class="o">=</span> <span class="n">pid</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">panel_params</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">panel_params</span><span class="p">[</span><span class="n">ploc</span><span class="p">]</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">axs</span><span class="p">[</span><span class="n">ploc</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_panel</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_check_log_scale</span><span class="p">(</span>
+        <span class="n">base</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">sides</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span>
+        <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TupleFloat2</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check the log transforms</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        base : float or None</span>
+<span class="sd">            Base of the logarithm in which the ticks will be</span>
+<span class="sd">            calculated. If ``None``, the base of the log transform</span>
+<span class="sd">            the scale will be used.</span>
+<span class="sd">        sides : str (default: bl)</span>
+<span class="sd">            Sides onto which to draw the marks. Any combination</span>
+<span class="sd">            chosen from the characters ``btlr``, for *bottom*, *top*,</span>
+<span class="sd">            *left* or *right* side marks. If ``coord_flip()`` is used,</span>
+<span class="sd">            these are the sides *before* the flip.</span>
+<span class="sd">        panel_params : panel_view</span>
+<span class="sd">            ``x`` and ``y`` view scale values.</span>
+<span class="sd">        coord : coord</span>
+<span class="sd">            Coordinate (e.g. coord_cartesian) system of the geom.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : tuple</span>
+<span class="sd">            The bases (base_x, base_y) to use when generating the ticks.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">is_log_trans</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="n">Trans</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">t</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
+                <span class="s2">&quot;log&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">get_base</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ubase</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <span class="n">ae</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ScaleContinuous</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">is_log_trans</span><span class="p">(</span>
+                <span class="n">sc</span><span class="o">.</span><span class="n">trans</span>
+            <span class="p">):</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;annotation_logticks for </span><span class="si">{</span><span class="n">ae</span><span class="si">}</span><span class="s2">-axis which does not have &quot;</span>
+                    <span class="s2">&quot;a log scale. The logticks may not make sense.&quot;</span><span class="p">,</span>
+                    <span class="n">PlotnineWarning</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">ubase</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ubase</span>
+
+            <span class="n">base</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">base</span>  <span class="c1"># pyright: ignore</span>
+            <span class="k">if</span> <span class="n">ubase</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">base</span> <span class="o">!=</span> <span class="n">ubase</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The x-axis is log transformed in base=</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> ,&quot;</span>
+                    <span class="s2">&quot;but the annotation_logticks are computed in base=&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">PlotnineWarning</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">ubase</span>
+            <span class="k">return</span> <span class="n">base</span>
+
+        <span class="n">base_x</span><span class="p">,</span> <span class="n">base_y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span>
+        <span class="n">x_scale</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">scale</span>
+        <span class="n">y_scale</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">scale</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">coord_flip</span><span class="p">):</span>
+            <span class="n">x_scale</span><span class="p">,</span> <span class="n">y_scale</span> <span class="o">=</span> <span class="n">y_scale</span><span class="p">,</span> <span class="n">x_scale</span>
+            <span class="n">base_x</span><span class="p">,</span> <span class="n">base_y</span> <span class="o">=</span> <span class="n">base_y</span><span class="p">,</span> <span class="n">base_x</span>
+
+        <span class="k">if</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">sides</span> <span class="ow">or</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="n">sides</span><span class="p">:</span>
+            <span class="n">base_x</span> <span class="o">=</span> <span class="n">get_base</span><span class="p">(</span><span class="n">x_scale</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;l&quot;</span> <span class="ow">in</span> <span class="n">sides</span> <span class="ow">or</span> <span class="s2">&quot;r&quot;</span> <span class="ow">in</span> <span class="n">sides</span><span class="p">:</span>
+            <span class="n">base_y</span> <span class="o">=</span> <span class="n">get_base</span><span class="p">(</span><span class="n">y_scale</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">base_x</span><span class="p">,</span> <span class="n">base_y</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_calc_ticks</span><span class="p">(</span>
+        <span class="n">value_range</span><span class="p">:</span> <span class="n">TupleFloat2</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">AnyArray</span><span class="p">,</span> <span class="n">AnyArray</span><span class="p">,</span> <span class="n">AnyArray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate tick marks within a range</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value_range: tuple</span>
+<span class="sd">            Range for which to calculate ticks.</span>
+
+<span class="sd">        base : number</span>
+<span class="sd">            Base of logarithm</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out: tuple</span>
+<span class="sd">            (major, middle, minor) tick locations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">_minor</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">mid_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyArray</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">mid_idx</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">mid_idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+        <span class="c1"># * Calculate the low and high powers,</span>
+        <span class="c1"># * Generate for all intervals in along the low-high power range</span>
+        <span class="c1">#   The intervals are in normal space</span>
+        <span class="c1"># * Calculate evenly spaced breaks in normal space, then convert</span>
+        <span class="c1">#   them to log space.</span>
+        <span class="n">low</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">value_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">value_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">base</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">n_ticks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">base</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Partition the breaks in the 3 groups</span>
+        <span class="n">major</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">breaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">if</span> <span class="n">n_ticks</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">mid_idx</span> <span class="o">=</span> <span class="n">n_ticks</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="n">middle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">mid_idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">])</span>
+            <span class="n">minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">_minor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mid_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">middle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+            <span class="n">minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">major</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">minor</span>
+
+    <span class="k">def</span> <span class="nf">draw_panel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span>
+        <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Any passed data is ignored, the relevant data is created</span>
+        <span class="n">sides</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;sides&quot;</span><span class="p">]</span>
+        <span class="n">lengths</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;lengths&quot;</span><span class="p">]</span>
+        <span class="n">_aesthetics</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;linetype&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;linetype&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+
+        <span class="k">def</span> <span class="nf">_draw</span><span class="p">(</span>
+            <span class="n">geom</span><span class="p">:</span> <span class="n">Geom</span><span class="p">,</span>
+            <span class="n">axis</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
+            <span class="n">tick_positions</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">AnyArray</span><span class="p">,</span> <span class="n">AnyArray</span><span class="p">,</span> <span class="n">AnyArray</span><span class="p">],</span>
+        <span class="p">):</span>
+            <span class="k">for</span> <span class="n">position</span><span class="p">,</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tick_positions</span><span class="p">,</span> <span class="n">lengths</span><span class="p">):</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">axis</span><span class="p">:</span> <span class="n">position</span><span class="p">,</span> <span class="o">**</span><span class="n">_aesthetics</span><span class="p">})</span>
+                <span class="n">geom</span><span class="o">.</span><span class="n">draw_group</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">coord_flip</span><span class="p">):</span>
+            <span class="n">tick_range_x</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">range</span>
+            <span class="n">tick_range_y</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">range</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tick_range_x</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">range</span>
+            <span class="n">tick_range_y</span> <span class="o">=</span> <span class="n">panel_params</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">range</span>
+
+        <span class="c1"># these are already flipped iff coord_flip</span>
+        <span class="n">base_x</span><span class="p">,</span> <span class="n">base_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_log_scale</span><span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">],</span> <span class="n">sides</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">,</span> <span class="n">coord</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="n">sides</span> <span class="ow">or</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">sides</span><span class="p">:</span>
+            <span class="n">tick_positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_ticks</span><span class="p">(</span><span class="n">tick_range_x</span><span class="p">,</span> <span class="n">base_x</span><span class="p">)</span>
+            <span class="n">_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">tick_positions</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;l&quot;</span> <span class="ow">in</span> <span class="n">sides</span> <span class="ow">or</span> <span class="s2">&quot;r&quot;</span> <span class="ow">in</span> <span class="n">sides</span><span class="p">:</span>
+            <span class="n">tick_positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_ticks</span><span class="p">(</span><span class="n">tick_range_y</span><span class="p">,</span> <span class="n">base_y</span><span class="p">)</span>
+            <span class="n">_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">tick_positions</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="annotation_logticks">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.annotation_logticks.html#plotnine.geoms.annotation_logticks">[docs]</a>
+<span class="k">class</span> <span class="nc">annotation_logticks</span><span class="p">(</span><span class="n">annotate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Marginal log ticks.</span>
+
+<span class="sd">    If added to a plot that does not have a log10 axis</span>
+<span class="sd">    on the respective side, a warning will be issued.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sides : str (default: bl)</span>
+<span class="sd">        Sides onto which to draw the marks. Any combination</span>
+<span class="sd">        chosen from the characters ``btlr``, for *bottom*, *top*,</span>
+<span class="sd">        *left* or *right* side marks. If ``coord_flip()`` is used,</span>
+<span class="sd">        these are the sides *after* the flip.</span>
+<span class="sd">    alpha : float (default: 1)</span>
+<span class="sd">        Transparency of the ticks</span>
+<span class="sd">    color : str | tuple (default: &#39;black&#39;)</span>
+<span class="sd">        Colour of the ticks</span>
+<span class="sd">    size : float</span>
+<span class="sd">        Thickness of the ticks</span>
+<span class="sd">    linetype : &#39;solid&#39; | &#39;dashed&#39; | &#39;dashdot&#39; | &#39;dotted&#39; | tuple</span>
+<span class="sd">        Type of line. Default is *solid*.</span>
+<span class="sd">    lengths: tuple (default (0.036, 0.0225, 0.012))</span>
+<span class="sd">        length of the ticks drawn for full / half / tenth</span>
+<span class="sd">        ticks relative to panel size</span>
+<span class="sd">    base : float (default: None)</span>
+<span class="sd">        Base of the logarithm in which the ticks will be</span>
+<span class="sd">        calculated. If ``None``, the base used to log transform</span>
+<span class="sd">        the scale will be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sides</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bl&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">linetype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;solid&quot;</span><span class="p">,</span>
+        <span class="n">lengths</span><span class="p">:</span> <span class="n">TupleFloat3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.036</span><span class="p">,</span> <span class="mf">0.0225</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">),</span>
+        <span class="n">base</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;length for annotation_logticks must be a tuple of 3 floats&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotation_geom</span> <span class="o">=</span> <span class="n">_geom_logticks</span><span class="p">(</span>
+            <span class="n">sides</span><span class="o">=</span><span class="n">sides</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">linetype</span><span class="o">=</span><span class="n">linetype</span><span class="p">,</span>
+            <span class="n">lengths</span><span class="o">=</span><span class="n">lengths</span><span class="p">,</span>
+            <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">is_continuous_scale</span><span class="p">(</span><span class="n">sc</span><span class="p">:</span> <span class="n">Scale</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TypeGuard</span><span class="p">[</span><span class="n">ScaleContinuous</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ScaleContinuous</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

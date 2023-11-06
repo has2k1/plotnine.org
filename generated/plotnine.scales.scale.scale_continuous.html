@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotnine.scales.scale.scale_continuous &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="plotnine.scales.scale.scale_datetime" href="plotnine.scales.scale.scale_datetime.html" />
+    <link rel="prev" title="plotnine.scales.scale.scale_discrete" href="plotnine.scales.scale.scale_discrete.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">plotnine.scales.scale.scale_continuous</a><ul>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous"><code class="docutils literal notranslate"><span class="pre">scale_continuous</span></code></a><ul>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.rescaler"><code class="docutils literal notranslate"><span class="pre">scale_continuous.rescaler()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.oob"><code class="docutils literal notranslate"><span class="pre">scale_continuous.oob()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.train"><code class="docutils literal notranslate"><span class="pre">scale_continuous.train()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.transform_df"><code class="docutils literal notranslate"><span class="pre">scale_continuous.transform_df()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.transform"><code class="docutils literal notranslate"><span class="pre">scale_continuous.transform()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.inverse"><code class="docutils literal notranslate"><span class="pre">scale_continuous.inverse()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.dimension"><code class="docutils literal notranslate"><span class="pre">scale_continuous.dimension()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.expand_limits"><code class="docutils literal notranslate"><span class="pre">scale_continuous.expand_limits()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.view"><code class="docutils literal notranslate"><span class="pre">scale_continuous.view()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.default_expansion"><code class="docutils literal notranslate"><span class="pre">scale_continuous.default_expansion()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.palette"><code class="docutils literal notranslate"><span class="pre">scale_continuous.palette()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.map"><code class="docutils literal notranslate"><span class="pre">scale_continuous.map()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.get_breaks"><code class="docutils literal notranslate"><span class="pre">scale_continuous.get_breaks()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.get_bounded_breaks"><code class="docutils literal notranslate"><span class="pre">scale_continuous.get_bounded_breaks()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.get_minor_breaks"><code class="docutils literal notranslate"><span class="pre">scale_continuous.get_minor_breaks()</span></code></a></li>
+<li><a class="reference internal" href="#plotnine.scales.scale.scale_continuous.get_labels"><code class="docutils literal notranslate"><span class="pre">scale_continuous.get_labels()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="plotnine-scales-scale-scale-continuous">
+<h1>plotnine.scales.scale.scale_continuous<a class="headerlink" href="#plotnine-scales-scale-scale-continuous" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">plotnine.scales.scale.</span></span><span class="sig-name descname"><span class="pre">scale_continuous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for all continuous scales</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>breaks</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a>, optional</span></dt><dd><p>Major break points. Alternatively, a callable that
+takes a tuple of limits and returns a list of breaks.
+Default is to automatically calculate the breaks.</p>
+</dd>
+<dt><strong>expand</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, optional</span></dt><dd><p>Multiplicative and additive expansion constants
+that determine how the scale is expanded. If
+specified must be of length 2 or 4. Specifically the
+values are in this order:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="n">add</span><span class="p">)</span>
+<span class="p">(</span><span class="n">mul_low</span><span class="p">,</span> <span class="n">add_low</span><span class="p">,</span> <span class="n">mul_high</span><span class="p">,</span> <span class="n">add_high</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For example,</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> - Do not expand.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1)</span></code> - Expand lower and upper limits by 1 unit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">0)</span></code> - Expand lower and upper limits by 100%.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> - Do not expand, as <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> - Expand upper limit by 1 unit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">0.1,</span> <span class="pre">0)</span></code> - Expand lower limit by 1 unit and
+upper limit by 10%.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0.1,</span> <span class="pre">2)</span></code> - Expand upper limit by 10% plus
+2 units.</p></li>
+</ul>
+</div></blockquote>
+<p>If not specified, suitable defaults are chosen.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>Name used as the label of the scale. This is what
+shows up as the axis label or legend title. Suitable
+defaults are chosen depending on the type of scale.</p>
+</dd>
+<dt><strong>labels</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a>, optional</span></dt><dd><p>List of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>. Labels at the <cite>breaks</cite>.
+Alternatively, a callable that takes an array_like of
+break points as input and returns a list of strings.</p>
+</dd>
+<dt><strong>limits</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a>, optional</span></dt><dd><p>Limits of the scale. Most commonly, these are the
+min &amp; max values for the scales. For scales that
+deal with categoricals, these may be a subset or
+superset of the categories.</p>
+</dd>
+<dt><strong>na_value</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.26)"><span class="xref std std-ref">scalar</span></a></span></dt><dd><p>What value to assign to missing values. Default
+is to assign <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+</dd>
+<dt><strong>palette</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a>, optional</span></dt><dd><p>Function to map data points onto the scale. Most
+scales define their own palettes.</p>
+</dd>
+<dt><strong>aesthetics</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, optional</span></dt><dd><p>list of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>. Aesthetics covered by the
+scale. These are defined by each scale and the
+user should probably not change them. Have fun.</p>
+</dd>
+<dt><strong>trans</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code></span></dt><dd><p>Name of a trans function or a trans function.
+See <code class="xref py py-mod docutils literal notranslate"><span class="pre">mizani.transforms</span></code> for possible options.</p>
+</dd>
+<dt><strong>oob</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code></span></dt><dd><p>Function to deal with out of bounds (limits)
+data points. Default is to turn them into
+<code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, which then get dropped.</p>
+</dd>
+<dt><strong>minor_breaks</strong><span class="classifier">list-like or <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></span></dt><dd><p>If a list-like, it is the minor breaks points.
+If an integer, it is the number of minor breaks between
+any set of major breaks.
+If a function, it should have the signature
+<code class="docutils literal notranslate"><span class="pre">func(limits)</span></code> and return a list-like of consisting
+of the minor break points.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no minor breaks are calculated.
+The default is to automatically calculate them.</p>
+</dd>
+<dt><strong>rescaler</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code>, optional</span></dt><dd><p>Function to rescale data points so that they can
+be handled by the palette. Default is to rescale
+them onto the [0, 1] range. Scales that inherit
+from this class may have another default.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If using the class directly all arguments must be
+keyword arguments.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.rescaler">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rescaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.rescaler" title="Link to this definition">¶</a></dt>
+<dd><p>Rescale numeric vector to have specified minimum and maximum.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">numeric</span></code></span></dt><dd><p>1D vector of values to manipulate.</p>
+</dd>
+<dt><strong>to</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>output range (numeric vector of length two)</p>
+</dd>
+<dt><strong>_from</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>input range (numeric vector of length two).
+If not given, is calculated from the range of x</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a></span></dt><dd><p>Rescaled values</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rescale</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([0. , 0.2, 0.4, 0.6, 0.8, 1. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rescale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">array([0. , 0.4, 0.8, 1.2, 1.6, 2. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rescale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">_from</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="go">array([0. , 0.2, 0.4, 0.6, 0.8, 1. ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.oob">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">oob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.oob" title="Link to this definition">¶</a></dt>
+<dd><p>Convert any values outside of range to a <strong>NULL</strong> type object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a></span></dt><dd><p>Values to manipulate</p>
+</dd>
+<dt><strong>range</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>(min, max) giving desired output range</p>
+</dd>
+<dt><strong>only_finite</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If True (the default), will only modify
+finite values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>x</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span>array_like</span></a></span></dt><dd><p>Censored array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>All values in <code class="docutils literal notranslate"><span class="pre">x</span></code> should be of the same type. <code class="docutils literal notranslate"><span class="pre">only_finite</span></code> parameter
+is not considered for Datetime and Timedelta types.</p>
+<p>The <strong>NULL</strong> type object depends on the type of values in <strong>x</strong>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> - <code class="code python docutils literal notranslate"><span class="nb"><span class="pre">float</span></span><span class="p"><span class="pre">(</span></span><span class="s1"><span class="pre">'nan'</span></span><span class="p"><span class="pre">)</span></span></code></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> - <code class="code python docutils literal notranslate"><span class="nb"><span class="pre">float</span></span><span class="p"><span class="pre">(</span></span><span class="s1"><span class="pre">'nan'</span></span><span class="p"><span class="pre">)</span></span></code></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> : <code class="code python docutils literal notranslate"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">datetime64</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">NaT</span></span><span class="p"><span class="pre">)</span></span></code></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a> : <code class="code python docutils literal notranslate"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">timedelta64</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">NaT</span></span><span class="p"><span class="pre">)</span></span></code></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">censor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="go">[1, 2, inf, 3, 4, -inf, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">censor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="go">[1, 2, nan, 3, 4, nan, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">censor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="go">[nan, 2, inf, 3, 4, -inf, nan]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.train" title="Link to this definition">¶</a></dt>
+<dd><p>Train scale</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: pd.series | np.array</strong></dt><dd><p>a column of data to train over</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.transform_df">
+<span class="sig-name descname"><span class="pre">transform_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.transform_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.transform_df" title="Link to this definition">¶</a></dt>
+<dd><p>Transform dataframe</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FloatArrayLikeTV</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FloatArrayLikeTV</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.transform" title="Link to this definition">¶</a></dt>
+<dd><p>Transform array|series x</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.inverse">
+<span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FloatArrayLikeTV</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FloatArrayLikeTV</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.inverse" title="Link to this definition">¶</a></dt>
+<dd><p>Inverse transform array|series x</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.dimension">
+<span class="sig-name descname"><span class="pre">dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.dimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.dimension" title="Link to this definition">¶</a></dt>
+<dd><p>Get the phyical size of the scale</p>
+<p>Unlike limits, this always returns a numeric vector of length 2</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.expand_limits">
+<span class="sig-name descname"><span class="pre">expand_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousLimits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TupleFloat2</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TupleFloat4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CoordRange</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Trans</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">range_view</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.expand_limits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.expand_limits" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the final range in coordinate space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.view">
+<span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CoordRange</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CoordRange</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">scale_view</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.view" title="Link to this definition">¶</a></dt>
+<dd><p>Information about the trained scale</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.default_expansion">
+<span class="sig-name descname"><span class="pre">default_expansion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.default_expansion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.default_expansion" title="Link to this definition">¶</a></dt>
+<dd><p>Get the default expansion for continuous scale</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.palette">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">palette</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FloatArrayLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.palette"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.palette" title="Link to this definition">¶</a></dt>
+<dd><p>Aesthetic mapping function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AnyArrayLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousLimits</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AnyArrayLike</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.map" title="Link to this definition">¶</a></dt>
+<dd><p>Map every element of x</p>
+<p>The palette should do the real work, this should
+make sure that sensible values are sent and
+return from the palette.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.get_breaks">
+<span class="sig-name descname"><span class="pre">get_breaks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousLimits</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ScaleContinuousBreaks</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.get_breaks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.get_breaks" title="Link to this definition">¶</a></dt>
+<dd><p>Generate breaks for the axis or legend</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>limits</strong><span class="classifier">list-like | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></span></dt><dd><p>If None the self.limits are used
+They are expected to be in transformed
+space.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.26)"><span class="xref std std-term">array-like</span></a></span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Breaks are calculated in data space and
+returned in transformed space since all
+data is plotted in transformed space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.get_bounded_breaks">
+<span class="sig-name descname"><span class="pre">get_bounded_breaks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousLimits</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ScaleContinuousBreaks</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.get_bounded_breaks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.get_bounded_breaks" title="Link to this definition">¶</a></dt>
+<dd><p>Return Breaks that are within limits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.get_minor_breaks">
+<span class="sig-name descname"><span class="pre">get_minor_breaks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousBreaks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousLimits</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ScaleContinuousBreaks</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.get_minor_breaks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.get_minor_breaks" title="Link to this definition">¶</a></dt>
+<dd><p>Return minor breaks</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="plotnine.scales.scale.scale_continuous.get_labels">
+<span class="sig-name descname"><span class="pre">get_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScaleContinuousBreaks</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ScaleLabels</span></span></span><a class="reference internal" href="../_modules/plotnine/scales/scale.html#scale_continuous.get_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.scales.scale.scale_continuous.get_labels" title="Link to this definition">¶</a></dt>
+<dd><p>Generate labels for the axis or legend</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>breaks: None or array-like</strong></dt><dd><p>If None, use self.breaks.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/generated/plotnine.scales.scale.scale_continuous.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

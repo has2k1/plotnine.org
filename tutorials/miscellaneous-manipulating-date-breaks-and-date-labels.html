@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Manipulating date breaks and date labels &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Custom sorting of plot series" href="miscellaneous-order-plot-series.html" />
+    <link rel="prev" title="When the automatic groups are not sufficient" href="miscellaneous-automatic-grouping-insufficient.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Manipulating date breaks and date labels</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="Manipulating-date-breaks-and-date-labels">
+<h1>Manipulating date breaks and date labels<a class="headerlink" href="#Manipulating-date-breaks-and-date-labels" title="Link to this heading">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ggplot</span><span class="p">,</span>
+    <span class="n">aes</span><span class="p">,</span>
+    <span class="n">geom_point</span><span class="p">,</span>
+    <span class="n">scale_x_datetime</span><span class="p">,</span>
+    <span class="n">labs</span><span class="p">,</span>
+    <span class="n">theme_set</span><span class="p">,</span>
+    <span class="n">theme_linedraw</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">economics</span>
+
+<span class="kn">from</span> <span class="nn">mizani.breaks</span> <span class="kn">import</span> <span class="n">date_breaks</span>
+<span class="kn">from</span> <span class="nn">mizani.formatters</span> <span class="kn">import</span> <span class="n">date_format</span>
+
+<span class="n">theme_set</span><span class="p">(</span><span class="n">theme_linedraw</span><span class="p">())</span> <span class="c1"># default theme</span>
+<br/></pre></div>
+</div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">economics</span></code> dataset</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">economics</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>pce</th>
+      <th>pop</th>
+      <th>psavert</th>
+      <th>uempmed</th>
+      <th>unemploy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1967-07-01</td>
+      <td>507.4</td>
+      <td>198712</td>
+      <td>12.5</td>
+      <td>4.5</td>
+      <td>2944</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1967-08-01</td>
+      <td>510.5</td>
+      <td>198911</td>
+      <td>12.5</td>
+      <td>4.7</td>
+      <td>2945</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1967-09-01</td>
+      <td>516.3</td>
+      <td>199113</td>
+      <td>11.7</td>
+      <td>4.6</td>
+      <td>2958</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1967-10-01</td>
+      <td>512.9</td>
+      <td>199311</td>
+      <td>12.5</td>
+      <td>4.9</td>
+      <td>3143</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1967-11-01</td>
+      <td>518.1</td>
+      <td>199498</td>
+      <td>12.5</td>
+      <td>4.7</td>
+      <td>3066</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>How does the saving rate vary with time?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_5_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_5_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>Yikes! the calculated breaks are awful, we need to intervene. We do so using the <a class="reference external" href="https://mizani.readthedocs.io/en/stable/breaks.html#mizani.breaks.date_breaks">date_breaks</a> and <a class="reference external" href="https://mizani.readthedocs.io/en/stable/formatters.html#mizani.formatters.date_format">date_format</a> functions from mizani.</p>
+<p>Set breaks every 10 years</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="n">date_breaks</span><span class="p">(</span><span class="s1">&#39;10 years&#39;</span><span class="p">))</span>        <span class="c1"># new</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_7_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_7_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>That is better. Since all the breaks are at the beginning of the year, we can omit the month and day. Using <code class="docutils literal notranslate"><span class="pre">date_format</span></code> we override the format string. For more on the options for the format string see the <a class="reference external" href="https://docs.python.org/library/datetime.html#strftime-strptime-behavior">strftime behavior</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="n">date_breaks</span><span class="p">(</span><span class="s1">&#39;10 years&#39;</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">))</span>     <span class="c1"># modified</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_9_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_9_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>We can achieve the same result with a custom formating function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_date_format1</span><span class="p">(</span><span class="n">breaks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to format the date</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">year</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">day</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">]</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span>                                <span class="c1"># modified</span>
+     <span class="n">breaks</span><span class="o">=</span><span class="n">date_breaks</span><span class="p">(</span><span class="s1">&#39;10 years&#39;</span><span class="p">),</span>
+     <span class="n">labels</span><span class="o">=</span><span class="n">custom_date_format1</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_11_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_11_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>We can use a custom formatting function to get results that are not obtainable with the <code class="docutils literal notranslate"><span class="pre">date_format</span></code> function. For example if we have monthly breaks over a handful of years we can mix date formats as follows; specify beginning of the year and every other month. Such tricks can be used reduce overcrowding.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="k">def</span> <span class="nf">custom_date_format2</span><span class="p">(</span><span class="n">breaks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to format the date</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">:</span>
+        <span class="c1"># First day of the year</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y&#39;</span>
+        <span class="c1"># Every other month</span>
+        <span class="k">elif</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;%b&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="p">:])</span>                            <span class="c1"># modified</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span>
+     <span class="n">breaks</span><span class="o">=</span><span class="n">date_breaks</span><span class="p">(</span><span class="s1">&#39;1 months&#39;</span><span class="p">),</span>
+     <span class="n">labels</span><span class="o">=</span><span class="n">custom_date_format2</span><span class="p">,</span>
+     <span class="n">minor_breaks</span><span class="o">=</span><span class="p">[])</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_13_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_13_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>We removed the labels but not the breaks, leaving behind dangling ticks for the skipped months. We can fix that by wrapping <code class="docutils literal notranslate"><span class="pre">date_breaks</span></code> around a filtering function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_date_format3</span><span class="p">(</span><span class="n">breaks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to format the date</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">:</span>
+        <span class="c1"># First day of the year</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;%b&#39;</span>
+
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fmt</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<span class="k">def</span> <span class="nf">custom_date_breaks</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a function that calculates date breaks</span>
+
+<span class="sd">    It delegates the work to `date_breaks`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">filter_func</span><span class="p">(</span><span class="n">limits</span><span class="p">):</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="n">date_breaks</span><span class="p">(</span><span class="n">width</span><span class="p">)(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="c1"># filter</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">breaks</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">filter_func</span>
+
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="p">:])</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span>                                        <span class="c1"># modified</span>
+     <span class="n">breaks</span><span class="o">=</span><span class="n">custom_date_breaks</span><span class="p">(</span><span class="s1">&#39;1 months&#39;</span><span class="p">),</span>
+     <span class="n">labels</span><span class="o">=</span><span class="n">custom_date_format3</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;personal saving rate&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_15_0.png" class="no-scaled-link" src="../_images/tutorials_miscellaneous-manipulating-date-breaks-and-date-labels_15_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>The breaks and labels functions are tightly coupled to give us exactly what we want.</p>
+<p><strong>Credit:</strong> This example was motivated by the github user <a class="reference external" href="https://github.com/lorin">lorin</a> (Lorin Hochstein) and his endeavor to control date breaks and date labels.</p>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/tutorials/miscellaneous-manipulating-date-breaks-and-date-labels.ipynb.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

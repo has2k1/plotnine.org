@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.stats.stat_summary &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.stats.stat_summary</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..doctools</span> <span class="kn">import</span> <span class="n">document</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">get_valid_kwargs</span><span class="p">,</span> <span class="n">uniquecols</span>
+<span class="kn">from</span> <span class="nn">.stat</span> <span class="kn">import</span> <span class="n">stat</span>
+
+
+<span class="k">def</span> <span class="nf">bootstrap_statistics</span><span class="p">(</span>
+    <span class="n">series</span><span class="p">,</span>
+    <span class="n">statistic</span><span class="p">,</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">confidence_interval</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Default parameters taken from</span>
+<span class="sd">    R&#39;s Hmisc smean.cl.boot</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">confidence_interval</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="n">random_state</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">statistic</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;ymin&quot;</span><span class="p">:</span> <span class="n">means</span><span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_samples</span><span class="p">)],</span>
+            <span class="s2">&quot;ymax&quot;</span><span class="p">:</span> <span class="n">means</span><span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_samples</span><span class="p">)],</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">statistic</span><span class="p">(</span><span class="n">series</span><span class="p">)],</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">mean_cl_boot</span><span class="p">(</span>
+    <span class="n">series</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">confidence_interval</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bootstrapped mean with confidence interval</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    series : pandas.Series</span>
+<span class="sd">        Values</span>
+<span class="sd">    n_samples : int (default: 1000)</span>
+<span class="sd">        Number of sample to draw.</span>
+<span class="sd">    confidence_interval : float</span>
+<span class="sd">        Confidence interval in the range (0, 1).</span>
+<span class="sd">    random_state : int or ~numpy.random.RandomState, optional</span>
+<span class="sd">        Seed or Random number generator to use. If ``None``, then</span>
+<span class="sd">        numpy global generator :class:`numpy.random` is used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">bootstrap_statistics</span><span class="p">(</span>
+        <span class="n">series</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+        <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
+        <span class="n">confidence_interval</span><span class="o">=</span><span class="n">confidence_interval</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">mean_cl_normal</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">confidence_interval</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mean with confidence interval assuming normal distribution</span>
+
+<span class="sd">    Credit: from http://stackoverflow.com/a/15034143</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    series : pandas.Series</span>
+<span class="sd">        Values</span>
+<span class="sd">    confidence_interval : float</span>
+<span class="sd">        Confidence interval in the range (0, 1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">se</span> <span class="o">*</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">_ppf</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">confidence_interval</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="s2">&quot;ymin&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">-</span> <span class="n">h</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">+</span> <span class="n">h</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">mean_sdl</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mean +/- a constant times the standard deviation</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    series : pandas.Series</span>
+<span class="sd">        Values</span>
+<span class="sd">    mult : float</span>
+<span class="sd">        Multiplication factor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="s2">&quot;ymin&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">-</span> <span class="n">mult</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">+</span> <span class="n">mult</span> <span class="o">*</span> <span class="n">s</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">median_hilow</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">confidence_interval</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Median and a selected pair of outer quantiles having equal tail areas</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    series : pandas.Series</span>
+<span class="sd">        Values</span>
+<span class="sd">    confidence_interval : float</span>
+<span class="sd">        Confidence interval in the range (0, 1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">confidence_interval</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">series</span><span class="p">)],</span>
+            <span class="s2">&quot;ymin&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">tail</span><span class="p">),</span>
+            <span class="s2">&quot;ymax&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tail</span><span class="p">)),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">mean_se</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate mean and standard errors on either side</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    series : pandas.Series</span>
+<span class="sd">        Values</span>
+<span class="sd">    mult : float</span>
+<span class="sd">        Multiplication factor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="n">mult</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="s2">&quot;ymin&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">-</span> <span class="n">se</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">:</span> <span class="n">m</span> <span class="o">+</span> <span class="n">se</span><span class="p">})</span>
+
+
+<span class="n">function_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;mean_cl_boot&quot;</span><span class="p">:</span> <span class="n">mean_cl_boot</span><span class="p">,</span>
+    <span class="s2">&quot;mean_cl_normal&quot;</span><span class="p">:</span> <span class="n">mean_cl_normal</span><span class="p">,</span>
+    <span class="s2">&quot;mean_sdl&quot;</span><span class="p">:</span> <span class="n">mean_sdl</span><span class="p">,</span>
+    <span class="s2">&quot;median_hilow&quot;</span><span class="p">:</span> <span class="n">median_hilow</span><span class="p">,</span>
+    <span class="s2">&quot;mean_se&quot;</span><span class="p">:</span> <span class="n">mean_se</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">make_summary_fun</span><span class="p">(</span><span class="n">fun_data</span><span class="p">,</span> <span class="n">fun_y</span><span class="p">,</span> <span class="n">fun_ymin</span><span class="p">,</span> <span class="n">fun_ymax</span><span class="p">,</span> <span class="n">fun_args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make summary function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fun_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">fun_data</span> <span class="o">=</span> <span class="n">function_dict</span><span class="p">[</span><span class="n">fun_data</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">fun_y</span><span class="p">,</span> <span class="n">fun_ymin</span><span class="p">,</span> <span class="n">fun_ymax</span><span class="p">]):</span>
+
+        <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">fun_y</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="n">get_valid_kwargs</span><span class="p">(</span><span class="n">fun_y</span><span class="p">,</span> <span class="n">fun_args</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun_y</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">fun_ymin</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="n">get_valid_kwargs</span><span class="p">(</span><span class="n">fun_ymin</span><span class="p">,</span> <span class="n">fun_args</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="s2">&quot;ymin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun_ymin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">fun_ymax</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="n">get_valid_kwargs</span><span class="p">(</span><span class="n">fun_ymax</span><span class="p">,</span> <span class="n">fun_args</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="s2">&quot;ymax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun_ymax</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">fun_data</span><span class="p">:</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">get_valid_kwargs</span><span class="p">(</span><span class="n">fun_data</span><span class="p">,</span> <span class="n">fun_args</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fun_data</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bad value for function fun_data=</span><span class="si">{</span><span class="n">fun_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<div class="viewcode-block" id="stat_summary">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat_summary.html#plotnine.stats.stat_summary">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">stat_summary</span><span class="p">(</span><span class="n">stat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate summary statistics depending on x</span>
+
+<span class="sd">    {usage}</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {common_parameters}</span>
+<span class="sd">    fun_data : str or function, optional</span>
+<span class="sd">        One of::</span>
+
+<span class="sd">            # Bootstrapped mean, confidence interval</span>
+<span class="sd">            # Arguments:</span>
+<span class="sd">            #     n_samples - No. of samples to draw</span>
+<span class="sd">            #     confidence_interval</span>
+<span class="sd">            #     random_state</span>
+<span class="sd">            &#39;mean_cl_boot&#39;</span>
+
+<span class="sd">            # Mean, C.I. assuming normal distribution</span>
+<span class="sd">            # Arguments:</span>
+<span class="sd">            #     confidence_interval</span>
+<span class="sd">            &#39;mean_cl_normal&#39;</span>
+
+<span class="sd">            # Mean, standard deviation * constant</span>
+<span class="sd">            # Arguments:</span>
+<span class="sd">            #     mult - multiplication factor</span>
+<span class="sd">            &#39;mean_sdl&#39;</span>
+
+<span class="sd">            # Median, outlier quantiles with equal tail areas</span>
+<span class="sd">            # Arguments:</span>
+<span class="sd">            #     confidence_interval</span>
+<span class="sd">            &#39;median_hilow&#39;</span>
+
+<span class="sd">            # Mean, Standard Errors * constant</span>
+<span class="sd">            # Arguments:</span>
+<span class="sd">            #     mult - multiplication factor</span>
+<span class="sd">            &#39;mean_se&#39;</span>
+
+<span class="sd">        or any function that takes a array and returns a dataframe</span>
+<span class="sd">        with three columns named ``y``, ``ymin`` and ``ymax``.</span>
+<span class="sd">        Defaults to :py:`&#39;mean_cl_boot&#39;`.</span>
+<span class="sd">    fun_y : function, optional (default: None)</span>
+<span class="sd">        Any function that takes a array-like and returns a value</span>
+<span class="sd">        fun_ymin : function (default:None)</span>
+<span class="sd">        Any function that takes an array-like and returns a value</span>
+<span class="sd">    fun_ymax : function, optional (default: None)</span>
+<span class="sd">        Any function that takes an array-like and returns a value</span>
+<span class="sd">    fun_args : dict, optional (default: None)</span>
+<span class="sd">        Arguments to any of the functions. Provided the names of the</span>
+<span class="sd">        arguments of the different functions are in not conflict, the</span>
+<span class="sd">        arguments will be assigned to the right functions. If there is</span>
+<span class="sd">        a conflict, create a wrapper function that resolves the</span>
+<span class="sd">        ambiguity in the argument names.</span>
+<span class="sd">    random_state : int or ~numpy.random.RandomState, optional</span>
+<span class="sd">        Seed or Random number generator to use. If ``None``, then</span>
+<span class="sd">        numpy global generator :class:`numpy.random` is used.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If any of ``fun_y``, ``fun_ymin`` or ``fun_ymax`` are provided, the</span>
+<span class="sd">    value of ``fun_data`` will be ignored.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    plotnine.geoms.geom_pointrange</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    </span><span class="si">{aesthetics_table}</span>
+
+<span class="s2">    .. rubric:: Options for computed aesthetics</span>
+
+<span class="s2">    ::</span>
+
+<span class="s2">        &#39;ymin&#39;  # ymin computed by the summary function</span>
+<span class="s2">        &#39;ymax&#39;  # ymax computed by the summary function</span>
+<span class="s2">        &#39;n&#39;     # Number of observations at a position</span>
+
+<span class="s2">    Calculated aesthetics are accessed using the `after_stat` function.</span>
+<span class="s2">    e.g. :py:`after_stat(&#39;ymin&#39;)`.</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="n">REQUIRED_AES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">}</span>
+    <span class="n">DEFAULT_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;geom&quot;</span><span class="p">:</span> <span class="s2">&quot;pointrange&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;na_rm&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;fun_data&quot;</span><span class="p">:</span> <span class="s2">&quot;mean_cl_boot&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fun_y&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_ymin&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_ymax&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;fun_args&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">CREATES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">setup_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;fun_data&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_y&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_ymin&quot;</span><span class="p">,</span> <span class="s2">&quot;fun_ymax&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;No summary function&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="s2">&quot;random_state&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;random_state&quot;</span><span class="p">]:</span>
+                <span class="n">random_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;random_state&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_state</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">][</span><span class="s2">&quot;random_state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_state</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_panel</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">make_summary_fun</span><span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_data&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_y&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_ymin&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_ymax&quot;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;fun_args&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="c1"># break a dataframe into pieces, summarise each piece,</span>
+        <span class="c1"># and join the pieces back together, retaining original</span>
+        <span class="c1"># columns unaffected by the summary.</span>
+        <span class="n">summaries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">]):</span>
+            <span class="n">summary</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">group</span>
+            <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">unique</span> <span class="o">=</span> <span class="n">uniquecols</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;y&quot;</span> <span class="ow">in</span> <span class="n">unique</span><span class="p">:</span>
+                <span class="n">unique</span> <span class="o">=</span> <span class="n">unique</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">merged</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span>
+            <span class="n">summaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span>
+
+        <span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">summaries</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_data</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

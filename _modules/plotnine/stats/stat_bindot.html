@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.stats.stat_bindot &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.stats.stat_bindot</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..doctools</span> <span class="kn">import</span> <span class="n">document</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span><span class="p">,</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">..mapping.evaluation</span> <span class="kn">import</span> <span class="n">after_stat</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">groupby_apply</span>
+<span class="kn">from</span> <span class="nn">.binning</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">assign_bins</span><span class="p">,</span>
+    <span class="n">breaks_from_bins</span><span class="p">,</span>
+    <span class="n">breaks_from_binwidth</span><span class="p">,</span>
+    <span class="n">freedman_diaconis_bins</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.stat</span> <span class="kn">import</span> <span class="n">stat</span>
+
+
+<div class="viewcode-block" id="stat_bindot">
+<a class="viewcode-back" href="../../../generated/plotnine.stats.stat_bindot.html#plotnine.stats.stat_bindot">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">stat_bindot</span><span class="p">(</span><span class="n">stat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Binning for a dot plot</span>
+
+<span class="sd">    {usage}</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {common_parameters}</span>
+<span class="sd">    bins : int, optional (default: None)</span>
+<span class="sd">        Number of bins. Overridden by binwidth. If :py:`None`,</span>
+<span class="sd">        a number is computed using the freedman-diaconis method.</span>
+<span class="sd">    binwidth : float, optional (default: None)</span>
+<span class="sd">        When :py:`method=&#39;dotdensity&#39;`, this specifies the maximum</span>
+<span class="sd">        binwidth. When :py:`method=&#39;histodot&#39;`, this specifies the</span>
+<span class="sd">        binwidth. This supercedes the ``bins``.</span>
+<span class="sd">    origin : float, optional (default: None)</span>
+<span class="sd">        When :py:`method=&#39;histodot&#39;`, origin of the first bin.</span>
+<span class="sd">    width : float, optional (default: 0.9)</span>
+<span class="sd">        When :py:`binaxis=&#39;y&#39;`, the spacing of the dotstacks for</span>
+<span class="sd">        dodging.</span>
+<span class="sd">    binaxis : str, optional (default: x)</span>
+<span class="sd">        Axis to bin along. Either :py:`&#39;x&#39;` or :py:`&#39;y&#39;`</span>
+<span class="sd">    method : str, optional (default: dotdensity)</span>
+<span class="sd">        One of *dotdensity* or *histodot*. These provide either of</span>
+<span class="sd">        dot-density binning or fixed bin widths.</span>
+<span class="sd">    binpositions : str, optional (default: bygroup)</span>
+<span class="sd">        Position of the bins when :py:`method=&#39;dotdensity&#39;`. The value</span>
+<span class="sd">        is one of::</span>
+
+<span class="sd">            &#39;bygroup&#39;  # positions of the bins for each group are</span>
+<span class="sd">                       # determined separately.</span>
+<span class="sd">            &#39;all&#39;      # positions of the bins are determined with all</span>
+<span class="sd">                       # data taken together. This aligns the dots</span>
+<span class="sd">                       # stacks across multiple groups.</span>
+
+<span class="sd">    drop : bool, optional (default: False)</span>
+<span class="sd">        If :py:`True`, remove all bins with zero counts.</span>
+<span class="sd">    right : bool, optional (default: True)</span>
+<span class="sd">        When :py:`method=&#39;histodot&#39;`, :py:`True` means include right</span>
+<span class="sd">        edge of the bins and if :py:`False` the left edge is included.</span>
+<span class="sd">    breaks : array-like, optional (default: None)</span>
+<span class="sd">        Bin boundaries for :py:`method=&#39;histodot&#39;`. This supercedes the</span>
+<span class="sd">        ``binwidth`` and ``bins``.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    plotnine.stats.stat_bin</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_aesthetics_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    </span><span class="si">{aesthetics_table}</span>
+
+<span class="s2">    .. rubric:: Options for computed aesthetics</span>
+
+<span class="s2">    ::</span>
+
+<span class="s2">         &#39;count&#39;    # number of points in bin</span>
+<span class="s2">         &#39;density&#39;  # density of points in bin, scaled to integrate to 1</span>
+<span class="s2">         &#39;ncount&#39;   # count, scaled to maximum of 1</span>
+<span class="s2">         &#39;ndensity&#39; # density, scaled to maximum of 1</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="n">REQUIRED_AES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">}</span>
+    <span class="n">NON_MISSING_AES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">}</span>
+    <span class="n">DEFAULT_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;geom&quot;</span><span class="p">:</span> <span class="s2">&quot;dotplot&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;na_rm&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="s2">&quot;binaxis&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;dotdensity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;binpositions&quot;</span><span class="p">:</span> <span class="s2">&quot;bygroup&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;drop&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;breaks&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">DEFAULT_AES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">after_stat</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)}</span>
+    <span class="n">CREATES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;density&quot;</span><span class="p">,</span> <span class="s2">&quot;ncount&quot;</span><span class="p">,</span> <span class="s2">&quot;ndensity&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">setup_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;breaks&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">freedman_diaconis_bins</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;&#39;stat_bin()&#39; using &#39;bins = </span><span class="si">{}</span><span class="s2">&#39;. &quot;</span>
+                <span class="s2">&quot;Pick better value with &#39;binwidth&#39;.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]),</span> <span class="n">PlotnineWarning</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">params</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_panel</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dotdensity&quot;</span>
+            <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binpositions&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span>
+        <span class="p">):</span>
+            <span class="n">binaxis</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binaxis&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">binaxis</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+                <span class="n">newdata</span> <span class="o">=</span> <span class="n">densitybin</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">),</span>
+                    <span class="n">binwidth</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">],</span>
+                    <span class="n">bins</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">newdata</span> <span class="o">=</span> <span class="n">newdata</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+                <span class="n">newdata</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">binaxis</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+                <span class="n">newdata</span> <span class="o">=</span> <span class="n">densitybin</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">),</span>
+                    <span class="n">binwidth</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">],</span>
+                    <span class="n">bins</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">newdata</span> <span class="o">=</span> <span class="n">newdata</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+                <span class="n">newdata</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown value </span><span class="si">{</span><span class="n">binaxis</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newdata</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newdata</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newdata</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;bincenter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newdata</span><span class="p">[</span><span class="s2">&quot;bincenter&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">stat_bindot</span><span class="p">)</span><span class="o">.</span><span class="n">compute_panel</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_group</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="c1"># Check that weights are whole numbers</span>
+        <span class="c1"># (for dots, weights must be whole)</span>
+        <span class="n">weight</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">int_status</span> <span class="o">=</span> <span class="p">[(</span><span class="n">w</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weight</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">int_status</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                    <span class="s2">&quot;Weights for stat_bindot must be nonnegative integers.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binaxis&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+            <span class="n">rangee</span> <span class="o">=</span> <span class="n">scales</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">dimension</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">midline</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#  Make pyright happy</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rangee</span> <span class="o">=</span> <span class="n">scales</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">dimension</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="c1"># The middle of each group, on the stack axis</span>
+            <span class="n">midline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;histodot&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">breaks</span> <span class="o">=</span> <span class="n">breaks_from_binwidth</span><span class="p">(</span>
+                    <span class="n">rangee</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">],</span> <span class="n">boundary</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">breaks</span> <span class="o">=</span> <span class="n">breaks_from_bins</span><span class="p">(</span>
+                    <span class="n">rangee</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">],</span> <span class="n">boundary</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="n">closed</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span> <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;left&quot;</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">assign_bins</span><span class="p">(</span>
+                <span class="n">values</span><span class="p">,</span> <span class="n">breaks</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">),</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="n">closed</span>
+            <span class="p">)</span>
+            <span class="c1"># for consistency</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="s2">&quot;binwidth&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;bincenter&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dotdensity&quot;</span><span class="p">:</span>
+            <span class="c1"># If bin centers are found by group instead of by all,</span>
+            <span class="c1"># find the bin centers (If binpositions==&quot;all&quot;, then</span>
+            <span class="c1"># we&#39;ll already have bin centers.)</span>
+            <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binpositions&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;bygroup&quot;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">densitybin</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">values</span><span class="p">,</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+                    <span class="n">binwidth</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">],</span>
+                    <span class="n">bins</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">],</span>
+                    <span class="n">rangee</span><span class="o">=</span><span class="n">rangee</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Collapse each bin and get a count</span>
+            <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                        <span class="s2">&quot;bincenter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;bincenter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())],</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+
+            <span class="c1"># plyr::ddply + plyr::summarize</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">groupby_apply</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;bincenter&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]),</span> <span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ncount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;drop&quot;</span><span class="p">]:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;binaxis&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bincenter&quot;</span><span class="p">)</span>
+            <span class="c1"># For x binning, the width of the geoms</span>
+            <span class="c1"># is same as the width of the bin</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bincenter&quot;</span><span class="p">)</span>
+            <span class="c1"># For y binning, set the x midline.</span>
+            <span class="c1"># This is needed for continuous x axis</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">midline</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">densitybin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rangee</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Do density binning</span>
+
+<span class="sd">    It does not collapse each bin with a count.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        Numbers to bin</span>
+<span class="sd">    weight : array-like</span>
+<span class="sd">        Weights</span>
+<span class="sd">    binwidth : numeric</span>
+<span class="sd">        Size of the bins</span>
+<span class="sd">    bins : int</span>
+<span class="sd">        Number of bins</span>
+<span class="sd">    rangee : tuple</span>
+<span class="sd">        Range of x</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">weight</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">weight</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">rangee</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rangee</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">bins</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">if</span> <span class="n">binwidth</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">binwidth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">rangee</span><span class="p">)</span> <span class="o">/</span> <span class="n">bins</span>
+
+    <span class="c1"># Sort weight and x, by x</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+
+    <span class="n">cbin</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Current bin ID</span>
+    <span class="n">bin_ids</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># The bin ID for each observation</span>
+    <span class="c1"># End position of current bin (scan left to right)</span>
+    <span class="n">binend</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="c1"># Scan list and put dots in bins</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="c1"># If past end of bin, start a new bin at this point</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="n">binend</span><span class="p">:</span>
+            <span class="n">binend</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">binwidth</span>
+            <span class="n">cbin</span> <span class="o">=</span> <span class="n">cbin</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">bin_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cbin</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+            <span class="s2">&quot;bin&quot;</span><span class="p">:</span> <span class="n">bin_ids</span><span class="p">,</span>
+            <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="n">binwidth</span><span class="p">,</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="c1"># This is a plyr::ddply</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;bincenter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;bin&quot;</span><span class="p">)[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

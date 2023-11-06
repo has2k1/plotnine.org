@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.geoms.geom &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.geoms.geom</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">repeat</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..layer</span> <span class="kn">import</span> <span class="n">layer</span>
+<span class="kn">from</span> <span class="nn">..mapping.aes</span> <span class="kn">import</span> <span class="n">is_valid_aesthetic</span><span class="p">,</span> <span class="n">rename_aesthetics</span>
+<span class="kn">from</span> <span class="nn">..mapping.evaluation</span> <span class="kn">import</span> <span class="n">evaluate</span>
+<span class="kn">from</span> <span class="nn">..positions.position</span> <span class="kn">import</span> <span class="n">position</span>
+<span class="kn">from</span> <span class="nn">..stats.stat</span> <span class="kn">import</span> <span class="n">stat</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Registry</span><span class="p">,</span>
+    <span class="n">copy_keys</span><span class="p">,</span>
+    <span class="n">data_mapping_as_kwargs</span><span class="p">,</span>
+    <span class="n">is_list_like</span><span class="p">,</span>
+    <span class="n">is_string</span><span class="p">,</span>
+    <span class="n">remove_missing</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.iapi</span> <span class="kn">import</span> <span class="n">panel_view</span>
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Aes</span><span class="p">,</span>
+        <span class="n">Axes</span><span class="p">,</span>
+        <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">DataLike</span><span class="p">,</span>
+        <span class="n">DrawingArea</span><span class="p">,</span>
+        <span class="n">EvalEnvironment</span><span class="p">,</span>
+        <span class="n">Ggplot</span><span class="p">,</span>
+        <span class="n">Layer</span><span class="p">,</span>
+        <span class="n">Layout</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="geom">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom">[docs]</a>
+<span class="k">class</span> <span class="nc">geom</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Registry</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class of all Geoms&quot;&quot;&quot;</span>
+
+    <span class="n">__base__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1">#: Default aesthetics for the geom</span>
+    <span class="n">DEFAULT_AES</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1">#: Required aesthetics for the geom</span>
+    <span class="n">REQUIRED_AES</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1">#: Required aesthetics for the geom</span>
+    <span class="n">NON_MISSING_AES</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1">#: Required parameters for the geom</span>
+    <span class="n">DEFAULT_PARAMS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1">#: geom/layer specific dataframe</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">DataLike</span>
+
+    <span class="c1">#: mappings i.e. :py:`aes(x=&#39;col1&#39;, fill=&#39;col2&#39;)`</span>
+    <span class="n">mapping</span><span class="p">:</span> <span class="n">Aes</span>
+
+    <span class="n">aes_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># setting of aesthetic</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>  <span class="c1"># parameter settings</span>
+
+    <span class="c1"># Plot namespace, it gets its value when the plot is being</span>
+    <span class="c1"># built.</span>
+    <span class="n">environment</span><span class="p">:</span> <span class="n">EvalEnvironment</span>
+
+    <span class="c1"># The geom responsible for the legend if draw_legend is</span>
+    <span class="c1"># not implemented</span>
+    <span class="n">legend_geom</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;point&quot;</span>
+
+    <span class="c1"># Documentation for the aesthetics. It is added under the</span>
+    <span class="c1"># documentation for mapping parameter. Use {aesthetics}</span>
+    <span class="c1"># placeholder to insert a table for all the aesthetics and</span>
+    <span class="c1"># their default values.</span>
+    <span class="n">_aesthetics_doc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{aesthetics_table}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="p">:</span> <span class="n">Aes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">DataLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">rename_aesthetics</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">data_mapping_as_kwargs</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">mapping</span><span class="p">),</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>  <span class="c1"># Will be used to create stat &amp; layer</span>
+
+        <span class="c1"># separate aesthetics and parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span> <span class="o">=</span> <span class="n">copy_keys</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="p">{},</span> <span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">copy_keys</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mapping&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stat</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">from_geom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">from_geom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verify_arguments</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># geom, stat, layer</span>
+
+<div class="viewcode-block" id="geom.from_stat">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.from_stat">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_stat</span><span class="p">(</span><span class="n">stat</span><span class="p">:</span> <span class="n">stat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">geom</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an instantiated geom object</span>
+
+<span class="sd">        geoms should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        stat : stat</span>
+<span class="sd">            `stat`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : geom</span>
+<span class="sd">            A geom object</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        PlotnineError</span>
+<span class="sd">            If unable to create a `geom`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;geom&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">geom</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">name</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">geom</span><span class="p">):</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">elif</span> <span class="n">is_string</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;geom_&quot;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;geom_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown geom of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">klass</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="n">stat</span><span class="p">,</span> <span class="o">**</span><span class="n">stat</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom.aesthetics">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.aesthetics">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">aesthetics</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">geom</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all the aesthetics for this geom</span>
+
+<span class="sd">        geoms should not override this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">main</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">|</span> <span class="bp">cls</span><span class="o">.</span><span class="n">REQUIRED_AES</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;group&quot;</span><span class="p">}</span>
+        <span class="c1"># Need to recognize both spellings</span>
+        <span class="k">if</span> <span class="s2">&quot;color&quot;</span> <span class="ow">in</span> <span class="n">main</span><span class="p">:</span>
+            <span class="n">other</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;colour&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;outlier_color&quot;</span> <span class="ow">in</span> <span class="n">main</span><span class="p">:</span>
+            <span class="n">other</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;outlier_colour&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">main</span> <span class="o">|</span> <span class="n">other</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">geom</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deep copy without copying the self.data dataframe</span>
+
+<span class="sd">        geoms should not override this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span>
+
+        <span class="c1"># don&#39;t make a deepcopy of data, or environment</span>
+        <span class="n">shallow</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;_kwargs&quot;</span><span class="p">,</span> <span class="s2">&quot;environment&quot;</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">shallow</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="geom.setup_data">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.setup_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modify the data before drawing takes place</span>
+
+<span class="sd">        This function is called *before* position adjustments are done.</span>
+<span class="sd">        It is used by geoms to create the final aesthetics used for</span>
+<span class="sd">        drawing. The base class method does nothing, geoms can override</span>
+<span class="sd">        this method for two reasons:</span>
+
+<span class="sd">        1. The ``stat`` does not create all the aesthetics (usually</span>
+<span class="sd">           position aesthetics) required for drawing the ``geom``,</span>
+<span class="sd">           but those aesthetics can be computed from the available</span>
+<span class="sd">           data. For example :class:`~plotnine.geoms.geom_boxplot`</span>
+<span class="sd">           and :class:`~plotnine.geoms.geom_violin`.</span>
+
+<span class="sd">        2. The ``geom`` inherits from another ``geom`` (superclass) which</span>
+<span class="sd">           does the drawing and the superclass requires certain aesthetics</span>
+<span class="sd">           to be present in the data. For example</span>
+<span class="sd">           :class:`~plotnine.geoms.geom_tile` and</span>
+<span class="sd">           :class:`~plotnine.geoms.geom_area`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="geom.use_defaults">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.use_defaults">[docs]</a>
+    <span class="k">def</span> <span class="nf">use_defaults</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">aes_modifiers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Combine data with defaults and set aesthetics from parameters</span>
+
+<span class="sd">        geoms should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+<span class="sd">        aes_modifiers : dict</span>
+<span class="sd">            Aesthetics</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dataframe</span>
+<span class="sd">            Data used for drawing the geom.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">missing_aes</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Not in data and not set, use default</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">missing_aes</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_AES</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span>
+
+        <span class="c1"># Evaluate/Modify the mapped aesthetics</span>
+        <span class="n">evaled</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">aes_modifiers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">evaled</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">evaled</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;PANEL&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">num_panels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num_panels</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Aesthetics set as parameters to the geom/stat</span>
+        <span class="k">for</span> <span class="n">ae</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aes_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="c1"># sniff out the special cases, like custom</span>
+                <span class="c1"># tupled linetypes, shapes and colors</span>
+                <span class="k">if</span> <span class="n">is_valid_aesthetic</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ae</span><span class="p">):</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">num_panels</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">repeat</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">num_panels</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; does not look like a &quot;</span> <span class="s2">&quot;valid value for `</span><span class="si">{}</span><span class="s2">`&quot;</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ae</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="geom.draw_layer">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.draw_layer">[docs]</a>
+    <span class="k">def</span> <span class="nf">draw_layer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw layer across all panels</span>
+
+<span class="sd">        geoms should not override this method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : DataFrame</span>
+<span class="sd">            DataFrame specific for this layer</span>
+<span class="sd">        layout : Layout</span>
+<span class="sd">            Layout object created when the plot is getting</span>
+<span class="sd">            built</span>
+<span class="sd">        coord : coord</span>
+<span class="sd">            Type of coordinate axes</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Combined *geom* and *stat* parameters. Also</span>
+<span class="sd">            includes the stacking order of the layer in</span>
+<span class="sd">            the plot (*zorder*)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">pid</span><span class="p">,</span> <span class="n">pdata</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;PANEL&quot;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">ploc</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s2">&quot;PANEL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">panel_params</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">panel_params</span><span class="p">[</span><span class="n">ploc</span><span class="p">]</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">axs</span><span class="p">[</span><span class="n">ploc</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_panel</span><span class="p">(</span><span class="n">pdata</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom.draw_panel">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.draw_panel">[docs]</a>
+    <span class="k">def</span> <span class="nf">draw_panel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span>
+        <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot all groups</span>
+
+<span class="sd">        For efficiency, geoms that do not need to partition</span>
+<span class="sd">        different groups before plotting should override this</span>
+<span class="sd">        method and avoid the groupby.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data to be plotted by this geom. This is the</span>
+<span class="sd">            dataframe created in the plot_build pipeline.</span>
+<span class="sd">        panel_params : panel_view</span>
+<span class="sd">            The scale information as may be required by the</span>
+<span class="sd">            axes. At this point, that information is about</span>
+<span class="sd">            ranges, ticks and labels. Attributes are of interest</span>
+<span class="sd">            to the geom are::</span>
+
+<span class="sd">                &#39;panel_params.x.range&#39;  # tuple</span>
+<span class="sd">                &#39;panel_params.y.range&#39;  # tuple</span>
+
+<span class="sd">        coord : coord</span>
+<span class="sd">            Coordinate (e.g. coord_cartesian) system of the</span>
+<span class="sd">            geom.</span>
+<span class="sd">        ax : axes</span>
+<span class="sd">            Axes on which to plot.</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Combined parameters for the geom and stat. Also</span>
+<span class="sd">            includes the &#39;zorder&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">gdata</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">):</span>
+            <span class="n">gdata</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_group</span><span class="p">(</span><span class="n">gdata</span><span class="p">,</span> <span class="n">panel_params</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom.draw_group">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.draw_group">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">draw_group</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span>
+        <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot data belonging to a group.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data to be plotted by this geom. This is the</span>
+<span class="sd">            dataframe created in the plot_build pipeline.</span>
+<span class="sd">        panel_params : panel_view</span>
+<span class="sd">            The scale information as may be required by the</span>
+<span class="sd">            axes. At this point, that information is about</span>
+<span class="sd">            ranges, ticks and labels. Keys of interest to</span>
+<span class="sd">            the geom are::</span>
+
+<span class="sd">                &#39;x_range&#39;  # tuple</span>
+<span class="sd">                &#39;y_range&#39;  # tuple</span>
+
+<span class="sd">        coord : coord</span>
+<span class="sd">            Coordinate (e.g. coord_cartesian) system of the</span>
+<span class="sd">            geom.</span>
+<span class="sd">        ax : axes</span>
+<span class="sd">            Axes on which to plot.</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Combined parameters for the geom and stat. Also</span>
+<span class="sd">            includes the &#39;zorder&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The geom should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom.draw_unit">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.draw_unit">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">draw_unit</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">panel_params</span><span class="p">:</span> <span class="n">panel_view</span><span class="p">,</span>
+        <span class="n">coord</span><span class="p">:</span> <span class="n">Coord</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot data belonging to a unit.</span>
+
+<span class="sd">        A matplotlib plot function may require that an aethestic</span>
+<span class="sd">        have a single unique value. e.g. linestyle=&#39;dashed&#39; and</span>
+<span class="sd">        not linestyle=[&#39;dashed&#39;, &#39;dotted&#39;, ...].</span>
+<span class="sd">        A single call to such a function can only plot lines with</span>
+<span class="sd">        the same linestyle. However, if the plot we want has more</span>
+<span class="sd">        than one line with different linestyles, we need to group</span>
+<span class="sd">        the lines with the same linestyle and plot them as one</span>
+<span class="sd">        unit. In this case, draw_group calls this function to do</span>
+<span class="sd">        the plotting. For an example see</span>
+<span class="sd">        :class:`~plotnine.geoms.geom_point`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data to be plotted by this geom. This is the</span>
+<span class="sd">            dataframe created in the plot_build pipeline.</span>
+<span class="sd">        panel_params : panel_view</span>
+<span class="sd">            The scale information as may be required by the</span>
+<span class="sd">            axes. At this point, that information is about</span>
+<span class="sd">            ranges, ticks and labels. Keys of interest to</span>
+<span class="sd">            the geom are::</span>
+
+<span class="sd">                &#39;x_range&#39;  # tuple</span>
+<span class="sd">                &#39;y_range&#39;  # tuple</span>
+
+<span class="sd">            In rare cases a geom may need access to the x or y scales.</span>
+<span class="sd">            Those are available at::</span>
+
+<span class="sd">                &#39;scales&#39;   # SimpleNamespace</span>
+
+<span class="sd">        coord : coord</span>
+<span class="sd">            Coordinate (e.g. coord_cartesian) system of the</span>
+<span class="sd">            geom.</span>
+<span class="sd">        ax : axes</span>
+<span class="sd">            Axes on which to plot.</span>
+<span class="sd">        params : dict</span>
+<span class="sd">            Combined parameters for the geom and stat. Also</span>
+<span class="sd">            includes the &#39;zorder&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The geom should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">:</span> <span class="n">Ggplot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Ggplot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add layer representing geom object on the right</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gg : ggplot</span>
+<span class="sd">            ggplot object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : ggplot</span>
+<span class="sd">            ggplot object with added layer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gg</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_layer</span><span class="p">()</span>  <span class="c1"># Add layer</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+<div class="viewcode-block" id="geom.to_layer">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.to_layer">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Layer</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make a layer that represents this geom</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : layer</span>
+<span class="sd">            Layer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">layer</span><span class="o">.</span><span class="n">from_geom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_verify_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verify arguments passed to the geom</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">geom_stat_args</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat</span><span class="o">.</span><span class="n">_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">geom_stat_args</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># geom aesthetics</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">()</span>  <span class="c1"># geom parameters</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat</span><span class="o">.</span><span class="n">DEFAULT_PARAMS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># stat aesthetics</span>
+            <span class="o">-</span> <span class="p">{</span>  <span class="c1"># stat parameters</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mapping&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;show_legend&quot;</span><span class="p">,</span>  <span class="c1"># layer parameters</span>
+                <span class="s2">&quot;inherit_aes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>  <span class="c1"># layer parameters</span>
+        <span class="k">if</span> <span class="n">unknown</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;Parameters </span><span class="si">{}</span><span class="s2">, are not understood by &quot;</span>
+                <span class="s2">&quot;either the geom, stat or layer.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unknown</span><span class="p">))</span>
+
+<div class="viewcode-block" id="geom.handle_na">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.handle_na">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_na</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove rows with NaN values</span>
+
+<span class="sd">        geoms that infer extra information from missing values</span>
+<span class="sd">        should override this method. For example</span>
+<span class="sd">        :class:`~plotnine.geoms.geom_path`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dataframe</span>
+<span class="sd">            Data</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dataframe</span>
+<span class="sd">            Data without the NaNs.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Shows a warning if the any rows are removed and the</span>
+<span class="sd">        `na_rm` parameter is False. It only takes into account</span>
+<span class="sd">        the columns of the required aesthetics.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">remove_missing</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;na_rm&quot;</span><span class="p">],</span>
+            <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">REQUIRED_AES</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">NON_MISSING_AES</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom.draw_legend">
+<a class="viewcode-back" href="../../../generated/plotnine.geoms.geom.geom.html#plotnine.geoms.geom.geom.draw_legend">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">draw_legend</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">da</span><span class="p">:</span> <span class="n">DrawingArea</span><span class="p">,</span> <span class="n">lyr</span><span class="p">:</span> <span class="n">Layer</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DrawingArea</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a rectangle in the box</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : Series</span>
+<span class="sd">            Data Row</span>
+<span class="sd">        da : DrawingArea</span>
+<span class="sd">            Canvas</span>
+<span class="sd">        lyr : layer</span>
+<span class="sd">            Layer</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : DrawingArea</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The geom should implement this method.&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

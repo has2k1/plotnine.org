@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.scales.scale &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.scales.scale</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">mizani.bounds</span> <span class="kn">import</span> <span class="n">censor</span><span class="p">,</span> <span class="n">expand_range_distinct</span><span class="p">,</span> <span class="n">rescale</span><span class="p">,</span> <span class="n">zero_range</span>
+
+<span class="kn">from</span> <span class="nn">..doctools</span> <span class="kn">import</span> <span class="n">document</span>
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span><span class="p">,</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">..iapi</span> <span class="kn">import</span> <span class="n">range_view</span><span class="p">,</span> <span class="n">scale_view</span>
+<span class="kn">from</span> <span class="nn">..mapping.aes</span> <span class="kn">import</span> <span class="n">is_position_aes</span><span class="p">,</span> <span class="n">rename_aesthetics</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">Registry</span><span class="p">,</span> <span class="n">match</span>
+<span class="kn">from</span> <span class="nn">._expand</span> <span class="kn">import</span> <span class="n">expand_range</span>
+<span class="kn">from</span> <span class="nn">.range</span> <span class="kn">import</span> <span class="n">Range</span><span class="p">,</span> <span class="n">RangeContinuous</span><span class="p">,</span> <span class="n">RangeDiscrete</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Type</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">AnyArrayLike</span><span class="p">,</span>
+        <span class="n">CoordRange</span><span class="p">,</span>
+        <span class="n">FloatArrayLike</span><span class="p">,</span>
+        <span class="n">FloatArrayLikeTV</span><span class="p">,</span>
+        <span class="n">ScaleBreaks</span><span class="p">,</span>
+        <span class="n">ScaleBreaksRaw</span><span class="p">,</span>
+        <span class="n">ScaleContinuousBreaks</span><span class="p">,</span>
+        <span class="n">ScaleContinuousBreaksRaw</span><span class="p">,</span>
+        <span class="n">ScaleContinuousLimits</span><span class="p">,</span>
+        <span class="n">ScaleContinuousLimitsRaw</span><span class="p">,</span>
+        <span class="n">ScaledAestheticsName</span><span class="p">,</span>
+        <span class="n">ScaleDiscreteBreaks</span><span class="p">,</span>
+        <span class="n">ScaleDiscreteBreaksRaw</span><span class="p">,</span>
+        <span class="n">ScaleDiscreteLimits</span><span class="p">,</span>
+        <span class="n">ScaleDiscreteLimitsRaw</span><span class="p">,</span>
+        <span class="n">ScaleLabels</span><span class="p">,</span>
+        <span class="n">ScaleLabelsRaw</span><span class="p">,</span>
+        <span class="n">ScaleLimits</span><span class="p">,</span>
+        <span class="n">ScaleLimitsRaw</span><span class="p">,</span>
+        <span class="n">ScaleMinorBreaksRaw</span><span class="p">,</span>
+        <span class="n">Trans</span><span class="p">,</span>
+        <span class="n">TupleFloat2</span><span class="p">,</span>
+        <span class="n">TupleFloat4</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="scale">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale">[docs]</a>
+<span class="k">class</span> <span class="nc">scale</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Registry</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    breaks : array_like or callable, optional</span>
+<span class="sd">        Major break points. Alternatively, a callable that</span>
+<span class="sd">        takes a tuple of limits and returns a list of breaks.</span>
+<span class="sd">        Default is to automatically calculate the breaks.</span>
+<span class="sd">    expand : tuple, optional</span>
+<span class="sd">        Multiplicative and additive expansion constants</span>
+<span class="sd">        that determine how the scale is expanded. If</span>
+<span class="sd">        specified must be of length 2 or 4. Specifically the</span>
+<span class="sd">        values are in this order::</span>
+
+<span class="sd">            (mul, add)</span>
+<span class="sd">            (mul_low, add_low, mul_high, add_high)</span>
+
+<span class="sd">        For example,</span>
+
+<span class="sd">            - ``(0, 0)`` - Do not expand.</span>
+<span class="sd">            - ``(0, 1)`` - Expand lower and upper limits by 1 unit.</span>
+<span class="sd">            - ``(1, 0)`` - Expand lower and upper limits by 100%.</span>
+<span class="sd">            - ``(0, 0, 0, 0)`` - Do not expand, as ``(0, 0)``.</span>
+<span class="sd">            - ``(0, 0, 0, 1)`` - Expand upper limit by 1 unit.</span>
+<span class="sd">            - ``(0, 1, 0.1, 0)`` - Expand lower limit by 1 unit and</span>
+<span class="sd">              upper limit by 10%.</span>
+<span class="sd">            - ``(0, 0, 0.1, 2)`` - Expand upper limit by 10% plus</span>
+<span class="sd">              2 units.</span>
+
+<span class="sd">        If not specified, suitable defaults are chosen.</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        Name used as the label of the scale. This is what</span>
+<span class="sd">        shows up as the axis label or legend title. Suitable</span>
+<span class="sd">        defaults are chosen depending on the type of scale.</span>
+<span class="sd">    labels : list or callable, optional</span>
+<span class="sd">        List of :class:`str`. Labels at the `breaks`.</span>
+<span class="sd">        Alternatively, a callable that takes an array_like of</span>
+<span class="sd">        break points as input and returns a list of strings.</span>
+<span class="sd">    limits : array_like, optional</span>
+<span class="sd">        Limits of the scale. Most commonly, these are the</span>
+<span class="sd">        min &amp; max values for the scales. For scales that</span>
+<span class="sd">        deal with categoricals, these may be a subset or</span>
+<span class="sd">        superset of the categories.</span>
+<span class="sd">    na_value : scalar</span>
+<span class="sd">        What value to assign to missing values. Default</span>
+<span class="sd">        is to assign ``np.nan``.</span>
+<span class="sd">    palette : callable, optional</span>
+<span class="sd">        Function to map data points onto the scale. Most</span>
+<span class="sd">        scales define their own palettes.</span>
+<span class="sd">    aesthetics : list, optional</span>
+<span class="sd">        list of :class:`str`. Aesthetics covered by the</span>
+<span class="sd">        scale. These are defined by each scale and the</span>
+<span class="sd">        user should probably not change them. Have fun.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__base__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># aesthetics affected by this scale</span>
+    <span class="n">_aesthetics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ScaledAestheticsName</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># What to do with the NA values</span>
+    <span class="n">na_value</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1"># used as the axis label or legend title</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># major breaks</span>
+    <span class="n">breaks</span><span class="p">:</span> <span class="n">ScaleBreaksRaw</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># labels at the breaks</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">ScaleLabelsRaw</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># legend or any other guide</span>
+    <span class="n">guide</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;legend&quot;</span>
+
+    <span class="c1"># (min, max) - set by user</span>
+    <span class="n">_limits</span><span class="p">:</span> <span class="n">ScaleLimitsRaw</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">#: multiplicative and additive expansion constants</span>
+    <span class="n">expand</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TupleFloat2</span> <span class="o">|</span> <span class="n">TupleFloat4</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># range of aesthetic, instantiated in __init__</span>
+    <span class="nb">range</span><span class="p">:</span> <span class="n">Range</span>
+    <span class="n">_range_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Range</span><span class="p">]</span> <span class="o">=</span> <span class="n">Range</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> could not recognise parameter `</span><span class="si">{}</span><span class="s2">`&quot;</span>
+                <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="n">PlotnineWarning</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range_class</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>  <span class="c1"># pyright: ignore</span>
+                <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Breaks and labels have unequal lengths&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_position_aes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">guide</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">guide</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">aesthetics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aesthetics</span>
+
+    <span class="nd">@aesthetics</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">aesthetics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="c1"># TODO: Find a way to make the type checking work</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_aesthetics</span> <span class="o">=</span> <span class="n">rename_aesthetics</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># pyright: ignore</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add this scale to ggplot object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">scales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+<div class="viewcode-block" id="scale.palette">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.palette">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">palette</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aesthetic mapping function</span>
+
+<span class="sd">        Note that not all scales need to implement/provide a palette.</span>
+<span class="sd">        For example identity &amp; position scales do not use a palette.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.map">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.map">[docs]</a>
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Map every element of x</span>
+
+<span class="sd">        The palette should do the real work, this should</span>
+<span class="sd">        make sure that sensible values are sent and</span>
+<span class="sd">        return from the palette.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.train">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.train">[docs]</a>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train scale</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x: pd.series | np.array</span>
+<span class="sd">            a column of data to train over</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.dimension">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.dimension">[docs]</a>
+    <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the phyical size of the scale.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.expand_limits">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.expand_limits">[docs]</a>
+    <span class="k">def</span> <span class="nf">expand_limits</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">ScaleLimits</span><span class="p">,</span>
+        <span class="n">expand</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="n">TupleFloat4</span><span class="p">,</span>
+        <span class="n">coord_limits</span><span class="p">:</span> <span class="n">CoordRange</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">trans</span><span class="p">:</span> <span class="n">Trans</span> <span class="o">|</span> <span class="n">Type</span><span class="p">[</span><span class="n">Trans</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">range_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Exand the limits of the scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.transform_df">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.transform_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.transform">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform array|series x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.inverse">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.inverse">[docs]</a>
+    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inverse transform array|series x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.view">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.view">[docs]</a>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CoordRange</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">scale_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Information about the trained scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale.default_expansion">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.default_expansion">[docs]</a>
+    <span class="k">def</span> <span class="nf">default_expansion</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mult</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">TupleFloat2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">add</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">TupleFloat2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TupleFloat4</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get default expansion for this scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">expand</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">mult</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># n == 4:</span>
+                <span class="n">mult</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">add</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mult</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="n">mult</span> <span class="o">=</span> <span class="p">(</span><span class="n">mult</span><span class="p">,</span> <span class="n">mult</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="n">add</span> <span class="o">=</span> <span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">add</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mult</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The scale expansion multiplication factor should &quot;</span>
+                <span class="s2">&quot;either be a single float, or a tuple of two floats. &quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">add</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The scale expansion addition constant should &quot;</span>
+                <span class="s2">&quot;either be a single float, or a tuple of two floats. &quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">mult</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">add</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mult</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">add</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="scale.reset">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.reset">[docs]</a>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the range of the scale to None.</span>
+
+<span class="sd">        i.e Forget all the training</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="scale.is_empty">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.is_empty">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Whether the scale has size information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;range&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="kc">None</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleLimits</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span>
+
+    <span class="nd">@limits</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">ScaleLimitsRaw</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="scale.train_df">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.train_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">train_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train scale from a dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aesthetics</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">aesthetics</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">ae</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="scale.map_df">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.map_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">map_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Map df</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">df</span>
+
+        <span class="n">aesthetics</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">aesthetics</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">ae</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="scale.get_labels">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.get_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">breaks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleBreaks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get labels, calculating them if required</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="scale.get_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.get_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_breaks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get Breaks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="scale.get_bounded_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale.html#plotnine.scales.scale.scale.get_bounded_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bounded_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return Breaks that are within the limits</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="scale_discrete">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_discrete</span><span class="p">(</span><span class="n">scale</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all discrete scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    limits : array_like, optional</span>
+<span class="sd">        Limits of the scale. For scales that deal with</span>
+<span class="sd">        categoricals, these may be a subset or superset of</span>
+<span class="sd">        the categories. Data values that are not in the limits</span>
+<span class="sd">        will be treated as missing data and represented with</span>
+<span class="sd">        the ``na_value``.</span>
+<span class="sd">    drop : bool</span>
+<span class="sd">        Whether to drop unused categories from</span>
+<span class="sd">        the scale</span>
+<span class="sd">    na_translate : bool</span>
+<span class="sd">        If ``True`` translate missing values and show them.</span>
+<span class="sd">        If ``False`` remove missing values. Default value is</span>
+<span class="sd">        ``True``</span>
+<span class="sd">    na_value : object</span>
+<span class="sd">        If ``na_translate=True``, what aesthetic value should be</span>
+<span class="sd">        assigned to the missing values. This parameter does not</span>
+<span class="sd">        apply to position scales where ``nan`` is always placed</span>
+<span class="sd">        on the right.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_range_class</span> <span class="o">=</span> <span class="n">RangeDiscrete</span>
+    <span class="n">_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteLimitsRaw</span><span class="p">]</span>
+    <span class="nb">range</span><span class="p">:</span> <span class="n">RangeDiscrete</span>
+    <span class="n">breaks</span><span class="p">:</span> <span class="n">ScaleDiscreteBreaksRaw</span>
+    <span class="n">drop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># drop unused factor levels from the scale</span>
+    <span class="n">na_translate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleDiscreteLimits</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">)</span>
+
+    <span class="nd">@limits</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">ScaleDiscreteLimitsRaw</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="scale_discrete.palette">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.palette">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">palette</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aesthetic mapping function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.train">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.train">[docs]</a>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train scale</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x: pd.series | np.array</span>
+<span class="sd">            a column of data to train over</span>
+<span class="sd">        drop : bool</span>
+<span class="sd">            Whether to drop(not include) unused categories</span>
+
+<span class="sd">        A discrete range is stored in a list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="n">na_rm</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">na_translate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">drop</span><span class="p">,</span> <span class="n">na_rm</span><span class="o">=</span><span class="n">na_rm</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.dimension">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.dimension">[docs]</a>
+    <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the phyical size of the scale</span>
+
+<span class="sd">        Unlike limits, this always returns a numeric vector of length 2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+        <span class="k">return</span> <span class="n">expand_range_distinct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">limits</span><span class="p">,</span> <span class="n">expand</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.expand_limits">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.expand_limits">[docs]</a>
+    <span class="k">def</span> <span class="nf">expand_limits</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">ScaleDiscreteLimits</span><span class="p">,</span>
+        <span class="n">expand</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="n">TupleFloat4</span><span class="p">,</span>
+        <span class="n">coord_limits</span><span class="p">:</span> <span class="n">TupleFloat2</span><span class="p">,</span>
+        <span class="n">trans</span><span class="p">:</span> <span class="n">Trans</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">range_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the final range in coordinate space</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Turn discrete limits into a tuple of continuous limits</span>
+        <span class="n">is_empty</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">climits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_empty</span> <span class="k">else</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">coord_limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># - Override None in coord_limits</span>
+            <span class="c1"># - Expand limits in coordinate space</span>
+            <span class="c1"># - Remove any computed infinite values &amp;</span>
+            <span class="n">c0</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">coord_limits</span>
+            <span class="n">climits</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">climits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">c0</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c0</span><span class="p">,</span>
+                <span class="n">climits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">c1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c1</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">expand_range</span><span class="p">(</span><span class="n">climits</span><span class="p">,</span> <span class="n">expand</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.view">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.view">[docs]</a>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CoordRange</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">scale_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Information about the trained scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">if</span> <span class="nb">range</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">)</span>
+
+        <span class="n">breaks_d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">breaks_d</span><span class="p">))</span>
+        <span class="n">minor_breaks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">breaks_d</span><span class="p">)</span>
+
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">scale_view</span><span class="p">(</span>
+            <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">aesthetics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">,</span>
+            <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">,</span>
+            <span class="n">breaks</span><span class="o">=</span><span class="n">breaks</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">minor_breaks</span><span class="o">=</span><span class="n">minor_breaks</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">sv</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.default_expansion">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.default_expansion">[docs]</a>
+    <span class="k">def</span> <span class="nf">default_expansion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the default expansion for a discrete scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">default_expansion</span><span class="p">(</span><span class="n">mult</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">expand</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.map">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.map">[docs]</a>
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Map values in x to a palette</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="o">~</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">limits</span><span class="p">)))</span>
+        <span class="n">pal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">palette</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pal</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="c1"># manual palette with specific assignments</span>
+            <span class="n">pal_match</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">pal_match</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pal</span><span class="p">[</span><span class="n">val</span><span class="p">])</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">pal_match</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">na_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pal</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">pal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pal</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">limits</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pal_match</span> <span class="o">=</span> <span class="p">[</span><span class="n">pal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="c1"># Deal with missing data</span>
+                <span class="c1"># - Insert NaN where there is no match</span>
+                <span class="n">pal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">pal</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pal</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">pal_match</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pal</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">na_translate</span><span class="p">:</span>
+            <span class="n">bool_pal_match</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">pal_match</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bool_pal_match</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># linetypes take tuples, these return 2d</span>
+                <span class="n">bool_pal_match</span> <span class="o">=</span> <span class="n">bool_pal_match</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">bool_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|</span> <span class="n">bool_pal_match</span>
+            <span class="k">if</span> <span class="n">bool_idx</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">pal_match</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">x</span> <span class="k">if</span> <span class="n">i</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">na_value</span>
+                    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pal_match</span><span class="p">,</span> <span class="o">~</span><span class="n">bool_idx</span><span class="p">)</span>
+                <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pal_match</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.get_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.get_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleDiscreteBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an ordered list of breaks</span>
+
+<span class="sd">        The form is suitable for use by the guides e.g.</span>
+<span class="sd">            [&#39;fair&#39;, &#39;good&#39;, &#39;very good&#39;, &#39;premium&#39;, &#39;ideal&#39;]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_wanted_breaks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">)</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">limits</span> <span class="k">if</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">_wanted_breaks</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">breaks</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.get_bounded_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.get_bounded_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bounded_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleDiscreteBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return Breaks that are within limits</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="n">lookup</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">()</span>
+        <span class="n">strict_breaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">breaks</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">lookup</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">strict_breaks</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.get_labels">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.get_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_labels</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">breaks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleDiscreteBreaks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate labels for the legend/guide breaks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">breaks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">()</span>
+
+        <span class="c1"># The labels depend on the breaks if the breaks.</span>
+        <span class="c1"># No breaks, no labels</span>
+        <span class="k">if</span> <span class="n">breaks</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">breaks</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+        <span class="c1"># if a dict is used to rename some labels</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">b</span><span class="p">])</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">breaks</span>
+            <span class="p">]</span>
+            <span class="k">return</span> <span class="n">labels</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.transform_df">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.transform_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Discrete scales do not do transformations</span>
+        <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="scale_discrete.transform">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_discrete.html#plotnine.scales.scale.scale_discrete.transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform array|series x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Discrete scales do not do transformations</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="scale_continuous">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_continuous</span><span class="p">(</span><span class="n">scale</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all continuous scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    trans : str | function</span>
+<span class="sd">        Name of a trans function or a trans function.</span>
+<span class="sd">        See :mod:`mizani.transforms` for possible options.</span>
+<span class="sd">    oob : function</span>
+<span class="sd">        Function to deal with out of bounds (limits)</span>
+<span class="sd">        data points. Default is to turn them into</span>
+<span class="sd">        ``np.nan``, which then get dropped.</span>
+<span class="sd">    minor_breaks : list-like or int or callable or None</span>
+<span class="sd">        If a list-like, it is the minor breaks points.</span>
+<span class="sd">        If an integer, it is the number of minor breaks between</span>
+<span class="sd">        any set of major breaks.</span>
+<span class="sd">        If a function, it should have the signature</span>
+<span class="sd">        ``func(limits)`` and return a list-like of consisting</span>
+<span class="sd">        of the minor break points.</span>
+<span class="sd">        If ``None``, no minor breaks are calculated.</span>
+<span class="sd">        The default is to automatically calculate them.</span>
+<span class="sd">    rescaler : function, optional</span>
+<span class="sd">        Function to rescale data points so that they can</span>
+<span class="sd">        be handled by the palette. Default is to rescale</span>
+<span class="sd">        them onto the [0, 1] range. Scales that inherit</span>
+<span class="sd">        from this class may have another default.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If using the class directly all arguments must be</span>
+<span class="sd">    keyword arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_range_class</span> <span class="o">=</span> <span class="n">RangeContinuous</span>
+    <span class="n">_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousLimitsRaw</span><span class="p">]</span>
+    <span class="n">rescaler</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">rescale</span><span class="p">)</span>  <span class="c1"># Used by diverging &amp; n colour gradients</span>
+    <span class="n">oob</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">censor</span><span class="p">)</span>  <span class="c1"># what to do with out of bounds data points</span>
+    <span class="n">breaks</span><span class="p">:</span> <span class="n">ScaleContinuousBreaksRaw</span>
+    <span class="n">minor_breaks</span><span class="p">:</span> <span class="n">ScaleMinorBreaksRaw</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_trans</span><span class="p">:</span> <span class="n">Trans</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;identity&quot;</span>  <span class="c1"># transform class</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Make sure we have a transform.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trans</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">limits</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;limits&quot;</span><span class="p">)</span>
+
+        <span class="n">scale</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if transform t is valid</span>
+
+<span class="sd">        When scales specialise on a specific transform (other than</span>
+<span class="sd">        the identity transform), the user should know when they</span>
+<span class="sd">        try to change the transform.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t : mizani.transforms.trans</span>
+<span class="sd">            Transform object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">orig_trans_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_trans</span>
+        <span class="n">new_trans_name</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">if</span> <span class="n">new_trans_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_trans&quot;</span><span class="p">):</span>
+            <span class="n">new_trans_name</span> <span class="o">=</span> <span class="n">new_trans_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">orig_trans_name</span> <span class="o">!=</span> <span class="s2">&quot;identity&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">new_trans_name</span> <span class="o">!=</span> <span class="n">orig_trans_name</span><span class="p">:</span>
+                <span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;You have changed the transform of a specialised scale. &quot;</span>
+                    <span class="s2">&quot;The result may not be what you expect.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Original transform: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;New transform: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">orig_trans_name</span><span class="p">,</span> <span class="n">new_trans_name</span>
+                    <span class="p">),</span>
+                    <span class="n">PlotnineWarning</span><span class="p">,</span>
+                <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">trans</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trans</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trans</span>  <span class="c1"># pyright: ignore</span>
+
+    <span class="nd">@trans</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Trans</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Type</span><span class="p">[</span><span class="n">Trans</span><span class="p">]):</span>
+        <span class="kn">from</span> <span class="nn">mizani.transforms</span> <span class="kn">import</span> <span class="n">gettrans</span>
+
+        <span class="n">t</span><span class="p">:</span> <span class="n">Trans</span> <span class="o">=</span> <span class="n">gettrans</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_trans</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_trans</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_trans</span><span class="o">.</span><span class="n">aesthetic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># pyright: ignore</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">):</span>
+            <span class="c1"># Function works in the dataspace, but the limits are</span>
+            <span class="c1"># stored in transformed space. The range of the scale is</span>
+            <span class="c1"># in transformed space (i.e. with in the domain of the scale)</span>
+            <span class="n">_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">(</span><span class="n">_range</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="c1"># Fall back to the range if the limits</span>
+            <span class="c1"># are not set or if any is None or NaN</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">else</span> <span class="n">l</span>
+                    <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_limits</span><span class="p">)</span>
+
+    <span class="nd">@limits</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">ScaleContinuousLimitsRaw</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Limits for the continuous scale</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : array-like | callable</span>
+<span class="sd">            Limits in the dataspace.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Notes</span>
+        <span class="c1"># -----</span>
+        <span class="c1"># The limits are given in original dataspace</span>
+        <span class="c1"># but they are stored in transformed space since</span>
+        <span class="c1"># all computations happen on transformed data. The</span>
+        <span class="c1"># labeling of the plot axis and the guides are in</span>
+        <span class="c1"># the original dataspace.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">return</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">a</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">b</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+                <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_limits</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+
+<div class="viewcode-block" id="scale_continuous.train">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.train">[docs]</a>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train scale</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x: pd.series | np.array</span>
+<span class="sd">            a column of data to train over</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.transform_df">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.transform_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">df</span>
+
+        <span class="n">aesthetics</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">aesthetics</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">ae</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">ae</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.transform">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">FloatArrayLikeTV</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FloatArrayLikeTV</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform array|series x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>  <span class="c1"># pyright: ignore</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.inverse">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.inverse">[docs]</a>
+    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">FloatArrayLikeTV</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FloatArrayLikeTV</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inverse transform array|series x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>  <span class="c1"># pyright: ignore</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.dimension">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.dimension">[docs]</a>
+    <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">limits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the phyical size of the scale</span>
+
+<span class="sd">        Unlike limits, this always returns a numeric vector of length 2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+        <span class="k">return</span> <span class="n">expand_range_distinct</span><span class="p">(</span><span class="n">limits</span><span class="p">,</span> <span class="n">expand</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.expand_limits">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.expand_limits">[docs]</a>
+    <span class="k">def</span> <span class="nf">expand_limits</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">ScaleContinuousLimits</span><span class="p">,</span>
+        <span class="n">expand</span><span class="p">:</span> <span class="n">TupleFloat2</span> <span class="o">|</span> <span class="n">TupleFloat4</span><span class="p">,</span>
+        <span class="n">coord_limits</span><span class="p">:</span> <span class="n">CoordRange</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">trans</span><span class="p">:</span> <span class="n">Trans</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">range_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the final range in coordinate space</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># - Override None in coord_limits</span>
+        <span class="c1"># - Expand limits in coordinate space</span>
+        <span class="c1"># - Remove any computed infinite values &amp;</span>
+        <span class="k">if</span> <span class="n">coord_limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">c0</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">coord_limits</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">c0</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c0</span><span class="p">,</span>
+                <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">c1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">c1</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">expand_range</span><span class="p">(</span><span class="n">limits</span><span class="p">,</span> <span class="n">expand</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.view">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.view">[docs]</a>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CoordRange</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CoordRange</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">scale_view</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Information about the trained scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">if</span> <span class="nb">range</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">)</span>
+
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bounded_breaks</span><span class="p">(</span><span class="nb">range</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+
+        <span class="n">ubreaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">(</span><span class="nb">range</span><span class="p">)</span>
+        <span class="n">minor_breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_minor_breaks</span><span class="p">(</span><span class="n">ubreaks</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">scale_view</span><span class="p">(</span>
+            <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">aesthetics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">,</span>
+            <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">,</span>
+            <span class="n">breaks</span><span class="o">=</span><span class="n">breaks</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">minor_breaks</span><span class="o">=</span><span class="n">minor_breaks</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">sv</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.default_expansion">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.default_expansion">[docs]</a>
+    <span class="k">def</span> <span class="nf">default_expansion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the default expansion for continuous scale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">default_expansion</span><span class="p">(</span><span class="n">mult</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">expand</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.palette">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.palette">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">palette</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">FloatArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aesthetic mapping function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.map">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.map">[docs]</a>
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">AnyArrayLike</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyArrayLike</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rescaler</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_from</span><span class="o">=</span><span class="n">limits</span><span class="p">))</span>
+
+        <span class="n">uniq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">pal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">palette</span><span class="p">(</span><span class="n">uniq</span><span class="p">))</span>
+        <span class="n">scaled</span> <span class="o">=</span> <span class="n">pal</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uniq</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">scaled</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;U&quot;</span><span class="p">:</span>
+            <span class="n">scaled</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">na_value</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scaled</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scaled</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">scaled</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">na_value</span>
+        <span class="k">return</span> <span class="n">scaled</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.get_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.get_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleContinuousBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate breaks for the axis or legend</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        limits : list-like | None</span>
+<span class="sd">            If None the self.limits are used</span>
+<span class="sd">            They are expected to be in transformed</span>
+<span class="sd">            space.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : array-like</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Breaks are calculated in data space and</span>
+<span class="sd">        returned in transformed space since all</span>
+<span class="sd">        data is plotted in transformed space.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="c1"># To data space</span>
+        <span class="n">_limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># TODO: Fix this type mismatch in mizani with</span>
+            <span class="c1"># a typevar so that type-in = type-out</span>
+            <span class="n">_tlimits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">breaks</span><span class="p">(</span><span class="n">_limits</span><span class="p">)</span>
+            <span class="n">breaks</span><span class="p">:</span> <span class="n">ScaleContinuousBreaks</span> <span class="o">=</span> <span class="n">_tlimits</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="n">zero_range</span><span class="p">(</span><span class="n">_limits</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">(</span><span class="n">_limits</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span>
+
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">breaks</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.get_bounded_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.get_bounded_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bounded_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleContinuousBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return Breaks that are within limits</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+        <span class="n">strict_breaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">breaks</span> <span class="k">if</span> <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">strict_breaks</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.get_minor_breaks">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.get_minor_breaks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_minor_breaks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">major</span><span class="p">:</span> <span class="n">ScaleContinuousBreaks</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousLimits</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleContinuousBreaks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return minor breaks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">limits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># TODO: Remove ignore when mizani is static typed</span>
+            <span class="n">minor_breaks</span><span class="p">:</span> <span class="n">ScaleContinuousBreaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">(</span>
+                <span class="n">major</span><span class="p">,</span> <span class="n">limits</span>
+            <span class="p">)</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="c1"># TODO: Remove ignore when mizani is static typed</span>
+            <span class="n">minor_breaks</span><span class="p">:</span> <span class="n">ScaleContinuousBreaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">(</span>
+                <span class="n">major</span><span class="p">,</span> <span class="n">limits</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span>
+            <span class="p">)</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">major</span><span class="p">):</span>
+            <span class="n">minor_breaks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">limits</span><span class="p">))</span>
+            <span class="n">_major</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">major</span><span class="p">)</span>
+            <span class="n">minor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+            <span class="n">minor_breaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">minor</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_major</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">minor_breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minor_breaks</span>
+
+        <span class="k">return</span> <span class="n">minor_breaks</span></div>
+
+
+<div class="viewcode-block" id="scale_continuous.get_labels">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_continuous.html#plotnine.scales.scale.scale_continuous.get_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_labels</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">breaks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScaleContinuousBreaks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScaleLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate labels for the axis or legend</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        breaks: None or array-like</span>
+<span class="sd">            If None, use self.breaks.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">breaks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_breaks</span><span class="p">()</span>
+
+        <span class="n">breaks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">labels</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">b</span><span class="p">])</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">breaks</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># When user sets breaks and labels of equal size,</span>
+            <span class="c1"># but the limits exclude some of the breaks.</span>
+            <span class="c1"># We remove the corresponding labels</span>
+            <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sized</span>
+
+            <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">,</span> <span class="n">Sized</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">_wanted_breaks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">l</span>
+                    <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">breaks</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">_wanted_breaks</span>
+                <span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">breaks</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="s2">&quot;Breaks and labels are different lengths&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">labels</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="scale_datetime">
+<a class="viewcode-back" href="../../../generated/plotnine.scales.scale.scale_datetime.html#plotnine.scales.scale.scale_datetime">[docs]</a>
+<span class="nd">@document</span>
+<span class="k">class</span> <span class="nc">scale_datetime</span><span class="p">(</span><span class="n">scale_continuous</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all date/datetime scales</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    date_breaks : str</span>
+<span class="sd">        A string giving the distance between major breaks.</span>
+<span class="sd">        For example `&#39;2 weeks&#39;`, `&#39;5 years&#39;`. If specified,</span>
+<span class="sd">        ``date_breaks`` takes precedence over</span>
+<span class="sd">        ``breaks``.</span>
+<span class="sd">    date_labels : str</span>
+<span class="sd">        Format string for the labels.</span>
+<span class="sd">        See :ref:`strftime &lt;strftime-strptime-behavior&gt;`.</span>
+<span class="sd">        If specified, ``date_labels`` takes precedence over</span>
+<span class="sd">        ``labels``.</span>
+<span class="sd">    date_minor_breaks : str</span>
+<span class="sd">        A string giving the distance between minor breaks.</span>
+<span class="sd">        For example `&#39;2 weeks&#39;`, `&#39;5 years&#39;`. If specified,</span>
+<span class="sd">        ``date_minor_breaks`` takes precedence over</span>
+<span class="sd">        ``minor_breaks``.</span>
+<span class="sd">    {superclass_parameters}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_trans</span> <span class="o">=</span> <span class="s2">&quot;datetime&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">mizani.breaks</span> <span class="kn">import</span> <span class="n">date_breaks</span>
+        <span class="kn">from</span> <span class="nn">mizani.formatters</span> <span class="kn">import</span> <span class="n">date_format</span>
+
+        <span class="c1"># Permit the use of the general parameters for</span>
+        <span class="c1"># specifying the format strings</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">breaks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;breaks&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">breaks</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;breaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_breaks</span><span class="p">(</span><span class="n">breaks</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">minor_breaks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;minor_breaks&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">minor_breaks</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;minor_breaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_breaks</span><span class="p">(</span><span class="n">minor_breaks</span><span class="p">)</span>
+
+        <span class="c1"># Using the more specific parameters take precedence</span>
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">breaks_fmt</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;date_breaks&quot;</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;breaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_breaks</span><span class="p">(</span><span class="n">breaks_fmt</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">labels_fmt</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;date_labels&quot;</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_format</span><span class="p">(</span><span class="n">labels_fmt</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">minor_breaks_fmt</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;date_minor_breaks&quot;</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;minor_breaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_breaks</span><span class="p">(</span><span class="n">minor_breaks_fmt</span><span class="p">)</span>
+
+        <span class="n">scale_continuous</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

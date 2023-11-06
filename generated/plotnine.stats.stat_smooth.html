@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotnine.stats.stat_smooth &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="plotnine.stats.stat_sum" href="plotnine.stats.stat_sum.html" />
+    <link rel="prev" title="plotnine.stats.stat_sina" href="plotnine.stats.stat_sina.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">plotnine.stats.stat_smooth</a><ul>
+<li><a class="reference internal" href="#plotnine.stats.stat_smooth"><code class="docutils literal notranslate"><span class="pre">stat_smooth</span></code></a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="plotnine-stats-stat-smooth">
+<h1>plotnine.stats.stat_smooth<a class="headerlink" href="#plotnine-stats-stat-smooth" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="plotnine.stats.stat_smooth">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">plotnine.stats.</span></span><span class="sig-name descname"><span class="pre">stat_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Aes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/stats/stat_smooth.html#stat_smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.stats.stat_smooth" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate a smoothed conditional mean</p>
+<p class="rubric">Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stat_smooth</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s1">&#39;smooth&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span>
+            <span class="n">na_rm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+            <span class="n">span</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">method_args</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">mapping</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code> can be positional, the rest must
+be keyword arguments. <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> can be aesthetics (or parameters)
+used by the <code class="docutils literal notranslate"><span class="pre">geom</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aes</span></code>, optional</span></dt><dd><p>Aesthetic mappings created with <code class="xref py py-meth docutils literal notranslate"><span class="pre">aes()</span></code>. If specified and <code class="code python docutils literal notranslate"><span class="n"><span class="pre">inherit</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">aes</span></span><span class="o"><span class="pre">=</span></span><span class="kc"><span class="pre">True</span></span></code>, it is combined with the default mapping for the plot. You must supply mapping if there is no plot mapping.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aesthetic</p></th>
+<th class="head"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>x</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>y</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>bold</strong> aesthetics are required.</p>
+<p class="rubric">Options for computed aesthetics</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;se&#39;</span>    <span class="c1"># Standard error of points in bin</span>
+<span class="s1">&#39;ymin&#39;</span>  <span class="c1"># Lower confidence limit</span>
+<span class="s1">&#39;ymax&#39;</span>  <span class="c1"># Upper confidence limit</span>
+</pre></div>
+</div>
+<p>Calculated aesthetics are accessed using the <cite>after_stat</cite> function.
+e.g. <code class="code python docutils literal notranslate"><span class="n"><span class="pre">after_stat</span></span><span class="p"><span class="pre">(</span></span><span class="s1"><span class="pre">'se'</span></span><span class="p"><span class="pre">)</span></span></code>.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a>, optional</span></dt><dd><p>The data to be displayed in this layer. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code>, the data from from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call is used. If specified, it overrides the data from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call.</p>
+</dd>
+<dt><strong>geom</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-geom"><span class="xref std std-term">geom</span></a>, optional (default: <a class="reference internal" href="plotnine.geoms.geom_smooth.html#plotnine.geoms.geom_smooth" title="plotnine.geoms.geom_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_smooth</span></code></a>)</span></dt><dd><p>The statistical transformation to use on the data for this layer. If it is a string, it must be the registered and known to Plotnine.</p>
+</dd>
+<dt><strong>position</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-position"><span class="xref std std-term">position</span></a>, optional (default: <a class="reference internal" href="plotnine.positions.position_identity.html#plotnine.positions.position_identity" title="plotnine.positions.position_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_identity</span></code></a>)</span></dt><dd><p>Position adjustment. If it is a string, it must be registered and known to Plotnine.</p>
+</dd>
+<dt><strong>na_rm</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code>, removes missing values with a warning. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> silently removes missing values.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a>, optional (default: 'auto')</span></dt><dd><p>The available methods are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;auto&#39;</span>       <span class="c1"># Use loess if (n&lt;1000), glm otherwise</span>
+<span class="s1">&#39;lm&#39;</span><span class="p">,</span> <span class="s1">&#39;ols&#39;</span>  <span class="c1"># Linear Model</span>
+<span class="s1">&#39;wls&#39;</span>        <span class="c1"># Weighted Linear Model</span>
+<span class="s1">&#39;rlm&#39;</span>        <span class="c1"># Robust Linear Model</span>
+<span class="s1">&#39;glm&#39;</span>        <span class="c1"># Generalized linear Model</span>
+<span class="s1">&#39;gls&#39;</span>        <span class="c1"># Generalized Least Squares</span>
+<span class="s1">&#39;lowess&#39;</span>     <span class="c1"># Locally Weighted Regression (simple)</span>
+<span class="s1">&#39;loess&#39;</span>      <span class="c1"># Locally Weighted Regression</span>
+<span class="s1">&#39;mavg&#39;</span>       <span class="c1"># Moving Average</span>
+<span class="s1">&#39;gpr&#39;</span>        <span class="c1"># Gaussian Process Regressor</span>
+</pre></div>
+</div>
+<p>If a <cite>callable</cite> is passed, it must have the signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_smoother</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">xseq</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+    <span class="c1"># * data - has the x and y values for the model</span>
+    <span class="c1"># * xseq - x values to be predicted</span>
+    <span class="c1"># * params - stat parameters</span>
+    <span class="c1">#</span>
+    <span class="c1"># It must return a new dataframe. Below is the</span>
+    <span class="c1"># template used internally by Plotnine</span>
+
+    <span class="c1"># Input data into the model</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create and fit a model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+    <span class="c1"># Create output data by getting predictions on</span>
+    <span class="c1"># the xseq values</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">xseq</span><span class="p">,</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xseq</span><span class="p">)})</span>
+
+    <span class="c1"># Compute confidence intervals, this depends on</span>
+    <span class="c1"># the model. However, given standard errors and the</span>
+    <span class="c1"># degrees of freedom we can compute the confidence</span>
+    <span class="c1"># intervals using the t-distribution.</span>
+    <span class="c1">#</span>
+    <span class="c1"># For an alternative, implement confidence interals by</span>
+    <span class="c1"># the bootstrap method</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;se&#39;</span><span class="p">]:</span>
+        <span class="kn">from</span> <span class="nn">plotnine.utils.smoothers</span> <span class="kn">import</span> <span class="n">tdist_ci</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>            <span class="c1"># The predicted value</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="mi">123</span>                 <span class="c1"># Degrees of freedom</span>
+        <span class="n">stderr</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">stderr</span>  <span class="c1"># Standard error</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span>  <span class="c1"># The parameter value</span>
+        <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">tdist_ci</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;se&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stderr</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ymin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ymax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">high</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>For <em>loess</em> smoothing you must install the <cite>scikit-misc</cite> package.
+You can install it using with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-misc</span></code> or
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">plotnine[all]</span></code>.</p>
+</dd>
+<dt><strong>formula</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formula_like</span></code></span></dt><dd><p>An object that can be used to construct a patsy design matrix.
+This is usually a string. You can only use a formula if <code class="docutils literal notranslate"><span class="pre">method</span></code>
+is one of <em>lm</em>, <em>ols</em>, <em>wls</em>, <em>glm</em>, <em>rlm</em> or <em>gls</em>, and in the
+<a class="reference external" href="https://patsy.readthedocs.io/en/stable/formulas.html#formulas" title="(in patsy v0.5.1)"><span class="xref std std-ref">formula</span></a> you may refer to the <code class="docutils literal notranslate"><span class="pre">x</span></code> and
+<code class="docutils literal notranslate"><span class="pre">y</span></code> aesthetic variables.</p>
+</dd>
+<dt><strong>se</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">True</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> draw confidence interval around the smooth line.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> (default: 80)</span></dt><dd><p>Number of points to evaluate the smoother at. Some smoothers
+like <em>mavg</em> do not support this.</p>
+</dd>
+<dt><strong>fullrange</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> the fit will span the full range of the plot.</p>
+</dd>
+<dt><strong>level</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> (default: 0.95)</span></dt><dd><p>Level of confidence to use if <code class="code python docutils literal notranslate"><span class="n"><span class="pre">se</span></span><span class="o"><span class="pre">=</span></span><span class="kc"><span class="pre">True</span></span></code>.</p>
+</dd>
+<dt><strong>span</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> (default: 2/3.)</span></dt><dd><p>Controls the amount of smoothing for the <em>loess</em> smoother.
+Larger number means more smoothing. It should be in the
+<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1)</span></code> range.</p>
+</dd>
+<dt><strong>method_args</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a> (default: {})</span></dt><dd><p>Additional arguments passed on to the modelling method.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLS.html#statsmodels.regression.linear_model.OLS" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.linear_model.OLS</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.WLS.html#statsmodels.regression.linear_model.WLS" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.linear_model.WLS</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.robust.robust_linear_model.RLM.html#statsmodels.robust.robust_linear_model.RLM" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.robust.robust_linear_model.RLM</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.genmod.generalized_linear_model.GLM.html#statsmodels.genmod.generalized_linear_model.GLM" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.genmod.generalized_linear_model.GLM</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.GLS.html#statsmodels.regression.linear_model.GLS" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.linear_model.GLS</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html#statsmodels.nonparametric.smoothers_lowess.lowess" title="(in statsmodels 0.14.0 v0.14.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.nonparametric.smoothers_lowess.lowess</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://has2k1.github.io/scikit-misc/stable/generated/skmisc.loess.loess.html#skmisc.loess.loess" title="(in scikit-misc v0.2.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skmisc.loess.loess</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html#pandas.DataFrame.rolling" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame.rolling</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html#sklearn.gaussian_process.GaussianProcessRegressor" title="(in scikit-learn v1.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.gaussian_process.GaussianProcessRegressor</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p><a class="reference internal" href="plotnine.geoms.geom_smooth.html#plotnine.geoms.geom_smooth" title="plotnine.geoms.geom_smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_smooth</span></code></a> and <a class="reference internal" href="#plotnine.stats.stat_smooth" title="plotnine.stats.stat_smooth.stat_smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">stat_smooth</span></code></a> are
+effectively aliases, they both use the same arguments.
+Use <a class="reference internal" href="plotnine.geoms.geom_smooth.html#plotnine.geoms.geom_smooth" title="plotnine.geoms.geom_smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">geom_smooth</span></code></a> unless
+you want to display the results with a non-standard geom.</p>
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/generated/plotnine.stats.stat_smooth.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

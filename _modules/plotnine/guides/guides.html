@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.guides.guides &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.guides.guides</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span><span class="p">,</span> <span class="n">PlotnineWarning</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">Registry</span><span class="p">,</span> <span class="n">is_string</span>
+<span class="kn">from</span> <span class="nn">.guide</span> <span class="kn">import</span> <span class="n">guide</span> <span class="k">as</span> <span class="n">guide_class</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+
+    <span class="kn">from</span> <span class="nn">plotnine.typing</span> <span class="kn">import</span> <span class="n">TupleFloat2</span>
+
+<span class="c1"># Terminology</span>
+<span class="c1"># -----------</span>
+<span class="c1"># - A guide is either a legend or colorbar.</span>
+<span class="c1">#</span>
+<span class="c1"># - A guide definition (gdef) is an instantiated guide as it</span>
+<span class="c1">#   is used in the process of creating the legend</span>
+<span class="c1">#</span>
+<span class="c1"># - The guides class holds all guides that will appear in the</span>
+<span class="c1">#   plot</span>
+<span class="c1">#</span>
+<span class="c1"># - A guide box is a fully drawn out guide.</span>
+<span class="c1">#   It is of subclass matplotlib.offsetbox.Offsetbox</span>
+
+
+<div class="viewcode-block" id="guides">
+<a class="viewcode-back" href="../../../generated/plotnine.guides.guides.html#plotnine.guides.guides">[docs]</a>
+<span class="k">class</span> <span class="nc">guides</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Guides for each scale</span>
+
+<span class="sd">    Used to assign a particular guide to an aesthetic(s).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    kwargs : dict</span>
+<span class="sd">        aesthetic - guide pairings. e.g</span>
+<span class="sd">        ``color=guide_colorbar()``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Determined from the theme when the guides are</span>
+    <span class="c1"># getting built</span>
+    <span class="n">position</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n">TupleFloat2</span>
+    <span class="n">box_direction</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">]</span>
+    <span class="n">box_align</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">]</span>
+    <span class="n">box_margin</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">spacing</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">aes_names</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;linetype&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;shape&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;stroke&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="s2">&quot;colour&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;colour&quot;</span><span class="p">)</span>
+
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="p">((</span><span class="n">ae</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">ae</span><span class="p">])</span> <span class="k">for</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">if</span> <span class="n">ae</span> <span class="ow">in</span> <span class="n">aes_names</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add guides to the plot</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gg : ggplot</span>
+<span class="sd">            ggplot object being created</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : gglot</span>
+<span class="sd">            ggplot object with guides. If *inplace*</span>
+<span class="sd">            is **False** this is a copy of the original</span>
+<span class="sd">            ggplot object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_guides</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">new_guides</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">gg</span><span class="o">.</span><span class="n">guides</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_guides</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">gg</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build the guides</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        plot : ggplot</span>
+<span class="sd">            ggplot object being drawn</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        box : matplotlib.offsetbox.Offsetbox | None</span>
+<span class="sd">            A box that contains all the guides for the plot.</span>
+<span class="sd">            If there are no guides, **None** is returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_property</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">themeables</span><span class="o">.</span><span class="n">property</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;legend_box&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;legend_position&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">box_align</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;legend_box_just&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">box_margin</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;legend_box_margin&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">_property</span><span class="p">(</span><span class="s2">&quot;legend_spacing&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+            <span class="k">return</span>  <span class="c1"># No Legend</span>
+
+        <span class="c1"># Direction</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+
+        <span class="c1"># Justification of legend boxes</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_align</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">box_align</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">box_align</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span>
+
+        <span class="n">gdefs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gdefs</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">gdefs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">gdefs</span><span class="p">)</span>
+        <span class="n">gdefs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_geoms</span><span class="p">(</span><span class="n">gdefs</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gdefs</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">gboxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">gdefs</span><span class="p">,</span> <span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="p">)</span>
+        <span class="n">bigbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">gboxes</span><span class="p">,</span> <span class="n">gdefs</span><span class="p">,</span> <span class="n">plot</span><span class="o">.</span><span class="n">theme</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bigbox</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute all the required guides</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        plot : ggplot</span>
+<span class="sd">            ggplot object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        gdefs : list</span>
+<span class="sd">            Guides for the plots</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gdefs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">scales</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">scale</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">:</span>
+                <span class="c1"># The guide for aesthetic &#39;xxx&#39; is stored</span>
+                <span class="c1"># in plot.guides[&#39;xxx&#39;]. The priority for</span>
+                <span class="c1"># the guides depends on how they are created</span>
+                <span class="c1"># 1. ... + guides(xxx=guide_blah())</span>
+                <span class="c1"># 2. ... + scale_xxx(guide=guide_blah())</span>
+                <span class="c1"># 3. default(either guide_legend or guide_colorbar</span>
+                <span class="c1">#            depending on the scale type)</span>
+                <span class="c1"># output = scale.aesthetics[0]</span>
+                <span class="n">guide</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">guide</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">guide</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">guide</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># check the validity of guide.</span>
+                <span class="c1"># if guide is character, then find the guide object</span>
+                <span class="n">guide</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">guide</span><span class="p">)</span>
+                <span class="c1"># check the consistency of the guide and scale.</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="s2">&quot;any&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">guide</span><span class="o">.</span><span class="n">available_aes</span>
+                    <span class="ow">and</span> <span class="n">scale</span><span class="o">.</span><span class="n">aesthetics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">guide</span><span class="o">.</span><span class="n">available_aes</span>
+                <span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">guide</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> cannot be used for &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scale</span><span class="o">.</span><span class="n">aesthetics</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="c1"># title</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">guide</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">scale</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                        <span class="n">guide</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">scale</span><span class="o">.</span><span class="n">name</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">guide</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">guide</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">warn</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s2">&quot;Cannot generate legend for the </span><span class="si">{</span><span class="n">output</span><span class="si">!r}</span><span class="s2"> &quot;</span>
+                                <span class="s2">&quot;aesthetic. Make sure you have mapped a &quot;</span>
+                                <span class="s2">&quot;variable to it&quot;</span><span class="p">,</span>
+                                <span class="n">PlotnineWarning</span><span class="p">,</span>
+                            <span class="p">)</span>
+
+                <span class="c1"># each guide object trains scale within the object,</span>
+                <span class="c1"># so Guides (i.e., the container of guides)</span>
+                <span class="c1"># need not to know about them</span>
+                <span class="n">guide</span> <span class="o">=</span> <span class="n">guide</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">guide</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">gdefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">guide</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">gdefs</span>
+
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guide</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validate guide object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_string</span><span class="p">(</span><span class="n">guide</span><span class="p">):</span>
+            <span class="n">guide</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;guide_</span><span class="si">{</span><span class="n">guide</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">guide</span><span class="p">,</span> <span class="n">guide_class</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown guide: </span><span class="si">{</span><span class="n">guide</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">guide</span>
+
+    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdefs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Merge overlapped guides</span>
+
+<span class="sd">        For example::</span>
+
+<span class="sd">            from plotnine import *</span>
+<span class="sd">            gg = ggplot(mtcars, aes(y=&#39;wt&#39;, x=&#39;mpg&#39;, colour=&#39;factor(cyl)&#39;))</span>
+<span class="sd">            gg = gg + stat_smooth(aes(fill=&#39;factor(cyl)&#39;), method=&#39;lm&#39;)</span>
+<span class="sd">            gg = gg + geom_point()</span>
+<span class="sd">            gg</span>
+
+<span class="sd">        This would create two guides with the same hash</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># group guide definitions by hash, and</span>
+        <span class="c1"># reduce each group to a single guide</span>
+        <span class="c1"># using the guide.merge method</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;gdef&quot;</span><span class="p">:</span> <span class="n">gdefs</span><span class="p">,</span> <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">hash</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">]})</span>
+        <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hash&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">gdefs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
+            <span class="c1"># merge</span>
+            <span class="n">gdef</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;gdef&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;gdef&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">gdef</span> <span class="o">=</span> <span class="n">gdef</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">gdefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gdef</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">gdefs</span>
+
+    <span class="k">def</span> <span class="nf">create_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdefs</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add geoms to the guide definitions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_gdefs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">gdef</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">:</span>
+            <span class="n">gdef</span> <span class="o">=</span> <span class="n">gdef</span><span class="o">.</span><span class="n">create_geoms</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">gdef</span><span class="p">:</span>
+                <span class="n">new_gdefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gdef</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_gdefs</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdefs</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw out each guide definition</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gdefs : list of guide_legend|guide_colorbar</span>
+<span class="sd">            guide definitions</span>
+<span class="sd">        theme : theme</span>
+<span class="sd">            Plot theme</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : list of matplotlib.offsetbox.Offsetbox</span>
+<span class="sd">            A drawing of each legend</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">_set_defaults</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gboxes</span><span class="p">,</span> <span class="n">gdefs</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Put together all the guide boxes</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gboxes : list</span>
+<span class="sd">            List of :class:`~matplotlib.offsetbox.Offsetbox`,</span>
+<span class="sd">            where each item is a legend for a single aesthetic.</span>
+<span class="sd">        gdefs : list of guide_legend|guide_colorbar</span>
+<span class="sd">            guide definitions</span>
+<span class="sd">        theme : theme</span>
+<span class="sd">            Plot theme</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        box : OffsetBox</span>
+<span class="sd">            A box than can be placed onto a plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.offsetbox</span> <span class="kn">import</span> <span class="n">HPacker</span><span class="p">,</span> <span class="n">VPacker</span>
+
+        <span class="c1"># place the guides according to the guide.order</span>
+        <span class="c1"># 0 do not sort</span>
+        <span class="c1"># 1-99 sort</span>
+        <span class="k">for</span> <span class="n">gdef</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gdef</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">gdef</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">100</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">gdef</span><span class="o">.</span><span class="n">order</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                    <span class="s2">&quot;&#39;order&#39; for a guide should be &quot;</span> <span class="s2">&quot;between 0 and 99&quot;</span>
+                <span class="p">)</span>
+        <span class="n">orders</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdef</span><span class="o">.</span><span class="n">order</span> <span class="k">for</span> <span class="n">gdef</span> <span class="ow">in</span> <span class="n">gdefs</span><span class="p">]</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+        <span class="n">gboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">gboxes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">]</span>
+
+        <span class="c1"># direction when more than legend</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">==</span> <span class="s2">&quot;vertical&quot;</span><span class="p">:</span>
+            <span class="n">packer</span> <span class="o">=</span> <span class="n">VPacker</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_direction</span> <span class="o">==</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">:</span>
+            <span class="n">packer</span> <span class="o">=</span> <span class="n">HPacker</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;legend_box&#39; should be either &quot;</span> <span class="s2">&quot;&#39;vertical&#39; or &#39;horizontal&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">box</span> <span class="o">=</span> <span class="n">packer</span><span class="p">(</span>
+            <span class="n">children</span><span class="o">=</span><span class="n">gboxes</span><span class="p">,</span>
+            <span class="n">align</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">box_align</span><span class="p">,</span>
+            <span class="n">pad</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">box_margin</span><span class="p">,</span>
+            <span class="n">sep</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">spacing</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">box</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

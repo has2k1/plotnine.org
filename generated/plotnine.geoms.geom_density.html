@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotnine.geoms.geom_density &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=739a9dc4" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <script src="../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="plotnine.geoms.geom_density_2d" href="plotnine.geoms.geom_density_2d.html" />
+    <link rel="prev" title="plotnine.geoms.geom_crossbar" href="plotnine.geoms.geom_crossbar.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../gallery.html">Gallery</a></li>
+                <li><a href="../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">plotnine.geoms.geom_density</a><ul>
+<li><a class="reference internal" href="#plotnine.geoms.geom_density"><code class="docutils literal notranslate"><span class="pre">geom_density</span></code></a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#density-plot">Density Plot</a></li>
+<li><a class="reference internal" href="#density-plot-histogram">Density Plot + Histogram</a></li>
+<li><a class="reference internal" href="#shading-a-region-under-a-density-curve">Shading a Region under a Density Curve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="plotnine-geoms-geom-density">
+<h1>plotnine.geoms.geom_density<a class="headerlink" href="#plotnine-geoms-geom-density" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="plotnine.geoms.geom_density">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">plotnine.geoms.</span></span><span class="sig-name descname"><span class="pre">geom_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Aes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/plotnine/geoms/geom_density.html#geom_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#plotnine.geoms.geom_density" title="Link to this definition">¶</a></dt>
+<dd><p>Smooth density estimate</p>
+<p class="rubric">Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geom_density</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span>
+             <span class="n">na_rm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inherit_aes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raster</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">outline_type</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">mapping</span></code> can be positional, the rest must
+be keyword arguments. <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> can be aesthetics (or parameters)
+used by the <code class="docutils literal notranslate"><span class="pre">stat</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aes</span></code>, optional</span></dt><dd><p>Aesthetic mappings created with <code class="xref py py-meth docutils literal notranslate"><span class="pre">aes()</span></code>. If specified and <code class="code python docutils literal notranslate"><span class="n"><span class="pre">inherit</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">aes</span></span><span class="o"><span class="pre">=</span></span><span class="kc"><span class="pre">True</span></span></code>, it is combined with the default mapping for the plot. You must supply mapping if there is no plot mapping.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aesthetic</p></th>
+<th class="head"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>x</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>y</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>alpha</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="mi"><span class="pre">1</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>color</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="s1"><span class="pre">'black'</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>fill</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>group</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>linetype</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="s1"><span class="pre">'solid'</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>size</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="mf"><span class="pre">0.5</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>weight</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="mi"><span class="pre">1</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>where</p></td>
+<td><p><code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>bold</strong> aesthetics are required.</p>
+<p class="rubric">Aesthetics Descriptions</p>
+<dl>
+<dt>where</dt><dd><p>Define where to exclude horizontal regions from being filled.
+Regions between any two <code class="docutils literal notranslate"><span class="pre">False</span></code> values are skipped.
+For sensible demarcation the value used in the <em>where</em> predicate
+expression should match the <code class="docutils literal notranslate"><span class="pre">ymin</span></code> value or expression. i.e.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;col1 &gt; 0&#39;</span><span class="p">)</span>  <span class="c1"># good</span>
+<span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;col1 &gt; 10&#39;</span><span class="p">)</span>  <span class="c1"># bad</span>
+
+<span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;col1 &gt; col2&#39;</span><span class="p">)</span>  <span class="c1"># good</span>
+<span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;col1 &gt; col3&#39;</span><span class="p">)</span>  <span class="c1"># bad</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataframe</span></code></a>, optional</span></dt><dd><p>The data to be displayed in this layer. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code>, the data from from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call is used. If specified, it overrides the data from the <code class="code python docutils literal notranslate"><span class="n"><span class="pre">ggplot</span></span><span class="p"><span class="pre">()</span></span></code> call.</p>
+</dd>
+<dt><strong>stat</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-stat"><span class="xref std std-term">stat</span></a>, optional (default: <a class="reference internal" href="plotnine.stats.stat_density.html#plotnine.stats.stat_density" title="plotnine.stats.stat_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_density</span></code></a>)</span></dt><dd><p>The statistical transformation to use on the data for this layer. If it is a string, it must be the registered and known to Plotnine.</p>
+</dd>
+<dt><strong>position</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="../glossary.html#term-position"><span class="xref std std-term">position</span></a>, optional (default: <a class="reference internal" href="plotnine.positions.position_identity.html#plotnine.positions.position_identity" title="plotnine.positions.position_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_identity</span></code></a>)</span></dt><dd><p>Position adjustment. If it is a string, it must be registered and known to Plotnine.</p>
+</dd>
+<dt><strong>na_rm</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code>, removes missing values with a warning. If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> silently removes missing values.</p>
+</dd>
+<dt><strong>inherit_aes</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">True</span></code></a>)</span></dt><dd><p>If <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code>, overrides the default aesthetics.</p>
+</dd>
+<dt><strong>show_legend</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>)</span></dt><dd><p>Whether this layer should be included in the legends. <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">None</span></span></code> the default, includes any aesthetics that are mapped. If a <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">False</span></span></code> never includes and <code class="code python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code> always includes. A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> can be used to <em>exclude</em> specific aesthetis of the layer from showing in the legend. e.g <code class="code python docutils literal notranslate"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="p"><span class="pre">{</span></span><span class="s1"><span class="pre">'color'</span></span><span class="p"><span class="pre">:</span></span> <span class="kc"><span class="pre">False</span></span><span class="p"><span class="pre">}</span></span></code>, any other aesthetic are included by default.</p>
+</dd>
+<dt><strong>raster</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, optional (default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a>)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, draw onto this layer a raster (bitmap) object even ifthe final image is in vector format.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="plotnine.geoms.geom_ribbon.html#plotnine.geoms.geom_ribbon" title="plotnine.geoms.geom_ribbon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotnine.geoms.geom_ribbon</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ggplot</span><span class="p">,</span>
+    <span class="n">aes</span><span class="p">,</span>
+    <span class="n">after_stat</span><span class="p">,</span>
+    <span class="n">geom_density</span><span class="p">,</span>
+    <span class="n">geom_histogram</span><span class="p">,</span>
+    <span class="n">geom_vline</span><span class="p">,</span>
+    <span class="n">geom_rect</span><span class="p">,</span>
+    <span class="n">labs</span><span class="p">,</span>
+    <span class="n">annotate</span><span class="p">,</span>
+    <span class="n">theme_tufte</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">plotnine.data</span> <span class="kn">import</span> <span class="n">mpg</span>
+<br/></pre></div>
+</div>
+</div>
+<section id="density-plot">
+<h3>Density Plot<a class="headerlink" href="#density-plot" title="Link to this heading">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>displ</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>trans</th>
+      <th>drv</th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>fl</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>20</td>
+      <td>31</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(av)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>30</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.8</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>The defaults are not exactly beautiful, but still quite clear.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_4_0.png" class="no-scaled-link" src="../_images/geom_density_4_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>Plotting multiple groups is straightforward, but as each group is plotted as an independent PDF summing to 1, the relative size of each group will be normalized.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_6_0.png" class="no-scaled-link" src="../_images/geom_density_6_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>To plot multiple groups and scale them by their relative size, you can map the <code class="docutils literal notranslate"><span class="pre">y</span></code> aesthetic to <code class="docutils literal notranslate"><span class="pre">'count'</span></code> (calculated by <code class="docutils literal notranslate"><span class="pre">stat_density</span></code>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">after_stat</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_8_0.png" class="no-scaled-link" src="../_images/geom_density_8_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="density-plot-histogram">
+<h3>Density Plot + Histogram<a class="headerlink" href="#density-plot-histogram" title="Link to this heading">¶</a></h3>
+<p>To overlay a histogram onto the density, the <code class="docutils literal notranslate"><span class="pre">y</span></code> aesthetic of the density should be mapped to the <code class="docutils literal notranslate"><span class="pre">'count'</span></code> scaled by the <code class="docutils literal notranslate"><span class="pre">binwidth</span></code> of the histograms.</p>
+<p><strong>Why?</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">count</span></code> calculated by <code class="docutils literal notranslate"><span class="pre">stat_density</span></code> is <span class="math notranslate nohighlight">\(count = density * n\)</span> where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of points . The <code class="docutils literal notranslate"><span class="pre">density</span></code> curves have an area of 1 and have no information about the absolute frequency of the values along curve; only the relative frequencies. The <code class="docutils literal notranslate"><span class="pre">count</span></code> curve reveals the absolute frequencies. The scale of this <code class="docutils literal notranslate"><span class="pre">count</span></code> corresponds to the <code class="docutils literal notranslate"><span class="pre">count</span></code> calculated by the <code class="docutils literal notranslate"><span class="pre">stat_bin</span></code> for the histogram when the bins are 1 unit wide i.e. <code class="docutils literal notranslate"><span class="pre">binwidth=1</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">binwidth</span></code> curve matches the scale of <code class="docutils literal notranslate"><span class="pre">count</span></code>s for the histogram for a give <code class="docutils literal notranslate"><span class="pre">binwidth</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binwidth</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># The same for geom_density and geom_histogram</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">after_stat</span><span class="p">(</span><span class="s1">&#39;count*binwidth&#39;</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;drv&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">after_stat</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)),</span> <span class="n">binwidth</span><span class="o">=</span><span class="n">binwidth</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+ <span class="c1"># It is the histogram that gives us the meaningful y axis label</span>
+ <span class="c1"># i.e. &#39;count&#39; and not &#39;count*2&#39;</span>
+ <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_10_0.png" class="no-scaled-link" src="../_images/geom_density_10_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="shading-a-region-under-a-density-curve">
+<h3>Shading a Region under a Density Curve<a class="headerlink" href="#shading-a-region-under-a-density-curve" title="Link to this heading">¶</a></h3>
+<p><em>Extending geom_density to create an effect of a shaded region</em></p>
+<p>Create some data and plot the density</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)})</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_13_0.png" class="no-scaled-link" src="../_images/geom_density_13_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>Suppose we want to mark a region as special e.g. <code class="docutils literal notranslate"><span class="pre">(40,</span> <span class="pre">60)</span></code>, we can use vertical lines to <code class="docutils literal notranslate"><span class="pre">annotate</span></code> it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_vline</span><span class="p">,</span> <span class="n">xintercept</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>  <span class="c1">#new line</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_15_0.png" class="no-scaled-link" src="../_images/geom_density_15_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>To make it standout more we can highlight. To do that, the first thought is to use a rectangle.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_rect</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">region</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># new line</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_vline</span><span class="p">,</span> <span class="n">xintercept</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_17_0.png" class="no-scaled-link" src="../_images/geom_density_17_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">y</span></code> upper-bound varies along the curve, a rectangular highlight has to stretch up to the top of the panel.</p>
+<p>To hightlight only within the density curve, we have to use a second density curve. We need to calculate the density as normal, but just before the curve &amp; region are plotted, we should keep only the region we want.</p>
+<p>We create our own <code class="docutils literal notranslate"><span class="pre">geom_density_highlight</span></code> and override the <code class="docutils literal notranslate"><span class="pre">setup_data</span></code> method. First, we override but do nothing, we only inspect the data to see what we have to work with.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># new class</span>
+<span class="k">class</span> <span class="nc">geom_density_highlight</span><span class="p">(</span><span class="n">geom_density</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setup_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">geom_density_highlight</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># new line</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_vline</span><span class="p">,</span> <span class="n">xintercept</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+      PANEL     count   density  group    n    scaled           x         y
+0         1  0.519038  0.005139     -1  101  0.519039    0.000000  0.005139  \
+1         1  0.522757  0.005176     -1  101  0.522758    0.097752  0.005176
+2         1  0.526473  0.005213     -1  101  0.526474    0.195503  0.005213
+3         1  0.530187  0.005249     -1  101  0.530188    0.293255  0.005249
+4         1  0.533899  0.005286     -1  101  0.533900    0.391007  0.005286
+...     ...       ...       ...    ...  ...       ...         ...       ...
+1019      1  0.533899  0.005286     -1  101  0.533900   99.608993  0.005286
+1020      1  0.530187  0.005249     -1  101  0.530188   99.706745  0.005249
+1021      1  0.526473  0.005213     -1  101  0.526474   99.804497  0.005213
+1022      1  0.522757  0.005176     -1  101  0.522758   99.902248  0.005176
+1023      1  0.519038  0.005139     -1  101  0.519039  100.000000  0.005139
+
+      ymin      ymax
+0        0  0.005139
+1        0  0.005176
+2        0  0.005213
+3        0  0.005249
+4        0  0.005286
+...    ...       ...
+1019     0  0.005286
+1020     0  0.005249
+1021     0  0.005213
+1022     0  0.005176
+1023     0  0.005139
+
+[1024 rows x 10 columns]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_19_1.png" class="no-scaled-link" src="../_images/geom_density_19_1.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>The highlight has filled the whole region, but the printed data suggests that we can limit the rows to those where <code class="docutils literal notranslate"><span class="pre">x</span></code> column is within our region.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">geom_density_highlight</span><span class="p">(</span><span class="n">geom_density</span><span class="p">):</span>
+
+    <span class="c1"># new method</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">=</span> <span class="n">region</span>
+
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setup_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> &lt;= x &lt;= </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>  <span class="c1"># new line</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       <span class="c1"># new line</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">geom_density_highlight</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># modified line</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_vline</span><span class="p">,</span> <span class="n">xintercept</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_21_0.png" class="no-scaled-link" src="../_images/geom_density_21_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>That is it, but we can make it look better.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">geom_density_highlight</span><span class="p">(</span><span class="n">geom_density</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">=</span> <span class="n">region</span>
+
+    <span class="k">def</span> <span class="nf">setup_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setup_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> &lt;= x &lt;= </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">teal</span> <span class="o">=</span> <span class="s1">&#39;#029386&#39;</span>
+
+<span class="c1"># Gallery Plot</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_density_highlight</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">teal</span><span class="o">+</span><span class="s1">&#39;88&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">teal</span><span class="o">+</span><span class="s1">&#39;44&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">teal</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">annotate</span><span class="p">(</span><span class="n">geom_vline</span><span class="p">,</span> <span class="n">xintercept</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">teal</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">theme_tufte</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/geom_density_23_0.png" class="no-scaled-link" src="../_images/geom_density_23_0.png" style="width: 640px; height: 480px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure Size: (640 x 480)&gt;
+</pre></div></div>
+</div>
+<p>This example was motivated by a <a class="reference external" href="https://github.com/has2k1/plotnine/issues/574">question</a> from github user <a class="reference external" href="https://github.com/Rishika-Ravindran">Rishika-Ravindran</a>.</p>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/generated/plotnine.geoms.geom_density.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

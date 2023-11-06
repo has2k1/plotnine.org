@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plotnine.facets.labelling &#8212; plotnine 0.12.1.post44+ga184eec5.d20230809 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=739a9dc4" />
+    <script src="../../../_static/documentation_options.js?v=42b28e73"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          plotnine</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.1.post44+ga184eec5.d20230809</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../api.html">API</a></li>
+                <li><a href="../../../gallery.html">Gallery</a></li>
+                <li><a href="../../../tutorials.html">Tutorials</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#plot-creation">Plot creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#geoms">geoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#stats">stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#facets">facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#scales">scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#positions">positions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#themes">themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#coordinates">coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#official-release-installation">Official release installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development-installation">Development installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-4">v0.12.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-3">v0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-2">v0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-12-1">v0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-10-0">v0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-6-0">v0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-1">v0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-5-0">v0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-4-0">v0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-1">v0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about-plotnine.html">About plotnine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#history-and-objective">History and objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../about-plotnine.html#built-with">Built with</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../external-resources.html">External Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../external-resources.html#articles">Articles</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for plotnine.facets.labelling</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">PlotnineError</span>
+<span class="kn">from</span> <span class="nn">..iapi</span> <span class="kn">import</span> <span class="n">strip_label_details</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
+
+    <span class="kn">from</span> <span class="nn">..typing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">CanBeStripLabellingFunc</span><span class="p">,</span>
+        <span class="n">StripLabellingFunc</span><span class="p">,</span>
+        <span class="n">StripLabellingFuncNames</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="label_value">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.labelling.label_value.html#plotnine.facets.labelling.label_value">[docs]</a>
+<span class="k">def</span> <span class="nf">label_value</span><span class="p">(</span>
+    <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">,</span> <span class="n">multi_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Keep value as the label</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label_info : strip_label_details</span>
+<span class="sd">        Label information whose values will be returned</span>
+<span class="sd">    multi_line : bool</span>
+<span class="sd">        Whether to place each variable on a separate line</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : strip_label_details</span>
+<span class="sd">        Label text strings</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">multi_line</span><span class="p">:</span>
+        <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">collapse</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">label_info</span></div>
+
+
+
+<div class="viewcode-block" id="label_both">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.labelling.label_both.html#plotnine.facets.labelling.label_both">[docs]</a>
+<span class="k">def</span> <span class="nf">label_both</span><span class="p">(</span>
+    <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">,</span> <span class="n">multi_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;: &quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Concatenate the facet variable with the value</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label_info : strip_label_details</span>
+<span class="sd">        Label information to be modified.</span>
+<span class="sd">    multi_line : bool</span>
+<span class="sd">        Whether to place each variable on a separate line</span>
+<span class="sd">    sep :  str</span>
+<span class="sd">        Separation between variable name and value</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : strip_label_details</span>
+<span class="sd">        Label information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">lvalue</span> <span class="ow">in</span> <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">var</span><span class="si">}{</span><span class="n">sep</span><span class="si">}{</span><span class="n">lvalue</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">multi_line</span><span class="p">:</span>
+        <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">collapse</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">label_info</span></div>
+
+
+
+<div class="viewcode-block" id="label_context">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.labelling.label_context.html#plotnine.facets.labelling.label_context">[docs]</a>
+<span class="k">def</span> <span class="nf">label_context</span><span class="p">(</span>
+    <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">,</span> <span class="n">multi_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;: &quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an unabiguous label string</span>
+
+<span class="sd">    If facetting over a single variable, `label_value` is</span>
+<span class="sd">    used, if two or more variables then `label_both` is used.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label_info : strip_label_details</span>
+<span class="sd">        Label information</span>
+<span class="sd">    multi_line : bool</span>
+<span class="sd">        Whether to place each variable on a separate line</span>
+<span class="sd">    sep :  str</span>
+<span class="sd">        Separation between variable name and value</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : str</span>
+<span class="sd">        Contatenated label values (or pairs of variable names</span>
+<span class="sd">        &amp; values)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_info</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">label_value</span><span class="p">(</span><span class="n">label_info</span><span class="p">,</span> <span class="n">multi_line</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">label_both</span><span class="p">(</span><span class="n">label_info</span><span class="p">,</span> <span class="n">multi_line</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span></div>
+
+
+
+<span class="n">LABELLERS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">StripLabellingFuncNames</span><span class="p">,</span> <span class="n">StripLabellingFunc</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;label_value&quot;</span><span class="p">:</span> <span class="n">label_value</span><span class="p">,</span>
+    <span class="s2">&quot;label_both&quot;</span><span class="p">:</span> <span class="n">label_both</span><span class="p">,</span>
+    <span class="s2">&quot;label_context&quot;</span><span class="p">:</span> <span class="n">label_context</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="as_labeller">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.labelling.as_labeller.html#plotnine.facets.labelling.as_labeller">[docs]</a>
+<span class="k">def</span> <span class="nf">as_labeller</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CanBeStripLabellingFunc</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">default</span><span class="p">:</span> <span class="n">CanBeStripLabellingFunc</span> <span class="o">=</span> <span class="n">label_value</span><span class="p">,</span>
+    <span class="n">multi_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">labeller</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Coerse to labeller</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : function | dict</span>
+<span class="sd">        Object to coerce</span>
+<span class="sd">    default : str | function</span>
+<span class="sd">        Default labeller. If it is a string,</span>
+<span class="sd">        it should be the name of one the labelling</span>
+<span class="sd">        functions provided by plotnine.</span>
+<span class="sd">    multi_line : bool</span>
+<span class="sd">        Whether to place each variable on a separate line</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : labeller</span>
+<span class="sd">        Labelling function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">default</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">labeller</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_as_strip_labelling_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">labeller</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">multi_line</span><span class="o">=</span><span class="n">multi_line</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="labeller">
+<a class="viewcode-back" href="../../../generated/plotnine.facets.labelling.labeller.html#plotnine.facets.labelling.labeller">[docs]</a>
+<span class="k">class</span> <span class="nc">labeller</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Facet Strip Labelling</span>
+
+<span class="sd">    When called with strip_label_details knows how to</span>
+<span class="sd">    alter the strip labels along either dimension.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rows : str | function | None</span>
+<span class="sd">        How to label the rows</span>
+<span class="sd">    cols : str | function | None</span>
+<span class="sd">        How to label the columns</span>
+<span class="sd">    multi_line : bool</span>
+<span class="sd">        Whether to place each variable on a separate line</span>
+<span class="sd">    default : function | str</span>
+<span class="sd">        Fallback labelling function. If it is a string,</span>
+<span class="sd">        it should be the name of one the labelling</span>
+<span class="sd">        functions provided by plotnine.</span>
+<span class="sd">    kwargs : dict</span>
+<span class="sd">        {variable name : function | string} pairs for</span>
+<span class="sd">        renaming variables. A function to rename the variable</span>
+<span class="sd">        or a string name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">rows</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CanBeStripLabellingFunc</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CanBeStripLabellingFunc</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">multi_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">default</span><span class="p">:</span> <span class="n">CanBeStripLabellingFunc</span> <span class="o">=</span> <span class="s2">&quot;label_value&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="c1"># Sort out the labellers along each dimension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows_labeller</span> <span class="o">=</span> <span class="n">_as_strip_labelling_func</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols_labeller</span> <span class="o">=</span> <span class="n">_as_strip_labelling_func</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multi_line</span> <span class="o">=</span> <span class="n">multi_line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable_maps</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called to do the labelling</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">variable_maps</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable_maps</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span>
+        <span class="p">}</span>
+
+        <span class="c1"># No variable specific labeller</span>
+        <span class="k">if</span> <span class="n">label_info</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;rows&quot;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows_labeller</span><span class="p">(</span><span class="n">label_info</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols_labeller</span><span class="p">(</span><span class="n">label_info</span><span class="p">)</span>
+
+        <span class="c1"># Make dict_labeler for the  variable specific labelers</span>
+        <span class="c1"># do the label and merge</span>
+        <span class="k">if</span> <span class="n">variable_maps</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">value</span><span class="p">:</span> <span class="n">variable_maps</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variable_maps</span>
+            <span class="p">}</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">_as_strip_labelling_func</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">result2</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">label_info</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result2</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_line</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">collapse</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_as_strip_labelling_func</span><span class="p">(</span>
+    <span class="n">fobj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CanBeStripLabellingFunc</span><span class="p">],</span>
+    <span class="n">default</span><span class="p">:</span> <span class="n">CanBeStripLabellingFunc</span> <span class="o">=</span> <span class="s2">&quot;label_value&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StripLabellingFunc</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a function that can operate on strip_label_details</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">fobj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fobj</span> <span class="o">=</span> <span class="n">default</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">fobj</span> <span class="ow">in</span> <span class="n">LABELLERS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">LABELLERS</span><span class="p">[</span><span class="n">fobj</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">_core_labeller</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">fobj</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">fobj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">fobj</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">in</span> <span class="n">LABELLERS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fobj</span>  <span class="c1"># type: ignore</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_function_labeller</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_dict_labeller</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Could not create a labelling function for with `</span><span class="si">{</span><span class="n">fobj</span><span class="si">}</span><span class="s2">`.&quot;</span>
+        <span class="k">raise</span> <span class="n">PlotnineError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_core_labeller</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Per item</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">_function_labeller</span><span class="p">(</span><span class="n">_core_labeller</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use a function turn facet value into a label</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    func : callable</span>
+<span class="sd">        Function to label an individual string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+        <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span>
+        <span class="k">for</span> <span class="n">facet_var</span><span class="p">,</span> <span class="n">facet_value</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">variables</span><span class="p">[</span><span class="n">facet_var</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">facet_value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">label_info</span>
+
+
+<span class="k">class</span> <span class="nc">_dict_labeller</span><span class="p">(</span><span class="n">_core_labeller</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use a dict to alter specific facet values</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lookup : dict</span>
+<span class="sd">        A dict of the one of the forms</span>
+<span class="sd">          - {facet_value: label_value}</span>
+<span class="sd">          - {facet_value: callable(&lt;label_value&gt;)}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">lookup</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span> <span class="o">=</span> <span class="n">lookup</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">:</span> <span class="n">strip_label_details</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">strip_label_details</span><span class="p">:</span>
+        <span class="n">label_info</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">variables</span>
+        <span class="c1"># Replace facet_value with values from the lookup table</span>
+        <span class="c1"># If the value is function, call it  the result of calling function</span>
+        <span class="k">for</span> <span class="n">facet_var</span><span class="p">,</span> <span class="n">facet_value</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">facet_value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+                <span class="n">variables</span><span class="p">[</span><span class="n">facet_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span><span class="p">(</span><span class="n">facet_value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">variables</span><span class="p">[</span><span class="n">facet_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="k">return</span> <span class="n">label_info</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2023, Hassan Kibirige.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
