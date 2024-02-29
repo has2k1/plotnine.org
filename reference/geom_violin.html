@@ -533,21 +533,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Finall, style it up.</p>
 <div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:46:53.700040Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:46:53.699794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:46:54.259266Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:46:54.258650Z&quot;}" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery Plot</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>lsize <span class="op">=</span> <span class="fl">0.65</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fill_alpha <span class="op">=</span> <span class="fl">0.7</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"when"</span>, <span class="st">"value"</span>, fill<span class="op">=</span><span class="st">"when"</span>))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_violin(m1, style<span class="op">=</span><span class="st">"left-right"</span>, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span>lsize)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(m2, color<span class="op">=</span><span class="st">"none"</span>, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(m2, color<span class="op">=</span><span class="st">"gray"</span>, size<span class="op">=</span>lsize, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_boxplot(width<span class="op">=</span>shift, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span>lsize)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>[<span class="st">"dodgerblue"</span>, <span class="st">"darkorange"</span>])</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(fill<span class="op">=</span><span class="va">False</span>)  <span class="co"># Turn off the fill legend</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_classic()</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, distributions</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>lsize <span class="op">=</span> <span class="fl">0.65</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fill_alpha <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"when"</span>, <span class="st">"value"</span>, fill<span class="op">=</span><span class="st">"when"</span>))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_violin(m1, style<span class="op">=</span><span class="st">"left-right"</span>, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span>lsize)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(m2, color<span class="op">=</span><span class="st">"none"</span>, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(m2, color<span class="op">=</span><span class="st">"gray"</span>, size<span class="op">=</span>lsize, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_boxplot(width<span class="op">=</span>shift, alpha<span class="op">=</span>fill_alpha, size<span class="op">=</span>lsize)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>[<span class="st">"dodgerblue"</span>, <span class="st">"darkorange"</span>])</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(fill<span class="op">=</span><span class="va">False</span>)  <span class="co"># Turn off the fill legend</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_classic()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
