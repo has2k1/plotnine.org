@@ -7,7 +7,7 @@ from importlib.resources import files as _files
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).parent
-EXAMPLES_DIR = ROOT_DIR / "plotnine/doc/reference/examples"
+EXAMPLES_DIR = ROOT_DIR / "reference/examples"
 TUTORIALS_DIR = ROOT_DIR / "tutorials"
 
 
