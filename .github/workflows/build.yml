@@ -1,6 +1,9 @@
 name: Build Site
 
 on:
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -41,7 +44,7 @@ jobs:
       - name: Checkout Plotnine Version
         shell: bash
         run: |
-          make checkout-${{ inputs.plotnine-doc-version }}
+          make checkout-${{ inputs.plotnine-doc-version || 'pr' }}
           pushd plotnine; echo $(git tag -l --contains HEAD | head -n 1); popd
 
       - name: Build Site
@@ -53,6 +56,62 @@ jobs:
         shell: bash
         run: |
           ls -la
+
+
+      # push to netlify -------------------------------------------------------
+      # set release name ----
+
+      - name: Configure pull release name
+        if: ${{github.event_name == 'pull_request'}}
+        run: |
+          echo "RELEASE_NAME=pr-${PR_NUMBER}" >> $GITHUB_ENV
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+      - name: Configure branch release name
+        if: ${{github.event_name != 'pull_request'}}
+        run: |
+          # use branch name, but replace slashes. E.g. feat/a -> feat-a
+          echo "RELEASE_NAME=${GITHUB_REF_NAME/\//-}" >> $GITHUB_ENV
+      # deploy ----
+      - name: Create Github Deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ env.RELEASE_NAME }}
+          ref: ${{ github.head_ref }}
+          transient: true
+          logs: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Netlify docs preview
+        run: |
+          npm install -g netlify-cli
+          # push main branch to production, others to preview --
+          netlify link --name="plotnine-docs-demo"
+          if [ "${ALIAS}" == "main" ]; then
+            netlify deploy --dir=_site --alias="main"
+          else
+            netlify deploy --dir=_site --alias="${ALIAS}"
+          fi
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          ALIAS: ${{ steps.deployment.outputs.env }}
+
+      - name: Update Github Deployment
+        uses: bobheadxi/deployments@v1
+        if: ${{ always() }}
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: "https://${{ steps.deployment.outputs.env }}--plotnine-docs-demo.netlify.app"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+
+      # Deploy to github pages ----
 
       - name: Deploy Documentation to a Branch
         uses: JamesIves/github-pages-deploy-action@v4

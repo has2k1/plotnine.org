@@ -62,6 +62,8 @@ submodules-tags:
 	git submodule foreach --recursive 'git fetch --tags'
 
 
+checkout-pr: submodules submodules-pull submodules-tags
+
 ## Checkout stable (released) version
 checkout-stable: submodules submodules-pull submodules-tags
 	 $(CHECKOUT_STABLE)
