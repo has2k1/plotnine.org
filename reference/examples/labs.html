@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post20+g439709c - Title, Subtitle, Caption &amp; Axis labels</title>
+<title>plotnine 0.0.post3+gc78329c - Text Outside the Panel(s)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
+    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -176,8 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#title-subtitle-caption-axis-labels" id="toc-title-subtitle-caption-axis-labels" class="nav-link active" data-scroll-target="#title-subtitle-caption-axis-labels">Title, Subtitle, Caption &amp; Axis labels</a></li>
-  <li><a href="#labelling-legends" id="toc-labelling-legends" class="nav-link" data-scroll-target="#labelling-legends">Labelling legends</a></li>
+  <li><a href="#text-outside-the-panels" id="toc-text-outside-the-panels" class="nav-link active" data-scroll-target="#text-outside-the-panels">Text Outside the Panel(s)</a></li>
   </ul>
 </nav>
     </div>
@@ -186,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Title, Subtitle, Caption &amp; Axis labels</h1>
+<h1 class="title">Text Outside the Panel(s)</h1>
 </div>
 
 
@@ -203,41 +202,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:43.114421Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:43.114063Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:43.821661Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:43.820853Z&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, labs, geom_point</span>
+<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:42:13.459498Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:42:13.459137Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:42:14.180222Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:42:14.179469Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, labs, geom_point, theme, theme_538, theme_set</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mtcars</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mtcars, aes(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, colour <span class="op">=</span> <span class="st">"cyl"</span>, size<span class="op">=</span><span class="st">"gear"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>theme_set(theme_538())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="title-subtitle-caption-axis-labels" class="level3">
-<h3 class="anchored" data-anchor-id="title-subtitle-caption-axis-labels">Title, Subtitle, Caption &amp; Axis labels</h3>
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:43.825036Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:43.824794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:45.116770Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:45.116209Z&quot;}" data-execution_count="2">
+<section id="text-outside-the-panels" class="level3">
+<h3 class="anchored" data-anchor-id="text-outside-the-panels">Text Outside the Panel(s)</h3>
+<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:42:14.183642Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:42:14.183393Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:42:15.459935Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:42:15.459255Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, labels</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"The title"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    subtitle <span class="op">=</span><span class="st">"The subtitle"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"New x label"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"New y label"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    caption<span class="op">=</span><span class="st">"(A nice caption)"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>caption <span class="op">=</span> <span class="st">"""</span><span class="ch">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">This graphic illustrates the inverse relationship between vehicle weight</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">and fuel efficiency (MPG). It aims to highlight how heavier vehicles generally</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">consume more fuel, and how the complexity of an engine's cylinder count and</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">transmission system can affect its fuel economy.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, colour<span class="op">=</span><span class="st">"factor(cyl)"</span>, size<span class="op">=</span><span class="st">"gear"</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Miles per Gallon"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Weight"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        colour<span class="op">=</span><span class="st">"Cylinders"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="st">"Gears"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Fuel Efficiency vs. Vehicle Weight"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        subtitle <span class="op">=</span><span class="st">"Exploring Factors that Affect the Fuel Effeciency of a Car"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        caption<span class="op">=</span>caption,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># left justify the caption and have one line of space between it and</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># the x-axis label</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        plot_caption<span class="op">=</span>element_text(ha<span class="op">=</span><span class="st">"left"</span>, margin<span class="op">=</span>{<span class="st">"t"</span>: <span class="dv">1</span>, <span class="st">"units"</span>: <span class="st">"lines"</span>})</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="labs_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="labelling-legends" class="level3">
-<h3 class="anchored" data-anchor-id="labelling-legends">Labelling legends</h3>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:45.154120Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:45.153782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:45.507004Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:45.506427Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, labels</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(colour<span class="op">=</span><span class="st">"Cylinders"</span>, size<span class="op">=</span><span class="st">"Gears"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="labs_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

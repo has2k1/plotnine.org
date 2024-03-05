@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post20+g439709c - Smoothed conditional means</title>
+<title>plotnine 0.0.post3+gc78329c - Smoothed conditional means</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
+    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#smoothed-conditional-means" id="toc-smoothed-conditional-means" class="nav-link active" data-scroll-target="#smoothed-conditional-means">Smoothed conditional means</a></li>
-  <li><a href="#point-groups-and-linear-models" id="toc-point-groups-and-linear-models" class="nav-link" data-scroll-target="#point-groups-and-linear-models">Point Groups and Linear Models</a></li>
+  <li><a href="#points-linear-models" id="toc-points-linear-models" class="nav-link" data-scroll-target="#points-linear-models">Points &amp; Linear Models</a></li>
   </ul>
 </nav>
     </div>
@@ -206,15 +206,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:54.916653Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:54.916298Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:55.614315Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:55.613537Z&quot;}" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="1">
+<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:32.708085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:32.707718Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.538594Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.537945Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_smooth, labs</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_smooth, labs, theme_matplotlib, theme_set</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theme_set(theme_matplotlib())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="smoothed-conditional-means" class="level3">
 <h3 class="anchored" data-anchor-id="smoothed-conditional-means">Smoothed conditional means</h3>
 <p><em>Aids the eye in seeing patterns in the presence of overplotting.</em></p>
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:55.617676Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:55.617423Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:55.631667Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:55.631106Z&quot;}" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.542346Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.541871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.556463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.555887Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -316,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:55.672320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:55.672062Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:56.884082Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:56.883343Z&quot;}" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.598005Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.597745Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.632357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.631743Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -332,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Use <code>span</code> to control the “wiggliness” of the default loess smoother. The span is the fraction of points used to fit each local regression: small numbers make a wigglier curve, larger numbers make a smoother curve.</p>
-<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:56.887472Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:56.887093Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:57.180522Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:57.179881Z&quot;}" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.635384Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.635148Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.905976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.905466Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -348,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can remove confidence interval around smooth with <code>se=False</code>:</p>
-<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:57.183700Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:57.183438Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:57.463567Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:57.462964Z&quot;}" data-execution_count="5">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.908868Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.908653Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.159279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.158735Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -364,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Instead of a loess smooth, you can use any other modelling function:</p>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:57.466314Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:57.466090Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:58.129378Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:58.128831Z&quot;}" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.162013Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.161794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.808970Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.808347Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -380,9 +382,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="point-groups-and-linear-models" class="level3">
-<h3 class="anchored" data-anchor-id="point-groups-and-linear-models">Point Groups and Linear Models</h3>
-<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:58.132304Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:58.131944Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:58.520697Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:58.520197Z&quot;}" data-execution_count="7">
+<section id="points-linear-models" class="level3">
+<h3 class="anchored" data-anchor-id="points-linear-models">Points &amp; Linear Models</h3>
+<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.811760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.811435Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:36.255796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:36.255287Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, points</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>(</span>

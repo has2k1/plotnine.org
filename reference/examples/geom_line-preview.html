@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine 0.0.post20+g439709c - Line plots</title>
+    <title>plotnine 0.0.post3+gc78329c - Line plots</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -208,7 +208,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
+    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -273,7 +273,7 @@
   <li><a href="#line-plots" id="toc-line-plots" class="nav-link active" data-scroll-target="#line-plots">Line plots</a></li>
   <li><a href="#a-single-trend-line" id="toc-a-single-trend-line" class="nav-link" data-scroll-target="#a-single-trend-line">A Single Trend Line</a></li>
   <li><a href="#multiple-trend-lines" id="toc-multiple-trend-lines" class="nav-link" data-scroll-target="#multiple-trend-lines">Multiple Trend Lines</a></li>
-  <li><a href="#separated-trend-lines" id="toc-separated-trend-lines" class="nav-link" data-scroll-target="#separated-trend-lines">Separated Trend Lines</a></li>
+  <li><a href="#a-trend-line-per-facet" id="toc-a-trend-line-per-facet" class="nav-link" data-scroll-target="#a-trend-line-per-facet">A Trend Line Per Facet</a></li>
   </ul>
 </nav>
 </nav>
@@ -298,7 +298,7 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:16.344727Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:16.344324Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:17.056155Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:17.055385Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:10.732818Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:10.732483Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.521629Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.520937Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -317,7 +317,7 @@
 <p><code>geom_line()</code> connects the dots, and is useful for time series data.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:17.059650Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:17.059381Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:17.073190Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:17.072588Z&quot;}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.525190Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.524926Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.538846Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.538268Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>meat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -404,7 +404,7 @@
 <div id="cell-3" class="cell markdown">
 <p>Make it tidy.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:17.112897Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:17.112625Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:17.124289Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:17.123666Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.581108Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.580833Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.592856Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.592186Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meat_long <span class="op">=</span> meat.melt(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"date"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"beef"</span>, <span class="st">"veal"</span>, <span class="st">"pork"</span>, <span class="st">"lamb_and_mutton"</span>, <span class="st">"broilers"</span>, <span class="st">"turkey"</span>],</span>
@@ -468,7 +468,7 @@
 <div id="cell-5" class="cell markdown">
 <p>First try</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:17.127330Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:17.127079Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:18.444982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:18.444310Z&quot;}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.595878Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.595634Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.012575Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.011988Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -485,7 +485,7 @@
 <div id="cell-7" class="cell markdown">
 <p>It looks crowded because each there is more than one monthly entry at each x-point. We can get a single trend line by getting a monthly aggregate of the weights.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:18.448042Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:18.447726Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:18.457526Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:18.456883Z&quot;}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.015534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.015226Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.025519Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.024894Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg <span class="op">=</span> meat_long.groupby(<span class="st">"date"</span>).agg({<span class="st">"weight"</span>: <span class="st">"sum"</span>}).reset_index()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -570,7 +570,7 @@
 <h3 class="anchored" data-anchor-id="a-single-trend-line">A Single Trend Line</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:18.460583Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:18.460360Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:18.708625Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:18.708068Z&quot;}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.028516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.028287Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.273710Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.273034Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -586,7 +586,7 @@
 <div id="cell-11" class="cell markdown">
 <p>Add some style</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:18.711584Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:18.711361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:18.995174Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:18.994627Z&quot;}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.276520Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.276286Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.563650Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.563143Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
@@ -611,7 +611,7 @@
 <h3 class="anchored" data-anchor-id="multiple-trend-lines">Multiple Trend Lines</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:18.997878Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:18.997665Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:19.400900Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:19.400332Z&quot;}" data-execution_count="8">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.566507Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.566276Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.904212Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.903640Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, group<span class="op">=</span><span class="st">"animal"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -630,7 +630,7 @@
 <div id="cell-16" class="cell markdown">
 <p>Make each group be a different color.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:19.404464Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:19.404246Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:19.808506Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:19.808020Z&quot;}" data-execution_count="9">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.907583Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.907352Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:14.330240Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:14.329688Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
@@ -648,14 +648,14 @@
 </div>
 </div></div>
 <div id="cell-18" class="cell markdown">
-<section id="separated-trend-lines" class="level3">
-<h3 class="anchored" data-anchor-id="separated-trend-lines">Separated Trend Lines</h3>
+<section id="a-trend-line-per-facet" class="level3">
+<h3 class="anchored" data-anchor-id="a-trend-line-per-facet">A Trend Line Per Facet</h3>
 </section>
 </div>
 <div id="cell-19" class="cell markdown">
 <p>Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the <code>size</code> of the line, <code>size</code> of the text and the number of grid lines.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:19.812457Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:19.812223Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:20.717411Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:20.716881Z&quot;}" data-execution_count="10">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:14.333611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:14.333383Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:15.119156Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:15.118578Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> titled(strip_title):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join(s.title() <span class="cf">if</span> s <span class="op">!=</span> <span class="st">"and"</span> <span class="cf">else</span> s <span class="cf">for</span> s <span class="kw">in</span> strip_title.split(<span class="st">"_"</span>))</span>
