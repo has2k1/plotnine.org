@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.22">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine {{&lt; var version &gt;}} – miscellaneous-order-plot-series</title>
+<title>plotnine 0.0.post20+g439709c - Custom sorting of plot series</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -176,11 +176,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bar-plot-of-manufacturer---default-output" id="toc-bar-plot-of-manufacturer---default-output" class="nav-link active" data-scroll-target="#bar-plot-of-manufacturer---default-output">Bar plot of manufacturer - Default Output</a></li>
-  <li><a href="#bar-plot-of-manufacturer---ordered-by-count-categorical" id="toc-bar-plot-of-manufacturer---ordered-by-count-categorical" class="nav-link" data-scroll-target="#bar-plot-of-manufacturer---ordered-by-count-categorical">Bar plot of manufacturer - Ordered by count (Categorical)</a></li>
-  <li><a href="#bar-plot-of-manufacturer---ordered-by-count-limits" id="toc-bar-plot-of-manufacturer---ordered-by-count-limits" class="nav-link" data-scroll-target="#bar-plot-of-manufacturer---ordered-by-count-limits">Bar plot of manufacturer - Ordered by count (limits)</a>
+  <li><a href="#custom-sorting-of-plot-series" id="toc-custom-sorting-of-plot-series" class="nav-link active" data-scroll-target="#custom-sorting-of-plot-series">Custom sorting of plot series</a>
   <ul class="collapse">
+  <li><a href="#bar-plot-of-manufacturer---default-output" id="toc-bar-plot-of-manufacturer---default-output" class="nav-link" data-scroll-target="#bar-plot-of-manufacturer---default-output">Bar plot of manufacturer - Default Output</a>
+  <ul class="collapse">
+  <li><a href="#ordered-horizontal-bar-plot" id="toc-ordered-horizontal-bar-plot" class="nav-link" data-scroll-target="#ordered-horizontal-bar-plot">Ordered Horizontal Bar Plot</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -207,14 +209,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-2" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;1&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:55.651673Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:55.651291Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:56.473147Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:56.472509Z&quot;}" data-execution_count="1">
+<section id="custom-sorting-of-plot-series" class="level1">
+<h1>Custom sorting of plot series</h1>
+<div id="cell-1" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;1&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:56.522994Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:56.522681Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:57.260231Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:57.259541Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_bar, coord_flip, labs, scale_x_discrete</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="bar-plot-of-manufacturer---default-output" class="level2">
 <h2 class="anchored" data-anchor-id="bar-plot-of-manufacturer---default-output">Bar plot of manufacturer - Default Output</h2>
-<div id="cell-4" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;2&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:56.476422Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:56.476177Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:57.940225Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:57.939544Z&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;2&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:57.263638Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:57.263372Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:58.534395Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:58.533768Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(x<span class="op">=</span><span class="st">"manufacturer"</span>)</span>
@@ -230,11 +234,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="bar-plot-of-manufacturer---ordered-by-count-categorical" class="level2">
-<h2 class="anchored" data-anchor-id="bar-plot-of-manufacturer---ordered-by-count-categorical">Bar plot of manufacturer - Ordered by count (Categorical)</h2>
+<section id="ordered-horizontal-bar-plot" class="level3">
+<h3 class="anchored" data-anchor-id="ordered-horizontal-bar-plot">Ordered Horizontal Bar Plot</h3>
 <p>By default the discrete values along axis are ordered alphabetically. If we want a specific ordering we use a pandas.Categorical variable with categories ordered to our preference.</p>
-<div id="cell-6" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;3&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:57.994559Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:57.993866Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:58.433514Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:58.432705Z&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;3&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:58.572923Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:58.572579Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:58.926152Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:58.925590Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine order and create a categorical type</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that value_counts() is already sorted</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>manufacturer_list <span class="op">=</span> mpg[<span class="st">"manufacturer"</span>].value_counts().index.tolist()</span>
@@ -259,16 +262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We could also modify the <strong>existing manufacturer category</strong> to set it as ordered instead of having to create a new CategoricalDtype and apply that to the data.</p>
-<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:58.437644Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:58.437195Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:58.441909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:58.441251Z&quot;}" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:58.928916Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:58.928711Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:58.932365Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:58.931872Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> mpg.assign(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    manufacturer_cat<span class="op">=</span>mpg[<span class="st">"manufacturer"</span>].cat.reorder_categories(manufacturer_list)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="bar-plot-of-manufacturer---ordered-by-count-limits" class="level2">
-<h2 class="anchored" data-anchor-id="bar-plot-of-manufacturer---ordered-by-count-limits">Bar plot of manufacturer - Ordered by count (limits)</h2>
+<p><strong>Alternatively</strong></p>
 <p>Another method to quickly reorder a discrete axis without changing the data is to change it’s limits</p>
-<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:58.445777Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:58.445493Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:58.936798Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:58.936193Z&quot;}" data-execution_count="5">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:58.935029Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:58.934834Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:59.276993Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:59.276480Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine order and create a categorical type</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that value_counts() is already sorted</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>manufacturer_list <span class="op">=</span> mpg[<span class="st">"manufacturer"</span>].value_counts().index.tolist()</span>
@@ -290,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can ‘flip’ an axis (independent of limits) by reversing the order of the limits.</p>
-<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:58.939844Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:58.939587Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:59.360878Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:59.360289Z&quot;}" data-execution_count="6">
+<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:59.279770Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:59.279529Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:59.629723Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:59.629087Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, bars</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine order and create a categorical type</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that value_counts() is already sorted</span></span>
@@ -312,6 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
 <section id="further-reading" class="level3">
 <h3 class="anchored" data-anchor-id="further-reading">Further Reading</h3>
 <ul>
@@ -321,6 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 
 
+</section>
 </section>
 </section>
 
@@ -404,24 +407,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -456,11 +441,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.22">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine {{&lt; var version &gt;}} – miscellaneous-show-counts-on-a-stacked-bar-plot</title>
+<title>plotnine 0.0.post20+g439709c - Show counts on a stacked bar plot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -171,8 +171,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#show-counts-on-a-stacked-bar-plot" id="toc-show-counts-on-a-stacked-bar-plot" class="nav-link active" data-scroll-target="#show-counts-on-a-stacked-bar-plot">Show counts on a stacked bar plot</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -196,12 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:48:15.330752Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:48:15.330430Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:48:16.289858Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:48:16.289106Z&quot;}" data-execution_count="1">
+<section id="show-counts-on-a-stacked-bar-plot" class="level1">
+<h1>Show counts on a stacked bar plot</h1>
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:20.502742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:20.502450Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:21.325196Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:21.324432Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, after_stat, geom_bar, geom_text</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A stacked bar plot.</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:48:16.293614Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:48:16.293332Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:48:17.724536Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:48:17.723910Z&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:21.330508Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:21.330201Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:22.595350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:22.594672Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>)) <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"fill"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -212,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We want to know how many items are in each of the bars, so we add a <code>geom_text</code> with the same <code>stat</code> as <code>geom_bar</code> and map the <code>label</code> aesthetic to the computed <code>count</code>.</p>
-<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:48:17.770971Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:48:17.770411Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:48:18.207434Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:48:18.206710Z&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:22.639059Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:22.638677Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:23.021941Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:23.021384Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"fill"</span>)</span>
@@ -228,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Not what we wanted.</p>
 <p>We forgot to give <code>geom_text</code> the same position as <code>geom_bar</code>. Let us fix that.</p>
-<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:48:18.211084Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:48:18.210564Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:48:18.615684Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:48:18.615075Z&quot;}" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:23.024807Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:23.024588Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:23.414639Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:23.413932Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"fill"</span>)</span>
@@ -245,6 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That is more like it</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -326,24 +335,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -378,11 +369,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

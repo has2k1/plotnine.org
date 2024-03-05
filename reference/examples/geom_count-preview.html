@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.22">
+    <meta name="generator" content="quarto-1.4.550">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine {{&lt; var version &gt;}} – geom_count</title>
+    <title>plotnine 0.0.post20+g439709c - Categorized Data Plot</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -208,7 +208,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -257,7 +257,7 @@
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -266,11 +266,17 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#categorized-data-plot" id="toc-categorized-data-plot" class="nav-link active" data-scroll-target="#categorized-data-plot">Categorized Data Plot</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
@@ -289,15 +295,18 @@
   
 
 
-</header>   <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:44:48.678265Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:44:48.677877Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:44:49.487796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:44:49.487050Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:37.624418Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:37.624006Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:38.338029Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:38.337261Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_count, scale_size_continuous</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-2" class="cell markdown">
+<div id="cell-1" class="cell markdown">
+<section id="categorized-data-plot" class="level3">
+<h3 class="anchored" data-anchor-id="categorized-data-plot">Categorized Data Plot</h3>
 <p><em>geom_count() makes the point size proportional to the number of points at a location</em></p>
+</section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:44:49.491470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:44:49.491188Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:44:49.508846Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:44:49.508197Z&quot;}" data-scrolled="true" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:38.341396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:38.341131Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:38.355980Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:38.355399Z&quot;}" data-scrolled="true" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diamonds.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -393,7 +402,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:44:49.555269Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:44:49.554971Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:44:51.114398Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:44:51.113587Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:38.395659Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:38.395418Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:39.829392Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:39.828725Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_count(aes(x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"color"</span>))</span>
@@ -406,10 +415,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-5" class="cell markdown">
+<div id="cell-4" class="cell markdown">
 <p>We can adjust the size range of the points with <code>scale_size_continuous</code></p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:44:51.117454Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:44:51.117137Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:44:51.720547Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:44:51.719953Z&quot;}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:39.832649Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:39.832334Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:40.382073Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:40.381348Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_count(aes(x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"color"</span>))</span>
@@ -504,24 +513,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -556,11 +547,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.22">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine {{&lt; var version &gt;}} – miscellaneous-automatic-grouping-insufficient</title>
+<title>plotnine 0.0.post20+g439709c - When the automatic groups are not sufficient</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -174,8 +174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#when-the-automatic-groups-are-not-sufficient" id="toc-when-the-automatic-groups-are-not-sufficient" class="nav-link active" data-scroll-target="#when-the-automatic-groups-are-not-sufficient">When the automatic groups are not sufficient</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -199,12 +205,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:39.909453Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:39.909143Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:40.583139Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:40.582463Z&quot;}" data-execution_count="1">
+<section id="when-the-automatic-groups-are-not-sufficient" class="level1">
+<h1>When the automatic groups are not sufficient</h1>
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:41.932170Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:41.931913Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:42.623239Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:42.621347Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_col, geom_line, labs, scale_color_hue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Some data to plot</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:40.586806Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:40.586454Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:40.598810Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:40.597853Z&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:42.629069Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:42.628275Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:42.644064Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:42.643233Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"letter"</span>: [<span class="st">"Alpha"</span>, <span class="st">"Beta"</span>, <span class="st">"Delta"</span>, <span class="st">"Gamma"</span>],</span>
@@ -260,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:40.643082Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:40.642792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:41.924865Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:41.924201Z&quot;}" data-execution_count="3">
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:42.698553Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:42.698254Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:44.091269Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:44.090426Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(x<span class="op">=</span><span class="st">"letter"</span>, y<span class="op">=</span><span class="st">"pos"</span>))</span>
@@ -280,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We get a plot with a warning and no line(s). This is not what we expected.</p>
 <p>The issue is we have 4 groups (Alpha, Beta, …) and each of those groups has a single point. This is a case where the automatic grouping is not sufficient (or just not what you expect). The solution is to manually set the group for <code>geom_line</code> so that all points belong to one group.</p>
-<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:41.928193Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:41.927831Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:42.205169Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:42.204493Z&quot;}" data-execution_count="4">
+<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:44.095021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:44.094690Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:44.349371Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:44.348705Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(x<span class="op">=</span><span class="st">"letter"</span>, y<span class="op">=</span><span class="st">"pos"</span>))</span>
@@ -297,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>That looks like it.</p>
 <p>To understand why the behaviour behind the warning is not wrong, let us try a dataframe with 2 points per group.</p>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:42.208091Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:42.207854Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:42.474046Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:42.473387Z&quot;}" data-execution_count="5">
+<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:44.352318Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:44.352085Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:44.606118Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:44.605453Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"letter"</span>: [<span class="st">"Alpha"</span>, <span class="st">"Beta"</span>, <span class="st">"Delta"</span>, <span class="st">"Gamma"</span>] <span class="op">*</span> <span class="dv">2</span>,</span>
@@ -324,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We get no warning and we get lines.</p>
 <p>We can add some color to such a plot.</p>
-<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:42.477129Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:42.476899Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:42.810906Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:42.810287Z&quot;}" data-execution_count="6">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:33:44.608909Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:33:44.608686Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:33:44.930525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:33:44.929995Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df2)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(x<span class="op">=</span><span class="st">"letter"</span>, y<span class="op">=</span><span class="st">"pos"</span>, fill<span class="op">=</span><span class="st">"letter"</span>))</span>
@@ -343,6 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Credit</strong>: github user <a href="https://github.com/datavistics"><span class="citation" data-cites="datavistics">@datavistics</span></a> (derek) whose encounter with this issue motivated this example.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -424,24 +433,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -476,11 +467,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

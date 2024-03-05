@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.22">
+    <meta name="generator" content="quarto-1.4.550">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine {{&lt; var version &gt;}} – plotnineanimation</title>
+    <title>plotnine 0.0.post20+g439709c - Spiral Animation ###</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -208,7 +208,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -257,7 +257,7 @@
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -266,11 +266,17 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#spiral-animation" id="toc-spiral-animation" class="nav-link active" data-scroll-target="#spiral-animation">Spiral Animation</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
@@ -289,7 +295,7 @@
   
 
 
-</header>   <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:42:47.281796Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:42:47.281455Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:42:48.467516Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:42:48.466532Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:26:37.888086Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:26:37.887729Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:26:38.609305Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:26:38.608186Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_path, theme, theme_void, lims</span>
@@ -300,14 +306,17 @@
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">"animation"</span>, html<span class="op">=</span><span class="st">"html5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-2" class="cell markdown">
+<div id="cell-1" class="cell markdown">
+<section id="spiral-animation" class="level3">
+<h3 class="anchored" data-anchor-id="spiral-animation">Spiral Animation</h3>
 <p><em>How to create Animations</em></p>
+</section>
 </div>
-<div id="cell-3" class="cell markdown">
+<div id="cell-2" class="cell markdown">
 <p>The <code>PlotnineAnimation</code> methods takes a sequence of plots and animates them. The best way to create the sequence is to use a function that generates plots.</p>
 <p><strong>NOTE</strong>: When creating the plots make sure <em>all the plots</em> have scales with the same limits for each aesthetic, including the <code>x</code> and <code>y</code> aesthetics.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:42:48.471646Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:42:48.471267Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:43:22.917183Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:43:22.916394Z&quot;}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:26:38.613405Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:26:38.613028Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:11.419721Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:11.419091Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters used to control the spiral</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tightness <span class="op">=</span> <span class="fl">1.3</span></span>
@@ -3379,10 +3388,10 @@ dmY2MC4zLjEwMA==
 </video>
 </div>
 </div></div>
-<div id="cell-5" class="cell markdown">
+<div id="cell-4" class="cell markdown">
 <p>The final image of the spiral</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:43:22.968682Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:43:22.968391Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:43:23.323350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:43:23.322726Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:11.460872Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:11.460621Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:11.778719Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:11.778122Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery Plot</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plot(kmax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3475,24 +3484,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -3527,11 +3518,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

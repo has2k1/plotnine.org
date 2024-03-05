@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.22">
+    <meta name="generator" content="quarto-1.4.550">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine {{&lt; var version &gt;}} – scale_x_continuous</title>
+    <title>plotnine 0.0.post20+g439709c - Guitar Neck ###</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -206,7 +206,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+ga171cd7</span>
+    <span class="navbar-title">plotnine 0.0.post20+g439709c</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -255,7 +255,7 @@
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -264,11 +264,17 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#guitar-neck" id="toc-guitar-neck" class="nav-link active" data-scroll-target="#guitar-neck">Guitar Neck</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
@@ -287,7 +293,7 @@
   
 
 
-</header>   <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:06.544902Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:06.544581Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:07.838570Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:07.837769Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:49.365901Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:49.365545Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.425452Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.424587Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
@@ -304,14 +310,17 @@
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mizani.transforms <span class="im">import</span> trans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-2" class="cell markdown">
+<div id="cell-1" class="cell markdown">
+<section id="guitar-neck" class="level3">
+<h3 class="anchored" data-anchor-id="guitar-neck">Guitar Neck</h3>
 <p><em>Using a transformed x-axis to visualise guitar chords</em></p>
+</section>
 </div>
-<div id="cell-3" class="cell markdown">
+<div id="cell-2" class="cell markdown">
 <p>The x-axis is transformed to resemble the narrowing width of frets on a 25.5 inch Strat. To do that we create custom transformation.</p>
 <p>The key parts of <em>any</em> transform object are the <code>transform</code> and <code>inverse</code> functions.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:07.842920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:07.842515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:07.850172Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:07.849439Z&quot;}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.429076Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.428751Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.434785Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.434250Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> frets_trans(trans):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Frets Transformation</span></span>
@@ -344,13 +353,13 @@
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        minor <span class="op">=</span> cls.transform(np.linspace(<span class="op">*</span>_major, cls.number_of_frets))</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> minor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-5" class="cell markdown">
+<div id="cell-4" class="cell markdown">
 <p>The above transform is different from most in that, breaks and minor breaks do not change. This is common of very specialized scales. It can also be a key requirement when creating graphics for demontration purposes.</p>
 </div>
-<div id="cell-6" class="cell markdown">
+<div id="cell-5" class="cell markdown">
 <p>Some chord Data</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:07.853670Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:07.853409Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:07.859813Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:07.859126Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.437940Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.437702Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.443628Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.443028Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notes: the 0 fret is an open strum, all other frets are played half-way between fret bars.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The strings are 1:low E, 2: A, 3: D, 4: G, 5: B, 6: E</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c_chord <span class="op">=</span> pd.DataFrame({<span class="st">"Fret"</span>: [<span class="dv">0</span>, <span class="fl">2.5</span>, <span class="fl">1.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">0</span>], <span class="st">"String"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
@@ -366,11 +375,11 @@
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-8" class="cell markdown">
+<div id="cell-7" class="cell markdown">
 <p>Visualizing the chord</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-02-17T18:47:07.863300Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-02-17T18:47:07.863040Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-02-17T18:47:08.651534Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-02-17T18:47:08.650802Z&quot;}" data-scrolled="true" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, complex</span></span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.446505Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.446274Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:51.133645Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:51.132775Z&quot;}" data-scrolled="true" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Look and feel of the graphic</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>neck_color <span class="op">=</span> <span class="st">"#FFDDCC"</span></span>
@@ -403,7 +412,7 @@
 </div>
 </div>
 </div></div>
-<div id="cell-10" class="cell markdown">
+<div id="cell-9" class="cell markdown">
 <p><strong>Credit</strong>: This example was motivated by <a href="https://github.com/jonvitale">Jonathan Vitale</a> who wanted to create graphics for a guitar scale trainer.</p>
 </div>
 
@@ -487,24 +496,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -539,11 +530,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
