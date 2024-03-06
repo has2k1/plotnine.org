@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.550">
+    <meta name="generator" content="quarto-1.4.551">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine 0.0.post3+gc78329c - Periodic Table</title>
+    <title>plotnine 0.13.1a1 - Periodic Table</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -190,7 +190,28 @@
   }
 }</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  <script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>  
       </head>
 
   <body class="floating nav-fixed quarto-notebook">
@@ -208,7 +229,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -270,8 +291,7 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#periodic-table" id="toc-periodic-table" class="nav-link active" data-scroll-target="#periodic-table">Periodic Table</a></li>
-  <li><a href="#annotated-heatmap" id="toc-annotated-heatmap" class="nav-link" data-scroll-target="#annotated-heatmap">Annotated Heatmap</a></li>
+  <li><a href="#annotated-heatmap" id="toc-annotated-heatmap" class="nav-link active" data-scroll-target="#annotated-heatmap">Annotated Heatmap</a></li>
   </ul>
 </nav>
 </nav>
@@ -296,7 +316,7 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:40.448847Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:40.448495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.120173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.119487Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:40.448847Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:40.448495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.120173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.119487Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -317,16 +337,13 @@
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    element_text,</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-1" class="cell markdown">
-<section id="periodic-table" class="level3">
-<h3 class="anchored" data-anchor-id="periodic-table">Periodic Table</h3>
-<p><em>Graphing of highly organised tabular information</em></p>
-</section>
-</div>
 <div id="cell-2" class="cell markdown">
+<p><em>Graphing of highly organised tabular information</em></p>
+</div>
+<div id="cell-3" class="cell markdown">
 <p>Read the data.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.123810Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.123499Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.146818Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.146244Z&quot;}" data-scrolled="true" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.123810Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.123499Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.146818Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.146244Z&quot;}" data-scrolled="true" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elements <span class="op">=</span> pd.read_csv(<span class="st">"data/elements.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>elements.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -490,50 +507,50 @@
 </div>
 </div>
 </div></div>
-<div id="cell-4" class="cell markdown">
+<div id="cell-5" class="cell markdown">
 <p>Alter the data types of the information that will be plotted. This makes it convenient to work with.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.186535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.186288Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.192658Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.192088Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.186535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.186288Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.192658Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.192088Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"group"</span>] <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> g <span class="op">==</span> <span class="st">"-"</span> <span class="cf">else</span> <span class="bu">int</span>(g) <span class="cf">for</span> g <span class="kw">in</span> elements.group]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"bonding type"</span>] <span class="op">=</span> elements[<span class="st">"bonding type"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"metal"</span>] <span class="op">=</span> elements[<span class="st">"metal"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"atomic_number"</span>] <span class="op">=</span> elements[<span class="st">"atomic number"</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-6" class="cell markdown">
+<div id="cell-7" class="cell markdown">
 <p>The periodic table has two tables, a <code>top</code> and <code>bottom</code>. The elements in the <code>top</code> have groups, and those in the <code>bottom</code> have no groups. We make separate dataframes for both – they have different alignments.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.195615Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.195369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.205450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.204917Z&quot;}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.195615Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.195369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.205450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.204917Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> elements.query(<span class="st">"group != -1"</span>).copy()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bottom <span class="op">=</span> elements.query(<span class="st">"group == -1"</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-8" class="cell markdown">
+<div id="cell-9" class="cell markdown">
 <p>The <code>top</code> table is nice and well behaving. The <code>x</code> location of the elements indicate the group and the <code>y</code> locations the period.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.208470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.208242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.211978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.211422Z&quot;}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.208470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.208242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.211978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.211422Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"x"</span>] <span class="op">=</span> top.group</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"y"</span>] <span class="op">=</span> top.period</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-10" class="cell markdown">
+<div id="cell-11" class="cell markdown">
 <p>The <code>bottom</code> table has 2 rows, with the <code>atomic number</code> increasing to the right. We create an <code>x</code> based on the <code>atomic number</code> and add a <code>horizontal shift</code>. As the dataframe is ordered by <code>atomic number</code>, the operation is easier. The <code>bottom</code> elements are labelled with a “period”. We add a vertical shift to give us a good <code>y</code> location that gives the appearance of two tables.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.214871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.214592Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.218924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.218361Z&quot;}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.214871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.214592Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.218924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.218361Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nrows <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>hshift <span class="op">=</span> <span class="fl">3.5</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>vshift <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bottom[<span class="st">"x"</span>] <span class="op">=</span> np.tile(np.arange(<span class="bu">len</span>(bottom) <span class="op">//</span> nrows), nrows) <span class="op">+</span> hshift</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bottom[<span class="st">"y"</span>] <span class="op">=</span> bottom.period <span class="op">+</span> vshift</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-12" class="cell markdown">
+<div id="cell-13" class="cell markdown">
 <p>We will be plotting using tiles and we want to have some space between the tiles. We have set the <code>x</code> and <code>y</code> locations above to take up a unit of space. To get a good effect, the tile dimensions should be less than 1.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-13" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.221812Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.221600Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.224575Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.223891Z&quot;}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.221812Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.221600Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.224575Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.223891Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tile_width <span class="op">=</span> <span class="fl">0.95</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tile_height <span class="op">=</span> <span class="fl">0.95</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-14" class="cell markdown">
+<div id="cell-15" class="cell markdown">
 <p>First peak</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.227375Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.227141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.338268Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.337655Z&quot;}" data-execution_count="8">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-16" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.227375Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.227141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.338268Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.337655Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -547,10 +564,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-16" class="cell markdown">
+<div id="cell-17" class="cell markdown">
 <p>The table upside down. We could have been more careful when creating the <code>y</code> locations since the periods are drawn in descending order. But, we can fix that with a <code>reverse</code> scale.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.341767Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.341453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.589115Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.588544Z&quot;}" data-execution_count="9">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-18" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.341767Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.341453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.589115Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.588544Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -565,10 +582,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-18" class="cell markdown">
+<div id="cell-19" class="cell markdown">
 <p>Let us apply some color to it.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.592122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.591897Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.941724Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.941171Z&quot;}" data-execution_count="10">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.592122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.591897Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.941724Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.941171Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)  <span class="co"># new</span></span>
@@ -584,17 +601,17 @@
 </div>
 </div>
 </div></div>
-<div id="cell-20" class="cell markdown">
+<div id="cell-21" class="cell markdown">
 <section id="now-for-some-trick" class="level4">
 <h4 class="anchored" data-anchor-id="now-for-some-trick">Now for some trick</h4>
 </section>
 </div>
-<div id="cell-21" class="cell markdown">
+<div id="cell-22" class="cell markdown">
 <p>Goal: To add text to the tiles</p>
 <p>There are four pieces of text that we shall add to the tiles, that is 4 <code>geom_text</code> additions. As we have two tables, that comes to 8 <code>geom_text</code> additions. When any <code>geom</code> is added to a <code>ggplot</code> object, behind the scenes a layer is created and added. We can create a group of layers that can be added to a <code>ggplot</code> object in one go using a list.</p>
 <p>We use a function that accepts a dataframe, and returns a list of geoms.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-22" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.944538Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.944312Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.948435Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.947893Z&quot;}" data-execution_count="11">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-23" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.944538Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.944312Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.948435Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.947893Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner_text(data):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    layers <span class="op">=</span> [</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        geom_text(</span>
@@ -617,7 +634,7 @@
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> layers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-23" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.951151Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.950936Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:44.075550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:44.075009Z&quot;}" data-execution_count="12">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-24" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.951151Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.950936Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:44.075550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:44.075009Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -635,10 +652,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-24" class="cell markdown">
+<div id="cell-25" class="cell markdown">
 <p>It is crowded in there and the tiles do not have equal dimentions. Use the <code>theme</code> create a larger figure. <code>coord_equal</code> give us equal units along the axes, this makes the tiles square.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-25" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:44.080976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:44.080744Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.605586Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.605058Z&quot;}" data-execution_count="13">
+<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-26" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:44.080976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:44.080744Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.605586Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.605058Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -658,11 +675,11 @@
 </div>
 </div>
 </div></div>
-<div id="cell-26" class="cell markdown">
+<div id="cell-27" class="cell markdown">
 <p>It is has all the information we want, except one for complication. Elements <code>Lu</code> and <code>Lr</code> also belong in the bottom table. One way to show this duality is to have tiles with two colors split horizontally.</p>
 <p>The colors are determined by the <code>metal</code> field, and we know the <code>x</code> and <code>y</code> locations. We create a dataframe with this information to create a half-tile. A half-tile is centered at the quarter mark.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-27" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.610951Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.610714Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.614671Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.614089Z&quot;}" data-execution_count="14">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-28" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.610951Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.610714Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.614671Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.614089Z&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>split_df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"x"</span>: <span class="dv">3</span> <span class="op">-</span> tile_width <span class="op">/</span> <span class="dv">4</span>,</span>
@@ -671,7 +688,7 @@
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cell-28" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.617363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.617173Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:47.323156Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:47.322454Z&quot;}" data-execution_count="15">
+<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cell-29" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.617363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.617173Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:47.323156Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:47.322454Z&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -692,10 +709,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-29" class="cell markdown">
+<div id="cell-30" class="cell markdown">
 <p>Change the <code>fill</code> color for a different look and use a <code>theme</code> that clears out all the clutter.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="cell-30" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:47.330052Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:47.329815Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.876387Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.875748Z&quot;}" data-execution_count="16">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="cell-31" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:47.330052Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:47.329815Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.876387Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.875748Z&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> guides</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
@@ -724,19 +741,19 @@
 </div>
 </div>
 </div></div>
-<div id="cell-31" class="cell markdown">
+<div id="cell-32" class="cell markdown">
 <p>Add the group number along the top most row of each column, and period number along the left side of the top table.</p>
 <p>For the period number, we set the <code>breaks</code> on the <code>y scale</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="cell-32" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.881441Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.881209Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.887917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.887372Z&quot;}" data-execution_count="17">
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="cell-33" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.881441Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.881209Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.887917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.887372Z&quot;}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The location of the group number is the top most (and therefore smallest period)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># element with the group</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>groupdf <span class="op">=</span> top.groupby(<span class="st">"group"</span>).agg(y<span class="op">=</span>(<span class="st">"period"</span>, <span class="st">"min"</span>)).reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-33" class="cell markdown">
+<div id="cell-34" class="cell markdown">
 <p>Finally,</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="cell-34" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.890730Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.890515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.363011Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.362379Z&quot;}" data-execution_count="18">
+<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="cell-35" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.890730Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.890515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.363011Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.362379Z&quot;}" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, tiles</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -777,23 +794,23 @@
 </div>
 </div>
 </div></div>
-<div id="cell-35" class="cell markdown">
+<div id="cell-36" class="cell markdown">
 <p>What we could have done different:</p>
 <ol type="1">
 <li>After we set the <code>x</code> and <code>y</code> positions in th the <code>top</code> and <code>bottom</code> dataframes, we could have concatenated them back together. Then, that <code>Layers</code> trick would not save us much.</li>
 </ol>
 <p><strong>Pro tip</strong>: Save the plot as a pdf.</p>
 </div>
-<div id="cell-36" class="cell markdown">
+<div id="cell-37" class="cell markdown">
 <section id="annotated-heatmap" class="level3">
 <h3 class="anchored" data-anchor-id="annotated-heatmap">Annotated Heatmap</h3>
 <p><em>Conditinous data recorded at discrete time intervals over many cycles</em></p>
 </section>
 </div>
-<div id="cell-37" class="cell markdown">
+<div id="cell-38" class="cell markdown">
 <p>Read data</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="cell-38" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.368154Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.367881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.376977Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.376500Z&quot;}" data-execution_count="19">
+<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="cell-39" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.368154Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.367881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.376977Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.376500Z&quot;}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(<span class="st">"data/flights.csv"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> flights[<span class="st">"month"</span>].unique()  <span class="co"># Months ordered January, ..., December</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"month"</span>] <span class="op">=</span> pd.Categorical(flights[<span class="st">"month"</span>], categories<span class="op">=</span>months)</span>
@@ -850,7 +867,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="cell-39" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.379762Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.379537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.535730Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.535193Z&quot;}" data-execution_count="20">
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="cell-40" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.379762Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.379537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.535730Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.535193Z&quot;}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We use 'factor(year)' -- a discrete -- instead of 'year' so that all the years</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># are displayed along the x-axis.</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The .95s create spacing between the tiles.</span></span>
@@ -868,10 +885,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-40" class="cell markdown">
+<div id="cell-41" class="cell markdown">
 <p>That looks like what we want, but it could do with a few tweaks. First the contrast between the tiles and the text is not good for the lower passenger numbers. We use <code>pd.cut</code> to partition the number of passengers into two <em>discrete</em> groups.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="cell-41" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.539519Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.539300Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.547425Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.546964Z&quot;}" data-execution_count="21">
+<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="cell-42" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.539519Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.539300Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.547425Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.546964Z&quot;}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"p_group"</span>] <span class="op">=</span> pd.cut(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    flights[<span class="st">"passengers"</span>], (<span class="dv">0</span>, <span class="dv">300</span>, <span class="dv">1000</span>), labels<span class="op">=</span>(<span class="st">"low"</span>, <span class="st">"high"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -934,7 +951,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="cell-42" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.550043Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.549849Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:52.495780Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:52.495276Z&quot;}" data-execution_count="22">
+<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="cell-43" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.550043Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.549849Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:52.495780Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:52.495276Z&quot;}" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    ggplot(flights, aes(<span class="st">"factor(year)"</span>, <span class="st">"month"</span>, fill<span class="op">=</span><span class="st">"passengers"</span>))</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(aes(width<span class="op">=</span><span class="fl">0.95</span>, height<span class="op">=</span><span class="fl">0.95</span>))</span>
@@ -949,10 +966,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-43" class="cell markdown">
+<div id="cell-44" class="cell markdown">
 <p>Last tweaks, put <code>January</code> at the top and remove the axis ticks and plot background.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="cell-44" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:52.499831Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:52.499570Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:53.459675Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:53.459132Z&quot;}" data-execution_count="23">
+<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="cell-45" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:52.499831Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:52.499570Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:53.459675Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:53.459132Z&quot;}" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, tiles</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -974,7 +991,7 @@
 </div>
 </div>
 </div></div>
-<div id="cell-45" class="cell markdown">
+<div id="cell-46" class="cell markdown">
 <p>You can get similar results if you replace</p>
 <pre><code> + geom_tile(aes(width=.95, height=.95))
  + geom_text(aes(label='passengers', color='p_group'), size=9, show_legend=False)</code></pre>
@@ -1063,6 +1080,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1097,7 +1132,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

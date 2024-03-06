@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - The Territories of Westeros</title>
+<title>plotnine 0.13.1a1 - The Territories of Westeros</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -113,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -172,13 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-territories-of-westeros" id="toc-the-territories-of-westeros" class="nav-link active" data-scroll-target="#the-territories-of-westeros">The Territories of Westeros</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -202,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:24.512073Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:24.511705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:25.405850Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:25.404930Z&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:24.512073Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:24.511705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:25.405850Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:25.404930Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
@@ -220,11 +236,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    theme,</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="the-territories-of-westeros" class="level3">
-<h3 class="anchored" data-anchor-id="the-territories-of-westeros">The Territories of Westeros</h3>
 <p><em>Layering different features on a Map</em></p>
 <p>Read data and select features in Westeros only.</p>
-<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:25.410333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:25.409944Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:26.053504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:26.052859Z&quot;}" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:25.410333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:25.409944Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:26.053504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:26.052859Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>continents <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/continents.shp"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>islands <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/islands.shp"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lakes <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/lakes.shp"</span>)</span>
@@ -247,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Create map by placing the features in layers in an order that limits obstraction.</p>
 <p>The <code>GeoDataFrame.geometry.centroid</code> property has the center coordinates of polygons, we use these to place the labels of the political regions.</p>
-<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:26.056987Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:26.056651Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:27.838122Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:27.837571Z&quot;}" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:26.056987Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:26.056651Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:27.838122Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:27.837571Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, maps</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># colors</span></span>
@@ -327,7 +341,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Credit</strong>: <a href="https://www.cartographersguild.com/member.php?u=95244">cadaei</a> of the <a href="https://www.cartographersguild.com/">cartographersguild</a> website forum.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -409,6 +422,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -443,7 +474,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

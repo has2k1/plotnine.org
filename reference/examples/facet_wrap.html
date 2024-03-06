@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - Facet wrap</title>
+<title>plotnine 0.13.1a1 - Facet wrap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +104,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -116,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -175,13 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#facet-wrap" id="toc-facet-wrap" class="nav-link active" data-scroll-target="#facet-wrap">Facet wrap</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -205,15 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.157636Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.157338Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:50.862578Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:50.861839Z&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.157636Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.157338Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:50.862578Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:50.861839Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, labs, facet_wrap, theme</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="facet-wrap" class="level3">
-<h3 class="anchored" data-anchor-id="facet-wrap">Facet wrap</h3>
 <p><code>facet_wrap()</code> creates a collection of plots (facets), where each plot is differentiated by the faceting variable. These plots are wrapped into a certain number of columns or rows as specified by the user.</p>
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.865808Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.865562Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:50.879202Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:50.878617Z&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.865808Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.865562Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:50.879202Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:50.878617Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -316,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Basic scatter plot:</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.919007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.918743Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:52.054424Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:52.053744Z&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:50.919007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:50.918743Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:52.054424Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:52.053744Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -331,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Facet a discrete variable using <code>facet_wrap()</code>:</p>
-<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:52.058029Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:52.057648Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:52.745764Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:52.745253Z&quot;}" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:52.058029Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:52.057648Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:52.745764Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:52.745253Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -347,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Control the number of rows and columns with the options <code>nrow</code> and <code>ncol</code>:</p>
-<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:52.748541Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:52.748311Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:53.546363Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:53.545846Z&quot;}" data-execution_count="5">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:52.748541Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:52.748311Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:53.546363Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:53.545846Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the number of columns to display</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -366,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:53.548976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:53.548742Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.200245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.199707Z&quot;}" data-execution_count="6">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:53.548976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:53.548742Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.200245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.199707Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the number of rows to display</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -387,13 +401,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To change the plot order of the facets, reorder the levels of the faceting variable in the data.</p>
-<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.204094Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.203836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.207956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.207437Z&quot;}" data-execution_count="7">
+<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.204094Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.203836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.207956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.207437Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># re-order categories</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mpg[<span class="st">"class"</span>] <span class="op">=</span> mpg[<span class="st">"class"</span>].cat.reorder_categories(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"pickup"</span>, <span class="st">"suv"</span>, <span class="st">"minivan"</span>, <span class="st">"midsize"</span>, <span class="st">"compact"</span>, <span class="st">"subcompact"</span>, <span class="st">"2seater"</span>]</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.210974Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.210713Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.887959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.887406Z&quot;}" data-execution_count="8">
+<div id="cell-13" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.210974Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.210713Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:54.887959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:54.887406Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet plot with reorded drv category</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -410,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Ordinarily the facets are arranged horizontally (left-to-right from top to bottom). However if you would prefer a vertical layout (facets are arranged top-to-bottom, from left to right) use the <code>dir</code> option:</p>
-<div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.890970Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.890734Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:55.704944Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:55.704298Z&quot;}" data-execution_count="9">
+<div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:54.890970Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:54.890734Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:55.704944Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:55.704298Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet plot with vertical layout</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -431,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You can choose if the scale of x- and y-axes are fixed or variable. Set the <code>scales</code> argument to <code>free-y</code>, <code>free_x</code> or <code>free</code> for a free scales on the y-axis, x-axis or both axes respectively. You may need to add spacing between the facets to ensure axis ticks and values are easy to read.</p>
 <p>A fixed scale is the default and does not need to be specified.</p>
-<div id="cell-16" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:55.707756Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:55.707495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:56.492420Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:56.491814Z&quot;}" data-execution_count="10">
+<div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:55.707756Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:55.707495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:56.492420Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:56.491814Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet plot with free scales</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -451,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can add additional information to your facet labels, by using the <code>labeller</code> argument within the <code>facet_wrap()</code> command. Below we use <code>labeller = 'label_both'</code> to include the column name in the facet label.</p>
-<div id="cell-18" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:56.495363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:56.495129Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.318086Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.317545Z&quot;}" data-execution_count="11">
+<div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:56.495363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:56.495129Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.318086Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.317545Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet plot with labeller</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -468,13 +482,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can add two discrete variables to a facet:</p>
-<div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.321708Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.321486Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.325318Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.324807Z&quot;}" data-execution_count="12">
+<div id="cell-21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.321708Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.321486Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.325318Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.324807Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional column for plotting exercise</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mpg[<span class="st">"transmission"</span>] <span class="op">=</span> mpg[<span class="st">"trans"</span>].<span class="bu">map</span>(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">"auto"</span> <span class="cf">if</span> <span class="st">"auto"</span> <span class="kw">in</span> x <span class="cf">else</span> <span class="st">"man"</span> <span class="cf">if</span> <span class="st">"man"</span> <span class="kw">in</span> x <span class="cf">else</span> <span class="st">""</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.328227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.328008Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.337513Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.337042Z&quot;}" data-execution_count="13">
+<div id="cell-22" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.328227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.328008Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:57.337513Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:57.337042Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect new column transmission which identifies cars as having an automatic or manual transmission</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -583,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.340109Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.339914Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:58.382185Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:58.381606Z&quot;}" data-execution_count="14">
+<div id="cell-23" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:57.340109Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:57.339914Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:58.382185Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:58.381606Z&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet plot with two variables on one facet</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
@@ -601,7 +615,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -683,6 +696,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -717,7 +748,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

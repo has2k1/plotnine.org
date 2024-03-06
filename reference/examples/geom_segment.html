@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - An Elaborate Range Plot</title>
+<title>plotnine 0.13.1a1 - An Elaborate Range Plot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +104,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -116,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -179,8 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-elaborate-range-plot" id="toc-an-elaborate-range-plot" class="nav-link active" data-scroll-target="#an-elaborate-range-plot">An Elaborate Range Plot</a></li>
-  <li><a href="#change-in-order" id="toc-change-in-order" class="nav-link" data-scroll-target="#change-in-order">Change in Order</a></li>
+  <li><a href="#change-in-order" id="toc-change-in-order" class="nav-link active" data-scroll-target="#change-in-order">Change in Order</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:45.275784Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:45.275424Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.166659Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.165750Z&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:45.275784Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:45.275424Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.166659Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.165750Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This notebook uses the polars package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -214,12 +235,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> polars <span class="im">import</span> col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="an-elaborate-range-plot" class="level3">
-<h3 class="anchored" data-anchor-id="an-elaborate-range-plot">An Elaborate Range Plot</h3>
 <p><em>Comparing the point to point difference of many similar variables</em></p>
 <p>Read the data.</p>
 <p>Source: Pew Research Global Attitudes Spring 2015</p>
-<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.170636Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.170281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.303078Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.301841Z&quot;}" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.170636Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.170281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.303078Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.301841Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head <span class="op">-</span>n <span class="dv">20</span> <span class="st">"data/survey-social-media.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PSRAID,COUNTRY,Q145,Q146,Q70,Q74
@@ -244,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 100018,Ethiopia,Female,22,No, </code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.307487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.307147Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.402357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.401782Z&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.307487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.307147Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.402357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.401782Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    COUNTRY<span class="op">=</span><span class="st">"country"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Q145<span class="op">=</span><span class="st">"gender"</span>,</span>
@@ -345,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Create age groups for users of social media</p>
-<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.405496Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.405242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.470504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.469836Z&quot;}" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.405496Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.405242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.470504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.469836Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yes_no <span class="op">=</span> [<span class="st">"Yes"</span>, <span class="st">"No"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>valid_age_groups <span class="op">=</span> [<span class="st">"18-34"</span>, <span class="st">"35-49"</span>, <span class="st">"50+"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -439,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Top 14 countries by response rate to the social media question.</p>
-<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.474179Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.473900Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.495550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.494903Z&quot;}" data-execution_count="5">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.474179Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.473900Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.495550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.494903Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> col_format(name, fmt):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format useing python formating</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for more control over</span></span>
@@ -540,7 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.498945Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.498669Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.510323Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.509430Z&quot;}" data-execution_count="6">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.498945Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.498669Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.510323Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.509430Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>segment_data <span class="op">=</span> (</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    point_data.group_by(<span class="st">"country"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -644,7 +663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Format the floating point data that will be plotted into strings</p>
 <p>First plot</p>
-<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.513933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.513670Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:48.081266Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:48.080476Z&quot;}" data-execution_count="7">
+<div id="cell-13" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.513933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.513670Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:48.081266Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:48.080476Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>xgap <span class="op">=</span> <span class="dv">112</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -713,7 +732,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Tweak it</p>
-<div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:48.084362Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:48.084041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.112056Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.111447Z&quot;}" data-execution_count="8">
+<div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:48.084362Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:48.084041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.112056Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.111447Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
@@ -856,13 +875,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Instead of looking at this plot as having a country variable on the <code>y-axis</code> and a percentage variable on the <code>x-axis</code>, we can view it as having vertically stacked up many <em>indepedent</em> variables, the values of which have a similar scale.</p>
 <p><strong>Protip:</strong> Save a pdf file.</p>
-</section>
 <section id="change-in-order" class="level3">
 <h3 class="anchored" data-anchor-id="change-in-order">Change in Order</h3>
 <p><em>Comparing a group of ranked items at two different times</em></p>
 <p>Read the data.</p>
 <p>Source: World Bank - Infanct Mortality Rate (per 1,000 live births)b</p>
-<div id="cell-18" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.115557Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.115333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.133221Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.132574Z&quot;}" data-execution_count="9">
+<div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.115557Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.115333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.133221Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.132574Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pl.read_csv(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/API_SP.DYN.IMRT.IN_DS2_en_csv_v2/API_SP.DYN.IMRT.IN_DS2_en_csv_v2.csv"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    skip_rows<span class="op">=</span><span class="dv">4</span>,</span>
@@ -1324,7 +1342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The data includes regional aggregates. To tell apart the regional aggregates we need the metadata. Every row in the data table has a corresponding row in the metadata table. Where the row has regional aggregate data, the <code>Region</code> column in the metadata table is <code>NaN</code>.</p>
-<div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.136147Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.135907Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.147950Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.147349Z&quot;}" data-execution_count="10">
+<div id="cell-21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.136147Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.135907Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.147950Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.147349Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordered_categorical(s, categories<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Create a categorical ordered according to the categories</span></span>
@@ -1440,7 +1458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Remove the regional aggregates, to create a table with only country data</p>
-<div id="cell-22" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.151007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.150767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.165433Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.164860Z&quot;}" data-execution_count="11">
+<div id="cell-23" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.151007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.150767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.165433Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.164860Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="op">=</span> data.join(metadata, on<span class="op">=</span><span class="st">"code"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>country_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1905,7 +1923,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We are interested in the changes in rank between 1960 and 2015. To plot a reasonable sized graph, we randomly sample 35 countries.</p>
-<div id="cell-24" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.168430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.168188Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.184428Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.183839Z&quot;}" data-execution_count="12">
+<div id="cell-25" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.168430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.168188Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.184428Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.183839Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="op">=</span> (</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    country_data.drop_nulls(subset<span class="op">=</span>[<span class="st">"y1960"</span>, <span class="st">"y2015"</span>])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">35</span>, seed<span class="op">=</span><span class="dv">123</span>)</span>
@@ -2393,7 +2411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>First graph</p>
-<div id="cell-26" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.187451Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.187212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.786396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.785891Z&quot;}" data-execution_count="13">
+<div id="cell-27" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.187451Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.187212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.786396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.785891Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    ggplot(sampled_data)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(<span class="dv">1</span>, <span class="st">"y1960_rank"</span>, label<span class="op">=</span><span class="st">"country"</span>), ha<span class="op">=</span><span class="st">"right"</span>, size<span class="op">=</span><span class="dv">9</span>)</span>
@@ -2414,7 +2432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It has the form we want, but we need to tweak it.</p>
-<div id="cell-28" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.791124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.790918Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:50.728879Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:50.728327Z&quot;}" data-execution_count="14">
+<div id="cell-29" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.791124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.790918Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:50.728879Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:50.728327Z&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Text colors</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>black1 <span class="op">=</span> <span class="st">"#252525"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>black2 <span class="op">=</span> <span class="st">"#222222"</span></span>
@@ -2594,6 +2612,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -2628,7 +2664,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

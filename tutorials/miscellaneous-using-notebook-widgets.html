@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - Using ipyWidgets</title>
+<title>plotnine 0.13.1a1 - Using ipyWidgets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,6 +105,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -117,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -176,13 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#using-ipywidgets" id="toc-using-ipywidgets" class="nav-link active" data-scroll-target="#using-ipywidgets">Using ipyWidgets</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,10 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="using-ipywidgets" class="level1">
-<h1>Using ipyWidgets</h1>
 <p>In this notebook, we will use ipyWidgets to make dynamic selections of the data being visualized.</p>
-<div id="cell-1" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:25.371031Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:23.909785Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:33.299623Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:33.299318Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:34.468637Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:34.467618Z&quot;}" data-execution_count="1">
+<div id="cell-2" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:25.371031Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:23.909785Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:33.299623Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:33.299318Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:34.468637Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:34.467618Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
@@ -229,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># for jupyter lab (requires npm):</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i @jupyter-widgets/jupyterlab-manager</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s have alook on the plot with all the data. We are comparing cars with their horse-power in the X axis and miles-per-gallon in the Y axis. The points are collored by car weight.</p>
-<div id="cell-4" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:31.620599Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:31.438693Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:34.472135Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:34.471875Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.394543Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.393940Z&quot;}" data-execution_count="2">
+<div id="cell-5" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:31.620599Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:31.438693Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:34.472135Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:34.471875Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.394543Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.393940Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This has to be used the first time you make a plot. This magic allows the notebook to update plots.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib notebook</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1231,11 +1245,11 @@ if (IPython.notebook.kernel !== null) {
 </div>
 <p>Now we will get relevant values for the creation of plots with sub-sets of data.</p>
 <p>Initially, select cars based on number of cylinders</p>
-<div id="cell-7" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:50.180178Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:50.171172Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.397609Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.397381Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.400389Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.399957Z&quot;}" data-execution_count="3">
+<div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:50.180178Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:50.171172Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.397609Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.397381Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.400389Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.399957Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepre the list we will use to selec sub-sets of data based on number of cylinders.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cylList <span class="op">=</span> np.unique(mtcars[<span class="st">"cyl"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:51.676870Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:51.393552Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.403630Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.403365Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.594431Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.593827Z&quot;}" data-execution_count="4">
+<div id="cell-9" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:03:51.676870Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:03:51.393552Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.403630Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.403365Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.594431Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.593827Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first selection is a drop-down menu for number of cylinders</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cylSelect <span class="op">=</span> widgets.Dropdown(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span><span class="bu">list</span>(cylList),</span>
@@ -3281,7 +3295,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <p>Having axis ranges change between selections does not help probing the data.</p>
-<div id="cell-10" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:08.128856Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:08.114225Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.600365Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.600137Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.605241Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.604748Z&quot;}" data-execution_count="5">
+<div id="cell-11" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:08.128856Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:08.114225Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.600365Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.600137Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.605241Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.604748Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We now get the maximum ranges of relevant variables to keep axis constant between images.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get range of weight</span></span>
@@ -3296,7 +3310,7 @@ if (IPython.notebook.kernel !== null) {
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>minMPG <span class="op">=</span> <span class="bu">min</span>(mtcars[<span class="st">"mpg"</span>])</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>maxMPG <span class="op">=</span> <span class="bu">max</span>(mtcars[<span class="st">"mpg"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:09.540207Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:09.246556Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.608333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.607901Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.822474Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.821870Z&quot;}" data-execution_count="6">
+<div id="cell-12" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:09.540207Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:09.246556Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.608333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.607901Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:35.822474Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:35.821870Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first selection is a drop-down menu for number of cylinders</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cylSelect <span class="op">=</span> widgets.Dropdown(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span><span class="bu">list</span>(cylList),</span>
@@ -4349,7 +4363,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <p>Now we can make our selection more complicated by restricting the car data being visualized. Using a range slider we can restric data based on car weight.</p>
-<div id="cell-13" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:18.331250Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:18.014435Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.825403Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.825165Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:36.115396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:36.114812Z&quot;}" data-execution_count="7">
+<div id="cell-14" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:04:18.331250Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:04:18.014435Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:35.825403Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:35.825165Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:36.115396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:36.114812Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first selection is a drop-down menu for number of cylinders</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cylSelect <span class="op">=</span> widgets.Dropdown(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span><span class="bu">list</span>(cylList),</span>
@@ -5430,7 +5444,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <p>Finally, we can change some plot properties to make the final figure more understandable.</p>
-<div id="cell-15" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:08:12.849996Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:08:12.464588Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:36.119239Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:36.118888Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:36.462151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:36.461513Z&quot;}" data-execution_count="8">
+<div id="cell-16" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-08-07T06:08:12.849996Z&quot;,&quot;start_time&quot;:&quot;2018-08-07T06:08:12.464588Z&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:34:36.119239Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:34:36.118888Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:34:36.462151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:34:36.461513Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first selection is a drop-down menu for number of cylinders</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cylSelect <span class="op">=</span> widgets.Dropdown(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span><span class="bu">list</span>(cylList),</span>
@@ -6514,7 +6528,6 @@ if (IPython.notebook.kernel !== null) {
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
@@ -6599,6 +6612,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -6633,7 +6664,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

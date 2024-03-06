@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - Histograms</title>
+<title>plotnine 0.13.1a1 - Histograms</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +104,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -116,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -179,10 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#histograms" id="toc-histograms" class="nav-link active" data-scroll-target="#histograms">Histograms</a>
-  <ul class="collapse">
-  <li><a href="#basic-histogram" id="toc-basic-histogram" class="nav-link" data-scroll-target="#basic-histogram">Basic Histogram</a></li>
-  </ul></li>
+  <li><a href="#basic-histogram" id="toc-basic-histogram" class="nav-link active" data-scroll-target="#basic-histogram">Basic Histogram</a></li>
   </ul>
 </nav>
     </div>
@@ -208,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.109722Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.109334Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:54.840137Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:54.839341Z&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.109722Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.109334Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:54.840137Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:54.839341Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
@@ -228,12 +247,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> percent_format</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="histograms" class="level2">
-<h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
 <p>Visualise the distribution of a variable by dividing the x-axis into bins and counting the number of observations in each bin. Histograms display the counts with bars.</p>
 <p>You can define the number of bins (e.g.&nbsp;divide the data five bins) or define the binwidth (e.g.&nbsp;each bin is size 10).</p>
 <p>Distributions can be visualised as: * count, * normalised count, * density, * normalised density, * scaled density as a percentage.</p>
-<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.843956Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.843493Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:54.859801Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:54.858936Z&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.843956Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.843493Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:54.859801Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:54.858936Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diamonds.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -332,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="basic-histogram" class="level3">
 <h3 class="anchored" data-anchor-id="basic-histogram">Basic Histogram</h3>
 <p>If you create a basic histogram, you will be prompted to define the binwidth or number of bins.</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.903123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.902852Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.288618Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.287946Z&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:54.903123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:54.902852Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.288618Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.287946Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, distributions</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>))</span>
@@ -350,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can define the width of the bins, by specifying the <code>binwidth</code> inside <code>geom_histogram()</code>.</p>
-<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.292163Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.291836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.565664Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.565095Z&quot;}" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.292163Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.291836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.565664Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.565095Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)  <span class="co"># specify the binwidth</span></span>
@@ -364,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Or you can define the number of bins by specifying <code>bins</code> inside <code>geom_histogram()</code>. Note, the example below uses 10 bins, however you can’t see them all because some of the bins are too small to be noticeable.</p>
-<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.568322Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.568096Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.866873Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.866169Z&quot;}" data-execution_count="5">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.568322Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.568096Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:56.866873Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:56.866169Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(bins<span class="op">=</span><span class="dv">10</span>)  <span class="co"># specify the number of bins</span></span>
@@ -378,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>There are different ways to visualise the distribution, you can specify this using the <code>y</code> argument within <code>aes()</code>. In the example below I’m using the default setting: raw count with <code>after_stat('count')</code>.</p>
-<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.869756Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.869516Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.143116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.142262Z&quot;}" data-execution_count="6">
+<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:56.869756Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:56.869516Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.143116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.142262Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        diamonds,</span>
@@ -398,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can normalise the raw count to 1 by using <code>after_stat('ncount')</code>:</p>
-<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.146075Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.145843Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.428405Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.427868Z&quot;}" data-execution_count="7">
+<div id="cell-13" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.146075Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.145843Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.428405Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.427868Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        diamonds,</span>
@@ -418,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can display the density of points in a bin, (this is scaled to integrate to 1) by using <code>after_stat('density')</code>:</p>
-<div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.431123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.430894Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.709212Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.708582Z&quot;}" data-execution_count="8">
+<div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.431123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.430894Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.709212Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.708582Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        diamonds,</span>
@@ -438,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The proportion of bins can be shown, in the example below the <code>bin=0.5</code> accounts for about ~55% of the data:</p>
-<div id="cell-16" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.712257Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.712019Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.982186Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.981491Z&quot;}" data-execution_count="9">
+<div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.712257Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.712019Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:57.982186Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:57.981491Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        diamonds,</span>
@@ -455,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can also display counts as percentages by using the <code>percent_format()</code> which requires the <code>mizani.formatters</code> library:</p>
-<div id="cell-18" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.985393Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.985151Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:58.267973Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:58.267405Z&quot;}" data-execution_count="10">
+<div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:57.985393Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:57.985151Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:58.267973Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:58.267405Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"width*density"</span>)))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -470,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Instead of using <code>stat</code> you can use <code>stat_bin</code> defined within <code>geom_histogram()</code>, this is useful if you want to layer a few different plots in the one figure.</p>
-<div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:58.270742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:58.270508Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:58.660681Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:58.659743Z&quot;}" data-execution_count="11">
+<div id="cell-21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:58.270742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:58.270508Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:58.660681Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:58.659743Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -485,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can also flip the x-y coordinates:</p>
-<div id="cell-22" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:58.663396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:58.663169Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.042410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.041743Z&quot;}" data-execution_count="12">
+<div id="cell-23" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:58.663396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:58.663169Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.042410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.041743Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"density"</span>)))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -500,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can visualise counts by other variables using <code>fill</code> within <code>aes()</code>:</p>
-<div id="cell-24" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.045516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.045220Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.441699Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.441071Z&quot;}" data-execution_count="13">
+<div id="cell-25" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.045516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.045220Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.441699Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.441071Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"count"</span>), fill<span class="op">=</span><span class="st">"cut"</span>))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -514,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can visualise too-small-to-see bars by transforming the y-axis scaling by using <code>scale_y_sqrt()</code> square-root scale or <code>scale_y_log10()</code> for a log-scale (similarly use <code>scale_x_sqrt()</code> and <code>scale_x_log10()</code> to transform the x-axis).</p>
-<div id="cell-26" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.444525Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.444303Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.717973Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.717342Z&quot;}" data-execution_count="14">
+<div id="cell-27" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.444525Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.444303Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:28:59.717973Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:28:59.717342Z&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"count"</span>)))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -528,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.720489Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.720285Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.069648Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.069154Z&quot;}" data-execution_count="15">
+<div id="cell-28" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:28:59.720489Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:28:59.720285Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.069648Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.069154Z&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"count"</span>)))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -546,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Change the look of your plot:</p>
-<div id="cell-29" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.072430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.072200Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.445909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.445372Z&quot;}" data-execution_count="16">
+<div id="cell-30" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.072430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.072200Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.445909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.445372Z&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"density"</span>)))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(</span>
@@ -567,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Another change, this time changing the fill colours manually:</p>
-<div id="cell-31" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.448512Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.448302Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.856909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.856313Z&quot;}" data-execution_count="17">
+<div id="cell-32" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.448512Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.448302Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:00.856909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:00.856313Z&quot;}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        diamonds,</span>
@@ -597,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>When faceting histograms with scaled counts/densities, they are normalised by each facet, and not overall. Here’s an example of a facet wrap:</p>
-<div id="cell-33" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.859554Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.859326Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:01.638956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:01.638438Z&quot;}" data-execution_count="18">
+<div id="cell-34" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:00.859554Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:00.859326Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:01.638956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:01.638438Z&quot;}" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"ncount"</span>)))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -612,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here’s an example of a facet grid with the count normalised in each grid:</p>
-<div id="cell-35" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:01.641843Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:01.641612Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:05.063297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:05.062627Z&quot;}" data-execution_count="19">
+<div id="cell-36" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:01.641843Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:01.641612Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:05.063297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:05.062627Z&quot;}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span>after_stat(<span class="st">"ncount"</span>)))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_histogram(binwidth<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -628,7 +645,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -711,6 +727,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -745,7 +779,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

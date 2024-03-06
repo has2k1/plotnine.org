@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.550">
+    <meta name="generator" content="quarto-1.4.551">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine 0.0.post3+gc78329c - Smoothed conditional means</title>
+    <title>plotnine 0.13.1a1 - Smoothed conditional means</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -190,7 +190,28 @@
   }
 }</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  <script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>  
       </head>
 
   <body class="floating nav-fixed quarto-notebook">
@@ -208,7 +229,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -270,8 +291,7 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#smoothed-conditional-means" id="toc-smoothed-conditional-means" class="nav-link active" data-scroll-target="#smoothed-conditional-means">Smoothed conditional means</a></li>
-  <li><a href="#points-linear-models" id="toc-points-linear-models" class="nav-link" data-scroll-target="#points-linear-models">Points &amp; Linear Models</a></li>
+  <li><a href="#points-linear-models" id="toc-points-linear-models" class="nav-link active" data-scroll-target="#points-linear-models">Points &amp; Linear Models</a></li>
   </ul>
 </nav>
 </nav>
@@ -296,20 +316,17 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:32.708085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:32.707718Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.538594Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.537945Z&quot;}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:32.708085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:32.707718Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.538594Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.537945Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_smooth, labs, theme_matplotlib, theme_set</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theme_set(theme_matplotlib())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-1" class="cell markdown">
-<section id="smoothed-conditional-means" class="level3">
-<h3 class="anchored" data-anchor-id="smoothed-conditional-means">Smoothed conditional means</h3>
+<div id="cell-2" class="cell markdown">
 <p><em>Aids the eye in seeing patterns in the presence of overplotting.</em></p>
-</section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.542346Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.541871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.556463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.555887Z&quot;}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.542346Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.541871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.556463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.555887Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -411,7 +428,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.598005Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.597745Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.632357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.631743Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.598005Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.597745Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.632357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.631743Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -426,10 +443,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-4" class="cell markdown">
+<div id="cell-5" class="cell markdown">
 <p>Use <code>span</code> to control the “wiggliness” of the default loess smoother. The span is the fraction of points used to fit each local regression: small numbers make a wigglier curve, larger numbers make a smoother curve.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.635384Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.635148Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.905976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.905466Z&quot;}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.635384Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.635148Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.905976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.905466Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -444,10 +461,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-6" class="cell markdown">
+<div id="cell-7" class="cell markdown">
 <p>You can remove confidence interval around smooth with <code>se=False</code>:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.908868Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.908653Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.159279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.158735Z&quot;}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.908868Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.908653Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.159279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.158735Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -462,10 +479,10 @@
 </div>
 </div>
 </div></div>
-<div id="cell-8" class="cell markdown">
+<div id="cell-9" class="cell markdown">
 <p>Instead of a loess smooth, you can use any other modelling function:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.162013Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.161794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.808970Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.808347Z&quot;}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.162013Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.161794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.808970Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.808347Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -480,12 +497,12 @@
 </div>
 </div>
 </div></div>
-<div id="cell-10" class="cell markdown">
+<div id="cell-11" class="cell markdown">
 <section id="points-linear-models" class="level3">
 <h3 class="anchored" data-anchor-id="points-linear-models">Points &amp; Linear Models</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.811760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.811435Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:36.255796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:36.255287Z&quot;}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.811760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.811435Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:36.255796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:36.255287Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, points</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -583,6 +600,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -617,7 +652,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

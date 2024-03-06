@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.0.post3+gc78329c - after_stat</title>
+<title>plotnine 0.13.1a1 - after_stat</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script type="text/javascript">
+window.onload = function() {
+   // retina display: halve the size of the notebook output images
+   // Select all images matching the specific CSS selector
+   var images = document.querySelectorAll(".cell-output figure img");
+
+   // Loop through each image and set its size
+   images.forEach(function(img) {
+      // Ensure the image dimensions are set only after the image has fully loaded
+      img.onload = function() {
+         this.style.width = this.naturalWidth / 2 + "px";
+         this.style.height = this.naturalHeight / 2 + "px";
+      };
+
+      // If the image is already loaded before the script runs (e.g., cached images),
+      // manually trigger the load event.
+      if (img.complete) {
+         img.onload();
+      }
+   });
+};
+</script>
 
 
 </head>
@@ -113,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.0.post3+gc78329c</span>
+    <span class="navbar-title">plotnine 0.13.1a1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -172,13 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#after_stat" id="toc-after_stat" class="nav-link active" data-scroll-target="#after_stat">after_stat</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -202,15 +218,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:30.108884Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:30.108558Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:30.813669Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:30.812974Z&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:30.108884Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:30.108558Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:30.813669Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:30.812974Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, after_stat, geom_bar, labs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="after_stat" class="level3">
-<h3 class="anchored" data-anchor-id="after_stat">after_stat</h3>
 <p><code>geom_bar</code> uses <code>stat_count</code> which by default maps the <code>y</code> aesthetic to the <code>count</code> which is the number of observations at a position.</p>
-<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:30.817240Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:30.816900Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:32.105399Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:32.104798Z&quot;}" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:30.817240Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:30.816900Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:32.105399Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:32.104798Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"var1"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>})</span>
@@ -228,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Using the <code>after_stat</code> function, we can instead map to the <code>prop</code> which is the ratio of points in the panel at a position.</p>
-<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:32.147378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:32.147007Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:32.419287Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:32.418643Z&quot;}" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:32.147378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:32.147007Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:32.419287Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:32.418643Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(y<span class="op">=</span>after_stat(<span class="st">"prop"</span>)))  <span class="co"># default is after_stat('count')</span></span>
@@ -242,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>With <code>after_stat</code> you can used the variables calculated by the stat in expressions. For example we use the <code>count</code> to calculated the <code>prop</code>.</p>
-<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:32.422359Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:32.422140Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.105284Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.104465Z&quot;}" data-execution_count="4">
+<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:32.422359Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:32.422140Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.105284Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.104465Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(y<span class="op">=</span>after_stat(<span class="st">"count / np.sum(count)"</span>)))</span>
@@ -257,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>By default <code>geom_bar</code> uses <code>stat_count</code> to compute a frequency table with the <code>x</code> aesthetic as the key column. As a result, any mapping (other than the <code>x</code> aesthetic is lost) to a continuous variable is lost (if you have a classroom and you compute a frequency table of the gender, you lose any other information like height of students).</p>
 <p>For example, below <code>fill='var1'</code> has no effect, but the <code>var1</code> variable has not been lost it has been turned into <code>x</code> aesthetic.</p>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.109227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.108926Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.389415Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.388771Z&quot;}" data-execution_count="5">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.109227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.108926Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.389415Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.388771Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"var1"</span>)) <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span><span class="st">"var1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -268,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We use <code>after_stat</code> to map <code>fill</code> to the <code>x</code> aesthetic after it has been computed.</p>
-<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.392399Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.392161Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.728776Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.728126Z&quot;}" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.392399Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.392161Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.728776Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.728126Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_stat(<span class="st">"x"</span>)))</span>
@@ -284,7 +298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -366,6 +379,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -400,7 +431,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
