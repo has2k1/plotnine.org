@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>plotnine 0.13.1 - Upper &amp; Lower Trends Lines</title>
+    <title>plotnine 0.13.1 - Upper &amp; Lower Trends</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -294,7 +294,7 @@ window.onload = function() {
 <!-- main -->
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Upper &amp; Lower Trends Lines</h1>
+<h1 class="title">Upper &amp; Lower Trends</h1>
 </div>
 
 
@@ -308,7 +308,7 @@ window.onload = function() {
   
 
 
-</header>   <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="fe927d29-24a6-4c07-bbb8-8eaaff8aa049" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:52.990325Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:52.990024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.714651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.713787Z&quot;}" data-execution_count="1">
+</header>   <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="fe927d29-24a6-4c07-bbb8-8eaaff8aa049" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:45.173210Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:45.172850Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:45.766863Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:45.766167Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
@@ -320,18 +320,20 @@ window.onload = function() {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    theme,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    theme_set,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># matplotlib + the background of 538</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>theme_set(</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    theme_538,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    theme_set,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># matplotlib + the background of 538</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>theme_set(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    theme_538()</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#theme_matplotlib()</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#+ theme(</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    plot_background=element_rect(fill="#F0F0F0"),</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    panel_background=element_rect(fill="#F0F0F0"),</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div id="0e1b0f91-5c82-4b9f-b575-5b9597dfb081" class="cell markdown">
 
@@ -339,7 +341,7 @@ window.onload = function() {
 <div id="a9a939c7-0315-48b6-8080-e687ae6cc3df" class="cell markdown">
 <p>The data</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="01567645-ce85-443f-a6e0-cfa4a9b60a21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.718816Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.718443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.722893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.722223Z&quot;}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="01567645-ce85-443f-a6e0-cfa4a9b60a21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:45.770248Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:45.769927Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:45.773537Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:45.772962Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span>: <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">6</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="fl">3.5</span>, <span class="fl">4.5</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
@@ -348,7 +350,7 @@ window.onload = function() {
 <div id="9b7d8bf3-00af-4f43-a7c9-c2e37770bdf8" class="cell markdown">
 <p>Create the line ranges</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="6826be8a-2b4d-4d7e-a4c1-b141c4877fff" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.726124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.725886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.694207Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.693453Z&quot;}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="6826be8a-2b4d-4d7e-a4c1-b141c4877fff" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:45.776389Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:45.776181Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:46.828754Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:46.828156Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -363,7 +365,7 @@ window.onload = function() {
 <div id="54ce80a5-0557-4c97-b273-a9fb2b5bf383" class="cell markdown">
 <p>Add points at each end of the ranges.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="fcdf3904-b509-4bc3-aac6-c25c145364a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.697437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.697211Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.939365Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.938823Z&quot;}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="fcdf3904-b509-4bc3-aac6-c25c145364a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:46.832432Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:46.832033Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:47.093552Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:47.092843Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point()</span>
@@ -381,7 +383,7 @@ window.onload = function() {
 <div id="326197f6-4d8f-43d3-8781-44e047d4560a" class="cell markdown">
 <p>Add a trend-line along the top of the ranges and one along the bottom of the ranges. The line is added before(below) the points.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="c8d1664c-d014-4316-9106-8e90498e31b7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.942741Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.942340Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.271090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.270480Z&quot;}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="c8d1664c-d014-4316-9106-8e90498e31b7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:47.096611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:47.096267Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:47.417102Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:47.416382Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -403,7 +405,7 @@ window.onload = function() {
 <div id="bb055e57-a3be-4280-b323-1c564f5688ed" class="cell markdown">
 <p>Add some color.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="0ee8ab23-e42a-43e7-b9c5-e2da80cbc4fe" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:55.274122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:55.273754Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.576059Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.575538Z&quot;}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="0ee8ab23-e42a-43e7-b9c5-e2da80cbc4fe" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:36:47.419843Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:36:47.419627Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:36:47.741553Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:36:47.741057Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>magenta <span class="op">=</span> <span class="st">"#9E2F68"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>magenta_light <span class="op">=</span> <span class="st">"#E5C8D6"</span></span>
