@@ -200,8 +200,9 @@ window.onload = function() {
   <ul>
   <li><a href="#plotnine.geom_linerange" id="toc-plotnine.geom_linerange" class="nav-link active" data-scroll-target="#plotnine.geom_linerange"><code class="doc-symbol doc-symbol-class"></code> <span class="doc-object-name doc-class-name">plotnine.geom_linerange</span></a></li>
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="examples/geom_linerange-preview.html"><i class="bi bi-journal-code"></i>Set default theme</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -320,6 +321,121 @@ window.onload = function() {
 </dd>
 </dl>
 </div>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<div class="quarto-embed-nb-cell">
+<div id="fe927d29-24a6-4c07-bbb8-8eaaff8aa049" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:52.990325Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:52.990024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.714651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.713787Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    aes,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    geom_point,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    geom_line,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    geom_linerange,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    element_blank,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    theme,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    theme_set,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># matplotlib + the background of 538</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>theme_set(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib()</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="upper-lower-trends-lines" class="level3">
+<h3 class="anchored" data-anchor-id="upper-lower-trends-lines">Upper &amp; Lower Trends Lines</h3>
+<p>The data</p>
+<div id="01567645-ce85-443f-a6e0-cfa4a9b60a21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.718816Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.718443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.722893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.722223Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span>: <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">6</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="fl">3.5</span>, <span class="fl">4.5</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the line ranges</p>
+<div id="6826be8a-2b4d-4d7e-a4c1-b141c4877fff" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.726124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.725886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.694207Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.693453Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/examples-geom_linerange-cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add points at each end of the ranges.</p>
+<div id="fcdf3904-b509-4bc3-aac6-c25c145364a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.697437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.697211Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.939365Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.938823Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/examples-geom_linerange-cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add a trend-line along the top of the ranges and one along the bottom of the ranges. The line is added before(below) the points.</p>
+<div id="c8d1664c-d014-4316-9106-8e90498e31b7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.942741Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.942340Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.271090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.270480Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/examples-geom_linerange-cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add some color.</p>
+<div id="0ee8ab23-e42a-43e7-b9c5-e2da80cbc4fe" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:55.274122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:55.273754Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.576059Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.575538Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>magenta <span class="op">=</span> <span class="st">"#9E2F68"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>magenta_light <span class="op">=</span> <span class="st">"#E5C8D6"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>sea_green <span class="op">=</span> <span class="st">"#2F9E65"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>sea_green_light <span class="op">=</span> <span class="st">"#C8E5D7"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(color<span class="op">=</span>magenta, size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(color<span class="op">=</span>magenta, fill<span class="op">=</span>magenta_light, size<span class="op">=</span><span class="dv">3</span>, stroke<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(aes(y<span class="op">=</span><span class="st">"y-2"</span>), color<span class="op">=</span>sea_green, size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>), color<span class="op">=</span>sea_green, fill<span class="op">=</span>sea_green_light, size<span class="op">=</span><span class="dv">3</span>, stroke<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/examples-geom_linerange-cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<a class="quarto-notebook-link" id="nblink-1" href="examples/geom_linerange-preview.html#fe927d29-24a6-4c07-bbb8-8eaaff8aa049">Source: Set default theme</a></div>
 
 
 </section>

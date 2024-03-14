@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.13.1</title>
+<title>plotnine 0.13.1 - Upper &amp; Lower Trends Lines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,7 +134,7 @@ window.onload = function() {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">plotnine 0.13.1</span>
     </a>
   </div>
@@ -111,15 +145,15 @@ window.onload = function() {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../reference/index.html"> 
+    <a class="nav-link" href="../../reference/index.html"> 
 <span class="menu-text">Reference</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../gallery/index.html"> 
+    <a class="nav-link" href="../../gallery/index.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tutorials/index.html"> 
+    <a class="nav-link" href="../../tutorials/index.html"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -128,15 +162,15 @@ window.onload = function() {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pages">    
         <li>
-    <a class="dropdown-item" href="../changelog.html">
+    <a class="dropdown-item" href="../../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../external-resources.html">
+    <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../about.html">
+    <a class="dropdown-item" href="../../about.html">
  <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
@@ -160,30 +194,136 @@ window.onload = function() {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#plotnine.options.figure_size" id="toc-plotnine.options.figure_size" class="nav-link active" data-scroll-target="#plotnine.options.figure_size"><code class="doc-symbol doc-symbol-attribute"></code> <span class="doc-object-name doc-attribute-name">plotnine.options.figure_size</span></a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-
 <header id="title-block-header" class="quarto-title-block default">
-<section id="plotnine.options.figure_size" class="level1 title doc-object doc-attribute quarto-title display-7">
-<h1 class="title doc-object doc-attribute"><code class="doc-symbol doc-symbol-attribute"></code> <span class="doc-object-name doc-attribute-name">plotnine.options.figure_size</span></h1>
-</section>
-</header>
-<div class="doc-signature doc-attribute">
-<p><code><span class="doc-parameter-name">figure_size</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<a href="https://docs.python.org/3/library/functions.html#float">float</a>, <a href="https://docs.python.org/3/library/functions.html#float">float</a>]</span> <span class="doc-parameter-default-sep">=</span> <span class="doc-parameter-default">(640 / dpi, 480 / dpi)</span></code></p>
+<div class="quarto-title">
+<h1 class="title">Upper &amp; Lower Trends Lines</h1>
 </div>
-<div class="doc-text">
-<p>Default figure size inches</p>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="fe927d29-24a6-4c07-bbb8-8eaaff8aa049" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:52.990325Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:52.990024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.714651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.713787Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    aes,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    geom_point,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    geom_line,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    geom_linerange,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    element_blank,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    theme,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    theme_set,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># matplotlib + the background of 538</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>theme_set(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    theme_matplotlib()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#F0F0F0"</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data</p>
+<div id="01567645-ce85-443f-a6e0-cfa4a9b60a21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.718816Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.718443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:53.722893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:53.722223Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span>: <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">6</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="fl">3.5</span>, <span class="fl">4.5</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the line ranges</p>
+<div id="6826be8a-2b4d-4d7e-a4c1-b141c4877fff" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:53.726124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:53.725886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.694207Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.693453Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add points at each end of the ranges.</p>
+<div id="fcdf3904-b509-4bc3-aac6-c25c145364a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.697437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.697211Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:54.939365Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:54.938823Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add a trend-line along the top of the ranges and one along the bottom of the ranges. The line is added before(below) the points.</p>
+<div id="c8d1664c-d014-4316-9106-8e90498e31b7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:54.942741Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:54.942340Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.271090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.270480Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add some color.</p>
+<div id="0ee8ab23-e42a-43e7-b9c5-e2da80cbc4fe" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-14T14:12:55.274122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-14T14:12:55.273754Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-14T14:12:55.576059Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-14T14:12:55.575538Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>magenta <span class="op">=</span> <span class="st">"#9E2F68"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>magenta_light <span class="op">=</span> <span class="st">"#E5C8D6"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sea_green <span class="op">=</span> <span class="st">"#2F9E65"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>sea_green_light <span class="op">=</span> <span class="st">"#C8E5D7"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_linerange(aes(ymin<span class="op">=</span><span class="st">"y-2"</span>, ymax<span class="op">=</span><span class="st">"y"</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(color<span class="op">=</span>magenta, size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(color<span class="op">=</span>magenta, fill<span class="op">=</span>magenta_light, size<span class="op">=</span><span class="dv">3</span>, stroke<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(aes(y<span class="op">=</span><span class="st">"y-2"</span>), color<span class="op">=</span>sea_green, size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_point(aes(y<span class="op">=</span><span class="st">"y-2"</span>), color<span class="op">=</span>sea_green, fill<span class="op">=</span>sea_green_light, size<span class="op">=</span><span class="dv">3</span>, stroke<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_linerange_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
@@ -605,7 +745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Proudly supported by <a href="https://posit.co"><img src="https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg" class="img-fluid" alt="Posit" width="65"></a></p>
 </div>   
     <div class="nav-footer-center">
-<p>Developed by: Hassan Kibirige, License: <a href="../license.html">MIT</a></p>
+<p>Developed by: Hassan Kibirige, License: <a href="../../license.html">MIT</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
