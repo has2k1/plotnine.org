@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -113,10 +113,13 @@ window.onload = function() {
 
    // Loop through each image and set its size
    images.forEach(function(img) {
-      // Ensure the image dimensions are set only after the image has fully loaded
+      // Ensure the image dimensions are set only after the image
+      // has fully loaded
+      // Setting both dimensions does not work as expected, so we
+      // only the one dimension. The other is automatically adjusted
+      // accordingly
       img.onload = function() {
          this.style.width = this.naturalWidth / 2 + "px";
-         this.style.height = this.naturalHeight / 2 + "px";
       };
 
       // If the image is already loaded before the script runs (e.g., cached images),
