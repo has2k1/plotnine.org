@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.13.5 - after_stat</title>
+<title>plotnine {{&lt; var version &gt;}} – after_stat</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -101,31 +101,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script type="text/javascript">
-window.onload = function() {
-   // retina display: halve the size of the notebook output images
-   // Select all images matching the specific CSS selector
-   var images = document.querySelectorAll(".cell-output figure img");
-
-   // Loop through each image and set its size
-   images.forEach(function(img) {
-      // Ensure the image dimensions are set only after the image
-      // has fully loaded
-      // Setting both dimensions does not work as expected, so we
-      // only the one dimension. The other is automatically adjusted
-      // accordingly
-      img.onload = function() {
-         this.style.width = this.naturalWidth / 2 + "px";
-      };
-
-      // If the image is already loaded before the script runs (e.g., cached images),
-      // manually trigger the load event.
-      if (img.complete) {
-         img.onload();
-      }
-   });
-};
-</script>
 
 
 </head>
@@ -142,7 +117,7 @@ window.onload = function() {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -160,7 +135,7 @@ window.onload = function() {
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pages">    
@@ -187,7 +162,7 @@ window.onload = function() {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -196,7 +171,7 @@ window.onload = function() {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
@@ -239,7 +214,7 @@ window.onload = function() {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_stat_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="after_stat_files/figure-html/cell-3-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -253,7 +228,7 @@ window.onload = function() {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_stat_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="after_stat_files/figure-html/cell-4-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -266,35 +241,298 @@ window.onload = function() {
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"prop"</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>PlotnineError: "Could not evaluate the 'y' mapping: 'count / np.sum(count)' (original error: name 'np' is not defined)"</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/evaluation.py:223</span>, in <span class="ansi-cyan-fg">evaluate</span><span class="ansi-blue-fg">(aesthetics, data, env)</span>
+<span class="ansi-green-fg ansi-bold">    222</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 223</span>     new_val <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">env</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">eval</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">inner_namespace</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    224</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/_env.py:69</span>, in <span class="ansi-cyan-fg">Environment.eval</span><span class="ansi-blue-fg">(self, expr, inner_namespace)</span>
+<span class="ansi-green-fg ansi-bold">     68</span> code <span style="color:rgb(98,98,98)">=</span> _compile_eval(expr)
+<span class="ansi-green-fg">---&gt; 69</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">eval</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">     70</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">code</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">StackedLookup</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">inner_namespace</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">namespaces</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     71</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">&lt;string-expression&gt;:1</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'np' is not defined
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">PlotnineError</span>                             Traceback (most recent call last)
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.4/envs/plotnine/lib/python3.11/site-packages/IPython/core/formatters.py:922</span>, in <span class="ansi-cyan-fg">IPythonDisplayFormatter.__call__</span><span class="ansi-blue-fg">(self, obj)</span>
+<span class="ansi-green-fg ansi-bold">    920</span> method <span style="color:rgb(98,98,98)">=</span> get_real_method(obj, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>print_method)
+<span class="ansi-green-fg ansi-bold">    921</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> method <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">--&gt; 922</span>     <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    923</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:141</span>, in <span class="ansi-cyan-fg">ggplot._ipython_display_</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    134</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">_ipython_display_</span>(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg ansi-bold">    135</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    136</span> <span style="font-style:italic;color:rgb(175,0,0)">    Display plot in the output of the cell</span>
+<span class="ansi-green-fg ansi-bold">    137</span> 
+<span class="ansi-green-fg ansi-bold">    138</span> <span style="font-style:italic;color:rgb(175,0,0)">    This method will always be called when a ggplot object is the</span>
+<span class="ansi-green-fg ansi-bold">    139</span> <span style="font-style:italic;color:rgb(175,0,0)">    last in the cell.</span>
+<span class="ansi-green-fg ansi-bold">    140</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">--&gt; 141</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_display</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:175</span>, in <span class="ansi-cyan-fg">ggplot._display</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    172</span>     save_format <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">png</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    174</span> buf <span style="color:rgb(98,98,98)">=</span> BytesIO()
+<span class="ansi-green-fg">--&gt; 175</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">buf</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">save_format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">verbose</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    176</span> display_func <span style="color:rgb(98,98,98)">=</span> get_display_function(<span style="color:rgb(0,135,0)">format</span>)
+<span class="ansi-green-fg ansi-bold">    177</span> display_func(buf<span style="color:rgb(98,98,98)">.</span>getvalue())
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:661</span>, in <span class="ansi-cyan-fg">ggplot.save</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    613</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">save</span>(
+<span class="ansi-green-fg ansi-bold">    614</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg ansi-bold">    615</span>     filename: Optional[<span style="color:rgb(0,135,0)">str</span> <span style="color:rgb(98,98,98)">|</span> Path <span style="color:rgb(98,98,98)">|</span> BytesIO] <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    624</span>     <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs: Any,
+<span class="ansi-green-fg ansi-bold">    625</span> ):
+<span class="ansi-green-fg ansi-bold">    626</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    627</span> <span style="font-style:italic;color:rgb(175,0,0)">    Save a ggplot object as an image file</span>
+<span class="ansi-green-fg ansi-bold">    628</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    659</span> <span style="font-style:italic;color:rgb(175,0,0)">        Additional arguments to pass to matplotlib `savefig()`.</span>
+<span class="ansi-green-fg ansi-bold">    660</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">--&gt; 661</span>     sv <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save_helper</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    662</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">filename</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    663</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    664</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">path</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    665</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">width</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">width</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    666</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">height</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">height</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    667</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">units</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">units</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    668</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">dpi</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dpi</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    669</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">limitsize</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">limitsize</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    670</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">verbose</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">verbose</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    671</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    672</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    673</span>     sv<span style="color:rgb(98,98,98)">.</span>figure<span style="color:rgb(98,98,98)">.</span>savefig(<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>sv<span style="color:rgb(98,98,98)">.</span>kwargs)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:610</span>, in <span class="ansi-cyan-fg">ggplot.save_helper</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    607</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> dpi <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    608</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>theme <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>theme <span style="color:rgb(98,98,98)">+</span> theme(dpi<span style="color:rgb(98,98,98)">=</span>dpi)
+<span class="ansi-green-fg">--&gt; 610</span> figure <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">draw</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">show</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    611</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> mpl_save_view(figure, fig_kwargs)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:272</span>, in <span class="ansi-cyan-fg">ggplot.draw</span><span class="ansi-blue-fg">(self, show)</span>
+<span class="ansi-green-fg ansi-bold">    270</span> <span style="color:rgb(0,135,0)">self</span> <span style="color:rgb(98,98,98)">=</span> deepcopy(<span style="color:rgb(0,135,0)">self</span>)
+<span class="ansi-green-fg ansi-bold">    271</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> plot_context(<span style="color:rgb(0,135,0)">self</span>, show<span style="color:rgb(98,98,98)">=</span>show):
+<span class="ansi-green-fg">--&gt; 272</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_build</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    274</span>     <span style="font-style:italic;color:rgb(95,135,135)"># setup</span>
+<span class="ansi-green-fg ansi-bold">    275</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>figure, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>axs <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>facet<span style="color:rgb(98,98,98)">.</span>setup(<span style="color:rgb(0,135,0)">self</span>)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:375</span>, in <span class="ansi-cyan-fg">ggplot._build</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    373</span> <span style="font-style:italic;color:rgb(95,135,135)"># Apply and map statistics</span>
+<span class="ansi-green-fg ansi-bold">    374</span> layers<span style="color:rgb(98,98,98)">.</span>compute_statistic(layout)
+<span class="ansi-green-fg">--&gt; 375</span> <span class="ansi-yellow-bg">layers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">map_statistic</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    377</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare data in geoms</span>
+<span class="ansi-green-fg ansi-bold">    378</span> <span style="font-style:italic;color:rgb(95,135,135)"># e.g. from y and width to ymin and ymax</span>
+<span class="ansi-green-fg ansi-bold">    379</span> layers<span style="color:rgb(98,98,98)">.</span>setup_data()
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/layer.py:471</span>, in <span class="ansi-cyan-fg">Layers.map_statistic</span><span class="ansi-blue-fg">(self, plot)</span>
+<span class="ansi-green-fg ansi-bold">    469</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">map_statistic</span>(<span style="color:rgb(0,135,0)">self</span>, plot: ggplot):
+<span class="ansi-green-fg ansi-bold">    470</span>     <span style="font-weight:bold;color:rgb(0,135,0)">for</span> l <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span>:
+<span class="ansi-green-fg">--&gt; 471</span>         <span class="ansi-yellow-bg">l</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">map_statistic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/layer.py:302</span>, in <span class="ansi-cyan-fg">layer.map_statistic</span><span class="ansi-blue-fg">(self, plot)</span>
+<span class="ansi-green-fg ansi-bold">    297</span> <span style="font-style:italic;color:rgb(95,135,135)"># The statistics are calculated in transformed space, but</span>
+<span class="ansi-green-fg ansi-bold">    298</span> <span style="font-style:italic;color:rgb(95,135,135)"># we evaluate the mapping to them in data space.</span>
+<span class="ansi-green-fg ansi-bold">    299</span> <span style="font-style:italic;color:rgb(95,135,135)"># NOTE: If the inverse-retransform turn out to be slow</span>
+<span class="ansi-green-fg ansi-bold">    300</span> <span style="font-style:italic;color:rgb(95,135,135)"># we can try applying them to only the required columns.</span>
+<span class="ansi-green-fg ansi-bold">    301</span> data <span style="color:rgb(98,98,98)">=</span> plot<span style="color:rgb(98,98,98)">.</span>scales<span style="color:rgb(98,98,98)">.</span>inverse_df(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data)
+<span class="ansi-green-fg">--&gt; 302</span> stat_data <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">evaluate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">calculated</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">plot</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">environment</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    304</span> <span style="font-style:italic;color:rgb(95,135,135)"># If there are duplicate columns, we use the computed</span>
+<span class="ansi-green-fg ansi-bold">    305</span> <span style="font-style:italic;color:rgb(95,135,135)"># ones in stat_data</span>
+<span class="ansi-green-fg ansi-bold">    306</span> columns <span style="color:rgb(98,98,98)">=</span> data<span style="color:rgb(98,98,98)">.</span>columns<span style="color:rgb(98,98,98)">.</span>difference(stat_data<span style="color:rgb(98,98,98)">.</span>columns)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/evaluation.py:226</span>, in <span class="ansi-cyan-fg">evaluate</span><span class="ansi-blue-fg">(aesthetics, data, env)</span>
+<span class="ansi-green-fg ansi-bold">    224</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+<span class="ansi-green-fg ansi-bold">    225</span>     msg <span style="color:rgb(98,98,98)">=</span> _TPL_EVAL_FAIL<span style="color:rgb(98,98,98)">.</span>format(ae, col, <span style="color:rgb(0,135,0)">str</span>(e))
+<span class="ansi-green-fg">--&gt; 226</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> PlotnineError(msg) <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">e</span>
+<span class="ansi-green-fg ansi-bold">    228</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">    229</span>     evaled[ae] <span style="color:rgb(98,98,98)">=</span> new_val
+
+<span class="ansi-red-fg">PlotnineError</span>: "Could not evaluate the 'y' mapping: 'count / np.sum(count)' (original error: name 'np' is not defined)"</pre>
+</div>
 </div>
 <div class="cell-output cell-output-error">
-<pre><code>PlotnineError: "Could not evaluate the 'y' mapping: 'count / np.sum(count)' (original error: name 'np' is not defined)"</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/evaluation.py:223</span>, in <span class="ansi-cyan-fg">evaluate</span><span class="ansi-blue-fg">(aesthetics, data, env)</span>
+<span class="ansi-green-fg ansi-bold">    222</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 223</span>     new_val <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">env</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">eval</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">inner_namespace</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    224</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/_env.py:69</span>, in <span class="ansi-cyan-fg">Environment.eval</span><span class="ansi-blue-fg">(self, expr, inner_namespace)</span>
+<span class="ansi-green-fg ansi-bold">     68</span> code <span style="color:rgb(98,98,98)">=</span> _compile_eval(expr)
+<span class="ansi-green-fg">---&gt; 69</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">eval</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">     70</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">code</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">StackedLookup</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">inner_namespace</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">namespaces</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     71</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">&lt;string-expression&gt;:1</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'np' is not defined
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">PlotnineError</span>                             Traceback (most recent call last)
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.4/envs/plotnine/lib/python3.11/site-packages/IPython/core/formatters.py:708</span>, in <span class="ansi-cyan-fg">PlainTextFormatter.__call__</span><span class="ansi-blue-fg">(self, obj)</span>
+<span class="ansi-green-fg ansi-bold">    701</span> stream <span style="color:rgb(98,98,98)">=</span> StringIO()
+<span class="ansi-green-fg ansi-bold">    702</span> printer <span style="color:rgb(98,98,98)">=</span> pretty<span style="color:rgb(98,98,98)">.</span>RepresentationPrinter(stream, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>verbose,
+<span class="ansi-green-fg ansi-bold">    703</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>max_width, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>newline,
+<span class="ansi-green-fg ansi-bold">    704</span>     max_seq_length<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>max_seq_length,
+<span class="ansi-green-fg ansi-bold">    705</span>     singleton_pprinters<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>singleton_printers,
+<span class="ansi-green-fg ansi-bold">    706</span>     type_pprinters<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>type_printers,
+<span class="ansi-green-fg ansi-bold">    707</span>     deferred_pprinters<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>deferred_printers)
+<span class="ansi-green-fg">--&gt; 708</span> <span class="ansi-yellow-bg">printer</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">pretty</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">obj</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    709</span> printer<span style="color:rgb(98,98,98)">.</span>flush()
+<span class="ansi-green-fg ansi-bold">    710</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> stream<span style="color:rgb(98,98,98)">.</span>getvalue()
+
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.4/envs/plotnine/lib/python3.11/site-packages/IPython/lib/pretty.py:410</span>, in <span class="ansi-cyan-fg">RepresentationPrinter.pretty</span><span class="ansi-blue-fg">(self, obj)</span>
+<span class="ansi-green-fg ansi-bold">    407</span>                         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> meth(obj, <span style="color:rgb(0,135,0)">self</span>, cycle)
+<span class="ansi-green-fg ansi-bold">    408</span>                 <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">cls</span> <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">object</span> \
+<span class="ansi-green-fg ansi-bold">    409</span>                         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">callable</span>(<span style="color:rgb(0,135,0)">cls</span><span style="color:rgb(98,98,98)">.</span><span style="color:rgb(0,0,135)">__dict__</span><span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">__repr__</span><span style="color:rgb(175,0,0)">'</span>)):
+<span class="ansi-green-fg">--&gt; 410</span>                     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_repr_pprint</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">obj</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cycle</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    412</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _default_pprint(obj, <span style="color:rgb(0,135,0)">self</span>, cycle)
+<span class="ansi-green-fg ansi-bold">    413</span> <span style="font-weight:bold;color:rgb(0,135,0)">finally</span>:
+
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.4/envs/plotnine/lib/python3.11/site-packages/IPython/lib/pretty.py:778</span>, in <span class="ansi-cyan-fg">_repr_pprint</span><span class="ansi-blue-fg">(obj, p, cycle)</span>
+<span class="ansi-green-fg ansi-bold">    776</span> <span style="font-style:italic;color:rgb(175,0,0)">"""A pprint that just redirects to the normal repr function."""</span>
+<span class="ansi-green-fg ansi-bold">    777</span> <span style="font-style:italic;color:rgb(95,135,135)"># Find newlines and replace them with p.break_()</span>
+<span class="ansi-green-fg">--&gt; 778</span> output <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">repr</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">obj</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    779</span> lines <span style="color:rgb(98,98,98)">=</span> output<span style="color:rgb(98,98,98)">.</span>splitlines()
+<span class="ansi-green-fg ansi-bold">    780</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> p<span style="color:rgb(98,98,98)">.</span>group():
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:131</span>, in <span class="ansi-cyan-fg">ggplot.__repr__</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    125</span> msg <span style="color:rgb(98,98,98)">=</span> (
+<span class="ansi-green-fg ansi-bold">    126</span>     <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Using repr(plot) to draw and show the plot figure is </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    127</span>     <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">deprecated and will be removed in a future version. </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    128</span>     <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Use plot.show().</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    129</span> )
+<span class="ansi-green-fg ansi-bold">    130</span> warn(msg, category<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(215,95,95)">FutureWarning</span>, stacklevel<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">2</span>)
+<span class="ansi-green-fg">--&gt; 131</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">show</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    132</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">&lt;Figure Size: (</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>W<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> x </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>H<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">)&gt;</span><span style="color:rgb(175,0,0)">"</span>
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:150</span>, in <span class="ansi-cyan-fg">ggplot.show</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    143</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">show</span>(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg ansi-bold">    144</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    145</span> <span style="font-style:italic;color:rgb(175,0,0)">    Show plot using the matplotlib backend set by the user</span>
+<span class="ansi-green-fg ansi-bold">    146</span> 
+<span class="ansi-green-fg ansi-bold">    147</span> <span style="font-style:italic;color:rgb(175,0,0)">    Users should prefer this method instead of printing or repring</span>
+<span class="ansi-green-fg ansi-bold">    148</span> <span style="font-style:italic;color:rgb(175,0,0)">    the object.</span>
+<span class="ansi-green-fg ansi-bold">    149</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">--&gt; 150</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_display</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_inline_backend() <span style="font-weight:bold;color:rgb(0,135,0)">else</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>draw(show<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:175</span>, in <span class="ansi-cyan-fg">ggplot._display</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    172</span>     save_format <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">png</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    174</span> buf <span style="color:rgb(98,98,98)">=</span> BytesIO()
+<span class="ansi-green-fg">--&gt; 175</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">buf</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">save_format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">verbose</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    176</span> display_func <span style="color:rgb(98,98,98)">=</span> get_display_function(<span style="color:rgb(0,135,0)">format</span>)
+<span class="ansi-green-fg ansi-bold">    177</span> display_func(buf<span style="color:rgb(98,98,98)">.</span>getvalue())
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:661</span>, in <span class="ansi-cyan-fg">ggplot.save</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    613</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">save</span>(
+<span class="ansi-green-fg ansi-bold">    614</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg ansi-bold">    615</span>     filename: Optional[<span style="color:rgb(0,135,0)">str</span> <span style="color:rgb(98,98,98)">|</span> Path <span style="color:rgb(98,98,98)">|</span> BytesIO] <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    624</span>     <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs: Any,
+<span class="ansi-green-fg ansi-bold">    625</span> ):
+<span class="ansi-green-fg ansi-bold">    626</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    627</span> <span style="font-style:italic;color:rgb(175,0,0)">    Save a ggplot object as an image file</span>
+<span class="ansi-green-fg ansi-bold">    628</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    659</span> <span style="font-style:italic;color:rgb(175,0,0)">        Additional arguments to pass to matplotlib `savefig()`.</span>
+<span class="ansi-green-fg ansi-bold">    660</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">--&gt; 661</span>     sv <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save_helper</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    662</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">filename</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    663</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    664</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">path</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    665</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">width</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">width</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    666</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">height</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">height</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    667</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">units</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">units</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    668</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">dpi</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dpi</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    669</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">limitsize</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">limitsize</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    670</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">verbose</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">verbose</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    671</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    672</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    673</span>     sv<span style="color:rgb(98,98,98)">.</span>figure<span style="color:rgb(98,98,98)">.</span>savefig(<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>sv<span style="color:rgb(98,98,98)">.</span>kwargs)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:610</span>, in <span class="ansi-cyan-fg">ggplot.save_helper</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    607</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> dpi <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    608</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>theme <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>theme <span style="color:rgb(98,98,98)">+</span> theme(dpi<span style="color:rgb(98,98,98)">=</span>dpi)
+<span class="ansi-green-fg">--&gt; 610</span> figure <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">draw</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">show</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    611</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> mpl_save_view(figure, fig_kwargs)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:272</span>, in <span class="ansi-cyan-fg">ggplot.draw</span><span class="ansi-blue-fg">(self, show)</span>
+<span class="ansi-green-fg ansi-bold">    270</span> <span style="color:rgb(0,135,0)">self</span> <span style="color:rgb(98,98,98)">=</span> deepcopy(<span style="color:rgb(0,135,0)">self</span>)
+<span class="ansi-green-fg ansi-bold">    271</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> plot_context(<span style="color:rgb(0,135,0)">self</span>, show<span style="color:rgb(98,98,98)">=</span>show):
+<span class="ansi-green-fg">--&gt; 272</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_build</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    274</span>     <span style="font-style:italic;color:rgb(95,135,135)"># setup</span>
+<span class="ansi-green-fg ansi-bold">    275</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>figure, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>axs <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>facet<span style="color:rgb(98,98,98)">.</span>setup(<span style="color:rgb(0,135,0)">self</span>)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:375</span>, in <span class="ansi-cyan-fg">ggplot._build</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    373</span> <span style="font-style:italic;color:rgb(95,135,135)"># Apply and map statistics</span>
+<span class="ansi-green-fg ansi-bold">    374</span> layers<span style="color:rgb(98,98,98)">.</span>compute_statistic(layout)
+<span class="ansi-green-fg">--&gt; 375</span> <span class="ansi-yellow-bg">layers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">map_statistic</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    377</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare data in geoms</span>
+<span class="ansi-green-fg ansi-bold">    378</span> <span style="font-style:italic;color:rgb(95,135,135)"># e.g. from y and width to ymin and ymax</span>
+<span class="ansi-green-fg ansi-bold">    379</span> layers<span style="color:rgb(98,98,98)">.</span>setup_data()
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/layer.py:471</span>, in <span class="ansi-cyan-fg">Layers.map_statistic</span><span class="ansi-blue-fg">(self, plot)</span>
+<span class="ansi-green-fg ansi-bold">    469</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">map_statistic</span>(<span style="color:rgb(0,135,0)">self</span>, plot: ggplot):
+<span class="ansi-green-fg ansi-bold">    470</span>     <span style="font-weight:bold;color:rgb(0,135,0)">for</span> l <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span>:
+<span class="ansi-green-fg">--&gt; 471</span>         <span class="ansi-yellow-bg">l</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">map_statistic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/layer.py:302</span>, in <span class="ansi-cyan-fg">layer.map_statistic</span><span class="ansi-blue-fg">(self, plot)</span>
+<span class="ansi-green-fg ansi-bold">    297</span> <span style="font-style:italic;color:rgb(95,135,135)"># The statistics are calculated in transformed space, but</span>
+<span class="ansi-green-fg ansi-bold">    298</span> <span style="font-style:italic;color:rgb(95,135,135)"># we evaluate the mapping to them in data space.</span>
+<span class="ansi-green-fg ansi-bold">    299</span> <span style="font-style:italic;color:rgb(95,135,135)"># NOTE: If the inverse-retransform turn out to be slow</span>
+<span class="ansi-green-fg ansi-bold">    300</span> <span style="font-style:italic;color:rgb(95,135,135)"># we can try applying them to only the required columns.</span>
+<span class="ansi-green-fg ansi-bold">    301</span> data <span style="color:rgb(98,98,98)">=</span> plot<span style="color:rgb(98,98,98)">.</span>scales<span style="color:rgb(98,98,98)">.</span>inverse_df(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data)
+<span class="ansi-green-fg">--&gt; 302</span> stat_data <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">evaluate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">calculated</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">plot</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">environment</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    304</span> <span style="font-style:italic;color:rgb(95,135,135)"># If there are duplicate columns, we use the computed</span>
+<span class="ansi-green-fg ansi-bold">    305</span> <span style="font-style:italic;color:rgb(95,135,135)"># ones in stat_data</span>
+<span class="ansi-green-fg ansi-bold">    306</span> columns <span style="color:rgb(98,98,98)">=</span> data<span style="color:rgb(98,98,98)">.</span>columns<span style="color:rgb(98,98,98)">.</span>difference(stat_data<span style="color:rgb(98,98,98)">.</span>columns)
+
+File <span class="ansi-green-fg">~/scm/python/plotnine/plotnine/mapping/evaluation.py:226</span>, in <span class="ansi-cyan-fg">evaluate</span><span class="ansi-blue-fg">(aesthetics, data, env)</span>
+<span class="ansi-green-fg ansi-bold">    224</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+<span class="ansi-green-fg ansi-bold">    225</span>     msg <span style="color:rgb(98,98,98)">=</span> _TPL_EVAL_FAIL<span style="color:rgb(98,98,98)">.</span>format(ae, col, <span style="color:rgb(0,135,0)">str</span>(e))
+<span class="ansi-green-fg">--&gt; 226</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> PlotnineError(msg) <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">e</span>
+<span class="ansi-green-fg ansi-bold">    228</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">    229</span>     evaled[ae] <span style="color:rgb(98,98,98)">=</span> new_val
+
+<span class="ansi-red-fg">PlotnineError</span>: "Could not evaluate the 'y' mapping: 'count / np.sum(count)' (original error: name 'np' is not defined)"</pre>
+</div>
 </div>
 </div>
 <p>By default <code>geom_bar</code> uses <code>stat_count</code> to compute a frequency table with the <code>x</code> aesthetic as the key column. As a result, any mapping (other than the <code>x</code> aesthetic is lost) to a continuous variable is lost (if you have a classroom and you compute a frequency table of the gender, you lose any other information like height of students).</p>
 <p>For example, below <code>fill='var1'</code> has no effect, but the <code>var1</code> variable has not been lost it has been turned into <code>x</code> aesthetic.</p>
 <div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.109227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.108926Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.389415Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.388771Z&quot;}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"var1"</span>)) <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span><span class="st">"var1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"var1"</span>)) <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span><span class="st">"var1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_stat_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="after_stat_files/figure-html/cell-6-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We use <code>after_stat</code> to map <code>fill</code> to the <code>x</code> aesthetic after it has been computed.</p>
 <div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:27:33.392399Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:27:33.392161Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:27:33.728776Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:27:33.728126Z&quot;}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_stat(<span class="st">"x"</span>)))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(fill<span class="op">=</span><span class="st">"var1"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_stat(<span class="st">"x"</span>)))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(fill<span class="op">=</span><span class="st">"var1"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_stat_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="after_stat_files/figure-html/cell-7-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -338,18 +576,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -381,7 +608,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -389,7 +638,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
