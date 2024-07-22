@@ -86,6 +86,8 @@ checkout-dev: submodules submodules-pull submodules-tags
 ## Install build dependencies
 deps:
 	cd plotnine && make doc-deps
+	pip install jupyter
+	pip install git+https://github.com/has2k1/qrenderer
 
 ## Setup notebooks from plotnine-examples
 plotnine-examples:
