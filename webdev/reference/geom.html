@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.33">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plotnine 0.13.6 – geom</title>
+<title>geom – plotnine 0.13.6</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../images/favicon.ico" rel="icon">
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,15 +103,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<meta property="og:title" content="plotnine 0.13.6">
+<meta property="og:site_name" content="plotnine 0.13.6">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="2e00014065ba68fb8a0850e264591f31" class="alert alert-info hidden"><i class="bi bi-bar-chart quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><a href="https://posit.co/blog/announcing-the-2024-plotnine-contest/">Announcing the 2024 Plotnine Contest</a></p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -225,14 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </header>
 <div class="doc-signature doc-class">
-<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>geom(mapping<span class="op">=</span><span class="va">None</span>, data<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>geom(mapping<span class="op">=</span><span class="va">None</span>, data<span class="op">=</span><span class="va">None</span>, kwargs<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Base class of all Geoms</p>
 </div>
 <section id="attributes" class="level2 doc-attributes">
 <h2 class="doc-attributes anchored" data-anchor-id="attributes">Attributes</h2>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -315,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.geoms.geom.geom.aes_params" class="level3 title doc-object doc-attribute">
 <h3 class="title doc-object doc-attribute anchored" data-anchor-id="plotnine.geoms.geom.geom.aes_params"><code class="doc-symbol doc-symbol-attribute"></code> <span class="doc-object-name doc-attribute-name">aes_params</span></h3>
 <div class="doc-signature doc-attribute">
-<p><code><span class="doc-parameter-name">aes_params</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</span> <span class="doc-parameter-default-sep">=</span> <span class="doc-parameter-default">copy_keys(kwargs, {}, self.aesthetics())</span></code></p>
+<p><code><span class="doc-parameter-name">aes_params</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</span> <span class="doc-parameter-default-sep">=</span> <span class="doc-parameter-default">{ae: kwargs[ae]for ae in self.aesthetics() &amp; set(kwargs)}</span></code></p>
 </div>
 <div class="doc-text">
 <p>dict() -&gt; new empty dictionary dict(mapping) -&gt; new dictionary initialized from a mapping object’s (key, value) pairs dict(iterable) -&gt; new dictionary initialized as if via: d = {} for k, v in iterable: d[k] = v dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs in the keyword argument list. For example: dict(one=1, two=2)</p>
@@ -352,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="methods" class="level2 doc-methods">
 <h2 class="doc-methods anchored" data-anchor-id="methods">Methods</h2>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -423,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.geoms.geom.geom.draw_group" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.geoms.geom.geom.draw_group"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw_group</span> <span class="doc-labels"><code class="doc-label doc-label-staticmethod"></code></span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>draw_group(data, panel_params, coord, ax, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>draw_group(data, panel_params, coord, ax, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Plot data belonging to a group.</p>
@@ -461,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.geoms.geom.geom.draw_layer" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.geoms.geom.geom.draw_layer"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw_layer</span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb5"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>draw_layer(data, layout, coord, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>draw_layer(data, layout, coord, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Draw layer across all panels</p>
@@ -533,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.geoms.geom.geom.draw_panel" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.geoms.geom.geom.draw_panel"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw_panel</span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb7"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>draw_panel(data, panel_params, coord, ax, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>draw_panel(data, panel_params, coord, ax, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Plot all groups</p>
@@ -572,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.geoms.geom.geom.draw_unit" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.geoms.geom.geom.draw_unit"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw_unit</span> <span class="doc-labels"><code class="doc-label doc-label-staticmethod"></code></span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb9"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>draw_unit(data, panel_params, coord, ax, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>draw_unit(data, panel_params, coord, ax, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Plot data belonging to a unit.</p>
@@ -705,7 +704,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dd>
 <p>A row of the data plotted to this layer</p>
 </dd>
-<dt><code><span class="doc-parameter-name">min_size</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="../reference/typing.html#plotnine.typing.TupleInt2">TupleInt2</a></span></code></dt>
+<dt><code><span class="doc-parameter-name">min_size</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://docs.python.org/3/library/functions.html#int">int</a>]</span></code></dt>
 <dd>
 <p>Initial size which should be expanded to fit the contents.</p>
 </dd>
@@ -906,7 +905,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/plotnine\.org");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
