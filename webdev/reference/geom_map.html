@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -101,6 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <meta property="og:title" content="plotnine 0.13.6">
@@ -188,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="examples/geom_map-preview.html"><i class="bi bi-journal-code"></i>The Territories of Westeros</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="examples/geom_map-preview.html"><i class="bi bi-journal-code"></i>A Map from `geodatasets`</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -320,131 +323,2168 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="quarto-embed-nb-cell">
-<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:24.512073Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:24.511705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:25.405850Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:25.404930Z&quot;}" data-execution_count="1">
+<div id="cell-0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:03.970650Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:03.970265Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.213929Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.212767Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    aes,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    geom_map,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    geom_text,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    labs,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    scale_fill_brewer,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    scale_x_continuous,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    scale_y_continuous,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    scale_size_continuous,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    coord_cartesian,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    theme_void,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    theme,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    aes,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    coord_fixed,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    facet_wrap,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    geom_map,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    geom_text,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    labs,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    scale_fill_brewer,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    scale_fill_continuous,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    scale_x_continuous,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    scale_y_continuous,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    scale_size_continuous,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    stage,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    coord_cartesian,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    element_line,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    element_text,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    theme_void,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    theme,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Define some useful functions</p>
+<div id="cell-2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.218153Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.217530Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.223818Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.222963Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> good_centroid(geometry):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate "good" centroids for polygons in the geometry</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    The polygon is projected onto the Equal Area Cylindrical projection,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    the centroids are computed, then mapped back onto the original</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    coordinate system.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> geometry.to_crs(<span class="st">"+proj=cea"</span>).centroid.to_crs(geometry.crs)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> overlay_color(rgb_hex_colors, light<span class="op">=</span><span class="st">"white"</span>, dark<span class="op">=</span><span class="st">"black"</span>, threshold<span class="op">=</span><span class="fl">0.5</span>):</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Decide which color is suitable to write onto the given colors</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> luminance(rgb_hex):</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">        Calculate the Luminance ([0, 1]) of a hex color</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> <span class="bu">int</span>(rgb_hex[<span class="dv">1</span>:<span class="dv">3</span>], <span class="dv">16</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> <span class="bu">int</span>(rgb_hex[<span class="dv">3</span>:<span class="dv">5</span>], <span class="dv">16</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> <span class="bu">int</span>(rgb_hex[<span class="dv">5</span>:], <span class="dv">16</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        luma <span class="op">=</span> (r<span class="op">*</span><span class="fl">0.299</span> <span class="op">+</span> g<span class="op">*</span><span class="fl">0.587</span> <span class="op">+</span> b<span class="op">*</span><span class="fl">0.0722</span>) <span class="op">/</span> <span class="dv">256</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> luma</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [light <span class="cf">if</span> luminance(x) <span class="op">&lt;</span> threshold  <span class="cf">else</span> dark <span class="cf">for</span> x <span class="kw">in</span> rgb_hex_colors]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a-map-from-geodatasets" class="level3">
+<h3 class="anchored" data-anchor-id="a-map-from-geodatasets">A Map from <code>geodatasets</code></h3>
+<p>We are going to use a dataset from the <a href="https://geodatasets.readthedocs.io/en/latest/">geodatasets</a> package. We can explore the dataset providers at <code>geodatasets.data</code>, each of which has one or more datasets:</p>
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.227346Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.227056Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.252456Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.251840Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>geodatasets.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+        <div>
+        <style>
+/* CSS stylesheet for displaying geodatasets objects in Jupyter.*/
+.xyz-wrap {
+    --xyz-border-color: var(--jp-border-color2, #ddd);
+    --xyz-font-color2: var(--jp-content-font-color2, rgba(128, 128, 128, 1));
+    --xyz-background-color-white: var(--jp-layout-color1, white);
+    --xyz-background-color: var(--jp-layout-color2, rgba(128, 128, 128, 0.1));
+}
+
+html[theme=dark] .xyz-wrap,
+body.vscode-dark .xyz-wrap,
+body.vscode-high-contrast .xyz-wrap {
+    --xyz-border-color: #222;
+    --xyz-font-color2: rgba(255, 255, 255, 0.54);
+    --xyz-background-color-white: rgba(255, 255, 255, 1);
+    --xyz-background-color: rgba(255, 255, 255, 0.05);
+
+}
+
+.xyz-header {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+    border-bottom: solid 1px var(--xyz-border-color);
+}
+
+.xyz-header>div {
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.xyz-obj,
+.xyz-name {
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+.xyz-obj {
+    color: var(--xyz-font-color2);
+}
+
+.xyz-attrs {
+    grid-column: 1 / -1;
+}
+
+dl.xyz-attrs {
+    padding: 0 5px 0 5px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 135px auto;
+    background-color: var(--xyz-background-color);
+}
+
+.xyz-attrs dt,
+dd {
+    padding: 0;
+    margin: 0;
+    float: left;
+    padding-right: 10px;
+    width: auto;
+}
+
+.xyz-attrs dt {
+    font-weight: normal;
+    grid-column: 1;
+}
+
+.xyz-attrs dd {
+    grid-column: 2;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.xyz-details ul>li>label>span {
+    color: var(--xyz-font-color2);
+    padding-left: 10px;
+}
+
+.xyz-inside {
+    display: none;
+}
+
+.xyz-checkbox:checked~.xyz-inside {
+    display: contents;
+}
+
+.xyz-collapsible li>input {
+    display: none;
+}
+
+.xyz-collapsible>li>label {
+    cursor: pointer;
+}
+
+.xyz-collapsible>li>label:hover {
+    color: var(--xyz-font-color2);
+}
+
+ul.xyz-collapsible {
+    list-style: none!important;
+    padding-left: 20px!important;
+}
+
+.xyz-checkbox+label:before {
+    content: '►';
+    font-size: 11px;
+}
+
+.xyz-checkbox:checked+label:before {
+    content: '▼';
+}
+
+.xyz-wrap {
+    margin-bottom: 10px;
+}
+</style>
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">5 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="6c03c18c-24ce-4298-b8b7-e95490c15dc7" class="xyz-checkbox">
+                <label for="6c03c18c-24ce-4298-b8b7-e95490c15dc7">geoda <span>geodatasets.Bunch</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">53 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="75e66b5d-80fe-4300-a114-a94ead39c105" class="xyz-checkbox">
+                <label for="75e66b5d-80fe-4300-a114-a94ead39c105">airbnb <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.airbnb</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/airbnb.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Airbnb rentals, socioeconomics, and crime in Chicago</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>77</dd><dt><span>ncols</span></dt><dd>21</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//airbnb/</dd><dt><span>hash</span></dt><dd>a2ab1e3f938226d287dd76cde18c00e2d3a260640dd826da7131827d9e76c824</dd><dt><span>filename</span></dt><dd>airbnb.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="82af7d75-3c56-49c1-8c3e-55c87f7a19a9" class="xyz-checkbox">
+                <label for="82af7d75-3c56-49c1-8c3e-55c87f7a19a9">atlanta <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.atlanta</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/atlanta_hom.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Atlanta, GA region homicide counts and rates</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>90</dd><dt><span>ncols</span></dt><dd>24</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//atlanta_old/</dd><dt><span>hash</span></dt><dd>a33a76e12168fe84361e60c88a9df4856730487305846c559715c89b1a2b5e09</dd><dt><span>filename</span></dt><dd>atlanta_hom.zip</dd><dt><span>members</span></dt><dd>['atlanta_hom/atl_hom.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="e04212ae-551b-4d0e-aba2-fe6bff408642" class="xyz-checkbox">
+                <label for="e04212ae-551b-4d0e-aba2-fe6bff408642">cars <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.cars</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/Abandoned_Vehicles_Map.csv</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2011 abandoned vehicles in Chicago (311 complaints).</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>137867</dd><dt><span>ncols</span></dt><dd>21</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//1-source-and-description/</dd><dt><span>hash</span></dt><dd>6a0b23bc7eda2dcf1af02d43ccf506b24ca8d8c6dc2fe86a2a1cc051b03aae9e</dd><dt><span>filename</span></dt><dd>Abandoned_Vehicles_Map.csv</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="a65846a7-47c7-4249-beb9-e72f84c2f241" class="xyz-checkbox">
+                <label for="a65846a7-47c7-4249-beb9-e72f84c2f241">charleston1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.charleston1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/CharlestonMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Charleston, SC MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>117</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//charleston-1_old/</dd><dt><span>hash</span></dt><dd>4a4fa9c8dd4231ae0b2f12f24895b8336bcab0c28c48653a967cffe011f63a7c</dd><dt><span>filename</span></dt><dd>CharlestonMSA.zip</dd><dt><span>members</span></dt><dd>['CharlestonMSA/sc_final_census2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="c7ce0603-1602-42d7-9ba8-dc65f154abae" class="xyz-checkbox">
+                <label for="c7ce0603-1602-42d7-9ba8-dc65f154abae">charleston2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.charleston2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/CharlestonMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Charleston, SC MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>42</dd><dt><span>ncols</span></dt><dd>60</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//charleston2/</dd><dt><span>hash</span></dt><dd>056d5d6e236b5bd95f5aee26c77bbe7d61bd07db5aaf72866c2f545205c1d8d7</dd><dt><span>filename</span></dt><dd>CharlestonMSA2.zip</dd><dt><span>members</span></dt><dd>['CharlestonMSA2/CharlestonMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="04e617a2-4c2b-40b4-b30d-5e1a59de4a18" class="xyz-checkbox">
+                <label for="04e617a2-4c2b-40b4-b30d-5e1a59de4a18">chicago_health <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.chicago_health</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/comarea.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Chicago Health + Socio-Economics</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>77</dd><dt><span>ncols</span></dt><dd>87</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//comarea_vars/</dd><dt><span>hash</span></dt><dd>4e872adb552786eae2fcd745524696e5e4cd33cc9a6c032471c0e75328871401</dd><dt><span>filename</span></dt><dd>comarea.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="63965401-4222-47bc-a40d-cab7c1e650db" class="xyz-checkbox">
+                <label for="63965401-4222-47bc-a40d-cab7c1e650db">chicago_commpop <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.chicago_commpop</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/chicago_commpop.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Chicago Community Area Population Percent Change for 2000 and 2010</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>77</dd><dt><span>ncols</span></dt><dd>9</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//commpop/</dd><dt><span>hash</span></dt><dd>1dbebb50c8ea47e2279ea819ef64ba793bdee2b88e4716bd6c6ec0e0d8e0e05b</dd><dt><span>filename</span></dt><dd>chicago_commpop.zip</dd><dt><span>members</span></dt><dd>['chicago_commpop/chicago_commpop.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="ed6362c1-6193-4535-b553-58aa50379e99" class="xyz-checkbox">
+                <label for="ed6362c1-6193-4535-b553-58aa50379e99">chile_labor <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.chile_labor</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/flma.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Labor Markets in Chile (1982-2002)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>64</dd><dt><span>ncols</span></dt><dd>140</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//FLMA/</dd><dt><span>hash</span></dt><dd>4777072268d0127b3d0be774f51d0f66c15885e9d3c92bc72c641a72f220796c</dd><dt><span>filename</span></dt><dd>flma.zip</dd><dt><span>members</span></dt><dd>['flma/FLMA.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="07fb1fb9-7762-450c-a151-1ac9286cf8e7" class="xyz-checkbox">
+                <label for="07fb1fb9-7762-450c-a151-1ac9286cf8e7">cincinnati <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.cincinnati</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/walnuthills_updated.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2008 Cincinnati Crime + Socio-Demographics</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>457</dd><dt><span>ncols</span></dt><dd>73</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//walnut_hills/</dd><dt><span>hash</span></dt><dd>d6871dd688bd14cf4710a218d721d34f6574456f2a14d5c5cfe5a92054ee9763</dd><dt><span>filename</span></dt><dd>walnuthills_updated.zip</dd><dt><span>members</span></dt><dd>['walnuthills_updated']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="f12ce38c-8488-4b08-912c-b4c17de2c99c" class="xyz-checkbox">
+                <label for="f12ce38c-8488-4b08-912c-b4c17de2c99c">cleveland <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.cleveland</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/cleveland.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2015 sales prices of homes in Cleveland, OH.</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>205</dd><dt><span>ncols</span></dt><dd>10</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//clev_sls_154_core/</dd><dt><span>hash</span></dt><dd>49aeba03eb06bf9b0d9cddd6507eb4a226b7c7a7561145562885c5cddfaeaadf</dd><dt><span>filename</span></dt><dd>cleveland.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="97bcd6c7-5444-40b7-bea7-91a3c06e6726" class="xyz-checkbox">
+                <label for="97bcd6c7-5444-40b7-bea7-91a3c06e6726">grid100 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.grid100</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/grid100.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Grid with simulated variables</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>100</dd><dt><span>ncols</span></dt><dd>37</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//grid100/</dd><dt><span>hash</span></dt><dd>5702ba39606044f71d53ae6a83758b81332bd3aa216b7b7b6e1c60dd0e72f476</dd><dt><span>filename</span></dt><dd>grid100.zip</dd><dt><span>members</span></dt><dd>['grid100/grid100s.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="9cde8804-6e4d-4e6f-89da-db0917cb0041" class="xyz-checkbox">
+                <label for="9cde8804-6e4d-4e6f-89da-db0917cb0041">groceries <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.groceries</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/grocery.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2015 Chicago supermarkets</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>148</dd><dt><span>ncols</span></dt><dd>8</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//chicago_sup_vars/</dd><dt><span>hash</span></dt><dd>ead10e53b21efcaa29b798428b93ba2a1c0ba1b28f046265c1737712fa83f88a</dd><dt><span>filename</span></dt><dd>grocery.zip</dd><dt><span>members</span></dt><dd>['grocery/chicago_sup.shp', 'grocery/chicago_sup.dbf', 'grocery/chicago_sup.shx', 'grocery/chicago_sup.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="174ffdcf-e49e-42b3-aca9-15099ada0df6" class="xyz-checkbox">
+                <label for="174ffdcf-e49e-42b3-aca9-15099ada0df6">guerry <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.guerry</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/guerry.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Mortal statistics of France (Guerry, 1833)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>85</dd><dt><span>ncols</span></dt><dd>24</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//Guerry/</dd><dt><span>hash</span></dt><dd>80d2b355ad3340fcffa0a28e5cec0698af01067f8059b1a60388d200a653b3e8</dd><dt><span>filename</span></dt><dd>guerry.zip</dd><dt><span>members</span></dt><dd>['guerry/guerry.shp', 'guerry/guerry.dbf', 'guerry/guerry.shx', 'guerry/guerry.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="52e0895f-ae3e-455f-a29b-41d4e22cc191" class="xyz-checkbox">
+                <label for="52e0895f-ae3e-455f-a29b-41d4e22cc191">health <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.health</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/income_diversity.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Health, Income + Diversity</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>3984</dd><dt><span>ncols</span></dt><dd>65</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//co_income_diversity_variables/</dd><dt><span>hash</span></dt><dd>eafee1063040258bc080e7b501bdf1438d6e45ba208954d8c2e1a7562142d0a7</dd><dt><span>filename</span></dt><dd>income_diversity.zip</dd><dt><span>members</span></dt><dd>['income_diversity/income_diversity.shp', 'income_diversity/income_diversity.dbf', 'income_diversity/income_diversity.shx', 'income_diversity/income_diversity.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="4ec0f02e-c890-4ef3-a738-e6ed89a8103b" class="xyz-checkbox">
+                <label for="4ec0f02e-c890-4ef3-a738-e6ed89a8103b">health_indicators <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.health_indicators</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/healthIndicators.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Chicago Health Indicators (2005-11)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>77</dd><dt><span>ncols</span></dt><dd>32</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//healthindicators-variables/</dd><dt><span>hash</span></dt><dd>b43683245f8fc3b4ab69ffa75d2064920a1a91dc76b9dcc08e288765ba0c94f3</dd><dt><span>filename</span></dt><dd>healthIndicators.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="3057370d-f62d-4ba8-8676-01894ec488d6" class="xyz-checkbox">
+                <label for="3057370d-f62d-4ba8-8676-01894ec488d6">hickory1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.hickory1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/HickoryMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Hickory, NC MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>68</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//hickory1/</dd><dt><span>hash</span></dt><dd>4c0804608d303e6e44d51966bb8927b1f5f9e060a9b91055a66478b9039d2b44</dd><dt><span>filename</span></dt><dd>HickoryMSA.zip</dd><dt><span>members</span></dt><dd>['HickoryMSA/nc_final_census2.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="fe9ccb73-67b7-4f8b-b68b-b8a3af976ef2" class="xyz-checkbox">
+                <label for="fe9ccb73-67b7-4f8b-b68b-b8a3af976ef2">hickory2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.hickory2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/HickoryMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Hickory, NC MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>29</dd><dt><span>ncols</span></dt><dd>56</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//hickory2/</dd><dt><span>hash</span></dt><dd>5e9498e1ff036297c3eea3cc42ac31501680a43b50c71b486799ef9021679d07</dd><dt><span>filename</span></dt><dd>HickoryMSA2.zip</dd><dt><span>members</span></dt><dd>['HickoryMSA2/HickoryMSA2.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="92ccf992-48de-4f32-b642-442963862ac8" class="xyz-checkbox">
+                <label for="92ccf992-48de-4f32-b642-442963862ac8">home_sales <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.home_sales</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/kingcounty.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2014-15 Home Sales in King County, WA</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>21613</dd><dt><span>ncols</span></dt><dd>22</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//KingCounty-HouseSales2015/</dd><dt><span>hash</span></dt><dd>b979f0eb2cef6ebd2c761d552821353f795635eb8db53a95f2815fc46e1f644c</dd><dt><span>filename</span></dt><dd>kingcounty.zip</dd><dt><span>members</span></dt><dd>['kingcounty/kc_house.shp', 'kingcounty/kc_house.dbf', 'kingcounty/kc_house.shx', 'kingcounty/kc_house.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="f5a7f1a7-a1d9-4d5f-9c7f-f5f6c876e38d" class="xyz-checkbox">
+                <label for="f5a7f1a7-a1d9-4d5f-9c7f-f5f6c876e38d">houston <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.houston</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/houston_hom.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Houston, TX region homicide counts and rates</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>52</dd><dt><span>ncols</span></dt><dd>24</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//houston/</dd><dt><span>hash</span></dt><dd>d3167fd150a1369d9a32b892d3b2a8747043d3d382c3dd81e51f696b191d0d15</dd><dt><span>filename</span></dt><dd>houston_hom.zip</dd><dt><span>members</span></dt><dd>['houston_hom/hou_hom.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="ffbb0600-3d4c-49fd-b4b8-ece7b1a47fd6" class="xyz-checkbox">
+                <label for="ffbb0600-3d4c-49fd-b4b8-ece7b1a47fd6">juvenile <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.juvenile</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/juvenile.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Cardiff juvenile delinquent residences</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>168</dd><dt><span>ncols</span></dt><dd>4</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//juvenile/</dd><dt><span>hash</span></dt><dd>811cfcfa613578214d907bfbdd396c6e02261e5cda6d56b25a6f961148de961c</dd><dt><span>filename</span></dt><dd>juvenile.zip</dd><dt><span>members</span></dt><dd>['juvenile/juvenile.shp', 'juvenile/juvenile.shx', 'juvenile/juvenile.dbf']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="83754a72-111c-4507-9631-1bb89af31970" class="xyz-checkbox">
+                <label for="83754a72-111c-4507-9631-1bb89af31970">lansing1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.lansing1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/LansingMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Lansing, MI MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>117</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//lansing1/</dd><dt><span>hash</span></dt><dd>724ce3d889fa50e7632d16200cf588d40168d49adaf5bca45049dc1b3758bde1</dd><dt><span>filename</span></dt><dd>LansingMSA.zip</dd><dt><span>members</span></dt><dd>['LansingMSA/mi_final_census2.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="fbac2da3-51a0-4b02-b06a-a970078c8791" class="xyz-checkbox">
+                <label for="fbac2da3-51a0-4b02-b06a-a970078c8791">lansing2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.lansing2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/LansingMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Lansing, MI MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>46</dd><dt><span>ncols</span></dt><dd>56</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//lansing2/</dd><dt><span>hash</span></dt><dd>7657c05d3bd6090c4d5914cfe5aaf01f694601c1e0c29bc3ecbe9bc523662303</dd><dt><span>filename</span></dt><dd>LansingMSA2.zip</dd><dt><span>members</span></dt><dd>['LansingMSA2/LansingMSA2.geojson']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="a37cba89-8c63-4d8a-9d13-ceef8e66bcb9" class="xyz-checkbox">
+                <label for="a37cba89-8c63-4d8a-9d13-ceef8e66bcb9">lasrosas <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.lasrosas</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/lasrosas.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Corn yield, fertilizer and field data for precision agriculture, Argentina, 1999</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>1738</dd><dt><span>ncols</span></dt><dd>35</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//lasrosas/</dd><dt><span>hash</span></dt><dd>038d0e82203f2875b50499dbd8498ca9c762ebd8003b2f2203ebc6acada8f8fd</dd><dt><span>filename</span></dt><dd>lasrosas.zip</dd><dt><span>members</span></dt><dd>['lasrosas/rosas1999.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="f4db0323-9d26-44a5-b650-240c71fed4af" class="xyz-checkbox">
+                <label for="f4db0323-9d26-44a5-b650-240c71fed4af">liquor_stores <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.liquor_stores</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/liquor.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2015 Chicago Liquor Stores</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>571</dd><dt><span>ncols</span></dt><dd>3</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//liq_chicago/</dd><dt><span>hash</span></dt><dd>6a483a6a7066a000bc97bfe71596cf28834d3088fbc958455b903a0938b3b530</dd><dt><span>filename</span></dt><dd>liquor.zip</dd><dt><span>members</span></dt><dd>['liq_Chicago.shp', 'liq_Chicago.dbf', 'liq_Chicago.shx', 'liq_Chicago.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="8456b945-c1f4-4ab5-843f-bec6681deff4" class="xyz-checkbox">
+                <label for="8456b945-c1f4-4ab5-843f-bec6681deff4">malaria <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.malaria</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/malariacolomb.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Malaria incidence and population (1973, 95, 93 censuses and projections until 2005)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>1068</dd><dt><span>ncols</span></dt><dd>51</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//colomb_malaria/</dd><dt><span>hash</span></dt><dd>ca77477656829833a4e3e384b02439632fa28bb577610fe5aef9e0b094c41a95</dd><dt><span>filename</span></dt><dd>malariacolomb.zip</dd><dt><span>members</span></dt><dd>['malariacolomb/colmunic.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="3744dd49-eefd-49b7-8566-bff960703ca7" class="xyz-checkbox">
+                <label for="3744dd49-eefd-49b7-8566-bff960703ca7">milwaukee1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.milwaukee1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/MilwaukeeMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Milwaukee, WI MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>417</dd><dt><span>ncols</span></dt><dd>35</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//milwaukee1/</dd><dt><span>hash</span></dt><dd>bf3c9617c872db26ea56f20e82a449f18bb04d8fb76a653a2d3842d465bc122c</dd><dt><span>filename</span></dt><dd>MilwaukeeMSA.zip</dd><dt><span>members</span></dt><dd>['MilwaukeeMSA/wi_final_census2_random4.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="83a29cee-c7c2-47e9-83d5-e594be6a6140" class="xyz-checkbox">
+                <label for="83a29cee-c7c2-47e9-83d5-e594be6a6140">milwaukee2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.milwaukee2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/MilwaukeeMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Milwaukee, WI MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>83</dd><dt><span>ncols</span></dt><dd>60</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//milwaukee2/</dd><dt><span>hash</span></dt><dd>7f74212d63addb9ab84fac9447ee898498c8fafc284edcffe1f1ac79c2175d60</dd><dt><span>filename</span></dt><dd>MilwaukeeMSA2.zip</dd><dt><span>members</span></dt><dd>['MilwaukeeMSA2/MilwaukeeMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="098feca7-24d8-4c61-9f2a-27a5fe3dde74" class="xyz-checkbox">
+                <label for="098feca7-24d8-4c61-9f2a-27a5fe3dde74">ncovr <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.ncovr</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/ncovr.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>US county homicides 1960-1990</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>3085</dd><dt><span>ncols</span></dt><dd>70</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//ncovr/</dd><dt><span>hash</span></dt><dd>e8cb04e6da634c6cd21808bd8cfe4dad6e295b22e8d40cc628e666887719cfe9</dd><dt><span>filename</span></dt><dd>ncovr.zip</dd><dt><span>members</span></dt><dd>['ncovr/NAT.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="23ca342f-3aa8-4c9e-aa9b-15928866ab00" class="xyz-checkbox">
+                <label for="23ca342f-3aa8-4c9e-aa9b-15928866ab00">natregimes <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.natregimes</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/natregimes.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>NCOVR with regimes (book/PySAL)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>3085</dd><dt><span>ncols</span></dt><dd>74</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//natregimes/</dd><dt><span>hash</span></dt><dd>431d0d95ffa000692da9319e6bd28701b1156f7b8e716d4bfcd1e09b6e357918</dd><dt><span>filename</span></dt><dd>natregimes.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="0813bc39-234e-4fa3-b820-7ede46976aa2" class="xyz-checkbox">
+                <label for="0813bc39-234e-4fa3-b820-7ede46976aa2">ndvi <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.ndvi</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/ndvi.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Normalized Difference Vegetation Index grid</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>49</dd><dt><span>ncols</span></dt><dd>8</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//ndvi/</dd><dt><span>hash</span></dt><dd>a89459e50a4495c24ead1d284930467ed10eb94829de16a693a9fa89dea2fe22</dd><dt><span>filename</span></dt><dd>ndvi.zip</dd><dt><span>members</span></dt><dd>['ndvi/ndvigrid.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="53c89e8e-125a-48af-8ed4-740d0cfa5913" class="xyz-checkbox">
+                <label for="53c89e8e-125a-48af-8ed4-740d0cfa5913">nepal <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.nepal</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/nepal.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Health, poverty and education indicators for Nepal districts</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>75</dd><dt><span>ncols</span></dt><dd>62</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//nepal/</dd><dt><span>hash</span></dt><dd>d7916568fe49ff258d0f03ac115e68f64cdac572a9fd2b29de2d70554ac2b20d</dd><dt><span>filename</span></dt><dd>nepal.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="e38b6a7c-583d-46dc-bab7-f47f07940c24" class="xyz-checkbox">
+                <label for="e38b6a7c-583d-46dc-bab7-f47f07940c24">nyc <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.nyc</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab///data/nyc.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Demographic and housing data for New York City subboroughs, 2002-09</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>55</dd><dt><span>ncols</span></dt><dd>35</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//nyc/</dd><dt><span>hash</span></dt><dd>a67dff2f9e6da9e11737e6be5a16e1bc33954e2c954332d68bcbf6ff7203702b</dd><dt><span>filename</span></dt><dd>nyc.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="5eeff12d-711e-4080-ae42-b12943d7ff25" class="xyz-checkbox">
+                <label for="5eeff12d-711e-4080-ae42-b12943d7ff25">nyc_earnings <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.nyc_earnings</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/lehd.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Block-level Earnings in NYC (2002-14)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>108487</dd><dt><span>ncols</span></dt><dd>71</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//LEHD_Data/</dd><dt><span>hash</span></dt><dd>771fe11e59a16d4c15c6471d9a81df5e9c9bda5ef0a207e77d8ff21b2c16891b</dd><dt><span>filename</span></dt><dd>lehd.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="8bd2348b-0686-41f2-be46-1bc22c86c18b" class="xyz-checkbox">
+                <label for="8bd2348b-0686-41f2-be46-1bc22c86c18b">nyc_education <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.nyc_education</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/nyc_2000Census.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>NYC Education (2000)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>2216</dd><dt><span>ncols</span></dt><dd>57</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//NYC-Census-2000/</dd><dt><span>hash</span></dt><dd>ecdf342654415107911291a8076c1685bd2c8a08d8eaed3ce9c3e9401ef714f2</dd><dt><span>filename</span></dt><dd>nyc_2000Census.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="b006f4f2-b7bd-4ebc-bf20-2989e12545d9" class="xyz-checkbox">
+                <label for="b006f4f2-b7bd-4ebc-bf20-2989e12545d9">nyc_neighborhoods <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.nyc_neighborhoods</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/nycnhood_acs.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Demographics for New York City neighborhoods</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>195</dd><dt><span>ncols</span></dt><dd>99</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//NYC-Nhood-ACS-2008-12/</dd><dt><span>hash</span></dt><dd>aeb75fc5c95fae1088093827fca69928cee3ad27039441bb35c03013d2ee403f</dd><dt><span>filename</span></dt><dd>nycnhood_acs.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="98f5bfc4-0e04-4f07-aa7c-9dabd56628a8" class="xyz-checkbox">
+                <label for="98f5bfc4-0e04-4f07-aa7c-9dabd56628a8">orlando1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.orlando1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/OrlandoMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Orlando, FL MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>328</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//orlando1/</dd><dt><span>hash</span></dt><dd>e98ea5b9ffaf3e421ed437f665c739d1e92d9908e2b121c75ac02ecf7de2e254</dd><dt><span>filename</span></dt><dd>OrlandoMSA.zip</dd><dt><span>members</span></dt><dd>['OrlandoMSA/orlando_final_census2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="f2402527-f439-4041-84f4-e076d7d9c55a" class="xyz-checkbox">
+                <label for="f2402527-f439-4041-84f4-e076d7d9c55a">orlando2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.orlando2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/OrlandoMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Orlando, FL MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>94</dd><dt><span>ncols</span></dt><dd>60</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//orlando2/</dd><dt><span>hash</span></dt><dd>4cd8c3469cb7edea5f0fb615026192e12b1d4b50c22b28345adf476bc85d0f03</dd><dt><span>filename</span></dt><dd>OrlandoMSA2.zip</dd><dt><span>members</span></dt><dd>['OrlandoMSA2/OrlandoMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="d6fced97-7bda-4009-83e8-37681aa2ebbf" class="xyz-checkbox">
+                <label for="d6fced97-7bda-4009-83e8-37681aa2ebbf">oz9799 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.oz9799</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/oz9799.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Monthly ozone data, 1997-99</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>30</dd><dt><span>ncols</span></dt><dd>78</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//oz96/</dd><dt><span>hash</span></dt><dd>1ecc7c46f5f42af6057dedc1b73f56b576cb9716d2c08d23cba98f639dfddb82</dd><dt><span>filename</span></dt><dd>oz9799.zip</dd><dt><span>members</span></dt><dd>['oz9799/oz9799.csv']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="117f8063-1c73-4cf5-831c-f1ef2e7ab0db" class="xyz-checkbox">
+                <label for="117f8063-1c73-4cf5-831c-f1ef2e7ab0db">phoenix_acs <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.phoenix_acs</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/phx2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Phoenix American Community Survey Data (2010, 5-year averages)</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>985</dd><dt><span>ncols</span></dt><dd>18</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//phx/</dd><dt><span>hash</span></dt><dd>b2f6e196bacb6f3fe1fc909af482e7e75b83d1f8363fc73038286364c13334ee</dd><dt><span>filename</span></dt><dd>phx2.zip</dd><dt><span>members</span></dt><dd>['phx/phx.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="5a5e738a-7beb-47e5-afba-88e0555fac4d" class="xyz-checkbox">
+                <label for="5a5e738a-7beb-47e5-afba-88e0555fac4d">police <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.police</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/police.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Police expenditures Mississippi counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>82</dd><dt><span>ncols</span></dt><dd>22</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//police/</dd><dt><span>hash</span></dt><dd>596270d62dea8207001da84883ac265591e5de053f981c7491e7b5c738e9e9ff</dd><dt><span>filename</span></dt><dd>police.zip</dd><dt><span>members</span></dt><dd>['police/police.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="8ff5a26e-3657-41c8-89d8-9c6b719994c7" class="xyz-checkbox">
+                <label for="8ff5a26e-3657-41c8-89d8-9c6b719994c7">sacramento1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.sacramento1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/sacramento.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Sacramento MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>403</dd><dt><span>ncols</span></dt><dd>32</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//sacramento1/</dd><dt><span>hash</span></dt><dd>72ddeb533cf2917dc1f458add7c6042b93c79b31316ae2d22f1c855a9da275f9</dd><dt><span>filename</span></dt><dd>sacramento.zip</dd><dt><span>members</span></dt><dd>['sacramento/sacramentot2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="aa276c3a-b315-4857-b0d0-0bb4023109dc" class="xyz-checkbox">
+                <label for="aa276c3a-b315-4857-b0d0-0bb4023109dc">sacramento2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.sacramento2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/SacramentoMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Sacramento MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>125</dd><dt><span>ncols</span></dt><dd>59</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//sacramento2/</dd><dt><span>hash</span></dt><dd>3f6899efd371804ea8bfaf3cdfd3ed4753ea4d009fed38a57c5bbf442ab9468b</dd><dt><span>filename</span></dt><dd>SacramentoMSA2.zip</dd><dt><span>members</span></dt><dd>['SacramentoMSA2/SacramentoMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="b743e688-1b77-461c-9528-1250cb3db4bb" class="xyz-checkbox">
+                <label for="b743e688-1b77-461c-9528-1250cb3db4bb">savannah1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.savannah1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/SavannahMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Savannah, GA MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>77</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//savannah1/</dd><dt><span>hash</span></dt><dd>df48c228776d2122c38935b2ebbf4cbb90c0bacc68df01161e653aab960e4208</dd><dt><span>filename</span></dt><dd>SavannahMSA.zip</dd><dt><span>members</span></dt><dd>['SavannahMSA/ga_final_census2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="f3492067-8e15-4c2c-909a-754d8a621f43" class="xyz-checkbox">
+                <label for="f3492067-8e15-4c2c-909a-754d8a621f43">savannah2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.savannah2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/SavannahMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Savannah, GA MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>24</dd><dt><span>ncols</span></dt><dd>60</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//savannah2/</dd><dt><span>hash</span></dt><dd>5b22b84a8665434cb91e800a039337f028b888082b8ef7a26d77eb6cc9aea8c1</dd><dt><span>filename</span></dt><dd>SavannahMSA2.zip</dd><dt><span>members</span></dt><dd>['SavannahMSA2/SavannahMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="61f475f3-e4df-4047-ab69-73e9f5e7b052" class="xyz-checkbox">
+                <label for="61f475f3-e4df-4047-ab69-73e9f5e7b052">seattle1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.seattle1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/SeattleMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Seattle, WA MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>664</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//seattle1/</dd><dt><span>hash</span></dt><dd>46fb75a30f0e7963e6108bdb19af4d7db4c72c3d5a020025cafa528c96e09daa</dd><dt><span>filename</span></dt><dd>SeattleMSA.zip</dd><dt><span>members</span></dt><dd>['SeattleMSA/wa_final_census2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="a4e5007c-17bd-4da0-a4a4-f51583983a2a" class="xyz-checkbox">
+                <label for="a4e5007c-17bd-4da0-a4a4-f51583983a2a">seattle2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.seattle2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/SeattleMSA2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>1998 and 2001 Zip Code Business Patterns (Census Bureau) for Seattle, WA MSA</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>145</dd><dt><span>ncols</span></dt><dd>60</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//seattle2/</dd><dt><span>hash</span></dt><dd>3dac2fa5b8c8dfa9dd5273a85de7281e06e18ab4f197925607f815f4e44e4d0c</dd><dt><span>filename</span></dt><dd>SeattleMSA2.zip</dd><dt><span>members</span></dt><dd>['SeattleMSA2/SeattleMSA2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="07c3aa54-c0ec-4e15-a21d-53a857e6293d" class="xyz-checkbox">
+                <label for="07c3aa54-c0ec-4e15-a21d-53a857e6293d">sids <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.sids</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/sids.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>North Carolina county SIDS death counts</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>100</dd><dt><span>ncols</span></dt><dd>15</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//sids/</dd><dt><span>hash</span></dt><dd>e2f7b210b9a57839423fd170e47c02cf7a2602a480a1036bb0324e1112a4eaab</dd><dt><span>filename</span></dt><dd>sids.zip</dd><dt><span>members</span></dt><dd>['sids/sids.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="45110ac2-4e22-4996-b014-e2edbb6fa72c" class="xyz-checkbox">
+                <label for="45110ac2-4e22-4996-b014-e2edbb6fa72c">sids2 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.sids2</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/sids2.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>North Carolina county SIDS death counts and rates</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>100</dd><dt><span>ncols</span></dt><dd>19</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//sids2/</dd><dt><span>hash</span></dt><dd>b5875ffbdb261e6fa75dc4580d67111ef1434203f2d6a5d63ffac16db3a14bd0</dd><dt><span>filename</span></dt><dd>sids2.zip</dd><dt><span>members</span></dt><dd>['sids2/sids2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="bd7ec3ec-4f45-4958-8c96-2c3b949eb1b7" class="xyz-checkbox">
+                <label for="bd7ec3ec-4f45-4958-8c96-2c3b949eb1b7">south <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.south</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/south.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>US Southern county homicides 1960-1990</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>1412</dd><dt><span>ncols</span></dt><dd>70</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//south/</dd><dt><span>hash</span></dt><dd>8f151d99c643b187aad37cfb5c3212353e1bc82804a4399a63de369490e56a7a</dd><dt><span>filename</span></dt><dd>south.zip</dd><dt><span>members</span></dt><dd>['south/south.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="a4418bb3-181b-4d38-a779-86c580ece0ff" class="xyz-checkbox">
+                <label for="a4418bb3-181b-4d38-a779-86c580ece0ff">spirals <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.spirals</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/spirals.csv</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>Synthetic spiral points</dd><dt><span>geometry_type</span></dt><dd>Point</dd><dt><span>nrows</span></dt><dd>300</dd><dt><span>ncols</span></dt><dd>2</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//spirals/</dd><dt><span>hash</span></dt><dd>3203b0a6db37c1207b0f1727c980814f541ce0a222597475f9c91540b1d372f1</dd><dt><span>filename</span></dt><dd>spirals.csv</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="2415f9d0-78b0-4951-b217-816f58f538c8" class="xyz-checkbox">
+                <label for="2415f9d0-78b0-4951-b217-816f58f538c8">stlouis <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.stlouis</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/stlouis.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>St Louis region county homicide counts and rates</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>78</dd><dt><span>ncols</span></dt><dd>24</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//stlouis/</dd><dt><span>hash</span></dt><dd>181a17a12e9a2b2bfc9013f399e149da935e0d5cb95c3595128f67898c4365f3</dd><dt><span>filename</span></dt><dd>stlouis.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="c81978e1-a44d-4b70-b607-941baa0e1e89" class="xyz-checkbox">
+                <label for="c81978e1-a44d-4b70-b607-941baa0e1e89">tampa1 <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.tampa1</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/TampaMSA.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2000 Census Tract Data for Tampa, FL MSA and counties</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>547</dd><dt><span>ncols</span></dt><dd>31</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//tampa1/</dd><dt><span>hash</span></dt><dd>9a7ea0746138f62aa589e8377edafea48a7b1be0cdca2b38798ba21665bfb463</dd><dt><span>filename</span></dt><dd>TampaMSA.zip</dd><dt><span>members</span></dt><dd>['TampaMSA/tampa_final_census2.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="5d4d7618-9294-4ec1-9bf0-1525714164e0" class="xyz-checkbox">
+                <label for="5d4d7618-9294-4ec1-9bf0-1525714164e0">us_sdoh <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.us_sdoh</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/us-sdoh-2014.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>2014 US Social Determinants of Health Data</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>71901</dd><dt><span>ncols</span></dt><dd>26</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//us-sdoh/</dd><dt><span>hash</span></dt><dd>076701725c4b67248f79c8b8a40e74f9ad9e194d3237e1858b3d20176a6562a5</dd><dt><span>filename</span></dt><dd>us-sdoh-2014.zip</dd><dt><span>members</span></dt><dd>['us-sdoh-2014/us-sdoh-2014.shp', 'us-sdoh-2014/us-sdoh-2014.dbf', 'us-sdoh-2014/us-sdoh-2014.shx', 'us-sdoh-2014/us-sdoh-2014.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="da6ab364-0ec4-4d6e-961e-368073819d75" class="xyz-checkbox">
+                <label for="da6ab364-0ec4-4d6e-961e-368073819d75">ny <span>geodatasets.Bunch</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">1 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="4d0d9ecb-9280-40df-b0a4-79b130620527" class="xyz-checkbox">
+                <label for="4d0d9ecb-9280-40df-b0a4-79b130620527">bb <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">ny.bb</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://www.nyc.gov/assets/planning/download/zip/data-maps/open-data/nybb_16a.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Department of City Planning (DCP)</dd><dt><span>description</span></dt><dd>The borough boundaries of New York City clipped to the shoreline at mean high tide for 2016.</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>details</span></dt><dd>https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm</dd><dt><span>nrows</span></dt><dd>5</dd><dt><span>ncols</span></dt><dd>5</dd><dt><span>hash</span></dt><dd>a303be17630990455eb079777a6b31980549e9096d66d41ce0110761a7e2f92a</dd><dt><span>filename</span></dt><dd>nybb_16a.zip</dd><dt><span>members</span></dt><dd>['nybb_16a/nybb.shp', 'nybb_16a/nybb.shx', 'nybb_16a/nybb.dbf', 'nybb_16a/nybb.prj']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="fe711d84-7011-467c-9da0-c4b2a8f26c5f" class="xyz-checkbox">
+                <label for="fe711d84-7011-467c-9da0-c4b2a8f26c5f">eea <span>geodatasets.Bunch</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">1 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="9e7a18ff-c1dd-4e50-9e27-5bde364f6e0b" class="xyz-checkbox">
+                <label for="9e7a18ff-c1dd-4e50-9e27-5bde364f6e0b">large_rivers <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">eea.large_rivers</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://www.eea.europa.eu/data-and-maps/data/wise-large-rivers-and-large-lakes/zipped-shapefile-with-wise-large-rivers-vector-line/zipped-shapefile-with-wise-large-rivers-vector-line/at_download/file</dd><dt><span>license</span></dt><dd>ODC-by</dd><dt><span>attribution</span></dt><dd>European Environmental Agency</dd><dt><span>description</span></dt><dd>Large rivers in Europe that have a catchment area large than 50,000 km2.</dd><dt><span>geometry_type</span></dt><dd>LineString</dd><dt><span>details</span></dt><dd>https://www.eea.europa.eu/data-and-maps/data/wise-large-rivers-and-large-lakes</dd><dt><span>nrows</span></dt><dd>20</dd><dt><span>ncols</span></dt><dd>3</dd><dt><span>hash</span></dt><dd>97b37b781cba30c2292122ba2bdfe2e156a791cefbdfedf611c8473facc6be50</dd><dt><span>filename</span></dt><dd>wise_large_rivers.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="83f188a6-c2ae-483a-9bb9-07e1211ba18a" class="xyz-checkbox">
+                <label for="83f188a6-c2ae-483a-9bb9-07e1211ba18a">abs <span>geodatasets.Bunch</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">2 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="868ada62-e11d-48a3-adc4-081faf891160" class="xyz-checkbox">
+                <label for="868ada62-e11d-48a3-adc4-081faf891160">australia <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">abs.australia</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files/AUS_2021_AUST_SHP_GDA2020.zip</dd><dt><span>license</span></dt><dd>CC BY 4.0</dd><dt><span>attribution</span></dt><dd>Australian Bureau of Statistics (ABS)</dd><dt><span>description</span></dt><dd>Australia land polygon including Norfolk Island, the Territory of Christmas Island, and the Territory of Cocos (Keeling) Islands.</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>2</dd><dt><span>ncols</span></dt><dd>7</dd><dt><span>details</span></dt><dd>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files</dd><dt><span>hash</span></dt><dd>086752a6b0b3978247be201f02e02cd4e3c4f36d4f4ca74802e6831083b67129</dd><dt><span>filename</span></dt><dd>AUS_2021_AUST_SHP_GDA2020.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="0af4720a-e94c-4ecb-b2cb-8586a097d0eb" class="xyz-checkbox">
+                <label for="0af4720a-e94c-4ecb-b2cb-8586a097d0eb">australia_states_territories <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">abs.australia_states_territories</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files/STE_2021_AUST_SHP_GDA2020.zip</dd><dt><span>license</span></dt><dd>CC BY 4.0</dd><dt><span>attribution</span></dt><dd>Australian Bureau of Statistics (ABS)</dd><dt><span>description</span></dt><dd>Australian state and territory boundaries.</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>10</dd><dt><span>ncols</span></dt><dd>9</dd><dt><span>details</span></dt><dd>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files</dd><dt><span>hash</span></dt><dd>d9b7f735de6085b37414faf011f796dda3c7f768c55e9dce01f96e790f399a21</dd><dt><span>filename</span></dt><dd>STE_2021_AUST_SHP_GDA2020.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+            <li class="xyz-child">
+                <input type="checkbox" id="0e7ad552-f914-4e42-baaa-d516c00a42ca" class="xyz-checkbox">
+                <label for="0e7ad552-f914-4e42-baaa-d516c00a42ca">naturalearth <span>geodatasets.Bunch</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Bunch</div>
+                    <div class="xyz-name">1 items</div>
+                </div>
+                <div class="xyz-details">
+                    <ul class="xyz-collapsible">
+                        
+            <li class="xyz-child">
+                <input type="checkbox" id="a6a8ae50-1a91-416e-be4a-a9ef1440130f" class="xyz-checkbox">
+                <label for="a6a8ae50-1a91-416e-be4a-a9ef1440130f">land <span>geodatasets.Dataset</span></label>
+                <div class="xyz-inside">
+                    
+        <div>
+        
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">naturalearth.land</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip</dd><dt><span>license</span></dt><dd>CC0</dd><dt><span>attribution</span></dt><dd>Natural Earth</dd><dt><span>description</span></dt><dd>Land polygons including major islands in a 1:110m resolution.</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>details</span></dt><dd>https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/</dd><dt><span>nrows</span></dt><dd>127</dd><dt><span>ncols</span></dt><dd>4</dd><dt><span>hash</span></dt><dd>1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de</dd><dt><span>filename</span></dt><dd>ne_110m_land.zip</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                </div>
+            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+</div>
+</div>
+<p>We choose the dataset of Sudden Infant Death (SIDS) counts from counties in North Carolina. We can see some meta information about that dataset.</p>
+<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.298718Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.298430Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.302559Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.302062Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>geodatasets.data.geoda.sids</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+        <div>
+        <style>
+/* CSS stylesheet for displaying geodatasets objects in Jupyter.*/
+.xyz-wrap {
+    --xyz-border-color: var(--jp-border-color2, #ddd);
+    --xyz-font-color2: var(--jp-content-font-color2, rgba(128, 128, 128, 1));
+    --xyz-background-color-white: var(--jp-layout-color1, white);
+    --xyz-background-color: var(--jp-layout-color2, rgba(128, 128, 128, 0.1));
+}
+
+html[theme=dark] .xyz-wrap,
+body.vscode-dark .xyz-wrap,
+body.vscode-high-contrast .xyz-wrap {
+    --xyz-border-color: #222;
+    --xyz-font-color2: rgba(255, 255, 255, 0.54);
+    --xyz-background-color-white: rgba(255, 255, 255, 1);
+    --xyz-background-color: rgba(255, 255, 255, 0.05);
+
+}
+
+.xyz-header {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+    border-bottom: solid 1px var(--xyz-border-color);
+}
+
+.xyz-header>div {
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.xyz-obj,
+.xyz-name {
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+.xyz-obj {
+    color: var(--xyz-font-color2);
+}
+
+.xyz-attrs {
+    grid-column: 1 / -1;
+}
+
+dl.xyz-attrs {
+    padding: 0 5px 0 5px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 135px auto;
+    background-color: var(--xyz-background-color);
+}
+
+.xyz-attrs dt,
+dd {
+    padding: 0;
+    margin: 0;
+    float: left;
+    padding-right: 10px;
+    width: auto;
+}
+
+.xyz-attrs dt {
+    font-weight: normal;
+    grid-column: 1;
+}
+
+.xyz-attrs dd {
+    grid-column: 2;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.xyz-details ul>li>label>span {
+    color: var(--xyz-font-color2);
+    padding-left: 10px;
+}
+
+.xyz-inside {
+    display: none;
+}
+
+.xyz-checkbox:checked~.xyz-inside {
+    display: contents;
+}
+
+.xyz-collapsible li>input {
+    display: none;
+}
+
+.xyz-collapsible>li>label {
+    cursor: pointer;
+}
+
+.xyz-collapsible>li>label:hover {
+    color: var(--xyz-font-color2);
+}
+
+ul.xyz-collapsible {
+    list-style: none!important;
+    padding-left: 20px!important;
+}
+
+.xyz-checkbox+label:before {
+    content: '►';
+    font-size: 11px;
+}
+
+.xyz-checkbox:checked+label:before {
+    content: '▼';
+}
+
+.xyz-wrap {
+    margin-bottom: 10px;
+}
+</style>
+            <div class="xyz-wrap">
+                <div class="xyz-header">
+                    <div class="xyz-obj">geodatasets.Dataset</div>
+                    <div class="xyz-name">geoda.sids</div>
+                </div>
+                <div class="xyz-details">
+                    <dl class="xyz-attrs">
+                        <dt><span>url</span></dt><dd>https://geodacenter.github.io/data-and-lab//data/sids.zip</dd><dt><span>license</span></dt><dd>NA</dd><dt><span>attribution</span></dt><dd>Center for Spatial Data Science, University of Chicago</dd><dt><span>description</span></dt><dd>North Carolina county SIDS death counts</dd><dt><span>geometry_type</span></dt><dd>Polygon</dd><dt><span>nrows</span></dt><dd>100</dd><dt><span>ncols</span></dt><dd>15</dd><dt><span>details</span></dt><dd>https://geodacenter.github.io/data-and-lab//sids/</dd><dt><span>hash</span></dt><dd>e2f7b210b9a57839423fd170e47c02cf7a2602a480a1036bb0324e1112a4eaab</dd><dt><span>filename</span></dt><dd>sids.zip</dd><dt><span>members</span></dt><dd>['sids/sids.gpkg']</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+</div>
+</div>
+<p>Download the dataset we want (it is automatically cached).</p>
+<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.305560Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.305323Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.310322Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.309718Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>geodatasets.fetch(<span class="st">"geoda sids"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read data</p>
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.312915Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.312720Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.361267Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.360729Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sids <span class="op">=</span> gp.read_file(geodatasets.get_path(<span class="st">"geoda.sids"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sids.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AREA</th>
+<th data-quarto-table-cell-role="th">PERIMETER</th>
+<th data-quarto-table-cell-role="th">CNTY_</th>
+<th data-quarto-table-cell-role="th">CNTY_ID</th>
+<th data-quarto-table-cell-role="th">NAME</th>
+<th data-quarto-table-cell-role="th">FIPS</th>
+<th data-quarto-table-cell-role="th">FIPSNO</th>
+<th data-quarto-table-cell-role="th">CRESS_ID</th>
+<th data-quarto-table-cell-role="th">BIR74</th>
+<th data-quarto-table-cell-role="th">SID74</th>
+<th data-quarto-table-cell-role="th">NWBIR74</th>
+<th data-quarto-table-cell-role="th">BIR79</th>
+<th data-quarto-table-cell-role="th">SID79</th>
+<th data-quarto-table-cell-role="th">NWBIR79</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.114</td>
+<td>1.442</td>
+<td>1825</td>
+<td>1825</td>
+<td>Ashe</td>
+<td>37009</td>
+<td>37009</td>
+<td>5</td>
+<td>1091.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>1364.0</td>
+<td>0.0</td>
+<td>19.0</td>
+<td>POLYGON ((-81.47276 36.23436, -81.54084 36.272...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.061</td>
+<td>1.231</td>
+<td>1827</td>
+<td>1827</td>
+<td>Alleghany</td>
+<td>37005</td>
+<td>37005</td>
+<td>3</td>
+<td>487.0</td>
+<td>0.0</td>
+<td>10.0</td>
+<td>542.0</td>
+<td>3.0</td>
+<td>12.0</td>
+<td>POLYGON ((-81.23989 36.36536, -81.24069 36.379...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.143</td>
+<td>1.630</td>
+<td>1828</td>
+<td>1828</td>
+<td>Surry</td>
+<td>37171</td>
+<td>37171</td>
+<td>86</td>
+<td>3188.0</td>
+<td>5.0</td>
+<td>208.0</td>
+<td>3616.0</td>
+<td>6.0</td>
+<td>260.0</td>
+<td>POLYGON ((-80.45634 36.24256, -80.47639 36.254...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.070</td>
+<td>2.968</td>
+<td>1831</td>
+<td>1831</td>
+<td>Currituck</td>
+<td>37053</td>
+<td>37053</td>
+<td>27</td>
+<td>508.0</td>
+<td>1.0</td>
+<td>123.0</td>
+<td>830.0</td>
+<td>2.0</td>
+<td>145.0</td>
+<td>MULTIPOLYGON (((-76.00897 36.3196, -76.01735 3...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.153</td>
+<td>2.206</td>
+<td>1832</td>
+<td>1832</td>
+<td>Northampton</td>
+<td>37131</td>
+<td>37131</td>
+<td>66</td>
+<td>1421.0</td>
+<td>9.0</td>
+<td>1066.0</td>
+<td>1606.0</td>
+<td>3.0</td>
+<td>1197.0</td>
+<td>POLYGON ((-77.21767 36.24098, -77.23461 36.214...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The <code>sids</code> data has two periods <code>1974 - 1978</code> and <code>1979 - 1985</code>. For each period there is a number of births and a number of deaths. We want to visually compare the deaths per 1000 in each county for the two periods.</p>
+<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.364232Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.363902Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:05.392610Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:05.392046Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sids.copy()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the death per 1000</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"1974 - 1978"</span>] <span class="op">=</span> (data[<span class="st">"SID74"</span>] <span class="op">/</span> data[<span class="st">"BIR74"</span>]) <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"1979 - 1984"</span>] <span class="op">=</span> (data[<span class="st">"SID79"</span>] <span class="op">/</span> data[<span class="st">"BIR79"</span>]) <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate center coordinates for the counties</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"center_lon"</span>] <span class="op">=</span> good_centroid(data.geometry).x</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"center_lat"</span>] <span class="op">=</span> good_centroid(data.geometry).y</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the data</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.melt(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"NAME"</span>, <span class="st">"geometry"</span>, <span class="st">"center_lon"</span>, <span class="st">"center_lat"</span>],</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"1974 - 1978"</span>, <span class="st">"1979 - 1984"</span>],</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"period"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"deaths_per_1k"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>).rename(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"NAME"</span>: <span class="st">"county"</span>},</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">county</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">center_lon</th>
+<th data-quarto-table-cell-role="th">center_lat</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">deaths_per_1k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Ashe</td>
+<td>POLYGON ((-81.47276 36.23436, -81.54084 36.272...</td>
+<td>-81.498245</td>
+<td>36.431263</td>
+<td>1974 - 1978</td>
+<td>0.916590</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Alleghany</td>
+<td>POLYGON ((-81.23989 36.36536, -81.24069 36.379...</td>
+<td>-81.125138</td>
+<td>36.490963</td>
+<td>1974 - 1978</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Surry</td>
+<td>POLYGON ((-80.45634 36.24256, -80.47639 36.254...</td>
+<td>-80.685736</td>
+<td>36.412381</td>
+<td>1974 - 1978</td>
+<td>1.568381</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Currituck</td>
+<td>MULTIPOLYGON (((-76.00897 36.3196, -76.01735 3...</td>
+<td>-76.027392</td>
+<td>36.407026</td>
+<td>1974 - 1978</td>
+<td>1.968504</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Northampton</td>
+<td>POLYGON ((-77.21767 36.24098, -77.23461 36.214...</td>
+<td>-77.410484</td>
+<td>36.422110</td>
+<td>1974 - 1978</td>
+<td>6.333568</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Plot the data</p>
+<div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:05.396675Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:05.396405Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:06.977507Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:06.976996Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, maps</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    ggplot(data)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(aes(fill<span class="op">=</span><span class="st">"deaths_per_1k"</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        aes(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"center_lon"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"center_lat"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="st">"county"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>stage(<span class="st">"deaths_per_1k"</span>, after_scale<span class="op">=</span><span class="st">"overlay_color(color)"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        show_legend<span class="op">=</span><span class="va">False</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_continuous(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Deaths Per 1000"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        cmap_name<span class="op">=</span><span class="st">"plasma"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        breaks<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">2.5</span>, <span class="dv">5</span>, <span class="fl">7.5</span>, <span class="dv">10</span>],</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>[<span class="st">"0"</span>, <span class="st">"2.5"</span>, <span class="st">"5"</span>, <span class="st">"7.5"</span>, <span class="st">"10"</span>],</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        limits<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">10</span>],</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"period"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        ncol<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        labeller<span class="op">=</span><span class="kw">lambda</span> s: <span class="ss">f"Sudden Infant Deaths in the Period </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> coord_fixed(expand<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        figure_size<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>),</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        legend_position<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        legend_direction<span class="op">=</span><span class="st">"horizontal"</span>,</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        legend_title_position<span class="op">=</span><span class="st">"top"</span>,</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        plot_margin<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"white"</span>),</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        panel_spacing<span class="op">=</span><span class="fl">0.025</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        legend_frame<span class="op">=</span>element_rect(color<span class="op">=</span><span class="st">"black"</span>),</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        legend_ticks<span class="op">=</span>element_line(color<span class="op">=</span><span class="st">"black"</span>),</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>        strip_text<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_map_files/figure-html/examples-geom_map-cell-9-output-1.png" width="1200" height="800" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="the-territories-of-westeros" class="level3">
 <h3 class="anchored" data-anchor-id="the-territories-of-westeros">The Territories of Westeros</h3>
 <p><em>Layering different features on a Map</em></p>
 <p>Read data and select features in Westeros only.</p>
-<div id="cell-3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:25.410333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:25.409944Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:26.053504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:26.052859Z&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>continents <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/continents.shp"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>islands <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/islands.shp"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lakes <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/lakes.shp"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>rivers <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/rivers.shp"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>political <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/political.shp"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/wall.shp"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>roads <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/roads.shp"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>locations <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/locations.shp"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>westeros <span class="op">=</span> continents.query(<span class="st">'name=="Westeros"'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>islands <span class="op">=</span> islands.query(<span class="st">'continent=="Westeros" and name!="Summer Islands"'</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>lakes <span class="op">=</span> lakes.query(<span class="st">'continent=="Westeros"'</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>rivers <span class="op">=</span> rivers.query(<span class="st">'continent=="Westeros"'</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>roads <span class="op">=</span> roads.query(<span class="st">'continent=="Westeros"'</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>wg <span class="op">=</span> westeros.geometry[<span class="dv">0</span>]</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>bool_idx <span class="op">=</span> [wg.contains(g) <span class="cf">for</span> g <span class="kw">in</span> locations.geometry]</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>westeros_locations <span class="op">=</span> locations[bool_idx]</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> westeros_locations[westeros_locations[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"City"</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:06.988069Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:06.987738Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:07.214248Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:07.213468Z&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>continents <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/continents.shp"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>islands <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/islands.shp"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lakes <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/lakes.shp"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>rivers <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/rivers.shp"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>political <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/political.shp"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/wall.shp"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>roads <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/roads.shp"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>locations <span class="op">=</span> gp.read_file(<span class="st">"data/lands-of-ice-and-fire/locations.shp"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>westeros <span class="op">=</span> continents.query(<span class="st">'name=="Westeros"'</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>islands <span class="op">=</span> islands.query(<span class="st">'continent=="Westeros" and name!="Summer Islands"'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>lakes <span class="op">=</span> lakes.query(<span class="st">'continent=="Westeros"'</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>rivers <span class="op">=</span> rivers.query(<span class="st">'continent=="Westeros"'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>roads <span class="op">=</span> roads.query(<span class="st">'continent=="Westeros"'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>wg <span class="op">=</span> westeros.geometry[<span class="dv">0</span>]</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>bool_idx <span class="op">=</span> [wg.contains(g) <span class="cf">for</span> g <span class="kw">in</span> locations.geometry]</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>westeros_locations <span class="op">=</span> locations[bool_idx]</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> westeros_locations[westeros_locations[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"City"</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create map by placing the features in layers in an order that limits obstraction.</p>
 <p>The <code>GeoDataFrame.geometry.centroid</code> property has the center coordinates of polygons, we use these to place the labels of the political regions.</p>
-<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:26.056987Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:26.056651Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:27.838122Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:27.837571Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, maps</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># colors</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>water_color <span class="op">=</span> <span class="st">"#a3ccff"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>wall_color <span class="op">=</span> <span class="st">"white"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>road_color <span class="op">=</span> <span class="st">"brown"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create label text by merging the territory name and</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the claimant to the territory</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmt_labels(names, claimants):</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> []</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, claimant <span class="kw">in</span> <span class="bu">zip</span>(names, claimants):</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name:</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            labels.append(<span class="st">"</span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{}</span><span class="st">)"</span>.<span class="bu">format</span>(name, claimant))</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            labels.append(<span class="st">"(</span><span class="sc">{}</span><span class="st">)"</span>.<span class="bu">format</span>(claimant))</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_center(df):</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate the centre of a geometry</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">    This method first converts to a planar crs, gets the centroid</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">    then converts back to the original crs. This gives a more</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">    accurate</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    original_crs <span class="op">=</span> df.crs</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    planar_crs <span class="op">=</span> <span class="st">"EPSG:3857"</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df[<span class="st">"geometry"</span>].to_crs(planar_crs).centroid.to_crs(original_crs)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>political[<span class="st">"center"</span>] <span class="op">=</span> calculate_center(political)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>cities[<span class="st">"center"</span>] <span class="op">=</span> calculate_center(cities)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    ggplot()</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(westeros, fill<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(islands, fill<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(political, aes(fill<span class="op">=</span><span class="st">"ClaimedBy"</span>), color<span class="op">=</span><span class="va">None</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(wall, color<span class="op">=</span>wall_color, size<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(lakes, fill<span class="op">=</span>water_color, color<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(rivers, aes(size<span class="op">=</span><span class="st">"size"</span>), color<span class="op">=</span>water_color, show_legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(roads, aes(size<span class="op">=</span><span class="st">"size"</span>), color<span class="op">=</span>road_color, alpha<span class="op">=</span><span class="fl">0.5</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(cities, size<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        political,</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        aes(<span class="st">"center.x"</span>, <span class="st">"center.y"</span>, label<span class="op">=</span><span class="st">"fmt_labels(name, ClaimedBy)"</span>),</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        cities,</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        aes(<span class="st">"center.x"</span>, <span class="st">"center.y"</span>, label<span class="op">=</span><span class="st">"name"</span>),</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>        nudge_x<span class="op">=</span><span class="fl">0.20</span>,</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"The Political Territories of Westeros"</span>)</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_brewer(<span class="bu">type</span><span class="op">=</span><span class="st">"qual"</span>, palette<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_continuous(<span class="bu">range</span><span class="op">=</span>(<span class="fl">0.4</span>, <span class="dv">1</span>))</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> coord_cartesian()</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">12</span>), panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span>water_color))</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-09-20T19:41:07.217457Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-09-20T19:41:07.217219Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-09-20T19:41:08.110198Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-09-20T19:41:08.109663Z&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, maps</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># colors</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>water_color <span class="op">=</span> <span class="st">"#a3ccff"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>wall_color <span class="op">=</span> <span class="st">"white"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>road_color <span class="op">=</span> <span class="st">"brown"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create label text by merging the territory name and</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the claimant to the territory</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmt_labels(names, claimants):</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> []</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, claimant <span class="kw">in</span> <span class="bu">zip</span>(names, claimants):</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name:</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            labels.append(<span class="st">"</span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{}</span><span class="st">)"</span>.<span class="bu">format</span>(name, claimant))</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>            labels.append(<span class="st">"(</span><span class="sc">{}</span><span class="st">)"</span>.<span class="bu">format</span>(claimant))</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> labels</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_center(df):</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate the centre of a geometry</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co">    This method first converts to a planar crs, gets the centroid</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co">    then converts back to the original crs. This gives a more</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co">    accurate</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    original_crs <span class="op">=</span> df.crs</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    planar_crs <span class="op">=</span> <span class="st">"EPSG:3857"</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df[<span class="st">"geometry"</span>].to_crs(planar_crs).centroid.to_crs(original_crs)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>political[<span class="st">"center"</span>] <span class="op">=</span> calculate_center(political)</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>cities[<span class="st">"center"</span>] <span class="op">=</span> calculate_center(cities)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    ggplot()</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(westeros, fill<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(islands, fill<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(political, aes(fill<span class="op">=</span><span class="st">"ClaimedBy"</span>), color<span class="op">=</span><span class="va">None</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(wall, color<span class="op">=</span>wall_color, size<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(lakes, fill<span class="op">=</span>water_color, color<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(rivers, aes(size<span class="op">=</span><span class="st">"size"</span>), color<span class="op">=</span>water_color, show_legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(roads, aes(size<span class="op">=</span><span class="st">"size"</span>), color<span class="op">=</span>road_color, alpha<span class="op">=</span><span class="fl">0.5</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(cities, size<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>        political,</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        aes(<span class="st">"center.x"</span>, <span class="st">"center.y"</span>, label<span class="op">=</span><span class="st">"fmt_labels(name, ClaimedBy)"</span>),</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>        cities,</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>        aes(<span class="st">"center.x"</span>, <span class="st">"center.y"</span>, label<span class="op">=</span><span class="st">"name"</span>),</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>        nudge_x<span class="op">=</span><span class="fl">0.20</span>,</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"The Political Territories of Westeros"</span>)</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_brewer(<span class="bu">type</span><span class="op">=</span><span class="st">"qual"</span>, palette<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_continuous(<span class="bu">range</span><span class="op">=</span>(<span class="fl">0.4</span>, <span class="dv">1</span>))</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> coord_cartesian()</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">12</span>), panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span>water_color))</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_map_files/figure-html/examples-geom_map-cell-4-output-1.png" width="800" height="1200" class="figure-img"></p>
+<p><img src="geom_map_files/figure-html/examples-geom_map-cell-11-output-1.png" width="800" height="1200" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Credit</strong>: <a href="https://www.cartographersguild.com/member.php?u=95244">cadaei</a> of the <a href="https://www.cartographersguild.com/">cartographersguild</a> website forum.</p>
 </section>
-<a class="quarto-notebook-link" id="nblink-1" href="examples/geom_map-preview.html#cell-0">Source: The Territories of Westeros</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="examples/geom_map-preview.html#cell-0">Source: A Map from `geodatasets`</a></div>
 
 
 </section>
