@@ -1,6 +1,10 @@
 .PHONY: help Makefile plotnine-examples
 .DEFAULT_GOAL := help
 
+SOURCE_DIR=source
+SITE_DIR=$(SOURCE_DIR)/_site
+PYTHON ?= python
+
 define PRINT_HELP_PYSCRIPT
 import re, sys
 
@@ -43,16 +47,16 @@ help:
 
 ## Remove Quarto website build files
 clean:
-	rm -rf _site
-	rm -rf _extensions
-	rm -rf images
-	rm -rf reference
-	rm -f _variables.yml
-	rm -f changelog.qmd
-	rm -f qrenderer.scss
-	rm -f plotnine.scss
-	rm -f objects.txt
-	rm -f objects.inv
+	rm -rf $(SITE_DIR)/
+	rm -rf $(SOURCE_DIR)/_extensions
+	rm -rf $(SOURCE_DIR)/images
+	rm -rf $(SOURCE_DIR)/reference
+	rm -f  $(SOURCE_DIR)/_variables.yml
+	rm -f  $(SOURCE_DIR)/changelog.qmd
+	rm -f  $(SOURCE_DIR)/qrenderer.scss
+	rm -f  $(SOURCE_DIR)/plotnine.scss
+	rm -f  $(SOURCE_DIR)/objects.txt
+	rm -f  $(SOURCE_DIR)/objects.inv
 	cd plotnine/doc && make clean
 
 ## Update git submodules to commits referenced in this repository
@@ -91,7 +95,7 @@ deps:
 
 ## Setup notebooks from plotnine-examples
 plotnine-examples:
-	python _plotnine_examples.py
+	$(PYTHON) ./scripts/get_plotnine_examples.py
 
 ## Build plotnine API qmd pages
 api-pages: plotnine-examples
@@ -100,36 +104,37 @@ api-pages: plotnine-examples
 ## Copy API artefacts into website
 copy-api-artefacts: api-pages
 	# Copy all relevant files
-	rsync -av plotnine/doc/_extensions .
-	rsync -av plotnine/doc/images .
-	rsync -av plotnine/doc/reference .
-	rsync -av plotnine/doc/_variables.yml .
-	rsync -av plotnine/doc/changelog.qmd .
-	rsync -av plotnine/doc/qrenderer.scss .
-	rsync -av plotnine/doc/plotnine.scss .
-	rsync -av plotnine/doc/objects.txt .
-	rsync -av plotnine/doc/objects.inv .
+	rsync -av plotnine/doc/_extensions $(SOURCE_DIR)
+	rsync -av plotnine/doc/images $(SOURCE_DIR)
+	rsync -av plotnine/doc/reference $(SOURCE_DIR)
+	rsync -av plotnine/doc/_variables.yml $(SOURCE_DIR)
+	rsync -av plotnine/doc/changelog.qmd $(SOURCE_DIR)
+	rsync -av plotnine/doc/qrenderer.scss $(SOURCE_DIR)
+	rsync -av plotnine/doc/plotnine.scss $(SOURCE_DIR)
+	rsync -av plotnine/doc/objects.txt $(SOURCE_DIR)
+	rsync -av plotnine/doc/objects.inv $(SOURCE_DIR)
 	# Correct
-	python _patch_api_artefacts.py
+	$(PYTHON) ./scripts/patch_api_artefacts.py
 
 ## Download interlinks
 interlinks:
-	quartodoc interlinks
+	cd $(SOURCE_DIR) && quartodoc interlinks
 
 ## Build all pages for the website
 pages: copy-api-artefacts
 	# Create gallery and tutorials pages
-	python gallery/_create.py
-	python tutorials/_create.py
+	$(PYTHON) ./scripts/create_gallery.py
+	$(PYTHON) ./scripts/create_tutorials.py
 
 ## Build website
 site: pages
-	quarto render
-	touch _site/.nojekyll
+	cd $(SOURCE_DIR) && quarto render
+	$(PYTHON) ./scripts/postprocess_site.py $(SOURCE_DIR)/_quarto.yml
+	touch $(SITE_DIR)/.nojekyll
 
 ## Build website in a new environment
 site-cold: deps interlinks site
 
 ## Build website and serve
 preview:
-	quarto preview
+	cd $(SOURCE_DIR) && quarto preview

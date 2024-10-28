@@ -15,16 +15,16 @@ from quartodoc.pandoc.components import Attr
 from quartodoc.pandoc.inlines import Image, Link
 
 THIS_DIR = Path(__file__).parent
-ROOT_DIR = THIS_DIR.parent
+SOURCE_DIR = THIS_DIR.parent / "source"
+GALLERY_DIR = SOURCE_DIR / "gallery"
+EXAMPLES_DIR = SOURCE_DIR / "reference/examples"
 
 # String in code cell that creates an image that will be in the gallery
 GALLERY_TAG = "# Gallery Plot"
-DOC_DIR = ROOT_DIR / "plotnine/doc"
-EXAMPLES_DIR = DOC_DIR / "reference" / "examples"
-THUMBNAILS_DIR = Path("thumbnails")
+THUMBNAILS_DIR = GALLERY_DIR / "thumbnails"
 THUMBNAIL_SIZE = (294, 210)
 
-gallery_page = ROOT_DIR / "gallery/index.qmd"
+gallery_page = GALLERY_DIR / "index.qmd"
 sanitize_patterns = [
     (re.compile(r"[^\w\s]|"), ""),  # keep letters and spaces
     (re.compile(r"\s+"), " "), # remove double spaces
@@ -33,8 +33,8 @@ sanitize_patterns = [
 GALLERY_RE = re.compile(r"^# Gallery, (?P<category>\w+)$", flags=re.MULTILINE)
 
 NOTEBOOK_PATHS = [
-    Path("reference/examples"),
-    Path("tutorials"),
+    SOURCE_DIR / "reference/examples",
+    SOURCE_DIR / "tutorials",
 ]
 
 # The order here determines order of the sections in
@@ -167,20 +167,22 @@ def get_gallery_images_in_notebook(
     #    /reference/geom_point.qmd
     # These gallery images should point to the qmd file
 
+    nb_relpath = nb_filepath.relative_to(SOURCE_DIR)
     target_tpl = (
         f"/reference/{notebook_name}.qmd#{{anchor}}"
-        if nb_filepath.is_relative_to("reference/examples")
-        else f"/{nb_filepath}#{{anchor}}"
+        if nb_filepath.is_relative_to(EXAMPLES_DIR)
+        else f"/{nb_relpath}#{{anchor}}"
     )
 
     for preceeding_cells, output_node, m in gallery_output_nodes:
         title = get_gallery_image_title(preceeding_cells)
         anchor = sanitize_filename(title)
         target = target_tpl.format(anchor=anchor)
-        relpath = THUMBNAILS_DIR / f"{notebook_name}-{anchor}.png"
-        create_thumbnail(output_node, THIS_DIR / relpath)
+        thumb_path = THUMBNAILS_DIR / f"{notebook_name}-{anchor}.png"
+        rel_thumb_path = thumb_path.relative_to(thumb_path.parent.parent)
+        create_thumbnail(output_node, thumb_path)
         category = m.group("category")
-        yield GalleryImage(relpath, title, target, category)
+        yield GalleryImage(rel_thumb_path, title, target, category)
 
 
 def get_gallery_images(

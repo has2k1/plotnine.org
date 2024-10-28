@@ -8,9 +8,10 @@ from quartodoc.pandoc.blocks import Blocks, BlockContent, Div
 from quartodoc.pandoc.inlines import Link
 
 THIS_DIR = Path(__file__).parent
-ROOT_DIR = THIS_DIR.parent
+SOURCE_DIR = THIS_DIR.parent / "source"
+TUTORIALS_DIR = SOURCE_DIR / "tutorials"
 
-tutorials_page = ROOT_DIR / "tutorials/index.qmd"
+tutorials_page = TUTORIALS_DIR / "index.qmd"
 
 
 def get_tutorial_title(filepath: Path) -> str:
@@ -37,9 +38,9 @@ def render_tutorials_items() -> BlockContent:
     :
         Links to tutorial pages in markdown format.
     """
-    notebooks = [p for p in THIS_DIR.glob("*.ipynb") if p.stem != "index"]
+    notebooks = [p for p in TUTORIALS_DIR.glob("*.ipynb") if p.stem != "index"]
     link_titles_and_paths = [
-        (get_tutorial_title(f), f.relative_to(THIS_DIR)) for f in notebooks
+        (get_tutorial_title(f), f.relative_to(TUTORIALS_DIR)) for f in notebooks
     ]
     links = [Link(t, str(p)) for t, p in link_titles_and_paths]
     return BulletList(links)

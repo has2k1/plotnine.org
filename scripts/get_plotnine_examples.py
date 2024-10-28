@@ -5,17 +5,23 @@ import hashlib
 import shutil
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).parent
+THIS_DIR = Path(__file__).parent
+ROOT_DIR = THIS_DIR.parent
+SOURCE_DIR = ROOT_DIR / "source"
+PLOTNINE_DIR = ROOT_DIR / "source"
 
 # list of (source, destination) folders
 NOTEBOOK_PATHS = [
+    # The examples are built together with the plotnine api/reference
+    # docs. So they have to be copied into the submodule.
     (
         ROOT_DIR / "plotnine-examples/plotnine_examples/examples",
         ROOT_DIR / "plotnine/doc/reference/examples",
     ),
+    # The tutorials are built as part of the wider website.
     (
         ROOT_DIR / "plotnine-examples/plotnine_examples/tutorials",
-        ROOT_DIR / "tutorials",
+        SOURCE_DIR / "tutorials",
     ),
 ]
 

@@ -4,22 +4,23 @@
 # are not required
 from pathlib import Path
 
+SOURCE_DIR = Path(__file__).parent.parent / "source"
 
-def set_release_date():
+def cleanup_v0_14_0_changelog():
     """
-    Use this method to insert a release date if it was forgotten
+    Remove (not-yet-released)
     """
-    # Forget to set the release date
-    file = Path("changelog.qmd")
+    file = SOURCE_DIR / "changelog.qmd"
     contents = (
         file
         .read_text()
         .replace(
-            "## v0.13.2\n(not-yet-released)", "## v0.13.2\n(2024-03-14)"
+            "## v0.14.0\n(2024-10-28)\n\n(not-yet-released)",
+            "## v0.14.0\n(2024-10-28)\n"
         )
     )
     file.write_text(contents)
 
 
 if __name__ == "__main__":
-    set_release_date()
+    cleanup_v0_14_0_changelog()
