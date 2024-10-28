@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../images/favicon.ico" rel="icon">
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </header>
 <div class="doc-signature doc-class">
-<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stat(mapping<span class="op">=</span><span class="va">None</span>, data<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stat(mapping<span class="op">=</span><span class="va">None</span>, data<span class="op">=</span><span class="va">None</span>, kwargs<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Base class of all stats</p>
@@ -341,11 +341,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><a href="#plotnine.stats.stat.stat.setup_data">setup_data</a></td>
-<td>Overide to modify data before compute_layer is called</td>
+<td>Override to modify data before compute_layer is called</td>
 </tr>
 <tr class="even">
 <td><a href="#plotnine.stats.stat.stat.setup_params">setup_params</a></td>
-<td>Overide this to verify or adjust parameters</td>
+<td>Override this to verify or adjust parameters</td>
 </tr>
 <tr class="odd">
 <td><a href="#plotnine.stats.stat.stat.to_layer">to_layer</a></td>
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.stats.stat.stat.compute_group" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.stats.stat.stat.compute_group"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">compute_group</span> <span class="doc-labels"><code class="doc-label doc-label-classmethod"></code></span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>compute_group(data, scales, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>compute_group(data, scales, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Calculate statistics for the group</p>
@@ -430,12 +430,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.stats.stat.stat.compute_panel" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.stats.stat.stat.compute_panel"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">compute_panel</span> <span class="doc-labels"><code class="doc-label doc-label-classmethod"></code></span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb6"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>compute_panel(data, scales, <span class="op">**</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>compute_panel(data, scales, params<span class="op">=</span>{})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Calculate the statistics for all the groups</p>
 <p>Return the results in a single dataframe.</p>
-<p>This is a default function that can be overriden by individual stats</p>
+<p>This is a default function that can be overridden by individual stats</p>
 </div>
 <section id="parameters-2" class="level4 doc-parameters">
 <h4 class="doc-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt><code><span class="doc-parameter-name">params</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</span></code></dt>
 <dd>
-<p>Paremeters</p>
+<p>Parameters</p>
 </dd>
 </dl>
 </div>
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb11"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>setup_data(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
-<p>Overide to modify data before compute_layer is called</p>
+<p>Override to modify data before compute_layer is called</p>
 </div>
 <section id="parameters-5" class="level4 doc-parameters">
 <h4 class="doc-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
@@ -579,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb12"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>setup_params(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
-<p>Overide this to verify or adjust parameters</p>
+<p>Override this to verify or adjust parameters</p>
 </div>
 <section id="parameters-6" class="level4 doc-parameters">
 <h4 class="doc-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>

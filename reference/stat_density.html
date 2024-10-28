@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../images/favicon.ico" rel="icon">
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -215,8 +215,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    bw<span class="op">=</span><span class="st">"nrd0"</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    cut<span class="op">=</span><span class="dv">3</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    clip<span class="op">=</span>(<span class="op">-</span>inf, inf),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    bounds<span class="op">=</span>(<span class="op">-</span>inf, inf),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Compute density estimate</p>
@@ -320,6 +321,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dt><code><span class="doc-parameter-name">clip</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<a href="https://docs.python.org/3/library/functions.html#float">float</a>, <a href="https://docs.python.org/3/library/functions.html#float">float</a>]</span> <span class="doc-parameter-default-sep">=</span> <span class="doc-parameter-default">(-inf, inf)</span></code></dt>
 <dd>
 <p>Values in <code>x</code> that are outside of the range given by clip are dropped. The number of values in <code>x</code> is then shortened.</p>
+</dd>
+<dt><code><span class="doc-parameter-name">bounds</span></code></dt>
+<dd>
+<p>The domain boundaries of the data. When the domain is finite the estimated density will be corrected to remove asymptotic boundary effects that are usually biased away from the probability density function being estimated.</p>
 </dd>
 <dt><code><span class="doc-parameter-name">**kwargs</span> <span class="doc-parameter-annotation-sep">:</span> <span class="doc-parameter-annotation"><a href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="doc-parameter-default-sep">=</span> <span class="doc-parameter-default">{}</span></code></dt>
 <dd>
