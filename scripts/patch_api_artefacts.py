@@ -8,15 +8,20 @@ SOURCE_DIR = Path(__file__).parent.parent / "source"
 
 def cleanup_v0_14_0_changelog():
     """
-    Remove (not-yet-released)
+    Fix missteps in the changelog
     """
     file = SOURCE_DIR / "changelog.qmd"
     contents = (
         file
         .read_text()
         .replace(
+            # Remove (not-yet-released)
             "## v0.14.0\n(2024-10-28)\n\n(not-yet-released)",
             "## v0.14.0\n(2024-10-28)\n"
+        ).replace(
+            # Replace bad shortcode
+            "({{< issue 816 }}>)",
+            "({{< issue 816 >}})"
         )
     )
     file.write_text(contents)
