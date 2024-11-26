@@ -23,7 +23,7 @@ def postprocess_site(build_path, var_conf, exts):
     def _var_replace(m):
         return var_conf[m.groupdict()['varname']]
 
-    for path in build_path.glob('*'):
+    for path in build_path.rglob('*.html'):
         if path.suffix not in exts:
             continue
         in_txt = path.read_text()
