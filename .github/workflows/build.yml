@@ -53,6 +53,13 @@ jobs:
           make checkout-${{ inputs.plotnine-branch }}
           pushd plotnine; echo $(git tag -l --contains HEAD | head -n 1); popd
 
+      # https://github.com/quarto-dev/quarto-cli/issues/10828
+      # https://github.com/quarto-dev/quarto-cli/issues/10823
+      - name: Tell quarto to use files for input and outputMake uv use system python
+        run: |
+          echo "QUARTO_USE_FILE_FOR_PROJECT_INPUT_FILES=.quarto/input-files" >> $GITHUB_ENV
+          echo "QUARTO_USE_FILE_FOR_PROJECT_OUTPUT_FILES=.quarto/output-files" >> $GITHUB_ENV
+
       - name: Build Site
         shell: bash
         run: |
