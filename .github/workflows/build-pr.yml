@@ -1,0 +1,14 @@
+name: Build Website - Pull Request
+
+on:
+  push:
+    pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-site:
+    name: Build site for plotnine.org
+    uses: ./.github/workflows/build.yml
+    with:
+      plotnine-branch: main
+      target-folder: "--pr-${{github.event_name}}"
