@@ -16,6 +16,11 @@ on:
         default: release
         type: string
         required: true
+      can_deploy:
+        description: "Whether to deploy to github actions"
+        default: true
+        type: string
+        required: true
 
 jobs:
   build:
@@ -63,7 +68,16 @@ jobs:
         run: |
           ls -la
 
+      - name: Upload Artifacts of the Built Documentation
+        if: contains(inputs.can_deploy, 'false')
+        uses: actions/upload-artifact@v4
+        with:
+          name: _site
+          path: source/_site
+          retention-days: 1
+
       - name: Deploy Documentation to a Branch
+        if: contains(inputs.can_deploy, 'true')
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: source/_site
