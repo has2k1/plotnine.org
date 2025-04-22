@@ -5,7 +5,10 @@ on:
   workflow_call:
     inputs:
       target-folder:
-        description: "The folder to deploy the built documentation"
+        description: |
+          The folder on gh-pages where to deploy the built documentation.
+          If it is an empty string, the documentation is not deployed but
+          it is uploaded as an artifact named _site.
         default: "."
         type: string
         required: true
@@ -14,11 +17,6 @@ on:
         # "release" checks out the latest version
         description: "The branch to checkout"
         default: release
-        type: string
-        required: true
-      can_deploy:
-        description: "Whether to deploy to github actions"
-        default: true
         type: string
         required: true
 
@@ -69,7 +67,7 @@ jobs:
           ls -la
 
       - name: Upload Artifacts of the Built Documentation
-        if: contains(inputs.can_deploy, 'false')
+        if: ${{ inputs.target_folder == '' }}
         uses: actions/upload-artifact@v4
         with:
           name: _site
@@ -77,7 +75,7 @@ jobs:
           retention-days: 1
 
       - name: Deploy Documentation to a Branch
-        if: contains(inputs.can_deploy, 'true')
+        if: ${{ inputs.target_folder != '' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: source/_site
