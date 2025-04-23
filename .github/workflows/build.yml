@@ -67,7 +67,7 @@ jobs:
           ls -la
 
       - name: Upload Artifacts of the Built Documentation
-        if: ${{ inputs.target_folder == '' }}
+        if: ${{ inputs.target-folder == '' }}
         uses: actions/upload-artifact@v4
         with:
           name: _site
@@ -75,7 +75,7 @@ jobs:
           retention-days: 1
 
       - name: Deploy Documentation to a Branch
-        if: ${{ inputs.target_folder != '' }}
+        if: ${{ inputs.target-folder != '' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: source/_site
