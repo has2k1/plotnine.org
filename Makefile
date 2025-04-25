@@ -90,9 +90,10 @@ checkout-dev: submodules submodules-pull submodules-tags
 
 ## Install build dependencies
 deps:
+	uv sync
 	cd plotnine && make doc-deps
-	uv pip install jupyter
-	uv pip install git+https://github.com/has2k1/qrenderer
+	# uv pip install jupyter
+	# uv pip install git+https://github.com/has2k1/qrenderer
 
 ## Setup notebooks from plotnine-examples
 plotnine-examples:
