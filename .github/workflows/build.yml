@@ -24,10 +24,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: [3.12]
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -35,12 +31,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version-file: .python-version
 
       - name: Install a specific version of uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          version: "latest"
+        uses: astral-sh/setup-uv@v5
 
       - name: Make uv use system python
         run: echo "UV_SYSTEM_PYTHON=true" >> $GITHUB_ENV
