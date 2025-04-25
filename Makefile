@@ -57,6 +57,7 @@ clean:
 	rm -f  $(SOURCE_DIR)/plotnine.scss
 	rm -f  $(SOURCE_DIR)/objects.txt
 	rm -f  $(SOURCE_DIR)/objects.inv
+	rm -r $(SOURCE_DIR)/guide
 	cd plotnine/doc && make clean
 
 ## Update git submodules to commits referenced in this repository
@@ -102,7 +103,7 @@ api-pages: plotnine-examples
 	cd plotnine/doc && make docstrings
 
 ## Copy API artefacts into website
-copy-api-artefacts: api-pages
+copy-api-artefacts: api-pages copy-guide
 	# Copy all relevant files
 	rsync -av plotnine/doc/_extensions $(SOURCE_DIR)
 	rsync -av plotnine/doc/images $(SOURCE_DIR)
@@ -115,6 +116,16 @@ copy-api-artefacts: api-pages
 	rsync -av plotnine/doc/objects.inv $(SOURCE_DIR)
 	# Correct
 	$(PYTHON) ./scripts/patch_api_artefacts.py
+
+copy-guide: 
+	rm -rf plotnine-guide $(SOURCE_DIR)/guide
+	git clone -n -b refactor-guide-contained --depth=1 --filter=tree:0 https://github.com/machow/plotnine-guide.git
+	cd plotnine-guide \
+	  && git sparse-checkout set --no-cone /guide \
+	  && git checkout
+	mv plotnine-guide/guide $(SOURCE_DIR)/guide
+	rm -rf plotnine-guide
+
 
 ## Download interlinks
 interlinks:
