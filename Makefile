@@ -140,7 +140,7 @@ pages: copy-api-artefacts
 
 ## Build website
 site: pages
-	cd $(SOURCE_DIR) && quarto render
+	cd $(SOURCE_DIR) && strace -f -e trace=process quarto render
 	$(PYTHON) ./scripts/postprocess_site.py $(SOURCE_DIR)/_quarto.yml
 	touch $(SITE_DIR)/.nojekyll
 
