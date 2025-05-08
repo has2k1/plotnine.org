@@ -134,7 +134,7 @@ copy-guide:
 
 ## Download interlinks
 interlinks:
-	cd $(SOURCE_DIR) && quartodoc interlinks
+	cd $(SOURCE_DIR) && uv run quartodoc interlinks
 
 ## Build all pages for the website
 pages: copy-api-artefacts
@@ -144,7 +144,7 @@ pages: copy-api-artefacts
 
 ## Build website
 site: pages
-	cd $(SOURCE_DIR) && quarto render
+	cd $(SOURCE_DIR) && uv run quarto render
 	$(PYTHON) ./scripts/postprocess_site.py $(SOURCE_DIR)/_quarto.yml
 	touch $(SITE_DIR)/.nojekyll
 
