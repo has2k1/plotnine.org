@@ -1,15 +1,21 @@
 [project]
-name = "plotnine-org"
+name = "plotnine.org"
 version = "0.1.0"
-description = "Add your description here"
+description = "Source for https://plotnine.org"
 readme = "README.md"
 requires-python = ">=3.12.3"
+
+# These dependencies can only be handled by uv which allows us
+# to use alternative (non-standard) sources 
+# https://docs.astral.sh/uv/concepts/projects/dependencies/
+# So each package in the dependencies needs a source entry in [tools.uv.sources]
 dependencies = [
-    "geodatasets>=2024.8.0",
-    "geopandas>=1.0.1",
-    "jupyter>=1.1.1",
-    "qrenderer",
+   "qrenderer",
+   "plotnine[doc]",
+   "plotnine-examples",
 ]
 
 [tool.uv.sources]
 qrenderer = { git = "https://github.com/has2k1/qrenderer.git" }
+plotnine = { path = "./plotnine" }
+plotnine-examples = { path = "./plotnine-examples" }

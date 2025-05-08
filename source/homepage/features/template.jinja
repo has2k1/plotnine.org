@@ -1,0 +1,43 @@
+<div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:pt-8 tw:md:pt-16">
+
+    {% for item in items %}
+
+        {% set arrow = item.arrow and not loop.last %}
+    <div class="tw:md:flex tw:md:flex-row{% if arrow %} tw:md:min-h-[50vh]{% endif%}">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[{{ item.icon }}]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> {{ item.title }}</h3></div>
+            </div>
+            <p>
+                {{ item.text | replace('\n', '</p><p>') | replace("'", '&rsquo;') }}
+            </p>
+            {% if not item.skip_code %}
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                {% set code = "html/" ~ item.id ~ ".py.html" %}
+                {% include code %}
+            </div>
+            {% endif %}
+            {% if item.post %}
+            <p>
+                {{ item.post | replace('\n', '</p><p>') | replace("'", '&rsquo;') }}
+            </p>
+            {% endif %}
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video{% if arrow %} tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]{% endif%}">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/{{ item.id }}.png">
+                </div>
+                {% if arrow %}
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                {% endif%}
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>

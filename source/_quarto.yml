@@ -10,6 +10,8 @@ project:
     - "*.ipynb"
     - "!plotnine"
     - "!plotnine-examples"
+  post-render:
+    - "sed -re /bootstrap.*(css|js)/d -i.bak _site/index.html"
 
 metadata-files: 
   - guide/_sidebar.yml
@@ -30,22 +32,22 @@ website:
       - text: Blog
         file: blog.qmd
       - file: tutorials/index.qmd
-      - text: "Pages"
-        menu:
-          - changelog.qmd
-          - external-resources.qmd
-          - about.qmd
+      # - text: "Pages"
+      #   menu:
+      #     - changelog.qmd
+      #     - external-resources.qmd
+      #     - about.qmd
     right:
       - icon: github
         href: https://github.com/has2k1/plotnine
-  page-footer:
-    left: |
-      Proudly supported by
-      [![](/images/posit-logo.svg){fig-alt="Posit" width=65px}](https://posit.co)
-
-    center: |
-      Developed by: Hassan Kibirige,
-      License: [MIT](/license.html)
+  # page-footer:
+  #   left: |
+  #     Proudly supported by
+  #     [![](/images/posit-logo.svg){fig-alt="Posit" width=65px}](https://posit.co)
+  #
+  #   center: |
+  #     Developed by: Hassan Kibirige,
+  #     License: [MIT](/license.html)
 
 format:
   html:
@@ -55,9 +57,9 @@ format:
       - qrenderer.scss
       - plotnine.scss
       - website.scss
-    include-in-header:
-      - text: |
-          <script defer data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+    # include-in-header:
+    #   - text: |
+    #       <script defer data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 filters:
   - interlinks
