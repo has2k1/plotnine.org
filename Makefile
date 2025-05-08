@@ -3,7 +3,7 @@
 
 SOURCE_DIR=source
 SITE_DIR=$(SOURCE_DIR)/_site
-PYTHON ?= python
+PYTHON ?= uv run python
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
