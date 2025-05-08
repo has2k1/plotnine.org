@@ -57,7 +57,6 @@ clean:
 	rm -f  $(SOURCE_DIR)/plotnine.scss
 	rm -f  $(SOURCE_DIR)/objects.txt
 	rm -f  $(SOURCE_DIR)/objects.inv
-	rm -r $(SOURCE_DIR)/guide
 	cd plotnine/doc && make clean
 
 ## Update git submodules to commits referenced in this repository
@@ -89,22 +88,28 @@ checkout-dev: submodules submodules-pull submodules-tags
 	cd plotnine && git fetch --depth=1 origin dev && git checkout -b dev
 
 ## Install build dependencies
-deps:
+install:
 	uv sync
-	cd plotnine && make doc-deps
-	# uv pip install jupyter
-	# uv pip install git+https://github.com/has2k1/qrenderer
+
+## Install all dependencies required for development (requires nodejs & npm)
+install-full: install
+	uv pip install jinja2-cli
+	npm ci
 
 ## Setup notebooks from plotnine-examples
 plotnine-examples:
 	$(PYTHON) ./scripts/get_plotnine_examples.py
+
+## Generate home page items
+homepage:
+	uv run scripts/generate-homepage-items.sh
 
 ## Build plotnine API qmd pages
 api-pages: plotnine-examples
 	cd plotnine/doc && make docstrings
 
 ## Copy API artefacts into website
-copy-api-artefacts: api-pages copy-guide
+copy-api-artefacts: api-pages # copy-guide
 	# Copy all relevant files
 	rsync -av plotnine/doc/_extensions $(SOURCE_DIR)
 	rsync -av plotnine/doc/images $(SOURCE_DIR)
@@ -127,7 +132,6 @@ copy-guide:
 	mv plotnine-guide/guide $(SOURCE_DIR)/guide
 	rm -rf plotnine-guide
 
-
 ## Download interlinks
 interlinks:
 	cd $(SOURCE_DIR) && quartodoc interlinks
@@ -145,7 +149,7 @@ site: pages
 	touch $(SITE_DIR)/.nojekyll
 
 ## Build website in a new environment
-site-cold: deps interlinks site
+site-cold: install interlinks site
 
 ## Build website and serve
 preview:

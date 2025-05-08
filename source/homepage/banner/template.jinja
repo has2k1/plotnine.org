@@ -1,0 +1,206 @@
+<!-- {{ comment }} -->
+
+<script>
+let pastIndices = [];
+let timerId = null;
+let delayId = null;
+
+let isMouseOutside = true;
+let isBannerVisible = false;
+let isScreenWide = false;
+
+function highlightItem(item, highlight=true) {
+    const thumbnailElement = item.querySelector('.banner-thumbnail');
+    const imageElement = item.querySelector('.banner-thumbnail img');
+    const highlightElement = item.querySelector('.item-highlight');
+    const highlightDivElement = item.querySelector('.item-highlight div');
+
+    if (highlight) {
+        if (isScreenWide && isBannerVisible && isMouseOutside && (timerId !== null)) {
+            thumbnailElement.classList.add('banner-thumbnail-hover');
+            imageElement.classList.add('banner-thumbnail-img-hover');
+            highlightElement.classList.add('item-highlight-hover');
+            highlightDivElement.classList.add('item-highlight-div-hover');
+        }
+    } else {
+        thumbnailElement.classList.remove('banner-thumbnail-hover');
+        imageElement.classList.remove('banner-thumbnail-img-hover');
+        highlightElement.classList.remove('item-highlight-hover');
+        highlightDivElement.classList.remove('item-highlight-div-hover');
+    }
+}
+
+function visitItem(i) {
+    if (pastIndices.includes(i)) return;
+
+    pastIndices.push(i)
+    if (pastIndices.length > 5) {
+        pastIndices.shift()
+    }
+}
+
+function highlightRandomItem() {
+    // Get all visible .banner-item elements
+    const bannerItems = Array.from(document.querySelectorAll('.banner-item'))
+        .filter(item => item.offsetParent !== null); // Checks visibility
+
+    // Remove previous highlights
+    bannerItems.forEach(item => highlightItem(item, false));
+
+    if (bannerItems.length === 0) return;
+
+    // Pick a random visible banner-item
+    let randomIndex = Math.floor(Math.random() * bannerItems.length);
+    while (pastIndices.includes(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * bannerItems.length);
+    }
+    visitItem(randomIndex);
+
+    const selectedItem = bannerItems[randomIndex];
+    clearTimeout(delayId);
+    delayId = setTimeout(highlightItem, 1000, selectedItem, true);
+}
+
+function startRandomHighlighting() {
+    if (timerId !== null) return;
+
+    highlightRandomItem();
+    timerId = setInterval(highlightRandomItem, 5000);
+}
+
+function stopRandomHighlighting() {
+    if (timerId === null) return;
+
+    clearInterval(timerId);
+    timerId = null;
+
+    const bannerItems = Array.from(document.querySelectorAll('.banner-item'))
+        .filter(item => item.offsetParent !== null); // Checks visibility
+
+    // Remove previous highlights
+    bannerItems.forEach(item => highlightItem(item, false));
+}
+
+function updateAnimation() {
+    console.log({isScreenWide, isBannerVisible, isMouseOutside});
+
+    if (isScreenWide && isBannerVisible && isMouseOutside) {
+        startRandomHighlighting();
+    } else {
+        stopRandomHighlighting();
+    }
+}
+
+function handleBreakpoint(e) {
+    isScreenWide = e.matches;
+    updateAnimation();
+}
+
+function handleVisibilityChange(entries, observer) {
+    entries.forEach(entry => {
+        isBannerVisible = entry.isIntersecting;
+    });
+    updateAnimation();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    mediaQuery.addEventListener("change", handleBreakpoint);
+    handleBreakpoint(mediaQuery);
+
+    // Create an IntersectionObserver instance
+    const observer = new IntersectionObserver(handleVisibilityChange, {
+        root: null,  // The root is the viewport
+        rootMargin: '0px',  // Optional: Adjust visibility trigger margin (e.g., '0px' or '100px')
+        threshold: 0.1,  // Trigger when 50% of the element is visible
+    });
+
+    // Target element to observe
+    const targetElement = document.querySelector('#banner');
+    // Start observing the target element
+    observer.observe(targetElement);
+
+    updateAnimation();
+});
+
+</script>
+<div class="tw:bg-plum-950">
+<div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:pt-4 tw:md:pt-8 tw:pb-8 tw:md:pb-16">
+
+    <div id="banner" class="tw:relative tw:translate-3d">
+        <div class="tw:flex tw:flex-row tw:items-center">
+            <div id="banner-borders" onmouseleave="isMouseOutside = true; updateAnimation();" onmouseenter="isMouseOutside = false; updateAnimation();" class="tw:p-2 tw:peer/banner tw:w-full tw:md:w-[70%] tw:bg-white tw:gap-[2px] tw:grid tw:grid-cols-[10px_auto_10px] tw:grid-rows-[10px_auto_10px]">
+
+                <div class="banner-border-corner"></div>
+                <div class="banner-border banner-x tw:grid-rows-1">
+                    <div class="banner-border-cell banner-x-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-6"><div></div><div></div></div>
+                </div>
+                <div class="banner-border-corner"></div>
+
+                <div class="banner-border banner-y">
+                    <div class="banner-border-cell banner-y-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-6"><div></div><div></div></div>
+                </div>
+
+                <div class="tw:bg-white banner-x banner-y">
+                    {% for item in items %}
+                    <a href="{{ item.url }}" onmouseenter="visitItem({{ loop.index - 1 }});" class="banner-item tw:group
+                    {%- for breakpoint in ['xs', 'sm', 'md', 'lg'] -%}
+                        {%- if breakpoint in item.show %} tw:{{ breakpoint }}:block!
+                        {%- else %} tw:{{ breakpoint }}:hidden!
+                        {%- endif -%}
+                    {%- endfor -%}
+                        ">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/{{ item.img }}">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/{{ item.img }}" class="{% if item.position is defined %}tw:object-{{ item.position }}{% else %}tw:object-left-top{% endif %}">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    {% endfor %}
+                </div>
+
+                <div class="banner-border banner-y">
+                    <div class="banner-border-cell banner-y-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-6"><div></div><div></div></div>
+                </div>
+
+                <div class="banner-border-corner"></div>
+                <div class="banner-border banner-x">
+                    <div class="banner-border-cell banner-x-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-6"><div></div><div></div></div>
+                </div>
+                <div class="banner-border-corner"></div>
+            </div>
+            <div class="tw:hidden -tw:md:block tw:md:w-[30%] tw:peer-hover/banner:opacity-0 tw:duration-500">
+               <img class="white-border tw:object-contain tw:m-auto tw:h-64 tw:pl-4" src="https://plotnine.org/images/logo-512.png">
+            </div>
+        </div>
+    </div>
+</div>
+</div>

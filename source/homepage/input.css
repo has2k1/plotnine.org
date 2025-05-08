@@ -1,0 +1,280 @@
+@import "tailwindcss" prefix(tw);
+@plugin "@iconify/tailwind4";
+
+@theme {
+    --breakpoint-xs: 1rem;
+
+    --color-ggplot-gray: #ebebeb;
+
+    --color-plum-50: #fdf6fb;
+    --color-plum-100: #fbecf8;
+    --color-plum-200: #f7d7f1;
+    --color-plum-300: #efb8e0;
+    --color-plum-400: #e48ecb;
+    --color-plum-500: #d461b3;
+    --color-plum-600: #b74293;
+    --color-plum-700: #973476;
+    --color-plum-800: #873069;
+    --color-plum-900: #66294f;
+    --color-plum-950: #421030;
+
+    --color-blue-50: #eff2fe;
+    --color-blue-100: #e1e8fe;
+    --color-blue-200: #c9d3fc;
+    --color-blue-300: #a8b5f9;
+    --color-blue-400: #858ff4;
+    --color-blue-500: #686aec;
+    --color-blue-600: #554cdf;
+    --color-blue-700: #483dc5;
+    --color-blue-800: #3c349f;
+    --color-blue-900: #2d2a6c;
+    --color-blue-950: #201d49;
+
+    --color-green-50: #edfcf6;
+    --color-green-100: #d4f7e6;
+    --color-green-200: #adedd2;
+    --color-green-300: #78ddb8;
+    --color-green-400: #41c69a;
+    --color-green-500: #1b9e77;
+    --color-green-600: #108b69;
+    --color-green-700: #0d6f56;
+    --color-green-800: #0d5846;
+    --color-green-900: #0c483a;
+    --color-green-950: #052921;
+
+    --color-orange-50: #fffaec;
+    --color-orange-100: #fff3d2;
+    --color-orange-200: #ffe4a5;
+    --color-orange-300: #ffcf6c;
+    --color-orange-400: #ffae30;
+    --color-orange-500: #ff9408;
+    --color-orange-600: #f77700;
+    --color-orange-700: #da5f01;
+    --color-orange-800: #a2460a;
+    --color-orange-900: #823b0c;
+    --color-orange-950: #471c03;
+}
+
+
+header#title-block-header {
+    display: none !important;
+}
+
+.banner-cell {
+    @apply tw:bg-ggplot-gray;
+    @apply tw:relative;
+}
+
+.banner-cell-back {
+    @apply tw:bg-white;
+    @apply tw:aspect-[3/2];
+    @apply tw:grid tw:grid-cols-2;
+    @apply tw:gap-[1px];
+}
+
+.banner-cell-back div {
+    @apply tw:bg-ggplot-gray;
+}
+
+.banner-cell-front {
+    @apply tw:absolute tw:inset-0;
+    @apply tw:p-1;
+    @apply tw:sm:p-2;
+    @apply tw:lg:p-2;
+}
+
+.banner-thumbnail {
+    @apply tw:h-full;
+    @apply tw:bg-white tw:rounded-md;
+    @apply tw:border-2 tw:border-green-900;
+    @apply tw:relative;
+    @apply tw:overflow-hidden;
+    @apply tw:md:shadow-[0px_0px_2px_2px_rgba(0,0,0,0)];
+
+    @apply tw:md:duration-300 tw:md:ease-in-out;
+
+    @apply tw:group-hover:border-green-500;
+    @apply tw:md:group-hover:-translate-1;
+    @apply tw:md:group-hover:shadow-[4px_4px_2px_2px_rgba(0,0,0,0.25)];
+}
+
+.banner-thumbnail img {
+    image-rendering: smooth;
+
+    @apply tw:object-cover;
+    /* @apply tw:rounded-md; */
+    @apply tw:h-full tw:w-full;
+    @apply tw:absolute;
+    @apply tw:inset-0;
+    @apply tw:duration-300 tw:ease-in-out;
+
+    /* @apply tw:grayscale-50;
+    @apply tw:group-hover:grayscale-0; */
+}
+
+.banner-border-corner {
+    @apply tw:bg-ggplot-gray;
+}
+
+.banner-x > .banner-border-cell {
+    @apply tw:grid tw:grid-cols-2 tw:gap-[1px];
+}
+
+.banner-y > .banner-border-cell {
+    @apply tw:grid tw:grid-rows-2 tw:gap-[1px];
+}
+
+.banner-x {
+    @apply tw:grid tw:gap-[2px];
+    @apply tw:xs:grid-cols-3;
+    @apply tw:sm:grid-cols-4;
+    @apply tw:md:grid-cols-5;
+    @apply tw:lg:grid-cols-6;
+}
+
+.banner-y {
+    @apply tw:grid tw:gap-[2px] tw:h-full;
+    @apply tw:grid-rows-4;
+    @apply tw:sm:grid-rows-3;
+}
+
+.banner-border-cell div {
+    @apply tw:bg-ggplot-gray;
+}
+
+.banner-x-4 {
+    @apply tw:hidden! tw:sm:grid!;
+}
+.banner-x-5 {
+    @apply tw:hidden! tw:md:grid!;
+}
+.banner-x-6 {
+    @apply tw:hidden! tw:lg:grid!;
+}
+
+.banner-y-4 {
+    @apply tw:grid! tw:sm:hidden!;
+}
+
+.banner-y-5 {
+    @apply tw:hidden!;
+}
+
+.banner-y-6 {
+    @apply tw:hidden!;
+}
+
+.item-highlight {
+    @apply tw:absolute tw:top-0 tw:right-0 tw:z-30;
+    @apply tw:hidden;
+    @apply tw:md:block;
+    @apply tw:h-full; 
+    @apply tw:w-auto;
+
+    @apply tw:opacity-0;
+    @apply tw:group-hover:opacity-100;
+    @apply tw:duration-500 tw:ease-in-out;
+
+    @apply tw:perspective-normal;
+    @apply tw:pointer-events-none;
+}
+
+
+.banner-thumbnail-hover {
+    @apply tw:md:border-green-500!;
+    @apply tw:md:-translate-1!;
+    @apply tw:md:shadow-[4px_4px_2px_2px_rgba(0,0,0,0.25)]!;
+}
+
+.banner-thumbnail-img-hover {
+    @apply tw:grayscale-0!;
+}
+
+.item-highlight-hover {
+    @apply tw:opacity-100!;
+}
+
+.item-highlight-div-hover {
+    @apply tw:-rotate-y-12!;
+}
+
+
+.item-highlight div {
+    @apply tw:bg-white tw:rounded-xl;
+    @apply tw:border-3 tw:border-green-500;
+    @apply tw:outline-white tw:outline-2;
+    @apply tw:h-full tw:overflow-hidden;
+
+    @apply tw:-rotate-y-18 tw:scale-[1];
+    @apply tw:group-hover:-rotate-y-12;
+    @apply tw:duration-500 tw:ease-in-out;
+}
+
+.item-highlight img {
+    @apply tw:object-cover tw:object-left-top;
+    @apply tw:h-full;
+}
+
+.white-border {
+    filter: drop-shadow(1px 1px 3px white) drop-shadow(1px -1px 3px white) drop-shadow(-1px 1px 3px white) drop-shadow(-1px -1px 3px white);
+}
+
+.button-primary {
+    @apply tw:py-3 tw:px-4 tw:md:py-4 tw:md:px-5;
+    @apply tw:bg-green-600 tw:text-white tw:rounded-full tw:font-semibold;
+    @apply tw:border tw:border-2 tw:border-green-600;
+    @apply tw:no-underline;
+    @apply tw:hover:bg-green-500 tw:hover:border-green-500;
+}
+
+.button-secondary {
+    @apply tw:py-3 tw:px-4 tw:md:py-4 tw:md:px-5;
+    @apply tw:bg-plum-950 tw:text-white tw:rounded-full tw:font-semibold;
+    @apply tw:border tw:border-2 tw:border-white;
+    @apply tw:no-underline;
+    @apply tw:hover:bg-plum-900;
+}
+
+
+h3 {
+    @apply tw:tracking-tight tw:font-semibold tw:leading-[0.9] tw:text-[1.5rem] tw:md:text-[2rem] tw:lg:text-[2.5rem];
+}
+
+h4 {
+    @apply tw:tracking-tight tw:font-semibold tw:leading-[0.9] tw:text-[1.25rem] tw:md:text-[1.3rem] tw:lg:text-[1.5rem] tw:mb-3;
+}
+
+
+.feature {
+
+}
+
+.feature h3 {
+    @apply tw:text-balance tw:text-blue-950 tw:pb-3;
+}
+
+.feature p {
+    @apply tw:text-blue-950 tw:text-pretty tw:text-base/6 tw:md:text-lg/7;
+}
+
+a {
+    @apply tw:text-green-600;
+}
+
+a.external:after {
+    content: "";
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(16, 139, 105)" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: .2em;
+    padding-right: .75em
+}
+
+div.sourceCode code a.external:after {
+    content: none
+}
+
+a.external:after:hover {
+    cursor: pointer
+}

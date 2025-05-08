@@ -1,0 +1,306 @@
+<div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:pt-8 tw:md:pt-16">
+
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--language-python]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> A grammar of graphics for Python</h3></div>
+            </div>
+            <p>
+                Plotnine is a data visualization package for Python based on the grammar of graphics, a coherent system for describing and building graphs. The syntax is similar to <a href="https://ggplot2.tidyverse.org">ggplot2</a>, a widely successful R package.</p><p>Let&rsquo;s explore Plotnine&rsquo;s features and walk through a typical workflow by visualizing Anscombe&rsquo;s Quartet&mdash;four small datasets with different distributions but nearly identical descriptive statistics. They&rsquo;re perhaps the best argument for visualizing data. You can see the final result <span class="tw:md:hidden">below</span><span class="tw:hidden tw:md:inline">on the right</span>.</p><p>
+            </p>
+            
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/sneak.png">
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--stopwatch-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Get started quickly</h3></div>
+            </div>
+            <p>
+                With Plotnine you can create ad-hoc plots with just a single line of code.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">plotnine</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotnine.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">anscombes_quartet</span> 
+
+<span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Our data contains two continuous variables, so let&rsquo;s start with a basic scatter plot.</p><p>It doesn&rsquo;t make much sense just yet; we need a way to distinguish between the four datasets.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/start.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--auto-awesome-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Sensible defaults</h3></div>
+            </div>
+            <p>
+                Legends, labels, breaks, color palettes. Many elements are added automatically based on the data.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span></span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="tw:opacity-50"><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                By coloring each point according to the dataset it belongs to, the plot automatically gets a legend. The colors are chosen automatically as well. But don&rsquo;t worry, as we&rsquo;ll see later, everything can be adjusted.</p><p>It&rsquo;s still rather messy, so let&rsquo;s try a different approach.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/auto.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--view-grid-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Subset declaratively</h3></div>
+            </div>
+            <p>
+                Any data visualization can be repeated across multiple panels without writing a for loop.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span><span class="tw:opacity-50">
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                That&rsquo;s better. The panels make the use of color redundant, so that&rsquo;s something we need to fix.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/facet.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--layers-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Visualizations have layers</h3></div>
+            </div>
+            <p>
+                The data and the mapping of columns are inherited, but can be changed per layer.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="tw:opacity-50">
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                These scatter plots with trend lines clearly supports Anscombe&rsquo;s point: that datasets with different distributions can have the same descriptive statistics.</p><p>When you&rsquo;re doing exploratory data analysis, this plot might be good enough. But when you want to publish this, you may want to customize it further.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/layer.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--tune]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Override any default</h3></div>
+            </div>
+            <p>
+                Anything that you see, can be adjusted.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">(</span></span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;sienna&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="tw:opacity-50"><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span></span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="tw:opacity-50"><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/scale_y_continuous.html">scale_y_continuous</a></span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/coord_fixed.html">coord_fixed</a></span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/labs.html">labs</a></span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Anscombe’s Quartet&quot;</span><span class="p">)</span><span class="tw:opacity-50">
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Here we change the sizes and colors, improve the breaks, and add a title.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/adjust.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--hexagon-slice-5]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Plotnine goes to eleven</h3></div>
+            </div>
+            <p>
+                Customize the theme to match your personal style or your organization&rsquo;s brand.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_point.html">geom_point</a></span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;sienna&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/labs.html">labs</a></span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Anscombe’s Quartet&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/scale_y_continuous.html">scale_y_continuous</a></span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/coord_fixed.html">coord_fixed</a></span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span> </span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/theme_tufte.html">theme_tufte</a></span><span class="p">(</span><span class="n">base_family</span><span class="o">=</span><span class="s2">&quot;Futura&quot;</span><span class="p">,</span> <span class="n">base_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/theme.html">theme</a></span><span class="p">(</span>
+        <span class="n">axis_line</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4d4d4d&quot;</span><span class="p">),</span>
+        <span class="n">axis_ticks_major</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#00000000&quot;</span><span class="p">),</span>
+        <span class="n">axis_title</span><span class="o">=</span><span class="n">element_blank</span><span class="p">(),</span>
+        <span class="n">panel_spacing</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="tw:opacity-50"><span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Curious how you can start creating these kinds of visualizations with your own data? In the next section we cover how to install Plotnine.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="/homepage/features/img/final.png">
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+</div>
