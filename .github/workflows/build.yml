@@ -32,11 +32,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install a specific version of uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Create Virtual Environment
-        run: uv venv --python ${{ matrix.python-version }}
+      - name: Install uv and set python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
