@@ -62,7 +62,7 @@ help:
 clean:
 	rm -rf $(SITE_DIR)/
 	rm -rf $(SOURCE_DIR)/_extensions
-	rm -rf $(SOURCE_DIR)/images
+	# rm -rf $(SOURCE_DIR)/images   # posit-logo.svg is checked in
 	rm -rf $(SOURCE_DIR)/reference
 	rm -f  $(SOURCE_DIR)/_variables.yml
 	rm -f  $(SOURCE_DIR)/changelog.qmd
@@ -70,6 +70,7 @@ clean:
 	rm -f  $(SOURCE_DIR)/plotnine.scss
 	rm -f  $(SOURCE_DIR)/objects.txt
 	rm -f  $(SOURCE_DIR)/objects.inv
+	rm -rf  $(SOURCE_DIR)/plotnine/guide
 	cd plotnine/doc && make clean
 
 ## Update git submodules to commits referenced in this repository
@@ -129,7 +130,7 @@ api-pages: plotnine-examples
 	make -C plotnine/doc docstrings
 
 ## Copy API artefacts into website
-copy-api-artefacts: api-pages # copy-guide
+copy-api-artefacts: api-pages
 	# Copy all relevant files
 	rsync -av plotnine/doc/_extensions $(SOURCE_DIR)
 	rsync -av plotnine/doc/images $(SOURCE_DIR)
@@ -143,21 +144,16 @@ copy-api-artefacts: api-pages # copy-guide
 	# Correct
 	$(PYTHON) ./scripts/patch_api_artefacts.py
 
-copy-guide: 
-	rm -rf plotnine-guide $(SOURCE_DIR)/guide
-	git clone -n -b refactor-guide-contained --depth=1 --filter=tree:0 https://github.com/machow/plotnine-guide.git
-	cd plotnine-guide \
-	  && git sparse-checkout set --no-cone /guide \
-	  && git checkout
-	mv plotnine-guide/guide $(SOURCE_DIR)/guide
-	rm -rf plotnine-guide
+## Copy guide into website source
+copy-guide:
+	rsync -av plotnine-guide/guide $(SOURCE_DIR)
 
 ## Download interlinks
 interlinks:
 	cd $(SOURCE_DIR) && uv run quartodoc interlinks
 
 ## Build all pages for the website
-pages: copy-api-artefacts
+pages: copy-api-artefacts #copy-guide
 	# Create gallery and tutorials pages
 	$(PYTHON) ./scripts/create_gallery.py
 	$(PYTHON) ./scripts/create_tutorials.py
