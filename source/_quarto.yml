@@ -10,6 +10,7 @@ project:
     - "*.ipynb"
     - "!plotnine"
     - "!plotnine-examples"
+    - "!plotnine-guide"
   post-render:
     - "sed -re /bootstrap.*(css|js)/d -i.bak _site/index.html"
 
@@ -24,19 +25,19 @@ website:
   page-navigation: true
   navbar:
     left:
-      - file: guide/install.qmd
-        text: Guide
+      # - file: guide/install.qmd
+      #   text: Guide
       - file: reference/index.qmd
         text: "Reference"
       - file: gallery/index.qmd
       - text: Blog
         file: blog.qmd
       - file: tutorials/index.qmd
-      # - text: "Pages"
-      #   menu:
-      #     - changelog.qmd
-      #     - external-resources.qmd
-      #     - about.qmd
+      - text: "Pages"
+        menu:
+          - changelog.qmd
+          - external-resources.qmd
+          - about.qmd
     right:
       - icon: github
         href: https://github.com/has2k1/plotnine
