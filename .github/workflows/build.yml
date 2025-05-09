@@ -24,17 +24,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: [3.12]
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: .python-version
-
       - name: Install a specific version of uv
         uses: astral-sh/setup-uv@v5
+
+      - name: Create Virtual Environment
+        run: uv venv --python ${{ matrix.python-version }}
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
