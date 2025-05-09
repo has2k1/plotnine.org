@@ -3,7 +3,20 @@
 
 SOURCE_DIR=source
 SITE_DIR=$(SOURCE_DIR)/_site
-PYTHON ?= uv run python
+
+# The order of precedence of the python we shall use:
+#
+#   1. Set from the $PYTHON environment variable (the ? in ?=)
+#   2. From an active virtual environment (uv run --active)
+#   3. From an exisiting local .venv virtual environment (uv run)
+#   4. From a newly created local .venv virtual environment (uv run)
+#
+# Given that we are in a python project (pyproject.toml), it is gauranteed
+# to be from a virtual environment.
+PYTHON ?= uv run --active python
+
+# NOTE: Take care not to use tabs in any programming flow outside the
+# make target
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -90,6 +103,7 @@ checkout-dev: submodules submodules-pull submodules-tags
 ## Install build dependencies
 install:
 	uv sync
+	make -C plotnine/doc dependencies
 
 ## Install all dependencies required for development (requires nodejs & npm)
 install-full: install
@@ -106,7 +120,13 @@ homepage:
 
 ## Build plotnine API qmd pages
 api-pages: plotnine-examples
-	cd plotnine/doc && make docstrings
+	# We want to use the same virtual environment so we export the PYTHON
+	# Other, since plotnine is also a python project the
+	# PYTHON := uv run --active python
+	# in there would create a new local .venv if we do not set it with
+	# and environment variable
+	export PYTHON=$(uv run --active which python); \
+	make -C plotnine/doc docstrings
 
 ## Copy API artefacts into website
 copy-api-artefacts: api-pages # copy-guide
