@@ -125,7 +125,7 @@ api-pages: plotnine-examples
 	# PYTHON := uv run --active python
 	# in there would create a new local .venv if we do not set it with
 	# and environment variable
-	export PYTHON=$(uv run --active which python); \
+	export PYTHON=$$(uv run --active which python); \
 	make -C plotnine/doc docstrings
 
 ## Copy API artefacts into website
