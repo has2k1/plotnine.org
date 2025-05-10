@@ -45,6 +45,7 @@ First you should clone the repository and enter the directory
 
 ```sh
 $ git clone https://github.com/has2k1/plotnine.org.git
+$ make submodules
 $ cd plotnine.org
 ```
 
@@ -116,4 +117,3 @@ $ make clean
 $ make homepage
 $ make site-cold
 ```
-
