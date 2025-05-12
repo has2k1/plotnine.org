@@ -153,7 +153,7 @@ interlinks:
 	cd $(SOURCE_DIR) && uv run quartodoc interlinks
 
 ## Build all pages for the website
-pages: copy-api-artefacts #copy-guide
+pages: copy-api-artefacts copy-guide
 	# Create gallery and tutorials pages
 	$(PYTHON) ./scripts/create_gallery.py
 	$(PYTHON) ./scripts/create_tutorials.py
