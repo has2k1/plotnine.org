@@ -80,10 +80,12 @@ submodules:
 
 ## Pull latest commits in git submodules
 submodules-pull:
-	git submodule update --recursive --remote
+	cd plotnine && git pull
+	cd plotnine-examples && git pull
 
 submodules-tags:
-	git submodule foreach --recursive 'git fetch --tags'
+	cd plotnine && git fetch --tags
+	cd plotnine-examples && git fetch --tags
 
 ## Checkout released version
 checkout-release: submodules submodules-pull submodules-tags
