@@ -3341,135 +3341,613 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "A Grammar of Graphics for Python",
+    "title": "plotnine {{< var version >}}",
     "section": "",
-    "text": "plotnine is an implementation of a grammar of graphics in Python based on ggplot2. The grammar allows you to compose plots by explicitly mapping variables in a dataframe to the visual objects that make up the plot.\nPlotting with a grammar of graphics is powerful. Custom (and otherwise complex) plots are easy to think about and build incremently, while the simple plots remain simple to create."
+    "text": "From ad-hoc plots to publication-ready figures.\n                \n                \n                    Turn your data into beautiful visualizations using the grammar of graphics.\n                \n            \n            \n                \n            \n        \n\n        \n            \n                 Get started\n            \n            \n                 API reference\n            \n        \n    \n\n\n\n\n\n\n\n\n\n    \n        \n            \n\n                \n                \n                    \n                    \n                    \n                    \n                    \n                    \n                \n                \n\n                \n                    \n                    \n                    \n                    \n                    \n                    \n                \n\n                \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                    \n                        \n                            \n                                \n                            \n                        \n                        \n                        \n                        \n                            \n                                \n                            \n                        \n                    \n                    \n                    \n                \n\n                \n                    \n                    \n                    \n                    \n                    \n                    \n                \n\n                \n                \n                    \n                    \n                    \n                    \n                    \n                    \n                \n                \n            \n            \n               \n            \n        \n    \n\n\n\n\n\n    \n\n        \n    \n        \n            \n                \n                 A grammar of graphics for Python\n            \n            \n                Plotnine is a data visualization package for Python based on the grammar of graphics, a coherent system for describing and building graphs. The syntax is similar to ggplot2, a widely successful R package.Let’s explore Plotnine’s features and walk through a typical workflow by visualizing Anscombe’s Quartet—four small datasets with different distributions but nearly identical descriptive statistics. They’re perhaps the best argument for visualizing data. You can see the final result belowon the right.\n            \n            \n            \n        \n        \n            \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Get started quickly\n            \n            \n                With Plotnine you can create ad-hoc plots with just a single line of code.\n            \n            \n            \n                \n                from plotnine import * \nfrom plotnine.data import anscombes_quartet \n\nggplot(anscombes_quartet, aes(x=\"x\", y=\"y\")) + geom_point()\n\n\n            \n            \n            \n            \n                Our data contains two continuous variables, so let’s start with a basic scatter plot.It doesn’t make much sense just yet; we need a way to distinguish between the four datasets.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Sensible defaults\n            \n            \n                Legends, labels, breaks, color palettes. Many elements are added automatically based on the data.\n            \n            \n            \n                \n                (\n    ggplot(anscombes_quartet, aes(\"x\", \"y\", color=\"dataset\"))\n    + geom_point()\n)\n\n\n            \n            \n            \n            \n                By coloring each point according to the dataset it belongs to, the plot automatically gets a legend. The colors are chosen automatically as well. But don’t worry, as we’ll see later, everything can be adjusted.It’s still rather messy, so let’s try a different approach.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Subset declaratively\n            \n            \n                Any data visualization can be repeated across multiple panels without writing a for loop.\n            \n            \n            \n                \n                (\n    ggplot(anscombes_quartet, aes(\"x\", \"y\", color=\"dataset\"))\n    + geom_point()\n    + facet_wrap(\"dataset\")\n)\n\n\n            \n            \n            \n            \n                That’s better. The panels make the use of color redundant, so that’s something we need to fix.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Visualizations have layers\n            \n            \n                The data and the mapping of columns are inherited, but can be changed per layer.\n            \n            \n            \n                \n                (\n    ggplot(anscombes_quartet, aes(\"x\", \"y\", color=\"dataset\"))\n    + geom_point()\n    + geom_smooth(method=\"lm\", se=False, fullrange=True)\n    + facet_wrap(\"dataset\")\n)\n\n\n            \n            \n            \n            \n                These scatter plots with trend lines clearly supports Anscombe’s point: that datasets with different distributions can have the same descriptive statistics.When you’re doing exploratory data analysis, this plot might be good enough. But when you want to publish this, you may want to customize it further.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Override any default\n            \n            \n                Anything that you see, can be adjusted.\n            \n            \n            \n                \n                (\n    ggplot(anscombes_quartet, aes(\"x\", \"y\"))\n    + geom_point(color=\"sienna\", fill=\"darkorange\", size=3)\n    + geom_smooth(method=\"lm\", se=False, fullrange=True,\n                  color=\"steelblue\", size=1)\n    + facet_wrap(\"dataset\")\n    + scale_y_continuous(breaks=(4, 8, 12))\n    + coord_fixed(xlim=(3, 22), ylim=(2, 14))\n    + labs(title=\"Anscombe’s Quartet\")\n)\n\n\n            \n            \n            \n            \n                Here we change the sizes and colors, improve the breaks, and add a title.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n        \n    \n        \n            \n                \n                 Plotnine goes to eleven\n            \n            \n                Customize the theme to match your personal style or your organization’s brand.\n            \n            \n            \n                \n                (\n    ggplot(anscombes_quartet, aes(\"x\", \"y\"))\n    + geom_point(color=\"sienna\", fill=\"orange\", size=3)\n    + geom_smooth(method=\"lm\", se=False, fullrange=True,\n                  color=\"steelblue\", size=1)\n    + facet_wrap(\"dataset\")\n    + labs(title=\"Anscombe’s Quartet\")\n    + scale_y_continuous(breaks=(4, 8, 12))\n    + coord_fixed(xlim=(3, 22), ylim=(2, 14)) \n    + theme_tufte(base_family=\"Futura\", base_size=16)\n    + theme(\n        axis_line=element_line(color=\"#4d4d4d\"),\n        axis_ticks_major=element_line(color=\"#00000000\"),\n        axis_title=element_blank(),\n        panel_spacing=0.09,\n    )\n)\n\n\n            \n            \n            \n            \n                Curious how you can start creating these kinds of visualizations with your own data? In the next section we cover how to install Plotnine.\n            \n            \n        \n        \n            \n                \n                    \n                \n                \n            \n\n        \n    \n    \n\n\n\n\n    \n        \n            \n            \n            \n                Next: Installation \n            \n            \n            \n        \n    \n\n\n\n    \n        \n            Plotnine\n            \n                Guide\n                Reference\n                Gallery\n                Blog\n                GitHub\n            \n        \n        \n            \n                By"
   },
   {
-    "objectID": "index.html#example",
-    "href": "index.html#example",
-    "title": "A Grammar of Graphics for Python",
-    "section": "Example",
-    "text": "Example\nfrom plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap\nfrom plotnine.data import mtcars\n\n(\n    ggplot(mtcars, aes(\"wt\", \"mpg\", color=\"factor(gear)\"))\n    + geom_point()\n    + stat_smooth(method=\"lm\")\n    + facet_wrap(\"gear\")\n)"
-  },
-  {
-    "objectID": "index.html#installation",
-    "href": "index.html#installation",
-    "title": "A Grammar of Graphics for Python",
-    "section": "Installation",
-    "text": "Installation\nplotnine can be installed in a couple of ways, depending on the purpose.\n\nInstalling the Official Release\nFor a normal user, it is recommended to install the official release. You can choose one of these two commands:\n# Using pip\n$ pip install plotnine         # 1. should be sufficient for most\n$ pip install 'plotnine[all]'  # 2. includes extra/optional packages\n\n# Or using conda\n$ conda install -c conda-forge plotnine\nThe second pip command also installs packages that are required for some specific functionality that may not be frequently used. Those packages are:\n\nscikit-misc - For loess smoothing\nscikit-learn - For Gaussian process smoothing\n\n\n\nInstalling the Development Version\nTo do any development you have to clone the Plotnine source repository and install the package in development mode. These commands do all of that:\n$ git clone https://github.com/has2k1/plotnine.git\n$ cd plotnine\n$ pip install -e .\nIf you only want to use the latest development sources and do not care about having a cloned repository, e.g. if a bug you care about has been fixed but an official release has not come out yet, then use this command:\n$ pip install git+https://github.com/has2k1/plotnine.git"
-  },
-  {
-    "objectID": "external-resources.html",
-    "href": "external-resources.html",
-    "title": "External Resources",
+    "objectID": "guide/themes-custom.html",
+    "href": "guide/themes-custom.html",
+    "title": "Custom themes",
     "section": "",
-    "text": "Grammar of graphics with plotnine\n\nA good introductory tutorial on how to use plotnine. It is part of the data visualization track from kaggle’s free online course (https://www.kaggle.com/learn/overview).\n\nPython Plotting for Exploratory Analysis\n\nA list of plots for exploratory data analysis and how they can be created using different libraries.\n\nMaking Plots With plotnine\n\nAn introduction to “grammar of graphics”, and how to use plotnine. This is part of the Data Analysis and Visualization in Python for Ecologists course from Data Carpentry\n\nPlotnine: Grammar of Graphics for Python\n\nA translation of the visualisation chapters from “R for Data Science” to Python using Plotnine and Pandas. This is a comprehensive introduction on the Grammar of Graphics with plotnine."
+    "text": "custom themes\n\naxis\n\narea: title, text, ticks, minor.ticks\nsub-area: length\nloc: x[.top, bottom, left, right]\n\nlegend\n\narea: spacing, key, ticks, axis, text, title, position, box\nbig attr: background, margin, frame, direction, byrow, location\nsub attr:\n\nx, y\nsize, height, width\ntop, bottom, right, left, inside\njust, margin, background, spacing\n\n\npanel\n\narea: spacing, grid\nattrs: background, border, ontop\n\nplot\n\narea: title, subtitle, caption, tag\nattrs: background, position, location\n\nstrip\n\narea: background, text\nattrs:\n\nx, y\nbottom, top\nleft, right\nswitch.pad.grid\nswitch.pad.wrap\n\n\ncomplete, validate"
   },
   {
-    "objectID": "external-resources.html#articles",
-    "href": "external-resources.html#articles",
-    "title": "External Resources",
+    "objectID": "guide/shortcuts.html",
+    "href": "guide/shortcuts.html",
+    "title": "Shortcut functions",
     "section": "",
-    "text": "Grammar of graphics with plotnine\n\nA good introductory tutorial on how to use plotnine. It is part of the data visualization track from kaggle’s free online course (https://www.kaggle.com/learn/overview).\n\nPython Plotting for Exploratory Analysis\n\nA list of plots for exploratory data analysis and how they can be created using different libraries.\n\nMaking Plots With plotnine\n\nAn introduction to “grammar of graphics”, and how to use plotnine. This is part of the Data Analysis and Visualization in Python for Ecologists course from Data Carpentry\n\nPlotnine: Grammar of Graphics for Python\n\nA translation of the visualisation chapters from “R for Data Science” to Python using Plotnine and Pandas. This is a comprehensive introduction on the Grammar of Graphics with plotnine."
+    "text": "from plotnine import *\nfrom plotnine.data import mpg"
   },
   {
-    "objectID": "blog/2024/11/version-0.14.0/index.html",
-    "href": "blog/2024/11/version-0.14.0/index.html",
-    "title": "Version 0.14.0",
+    "objectID": "guide/shortcuts.html#labs-for-titles-scale-names",
+    "href": "guide/shortcuts.html#labs-for-titles-scale-names",
+    "title": "Shortcut functions",
+    "section": "labs() for titles, scale names",
+    "text": "labs() for titles, scale names\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + scale_x_continuous(name=\"Engine displacement (litres)\")\n    + scale_y_continuous(name=\"Highway miles per gallon\")\n    + scale_color_discrete(name=\"Car class\")\n)\n\n\n\n\n\n\n\n\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + labs(\n        title = \"Use labs() to quickly set labels\",\n        x = \"Engine displacement (litres)\",\n        y = \"Highway miles per gallon\",\n        color = \"Car class\"\n    )\n)"
+  },
+  {
+    "objectID": "guide/shortcuts.html#lims-for-scale-limits",
+    "href": "guide/shortcuts.html#lims-for-scale-limits",
+    "title": "Shortcut functions",
+    "section": "lims() for scale limits",
+    "text": "lims() for scale limits"
+  },
+  {
+    "objectID": "guide/shortcuts.html#expand_limits-for-data-based-limits",
+    "href": "guide/shortcuts.html#expand_limits-for-data-based-limits",
+    "title": "Shortcut functions",
+    "section": "expand_limits() for data-based limits",
+    "text": "expand_limits() for data-based limits\n\nref coord_cartesion, scale limits argument, xlim, ylim"
+  },
+  {
+    "objectID": "guide/shortcuts.html#annotate-for-quick-plot-text",
+    "href": "guide/shortcuts.html#annotate-for-quick-plot-text",
+    "title": "Shortcut functions",
+    "section": "annotate() for quick plot text",
+    "text": "annotate() for quick plot text"
+  },
+  {
+    "objectID": "guide/scale-misc.html",
+    "href": "guide/scale-misc.html",
+    "title": "Scale linetype, shapes, sizes",
     "section": "",
-    "text": "Code - Imports\nimport pandas as pd\nfrom plotnine import (\n   aes,\n   ggplot,\n   geom_point,\n   geom_text,\n   scale_x_datetime,\n   theme,\n   theme_set,\n   theme_matplotlib,\n)\ntheme_set(theme_matplotlib());\nWe are happy to announce the release of plotnine v0.14! This version requires python 3.10 or later, a change aligned with NumPy’s deprecation policy.\nThis release also introduces our new hex logo!"
+    "text": "linetype and shape tend to be simple\nsize supports a range of scale types\nrefer to aesthetics specification"
   },
   {
-    "objectID": "blog/2024/11/version-0.14.0/index.html#no-more-print-for-plots",
-    "href": "blog/2024/11/version-0.14.0/index.html#no-more-print-for-plots",
-    "title": "Version 0.14.0",
-    "section": "No More print for Plots",
-    "text": "No More print for Plots\nOne of the most significant updates in v0.14 is the removal of print as a way to render plot objects. Starting with v0.13, we began deprecating this approach, encouraging users to transition to ggplot.show() for displaying plots.\nNow, print on a plot object will simply return the display size (in pixels) rather than rendering the plot.\n\ndata = pd.DataFrame({\"x\": [1, 2, 3], \"y\": [1, 2, 3 ]})\np = (\n   ggplot(data, aes(\"x\", \"y\"))\n   + geom_point()\n   + theme(figure_size=(4, 2))\n)\n\nprint(p)\nprint(\"There is no figure above this output sentence.\")\n\n&lt;ggplot: (768 x 384)&gt;\nThere is no figure above this output sentence.\n\n\nIn environments with retina output, the exact pixel-size dimensions of the image will be double the display size.\n\np.show()\nprint(\"There is a figure above this output sentence.\")\n\n\n\n\n\n\n\n\nThere is a figure above this output sentence."
+    "objectID": "guide/scale-misc.html#linetype-specifying-values",
+    "href": "guide/scale-misc.html#linetype-specifying-values",
+    "title": "Scale linetype, shapes, sizes",
+    "section": "Linetype: specifying values",
+    "text": "Linetype: specifying values\n\nimport pandas as pd\n\nfrom plotnine.data import penguins\nfrom plotnine import *\n\ndf = pd.DataFrame(\n    {\n        \"group\": [\"A\"] * 2 + [\"B\"] * 2,\n        \"condition\": [\"treatment\", \"control\"] * 2,\n        \"measure\": [3, 1, 2, 1],\n    }\n)\n\np = (\n    ggplot(df, aes(\"condition\", \"measure\", group=\"group\"))\n    + geom_line(aes(linetype=\"group\"), size=1)\n    + geom_point(aes(fill=\"group\", shape=\"group\"), size=4)\n)\n\np\np + scale_linetype_manual(breaks=[\"A\", \"B\"], values=[\"dotted\", \"dashdot\"])"
   },
   {
-    "objectID": "blog/2024/11/version-0.14.0/index.html#enhancements",
-    "href": "blog/2024/11/version-0.14.0/index.html#enhancements",
-    "title": "Version 0.14.0",
-    "section": "Enhancements",
-    "text": "Enhancements\nIf you have worked with scales and passed in parameters, you might have encountered an inconvenience: your IDE could not provide meaningful suggestions. Previously, scales used **kwargs to capture common parameters, making it challenging for IDEs to offer specific guidance. With around 100 scales, each with subtle differences, we handled these parameters dynamically to avoid extensive duplication while also generating docstrings automatically.\nWith Python &gt;= 3.10, we have converted scales to dataclasses and leveraged finer controls over keyword-only parameters. This allows us to provide explicit signatures and enables the documentation system to automatically include inherited docstrings for parameters. For example, where an IDE previously displayed something like this:\n\n\n\n\n\nit will now display:"
+    "objectID": "guide/scale-misc.html#shape-specifying-values",
+    "href": "guide/scale-misc.html#shape-specifying-values",
+    "title": "Scale linetype, shapes, sizes",
+    "section": "Shape: specifying values",
+    "text": "Shape: specifying values\np = (\n    ggplot(df, aes(\"condition\", \"measure\", group=\"group\"))\n    + geom_line(aes(linetype=\"group\"), size=1)\n    + geom_point(aes(fill=\"group\", shape=\"group\"), size=4)\n)\n\np\np + scale_shape_manual(breaks=[\"A\", \"B\"], values=[\"s\", \"o\"])"
   },
   {
-    "objectID": "blog/2024/11/version-0.14.0/index.html#datetimes-and-timedeltas",
-    "href": "blog/2024/11/version-0.14.0/index.html#datetimes-and-timedeltas",
-    "title": "Version 0.14.0",
-    "section": "Datetimes and Timedeltas",
-    "text": "Datetimes and Timedeltas\nWorking with datetimes can be challenging (sometimes even hellish), but we aim to simplify this experience for you. In Python, there are three main types of datetime objects you are likely to encounter:\n\ndatetime.datetime from the standard library\npandas.Timestamp from pandas\nnumpy.datetime64 from numpy\n\nEach of these types covers different ranges and resolutions. The standard library’s datetime has the smallest range, with a constant millisecond (ms) resolution; pandas offers a middle ground with a larger range and nanosecond (ns) resolution; and numpy provides varying resolutions (from years to attoseconds) with different ranges for each resolution. These differences mean that these types are not always directly interchangeable, though we work to make them feel that way. Since our data is stored in a dataframe, any datetime values are converted to the pandas type, which then stores values as numpy types!\nArithmetic operations on each datetime type yield corresponding timedelta types also with their unique resolutions. Certain ranges can exceed valid limits—for example, the range of pandas.Timestamp cannot be represented as a timedelta. This means there are edge cases. But you should not be too worried unless your desired time resolution is dictacted by the vagaries of sub-atomic particles.\nIn this release, you can now expand the limits of datetime and timedelta scales with additional constants.\n\nimport datetime\n\ndata = pd.DataFrame({\n    \"x\": [datetime.datetime(2024, 8, i) for i in range(1, 6)],\n    \"y\": range(5)\n})\n\n(\n    ggplot(data, aes(\"x\", \"y\"))\n    + geom_point()\n    + scale_x_datetime(\n        expand=(0, datetime.timedelta(days=1))\n    )\n    + theme(figure_size=(6, 4))\n)\n\n\n\n\n\n\n\n\nYou can also set the limits through the coordinate system.\ncoord_cartesian(xlim=(datetime(1999, 1, 1), datetime(2006, 1, 1)))\nBeyond datetime and timezone scales, this robustness now applies to any scale created for data types that are not strictly numeric."
+    "objectID": "guide/scale-misc.html#size-choosing-a-style",
+    "href": "guide/scale-misc.html#size-choosing-a-style",
+    "title": "Scale linetype, shapes, sizes",
+    "section": "Size: choosing a style",
+    "text": "Size: choosing a style\np = ggplot(df, aes(\"condition\", \"measure\", group=\"group\", size=\"measure\")) + geom_point(\n    aes(size=\"measure\")\n)\n\np + scale_size_radius()\np + scale_size_area()"
   },
   {
-    "objectID": "blog/2024/11/version-0.14.0/index.html#integration-with-quarto",
-    "href": "blog/2024/11/version-0.14.0/index.html#integration-with-quarto",
-    "title": "Version 0.14.0",
-    "section": "Integration with Quarto",
-    "text": "Integration with Quarto\nplotnine now recognizes figure options specified in the meta section of a Quarto document. These options control the size and format of output images, including fig-dpi, fig-width, fig-height, and fig-format.\nWhile these Quarto options are set as defaults, you can still override them for any specific plot. For example:\n---\ntitle: \"Plotnine Playing well with Quarto\"\nformat: html\njupyter: python3\nfig-dpi: 100\nfig-width: 6\nfig-height: 4\nfig-format: retina\n---\n\n```{python}\n#| label: using-quarto-figure-options\nfrom pandas import pd\nfrom plotnine import aes, geom_point, ggplot, theme\n\ndata = pd.DataFrame({\"x\": range(5), \"y\": range(5)})\n\n(\n  ggplot(data, aes(\"x\", \"y\"))\n  + geom_point()\n)\n```\n\n```{python}\n#| label: overriding-quarto-figure-options\n(\n  ggplot(data, aes(\"x\", \"y\"))\n  + geom_point()\n  + theme(figure_size=(4, 3))\n)\n```\nNote that, at the moment using these options at the chunk level has no effect."
-  },
-  {
-    "objectID": "blog/2024/11/version-0.14.0/index.html#font-aesthetics",
-    "href": "blog/2024/11/version-0.14.0/index.html#font-aesthetics",
-    "title": "Version 0.14.0",
-    "section": "Font Aesthetics",
-    "text": "Font Aesthetics\nIn theory, aesthetics represent any properties we can perceive; in practice, only those we can see and vary predictably can be useful aesthetics. Previously, text attributes like family, fontweight, fontstyle, and fontvariant were parameters but not aesthetics, meaning you could not map variables to them. Not anymore, these attributes of a text are now aesthetics!\nfontweight controls the boldness of text. It accepts any number in the range [0, 1000], with common levels being normal (400) and bold (700). Some fonts provide multiple levels of boldness, with up to nine variations, typically at intervals like [100, 200, 300, 400, 500, 600, 700, 800, 900]. A given numeric weight will be mapped to the nearest available level.\nFor instance, here is an example comparing two fonts: Helvetica, which doesn’t have multiple weight levels (the one on your system may differ), and Open Sans (again, the one on your system may differ), which does.\n\nfrom mizani.bounds import rescale\n\ndata = pd.DataFrame({\n    \"x\": range(5),\n    \"y\": range(5),\n    \"w\": rescale(range(5), to=(0, 1000)),\n    \"label\": \"Zero One Two Three Four\".split()\n})\n\n(\n    ggplot(data, aes(\"x\", label=\"label\", fontweight=\"w\"))\n    + geom_text(aes(y=\"y\"), family=\"Helvetica\", colour=\"red\", size=16)\n    + geom_text(aes(y=\"y-.25\"), family=\"Open Sans\", colour=\"green\", size=16)\n)\n\n\n\n\n\n\n\n\nNote that, there is no scale for fontweight so we had to explicitly scale the value to the expected range. Currently you should expect at most 9 levels of bold variations, but pending better support, completely variable fonts are now a thing and will allow continuous variation on the range [0, 1000].\nNote that there is no scale for fontweight, so values must be explicitly scaled to the expected range. And, you can expect a maximum of 9 levels of bold variations. However, with the growing support for variable fonts, continuous variation across the full [0, 1000] range may be possible."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "blog",
+    "objectID": "guide/position-adjustments.html",
+    "href": "guide/position-adjustments.html",
+    "title": "Position adjustments",
     "section": "",
-    "text": "Version 0.14.0\n\n\n\n\n\n\n\n\nNov 7, 2024\n\n\nHassan Kibirige\n\n\n\n\n\n\n\n\n\n\n\n\n2024 Plotnine Contest - Last Call\n\n\n\n\n\n\n\n\nJul 22, 2024\n\n\nHassan Kibirige\n\n\n\n\n\nNo matching items"
+    "text": "Position adjustments determine the placement of overlapping geoms. For example, they can jitter points by applying a small amount of noise, or dodge bars to put them side-by-side. Use the position= argument to geoms to specify adjustments.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Plotnine",
+    "objectID": "guide/position-adjustments.html#setup",
+    "href": "guide/position-adjustments.html#setup",
+    "title": "Position adjustments",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import diamonds",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/position-adjustments.html#jittering-points",
+    "href": "guide/position-adjustments.html#jittering-points",
+    "title": "Position adjustments",
+    "section": "Jittering points",
+    "text": "Jittering points\nUse position_jitter() to add a small amount of noise to the x- and y-axis for geoms like points. This enables viewers to see overlapping items on dense plots.\nThe plots below show points before and after applying jitter.\np = ggplot(diamonds.head(1000), aes(\"cut\", \"carat\", fill=\"clarity\"))\n\np + geom_point()\np + geom_point(position=position_jitter())",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/position-adjustments.html#stacking-filling-and-dodging-bars",
+    "href": "guide/position-adjustments.html#stacking-filling-and-dodging-bars",
+    "title": "Position adjustments",
+    "section": "Stacking, filling, and dodging bars",
+    "text": "Stacking, filling, and dodging bars\nBy default, geoms like geom_bar() stack bars on top of each other (position_stack()). Use position_fill() to make the stacked bars all together the same height (set at 1), and position_dodge() to move bars side-by-side.\nfrom plotnine.data import diamonds\n\n# TODO: from https://ggplot2-book.org/layers.html#sec-position\np = ggplot(diamonds, aes(\"color\", fill=\"cut\")) + theme(legend_position=\"none\")\n\np + geom_bar(position=position_stack())  # default\np + geom_bar(position=position_fill())\np + geom_bar(position=position_dodge())\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReversing order\nThe position_stack() and position_fill() functions supports a reverse argument. This reverses the order within stacked bars.\np = ggplot(diamonds, aes(\"color\", fill=\"cut\"))\n\np + geom_bar(position=position_fill())\np + geom_bar(position=position_fill(reverse=True))\n\n\n\n\n\n\n\n\n\n\n\n\nSpacing between dodged bars\nUse the width argument to position_dodge() to increase or decrease the spacing between dodged bars.\nimport pandas as pd\n\ndf = pd.DataFrame({\"x\": [1, 1, 2, 2], \"n\": [1, 2, 3, 4], \"fill\": [\"A\", \"B\"] * 2})\n\nggplot(df, aes(\"x\", \"n\", fill=\"fill\")) + geom_col(position=position_dodge(width=0.5))\n\n\n\n\n\n\n\nNotice that setting width=0.5 caused the bars to overlap. Setting width higher increases the distance between the center of the bars.\n\n\nLabelling bars\nIf you want to add a label to dodged bars, it’s often necessary to set the dodge width for both the bars and the text.\n\ndodge = position_dodge(width=0.6)\n(\n    ggplot(df, aes(\"x\", \"n\", fill=\"fill\", label=\"n\"))\n    + geom_col(position=dodge, width=0.5)\n    + geom_text(position=dodge)\n)\n\n\n\n\n\n\n\n\n\n\nJitterdodging\nIf you want to combine jittering and dodging, use position_jitterdodge(). (TODO: just link to API Reference, add example there.)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/position-adjustments.html#dodging-with-missing-bars",
+    "href": "guide/position-adjustments.html#dodging-with-missing-bars",
+    "title": "Position adjustments",
+    "section": "Dodging with missing bars",
+    "text": "Dodging with missing bars\nWhen dodging bars, if a bar is missing from the plot (e.g. due to missing data), it often shows up by making another bar especially wide.\n\nfrom plotnine.data import mpg\n\nggplot(mpg, aes(\"class\", fill=\"factor(cyl)\")) + geom_bar(position=position_dodge())\n\n\n\n\n\n\n\n\nNotice that 2seater on the left has only a single bar that’s as wide as car classes with 4 bars. This is because bars occupy the same amount of room within an x-axis grouping.\nIn order to preserve space within a grouping for missing bars, you can calculate counts yourself, and add explicit rows for missing combinations in the data.\n\ndf_crossed = mpg[[\"cyl\"]].merge(mpg[[\"class\"]], how=\"cross\")\n\n# TODO: only works because class is a categorical\n# also is this section is pretty cumbersome\nfull_counts = mpg.groupby([\"cyl\", \"class\"]).size().reset_index(name=\"n\")\n\n(\n    ggplot(\n        full_counts,\n        aes(\"class\", \"n\", color=\"factor(cyl)\", fill=\"factor(cyl)\"),\n    )\n    + geom_col(position=position_dodge())\n)\n\n\n\n\n\n\n\n\nNote that setting the color= aesthetic makes the bars with height 0 visible (by setting the color of the rectangle border).",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/position-adjustments.html#dodging-lines-and-points",
+    "href": "guide/position-adjustments.html#dodging-lines-and-points",
+    "title": "Position adjustments",
+    "section": "Dodging lines and points",
+    "text": "Dodging lines and points\nWhen dodging lines and points, the width= argument to position_dodge() is necessary.\n\ndf = pd.DataFrame(\n    {\n        \"group\": [\"A\"] * 2 + [\"B\"] * 2,\n        \"condition\": [\"treatment\", \"control\"] * 2,\n        \"measure\": [3, 1, 2, 1],\n    }\n)\n\n\ndodge = position_dodge(width=0.1)\n\n(\n    ggplot(df, aes(\"condition\", \"measure\", fill=\"group\", group=\"group\"))\n    + geom_line(position=dodge)\n    + geom_point(size=4, position=dodge)\n    + expand_limits(y=0)\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/position-adjustments.html#nudge-a-fixed-amount",
+    "href": "guide/position-adjustments.html#nudge-a-fixed-amount",
+    "title": "Position adjustments",
+    "section": "Nudge a fixed amount",
+    "text": "Nudge a fixed amount\nUse position_nudge() to move points or text a fixed amount in the x- and y-directions.\n\nhighest_mpg = mpg[(mpg[\"hwy\"] == mpg[\"hwy\"].max()) & (mpg[\"cty\"] == mpg[\"cty\"].max())]\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + geom_point()\n    + geom_text(\n        aes(label=\"model\"),\n        position=position_nudge(x=-1, y=-2),\n        data=highest_mpg,\n    )\n)\n\n\n\n\n\n\n\n\nNote however that geoms like geom_text() provide nudge_x and nudge_y arguments that are more convenient for nudging text.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Position adjustments"
+    ]
+  },
+  {
+    "objectID": "guide/labels.html",
+    "href": "guide/labels.html",
+    "title": "Labels and titles",
     "section": "",
-    "text": "plotnine started as an effort to improve the scaling functionality in ggpy_ formally known as “ggplot for python”. It was part of a larger goal to evolve the package into one that supported a full plotting grammar. It turned out that to have a grammar of graphics system we had to just about start anew.\nThe complete guide to what constitutes a “Grammar of Graphics” is Leland Wilkinson’s book The Grammar of Graphics. To create ggplot2_ Hadley Wickham came up with an interpretation termed A layered grammar of graphics 1. Core to the interpretation is a crucial plot building pipeline 2 in ggplot2 that we adopted 3 for plotnine.\nThe R programming language has a rich statistical ecosystem that ggplot2 taps into with ease. In plotnine we have done our best to integrate with the rest of the scientific python ecosystem. Though we feel we could do more on that integration, notwithstanding language differences, users familiar with ggplot2 should be comfortable and productive with plotnine."
+    "text": "You will learn\n\n\n\n\nHow to categorize the three kinds of labels in a plot.\nHow to set each kind of label.\nHow to style labels (e.g. with color).",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
   },
   {
-    "objectID": "about.html#history-and-objective",
-    "href": "about.html#history-and-objective",
-    "title": "About Plotnine",
+    "objectID": "guide/labels.html#setup",
+    "href": "guide/labels.html#setup",
+    "title": "Labels and titles",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins\n\np = (\n    ggplot(penguins, aes(\"flipper_length_mm\", \"body_mass_g\", color=\"species\"))\n    + geom_point()\n)",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
+  },
+  {
+    "objectID": "guide/labels.html#three-kinds-of-labels",
+    "href": "guide/labels.html#three-kinds-of-labels",
+    "title": "Labels and titles",
+    "section": "Three kinds of labels",
+    "text": "Three kinds of labels\nHere is a plot, with the three kinds of labels marked.\n\n\nPlot labels: titles, subtitles, captions. (Shown in purple).\nGuide names: axis labels, legend titles. (Shown in red).\nScale breaks: tick labels, color glyph labels. (Shown in orange).\n\nIn the following sections, we’ll cover how the first two kinds of labels can quickly be set with the labs() function, and how scale breaks can be labeled using scale_*() functions.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
+  },
+  {
+    "objectID": "guide/labels.html#labelling-quickly-with-labs",
+    "href": "guide/labels.html#labelling-quickly-with-labs",
+    "title": "Labels and titles",
+    "section": "Labelling quickly with labs()",
+    "text": "Labelling quickly with labs()\nUse the labs() function to quickly set plot labels and guide names.\n\np + labs(\n    title=\"Penguin flipper length vs body mass\",\n    x=\"Flipper length (mm)\",\n    y=\"Body mass (g)\",\n    color=\"SPECIES\",\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\nNotice that the only piece it can’t set is the break labels (e.g. the x-axis tick labels), which is often enough for most plots.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
+  },
+  {
+    "objectID": "guide/labels.html#styling-labels-with-theme",
+    "href": "guide/labels.html#styling-labels-with-theme",
+    "title": "Labels and titles",
+    "section": "Styling labels with theme()",
+    "text": "Styling labels with theme()\nUse the theme() function to style labels. For example, by changing their color or size.\n\n(\n    ggplot(penguins, aes(\"flipper_length_mm\", \"body_mass_g\"))\n    + geom_point()\n    + theme(\n        axis_text_x=element_text(color=\"orange\"),\n        axis_title_x=element_text(color=\"blue\", size=16),\n    )\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
+  },
+  {
+    "objectID": "guide/labels.html#scale-breaks-labels",
+    "href": "guide/labels.html#scale-breaks-labels",
+    "title": "Labels and titles",
+    "section": "Scale breaks labels",
+    "text": "Scale breaks labels\nUse the labels= arguments to the appropriate scale_*() function, in order to customize break labels.\nFor example, the code below changes the y-axis labels from grams to kilograms.\n\n# TODO: how to make disappear in labs?\n(\n    p\n    + scale_y_continuous(labels=lambda x: [val / 1_000 for val in x])\n    + labs(y=\"Body mass (kg)\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\nSee Scale basics for more on setting break labels.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Labels and titles"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html",
+    "href": "guide/geometric-objects.html",
+    "title": "Geometric objects",
     "section": "",
-    "text": "plotnine started as an effort to improve the scaling functionality in ggpy_ formally known as “ggplot for python”. It was part of a larger goal to evolve the package into one that supported a full plotting grammar. It turned out that to have a grammar of graphics system we had to just about start anew.\nThe complete guide to what constitutes a “Grammar of Graphics” is Leland Wilkinson’s book The Grammar of Graphics. To create ggplot2_ Hadley Wickham came up with an interpretation termed A layered grammar of graphics 1. Core to the interpretation is a crucial plot building pipeline 2 in ggplot2 that we adopted 3 for plotnine.\nThe R programming language has a rich statistical ecosystem that ggplot2 taps into with ease. In plotnine we have done our best to integrate with the rest of the scientific python ecosystem. Though we feel we could do more on that integration, notwithstanding language differences, users familiar with ggplot2 should be comfortable and productive with plotnine."
+    "text": "Geometric objects (geoms) determine how to turn mapped data into visual elements–such as points, lines, or even boxplots. There are two kinds of geoms: individual and collective.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
   },
   {
-    "objectID": "about.html#built-with",
-    "href": "about.html#built-with",
-    "title": "About Plotnine",
-    "section": "Built with",
-    "text": "Built with\n\nmatplotlib - Plotting backend.\npandas - Data handling.\nmizani - Scales framework.\nstatsmodels - For various statistical computations.\nscipy - For various statistical computation procedures."
+    "objectID": "guide/geometric-objects.html#setup",
+    "href": "guide/geometric-objects.html#setup",
+    "title": "Geometric objects",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import mpg",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
   },
   {
-    "objectID": "about.html#footnotes",
-    "href": "about.html#footnotes",
-    "title": "About Plotnine",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe Grammar of Graphics has to be interpreted into a form that can be implemented. We were not up to this task.↩︎\nThis is more or less an implementation of what is depicted in Figure 2.2 of The Grammar of Graphics↩︎\nBy adopting a similar pipeline and user API as ggplot2 the other internals referenced within the pipeline look similar.↩︎"
+    "objectID": "guide/geometric-objects.html#basic-use",
+    "href": "guide/geometric-objects.html#basic-use",
+    "title": "Geometric objects",
+    "section": "Basic use",
+    "text": "Basic use\nGeom functions, like geom_point(), specify visual elements to draw on the plot. They’re rendered in the order they’re added to the plot.\nFor example, the plot below adds points will fill color corresponding to the class column, and then points with shape corresponding to the same column.\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\"))\n    + geom_point(aes(fill=\"class\"), size=5)\n    + geom_point(aes(shape=\"class\"))\n)\n\n\n\n\n\n\n\nNotice that the legend includes a guide for both fill and shape, so it’s clear what each corresponds to in the chart.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
   },
   {
-    "objectID": "blog/2024/07/2024-contest-last-call/index.html",
-    "href": "blog/2024/07/2024-contest-last-call/index.html",
-    "title": "2024 Plotnine Contest - Last Call",
+    "objectID": "guide/geometric-objects.html#kinds-of-geoms",
+    "href": "guide/geometric-objects.html#kinds-of-geoms",
+    "title": "Geometric objects",
+    "section": "Kinds of geoms",
+    "text": "Kinds of geoms\nGeoms come in two varieties:\n\nIndividual geoms: draw each row of data independently on the chart.\nCollective geoms: draw based on groups of rows, or relationships between them.\n\nThis is shown below for points, boxplots, and lines.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote that boxplots are collective because they draw the box based on all the data in a group. Lines are collective because they connect rows of data points.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html#individual-points-bars-and-text",
+    "href": "guide/geometric-objects.html#individual-points-bars-and-text",
+    "title": "Geometric objects",
+    "section": "Individual: points, bars, and text",
+    "text": "Individual: points, bars, and text\nThis section illustrates individual geoms. These range from simple points, to text, to bars and rectangles.\n\nScatterplot with text\n\nhighest_mpg = mpg[(mpg[\"hwy\"] == mpg[\"hwy\"].max()) & (mpg[\"cty\"] == mpg[\"cty\"].max())]\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\")) \n    + geom_point() \n    + geom_text(\n        aes(label=\"model\"),\n        nudge_y=-2,\n        nudge_x = -1,\n        data = highest_mpg\n    )\n)\n\n\n\n\n\n\n\n\n\n\nBarchart on counts\n\nttl_mpg_class = mpg.value_counts([\"class\", \"drv\"]).reset_index()\nttl_mpg_class.head(3)\n\n\n\n\n\n\n\n\nclass\ndrv\ncount\n\n\n\n\n0\nsuv\n4\n51\n\n\n1\nmidsize\nf\n38\n\n\n2\ncompact\nf\n35\n\n\n\n\n\n\n\n\nggplot(ttl_mpg_class, aes(\"class\", \"count\", fill = \"drv\")) + geom_col()\n\n\n\n\n\n\n\n\n\n\nRectangles\nUse geom_rect() to draw rectangles.\n\nimport pandas as pd\n\ndf_rect = pd.DataFrame(\n    {\n        \"xmin\": [1, 2, 3],\n        \"ymin\": [1, 2, 3],\n        \"xmax\": [2, 3, 4],\n        \"ymax\": [2, 3, 4],\n    }\n)\n\n(\n    ggplot(df_rect, aes(xmin=\"xmin\", ymin=\"ymin\", xmax=\"xmax\", ymax=\"ymax\"))\n    + geom_rect(fill=\"orange\")\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html#collective-distributions",
+    "href": "guide/geometric-objects.html#collective-distributions",
+    "title": "Geometric objects",
+    "section": "Collective: distributions",
+    "text": "Collective: distributions\nCollective geoms like geom_boxplot() and geom_density() can communicate the general shape and distribution of data.\n\nBoxplots and violins\nUse geom_boxplot() and geom_violin() to create boxplots and violin plots, respectively.\n\nindx = mpg[\"class\"].isin([\"2seater\", \"compact\", \"midsize\"])\n\n\n(\n    ggplot(aes(\"class\", \"cty\"))\n    + geom_boxplot(data=mpg[indx], fill=\"orange\")\n    + geom_violin(data=mpg[~indx], fill=\"lightblue\")\n)\n\n\n\n\n\n\n\n\n\n\nHistograms and densities\np = ggplot(mpg, aes(\"cty\"))\np + geom_histogram()\np + geom_density(fill=\"lightblue\")\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/stats/stat_bin.py:109: PlotnineWarning: 'stat_bin()' using 'bins = 17'. Pick better value with 'binwidth'.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmoothing\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\"))\n    + geom_point()\n    + geom_smooth(method=\"lm\", color=\"blue\", fill=\"orange\")\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html#collective-lines-and-fills",
+    "href": "guide/geometric-objects.html#collective-lines-and-fills",
+    "title": "Geometric objects",
+    "section": "Collective: lines and fills",
+    "text": "Collective: lines and fills\nLines and fills are collective geoms because they connect or fill between data points.\nFor example, geom_line() connects points along the x-axis. This is especially useful when x is a time series.\n\nfrom plotnine import *\nfrom plotnine.data import huron\n\n(\n    ggplot(huron, aes(\"year\", \"level\"))\n    + geom_line()\n    + geom_point()\n)\n\n\n\n\n\n\n\n\nSimilarly, geom_ribbon() draws a ribbon along the x-axis, based on minimum and maximum values for the y-axis.\n\nfrom plotnine import *\nfrom plotnine.data import huron\n\n(\n    ggplot(huron, aes(\"year\", \"level\"))\n    + geom_ribbon(aes(ymax=\"level\"), ymin=0, fill=\"lightblue\")\n    + geom_point()\n)\n\n\n\n\n\n\n\n\n\ngeom_area(): a special case of geom_ribbon() that always sets ymin=0.\ngeom_path(): connects points with a line by connecting subsequent rows of data, rather than along the x-axis.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html#position-for-placement-tweaks",
+    "href": "guide/geometric-objects.html#position-for-placement-tweaks",
+    "title": "Geometric objects",
+    "section": "position= for placement tweaks",
+    "text": "position= for placement tweaks\nUse the position= argument to geom functions to do things like apply a small amount of random jitter. This can be useful for avoiding overplotting, where elements cover each other. Position can also move stacked bars to be side-to-side, to make them easier to compare.\n\nJitter with random noise\nUse position_jitter() to apply a small amount of random noise on the x- and y-axis. For example, the plots below show the same data with and without jitter.\np = ggplot(mpg, aes(\"cty\", \"hwy\"))\n\np + geom_point(alpha=0.2)\np + geom_point(position=position_jitter())\n\n\n\n\n\n\n\n\n\n\nNotice that the first plot has points plotted on top of each other. It uses alpha=0.2 to make overlapping points more visible. The second plot uses jitter to spread points out.\n\n\nDodge to side-by-side\nUse position_fill() to make stacked bars all the same height (set at 1), and position_dodge() to move bars side-by-side.\nfrom plotnine.data import diamonds\n\n# TODO: from https://ggplot2-book.org/layers.html#sec-position\np = ggplot(diamonds, aes(\"color\", fill=\"cut\")) + theme(legend_position=\"none\")\n\np + geom_bar()\np + geom_bar(position=position_fill())\np + geom_bar(position=position_dodge())\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotice that the middle plot (position fill) makes it easy to compare the proportion of each fill across groups, while the right plot (position dodge) makes it easy to compare individual bars.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/geometric-objects.html#stat-for-statistical-calculations",
+    "href": "guide/geometric-objects.html#stat-for-statistical-calculations",
+    "title": "Geometric objects",
+    "section": "stat= for statistical calculations",
+    "text": "stat= for statistical calculations\nUse the stat= argument to geom functions to run calculations before plotting. For example, the plot below uses stat=\"summary\" with the fun_y= argument, to add a point for the mean of each group.\n\n(\n    ggplot(mpg, aes(\"trans\", \"cty\"))\n    + geom_point()\n    + geom_point(\n        color=\"red\",\n        size=3,\n        stat=\"summary\",\n        fun_y=lambda x: x.mean())\n)\n\n\n\n\n\n\n\n\nNote that in practice it’s often easier to just pass summarized data directly to a geom function. For example, the plot above could also be created with the following code.\n\nmean_mpg = mpg.groupby(\"trans\")[\"cty\"].mean().reset_index()\n\n(\n    ggplot(mpg, aes(\"trans\", \"cty\"))\n    + geom_point()\n    + geom_point(data=mean_mpg, color=\"red\", size=3)\n)\n\n(TODO: note about after_stat()? I think this is basically impossible to use with the current reference, because there’s no way to know the options for each geom.)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Geometric objects"
+    ]
+  },
+  {
+    "objectID": "guide/feature-coverage.html",
+    "href": "guide/feature-coverage.html",
+    "title": "Feature parity with ggplot2",
     "section": "",
-    "text": "The 2024 Plotnine Contest will close in 5 days on 26th July 2024, this is after a two week extension.\nWe have many submissions already but we could have move in these two categories."
+    "text": "How to separate guides (e.g. linetype size and shape size?)\nShould people use scale_color_cmap or scale_color_continuous?"
   },
   {
-    "objectID": "blog/2024/07/2024-contest-last-call/index.html#visualisation-of-distributions",
-    "href": "blog/2024/07/2024-contest-last-call/index.html#visualisation-of-distributions",
-    "title": "2024 Plotnine Contest - Last Call",
-    "section": "1. Visualisation of Distributions",
-    "text": "1. Visualisation of Distributions\nMost of the time, the main plot of statistical graphics is to get a sense of how the data is distributed. I would love to see more submissions of this type. This resource from the University of Iowa is a good introduction to the kinds of ways you can visualise distributions. I think there is plenty of room for otherwise simple visualisations of data distributions made more compelling by the choice of dataset, colors, annotations and overall polish."
+    "objectID": "guide/feature-coverage.html#questions",
+    "href": "guide/feature-coverage.html#questions",
+    "title": "Feature parity with ggplot2",
+    "section": "",
+    "text": "How to separate guides (e.g. linetype size and shape size?)\nShould people use scale_color_cmap or scale_color_continuous?"
   },
   {
-    "objectID": "blog/2024/07/2024-contest-last-call/index.html#visualisation-art",
-    "href": "blog/2024/07/2024-contest-last-call/index.html#visualisation-art",
-    "title": "2024 Plotnine Contest - Last Call",
-    "section": "2. Visualisation Art",
-    "text": "2. Visualisation Art\nPlotnine implements The Grammar of Graphics, which moulds Drawing and Painting Art into a system suitable for statistical graphics. Constrained within, the Art says “I want to break free” and a contest is the party at which to break free. We got all week.\nA contest can trigger you into action on tasks you’ve long procrastinated or avoided due to concerns about developing an unhealthy addiction. This one may have got me. Inspired by a Yan Holtz piece, Michael Chow has deeped into generative art for this contest. In turn, I have given it a go.\nFrom Yan and through Michael, I get an abstract form and first I unpaint it to reveal its spiky nature.\n\nThe Spiky World\n\n\nCode\nfrom plotnine import (\n    aes,\n    coord_cartesian,\n    element_rect,\n    geom_area,\n    ggplot,\n    scale_color_manual,\n    theme_void,\n    theme,\n)\nimport pandas as pd\nimport numpy as np\n\n\nnum_groups = 30\n\ndef get_colors(cmap_name, start=0, stop=1, n=10):\n    \"\"\"Return colors from a colormap\"\"\"\n    from mizani.palettes import get_colormap\n    x = np.linspace(start, stop, n)\n    return get_colormap(cmap_name).continuous_palette(x)\n\ndef combine(colors: list[str]):\n    from mizani.palettes import gradient_n_pal\n    x = np.linspace(0, 1, num_groups)\n    return gradient_n_pal(colors)(x)\n\ndef make_data(seed=123):\n    names = [f\"G{i}\" for i in range(num_groups)]\n    population = [0] * 100 + list(range(1, num_groups+1))\n    rs = np.random.RandomState(seed)\n    frames = []\n    for i in range(30):\n        arr = rs.choice(population, num_groups)\n        _data = pd.DataFrame({\n            \"x\": i,\n            \"y\": arr / np.sum(arr),\n            \"g\": rs.choice(names, num_groups, replace=False),\n        })\n        frames.append(_data)\n    return pd.concat(frames).sort_values([\"x\", \"g\"])\n\ndef blink(colors: list[str] | list[list[str]], seed=123):\n    data = make_data(seed)\n    p = (\n        ggplot(data, aes(x=\"x\", y=\"y\", fill=\"g\", color=\"g\"))\n        + geom_area(show_legend=False)\n        + coord_cartesian(expand=False)\n        + scale_color_manual(values=combine(colors), aesthetics=[\"fill\", \"color\"])\n        + theme_void()\n    )\n    return p\n\n(\n    ggplot(make_data(), aes(x=\"x\", y=\"y\", group=\"g\"))\n    + geom_area(fill=\"white\", color=\"black\", show_legend=False)\n    + coord_cartesian(expand=False)\n    + theme_void()\n    + theme(plot_background=element_rect(fill=\"white\"))\n)\n\n\n\n\n\n\n\n\n\nThen with each blink of the eye, The Spiky World reveals one of her infinite faces.\nBlink.\n\n\nSpiky Desert Dunes\n\n\nCode\nblink(get_colors(\"inferno\", .5, 1)[::-1])\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Spiky Volcano\n\n\nCode\nblink(get_colors(\"magma\", .3, .95))\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Morning in a Spiky Forest\n\n\nCode\nblink(get_colors(\"Greens\"))\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Spiky Sunset at the Beach\n\n\nCode\nblink([\n    *reversed(get_colors(\"YlOrBr\", 0.4, 0.7)),\n    *reversed(get_colors(\"Blues\", 0.25, 0.7)),\n    *reversed(get_colors(\"Oranges\", 0.05, 0.3)),\n])\n\n\n\n\n\n\n\n\n\nThis is generative art, the art that never ends. I did not know. I started blinking. I must continue blinking forever.\nCreate your world, blink and share what you see."
+    "objectID": "guide/feature-coverage.html#missing",
+    "href": "guide/feature-coverage.html#missing",
+    "title": "Feature parity with ggplot2",
+    "section": "Missing",
+    "text": "Missing\n\ngeom_text:\n\nno manual hjust argument\nno fontweight, fontstyle mappings (fontweight is fontface in ggplot; TODO upgrade and check)\naes hjust, vjust don’t accept numbers (only strings like center, top, etc..)\n\ngeom_path no linewidth option (uses size)\nShape names not supported (see aes spec)\nNone for do nothing not always supported\n\nshape aesthetic\n\nNot all linetypes supported (and must be name)\n\nggplot’s dotdash is dashdot\n\ngeom_sf: would be geom_carto in plotnine. Handles crs conversions for you."
+  },
+  {
+    "objectID": "guide/feature-coverage.html#differences",
+    "href": "guide/feature-coverage.html#differences",
+    "title": "Feature parity with ggplot2",
+    "section": "Differences",
+    "text": "Differences\nfrom plotnine import *\nfrom plotnine.data import huron\nggplot(huron, aes(\"year\", \"level\")) + geom_line(linetype=(0, (1, 5)),)"
+  },
+  {
+    "objectID": "guide/feature-coverage.html#key-syntax-differences",
+    "href": "guide/feature-coverage.html#key-syntax-differences",
+    "title": "Feature parity with ggplot2",
+    "section": "Key syntax differences",
+    "text": "Key syntax differences\n\nreplace . with _\nfuns and fun_y, etc..?\nwhere clause\nuse quotes are mappings"
+  },
+  {
+    "objectID": "guide/feature-coverage.html#mapping-differences",
+    "href": "guide/feature-coverage.html#mapping-differences",
+    "title": "Feature parity with ggplot2",
+    "section": "Mapping differences",
+    "text": "Mapping differences\n\nsans-serif vs sans, monospace vs mono"
+  },
+  {
+    "objectID": "guide/export.html",
+    "href": "guide/export.html",
+    "title": "Save and display",
+    "section": "",
+    "text": "You will learn\n\n\n\n\nHow to display plots in Jupyter notebooks, Quarto documents, and the console.\nHow to save plots to different formats.\nHow to change plot size and resolution.\nHow to ensure fonts in SVGs are self-contained.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/export.html#setup",
+    "href": "guide/export.html#setup",
+    "title": "Save and display",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/export.html#displaying-plots",
+    "href": "guide/export.html#displaying-plots",
+    "title": "Save and display",
+    "section": "Displaying plots",
+    "text": "Displaying plots\nBy default, plots in Jupyter and Quarto should be displayed automatically.\nFor example, this website is built with Quarto, but the code below should also cause a plot to appear in a Jupyter notebook.\n\np = (\n    ggplot(penguins, aes(\"bill_length_mm\", \"bill_depth_mm\", color=\"species\"))\n    + geom_point()\n    + labs(\n        title = \"Palmer Penguins Bill Depth vs Length\",\n        x = \"Bill length (mm)\",\n        y = \"Bill depth (mm)\",\n    )\n)\n\np\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\nIf you want to explicitly display a plot, use the .show() method.\n\np.show()\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\nCustomizing display\nSee the following documentation pages for customizing plot display:\n\nQuarto: documentation on computed figures and figure options page.\nJupyter notebooks: “Integrating your objects with IPython”.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/export.html#saving-plots",
+    "href": "guide/export.html#saving-plots",
+    "title": "Save and display",
+    "section": "Saving plots",
+    "text": "Saving plots\nUse the .save() method to save a plot to a file. It takes as its first argument the name of the file to save the plot to.\n\np.save(\"my_plot.png\")\n\nBy default, Plotnine tries to infer the file format from its name. For example, in the code above, Plotnine would save the plot in PNG format.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/export.html#setting-size-resolution-and-format",
+    "href": "guide/export.html#setting-size-resolution-and-format",
+    "title": "Save and display",
+    "section": "Setting size, resolution, and format",
+    "text": "Setting size, resolution, and format\nPlotnine supports customizing plot size, resolution, and format in three ways, in order of precedence:\n\n.save() method arguments.\ntheme() settings.\nplotnine.options.set_option() global options.\n\n\np = ggplot(penguins, aes(\"bill_length_mm\", \"bill_depth_mm\", color=\"species\"))\n\n\n# Customize in save method ---\np.save(\"my_plot.png\", width=6, height=4, dpi=100)\n\n\n# Display or save with custom theme ---\nmy_theme = theme(figure_size=(6, 4), dpi=100)\np + my_theme\n\n\n# Save using global option ---\nfrom plotnine.options import set_option\n\nset_option(\"figure_size\", (6, 4))\n\np.save()",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/export.html#handling-fonts-in-svg",
+    "href": "guide/export.html#handling-fonts-in-svg",
+    "title": "Save and display",
+    "section": "Handling fonts in svg",
+    "text": "Handling fonts in svg\nWhen plots using custom fonts are saved as an SVG, it may not display correctly on computers that do not have the fonts installed. Use the svg_usefonts argument in the theme() function to ensure that fonts are self-contained in the SVG file.\n\np + theme(svg_usefonts=False)",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Save and display"
+    ]
+  },
+  {
+    "objectID": "guide/case-study3.html",
+    "href": "guide/case-study3.html",
+    "title": "Case study 3",
+    "section": "",
+    "text": "Something similar to https://github.com/machow/coffee-sales-data, designed to show something compelling, that is a good intro to some facet of using plotnine."
+  },
+  {
+    "objectID": "guide/case-study1.html",
+    "href": "guide/case-study1.html",
+    "title": "Case study 1",
+    "section": "",
+    "text": "Something similar to https://github.com/machow/coffee-sales-data, designed to show something compelling, that is a good intro to using plotnine."
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html",
+    "href": "guide/aesthetic-specification.html",
+    "title": "Aesthetic specifications",
+    "section": "",
+    "text": "This document is a translation of the ggplot2 aesthetic specification.",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html#color-and-fill",
+    "href": "guide/aesthetic-specification.html#color-and-fill",
+    "title": "Aesthetic specifications",
+    "section": "Color and fill",
+    "text": "Color and fill\nAlmost every geom has either color, fill, or both. Colors and fills can be specified in the following ways:\n\nA name, e.g., \"red\". TODO: how do you list colors?. https://matplotlib.org/stable/gallery/color/named_colors.html#css-colors\nAn rgb specification, with a string of the form \"#RRGGBB\" where each of the pairs RR, GG, BB consists of two hexadecimal digits giving a value in the range 00 to FF\nYou can optionally make the color transparent by using the form \"#RRGGBBAA\".\nA missing value (e.g. None, np.nan, pd.NA), for a completely transparent colour.\n\nhttps://github.com/has2k1/plotnine/issues/791\n\n\nTODO: continuous colormaps – https://matplotlib.org/stable/users/explain/colors/colormaps.html",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html#lines",
+    "href": "guide/aesthetic-specification.html#lines",
+    "title": "Aesthetic specifications",
+    "section": "Lines",
+    "text": "Lines\nAs well as colour, the appearance of a line is affected by linewidth, linetype, linejoin and lineend.\n\nLine type\nLine types can be specified with:\n\nA name: solid, dashed, dotted, dashdot, as shown below:\n\n\n\n\n\n\n\n\n\nThe lengths of on/off stretches of line. This is done with a string containing 2, 4, 6, or 8 hexadecimal digits which give the lengths of consecutive lengths. For example, the string \"33\" specifies three units on followed by three off and \"3313\" specifies three units on followed by three off followed by one on and finally three off. TODO: this likely isn’t implemented? (but tuple syntax is (0, (1, 5)))\n\nThe five standard dash-dot line types described above correspond to 44, 13, 1343, 73, and 2262.\n\n\nLinewidth\nDue to a historical error, the unit of linewidth is roughly 0.75 mm. Making it exactly 1 mm would change a very large number of existing plots, so we’re stuck with this mistake.\n\n\nLine end/join parameters\n\nThe appearance of the line end is controlled by the lineend paramter, and can be one of “round”, “butt” (the default), or “square”.\ndf = pd.DataFrame({\"x\": [1,2,3], \"y\": [4, 1, 9]})\nbase = ggplot(df, aes(\"x\", \"y\")) + xlim(0.5, 3.5) + ylim(0, 10)\n(\n  base + \n  geom_path(size = 10) + \n  geom_path(size = 1, colour = \"red\")\n)\n\n(\n  base + \n  geom_path(size = 10, lineend = \"round\") + \n  geom_path(size = 1, colour = \"red\")\n)\n\n(\n  base + \n  geom_path(size = 10, lineend = \"square\") + \n  geom_path(size = 1, colour = \"red\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe appearance of line joins is controlled by linejoin and can be one of “round” (the default), “mitre”, or “bevel”.\ndf = pd.DataFrame({\"x\": [1,2,3], \"y\": [9, 1, 9]})\nbase = ggplot(df, aes(\"x\", \"y\")) + ylim(0, 10)\n(\n  base + \n  geom_path(size = 10) + \n  geom_path(size = 1, colour = \"red\")\n)\n\n\n(\n  base + \n  geom_path(size = 10, linejoin = \"mitre\") + \n  geom_path(size = 1, colour = \"red\")\n)\n\n(\n  base + \n  geom_path(size = 10, linejoin = \"bevel\") + \n  geom_path(size = 1, colour = \"red\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMitre joins are automatically converted to bevel joins whenever the angle is too small (which would create a very long bevel). This is controlled by the linemitre parameter which specifies the maximum ratio between the line width and the length of the mitre.",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html#polygons",
+    "href": "guide/aesthetic-specification.html#polygons",
+    "title": "Aesthetic specifications",
+    "section": "Polygons",
+    "text": "Polygons\nThe border of the polygon is controlled by the colour, linetype, and linewidth aesthetics as described above. The inside is controlled by fill.",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html#point",
+    "href": "guide/aesthetic-specification.html#point",
+    "title": "Aesthetic specifications",
+    "section": "Point",
+    "text": "Point\n\nShape\nShapes take five types of values:\n\nA string for a point type, as specified in matplotlib.markers:\n\n\n\n\n\n\n\n\n\nNone to draw nothing. (TODO: does not work)\n\n\n\nColour and fill\nWhile colour applies to all shapes, fill only applies to shapes with red fill in the plot above. The size of the filled part is controlled by size, the size of the stroke is controlled by stroke. Each is measured in mm, and the total size of the point is the sum of the two. Note that the size is constant along the diagonal in the following figure.\n\nsizes = (\n  pd.DataFrame({\"size\": [0, 2, 4, 6]})\n  .merge(\n    pd.DataFrame({\"stroke\": [0, 2, 4, 6]}), how=\"cross\"\n  )\n)\n\n(\n  ggplot(sizes, aes(\"size\", \"stroke\", size = \"size\", stroke = \"stroke\")) + \n  geom_abline(slope = -1, intercept = 6, colour = \"white\", size = 6) + \n  geom_point(shape = \"o\", fill = \"red\") +\n  scale_size_identity(guide=None)\n)",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-specification.html#text",
+    "href": "guide/aesthetic-specification.html#text",
+    "title": "Aesthetic specifications",
+    "section": "Text",
+    "text": "Text\n\nFont family\nThere are only three fonts that are guaranteed to work everywhere: “sans” (the default), “serif”, or “mono” (TODO: this doesn’t work):\n\n# TODO: add cursive and 🧚‍♀️ fantasy  \ndf = pd.DataFrame({\"x\": 1, \"y\": [3, 2, 1], \"family\": [\"sans-serif\", \"serif\", \"monospace\"]})\n\n(\n  ggplot(df, aes(\"x\", \"y\")) + \n  geom_text(aes(label = \"family\", family=\"family\"), size=20)\n)\n\nfindfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman\nfindfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman\nfindfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman\n\n\n\n\n\n\n\n\n\nYou should be able to use any fonts installed on your system. TODO: find something to link out to for installing new fonts.\n\nshowtext makes GD-independent plots by rendering all text as polygons. (TODO: svg_usefont; trade-off, paths are hard to edit quickly vs fonts eg in inkscape)\n\n\n\nFont weight\nTODO: update plotnine and re-run; see geom_text docs\n\ndf = pd.DataFrame({\"x\": [1, 2, 3, 4], \"fontweight\": [\"light\", \"normal\", \"bold\", \"extra bold\"]})\n\n(\n  ggplot(df, aes(1, \"x\")) + \n  geom_text(aes(label = \"fontweight\"), fontweight=\"bold\")\n)\n\n\n\n\n\n\n\n\n\n\nFont style\n\n\nFont size\nThe size of text is measured in mm by default. This is unusual, but makes the size of text consistent with the size of lines and points. Typically you specify font size using points (or pt for short), where 1 pt = 0.35mm. In geom_text() and geom_label(), you can set size.unit = \"pt\" to use points instead of millimeters. In addition, ggplot2 provides a conversion factor as the variable .pt, so if you want to draw 12pt text, you can also set size = 12 / .pt.\n\n\nJustification\nHorizontal and vertical justification have the same parameterisation, either a string (“top”, “middle”, “bottom”, “left”, “center”, “right”) or a number between 0 and 1:\n\ntop = 1, middle = 0.5, bottom = 0\nleft = 0, center = 0.5, right = 1\n\n\njust = pd.DataFrame({\"hjust\": [\"center\", \"right\", \"left\"], \"x\": [0, 1, 2]}).merge(pd.DataFrame({\"vjust\": [\"center\", \"top\", \"bottom\"], \"y\": [0, 1, 2]}), how=\"cross\")\n\njust[\"label\"] = just[\"hjust\"].astype(str).str.cat(just[\"vjust\"].astype(str), sep=\", \")\n\n(\n  ggplot(just, aes(\"x\", \"y\")) +\n  geom_point(colour = \"grey\", size = 5) + \n  geom_text(aes(label = \"label\", hjust = \"hjust\", vjust = \"vjust\"))\n  + expand_limits(x = [-.5, 2.5], y = [-.5, 2.5])\n)\n\n\n\n\n\n\n\n\nNote that you can use numbers outside the range (0, 1), but it’s not recommended.",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Aesthetic specifications"
+    ]
+  },
+  {
+    "objectID": "gallery/index.html",
+    "href": "gallery/index.html",
+    "title": "Gallery",
+    "section": "",
+    "text": "Basic Scatter Plot\n\n\n\n\n\n\n\nColoured Point Bubbles\n\n\n\n\n\n\n\nPoints & Linear Models"
+  },
+  {
+    "objectID": "gallery/index.html#scatter-plots",
+    "href": "gallery/index.html#scatter-plots",
+    "title": "Gallery",
+    "section": "",
+    "text": "Basic Scatter Plot\n\n\n\n\n\n\n\nColoured Point Bubbles\n\n\n\n\n\n\n\nPoints & Linear Models"
+  },
+  {
+    "objectID": "gallery/index.html#lines-and-paths",
+    "href": "gallery/index.html#lines-and-paths",
+    "title": "Gallery",
+    "section": "Lines and Paths",
+    "text": "Lines and Paths\n\n\n\nA Single Trend Line\n\n\n\n\n\n\n\nMultiple Trend Lines\n\n\n\n\n\n\n\nA Trend Line Per Facet\n\n\n\n\n\n\n\nUpper & Lower Trends\n\n\n\n\n\n\n\nFacets with a Vertical Line"
+  },
+  {
+    "objectID": "gallery/index.html#area-plots",
+    "href": "gallery/index.html#area-plots",
+    "title": "Gallery",
+    "section": "Area Plots",
+    "text": "Area Plots\n\n\n\nArea Under Line"
+  },
+  {
+    "objectID": "gallery/index.html#bar-plots",
+    "href": "gallery/index.html#bar-plots",
+    "title": "Gallery",
+    "section": "Bar Plots",
+    "text": "Bar Plots\n\n\n\nTwo Variable Bar Plot\n\n\n\n\n\n\n\nOrdered Horizontal Bars\n\n\n\n\n\n\n\nBars with Group Percentages\n\n\n\n\n\n\n\nStacked Bars with Group Percentages"
+  },
+  {
+    "objectID": "gallery/index.html#distributions",
+    "href": "gallery/index.html#distributions",
+    "title": "Gallery",
+    "section": "Distributions",
+    "text": "Distributions\n\n\n\nBar Plot with Counts\n\n\n\n\n\n\n\nHorizontal Bar Plot with Counts\n\n\n\n\n\n\n\nA Basic Boxplot\n\n\n\n\n\n\n\nBasic Density Plot\n\n\n\n\n\n\n\nDensity Plot with Groups\n\n\n\n\n\n\n\nDensity Plots + Histograms\n\n\n\n\n\n\n\nShaded Range Under a Density Plot\n\n\n\n\n\n\n\nBasic Histogram\n\n\n\n\n\n\n\nViolins, Boxes, Points & Lines"
+  },
+  {
+    "objectID": "gallery/index.html#tiles",
+    "href": "gallery/index.html#tiles",
+    "title": "Gallery",
+    "section": "Tiles",
+    "text": "Tiles\n\n\n\nPeriodic Table\n\n\n\n\n\n\n\nAnnotated Heatmap\n\n\n\n\n\n\n\nSimple heatmap"
+  },
+  {
+    "objectID": "gallery/index.html#maps",
+    "href": "gallery/index.html#maps",
+    "title": "Gallery",
+    "section": "Maps",
+    "text": "Maps\n\n\n\nA Map from geodatasets\n\n\n\n\n\n\n\nThe Territories of Westeros"
+  },
+  {
+    "objectID": "gallery/index.html#look-feel",
+    "href": "gallery/index.html#look-feel",
+    "title": "Gallery",
+    "section": "Look & Feel",
+    "text": "Look & Feel\n\n\n\nText Outside the Panel(s)\n\n\n\n\n\n\n\nBlack & White\n\n\n\n\n\n\n\nClassic"
+  },
+  {
+    "objectID": "gallery/index.html#elaborate-graphics",
+    "href": "gallery/index.html#elaborate-graphics",
+    "title": "Gallery",
+    "section": "Elaborate Graphics",
+    "text": "Elaborate Graphics\n\n\n\nAn Elaborate Range Plot\n\n\n\n\n\n\n\nGuitar Neck"
   },
   {
     "objectID": "changelog.html",
@@ -3703,74 +4181,1062 @@
     "text": "v0.1.0\n(2017-04-25)\nFirst public release"
   },
   {
-    "objectID": "gallery/index.html",
-    "href": "gallery/index.html",
-    "title": "Gallery",
+    "objectID": "blog/2024/07/2024-contest-last-call/index.html",
+    "href": "blog/2024/07/2024-contest-last-call/index.html",
+    "title": "2024 Plotnine Contest - Last Call",
     "section": "",
-    "text": "Basic Scatter Plot\n\n\n\n\n\n\n\nColoured Point Bubbles\n\n\n\n\n\n\n\nPoints & Linear Models"
+    "text": "The 2024 Plotnine Contest will close in 5 days on 26th July 2024, this is after a two week extension.\nWe have many submissions already but we could have move in these two categories."
   },
   {
-    "objectID": "gallery/index.html#scatter-plots",
-    "href": "gallery/index.html#scatter-plots",
-    "title": "Gallery",
+    "objectID": "blog/2024/07/2024-contest-last-call/index.html#visualisation-of-distributions",
+    "href": "blog/2024/07/2024-contest-last-call/index.html#visualisation-of-distributions",
+    "title": "2024 Plotnine Contest - Last Call",
+    "section": "1. Visualisation of Distributions",
+    "text": "1. Visualisation of Distributions\nMost of the time, the main plot of statistical graphics is to get a sense of how the data is distributed. I would love to see more submissions of this type. This resource from the University of Iowa is a good introduction to the kinds of ways you can visualise distributions. I think there is plenty of room for otherwise simple visualisations of data distributions made more compelling by the choice of dataset, colors, annotations and overall polish."
+  },
+  {
+    "objectID": "blog/2024/07/2024-contest-last-call/index.html#visualisation-art",
+    "href": "blog/2024/07/2024-contest-last-call/index.html#visualisation-art",
+    "title": "2024 Plotnine Contest - Last Call",
+    "section": "2. Visualisation Art",
+    "text": "2. Visualisation Art\nPlotnine implements The Grammar of Graphics, which moulds Drawing and Painting Art into a system suitable for statistical graphics. Constrained within, the Art says “I want to break free” and a contest is the party at which to break free. We got all week.\nA contest can trigger you into action on tasks you’ve long procrastinated or avoided due to concerns about developing an unhealthy addiction. This one may have got me. Inspired by a Yan Holtz piece, Michael Chow has deeped into generative art for this contest. In turn, I have given it a go.\nFrom Yan and through Michael, I get an abstract form and first I unpaint it to reveal its spiky nature.\n\nThe Spiky World\n\n\nCode\nfrom plotnine import (\n    aes,\n    coord_cartesian,\n    element_rect,\n    geom_area,\n    ggplot,\n    scale_color_manual,\n    theme_void,\n    theme,\n)\nimport pandas as pd\nimport numpy as np\n\n\nnum_groups = 30\n\ndef get_colors(cmap_name, start=0, stop=1, n=10):\n    \"\"\"Return colors from a colormap\"\"\"\n    from mizani.palettes import get_colormap\n    x = np.linspace(start, stop, n)\n    return get_colormap(cmap_name).continuous_palette(x)\n\ndef combine(colors: list[str]):\n    from mizani.palettes import gradient_n_pal\n    x = np.linspace(0, 1, num_groups)\n    return gradient_n_pal(colors)(x)\n\ndef make_data(seed=123):\n    names = [f\"G{i}\" for i in range(num_groups)]\n    population = [0] * 100 + list(range(1, num_groups+1))\n    rs = np.random.RandomState(seed)\n    frames = []\n    for i in range(30):\n        arr = rs.choice(population, num_groups)\n        _data = pd.DataFrame({\n            \"x\": i,\n            \"y\": arr / np.sum(arr),\n            \"g\": rs.choice(names, num_groups, replace=False),\n        })\n        frames.append(_data)\n    return pd.concat(frames).sort_values([\"x\", \"g\"])\n\ndef blink(colors: list[str] | list[list[str]], seed=123):\n    data = make_data(seed)\n    p = (\n        ggplot(data, aes(x=\"x\", y=\"y\", fill=\"g\", color=\"g\"))\n        + geom_area(show_legend=False)\n        + coord_cartesian(expand=False)\n        + scale_color_manual(values=combine(colors), aesthetics=[\"fill\", \"color\"])\n        + theme_void()\n    )\n    return p\n\n(\n    ggplot(make_data(), aes(x=\"x\", y=\"y\", group=\"g\"))\n    + geom_area(fill=\"white\", color=\"black\", show_legend=False)\n    + coord_cartesian(expand=False)\n    + theme_void()\n    + theme(plot_background=element_rect(fill=\"white\"))\n)\n\n\n\n\n\n\n\n\n\nThen with each blink of the eye, The Spiky World reveals one of her infinite faces.\nBlink.\n\n\nSpiky Desert Dunes\n\n\nCode\nblink(get_colors(\"inferno\", .5, 1)[::-1])\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Spiky Volcano\n\n\nCode\nblink(get_colors(\"magma\", .3, .95))\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Morning in a Spiky Forest\n\n\nCode\nblink(get_colors(\"Greens\"))\n\n\n\n\n\n\n\n\n\nBlink.\n\n\nA Spiky Sunset at the Beach\n\n\nCode\nblink([\n    *reversed(get_colors(\"YlOrBr\", 0.4, 0.7)),\n    *reversed(get_colors(\"Blues\", 0.25, 0.7)),\n    *reversed(get_colors(\"Oranges\", 0.05, 0.3)),\n])\n\n\n\n\n\n\n\n\n\nThis is generative art, the art that never ends. I did not know. I started blinking. I must continue blinking forever.\nCreate your world, blink and share what you see."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Plotnine",
     "section": "",
-    "text": "Basic Scatter Plot\n\n\n\n\n\n\n\nColoured Point Bubbles\n\n\n\n\n\n\n\nPoints & Linear Models"
+    "text": "plotnine started as an effort to improve the scaling functionality in ggpy_ formally known as “ggplot for python”. It was part of a larger goal to evolve the package into one that supported a full plotting grammar. It turned out that to have a grammar of graphics system we had to just about start anew.\nThe complete guide to what constitutes a “Grammar of Graphics” is Leland Wilkinson’s book The Grammar of Graphics. To create ggplot2_ Hadley Wickham came up with an interpretation termed A layered grammar of graphics 1. Core to the interpretation is a crucial plot building pipeline 2 in ggplot2 that we adopted 3 for plotnine.\nThe R programming language has a rich statistical ecosystem that ggplot2 taps into with ease. In plotnine we have done our best to integrate with the rest of the scientific python ecosystem. Though we feel we could do more on that integration, notwithstanding language differences, users familiar with ggplot2 should be comfortable and productive with plotnine."
   },
   {
-    "objectID": "gallery/index.html#lines-and-paths",
-    "href": "gallery/index.html#lines-and-paths",
-    "title": "Gallery",
-    "section": "Lines and Paths",
-    "text": "Lines and Paths\n\n\n\nA Single Trend Line\n\n\n\n\n\n\n\nMultiple Trend Lines\n\n\n\n\n\n\n\nA Trend Line Per Facet\n\n\n\n\n\n\n\nUpper & Lower Trends\n\n\n\n\n\n\n\nFacets with a Vertical Line"
+    "objectID": "about.html#history-and-objective",
+    "href": "about.html#history-and-objective",
+    "title": "About Plotnine",
+    "section": "",
+    "text": "plotnine started as an effort to improve the scaling functionality in ggpy_ formally known as “ggplot for python”. It was part of a larger goal to evolve the package into one that supported a full plotting grammar. It turned out that to have a grammar of graphics system we had to just about start anew.\nThe complete guide to what constitutes a “Grammar of Graphics” is Leland Wilkinson’s book The Grammar of Graphics. To create ggplot2_ Hadley Wickham came up with an interpretation termed A layered grammar of graphics 1. Core to the interpretation is a crucial plot building pipeline 2 in ggplot2 that we adopted 3 for plotnine.\nThe R programming language has a rich statistical ecosystem that ggplot2 taps into with ease. In plotnine we have done our best to integrate with the rest of the scientific python ecosystem. Though we feel we could do more on that integration, notwithstanding language differences, users familiar with ggplot2 should be comfortable and productive with plotnine."
   },
   {
-    "objectID": "gallery/index.html#area-plots",
-    "href": "gallery/index.html#area-plots",
-    "title": "Gallery",
-    "section": "Area Plots",
-    "text": "Area Plots\n\n\n\nArea Under Line"
+    "objectID": "about.html#built-with",
+    "href": "about.html#built-with",
+    "title": "About Plotnine",
+    "section": "Built with",
+    "text": "Built with\n\nmatplotlib - Plotting backend.\npandas - Data handling.\nmizani - Scales framework.\nstatsmodels - For various statistical computations.\nscipy - For various statistical computation procedures."
   },
   {
-    "objectID": "gallery/index.html#bar-plots",
-    "href": "gallery/index.html#bar-plots",
-    "title": "Gallery",
-    "section": "Bar Plots",
-    "text": "Bar Plots\n\n\n\nTwo Variable Bar Plot\n\n\n\n\n\n\n\nOrdered Horizontal Bars\n\n\n\n\n\n\n\nBars with Group Percentages\n\n\n\n\n\n\n\nStacked Bars with Group Percentages"
+    "objectID": "about.html#footnotes",
+    "href": "about.html#footnotes",
+    "title": "About Plotnine",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe Grammar of Graphics has to be interpreted into a form that can be implemented. We were not up to this task.↩︎\nThis is more or less an implementation of what is depicted in Figure 2.2 of The Grammar of Graphics↩︎\nBy adopting a similar pipeline and user API as ggplot2 the other internals referenced within the pipeline look similar.↩︎"
   },
   {
-    "objectID": "gallery/index.html#distributions",
-    "href": "gallery/index.html#distributions",
-    "title": "Gallery",
-    "section": "Distributions",
-    "text": "Distributions\n\n\n\nBar Plot with Counts\n\n\n\n\n\n\n\nHorizontal Bar Plot with Counts\n\n\n\n\n\n\n\nA Basic Boxplot\n\n\n\n\n\n\n\nBasic Density Plot\n\n\n\n\n\n\n\nDensity Plot with Groups\n\n\n\n\n\n\n\nDensity Plots + Histograms\n\n\n\n\n\n\n\nShaded Range Under a Density Plot\n\n\n\n\n\n\n\nBasic Histogram\n\n\n\n\n\n\n\nViolins, Boxes, Points & Lines"
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "blog",
+    "section": "",
+    "text": "Version 0.14.0\n\n\n\n\n\n\n\n\nNov 7, 2024\n\n\nHassan Kibirige\n\n\n\n\n\n\n\n\n\n\n\n\n2024 Plotnine Contest - Last Call\n\n\n\n\n\n\n\n\nJul 22, 2024\n\n\nHassan Kibirige\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "gallery/index.html#tiles",
-    "href": "gallery/index.html#tiles",
-    "title": "Gallery",
-    "section": "Tiles",
-    "text": "Tiles\n\n\n\nPeriodic Table\n\n\n\n\n\n\n\nAnnotated Heatmap\n\n\n\n\n\n\n\nSimple heatmap"
+    "objectID": "blog/2024/11/version-0.14.0/index.html",
+    "href": "blog/2024/11/version-0.14.0/index.html",
+    "title": "Version 0.14.0",
+    "section": "",
+    "text": "Code - Imports\nimport pandas as pd\nfrom plotnine import (\n   aes,\n   ggplot,\n   geom_point,\n   geom_text,\n   scale_x_datetime,\n   theme,\n   theme_set,\n   theme_matplotlib,\n)\ntheme_set(theme_matplotlib());\nWe are happy to announce the release of plotnine v0.14! This version requires python 3.10 or later, a change aligned with NumPy’s deprecation policy.\nThis release also introduces our new hex logo!"
   },
   {
-    "objectID": "gallery/index.html#maps",
-    "href": "gallery/index.html#maps",
-    "title": "Gallery",
-    "section": "Maps",
-    "text": "Maps\n\n\n\nA Map from geodatasets\n\n\n\n\n\n\n\nThe Territories of Westeros"
+    "objectID": "blog/2024/11/version-0.14.0/index.html#no-more-print-for-plots",
+    "href": "blog/2024/11/version-0.14.0/index.html#no-more-print-for-plots",
+    "title": "Version 0.14.0",
+    "section": "No More print for Plots",
+    "text": "No More print for Plots\nOne of the most significant updates in v0.14 is the removal of print as a way to render plot objects. Starting with v0.13, we began deprecating this approach, encouraging users to transition to ggplot.show() for displaying plots.\nNow, print on a plot object will simply return the display size (in pixels) rather than rendering the plot.\n\ndata = pd.DataFrame({\"x\": [1, 2, 3], \"y\": [1, 2, 3 ]})\np = (\n   ggplot(data, aes(\"x\", \"y\"))\n   + geom_point()\n   + theme(figure_size=(4, 2))\n)\n\nprint(p)\nprint(\"There is no figure above this output sentence.\")\n\n&lt;ggplot: (768 x 384)&gt;\nThere is no figure above this output sentence.\n\n\nIn environments with retina output, the exact pixel-size dimensions of the image will be double the display size.\n\np.show()\nprint(\"There is a figure above this output sentence.\")\n\n\n\n\n\n\n\n\nThere is a figure above this output sentence."
   },
   {
-    "objectID": "gallery/index.html#look-feel",
-    "href": "gallery/index.html#look-feel",
-    "title": "Gallery",
-    "section": "Look & Feel",
-    "text": "Look & Feel\n\n\n\nText Outside the Panel(s)\n\n\n\n\n\n\n\nBlack & White\n\n\n\n\n\n\n\nClassic"
+    "objectID": "blog/2024/11/version-0.14.0/index.html#enhancements",
+    "href": "blog/2024/11/version-0.14.0/index.html#enhancements",
+    "title": "Version 0.14.0",
+    "section": "Enhancements",
+    "text": "Enhancements\nIf you have worked with scales and passed in parameters, you might have encountered an inconvenience: your IDE could not provide meaningful suggestions. Previously, scales used **kwargs to capture common parameters, making it challenging for IDEs to offer specific guidance. With around 100 scales, each with subtle differences, we handled these parameters dynamically to avoid extensive duplication while also generating docstrings automatically.\nWith Python &gt;= 3.10, we have converted scales to dataclasses and leveraged finer controls over keyword-only parameters. This allows us to provide explicit signatures and enables the documentation system to automatically include inherited docstrings for parameters. For example, where an IDE previously displayed something like this:\n\n\n\n\n\nit will now display:"
   },
   {
-    "objectID": "gallery/index.html#elaborate-graphics",
-    "href": "gallery/index.html#elaborate-graphics",
-    "title": "Gallery",
-    "section": "Elaborate Graphics",
-    "text": "Elaborate Graphics\n\n\n\nAn Elaborate Range Plot\n\n\n\n\n\n\n\nGuitar Neck"
+    "objectID": "blog/2024/11/version-0.14.0/index.html#datetimes-and-timedeltas",
+    "href": "blog/2024/11/version-0.14.0/index.html#datetimes-and-timedeltas",
+    "title": "Version 0.14.0",
+    "section": "Datetimes and Timedeltas",
+    "text": "Datetimes and Timedeltas\nWorking with datetimes can be challenging (sometimes even hellish), but we aim to simplify this experience for you. In Python, there are three main types of datetime objects you are likely to encounter:\n\ndatetime.datetime from the standard library\npandas.Timestamp from pandas\nnumpy.datetime64 from numpy\n\nEach of these types covers different ranges and resolutions. The standard library’s datetime has the smallest range, with a constant millisecond (ms) resolution; pandas offers a middle ground with a larger range and nanosecond (ns) resolution; and numpy provides varying resolutions (from years to attoseconds) with different ranges for each resolution. These differences mean that these types are not always directly interchangeable, though we work to make them feel that way. Since our data is stored in a dataframe, any datetime values are converted to the pandas type, which then stores values as numpy types!\nArithmetic operations on each datetime type yield corresponding timedelta types also with their unique resolutions. Certain ranges can exceed valid limits—for example, the range of pandas.Timestamp cannot be represented as a timedelta. This means there are edge cases. But you should not be too worried unless your desired time resolution is dictacted by the vagaries of sub-atomic particles.\nIn this release, you can now expand the limits of datetime and timedelta scales with additional constants.\n\nimport datetime\n\ndata = pd.DataFrame({\n    \"x\": [datetime.datetime(2024, 8, i) for i in range(1, 6)],\n    \"y\": range(5)\n})\n\n(\n    ggplot(data, aes(\"x\", \"y\"))\n    + geom_point()\n    + scale_x_datetime(\n        expand=(0, datetime.timedelta(days=1))\n    )\n    + theme(figure_size=(6, 4))\n)\n\n\n\n\n\n\n\n\nYou can also set the limits through the coordinate system.\ncoord_cartesian(xlim=(datetime(1999, 1, 1), datetime(2006, 1, 1)))\nBeyond datetime and timezone scales, this robustness now applies to any scale created for data types that are not strictly numeric."
+  },
+  {
+    "objectID": "blog/2024/11/version-0.14.0/index.html#integration-with-quarto",
+    "href": "blog/2024/11/version-0.14.0/index.html#integration-with-quarto",
+    "title": "Version 0.14.0",
+    "section": "Integration with Quarto",
+    "text": "Integration with Quarto\nplotnine now recognizes figure options specified in the meta section of a Quarto document. These options control the size and format of output images, including fig-dpi, fig-width, fig-height, and fig-format.\nWhile these Quarto options are set as defaults, you can still override them for any specific plot. For example:\n---\ntitle: \"Plotnine Playing well with Quarto\"\nformat: html\njupyter: python3\nfig-dpi: 100\nfig-width: 6\nfig-height: 4\nfig-format: retina\n---\n\n```{python}\n#| label: using-quarto-figure-options\nfrom pandas import pd\nfrom plotnine import aes, geom_point, ggplot, theme\n\ndata = pd.DataFrame({\"x\": range(5), \"y\": range(5)})\n\n(\n  ggplot(data, aes(\"x\", \"y\"))\n  + geom_point()\n)\n```\n\n```{python}\n#| label: overriding-quarto-figure-options\n(\n  ggplot(data, aes(\"x\", \"y\"))\n  + geom_point()\n  + theme(figure_size=(4, 3))\n)\n```\nNote that, at the moment using these options at the chunk level has no effect."
+  },
+  {
+    "objectID": "blog/2024/11/version-0.14.0/index.html#font-aesthetics",
+    "href": "blog/2024/11/version-0.14.0/index.html#font-aesthetics",
+    "title": "Version 0.14.0",
+    "section": "Font Aesthetics",
+    "text": "Font Aesthetics\nIn theory, aesthetics represent any properties we can perceive; in practice, only those we can see and vary predictably can be useful aesthetics. Previously, text attributes like family, fontweight, fontstyle, and fontvariant were parameters but not aesthetics, meaning you could not map variables to them. Not anymore, these attributes of a text are now aesthetics!\nfontweight controls the boldness of text. It accepts any number in the range [0, 1000], with common levels being normal (400) and bold (700). Some fonts provide multiple levels of boldness, with up to nine variations, typically at intervals like [100, 200, 300, 400, 500, 600, 700, 800, 900]. A given numeric weight will be mapped to the nearest available level.\nFor instance, here is an example comparing two fonts: Helvetica, which doesn’t have multiple weight levels (the one on your system may differ), and Open Sans (again, the one on your system may differ), which does.\n\nfrom mizani.bounds import rescale\n\ndata = pd.DataFrame({\n    \"x\": range(5),\n    \"y\": range(5),\n    \"w\": rescale(range(5), to=(0, 1000)),\n    \"label\": \"Zero One Two Three Four\".split()\n})\n\n(\n    ggplot(data, aes(\"x\", label=\"label\", fontweight=\"w\"))\n    + geom_text(aes(y=\"y\"), family=\"Helvetica\", colour=\"red\", size=16)\n    + geom_text(aes(y=\"y-.25\"), family=\"Open Sans\", colour=\"green\", size=16)\n)\n\n\n\n\n\n\n\n\nNote that, there is no scale for fontweight so we had to explicitly scale the value to the expected range. Currently you should expect at most 9 levels of bold variations, but pending better support, completely variable fonts are now a thing and will allow continuous variation on the range [0, 1000].\nNote that there is no scale for fontweight, so values must be explicitly scaled to the expected range. And, you can expect a maximum of 9 levels of bold variations. However, with the growing support for variable fonts, continuous variation across the full [0, 1000] range may be possible."
+  },
+  {
+    "objectID": "external-resources.html",
+    "href": "external-resources.html",
+    "title": "External Resources",
+    "section": "",
+    "text": "Grammar of graphics with plotnine\n\nA good introductory tutorial on how to use plotnine. It is part of the data visualization track from kaggle’s free online course (https://www.kaggle.com/learn/overview).\n\nPython Plotting for Exploratory Analysis\n\nA list of plots for exploratory data analysis and how they can be created using different libraries.\n\nMaking Plots With plotnine\n\nAn introduction to “grammar of graphics”, and how to use plotnine. This is part of the Data Analysis and Visualization in Python for Ecologists course from Data Carpentry\n\nPlotnine: Grammar of Graphics for Python\n\nA translation of the visualisation chapters from “R for Data Science” to Python using Plotnine and Pandas. This is a comprehensive introduction on the Grammar of Graphics with plotnine."
+  },
+  {
+    "objectID": "external-resources.html#articles",
+    "href": "external-resources.html#articles",
+    "title": "External Resources",
+    "section": "",
+    "text": "Grammar of graphics with plotnine\n\nA good introductory tutorial on how to use plotnine. It is part of the data visualization track from kaggle’s free online course (https://www.kaggle.com/learn/overview).\n\nPython Plotting for Exploratory Analysis\n\nA list of plots for exploratory data analysis and how they can be created using different libraries.\n\nMaking Plots With plotnine\n\nAn introduction to “grammar of graphics”, and how to use plotnine. This is part of the Data Analysis and Visualization in Python for Ecologists course from Data Carpentry\n\nPlotnine: Grammar of Graphics for Python\n\nA translation of the visualisation chapters from “R for Data Science” to Python using Plotnine and Pandas. This is a comprehensive introduction on the Grammar of Graphics with plotnine."
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html",
+    "href": "guide/aesthetic-mappings.html",
+    "title": "Aesthetic mappings",
+    "section": "",
+    "text": "The aes() function maps columns of data onto graphical attributes–such as colors, shapes, or x and y coordinates. (aes() is short for aesthetic). It can be specified at the plot level, as well as at the individual geom level.\nThis page will cover the basics of specifying mappings and how they interact with geoms.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#setup",
+    "href": "guide/aesthetic-mappings.html#setup",
+    "title": "Aesthetic mappings",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#basics",
+    "href": "guide/aesthetic-mappings.html#basics",
+    "title": "Aesthetic mappings",
+    "section": "Basics",
+    "text": "Basics\nThe simplest way to specify aesthetic mappings is through passing aes() to the ggplot(mapping = ...) argument. This is shown below, with flipper_length_mm and body_mass_g mapped to the x- and y- axes.\n\n(\n    ggplot(\n      data = penguins,\n      mapping = aes(x = \"flipper_length_mm\", y = \"body_mass_g\")\n    )\n    + geom_point()\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#variable-mappings",
+    "href": "guide/aesthetic-mappings.html#variable-mappings",
+    "title": "Aesthetic mappings",
+    "section": "Variable mappings",
+    "text": "Variable mappings\nWhen a mapping in aes() references a column of data, it is called a variable mapping—since the values of the column are used to determine the appearance of the plot. Below are some plots with variable mappings to different columns of data (e.g flipper_length_mm, body_mass_g, species).\n\nColorShapeSize and alpha\n\n\n\n(\n    ggplot(\n        penguins,\n        aes(x = \"flipper_length_mm\", y = \"body_mass_g\", color = \"species\")\n    ) +\n    geom_point()\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\n\n\n(\n    ggplot(\n        penguins,\n        aes(\n            x=\"flipper_length_mm\", y=\"body_mass_g\", shape=\"species\"\n        ),\n    )\n    + geom_point()\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\n\n\n(\n    ggplot(\n        penguins,\n        aes(\n            x=\"flipper_length_mm\",\n            y=\"body_mass_g\",\n            size=\"body_mass_g\",\n            alpha=\"body_mass_g\",\n        ),\n    )\n    + geom_point()\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#literal-mappings",
+    "href": "guide/aesthetic-mappings.html#literal-mappings",
+    "title": "Aesthetic mappings",
+    "section": "Literal mappings",
+    "text": "Literal mappings\nIn order to set a mapping to a literal value, pass the value directly to the geom. For example, the code below sets size=, alpha=, and color= to specific values.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"flipper_length_mm\", y=\"body_mass_g\"),\n    )\n    + geom_point(size=7, alpha=.5, color=\"purple\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#aes-inside-a-specific-geom",
+    "href": "guide/aesthetic-mappings.html#aes-inside-a-specific-geom",
+    "title": "Aesthetic mappings",
+    "section": "aes() inside a specific geom",
+    "text": "aes() inside a specific geom\nAn aes() mapping can be applied to a single geom, by passing it directly to the geom call. For example, the code below sets color for one point, and shape for another.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"flipper_length_mm\", y=\"body_mass_g\"),\n    )\n    + geom_point(aes(color=\"species\"), size=5)   # big circle points\n    + geom_point(aes(shape=\"species\"))           # shape points\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#aes-collective-groupings",
+    "href": "guide/aesthetic-mappings.html#aes-collective-groupings",
+    "title": "Aesthetic mappings",
+    "section": "aes() collective groupings",
+    "text": "aes() collective groupings\nSome geoms accept a aes(group=...). These are called collective geoms, because they group data points together. For example, geom_smooth() fits a trend line to the data, and the group mapping tells it to create a separate line per grouping in the data.\nThis is shown below, with a trend line created for each of the three species of penguins.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"flipper_length_mm\", y=\"body_mass_g\", group=\"species\"),\n    )\n    + geom_point()\n    + geom_smooth(method=\"lm\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\nAutomatic groupings\nMappings attributes like color will automatically group data points for collective geoms, even if group isn’t specified.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"flipper_length_mm\", y=\"body_mass_g\", color=\"species\"),\n    )\n    + geom_point()\n    + geom_smooth(method=\"lm\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\n\nWorking around grouping\nTo avoid automatically splitting data into groups, try setting aesthetics like color or fill at the individual geom level.\nFor example, the plot below colors points by species, but with only a single trend line.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"flipper_length_mm\", y=\"body_mass_g\"),\n    )\n    + geom_point(aes(color=\"species\"))\n    + geom_smooth(method=\"lm\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/aesthetic-mappings.html#mappings-allow-expressions",
+    "href": "guide/aesthetic-mappings.html#mappings-allow-expressions",
+    "title": "Aesthetic mappings",
+    "section": "Mappings allow expressions",
+    "text": "Mappings allow expressions\nMappings passed to aes() can be expression strings.\nFor example, you could make a scatterplot with bill_length_mm / bill_depth_mm on the x-axis as follows.\n\n(\n    ggplot(\n        penguins,\n        aes(x=\"bill_length_mm / bill_depth_mm\", y=\"body_mass_g\"),\n    )\n    + geom_point(aes(color=\"species\"))\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Aesthetic mappings"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html",
+    "href": "guide/annotations.html",
+    "title": "Annotations",
+    "section": "",
+    "text": "This page covers how to describe or emphasize data with annotations in plots. This includes labelling points, adding arrows, and highlighting areas of interest. It also describes how to tackle the common issue of overlapping text labels.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#setup",
+    "href": "guide/annotations.html#setup",
+    "title": "Annotations",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#annotate",
+    "href": "guide/annotations.html#annotate",
+    "title": "Annotations",
+    "section": "annotate()",
+    "text": "annotate()\nUse annotate() to write some text on a plot.\n\nr_coef = penguins[\"flipper_length_mm\"].corr(penguins[\"body_mass_g\"])\np = (\n    ggplot(penguins, aes(\"flipper_length_mm\", \"body_mass_g\"))\n    + geom_point()\n    + geom_smooth(method=\"lm\")\n    + annotate(\n        \"text\",\n        x=180,\n        y=5750,\n        label=f\"r = {r_coef:.2f}\",\n        color=\"blue\",\n        size=20,\n    )\n)\n\np\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\nNotice that the correlation coefficient is shown on the top-left of the plot. The first argument to annotate, specifies the geom to use (in this case, the \"text\" means to use geom_text()).\nIn order to use annotate with another geom, pass the name of the geom as the first argument. For example, the code below draws a rectangle around the text.\n\np + annotate(\"rect\", xmin=170, xmax=190, ymin=5500, ymax=6000, color=\"blue\", fill=None)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\nNote that annotate() takes the same arguments as the corresponding geom_*() class (in this case, geom_rect()).",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#geom_textpath_effects...",
+    "href": "guide/annotations.html#geom_textpath_effects...",
+    "title": "Annotations",
+    "section": "geom_text(path_effects=...)",
+    "text": "geom_text(path_effects=...)\nUse the geom_text(path_effects=...) argument to add more complex styling to your text. This argument takes a list of objects created by the matplotlib.patheffects submodule.\n\nimport matplotlib.patheffects as pe\n\neffect = [\n    pe.PathPatchEffect(offset=(4, -4), hatch=\"xxxx\", facecolor=\"gray\"),\n    pe.PathPatchEffect(edgecolor=\"white\", linewidth=1.1, facecolor=\"black\"),\n]\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + annotate(\"text\", x=180, y=5750, label=\"YO\", path_effects=effect, size=75)\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#geom_textadjust_text...",
+    "href": "guide/annotations.html#geom_textadjust_text...",
+    "title": "Annotations",
+    "section": "geom_text(adjust_text=...)",
+    "text": "geom_text(adjust_text=...)\nUse the geom_text(adjust_text=...) argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the adjustText package’s adjust_text() function.\n\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg.drop_duplicates(\"model\"), aes(\"displ\", \"hwy\", label=\"model\"))\n    + geom_point()\n    + geom_text(adjust_text={\"arrowprops\": {\"arrowstyle\": \"-\"}})\n)\n\n0 [-0.28631894 -0.4118056 ]\n37 [ 0.91778195 -0.19748592]\n35 [-0.04162055  0.27596958]\n36 [-0.83371805  0.99300235]",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#styling-text",
+    "href": "guide/annotations.html#styling-text",
+    "title": "Annotations",
+    "section": "Styling text",
+    "text": "Styling text\nCurrently, styling text requires manually handling matplotlib objects (which plotnine builds on top of). See the blogpost “Annotated area charts with plotnine” for a walkthrough of creating custom text.",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#emphasis-with-shading",
+    "href": "guide/annotations.html#emphasis-with-shading",
+    "title": "Annotations",
+    "section": "Emphasis with shading",
+    "text": "Emphasis with shading\n\nimport math\nimport pandas as pd\nfrom plotnine.data import huron\n\ndroughts = pd.DataFrame(\n    {\n        \"start\": [1930, 1960],\n        \"stop\": [1937, 1967],\n    }\n)\n\n(\n    ggplot(huron)\n    + geom_line(aes(\"year\", \"level\"))\n    + geom_rect(\n        aes(xmin=\"start\", xmax=\"stop\"),\n        ymin=-math.inf,\n        ymax=math.inf,\n        alpha=0.2,\n        fill=\"red\",\n        data=droughts,\n    )\n    + labs(\n        title=\"Lake Huron Water Levels\",\n        subtitle=\"(famous droughts marked in red)\",\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/annotations.html#emphasis-with-arrows",
+    "href": "guide/annotations.html#emphasis-with-arrows",
+    "title": "Annotations",
+    "section": "Emphasis with arrows",
+    "text": "Emphasis with arrows\n\nfrom plotnine.data import economics\n\n(\n    ggplot(economics, aes(\"date\", \"unemploy\"))\n    + geom_line()\n    + scale_x_date(breaks=\"10 years\")\n    + annotate(\n        \"segment\",\n        x=\"2004-01-01\",\n        y=13000,\n        xend=\"2007-01-01\",\n        yend=7600,\n        color=\"red\",\n        arrow=arrow(length=0.2),\n    )\n    + annotate(\n        \"text\",\n        x=\"2004-01-01\",\n        y=13000,\n        label=\"Great Recession\",\n        color=\"red\",\n        size=20,\n        ha=\"right\",\n        nudge_x=-100,\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Polishing",
+      "Annotations"
+    ]
+  },
+  {
+    "objectID": "guide/case-study2.html",
+    "href": "guide/case-study2.html",
+    "title": "Case study 2",
+    "section": "",
+    "text": "Something similar to https://github.com/machow/coffee-sales-data, designed to show something compelling, that is a good intro to some facet of using plotnine."
+  },
+  {
+    "objectID": "guide/coordinate-systems.html",
+    "href": "guide/coordinate-systems.html",
+    "title": "Coordinate systems",
+    "section": "",
+    "text": "Coordinate systems determine how the x- and y-axes of a plot are drawn. For example, coord_flip() switches the x- and y-axes, while coord_fixed() ensures they have the same spacing.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/coordinate-systems.html#setup",
+    "href": "guide/coordinate-systems.html#setup",
+    "title": "Coordinate systems",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import diamonds, mpg",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/coordinate-systems.html#coord_flip",
+    "href": "guide/coordinate-systems.html#coord_flip",
+    "title": "Coordinate systems",
+    "section": "coord_flip()",
+    "text": "coord_flip()\nUse coord_flip() to switch the x- and y-axes of your plot.\np = ggplot(diamonds, aes(\"cut\")) + geom_bar()\n\np\np + coord_flip()\n\n\n\n\n\n\n\n\n\n\nNotice that cut is the x-axis on the default plot (left), but the y-axis of the flipped one (right). This can be helpful for barplots with many individually labeled bars, since the labels won’t overlap with eachother. It can also be useful for taking advantage of wider plots.\nFlipped plots use the original axis names for setting titles and scales, but the final plot axis names for theme options.\n\n(\n    ggplot(diamonds, aes(\"cut\"))\n    + geom_bar()\n    + coord_flip()\n\n    # labs and scales are based on original, non-flipped plot\n    + labs(x = \"Diamond Cut\", y = \"Count\")\n    + scale_y_continuous(breaks = [0, 10_000, 20_000])\n\n    # theme options are based on the flipped plot\n    + theme(axis_line_x=element_line(color=\"purple\"))\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/coordinate-systems.html#coord_cartesian",
+    "href": "guide/coordinate-systems.html#coord_cartesian",
+    "title": "Coordinate systems",
+    "section": "coord_cartesian()",
+    "text": "coord_cartesian()\nUse coord_cartesian() to zoom in on a plot.\np = ggplot(diamonds, aes(\"cut\", \"price\")) + geom_boxplot()\n\np\np + coord_cartesian(ylim = [5000, None])\n\n\n\n\n\n\n\n\n\n\nNotice that the second plot is zoomed in, so the y-axis starts at the top of the boxplots. Importantly, coord_cartesian() doesn’t affect any statistical calculations.\nBy contrast, setting limits in scales excludes any data outside those limits.\n\np + scale_y_continuous(limits = [5000, None])\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:284: PlotnineWarning: stat_boxplot : Removed 39213 rows containing non-finite values.\n\n\n\n\n\n\n\n\n\nNotice that in the plot above, scale_y_continuous excluded y-values under 5,000 from being used in calculating the boxplot.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/coordinate-systems.html#coord_fixed",
+    "href": "guide/coordinate-systems.html#coord_fixed",
+    "title": "Coordinate systems",
+    "section": "coord_fixed()",
+    "text": "coord_fixed()\nUse coord_fixed() to ensure the x- and y-axes have the same spacing.\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + coord_fixed(xlim=[0, None], ylim=[0,None])\n    + geom_point()\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/coordinate-systems.html#cartographic-maps",
+    "href": "guide/coordinate-systems.html#cartographic-maps",
+    "title": "Coordinate systems",
+    "section": "Cartographic maps",
+    "text": "Cartographic maps\nWhile currently not available as a coordinate system, Plotnine supports maps using geom_map(). In the future, maps will have a coord_map() function.\nHere is an example which uses geopandas to plot grocery stores in Chicago.\n\nimport geopandas as gp\nimport geodatasets\n\nchicago = gp.read_file(geodatasets.get_path(\"geoda.chicago_commpop\"))\ngroceries = gp.read_file(geodatasets.get_path(\"geoda.groceries\"))\n\n(\n    ggplot(chicago)\n    + geom_map(fill=None)\n    + theme_void()\n    + coord_fixed()\n)\n\nDownloading file 'chicago_commpop.zip' from 'https://geodacenter.github.io/data-and-lab//data/chicago_commpop.zip' to '/home/runner/.cache/geodatasets'.\nExtracting 'chicago_commpop/chicago_commpop.geojson' from '/home/runner/.cache/geodatasets/chicago_commpop.zip' to '/home/runner/.cache/geodatasets/chicago_commpop.zip.unzip'\nDownloading file 'grocery.zip' from 'https://geodacenter.github.io/data-and-lab//data/grocery.zip' to '/home/runner/.cache/geodatasets'.\nExtracting 'grocery/chicago_sup.shp' from '/home/runner/.cache/geodatasets/grocery.zip' to '/home/runner/.cache/geodatasets/grocery.zip.unzip'\nExtracting 'grocery/chicago_sup.dbf' from '/home/runner/.cache/geodatasets/grocery.zip' to '/home/runner/.cache/geodatasets/grocery.zip.unzip'\nExtracting 'grocery/chicago_sup.shx' from '/home/runner/.cache/geodatasets/grocery.zip' to '/home/runner/.cache/geodatasets/grocery.zip.unzip'\nExtracting 'grocery/chicago_sup.prj' from '/home/runner/.cache/geodatasets/grocery.zip' to '/home/runner/.cache/geodatasets/grocery.zip.unzip'\n\n\n\n\n\n\n\n\n\nNotice that coord_fixed() was used to avoid stretching the map along the x- or y-axis. In addition, theme_void() removed the x- and y- tick marks, and labels.\nYou can plot multiple layers on the same map by using multiple geom_map() calls with different data= arguments.\n\ncrs_groceries = groceries.to_crs(chicago.crs)\n\n(\n    ggplot()\n    + geom_map(data=chicago, fill=None)\n    + geom_map(data=crs_groceries, color=\"green\")\n    + theme_void()\n    + coord_fixed()\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html",
+    "href": "guide/facets.html",
+    "title": "Facets (subplots)",
+    "section": "",
+    "text": "Facets split a plot into multiple subplots, based on one or more variables. facet_wrap() creates a sequence of subplots, while facet_grid() creates a matrix of subplots.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html#setup",
+    "href": "guide/facets.html#setup",
+    "title": "Facets (subplots)",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import mpg, penguins\n\nHere is a single big plot that you might want to split into subplots.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\")) + geom_point()\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html#facet_wrap-subplot-sequence",
+    "href": "guide/facets.html#facet_wrap-subplot-sequence",
+    "title": "Facets (subplots)",
+    "section": "facet_wrap(): subplot sequence",
+    "text": "facet_wrap(): subplot sequence\nUse facet_wrap() to create a sequence of subplots. It accepts as its first argument the name of the column that should be used to split the data for subplots.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point(show_legend=False)\n    + facet_wrap(\"class\")\n)\n\n\n\n\n\n\n\n\nNote that by default facet_wrap() fills row-by-row, with defaults for the number of subplots per row and column. Use either the ncol= or nrow= argument to fix the number of plots per column or row, respectively.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point(show_legend=False)\n    + facet_wrap(\"class\", ncol=2)\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html#facet_grid-subplot-matrix",
+    "href": "guide/facets.html#facet_grid-subplot-matrix",
+    "title": "Facets (subplots)",
+    "section": "facet_grid(): subplot matrix",
+    "text": "facet_grid(): subplot matrix\nUse facet_grid() to create a matrix of subplots. It accepts two column names as arguments, the first for the rows and the second for the columns.\n\n(ggplot(mpg, aes(\"displ\", \"hwy\")) + geom_point() + facet_grid(\"cyl\", \"year\"))",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html#facetting-syntax",
+    "href": "guide/facets.html#facetting-syntax",
+    "title": "Facets (subplots)",
+    "section": "facetting syntax",
+    "text": "facetting syntax\nBoth facet_wrap() and facet_grid() support a special syntax for defining subplots. It takes the form \"var1 ~ var2 + var3\"\n\n(ggplot(mpg, aes(\"displ\", \"hwy\")) + geom_point() + facet_grid(\"cyl ~ year\"))\n\n\n\n\n\n\n\n\nNotice that cyl values (e.g. 4, 5, 6, 8) are on the rows, while year values are on the columns.\nThe column names to the left of the tilde (~) define subplot rows, while those to the right define subplot columns. The plus sign (+) groups variables for creating subplots (TODO: is there a reasonable example that includes +?).",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/facets.html#scales-for-freeing-axes",
+    "href": "guide/facets.html#scales-for-freeing-axes",
+    "title": "Facets (subplots)",
+    "section": "scales= for freeing axes",
+    "text": "scales= for freeing axes\nBy default, the x- and y-axes of each subplot have the same range. Use the scales= argument to allow each row or column to have its own range.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\"))\n    + geom_point()\n    + facet_grid(\"cyl ~ year\", scales=\"free_y\")\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Facets (subplots)"
+    ]
+  },
+  {
+    "objectID": "guide/geom-cheatsheet.html",
+    "href": "guide/geom-cheatsheet.html",
+    "title": "plotnine {{< var version >}}",
+    "section": "",
+    "text": "from https://ggplot2-book.org/layers.html#sec-position\n\nGraphical primitives:\n\ngeom_blank(): display nothing. Most useful for adjusting axes limits using data.\ngeom_point(): points.\ngeom_path(): paths.\ngeom_ribbon(): ribbons, a path with vertical thickness.\ngeom_segment(): a line segment, specified by start and end position.\ngeom_rect(): rectangles.\ngeom_polygon(): filled polygons.\ngeom_text(): text.\n\nOne variable:\n\nDiscrete:\n\ngeom_bar(): display distribution of discrete variable.\n\nContinuous:\n\ngeom_histogram(): bin and count continuous variable, display with bars.\ngeom_density(): smoothed density estimate.\ngeom_dotplot(): stack individual points into a dot plot.\ngeom_freqpoly(): bin and count continuous variable, display with lines.\n\n\nTwo variables:\n\nBoth continuous:\n\ngeom_point(): scatterplot.\ngeom_quantile(): smoothed quantile regression.\ngeom_rug(): marginal rug plots.\ngeom_smooth(): smoothed line of best fit.\ngeom_text(): text labels.\nShow distribution:\ngeom_bin2d(): bin into rectangles and count.\ngeom_density2d(): smoothed 2d density estimate.\ngeom_hex(): bin into hexagons and count.\n\nAt least one discrete:\n\ngeom_count(): count number of point at distinct locations\ngeom_jitter(): randomly jitter overlapping points.\nOne continuous, one discrete:\ngeom_bar(stat = “identity”): a bar chart of precomputed summaries.\ngeom_boxplot(): boxplots.\ngeom_violin(): show density of values in each group.\n\nOne time, one continuous:\n\ngeom_area(): area plot.\ngeom_line(): line plot.\ngeom_step(): step plot.\n\n\nDisplay uncertainty:\n\ngeom_crossbar(): vertical bar with center.\ngeom_errorbar(): error bars.\ngeom_linerange(): vertical line.\ngeom_pointrange(): vertical line with center.\n\nSpatial:\n\ngeom_map(): fast version of geom_polygon() for map data.\n\nThree variables:\n\ngeom_contour(): contours.\ngeom_tile(): tile the plane with rectangles.\ngeom_raster(): fast version of geom_tile() for equal sized tiles."
+  },
+  {
+    "objectID": "guide/install.html",
+    "href": "guide/install.html",
+    "title": "Installation",
+    "section": "",
+    "text": "For most users, we recommend installing the official release of Plotnine.\n\nInstalling the official release\nThe official release can be installed from the command line using either pip, uv, or conda:\n# Using pip:\n$ pip install plotnine\n\n# Using uv:\n$ uv pip install plotnine\n\n# Using conda:\n$ conda install -c conda-forge plotnine\n\n\n\n\n\n\nNote\n\n\n\nFor uv you need to have a virtual environment, which you can create using uv venv. Read more information about installing and using uv.\n\n\nFor some functionality you may need to install extra packages. Those packages include:\n\nadjustText: For automatic label placement\ngeopandas: For working with for geographic data\nscikit-learn: For Gaussian Process smoothing\nscikit-misc: For LOESS smoothing\n\nThese four packages can be installed in one go by specifying 'plotnine[extra]' instead of plotnine:\n# Using pip:\n$ pip install 'plotnine[extra]'\n\n# Using uv:\n$ uv pip install 'plotnine[extra]'\n\n# Using conda:\n$ conda install -c conda-forge 'plotnine[extra]'\n\n\nInstalling the development version\nPlotnine is under active development. It may happen that a bugfix or new feature is not yet available in the official release. In those cases you can install the latest development version from GitHub:\n# Using pip:\n$ pip install git+https://github.com/has2k1/plotnine.git\n\n# Using uv:\n$ uv pip install git+https://github.com/has2k1/plotnine.git\nTo contribute to Plotnine’s source code, you have to clone the Plotnine source repository and install the package in development mode:\n$ git clone https://github.com/has2k1/plotnine.git\n$ cd plotnine\n$ pip install -e .",
+    "crumbs": [
+      "Guide",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "guide/maps.html",
+    "href": "guide/maps.html",
+    "title": "Maps",
+    "section": "",
+    "text": "from plotnine import *\nimport geodatasets\nimport geopandas as gp\n\nchicago = gp.read_file(geodatasets.get_path(\"geoda.chicago_commpop\"))\ngroceries = gp.read_file(geodatasets.get_path(\"geoda.groceries\"))\n\n\n(\n    ggplot(chicago)\n    + geom_map() \n    + coord_fixed()\n)\n\n\n\n\n\n\n\n\n\n(\n    ggplot(chicago, aes(fill=\"POP2010\"))\n    + geom_map() \n    + coord_fixed()\n)\n\n\n\n\n\n\n\n\n\n(\n    ggplot(chicago, aes(fill=\"POP2010\"))\n    + geom_map()\n    #+ scale_fill_cmap('plasma')\n    #+ scale_fill_gradientn([\"green\", \"purple\", \"papayawhip\"])\n    #+ scale_fill_gradient(low=\"green\", high=\"blue\")\n    #+ scale_fill_gradient2()\n)\n# scale_fill_gradient\n# scale_fill_continuous\n\n\n\n\n\n\n\n\n\n(\n    ggplot(chicago)\n    + geom_map(fill=None)\n    #+ geom_map(fill=None)\n    + theme_void()\n    + coord_fixed()\n)\n\n\n\n\n\n\n\n\n\nMissing data\n\nimport numpy as np\n\nchi_missing = chicago.copy()\nchi_missing.loc[np.random.choice(chicago.index, 50), 'POP2010'] = np.nan\n\n(\n    ggplot(chi_missing, aes(fill=\"POP2010\"))\n    + geom_map()\n)\n\n\n\n\n\n\n\n\n\n(\n    ggplot(chi_missing, aes(fill=\"POP2010\"))\n    + geom_map(color=\"none\")\n    + theme_void()\n    + scale_fill_continuous(na_value=\"lightgrey\")\n)\n\n\n\n\n\n\n\n\n\n(\n    ggplot()\n    + geom_map(data=chicago, fill=None)\n    + geom_map(data=groceries.to_crs(chicago.crs), color=\"green\")\n    + theme_void()\n    + coord_fixed()\n)",
+    "crumbs": [
+      "Guide",
+      "Miscellaneous",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html",
+    "href": "guide/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This page provides an overview of Plotnine’s most important concepts and corresponding syntax. Throughout this overview, we’ll focus on reproducing the plot below, which looks at city (cty) versus highway mileage (hwy) across different years of cars:\nCode\nfrom plotnine import *\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + geom_point(mapping=aes(colour=\"displ\"))\n    + geom_smooth(method=\"lm\", color=\"blue\")\n    + scale_color_continuous(cmap_name=\"viridis\")\n    + facet_grid(\"year ~ drv\")\n    + coord_fixed()\n    + theme_minimal()\n    + theme(panel_grid_minor=element_blank())\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#specifying-data",
+    "href": "guide/overview.html#specifying-data",
+    "title": "Overview",
+    "section": "Specifying data",
+    "text": "Specifying data\nEvery plot in Plotnine starts with passing data to the ggplot() function. The data can be a Pandas or Polars DataFrame. Plotnine works best when the data is in a tidy format, which tends to be longer—with more rows and fewer columns.\n\nfrom plotnine import *\nfrom plotnine.data import mpg\n\nggplot(data=mpg)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#aes-mapping",
+    "href": "guide/overview.html#aes-mapping",
+    "title": "Overview",
+    "section": "aes() mapping",
+    "text": "aes() mapping\nThe aes() function maps columns of data onto graphical attributes–such as colors, shapes, or x and y coordinates. (The name aes() is short for aesthetic.)\nWe can map the cty and hwy columns to the x- and y- coordinates in the plot using the code below:\n\nggplot(data=mpg, mapping = aes(x = \"cty\", y = \"hwy\"))",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#geom_-objects",
+    "href": "guide/overview.html#geom_-objects",
+    "title": "Overview",
+    "section": "geom_*() objects",
+    "text": "geom_*() objects\nFunctions starting with geom_*() specify geometric objects (geoms) to add to the plot. Geoms determine how to turn mapped data into visual elements–such as points, lines, or even boxplots.\nHere is how we can map the cty and hwy columns to points with a smooth trend line on top:\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    # to create a scatterplot\n    + geom_point()\n    # to fit and overlay a loess trendline\n    + geom_smooth(method=\"lm\", color=\"blue\")\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#scale_-translations",
+    "href": "guide/overview.html#scale_-translations",
+    "title": "Overview",
+    "section": "scale_*() translations",
+    "text": "scale_*() translations\nThe scale_*() functions customize the styling of visual elements from a data mapping. This includes color palettes, axis spacing (e.g. log scale), axis limits, and more. Scales can set the names on guides like axes, legends, and colorbars.\nThe names of scales follow the pattern scale_&lt;aesthetic&gt;_&lt;type&gt;, where &lt;aesthetic&gt; is the name of an aesthetic attribute, like x, y, or color. If we want to use the plasma palette for color, we can use the code below:\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\", color=\"displ\"))\n    + geom_point()\n    + scale_color_continuous(name=\"displ (VIRIDIS)\", cmap_name=\"viridis\")\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#position_-adjustments",
+    "href": "guide/overview.html#position_-adjustments",
+    "title": "Overview",
+    "section": "position_*() adjustments",
+    "text": "position_*() adjustments\nThe position_*() functions adjust the position of elements in the plot. For example, by adding a small amount of random noise (jitter) to the x- and y- coordinates of points, so they don’t cover each other.\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\", color=\"displ\"))\n    # add a small amount of jitter\n    + geom_point(position=position_jitter())\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#facet_-subplots",
+    "href": "guide/overview.html#facet_-subplots",
+    "title": "Overview",
+    "section": "facet_*() subplots",
+    "text": "facet_*() subplots\nFacets split a plot into multiple subplots. The two facet functions, facet_grid() and facet_wrap(), determine how to split the data. For example, we can create a grid of plots based on the year and drv columns:\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + geom_point()\n    # facet into subplots\n    + facet_grid(\"year ~ drv\")\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#coord_-projections",
+    "href": "guide/overview.html#coord_-projections",
+    "title": "Overview",
+    "section": "coord_*() projections",
+    "text": "coord_*() projections\nThe coord_*() functions specify the coordinate system of the plot. Currently, only a few coordinate systems are available. However, in the future systems like coord_polar() will allow for plotting using polar coordinates.\nThe code below uses coord_fixed() to ensure that the x- and y- axes have the same spacing.\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + geom_point()\n    + coord_fixed(xlim=[0, 40], ylim=[0, 40])\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#theme_-styling",
+    "href": "guide/overview.html#theme_-styling",
+    "title": "Overview",
+    "section": "theme_*() styling",
+    "text": "theme_*() styling\nThemes control the style of all aspects of the plot that are not decided by the data. This includes the position of the legend, the color of the axes, the size of the text, and much more.\nUse the theme_*() functions to start with a pre-made theme, or the general theme() function to create a new custom theme. Use the element_*() functions to configure new theme settings.\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\", colour=\"class\"))\n    + geom_point()\n    + theme_minimal()\n    + theme(\n        legend_position=\"top\",\n        axis_line=element_line(linewidth=0.75),\n        axis_line_x=element_line(colour=\"blue\"),\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/overview.html#putting-it-together",
+    "href": "guide/overview.html#putting-it-together",
+    "title": "Overview",
+    "section": "Putting it together",
+    "text": "Putting it together\nFinally, we put all the pieces together into the original plot:\n\n(\n    ggplot(mpg, aes(\"cty\", \"hwy\"))\n    + geom_point(mapping=aes(colour=\"displ\"))\n    + geom_smooth(method=\"lm\", color=\"blue\")\n    + scale_color_continuous(cmap_name=\"viridis\")\n    + facet_grid(\"year ~ drv\")\n    + coord_fixed()\n    + theme_minimal()\n    + theme(panel_grid_minor=element_blank())\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis tutorial was adapted from the ggplot2 “Getting Started” tutorial",
+    "crumbs": [
+      "Guide",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html",
+    "href": "guide/scale-basics.html",
+    "title": "Scales, legends, and guides",
+    "section": "",
+    "text": "Scales specify how aesthetic mappings are ultimately styled as colors, shapes, positions, sizes, and more. This includes choosing the colors used or scaling the size of points based on values of data.\nScale functions follow the naming pattern scale_{aesthetic}_{type}, where aesthetic is the name of the mapping (e.g. x, y, fill, shape), and type is the type of scale (e.g. continuous, discrete, color, shape).\nPlotnine produces a legend automatically, which tells viewers how to map scale values back to the underlying data. These mappings back to data are called guides.\nTODO: a graphic with annotations around scales, legends, and guides",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#setup",
+    "href": "guide/scale-basics.html#setup",
+    "title": "Scales, legends, and guides",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import mpg",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#scale-basics",
+    "href": "guide/scale-basics.html#scale-basics",
+    "title": "Scales, legends, and guides",
+    "section": "Scale basics",
+    "text": "Scale basics\nIn order to illustrate scales, we’ll show two very different uses: manually mapping values of data to colors, and selecting a color palette.\nFor manually mapping values to colors, we can use a manual type scale. For example, the code below uses scale_color_manual() to map two values in the class column to classes to red and blue.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + scale_color_manual(\n        name=\"Car class\",\n        breaks=[\"2seater\", \"compact\"],\n        values=[\"red\", \"blue\"],\n    )\n)\n\n\n\n\n\n\n\n\nNotice that “2seater” is red, “compact” is blue, and all other points are grey. The box on the right side of the plot with “Car class” in it is the legend. The piece inside it showing the colors with “2seater” and “compact” labeled is called a guide.\nGenerally, when using scales you’ll often want to use a scale that can automatically map values to colors. For example, scale_color_brewer() automatically applies a ColorBrewer palette.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + scale_color_brewer(type=\"qual\", palette=2)\n)\n\n\n\n\n\n\n\n\nNotice that there are 7 colors in the plot, one for each level of the class column.",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#types-of-scales",
+    "href": "guide/scale-basics.html#types-of-scales",
+    "title": "Scales, legends, and guides",
+    "section": "Types of scales",
+    "text": "Types of scales\n\nDefault scales\nDifferent scale types are applied by default, depending on the kind of data being mapped. For example, scale_color_continuous() is the default for numeric data, but scale_color_discrete() is the default for string data.\nThe plots below illustrate this for the continuous cyl column, by plotting it as is on the left, and using the special \"factor(cyl)\" syntax to cast it to discrete on the right.\np = ggplot(mpg, aes(\"displ\", \"hwy\")) + theme_grey(base_size=20)\n\n# defaults to scale_color_continuous\np + geom_point(aes(color=\"cyl\"))\n\n# defaults to scale_color_discrete\np + geom_point(aes(color=\"factor(cyl)\"))\n\n\n\n\n\n\n\n\n\n\n\n\nPosition types\nThe position scales for the x- and y-axis also have many extra transformations available. For example, reversing or log transforming.\n\n(ggplot(mpg, aes(\"displ\", \"hwy\")) + geom_point() + scale_x_reverse() + scale_y_log10())\n\n\n\n\n\n\n\n\n\n\nIdentity type\nFinally, the scale identity type uses the values of the data as styles directly. For example, the code below sets the color of points to the values in the my_color column.\n\nimport pandas as pd\n\ndf = pd.DataFrame(\n    {\n        \"x\": [1, 2, 3],\n        \"y\": [1, 2, 3],\n        \"my_color\": [\"red\", \"blue\", \"green\"],\n    }\n)\n\n(ggplot(df, aes(\"x\", \"y\", color=\"my_color\")) + geom_point(size=5) + scale_color_identity())",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#name-to-set-guide-legend-labels",
+    "href": "guide/scale-basics.html#name-to-set-guide-legend-labels",
+    "title": "Scales, legends, and guides",
+    "section": "name= to set guide (legend) labels",
+    "text": "name= to set guide (legend) labels\nUse the name= argument to scale functions to set the label of that scale’s guide.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + scale_x_continuous(name=\"Engine displacement (litres)\")\n    + scale_y_continuous(name=\"Highway miles per gallon\")\n    + scale_color_discrete(name=\"Car class\")\n)\n\n\n\n\n\n\n\n\nNotice that the x-axis, y-axis, and color guides all have names set. While the guide color is in the legend on the right, the x- and y-axis guides are on the bottom and left of the plot.\n\n\n\n\n\n\nlabs() shortcut\n\n\n\nThe labs() function is a convenient way to set names for guides in one place, along with other pieces like a title.\n\n(\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\"))\n    + geom_point()\n    + labs(\n        title = \"Use labs() to quickly set labels\",\n        x = \"Engine displacement (litres)\",\n        y = \"Highway miles per gallon\",\n        color = \"Car class\"\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#values-for-manual-styles",
+    "href": "guide/scale-basics.html#values-for-manual-styles",
+    "title": "Scales, legends, and guides",
+    "section": "values= for manual styles",
+    "text": "values= for manual styles\nUse the values= argument to manually specify stylings like colors, shapes, or sizes of the scale. For example, the plot below manually sets point shapes (see the aesthetic specification for shape value options).\n\nkeep_classes = [\"2seater\", \"compact\", \"midsize\"]\n\n(\n    mpg[mpg[\"class\"].isin(keep_classes)]\n    &gt;&gt; ggplot(aes(\"displ\", \"hwy\", shape=\"factor(cyl)\"))\n    + geom_point()\n    + scale_shape_manual(values=[\".\", \"o\", \"v\", \"&gt;\"])\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#breaks-for-axis-ticks-color-bins",
+    "href": "guide/scale-basics.html#breaks-for-axis-ticks-color-bins",
+    "title": "Scales, legends, and guides",
+    "section": "breaks= for axis ticks, color bins",
+    "text": "breaks= for axis ticks, color bins\n\np = ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\")) + geom_point()\n\np + scale_x_continuous(breaks = [4, 4.5, 5, 5.5])",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#limits-for-restricting-data-range",
+    "href": "guide/scale-basics.html#limits-for-restricting-data-range",
+    "title": "Scales, legends, and guides",
+    "section": "limits= for restricting data range",
+    "text": "limits= for restricting data range\nfrom plotnine.data import huron\n\n\np = ggplot(huron, aes(\"year\", \"level\")) + geom_line() + theme_grey(base_size=26)\n\np + labs(title=\"default\")\np + scale_x_continuous(limits=[1950, 1960]) + labs(title=\"zoom in\")\np + scale_x_continuous(limits=[1800, 2000]) + labs(title=\"zoom out\")\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/geoms/geom_path.py:100: PlotnineWarning: geom_path: Removed 87 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\np = ggplot(huron, aes(\"year\", \"level\", color=\"year\")) + geom_line() \n\np\np + scale_color_continuous(limits=[None, 1900])",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#labels-for-break-labels",
+    "href": "guide/scale-basics.html#labels-for-break-labels",
+    "title": "Scales, legends, and guides",
+    "section": "labels= for break labels",
+    "text": "labels= for break labels\nUse the labels= argument to set custom labels for breaks. This argument supports either a function that operates on a list of breaks, or a list of labels.\nFor example, the plot below sets the color labels to uppercase.\n\np = ggplot(mpg, aes(\"displ\", \"hwy\", color=\"class\")) + geom_point()\n\np + scale_color_discrete(labels=lambda breaks: [s.upper() for s in breaks])\n\n\n\n\n\n\n\n\nThe plot below manually sets the x-axis breaks and labels.\n\np + scale_x_continuous(breaks = [2, 4, 6], labels = [\"TWO\", \"FOUR\", \"SIX\"])",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#legend-merging",
+    "href": "guide/scale-basics.html#legend-merging",
+    "title": "Scales, legends, and guides",
+    "section": "Legend merging",
+    "text": "Legend merging\nSometimes aesthetics mapped to the same variable have their guides merged. For example, color and shape might be shown on the same guide. To split a merged guide, give the scales their own names.\np = (\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"factor(cyl)\", shape=\"factor(cyl)\"))\n    + geom_point()\n    + theme_grey(base_size=20)\n)\n\np + labs(title=\"Unmerged\")\np + labs(title=\"Merged\") + scale_shape_discrete(name=\"Shape\")",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#legend-position",
+    "href": "guide/scale-basics.html#legend-position",
+    "title": "Scales, legends, and guides",
+    "section": "Legend position",
+    "text": "Legend position\nUse theme(legend_position=...) argument to set the position of the legend in a plot. The options are \"none\", \"left\", \"right\", \"top\", and \"bottom\".\np = (\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"factor(cyl)\", shape=\"factor(cyl)\"))\n    + geom_point()\n)\n\np + theme(legend_position=\"top\")\np + theme(legend_position=\"none\")",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-basics.html#guide-customization",
+    "href": "guide/scale-basics.html#guide-customization",
+    "title": "Scales, legends, and guides",
+    "section": "Guide customization",
+    "text": "Guide customization\nCustomize guides by passing arguments like guide_colorbar() or guide_legend() to the guides() function.\nThe example below uses guide_colorbar() to reverse the colorbar (in the legend on the right; note the styles are the same, but the way the guide colorbar is shown is reversed).\np = (\n    ggplot(mpg, aes(\"displ\", \"hwy\", color=\"cyl\"))\n    + geom_point()\n    + theme(legend_key_size=30)\n)\np\np + guides(color=guide_colorbar(reverse=True))\n\n\n\n\n\n\n\n\n\n\nHere’s a funky example that merges guides for color, size, and shape by giving them all the same title in the legend.\n\nimport pandas as pd\nfrom plotnine import *\n\nser = list(map(str, range(5)))\ndf = pd.DataFrame({\"x\": ser, \"y\": ser, \"p\": ser, \"q\": ser, \"r\": ser})\n\n(\n    ggplot(df, aes(\"x\", \"y\", color=\"p\", size=\"q\", shape=\"r\"))\n    + geom_point()\n    + labs(title=\"Merged color, size, and shape guides\")\n    + guides(\n        color=guide_legend(\"THE GUIDE\"),\n        size=guide_legend(\"THE GUIDE\"),\n        shape=guide_legend(\"THE GUIDE\"),\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Basics",
+      "Scales, legends, and guides"
+    ]
+  },
+  {
+    "objectID": "guide/scale-color-fill.html",
+    "href": "guide/scale-color-fill.html",
+    "title": "Scale color and fill",
+    "section": "",
+    "text": "from plotnine.data import penguins\nfrom plotnine import *\n\np = (\n    ggplot(penguins, aes(\"bill_length_mm\", \"bill_depth_mm\", color=\"species\"))\n    + geom_point()\n)"
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#choosing-between-color-and-fill",
+    "href": "guide/scale-color-fill.html#choosing-between-color-and-fill",
+    "title": "Scale color and fill",
+    "section": "Choosing between color and fill",
+    "text": "Choosing between color and fill"
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#specifying-a-continuous-palette",
+    "href": "guide/scale-color-fill.html#specifying-a-continuous-palette",
+    "title": "Scale color and fill",
+    "section": "Specifying a continuous palette",
+    "text": "Specifying a continuous palette"
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#specifying-a-discrete-palette",
+    "href": "guide/scale-color-fill.html#specifying-a-discrete-palette",
+    "title": "Scale color and fill",
+    "section": "Specifying a discrete palette",
+    "text": "Specifying a discrete palette\n\np + scale_color_brewer(\"qualitative\", palette=\"Dark2\")\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.\n\n\n\n\n\n\n\n\n\n\nqualitative\nsequential\ndiverging\n\n(short codes)\n\n# p + scale_color_hue(=280 / 360, 1, .5)\n\n\n(\n    p\n    + scale_color_manual(\n        breaks=[\"Adelie\", \"Gentoo\", \"Chinstrap\"], values=[\"blue\", \"orange\", \"green\"]\n    )\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values."
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#setting-alpha-transparency",
+    "href": "guide/scale-color-fill.html#setting-alpha-transparency",
+    "title": "Scale color and fill",
+    "section": "Setting alpha transparency",
+    "text": "Setting alpha transparency"
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#ordering-levels",
+    "href": "guide/scale-color-fill.html#ordering-levels",
+    "title": "Scale color and fill",
+    "section": "Ordering levels",
+    "text": "Ordering levels"
+  },
+  {
+    "objectID": "guide/scale-color-fill.html#grouping-levels",
+    "href": "guide/scale-color-fill.html#grouping-levels",
+    "title": "Scale color and fill",
+    "section": "Grouping levels",
+    "text": "Grouping levels"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html",
+    "href": "guide/scale-x-and-y.html",
+    "title": "Scale x and y",
+    "section": "",
+    "text": "continuous\ndiscrete\ndate, datetime, timedelta\nlog10, sqrt, symlog\nreverse\nCommon formatting:\nfrom plotnine import *\nfrom plotnine.data import economics\n\np = ggplot(economics, aes(\"date\", \"psavert\")) + geom_line()"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html#full-example",
+    "href": "guide/scale-x-and-y.html#full-example",
+    "title": "Scale x and y",
+    "section": "Full example",
+    "text": "Full example\n\nfrom mizani.labels import percent_format\n\n(\n    ggplot(economics, aes(\"date\", \"psavert\"))\n    + geom_line()\n    + labs(title=\"\")\n    + scale_y_continuous(\n        name=\"Personal savings rate\",\n        limits=[0, None],\n        labels=percent_format(scale=1),\n    )\n    + scale_x_date(\n        name=\"Date\",\n        date_breaks=\"10 years\",\n        date_minor_breaks=\"5 year\",\n    )\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width=\"4 years\")"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html#expanding-limits-to-include-zero",
+    "href": "guide/scale-x-and-y.html#expanding-limits-to-include-zero",
+    "title": "Scale x and y",
+    "section": "Expanding limits to include zero",
+    "text": "Expanding limits to include zero\n\np + scale_y_continuous(limits=[0, None])"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html#labelling-percentages",
+    "href": "guide/scale-x-and-y.html#labelling-percentages",
+    "title": "Scale x and y",
+    "section": "Labelling percentages",
+    "text": "Labelling percentages\n\n(\n    ggplot(economics, aes(\"date\", \"psavert\"))\n    + geom_line()\n    + scale_y_continuous(labels=lambda arr: [f\"{x}%\" for x in arr])\n)\n\n\n\n\n\n\n\n\n\nfrom mizani.labels import percent_format\n\n(\n    ggplot(economics, aes(\"date\", \"psavert\"))\n    + geom_line()\n    + scale_y_continuous(labels=percent_format(scale=1))\n)"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html#specifying-date-breaks",
+    "href": "guide/scale-x-and-y.html#specifying-date-breaks",
+    "title": "Scale x and y",
+    "section": "Specifying date breaks",
+    "text": "Specifying date breaks\n\n(\n    ggplot(economics, aes(\"date\", \"psavert\"))\n    + geom_line()\n    + scale_x_date(date_breaks=\"10 years\", date_minor_breaks=\"5 year\")\n)\n\n/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width=\"4 years\")"
+  },
+  {
+    "objectID": "guide/scale-x-and-y.html#applying-log-scale",
+    "href": "guide/scale-x-and-y.html#applying-log-scale",
+    "title": "Scale x and y",
+    "section": "Applying log scale",
+    "text": "Applying log scale\np = ggplot(economics, aes(\"date\", \"pce\")) + geom_line()\n\np\np + scale_y_log10()"
+  },
+  {
+    "objectID": "guide/themes-basics.html",
+    "href": "guide/themes-basics.html",
+    "title": "Theme basics",
+    "section": "",
+    "text": "The theme() function customizes the style of plot elements—like the background color, grid lines, tick mark length, and much more. Premade themes like theme_minimal() and theme_538() allow for quick theming.",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#setup",
+    "href": "guide/themes-basics.html#setup",
+    "title": "Theme basics",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#premade-themes",
+    "href": "guide/themes-basics.html#premade-themes",
+    "title": "Theme basics",
+    "section": "Premade themes",
+    "text": "Premade themes\nThe quickest way to explore themes is by applying a premade one. These start with theme_*(), and include theme_minimal(), theme_bw(), and theme_538().\np = (\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\", color=\"species\"))\n    + labs(title=\"Penguins (538 Theme)\", subtitle=\"Very cool\")\n    + geom_point()\n)\n\np\np + theme_538()",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#basic-theme-use",
+    "href": "guide/themes-basics.html#basic-theme-use",
+    "title": "Theme basics",
+    "section": "Basic theme() use",
+    "text": "Basic theme() use\nUse the theme() function to customize many aspects of a plot’s appearance. This function often takes an element object, like element_text(), which specifies properties like font size and color.\nFor example, the code below sets the x-axis text to be purple and rotated 90 degrees.\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + theme(\n        axis_text_x=element_text(angle=90, color=\"purple\"),\n    )\n)\n\n\n\n\n\n\n\n\nThe element_line() function can be used to customize pieces like tick marks. This is shown below.\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + theme(\n        axis_ticks_major_y=element_line(color=\"red\", size=5),\n        axis_ticks_length_major_y=10,\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#five-main-theme-areas",
+    "href": "guide/themes-basics.html#five-main-theme-areas",
+    "title": "Theme basics",
+    "section": "Five main theme areas",
+    "text": "Five main theme areas\nThere are five main areas of a plot that can be customized—axis, legend, panel, plot, and strip. These are colored in the plot below.\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\", shape=\"species\"))\n    + geom_point()\n    + facet_wrap(\"~species\")\n    + theme(\n        axis_title=element_text(size=20, color=\"purple\"),\n        legend_background=element_rect(fill=\"lightblue\"),\n        panel_background=element_rect(fill=\"lightgreen\"),\n        plot_background=element_rect(fill=\"lightyellow\"),\n        strip_background=element_rect(fill=\"lightpink\"),\n    )\n    + theme()\n)\n\n\n\n\n\n\n\n\nEach of these areas contains many specific pieces that can be customized. For example, the legend margin, panel grid lines, or plot title style. There are over 100 theme arguments available in theme()!",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#blanking-elements",
+    "href": "guide/themes-basics.html#blanking-elements",
+    "title": "Theme basics",
+    "section": "Blanking elements",
+    "text": "Blanking elements\nUse element_blank() to remove theme elements from a plot.\nThe code below removes the x- and y-axis text and tick marks.\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + theme(\n        axis_text=element_blank(),\n        axis_ticks=element_blank(),\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#inherited-elements",
+    "href": "guide/themes-basics.html#inherited-elements",
+    "title": "Theme basics",
+    "section": "Inherited elements",
+    "text": "Inherited elements\nTODO: https://github.com/has2k1/plotnine/issues/931\nSome arguments like theme(axis_text=...) set the default for multiple pieces (in this case axis_text_x and axis_text_y). For example, the code below blanks out the x- and y-axis text by default, but then sets the x-axis text to be purple.\n\n# TODO: this doesn't seem to be the case (likely a bug?)\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + theme(\n        axis_text=element_blank(),\n        axis_text_x=element_text(angle=90, color=\"purple\"),\n    )\n)",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-basics.html#creating-a-custom-theme",
+    "href": "guide/themes-basics.html#creating-a-custom-theme",
+    "title": "Theme basics",
+    "section": "Creating a custom theme",
+    "text": "Creating a custom theme\n\nUsing a variable\nSave the result of theme() to a variable to reuse it across plots.\n\nmy_theme = theme(\n    panel_background=element_rect(fill=\"white\"),\n    panel_grid_major=element_line(color=\"#F0F0F0\"),\n)\n\n(\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\"))\n    + geom_point()\n    + my_theme\n)\n\n\n\n\n\n\n\n\n\n\nSubclassing premade themes\nNote that many premade classes use a convenient base_size= argument, to apply a base size to many text elements. Sometimes it’s useful to subclass these premades, and then add your own customizations.\nclass custom_theme(theme_gray):\n    def __init__(self, base_size=11, base_family=None):\n        super().__init__(base_size=base_size, base_family=base_family)\n        self += theme(axis_text_x=element_text(angle=90, color=\"purple\"))\n\n\np = ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\")) + geom_point()\n\np + custom_theme()\np + custom_theme(base_size=24)",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Theme basics"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html",
+    "href": "guide/themes-premade.html",
+    "title": "Premade themes",
+    "section": "",
+    "text": "Premade themes begin with theme_*(). For convenience, this page displays 10 premade themes that come with plotnine. By default, plotnine uses theme_gray().",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#setup",
+    "href": "guide/themes-premade.html#setup",
+    "title": "Premade themes",
+    "section": "Setup",
+    "text": "Setup\n\nfrom plotnine import *\nfrom plotnine.data import penguins\n\np = (\n    ggplot(penguins, aes(x=\"flipper_length_mm\", y=\"body_mass_g\", color=\"species\"))\n    + geom_point()\n    + scale_x_continuous(breaks=range(150, 250, 30))\n    + facet_wrap(\"~species\")\n    + labs(subtitle=\"I am a subtitle\")\n)",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#bw",
+    "href": "guide/themes-premade.html#bw",
+    "title": "Premade themes",
+    "section": "BW",
+    "text": "BW\n\np + theme_bw() + labs(title=\"theme_bw()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#classical",
+    "href": "guide/themes-premade.html#classical",
+    "title": "Premade themes",
+    "section": "Classical",
+    "text": "Classical\n\np + theme_classic() + labs(title=\"theme_classic()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#gray",
+    "href": "guide/themes-premade.html#gray",
+    "title": "Premade themes",
+    "section": "Gray",
+    "text": "Gray\n\np + theme_gray() + labs(title=\"theme_gray()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#lightdark",
+    "href": "guide/themes-premade.html#lightdark",
+    "title": "Premade themes",
+    "section": "Light/Dark",
+    "text": "Light/Dark\np + theme_light() + labs(title=\"theme_light()\")\np + theme_dark() + labs(title=\"theme_dark()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#matplotlib",
+    "href": "guide/themes-premade.html#matplotlib",
+    "title": "Premade themes",
+    "section": "Matplotlib",
+    "text": "Matplotlib\n\np + theme_matplotlib() + labs(title=\"theme_matplotlib()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#minimal",
+    "href": "guide/themes-premade.html#minimal",
+    "title": "Premade themes",
+    "section": "Minimal",
+    "text": "Minimal\n\np + theme_minimal() + labs(title=\"theme_minimal()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#seaborn",
+    "href": "guide/themes-premade.html#seaborn",
+    "title": "Premade themes",
+    "section": "Seaborn",
+    "text": "Seaborn\n\np + theme_seaborn() + labs(title=\"theme_seaborn()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#tufte",
+    "href": "guide/themes-premade.html#tufte",
+    "title": "Premade themes",
+    "section": "Tufte",
+    "text": "Tufte\n\np + theme_tufte() + labs(title=\"theme_tufte()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
+  },
+  {
+    "objectID": "guide/themes-premade.html#section",
+    "href": "guide/themes-premade.html#section",
+    "title": "Premade themes",
+    "section": "538",
+    "text": "538\n\np + theme_538() + labs(title=\"theme_538()\")",
+    "crumbs": [
+      "Guide",
+      "Theming",
+      "Premade themes"
+    ]
   },
   {
     "objectID": "license.html",

@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.2">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plotnine – plotnine {{&lt; var version &gt;}}</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d28d75de9320f80cf0d021a9cf26e4f4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="homepage/homepage-bs.css">
+<link rel="stylesheet" href="homepage/homepage.min.css">
+<link rel="stylesheet" href="homepage/homepage-syntax.css">
+<meta property="og:title" content="Plotnine">
+<meta property="og:image" content="https://plotnine.org/homepage/banner/img/thumbnails/anscombes-quartet.png">
+<meta property="og:site_name" content="plotnine {{< var version >}}">
+<meta property="og:image:height" content="171">
+<meta property="og:image:width" content="228">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">plotnine 0.15.0a1.post18+g3873ecf2</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./guide/install.html"> 
+<span class="menu-text">Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./gallery/index.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./tutorials/index.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pages</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pages">    
+        <li>
+    <a class="dropdown-item" href="./changelog.html">
+ <span class="dropdown-text">Changelog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./external-resources.html">
+ <span class="dropdown-text">External Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./about.html">
+ <span class="dropdown-text">About Plotnine</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/has2k1/plotnine"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="tw:bg-plum-950">
+    <div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:py-4 tw:md:py-8">
+        <div class="tw:flex tw:items-center tw:gap-2 tw:md:gap-6">
+            <div class="tw:flex-grow">
+                <h2 class="tw:text-balance tw:text-white tw:tracking-tight tw:leading-[0.9] tw:text-[2rem] tw:md:text-[3rem] tw:lg:text-[4rem] tw:xl:text-[5rem] tw:mb-4">
+                    From ad-hoc plots to publication-ready figures.
+                </h2>
+                <div class="tw:text-balance tw:leading-[0.95] tw:text-plum-300 tw:text-[1em] tw:md:text-[1.25em]">
+                    Turn your data into beautiful visualizations using the grammar of graphics.
+                </div>
+            </div>
+            <div class="tw:flex-none">
+                <img src="./homepage/img/plotnine-logo-border.png" class="tw:h-28 tw:md:h-36 tw:lg:h-42 tw:xl:h-48 tw:object-contain">
+            </div>
+        </div>
+
+        <div class="tw:mt-8 tw:md:mt-12 tw:flex tw:flex-wrap tw:gap-3 tw:md:gap-4 tw:text-[0.8rem] tw:md:text-[1rem]">
+            <div>
+                <a class="button-primary tw:inline-block" href="./guide/overview.html"><span class="tw:-mb-[0.2em] tw:mr-1 tw:text-[1.4em] tw:icon-[mdi--lightning-bolt]"></span> Get started</a>
+            </div>
+            <div>
+                <a class="button-secondary tw:inline-block" href="./reference"><span class="tw:-mb-[0.2em] tw:mr-1 tw:text-[1.4em] tw:icon-[mdi--drive-document]"></span> API reference</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Do not edit this file directly; it's created using banner.jinja. -->
+
+<script>
+let pastIndices = [];
+let timerId = null;
+let delayId = null;
+
+let isMouseOutside = true;
+let isBannerVisible = false;
+let isScreenWide = false;
+
+function highlightItem(item, highlight=true) {
+    const thumbnailElement = item.querySelector('.banner-thumbnail');
+    const imageElement = item.querySelector('.banner-thumbnail img');
+    const highlightElement = item.querySelector('.item-highlight');
+    const highlightDivElement = item.querySelector('.item-highlight div');
+
+    if (highlight) {
+        if (isScreenWide && isBannerVisible && isMouseOutside && (timerId !== null)) {
+            thumbnailElement.classList.add('banner-thumbnail-hover');
+            imageElement.classList.add('banner-thumbnail-img-hover');
+            highlightElement.classList.add('item-highlight-hover');
+            highlightDivElement.classList.add('item-highlight-div-hover');
+        }
+    } else {
+        thumbnailElement.classList.remove('banner-thumbnail-hover');
+        imageElement.classList.remove('banner-thumbnail-img-hover');
+        highlightElement.classList.remove('item-highlight-hover');
+        highlightDivElement.classList.remove('item-highlight-div-hover');
+    }
+}
+
+function visitItem(i) {
+    if (pastIndices.includes(i)) return;
+
+    pastIndices.push(i)
+    if (pastIndices.length > 5) {
+        pastIndices.shift()
+    }
+}
+
+function highlightRandomItem() {
+    // Get all visible .banner-item elements
+    const bannerItems = Array.from(document.querySelectorAll('.banner-item'))
+        .filter(item => item.offsetParent !== null); // Checks visibility
+
+    // Remove previous highlights
+    bannerItems.forEach(item => highlightItem(item, false));
+
+    if (bannerItems.length === 0) return;
+
+    // Pick a random visible banner-item
+    let randomIndex = Math.floor(Math.random() * bannerItems.length);
+    while (pastIndices.includes(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * bannerItems.length);
+    }
+    visitItem(randomIndex);
+
+    const selectedItem = bannerItems[randomIndex];
+    clearTimeout(delayId);
+    delayId = setTimeout(highlightItem, 1000, selectedItem, true);
+}
+
+function startRandomHighlighting() {
+    if (timerId !== null) return;
+
+    highlightRandomItem();
+    timerId = setInterval(highlightRandomItem, 5000);
+}
+
+function stopRandomHighlighting() {
+    if (timerId === null) return;
+
+    clearInterval(timerId);
+    timerId = null;
+
+    const bannerItems = Array.from(document.querySelectorAll('.banner-item'))
+        .filter(item => item.offsetParent !== null); // Checks visibility
+
+    // Remove previous highlights
+    bannerItems.forEach(item => highlightItem(item, false));
+}
+
+function updateAnimation() {
+    console.log({isScreenWide, isBannerVisible, isMouseOutside});
+
+    if (isScreenWide && isBannerVisible && isMouseOutside) {
+        startRandomHighlighting();
+    } else {
+        stopRandomHighlighting();
+    }
+}
+
+function handleBreakpoint(e) {
+    isScreenWide = e.matches;
+    updateAnimation();
+}
+
+function handleVisibilityChange(entries, observer) {
+    entries.forEach(entry => {
+        isBannerVisible = entry.isIntersecting;
+    });
+    updateAnimation();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    mediaQuery.addEventListener("change", handleBreakpoint);
+    handleBreakpoint(mediaQuery);
+
+    // Create an IntersectionObserver instance
+    const observer = new IntersectionObserver(handleVisibilityChange, {
+        root: null,  // The root is the viewport
+        rootMargin: '0px',  // Optional: Adjust visibility trigger margin (e.g., '0px' or '100px')
+        threshold: 0.1,  // Trigger when 50% of the element is visible
+    });
+
+    // Target element to observe
+    const targetElement = document.querySelector('#banner');
+    // Start observing the target element
+    observer.observe(targetElement);
+
+    updateAnimation();
+});
+
+</script>
+<div class="tw:bg-plum-950">
+<div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:pt-4 tw:md:pt-8 tw:pb-8 tw:md:pb-16">
+
+    <div id="banner" class="tw:relative tw:translate-3d">
+        <div class="tw:flex tw:flex-row tw:items-center">
+            <div id="banner-borders" onmouseleave="isMouseOutside = true; updateAnimation();" onmouseenter="isMouseOutside = false; updateAnimation();" class="tw:p-2 tw:peer/banner tw:w-full tw:md:w-[70%] tw:bg-white tw:gap-[2px] tw:grid tw:grid-cols-[10px_auto_10px] tw:grid-rows-[10px_auto_10px]">
+
+                <div class="banner-border-corner"></div>
+                <div class="banner-border banner-x tw:grid-rows-1">
+                    <div class="banner-border-cell banner-x-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-6"><div></div><div></div></div>
+                </div>
+                <div class="banner-border-corner"></div>
+
+                <div class="banner-border banner-y">
+                    <div class="banner-border-cell banner-y-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-6"><div></div><div></div></div>
+                </div>
+
+                <div class="tw:bg-white banner-x banner-y">
+                    
+                    <a href="gallery/anscombes-quartet.html" onmouseenter="visitItem(0);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/anscombes-quartet.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/anscombes-quartet.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(1);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/clock.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/clock.png" class="tw:object-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(2);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/weather-forecast-plot.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/weather-forecast-plot.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(3);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/dimensionality-reduction-animated.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/dimensionality-reduction-animated.png" class="tw:object-center">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(4);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/coal-production-since-1900.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/coal-production-since-1900.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(5);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:hidden! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/bar.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/bar.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(6);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/dutch.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/dutch.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(7);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/heatmap.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/heatmap.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(8);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/language.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/language.png" class="tw:object-right-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(9);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/stations.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/stations.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(10);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:hidden! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/heatmap.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/heatmap.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(11);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/womens-soccer.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/womens-soccer.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(12);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/clock.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/clock.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(13);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/anscombes-quartet.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/anscombes-quartet.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(14);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/netflix.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/netflix.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(15);" class="banner-item tw:group tw:xs:hidden! tw:sm:hidden! tw:md:hidden! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/bar.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/bar.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(16);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/netflix.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/netflix.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="" onmouseenter="visitItem(17);" class="banner-item tw:group tw:xs:block! tw:sm:block! tw:md:block! tw:lg:block!">
+                        <div class="item-highlight">
+                            <div>
+                                <img src="homepage/banner/img/highlights/weather-forecast-plot.png">
+                            </div>
+                        </div>
+                        <div class="banner-cell">
+                        <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
+                        <div class="banner-cell-front">
+                            <div class="banner-thumbnail">
+                                <img src="homepage/banner/img/thumbnails/weather-forecast-plot.png" class="tw:object-left-top">
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                </div>
+
+                <div class="banner-border banner-y">
+                    <div class="banner-border-cell banner-y-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-y-6"><div></div><div></div></div>
+                </div>
+
+                <div class="banner-border-corner"></div>
+                <div class="banner-border banner-x">
+                    <div class="banner-border-cell banner-x-1"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-2"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-3"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-4"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-5"><div></div><div></div></div>
+                    <div class="banner-border-cell banner-x-6"><div></div><div></div></div>
+                </div>
+                <div class="banner-border-corner"></div>
+            </div>
+            <div class="tw:hidden -tw:md:block tw:md:w-[30%] tw:peer-hover/banner:opacity-0 tw:duration-500">
+               <img class="white-border tw:object-contain tw:m-auto tw:h-64 tw:pl-4" src="https://plotnine.org/images/logo-512.png">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:pt-8 tw:md:pt-16">
+
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--language-python]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> A grammar of graphics for Python</h3></div>
+            </div>
+            <p>
+                Plotnine is a data visualization package for Python based on the grammar of graphics, a coherent system for describing and building graphs. The syntax is similar to <a href="https://ggplot2.tidyverse.org">ggplot2</a>, a widely successful R package.</p><p>Let’s explore Plotnine’s features and walk through a typical workflow by visualizing Anscombe’s Quartet—four small datasets with different distributions but nearly identical descriptive statistics. They’re perhaps the best argument for visualizing data. You can see the final result <span class="tw:md:hidden">below</span><span class="tw:hidden tw:md:inline">on the right</span>.</p><p>
+            </p>
+            
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/sneak.png">
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--stopwatch-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Get started quickly</h3></div>
+            </div>
+            <p>
+                With Plotnine you can create ad-hoc plots with just a single line of code.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">plotnine</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotnine.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">anscombes_quartet</span> 
+
+<span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">))</span> <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Our data contains two continuous variables, so let’s start with a basic scatter plot.</p><p>It doesn’t make much sense just yet; we need a way to distinguish between the four datasets.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/start.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--auto-awesome-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Sensible defaults</h3></div>
+            </div>
+            <p>
+                Legends, labels, breaks, color palettes. Many elements are added automatically based on the data.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span></span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"dataset"</span><span class="tw:opacity-50"><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                By coloring each point according to the dataset it belongs to, the plot automatically gets a legend. The colors are chosen automatically as well. But don’t worry, as we’ll see later, everything can be adjusted.</p><p>It’s still rather messy, so let’s try a different approach.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/auto.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--view-grid-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Subset declaratively</h3></div>
+            </div>
+            <p>
+                Any data visualization can be repeated across multiple panels without writing a for loop.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"dataset"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span><span class="tw:opacity-50">
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                That’s better. The panels make the use of color redundant, so that’s something we need to fix.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/facet.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--layers-outline]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Visualizations have layers</h3></div>
+            </div>
+            <p>
+                The data and the mapping of columns are inherited, but can be changed per layer.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"dataset"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">()</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"lm"</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="tw:opacity-50">
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span>
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                These scatter plots with trend lines clearly supports Anscombe’s point: that datasets with different distributions can have the same descriptive statistics.</p><p>When you’re doing exploratory data analysis, this plot might be good enough. But when you want to publish this, you may want to customize it further.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/layer.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row tw:md:min-h-[50vh]">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--tune]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Override any default</h3></div>
+            </div>
+            <p>
+                Anything that you see, can be adjusted.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">(</span></span><span class="n">color</span><span class="o">=</span><span class="s2">"sienna"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"darkorange"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="tw:opacity-50"><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"lm"</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span></span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="tw:opacity-50"><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span>
+    </span><span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/scale_y_continuous.html">scale_y_continuous</a></span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/coord_fixed.html">coord_fixed</a></span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/labs.html">labs</a></span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Anscombe’s Quartet"</span><span class="p">)</span><span class="tw:opacity-50">
+<span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Here we change the sizes and colors, improve the breaks, and add a title.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video tw:md:sticky tw:md:top-1/2 tw:md:-translate-y-1/2 tw:md:mt-[28.125%] tw:md:-mb-[28.125%]">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/adjust.png">
+                </div>
+                
+                <div class="tw:hidden tw:md:block tw:md:-mt-16 tw:md:translate-y-16">
+                    <span class="tw:text-green-500 tw:text-[3em] tw:block tw:mx-auto tw:icon-[mdi--chevron-down]"></span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+        
+    <div class="tw:md:flex tw:md:flex-row">
+        <div class="tw:md:w-3/5 tw:pb-4 tw:@container">
+            <div class="tw:flex tw:items-center tw:mb-4 tw:md:mb-6 tw:gap-2 tw:md:gap-3">
+                <div class="tw:flex-none"><h3><span class="tw:text-plum-800 tw:-mb-[0.2em] tw:text-[1.05em] tw:icon-[mdi--hexagon-slice-5]"></span></h3></div>
+                <div class="tw:flex-auto"><h3> Plotnine goes to eleven</h3></div>
+            </div>
+            <p>
+                Customize the theme to match your personal style or your organization’s brand.</p><p>
+            </p>
+            
+            <div class="tw:bg-blue-950 tw:rounded-xl tw:overflow-x-hidden tw:p-3 tw:mb-4 tw:text-[0.5rem] tw:@min-[345px]:tw:text-[0.55rem] tw:@min-[357px]:text-[0.58rem] tw:@min-[400px]:text-[0.66rem]  tw:@min-[430px]:text-[0.7rem]   tw:@min-[490px]:text-[0.8rem]   tw:@min-[560px]:text-[0.9rem]   tw:@min-[610px]:text-[1rem]">
+                
+                <div class="highlight"><pre><span></span><span class="tw:opacity-50"><span class="p">(</span>
+    <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/ggplot.html">ggplot</a></span><span class="p">(</span><span class="n">anscombes_quartet</span><span class="p">,</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/aes.html">aes</a></span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_point.html">geom_point</a></span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"sienna"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/geom_smooth.html">geom_smooth</a></span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"lm"</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fullrange</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/facet_wrap.html">facet_wrap</a></span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/labs.html">labs</a></span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Anscombe’s Quartet"</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/scale_y_continuous.html">scale_y_continuous</a></span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/coord_fixed.html">coord_fixed</a></span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span> </span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/theme_tufte.html">theme_tufte</a></span><span class="p">(</span><span class="n">base_family</span><span class="o">=</span><span class="s2">"Futura"</span><span class="p">,</span> <span class="n">base_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n"><a style="color: inherit; text-underline-offset: 0.3em;" href="./reference/theme.html">theme</a></span><span class="p">(</span>
+        <span class="n">axis_line</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"#4d4d4d"</span><span class="p">),</span>
+        <span class="n">axis_ticks_major</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"#00000000"</span><span class="p">),</span>
+        <span class="n">axis_title</span><span class="o">=</span><span class="n">element_blank</span><span class="p">(),</span>
+        <span class="n">panel_spacing</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="tw:opacity-50"><span class="p">)</span></span>
+</pre></div>
+
+            </div>
+            
+            
+            <p>
+                Curious how you can start creating these kinds of visualizations with your own data? In the next section we cover how to install Plotnine.</p><p>
+            </p>
+            
+        </div>
+        <div class="tw:md:w-2/5 -tw:border tw:pb-12">
+            <div class="tw:aspect-video">
+                <div class="tw:relative tw:h-full">
+                    <img class="tw:object-contain tw:h-full tw:mx-auto tw:border tw:bg-white tw:border-2 tw:border-green-500 tw:rounded-xl tw:p-1" src="./homepage/features/img/final.png">
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+
+</div>
+
+<div class="tw:pt-8 tw:pb-12">
+    <div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:py-4">
+        <div class="tw:flex">
+            <div class="tw:flex-auto">
+            </div>
+            <div class="tw:flex-none">
+                <a class="button-primary tw:inline-block" href="#">Next: Installation <span class="tw:-mb-[0.2em] tw:mr-1 tw:text-[1.4em] tw:icon-[mdi--chevron-right]"></span></a>
+            </div>
+            <div class="tw:flex-auto">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tw:bg-green-950">
+    <div class="tw:mx-auto tw:max-w-7xl tw:px-4 tw:sm:px-8 tw:py-12 tw:flex tw:md:flex-row tw:text-white tw:opacity-75">
+        <div class="tw:w-3/4">
+            <h4>Plotnine</h4>
+            <ul class="tw:list-none tw:m-0 tw:pl-0! tw:list-outside">
+                <li>Guide</li>
+                <li>Reference</li>
+                <li>Gallery</li>
+                <li>Blog</li>
+                <li>GitHub</li>
+            </ul>
+        </div>
+        <div class="tw:w-1/4 tw:flex tw:flex-row tw:items-center tw:gap-4 tw:md:gap-6">
+            <div class="tw:w-auto">
+                <span class="tw:text-white">By</span>
+            </div>
+            <div class="tw:w-auto">
+                <img class="tw:w-full tw:invert tw:brightness-0 -tw:opacity-75 tw:fill-current" src="https://posit.co/wp-content/uploads/2024/07/Posit-Logos-2024_horiz-black.svg">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/plotnine\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
