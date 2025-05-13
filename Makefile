@@ -106,6 +106,7 @@ checkout-dev: submodules submodules-pull submodules-tags
 ## Install build dependencies
 install:
 	uv sync
+	export PYTHON=$$(uv run --active which python); \
 	make -C plotnine/doc dependencies
 
 ## Install all dependencies required for development (requires nodejs & npm)
