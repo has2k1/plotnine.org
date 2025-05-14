@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Annotations – plotnine 0.15.0a1.post18+g3873ecf2</title>
+<title>Annotations – plotnine 0.0.post20+g31ac974</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,10 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Annotations – plotnine 0.15.0a1.post18+g3873ecf2">
+<meta property="og:title" content="Annotations – plotnine 0.0.post20+g31ac974">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/annotations_files/figure-html/cell-3-output-2.png">
-<meta property="og:site_name" content="plotnine 0.15.0a1.post18+g3873ecf2">
+<meta property="og:site_name" content="plotnine 0.0.post20+g31ac974">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a1.post18+g3873ecf2</span>
+    <span class="navbar-title">plotnine 0.0.post20+g31ac974</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -421,7 +421,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="f8e3c36a" class="cell" data-execution_count="1">
+<div id="ed204d41" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -429,7 +429,7 @@ Key points
 <section id="annotate" class="level2">
 <h2 class="anchored" data-anchor-id="annotate"><code>annotate()</code></h2>
 <p>Use <code>annotate()</code> to write some text on a plot.</p>
-<div id="937fd682" class="cell" data-execution_count="2">
+<div id="6f88c6d7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r_coef <span class="op">=</span> penguins[<span class="st">"flipper_length_mm"</span>].corr(penguins[<span class="st">"body_mass_g"</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>))</span>
@@ -459,7 +459,7 @@ Key points
 </div>
 <p>Notice that the correlation coefficient is shown on the top-left of the plot. The first argument to annotate, specifies the geom to use (in this case, the <code>"text"</code> means to use <code>geom_text()</code>).</p>
 <p>In order to use annotate with another geom, pass the name of the geom as the first argument. For example, the code below draws a rectangle around the text.</p>
-<div id="121f2065" class="cell" data-execution_count="3">
+<div id="6596d5de" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> annotate(<span class="st">"rect"</span>, xmin<span class="op">=</span><span class="dv">170</span>, xmax<span class="op">=</span><span class="dv">190</span>, ymin<span class="op">=</span><span class="dv">5500</span>, ymax<span class="op">=</span><span class="dv">6000</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
@@ -477,7 +477,7 @@ Key points
 <section id="geom_textpath_effects..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textpath_effects..."><code>geom_text(path_effects=...)</code></h2>
 <p>Use the <code>geom_text(path_effects=...)</code> argument to add more complex styling to your text. This argument takes a list of objects created by the <code>matplotlib.patheffects</code> submodule.</p>
-<div id="e44e19df" class="cell" data-execution_count="4">
+<div id="2e70655c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patheffects <span class="im">as</span> pe</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>effect <span class="op">=</span> [</span>
@@ -505,7 +505,7 @@ Key points
 <section id="geom_textadjust_text..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textadjust_text..."><code>geom_text(adjust_text=...)</code></h2>
 <p>Use the <code>geom_text(adjust_text=...)</code> argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the <code>adjustText</code> package’s <code>adjust_text()</code> function.</p>
-<div id="5d3df3b0" class="cell" data-execution_count="5">
+<div id="dbcfc93c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -514,10 +514,10 @@ Key points
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(adjust_text<span class="op">=</span>{<span class="st">"arrowprops"</span>: {<span class="st">"arrowstyle"</span>: <span class="st">"-"</span>}})</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 [-0.28631894 -0.4118056 ]
-37 [ 0.91778195 -0.19748592]
-35 [-0.04162055  0.27596958]
-36 [-0.83371805  0.99300235]</code></pre>
+<pre><code>0 [ 0.32572863 -0.24047435]
+37 [0.3701446  0.75670291]
+35 [-0.46013029 -0.53923499]
+36 [-0.46300441 -0.36920164]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -534,7 +534,7 @@ Key points
 </section>
 <section id="emphasis-with-shading" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-shading">Emphasis with shading</h2>
-<div id="0f3960c2" class="cell" data-execution_count="6">
+<div id="69c2e9f3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> huron</span>
@@ -573,7 +573,7 @@ Key points
 </section>
 <section id="emphasis-with-arrows" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-arrows">Emphasis with arrows</h2>
-<div id="731a63f6" class="cell" data-execution_count="7">
+<div id="38ae76c0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> economics</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>(</span>
