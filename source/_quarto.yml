@@ -2,6 +2,10 @@ project:
   type: website
   preview:
     port: 11300
+  pre-render:
+    - npx @tailwindcss/cli -i ./homepage/input.css -o ./homepage/homepage.min.css --minify
+    - bash -c "uv run jinja2 homepage/banner/template.jinja homepage/banner/items.yaml > homepage/banner/output.html"
+    - bash -c "uv run jinja2 homepage/features/template.jinja homepage/features/items.yaml > homepage/features/output.html"
   output-dir: _site
   resources:
     - objects.inv
@@ -12,7 +16,7 @@ project:
     - "!plotnine-examples"
     - "!plotnine-guide"
   post-render:
-    - "sed -re /bootstrap.*(css|js)/d -i.bak _site/index.html"
+    - ../scripts/remove-bootstrap-from-homepage.sh
 
 metadata-files: 
   - guide/_sidebar.yml

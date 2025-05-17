@@ -1,0 +1,112 @@
+/* bootstrap-reset-simple.css */
+/* A simpler approach to reset Bootstrap styling except for navbar */
+
+/* Define elements that should keep Bootstrap styling */
+.navbar,
+.navbar-brand,
+.navbar-nav,
+.navbar-toggler,
+.navbar-collapse,
+nav,
+.nav,
+.nav-link,
+.dropdown,
+.dropdown-menu,
+.dropdown-item,
+.dropdown-toggle,
+header,
+#quarto-search,
+#quarto-header,
+.navbar-expand-lg,
+.form-control,
+.navbar-dark,
+.bg-primary,
+.fixed-top,
+.btn-navbar {
+  /* These elements preserve Bootstrap styling - don't reset anything */
+}
+
+/* Styling reset for every other element */
+body *:not(.navbar):not(.navbar *):not(header):not(header *):not(nav):not(nav *):not(.dropdown):not(.dropdown *):not(.dropdown-menu):not(.dropdown-menu *):not(#quarto-search):not(#quarto-search *):not(#quarto-header):not(#quarto-header *) {
+  all: revert !important; /* Modern browsers: resets to user-agent stylesheet */
+}
+
+/* Container reset */
+.container:not(.navbar .container):not(header .container):not(#quarto-header .container),
+.container-fluid:not(.navbar .container-fluid):not(header .container-fluid):not(#quarto-header .container-fluid) {
+  width: revert !important;
+  max-width: revert !important;
+  padding: revert !important;
+  margin: revert !important;
+}
+
+/* Grid reset */
+.row:not(.navbar .row):not(header .row):not(#quarto-header .row) {
+  display: revert !important;
+  flex-wrap: revert !important;
+  margin: revert !important;
+}
+
+/* Columns reset */
+[class^="col-"]:not(.navbar [class^="col-"]):not(header [class^="col-"]):not(#quarto-header [class^="col-"]) {
+  position: revert !important;
+  width: revert !important;
+  padding: revert !important;
+  flex: revert !important;
+}
+
+/* Make sure dropdown menus work correctly */
+.dropdown-menu {
+  position: absolute !important;
+  display: none;
+}
+
+.dropdown-menu.show {
+  display: block !important;
+}
+
+/* Ensure the navbar toggle works on mobile */
+.navbar-toggler {
+  display: block !important;
+}
+
+.collapse:not(.show) {
+  display: none !important;
+}
+
+.collapsing {
+  position: relative !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  transition: height 0.35s ease !important;
+}
+
+/* Preserve search functionality */
+#quarto-search .form-control {
+  display: block !important;
+}
+
+/* Preserve any fixed headers */
+.fixed-top, 
+.sticky-top {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  z-index: 1030 !important;
+}
+
+/* Override any !important styles from Bootstrap with even higher specificity */
+html body main:not(header):not(.navbar) *,
+html body article:not(header):not(.navbar) *,
+html body section:not(header):not(.navbar) *,
+html body div:not(header):not(.navbar):not(.navbar *):not(header *):not(#quarto-header):not(#quarto-header *):not(#quarto-search):not(#quarto-search *):not(.dropdown):not(.dropdown *) {
+  font-family: revert !important;
+  font-size: revert !important;
+  line-height: revert !important;
+  color: revert !important;
+  background-color: revert !important;
+  margin: revert !important;
+  padding: revert !important;
+  border: revert !important;
+}
