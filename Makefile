@@ -15,6 +15,17 @@ SITE_DIR=$(SOURCE_DIR)/_site
 # to be from a virtual environment.
 PYTHON ?= uv run --active python
 
+# We want to use the same virtual environment for any commands that are
+# run in secondary makefiles (make -C ...). We export the path to python
+# using PYTHON name which (if exported) will be used in all makefiles
+# that refer to python using that variable. e.g.
+# plotnine has
+#
+#    PYTHON ?= uv run --active python
+#
+# which would give precedence to the contents of the environment variable.
+export PYTHON=$(shell uv run --active which python)
+
 # NOTE: Take care not to use tabs in any programming flow outside the
 # make target
 
@@ -106,7 +117,6 @@ checkout-dev: submodules submodules-pull submodules-tags
 ## Install build dependencies
 install:
 	uv sync
-	export PYTHON=$$(uv run --active which python); \
 	npm install tailwindcss @tailwindcss/cli @iconify/tailwind4 @iconify-json/mdi
 	make -C plotnine/doc dependencies
 
@@ -125,12 +135,6 @@ homepage:
 
 ## Build plotnine API qmd pages
 api-pages: plotnine-examples
-	# We want to use the same virtual environment so we export the PYTHON
-	# Other, since plotnine is also a python project the
-	# PYTHON := uv run --active python
-	# in there would create a new local .venv if we do not set it with
-	# and environment variable
-	export PYTHON=$$(uv run --active which python); \
 	make -C plotnine/doc docstrings
 
 ## Copy API artefacts into website
