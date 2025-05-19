@@ -4,6 +4,7 @@ Repository for the [plotnine](https://plotnine.org) website.
 
 - [webdev](https://plotnine.org/webdev) - plotnine release docs built with the dev branch of this repo
 - [dev](https://plotnine.org/dev) - plotnine main branch docs built with the main branch of this repo
+- [staging](https://staging--plotnine.netlify.app/) - Deployment of the plotnine.org staging branch.
 
 ## Building the Site
 
