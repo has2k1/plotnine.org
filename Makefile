@@ -107,6 +107,7 @@ checkout-dev: submodules submodules-pull submodules-tags
 install:
 	uv sync
 	export PYTHON=$$(uv run --active which python); \
+	npm install tailwindcss @tailwindcss/cli @iconify/tailwind4 @iconify-json/mdi
 	make -C plotnine/doc dependencies
 
 ## Install all dependencies required for development (requires nodejs & npm)
