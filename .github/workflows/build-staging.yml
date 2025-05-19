@@ -1,0 +1,81 @@
+name: Build Website - Staging
+
+on:
+  push:
+    branches:
+      - staging2
+  workflow_dispatch:
+
+jobs:
+  start-deployment:
+    runs-on: ubuntu-latest
+
+    outputs:
+      deployment_id: ${{ steps.capture_vars.outputs.deployment_id }}
+      env: ${{ steps.config.outputs.env }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Deployment Status
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: staging
+          ref: ${{ github.head_ref }}
+
+      # https://github.com/bobheadxi/deployments/issues/161#issuecomment-2682715103
+      # Accessing the environment variables (from step outputs) in another job does
+      # not work. So we lift them into the jobs outputs
+      - name: Capture deployment environment variables
+        id: capture_vars
+        run: echo "deployment_id=${DEPLOYMENT_ID}" >> $GITHUB_OUTPUT
+        env:
+          DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
+
+  build-site:
+    name: Build site for plotnine.org
+    needs: start-deployment
+    uses: ./.github/workflows/build.yml
+    with:
+      plotnine-branch: main
+      target-folder: ""
+
+  deploy-site:
+    needs: [build-site, start-deployment]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download built documentation
+        uses: actions/download-artifact@v4
+        with:
+          pattern: _site
+
+      - name: Deploy
+        run: |
+          ls -la _site
+          npm install -g netlify-cli
+          netlify deploy --dir="_site" --alias="staging"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+  finish-deployment:
+    needs: [deploy-site, start-deployment] 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Deployment Status
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: staging
+          env_url: "https://staging--plotnine.netlify.app"
+          deployment_id: ${{ needs.start-deployment.outputs.deployment_id }}
+          logs: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
