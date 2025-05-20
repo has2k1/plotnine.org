@@ -22,7 +22,7 @@ for python_file in "${HOMEPAGE_DIR}"/features/code/*.py; do
   sed 's/#skip//g' < "${python_file}" | \
   uv run pygmentize -f html -l python | \
   sed 's|"err">!!!</span>|"tw:opacity-50">|g;s|<span class="err">???||g;' | \
-  sed -re 's^(ggplot|aes|geom_smooth|geom_point|facet_wrap|scale_y_continuous|coord_fixed|labs|theme_tufte|theme)^<a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/\1.html">\1</a>^g' > "$html_file"
+  sed -re 's^(ggplot|aes|geom_smooth|geom_point|facet_wrap|scale_y_continuous|coord_fixed|labs|theme_tufte|theme|element_blank|element_line)^<a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/\1.html">\1</a>^g' > "$html_file"
 done
 
 # Create thumbnails
