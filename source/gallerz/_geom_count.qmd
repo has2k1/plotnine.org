@@ -1,0 +1,40 @@
+---
+title: Categorized Data Plot
+jupyter: python3
+---
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:37.624418Z', iopub.status.busy: '2024-03-05T11:28:37.624006Z', iopub.status.idle: '2024-03-05T11:28:38.338029Z', shell.execute_reply: '2024-03-05T11:28:38.337261Z'}
+
+from plotnine import ggplot, aes, geom_count, scale_size_continuous
+from plotnine.data import diamonds
+```
+
+*geom_count() makes the point size proportional to the number of points at a location*
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:38.341396Z', iopub.status.busy: '2024-03-05T11:28:38.341131Z', iopub.status.idle: '2024-03-05T11:28:38.355980Z', shell.execute_reply: '2024-03-05T11:28:38.355399Z'}
+#| scrolled: true
+diamonds.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:38.395659Z', iopub.status.busy: '2024-03-05T11:28:38.395418Z', iopub.status.idle: '2024-03-05T11:28:39.829392Z', shell.execute_reply: '2024-03-05T11:28:39.828725Z'}
+(
+    ggplot(diamonds)
+    + geom_count(aes(x="cut", y="color"))
+)
+```
+
+We can adjust the size range of the points with `scale_size_continuous`
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:39.832649Z', iopub.status.busy: '2024-03-05T11:28:39.832334Z', iopub.status.idle: '2024-03-05T11:28:40.382073Z', shell.execute_reply: '2024-03-05T11:28:40.381348Z'}
+(
+    ggplot(diamonds)
+    + geom_count(aes(x="cut", y="color"))
+    + scale_size_continuous(range=[1, 20])
+)
+```
+

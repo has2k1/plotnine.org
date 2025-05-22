@@ -1,0 +1,234 @@
+---
+title: Shaded Density Plot
+jupyter: python3
+categories: [density plot]
+author: Hassan Kibirige
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:44.323271Z', iopub.status.busy: '2024-03-05T11:28:44.322921Z', iopub.status.idle: '2024-03-05T11:28:45.020449Z', shell.execute_reply: '2024-03-05T11:28:45.019710Z'}
+import pandas as pd
+import numpy as np
+
+from plotnine import (
+    ggplot,
+    aes,
+    after_stat,
+    geom_density,
+    geom_histogram,
+    geom_vline,
+    geom_rect,
+    labs,
+    annotate,
+    theme_tufte,
+)
+from plotnine.data import mpg
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:45.023654Z', iopub.status.busy: '2024-03-05T11:28:45.023400Z', iopub.status.idle: '2024-03-05T11:28:45.037826Z', shell.execute_reply: '2024-03-05T11:28:45.037277Z'}
+mpg.head()
+```
+
+The defaults are not exactly beautiful, but still quite clear.
+
+### Basic Density Plot
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:45.079147Z', iopub.status.busy: '2024-03-05T11:28:45.078879Z', iopub.status.idle: '2024-03-05T11:28:46.992857Z', shell.execute_reply: '2024-03-05T11:28:46.991975Z'}
+# Gallery, distributions
+(
+    ggplot(mpg, aes(x="cty"))
+    + geom_density()
+)
+```
+
+Plotting multiple groups is straightforward, but as each group is plotted as an independent PDF summing to 1, the relative size of each group will be normalized.
+
+### Density Plot with Groups
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:46.996500Z', iopub.status.busy: '2024-03-05T11:28:46.996123Z', iopub.status.idle: '2024-03-05T11:28:47.396950Z', shell.execute_reply: '2024-03-05T11:28:47.396365Z'}
+# Gallery, distributions
+(
+    ggplot(mpg, aes(x="cty", color="drv", fill="drv"))
+    + geom_density(alpha=0.1)
+)
+```
+
+To plot multiple groups and scale them by their relative size, you can map the `y` aesthetic to `'count'` (calculated by `stat_density`).
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:47.399708Z', iopub.status.busy: '2024-03-05T11:28:47.399473Z', iopub.status.idle: '2024-03-05T11:28:47.868574Z', shell.execute_reply: '2024-03-05T11:28:47.868079Z'}
+(
+    ggplot(mpg, aes(x="cty", color="drv", fill="drv"))
+    + geom_density(aes(y=after_stat("count")), alpha=0.1)
+)
+```
+
+### Density Plots + Histograms
+
+To overlay a histogram onto the density, the `y` aesthetic of the density should be mapped to the `'count'` scaled by the `binwidth` of the histograms.
+
+**Why?**
+
+The `count` calculated by `stat_density` is $count = density * n$ where `n` is the number of points . The `density` curves have an area of 1 and have no information about the absolute frequency of the values along curve; only the relative frequencies. The `count` curve reveals the absolute frequencies. The scale of this `count` corresponds to the `count` calculated by the `stat_bin` for the histogram when the bins are 1 unit wide i.e. `binwidth=1`. The `count * binwidth` curve matches the scale of `count`s for the histogram for a give `binwidth`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:47.871582Z', iopub.status.busy: '2024-03-05T11:28:47.871342Z', iopub.status.idle: '2024-03-05T11:28:48.423526Z', shell.execute_reply: '2024-03-05T11:28:48.422836Z'}
+# Gallery, distributions
+
+binwidth = 2  # The same for geom_density and geom_histogram
+
+(
+    ggplot(mpg, aes(x="cty", color="drv", fill="drv"))
+    + geom_density(aes(y=after_stat("count*binwidth")), alpha=0.1)
+    + geom_histogram(
+        aes(fill="drv", y=after_stat("count")),
+        binwidth=binwidth,
+        color="none",
+        alpha=0.5,
+    )
+    # It is the histogram that gives us the meaningful y axis label
+    # i.e. 'count' and not 'count*2'
+    + labs(y="count")
+)
+```
+
+### Shaded Range Under a Density Plot
+
+*Extending geom_density to create an effect of a shaded range*
+
+Create some data and plot the density
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:48.426773Z', iopub.status.busy: '2024-03-05T11:28:48.426546Z', iopub.status.idle: '2024-03-05T11:28:48.758871Z', shell.execute_reply: '2024-03-05T11:28:48.758163Z'}
+n = 101
+df = pd.DataFrame({"x": np.arange(n)})
+
+(
+    ggplot(df, aes("x"))
+    + geom_density()
+)
+```
+
+Suppose we want to mark a region as special e.g. `(40, 60)`, we can use vertical lines to `annotate` it.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:48.762126Z', iopub.status.busy: '2024-03-05T11:28:48.761898Z', iopub.status.idle: '2024-03-05T11:28:49.033526Z', shell.execute_reply: '2024-03-05T11:28:49.032936Z'}
+region = (40, 60)
+
+(
+    ggplot(df, aes("x"))
+    + geom_density()
+    + annotate(geom_vline, xintercept=region)  # new line
+)
+```
+
+To make it standout more we can highlight. To do that, the first thought is to use a rectangle.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:49.036282Z', iopub.status.busy: '2024-03-05T11:28:49.036007Z', iopub.status.idle: '2024-03-05T11:28:49.367075Z', shell.execute_reply: '2024-03-05T11:28:49.366329Z'}
+region = (40, 60)
+
+(
+    ggplot(df, aes("x"))
+    + geom_density()
+    + annotate(
+        geom_rect, xmin=region[0], xmax=region[1], ymin=0, ymax=float("inf"), alpha=0.5
+    )  # new annotation layer
+    + annotate(geom_vline, xintercept=region)
+)
+```
+
+Since `y` upper-bound varies along the curve, a rectangular highlight has to stretch up to the top of the panel.
+
+To hightlight only within the density curve, we have to use a second density curve. We need to calculate the density as normal, but just before the curve & region are plotted, we should keep only the region we want.
+
+We create our own `geom_density_highlight` and override the `setup_data` method. First, we override but do nothing, we only inspect the data to see what we have to work with.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:49.370121Z', iopub.status.busy: '2024-03-05T11:28:49.369861Z', iopub.status.idle: '2024-03-05T11:28:49.693684Z', shell.execute_reply: '2024-03-05T11:28:49.692991Z'}
+# new class
+class geom_density_highlight(geom_density):
+    def setup_data(self, data):
+        data = super().setup_data(data)
+        print(data)
+        return data
+
+
+region = (40, 60)
+
+(
+    ggplot(df, aes("x"))
+    + geom_density()
+    + geom_density_highlight(fill="black", alpha=0.5)  # new line
+    + annotate(geom_vline, xintercept=region)
+)
+```
+
+The highlight has filled the whole region, but the printed data suggests that we can limit the rows to those where `x` column is within our region.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:49.696315Z', iopub.status.busy: '2024-03-05T11:28:49.696104Z', iopub.status.idle: '2024-03-05T11:28:49.997220Z', shell.execute_reply: '2024-03-05T11:28:49.996545Z'}
+class geom_density_highlight(geom_density):
+    # new method
+    def __init__(self, *args, region=(-np.inf, np.inf), **kwargs):
+        super().__init__(*args, **kwargs)
+        self.region = region
+
+    def setup_data(self, data):
+        data = super().setup_data(data)
+        s = f"{self.region[0]} <= x <= {self.region[1]}"  # new line
+        data = data.query(s).reset_index(drop=True)  # new line
+        return data
+
+
+region = (40, 60)
+
+(
+    ggplot(df, aes("x"))
+    + geom_density()
+    + geom_density_highlight(region=region, fill="black", alpha=0.5)  # modified line
+    + annotate(geom_vline, xintercept=region)
+)
+```
+
+That is it, but we can make it look better.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:49.999921Z', iopub.status.busy: '2024-03-05T11:28:49.999678Z', iopub.status.idle: '2024-03-05T11:28:50.309280Z', shell.execute_reply: '2024-03-05T11:28:50.308772Z'}
+# Gallery, distributions
+
+class geom_density_highlight(geom_density):
+    def __init__(self, *args, region=(-np.inf, np.inf), **kwargs):
+        super().__init__(*args, **kwargs)
+        self.region = region
+
+    def setup_data(self, data):
+        data = super().setup_data(data)
+        s = f"{self.region[0]} <= x <= {self.region[1]}"
+        data = data.query(s).reset_index(drop=True)
+        return data
+
+
+region = (40, 60)
+teal = "#029386"
+
+
+(
+    ggplot(df, aes("x"))
+    + geom_density_highlight(region=region, fill=teal + "88", color="none")
+    + geom_density(fill=teal + "44", color=teal, size=0.7)
+    + annotate(geom_vline, xintercept=region, color=teal, size=0.7)
+    + theme_tufte()
+)
+```
+
+This example was motivated by a [question](https://github.com/has2k1/plotnine/issues/574) from github user [Rishika-Ravindran](https://github.com/Rishika-Ravindran).
+
+{{< include _save_img.qmd >}}

@@ -1,0 +1,88 @@
+---
+title: Box And Whiskers
+jupyter: python3
+author: Hassan Kibirige
+categories: [box plot]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:23.351851Z', iopub.status.busy: '2024-03-05T11:28:23.351544Z', iopub.status.idle: '2024-03-05T11:28:23.966781Z', shell.execute_reply: '2024-03-05T11:28:23.966059Z'}
+import pandas as pd
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_boxplot,
+    geom_jitter,
+    scale_x_discrete,
+    coord_flip,
+)
+```
+
+
+*The boxplot compactly displays the distribution of a continuous variable.*
+
+Read more:
++ [wikipedia](https://en.wikipedia.org/wiki/Box_plot)
++ [ggplot2 docs](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:23.970153Z', iopub.status.busy: '2024-03-05T11:28:23.969833Z', iopub.status.idle: '2024-03-05T11:28:23.983076Z', shell.execute_reply: '2024-03-05T11:28:23.982482Z'}
+flights = pd.read_csv("data/flights.csv")
+flights.head()
+```
+
+Basic boxplot
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:24.023759Z', iopub.status.busy: '2024-03-05T11:28:24.023493Z', iopub.status.idle: '2024-03-05T11:28:24.027537Z', shell.execute_reply: '2024-03-05T11:28:24.026877Z'}
+months = [month[:3] for month in flights.month[:12]]
+print(months)
+```
+
+### A Basic Boxplot
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:24.030632Z', iopub.status.busy: '2024-03-05T11:28:24.030396Z', iopub.status.idle: '2024-03-05T11:28:25.438682Z', shell.execute_reply: '2024-03-05T11:28:25.437772Z'}
+# Gallery, distributions
+(
+    ggplot(flights)
+    + geom_boxplot(aes(x="factor(month)", y="passengers"))
+    + scale_x_discrete(labels=months, name="month")  # change ticks labels on OX
+)
+```
+
+Horizontal boxplot
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:25.441948Z', iopub.status.busy: '2024-03-05T11:28:25.441592Z', iopub.status.idle: '2024-03-05T11:28:26.084078Z', shell.execute_reply: '2024-03-05T11:28:26.083569Z'}
+(
+    ggplot(flights)
+    + geom_boxplot(aes(x="factor(month)", y="passengers"))
+    + coord_flip()
+    + scale_x_discrete(
+        labels=months[::-1],
+        limits=flights.month[11::-1],
+        name="month",
+    )
+)
+```
+
+Boxplot with jittered points:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:26.087052Z', iopub.status.busy: '2024-03-05T11:28:26.086688Z', iopub.status.idle: '2024-03-05T11:28:26.656579Z', shell.execute_reply: '2024-03-05T11:28:26.655926Z'}
+(
+    ggplot(flights, aes(x="factor(month)", y="passengers"))
+    + geom_boxplot()
+    + geom_jitter()
+    + scale_x_discrete(labels=months, name="month")  # change ticks labels on OX
+)
+```
+
+{{< include _save_img.qmd >}}
+

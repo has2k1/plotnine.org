@@ -1,0 +1,132 @@
+---
+title: Stacked Bar Chart
+jupyter: python3
+author: Hassan Kibirige
+categories: [bar chart, text]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:03.916205Z', iopub.status.busy: '2024-03-05T11:33:03.915851Z', iopub.status.idle: '2024-03-05T11:33:04.571704Z', shell.execute_reply: '2024-03-05T11:33:04.570909Z'}
+%load_ext autoreload
+%autoreload 2
+%aimport plotnine
+
+import pandas as pd
+import numpy as np
+
+from plotnine import (
+    ggplot,
+    aes,
+    after_stat,
+    stage,
+    geom_bar,
+    geom_text,
+    geom_bin_2d,
+    stat_bin_2d,
+)
+```
+
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:04.575132Z', iopub.status.busy: '2024-03-05T11:33:04.574797Z', iopub.status.idle: '2024-03-05T11:33:05.879779Z', shell.execute_reply: '2024-03-05T11:33:05.878879Z'}
+df = pd.DataFrame({
+    "var1": list("abbcccddddeeeee"),
+    "cat": list("RSRSRSRRRSRSSRS")
+})
+
+(
+    ggplot(df, aes("var1"))
+    + geom_bar()
+)
+```
+
+Add the corresponding count on top of each bar.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:05.917760Z', iopub.status.busy: '2024-03-05T11:33:05.916918Z', iopub.status.idle: '2024-03-05T11:33:06.254988Z', shell.execute_reply: '2024-03-05T11:33:06.254188Z'}
+(
+    ggplot(df, aes("var1"))
+    + geom_bar()
+    + geom_text(aes(label=after_stat("count")), stat="count")
+)
+```
+
+Adjust the `y` position so that the counts do not overlap the bars.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:06.258966Z', iopub.status.busy: '2024-03-05T11:33:06.258696Z', iopub.status.idle: '2024-03-05T11:33:06.673358Z', shell.execute_reply: '2024-03-05T11:33:06.672768Z'}
+(
+    ggplot(df, aes("var1"))
+    + geom_bar()
+    + geom_text(
+        aes(label=after_stat("count"), y=stage(after_stat="count", after_scale="y+.1")),
+        stat="count",
+    )
+)
+```
+
+Note that this will work even nicely for stacked bars where adjustig the position with `nudge_y=0.1` would not.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:06.676252Z', iopub.status.busy: '2024-03-05T11:33:06.676047Z', iopub.status.idle: '2024-03-05T11:33:07.138082Z', shell.execute_reply: '2024-03-05T11:33:07.137439Z'}
+(
+    ggplot(df, aes("var1", fill="cat"))
+    + geom_bar()
+    + geom_text(
+        aes(label=after_stat("count"), y=stage(after_stat="count", after_scale="y+.1")),
+        stat="count",
+        position="stack",
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
+## Create a binned 2d plot with counts ##
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:07.140942Z', iopub.status.busy: '2024-03-05T11:33:07.140727Z', iopub.status.idle: '2024-03-05T11:33:07.161371Z', shell.execute_reply: '2024-03-05T11:33:07.160515Z'}
+np.random.seed(123)
+df = pd.DataFrame({
+    "col_1": np.random.rand(1000),
+    "col_2": np.random.rand(1000)
+})
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:07.164561Z', iopub.status.busy: '2024-03-05T11:33:07.164299Z', iopub.status.idle: '2024-03-05T11:33:07.527525Z', shell.execute_reply: '2024-03-05T11:33:07.526690Z'}
+(
+    ggplot(df, aes(x="col_1", y="col_2"))
+    + geom_bin_2d(position="identity", binwidth=0.1)
+)
+```
+
+Add counts to the bins. `stat_bin_2d` bins are specified using retangular minimum and maximum end-points for dimension; we use these values to compute the mid-points at which to place the counts.
+
+First `x` and `y` aesthetics are mapped to *col_1* and *col_2* variables, then after the statistic consumes them and creates `xmin`, `xmax`, `ymin` & `ymax` values for each bin along with associated `count`. After the statistic computation the `x` and `y` aesthetics do not exist, but we create meaningful values using the minimum and maximum end-points.
+
+Note that the binning parameters for the `geom` and `stat` combination must be the same. In this case it is the `binwidth`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:07.531041Z', iopub.status.busy: '2024-03-05T11:33:07.530620Z', iopub.status.idle: '2024-03-05T11:33:08.034209Z', shell.execute_reply: '2024-03-05T11:33:08.033210Z'}
+(
+    ggplot(df, aes(x="col_1", y="col_2"))
+    + geom_bin_2d(position="identity", binwidth=0.1)
+    + stat_bin_2d(
+        aes(
+            x=stage(start="col_1", after_stat="(xmin+xmax)/2"),
+            y=stage(start="col_2", after_stat="(ymin+ymax)/2"),
+            label=after_stat("count"),
+        ),
+        binwidth=0.1,
+        geom="text",
+        format_string="{:.0f}",
+        size=10,
+    )
+)
+```
+

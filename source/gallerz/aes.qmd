@@ -1,0 +1,65 @@
+---
+title: Specifying Aesthetics
+jupyter: python3
+author: Hassan Kibirige
+categories: [scatter plot]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-09-20T19:40:52.025697Z', iopub.status.busy: '2024-09-20T19:40:52.025322Z', iopub.status.idle: '2024-09-20T19:40:53.138657Z', shell.execute_reply: '2024-09-20T19:40:53.137798Z'}
+import pandas as pd
+import numpy as np
+
+from plotnine import ggplot, aes, geom_point
+```
+
+
+Mapping variables to the visual properties of a plot.
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-09-20T19:40:53.142114Z', iopub.status.busy: '2024-09-20T19:40:53.141799Z', iopub.status.idle: '2024-09-20T19:40:53.808317Z', shell.execute_reply: '2024-09-20T19:40:53.807714Z'}
+df = pd.DataFrame({
+    "col1": np.arange(11),
+    "col2": np.arange(11)
+})
+
+(
+    ggplot(df, aes(x="col1", y="col2"))
+    + geom_point()
+)
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-09-20T19:40:53.849517Z', iopub.status.busy: '2024-09-20T19:40:53.849183Z', iopub.status.idle: '2024-09-20T19:40:54.075497Z', shell.execute_reply: '2024-09-20T19:40:54.075035Z'}
+(
+    ggplot(df, aes(x="col1", y="col2 ** 2"))
+    + geom_point()
+)
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-09-20T19:40:54.078198Z', iopub.status.busy: '2024-09-20T19:40:54.077938Z', iopub.status.idle: '2024-09-20T19:40:54.301624Z', shell.execute_reply: '2024-09-20T19:40:54.300804Z'}
+(
+    ggplot(df, aes(x="col1", y="np.square(col2)"))
+    + geom_point()
+)
+```
+
+The first two positional arguments are `x` and `y` aesthetics. Any other aesthetic must be mapped with
+a keyword argument.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-09-20T19:40:54.304391Z', iopub.status.busy: '2024-09-20T19:40:54.304139Z', iopub.status.idle: '2024-09-20T19:40:54.594633Z', shell.execute_reply: '2024-09-20T19:40:54.594025Z'}
+(
+    ggplot(df, aes("col1", "np.square(col2)", color="col2"))
+    + geom_point(size=3)
+)
+```
+
+
+{{< include _save_img.qmd >}}

@@ -1,0 +1,56 @@
+---
+title: Horizontal Bar Chart
+jupyter: python3
+author: Hassan Kibirige
+categories: [bar chart]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:16.939728Z', iopub.status.busy: '2024-03-05T11:28:16.939374Z', iopub.status.idle: '2024-03-05T11:28:17.843829Z', shell.execute_reply: '2024-03-05T11:28:17.842929Z'}
+
+from plotnine import ggplot, aes, geom_bar, coord_flip, theme_classic
+from plotnine.data import mpg
+```
+
+
+*geom_bar() makes the height of the bar proportional to the number of cases in each group*
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:17.847699Z', iopub.status.busy: '2024-03-05T11:28:17.847382Z', iopub.status.idle: '2024-03-05T11:28:17.864259Z', shell.execute_reply: '2024-03-05T11:28:17.863588Z'}
+mpg.head()
+```
+
+### Bar Plot with Counts
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:17.908729Z', iopub.status.busy: '2024-03-05T11:28:17.908456Z', iopub.status.idle: '2024-03-05T11:28:19.061906Z', shell.execute_reply: '2024-03-05T11:28:19.061250Z'}
+# Gallery, distributions
+ggplot(mpg) + geom_bar(aes(x="class"))
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:19.065040Z', iopub.status.busy: '2024-03-05T11:28:19.064668Z', iopub.status.idle: '2024-03-05T11:28:19.387395Z', shell.execute_reply: '2024-03-05T11:28:19.386723Z'}
+(
+    ggplot(mpg)
+    + geom_bar(aes(x="class", fill="drv"))
+)
+```
+
+### Horizontal Bar Plot with Counts
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:19.390230Z', iopub.status.busy: '2024-03-05T11:28:19.389888Z', iopub.status.idle: '2024-03-05T11:28:19.710838Z', shell.execute_reply: '2024-03-05T11:28:19.710169Z'}
+# Gallery, distributions
+(
+    ggplot(mpg) 
+    + geom_bar(aes(x="class", fill="drv"))
+    + coord_flip()
+    + theme_classic()
+)
+```
+
+{{< include _save_img.qmd >}}

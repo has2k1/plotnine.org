@@ -1,0 +1,361 @@
+---
+title: An Elaborate Range Plot
+jupyter: python3
+author: Hassan Kibirige
+categories: [segment]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:45.275784Z', iopub.status.busy: '2024-03-05T11:29:45.275424Z', iopub.status.idle: '2024-03-05T11:29:46.166659Z', shell.execute_reply: '2024-03-05T11:29:46.165750Z'}
+# NOTE: This notebook uses the polars package
+import numpy as np
+
+from plotnine import *
+import polars as pl
+from polars import col
+```
+
+
+*Comparing the point to point difference of many similar variables*
+
+Read the data.
+
+Source: Pew Research Global Attitudes Spring 2015
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.170636Z', iopub.status.busy: '2024-03-05T11:29:46.170281Z', iopub.status.idle: '2024-03-05T11:29:46.303078Z', shell.execute_reply: '2024-03-05T11:29:46.301841Z'}
+!head -n 20 "data/survey-social-media.csv"
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.307487Z', iopub.status.busy: '2024-03-05T11:29:46.307147Z', iopub.status.idle: '2024-03-05T11:29:46.402357Z', shell.execute_reply: '2024-03-05T11:29:46.401782Z'}
+columns = dict(
+    COUNTRY="country",
+    Q145="gender",
+    Q146="age",
+    Q70="use_internet",
+    Q74="use_social_media",
+)
+
+data = (
+    pl.scan_csv(
+        "data/survey-social-media.csv",
+        dtypes=dict(Q146=pl.Utf8),
+    )
+    .rename(columns)
+    .select(["country", "age", "use_social_media"])
+    .collect()
+)
+
+data.sample(10, seed=123)
+```
+
+Create age groups for users of social media
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.405496Z', iopub.status.busy: '2024-03-05T11:29:46.405242Z', iopub.status.idle: '2024-03-05T11:29:46.470504Z', shell.execute_reply: '2024-03-05T11:29:46.469836Z'}
+yes_no = ["Yes", "No"]
+valid_age_groups = ["18-34", "35-49", "50+"]
+
+rdata = (
+    data.with_columns(
+        age_group=pl.when(col("age") <= "34")
+        .then(pl.lit("18-34"))
+        .when(col("age") <= "49")
+        .then(pl.lit("35-49"))
+        .when(col("age") < "98")
+        .then(pl.lit("50+"))
+        .otherwise(pl.lit("")),
+        country_count=pl.count().over("country"),
+    )
+    .filter(
+        col("age_group").is_in(valid_age_groups) & col("use_social_media").is_in(yes_no)
+    )
+    .group_by(["country", "age_group"])
+    .agg(
+        # social media use percentage
+        sm_use_percent=(col("use_social_media") == "Yes").sum() * 100 / pl.count(),
+        # social media question response rate
+        smq_response_rate=col("use_social_media").is_in(yes_no).sum()
+        * 100
+        / col("country_count").first(),
+    )
+    .sort(["country", "age_group"])
+)
+
+rdata.head()
+```
+
+Top 14 countries by response rate to the social media question.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.474179Z', iopub.status.busy: '2024-03-05T11:29:46.473900Z', iopub.status.idle: '2024-03-05T11:29:46.495550Z', shell.execute_reply: '2024-03-05T11:29:46.494903Z'}
+def col_format(name, fmt):
+    # Format useing python formating
+    # for more control over
+    return col(name).map_elements(lambda x: fmt.format(x=x))
+
+
+def float_to_str_round(name):
+    return col_format(name, "{x:.0f}")
+
+
+n = 14
+
+top = (
+    rdata.group_by("country")
+    .agg(r=col("smq_response_rate").sum())
+    .sort("r", descending=True)
+    .head(n)
+)
+top_countries = top["country"]
+
+expr = float_to_str_round("sm_use_percent")
+expr_pct = expr + "%"
+
+point_data = rdata.filter(col("country").is_in(top_countries)).with_columns(
+    col("country").cast(pl.Categorical),
+    sm_use_percent_str=pl.when(col("country") == "France")
+    .then(expr_pct)
+    .otherwise(expr),
+)
+
+point_data.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.498945Z', iopub.status.busy: '2024-03-05T11:29:46.498669Z', iopub.status.idle: '2024-03-05T11:29:46.510323Z', shell.execute_reply: '2024-03-05T11:29:46.509430Z'}
+segment_data = (
+    point_data.group_by("country")
+    .agg(
+        min=col("sm_use_percent").min(),
+        max=col("sm_use_percent").max(),
+    )
+    .with_columns(gap=(col("max") - col("min")))
+    .sort(
+        "gap",
+    )
+    .with_columns(
+        min_str=float_to_str_round("min"),
+        max_str=float_to_str_round("max"),
+        gap_str=float_to_str_round("gap"),
+    )
+)
+
+segment_data.head()
+```
+
+Format the floating point data that will be plotted into strings
+
+First plot
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:46.513933Z', iopub.status.busy: '2024-03-05T11:29:46.513670Z', iopub.status.idle: '2024-03-05T11:29:48.081266Z', shell.execute_reply: '2024-03-05T11:29:48.080476Z'}
+# The right column (youngest-oldest gap) location
+xgap = 112
+
+(
+    ggplot()
+    # Range strip
+    + geom_segment(
+        segment_data,
+        aes(x="min", xend="max", y="country", yend="country"),
+        size=6,
+        color="#a7a9ac",
+    )
+    # Age group markers
+    + geom_point(
+        point_data,
+        aes("sm_use_percent", "country", color="age_group", fill="age_group"),
+        size=5,
+        stroke=0.7,
+    )
+    # Age group percentages
+    + geom_text(
+        point_data.filter(col("age_group") == "50+"),
+        aes(
+            x="sm_use_percent-2",
+            y="country",
+            label="sm_use_percent_str",
+            color="age_group",
+        ),
+        size=8,
+        ha="right",
+    )
+    + geom_text(
+        point_data.filter(col("age_group") == "35-49"),
+        aes(x="sm_use_percent+2", y="country", label="sm_use_percent_str"),
+        size=8,
+        ha="left",
+        va="center",
+        color="white",
+    )
+    + geom_text(
+        point_data.filter(col("age_group") == "18-34"),
+        aes(
+            x="sm_use_percent+2",
+            y="country",
+            label="sm_use_percent_str",
+            color="age_group",
+        ),
+        size=8,
+        ha="left",
+    )
+    # gap difference
+    + geom_text(
+        segment_data,
+        aes(x=xgap, y="country", label="gap_str"),
+        size=9,
+        fontweight="bold",
+        format_string="+{}",
+    )
+)
+```
+
+Tweak it
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:29:48.084362Z', iopub.status.busy: '2024-03-05T11:29:48.084041Z', iopub.status.idle: '2024-03-05T11:29:49.112056Z', shell.execute_reply: '2024-03-05T11:29:49.111447Z'}
+# Gallery, elaborate
+
+# The right column (youngest-oldest gap) location
+xgap = 115
+
+(
+    ggplot()
+    # Background Strips                                     # new
+    + geom_segment(
+        segment_data,
+        aes(y="country", yend="country"),
+        x=0,
+        xend=101,
+        size=8.5,
+        color="#edece3",
+    )
+    # vertical grid lines along the strips                  # new
+    + annotate(
+        "segment",
+        x=list(range(10, 100, 10)) * n,
+        xend=list(range(10, 100, 10)) * n,
+        y=np.tile(np.arange(1, n + 1), 9) - 0.25,
+        yend=np.tile(np.arange(1, n + 1), 9) + 0.25,
+        color="#CCCCCC",
+    )
+    # Range strip
+    + geom_segment(
+        segment_data,
+        aes(x="min", xend="max", y="country", yend="country"),
+        size=6,
+        color="#a7a9ac",
+    )
+    # Age group markers
+    + geom_point(
+        point_data,
+        aes("sm_use_percent", "country", color="age_group", fill="age_group"),
+        size=5,
+        stroke=0.7,
+    )
+    # Age group percentages
+    + geom_text(
+        point_data.filter(col("age_group") == "50+"),
+        aes(
+            x="sm_use_percent-2",
+            y="country",
+            label="sm_use_percent_str",
+            color="age_group",
+        ),
+        size=8,
+        ha="right",
+    )
+    + geom_text(
+        point_data.filter(col("age_group") == "35-49"),
+        aes(x="sm_use_percent+2", y="country", label="sm_use_percent_str"),
+        size=8,
+        ha="left",
+        va="center",
+        color="white",
+    )
+    + geom_text(
+        point_data.filter(col("age_group") == "18-34"),
+        aes(
+            x="sm_use_percent+2",
+            y="country",
+            label="sm_use_percent_str",
+            color="age_group",
+        ),
+        size=8,
+        ha="left",
+    )
+    # countries right-hand-size (instead of y-axis)         # new
+    + geom_text(
+        segment_data,
+        aes(y="country", label="country"),
+        x=-1,
+        size=8,
+        ha="right",
+        fontweight="bold",
+        color="#222222",
+    )
+    # gap difference
+    + geom_vline(xintercept=xgap, color="#edece3", size=32)  # new
+    + geom_text(
+        segment_data,
+        aes(x=xgap, y="country", label="gap_str"),
+        size=9,
+        fontweight="bold",
+        format_string="+{}",
+    )
+    # Annotations                                            # new
+    + annotate("text", x=31, y=n + 1.1, label="50+", size=9, color="#ea9f2f", va="top")
+    + annotate(
+        "text", x=56, y=n + 1.1, label="35-49", size=9, color="#6d6e71", va="top"
+    )
+    + annotate(
+        "text", x=85, y=n + 1.1, label="18-34", size=9, color="#939c49", va="top"
+    )
+    + annotate(
+        "text",
+        x=xgap,
+        y=n + 0.5,
+        label="Youngest-\nOldest Gap",
+        size=9,
+        color="#444444",
+        va="bottom",
+        ha="center",
+    )
+    + annotate("point", x=[31, 56, 85], y=n + 0.3, alpha=0.85, stroke=0)
+    + annotate(
+        "segment",
+        x=[31, 56, 85],
+        xend=[31, 56, 85],
+        y=n + 0.3,
+        yend=n + 0.8,
+        alpha=0.85,
+    )
+    + annotate(
+        "hline",
+        yintercept=[x + 0.5 for x in range(2, n, 2)],
+        alpha=0.5,
+        linetype="dotted",
+        size=0.7,
+    )
+    # Better spacing and color                              # new
+    + scale_x_continuous(limits=(-18, xgap + 2))
+    + scale_y_discrete(expand=(0, 0.25, 0.1, 0))
+    + scale_fill_manual(values=["#c3ca8c", "#d1d3d4", "#f2c480"])
+    + scale_color_manual(values=["#939c49", "#6d6e71", "#ea9f2f"])
+    + guides(color=None, fill=None)
+    + theme_void()
+    + theme(figure_size=(8, 8.5))
+)
+```
+
+Instead of looking at this plot as having a country variable on the `y-axis` and a percentage variable on the `x-axis`,
+we can view it as having vertically stacked up many *indepedent* variables, the values of which have a similar scale.
+
+
+{{< include _save_img.qmd >}}
+

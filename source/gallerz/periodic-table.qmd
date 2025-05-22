@@ -1,0 +1,314 @@
+---
+title: Periodic Table
+jupyter: python3
+author: Hassan Kibirige
+categories: [heatmap]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:40.448847Z', iopub.status.busy: '2024-03-05T15:41:40.448495Z', iopub.status.idle: '2024-03-05T15:41:41.120173Z', shell.execute_reply: '2024-03-05T15:41:41.119487Z'}
+import pandas as pd
+import numpy as np
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_tile,
+    geom_text,
+    scale_y_reverse,
+    scale_y_discrete,
+    scale_fill_brewer,
+    scale_color_manual,
+    coord_equal,
+    theme,
+    theme_void,
+    element_blank,
+    element_rect,
+    element_text,
+)
+```
+
+
+*Graphing of highly organised tabular information*
+
+
+Read the data.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.123810Z', iopub.status.busy: '2024-03-05T15:41:41.123499Z', iopub.status.idle: '2024-03-05T15:41:41.146818Z', shell.execute_reply: '2024-03-05T15:41:41.146244Z'}
+#| scrolled: true
+elements = pd.read_csv("data/elements.csv")
+elements.head()
+```
+
+Alter the data types of the information that will be plotted. This makes it convenient to work with.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.186535Z', iopub.status.busy: '2024-03-05T15:41:41.186288Z', iopub.status.idle: '2024-03-05T15:41:41.192658Z', shell.execute_reply: '2024-03-05T15:41:41.192088Z'}
+elements["group"] = [-1 if g == "-" else int(g) for g in elements.group]
+elements["bonding type"] = elements["bonding type"].astype("category")
+elements["metal"] = elements["metal"].astype("category")
+elements["atomic_number"] = elements["atomic number"].astype(str)
+```
+
+The periodic table has two tables, a `top` and `bottom`. The elements in the `top` have groups, and those in the
+`bottom` have no groups. We make separate dataframes for both -- they have different alignments.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.195615Z', iopub.status.busy: '2024-03-05T15:41:41.195369Z', iopub.status.idle: '2024-03-05T15:41:41.205450Z', shell.execute_reply: '2024-03-05T15:41:41.204917Z'}
+top = elements.query("group != -1").copy()
+bottom = elements.query("group == -1").copy()
+```
+
+The `top` table is nice and well behaving. The `x` location of the elements indicate the group and the `y` locations
+the period.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.208470Z', iopub.status.busy: '2024-03-05T15:41:41.208242Z', iopub.status.idle: '2024-03-05T15:41:41.211978Z', shell.execute_reply: '2024-03-05T15:41:41.211422Z'}
+top["x"] = top.group
+top["y"] = top.period
+```
+
+The `bottom` table has 2 rows, with the `atomic number` increasing to the right.
+We create an `x` based on the `atomic number` and add a `horizontal shift`.
+As the dataframe is ordered by `atomic number`, the operation is easier.
+The `bottom` elements are labelled with a "period". We add a vertical shift to give us a good `y` location
+that gives the appearance of two tables.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.214871Z', iopub.status.busy: '2024-03-05T15:41:41.214592Z', iopub.status.idle: '2024-03-05T15:41:41.218924Z', shell.execute_reply: '2024-03-05T15:41:41.218361Z'}
+nrows = 2
+hshift = 3.5
+vshift = 3
+bottom["x"] = np.tile(np.arange(len(bottom) // nrows), nrows) + hshift
+bottom["y"] = bottom.period + vshift
+```
+
+We will be plotting using tiles and we want to have some space between the tiles. We have set the `x` and `y` locations above to take up a unit of space. To get a good effect, the tile dimensions should be less than 1.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.221812Z', iopub.status.busy: '2024-03-05T15:41:41.221600Z', iopub.status.idle: '2024-03-05T15:41:41.224575Z', shell.execute_reply: '2024-03-05T15:41:41.223891Z'}
+tile_width = 0.95
+tile_height = 0.95
+```
+
+First peak
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:41.227375Z', iopub.status.busy: '2024-03-05T15:41:41.227141Z', iopub.status.idle: '2024-03-05T15:41:42.338268Z', shell.execute_reply: '2024-03-05T15:41:42.337655Z'}
+(
+    ggplot(aes("x", "y"))
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+)
+```
+
+The table upside down. We could have been more careful when creating the `y` locations since the periods are drawn in descending order. But, we can fix that with a `reverse` scale.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:42.341767Z', iopub.status.busy: '2024-03-05T15:41:42.341453Z', iopub.status.idle: '2024-03-05T15:41:42.589115Z', shell.execute_reply: '2024-03-05T15:41:42.588544Z'}
+(
+    ggplot(aes("x", "y"))
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + scale_y_reverse()  # new
+)
+```
+
+Let us apply some color to it.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:42.592122Z', iopub.status.busy: '2024-03-05T15:41:42.591897Z', iopub.status.idle: '2024-03-05T15:41:42.941724Z', shell.execute_reply: '2024-03-05T15:41:42.941171Z'}
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")  # new
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + scale_y_reverse()
+)
+```
+
+#### Now for some trick
+
+Goal: To add text to the tiles
+
+There are four pieces of text that we shall add to the tiles, that is 4 `geom_text` additions. 
+As we have two tables, that comes to 8 `geom_text` additions. When any `geom` is added to a `ggplot` object,
+behind the scenes a layer is created and added. We can create a group of layers that can be added to a `ggplot`
+object in one go using a list.
+
+We use a function that accepts a dataframe, and returns a list of geoms.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:42.944538Z', iopub.status.busy: '2024-03-05T15:41:42.944312Z', iopub.status.idle: '2024-03-05T15:41:42.948435Z', shell.execute_reply: '2024-03-05T15:41:42.947893Z'}
+def inner_text(data):
+    layers = [
+        geom_text(
+            data,
+            aes(label="atomic_number"),
+            nudge_x=-0.40,
+            nudge_y=0.40,
+            ha="left",
+            va="top",
+            fontweight="normal",
+            size=6,
+        ),
+        geom_text(data, aes(label="symbol"), nudge_y=0.1, size=9),
+        geom_text(
+            data, aes(label="name"), nudge_y=-0.125, fontweight="normal", size=4.5
+        ),
+        geom_text(
+            data, aes(label="atomic mass"), nudge_y=-0.3, fontweight="normal", size=4.5
+        ),
+    ]
+    return layers
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:42.951151Z', iopub.status.busy: '2024-03-05T15:41:42.950936Z', iopub.status.idle: '2024-03-05T15:41:44.075550Z', shell.execute_reply: '2024-03-05T15:41:44.075009Z'}
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + inner_text(top)  # new
+    + inner_text(bottom)  # new
+    + scale_y_reverse()
+)
+```
+
+It is crowded in there and the tiles do not have equal dimentions. Use the `theme` create a larger figure.
+`coord_equal` give us equal units along the axes, this makes the tiles square.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:44.080976Z', iopub.status.busy: '2024-03-05T15:41:44.080744Z', iopub.status.idle: '2024-03-05T15:41:45.605586Z', shell.execute_reply: '2024-03-05T15:41:45.605058Z'}
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + inner_text(top)
+    + inner_text(bottom)
+    + scale_y_reverse()
+    + coord_equal(expand=False)  # new
+    + theme(figure_size=(12, 6))  # new
+)
+```
+
+It is has all the information we want, except one for complication. Elements `Lu` and `Lr` also belong in the
+bottom table. One way to show this duality is to have tiles with two colors split horizontally.
+
+The colors are determined by the `metal` field, and we know the `x` and `y` locations. We create a dataframe with this information to create a half-tile. A half-tile is centered at the quarter mark.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:45.610951Z', iopub.status.busy: '2024-03-05T15:41:45.610714Z', iopub.status.idle: '2024-03-05T15:41:45.614671Z', shell.execute_reply: '2024-03-05T15:41:45.614089Z'}
+split_df = pd.DataFrame(
+    {
+        "x": 3 - tile_width / 4,
+        "y": [6, 7],
+        "metal": pd.Categorical(["lanthanoid", "actinoid"]),
+    }
+)
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:45.617363Z', iopub.status.busy: '2024-03-05T15:41:45.617173Z', iopub.status.idle: '2024-03-05T15:41:47.323156Z', shell.execute_reply: '2024-03-05T15:41:47.322454Z'}
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(split_df, aes(width=tile_width / 2, height=tile_height))  # new
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + inner_text(top)
+    + inner_text(bottom)
+    + scale_y_reverse()
+    + coord_equal(expand=False)
+    + theme(figure_size=(12, 6))
+)
+```
+
+Change the `fill` color for a different look and use a `theme` that clears out all the clutter.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:47.330052Z', iopub.status.busy: '2024-03-05T15:41:47.329815Z', iopub.status.idle: '2024-03-05T15:41:48.876387Z', shell.execute_reply: '2024-03-05T15:41:48.875748Z'}
+from plotnine import guides
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(split_df, aes(width=tile_width / 2, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + inner_text(top)
+    + inner_text(bottom)
+    + scale_y_reverse()
+    + scale_fill_brewer(type="qual", palette=3)  # new
+    + coord_equal(expand=False)
+    + theme_void()  # new
+    + theme(
+        figure_size=(12, 6),
+        plot_margin_left=0.01,
+        plot_margin_right=0.01,
+        plot_background=element_rect(fill="white"),
+    )  # new
+)
+```
+
+Add the group number along the top most row of each column, and period number along the left side of the top table.
+
+For the period number, we set the `breaks` on the `y scale`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:48.881441Z', iopub.status.busy: '2024-03-05T15:41:48.881209Z', iopub.status.idle: '2024-03-05T15:41:48.887917Z', shell.execute_reply: '2024-03-05T15:41:48.887372Z'}
+# The location of the group number is the top most (and therefore smallest period)
+# element with the group
+groupdf = top.groupby("group").agg(y=("period", "min")).reset_index()
+```
+
+Finally,
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:48.890730Z', iopub.status.busy: '2024-03-05T15:41:48.890515Z', iopub.status.idle: '2024-03-05T15:41:50.363011Z', shell.execute_reply: '2024-03-05T15:41:50.362379Z'}
+(
+    ggplot(aes("x", "y"))
+    + aes(fill="metal")
+    + geom_tile(top, aes(width=tile_width, height=tile_height))
+    + geom_tile(split_df, aes(width=tile_width / 2, height=tile_height))
+    + geom_tile(bottom, aes(width=tile_width, height=tile_height))
+    + inner_text(top)
+    + inner_text(bottom)
+    + geom_text(
+        groupdf,
+        aes("group", "y", label="group"),
+        color="gray",
+        nudge_y=0.525,
+        va="bottom",
+        fontweight="normal",
+        size=9,
+        inherit_aes=False,
+    )  # new
+    + scale_y_reverse(breaks=range(1, 8), limits=(0, 10.5))  # modified
+    + scale_fill_brewer(type="qual", palette=3)
+    + coord_equal(expand=False)
+    + theme_void()
+    + theme(
+        figure_size=(12, 6),
+        plot_margin_left=0.01,
+        plot_margin_right=0.01,
+        plot_background=element_rect(fill="white"),
+        axis_text_y=element_text(margin={"r": 5}, color="gray", size=9),  # new
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
+What we could have done different:
+
+1. After we set the `x` and `y` positions in th the `top` and `bottom` dataframes, we could have concatenated
+   them back together. Then, that `Layers` trick would not save us much.
+
+**Pro tip**: Save the plot as a pdf.
+

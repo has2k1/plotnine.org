@@ -1,0 +1,118 @@
+---
+title: Annotated Heatmap
+jupyter: python3
+author: Hassan Kibirige
+categories: [heatmap, text]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:40.448847Z', iopub.status.busy: '2024-03-05T15:41:40.448495Z', iopub.status.idle: '2024-03-05T15:41:41.120173Z', shell.execute_reply: '2024-03-05T15:41:41.119487Z'}
+import pandas as pd
+import numpy as np
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_tile,
+    geom_text,
+    scale_y_reverse,
+    scale_y_discrete,
+    scale_fill_brewer,
+    scale_color_manual,
+    coord_equal,
+    theme,
+    theme_void,
+    element_blank,
+    element_rect,
+    element_text,
+)
+```
+
+*Conditinous data recorded at discrete time intervals over many cycles*
+
+Read data
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:50.368154Z', iopub.status.busy: '2024-03-05T15:41:50.367881Z', iopub.status.idle: '2024-03-05T15:41:50.376977Z', shell.execute_reply: '2024-03-05T15:41:50.376500Z'}
+flights = pd.read_csv("data/flights.csv")
+months = flights["month"].unique()  # Months ordered January, ..., December
+flights["month"] = pd.Categorical(flights["month"], categories=months)
+flights.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:50.379762Z', iopub.status.busy: '2024-03-05T15:41:50.379537Z', iopub.status.idle: '2024-03-05T15:41:51.535730Z', shell.execute_reply: '2024-03-05T15:41:51.535193Z'}
+# We use 'factor(year)' -- a discrete -- instead of 'year' so that all the years
+# are displayed along the x-axis.
+# The .95s create spacing between the tiles.
+
+(
+    ggplot(flights, aes("factor(year)", "month", fill="passengers"))
+    + geom_tile(aes(width=0.95, height=0.95))
+    + geom_text(aes(label="passengers"), size=9)
+)
+```
+
+That looks like what we want, but it could do with a few tweaks. First the contrast between
+the tiles and the text is not good for the lower passenger numbers. We use `pd.cut` to partition
+the number of passengers into two _discrete_ groups.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:51.539519Z', iopub.status.busy: '2024-03-05T15:41:51.539300Z', iopub.status.idle: '2024-03-05T15:41:51.547425Z', shell.execute_reply: '2024-03-05T15:41:51.546964Z'}
+flights["p_group"] = pd.cut(
+    flights["passengers"], (0, 300, 1000), labels=("low", "high")
+)
+flights.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:51.550043Z', iopub.status.busy: '2024-03-05T15:41:51.549849Z', iopub.status.idle: '2024-03-05T15:41:52.495780Z', shell.execute_reply: '2024-03-05T15:41:52.495276Z'}
+(
+    ggplot(flights, aes("factor(year)", "month", fill="passengers"))
+    + geom_tile(aes(width=0.95, height=0.95))
+    + geom_text(aes(label="passengers", color="p_group"), size=9, show_legend=False)  # modified
+    + scale_color_manual(["white", "black"])  # new
+)
+```
+
+Last tweaks, put `January` at the top and remove the axis ticks and plot background.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:52.499831Z', iopub.status.busy: '2024-03-05T15:41:52.499570Z', iopub.status.idle: '2024-03-05T15:41:53.459675Z', shell.execute_reply: '2024-03-05T15:41:53.459132Z'}
+# Gallery, tiles
+
+(
+    ggplot(flights, aes("factor(year)", "month", fill="passengers"))
+    + geom_tile(aes(width=0.95, height=0.95))
+    + geom_text(aes(label="passengers", color="p_group"), size=9, show_legend=False)
+    + scale_color_manual(["white", "black"])  # new
+    + scale_y_discrete(limits=months[::-1])  # new
+    + theme(  # new
+        axis_ticks=element_blank(),
+        panel_background=element_rect(fill="white"),
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
+You can get similar results if you replace
+
+
+```
+ + geom_tile(aes(width=.95, height=.95))
+ + geom_text(aes(label='passengers', color='p_group'), size=9, show_legend=False)
+```
+
+ with
+ 
+ ```
+ + geom_label(aes(label='passengers', color='p_group'), size=9, show_legend=False)
+ ```
+ 
+ **Credit**: This example is a recreation of [this seaborn](https://seaborn.pydata.org/examples/heatmap_annotation.html)
+ example.
+

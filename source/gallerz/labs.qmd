@@ -1,0 +1,55 @@
+---
+title: Text Outside Panel
+jupyter: python3
+author: Hassan Kibirige
+categories: [text]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:13.459498Z', iopub.status.busy: '2024-03-05T15:42:13.459137Z', iopub.status.idle: '2024-03-05T15:42:14.180222Z', shell.execute_reply: '2024-03-05T15:42:14.179469Z'}
+from plotnine import ggplot, aes, labs, geom_point, theme, theme_538, theme_set
+from plotnine.data import mtcars
+
+theme_set(theme_538())
+```
+
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:14.183642Z', iopub.status.busy: '2024-03-05T15:42:14.183393Z', iopub.status.idle: '2024-03-05T15:42:15.459935Z', shell.execute_reply: '2024-03-05T15:42:15.459255Z'}
+# Gallery, labels
+
+caption = """\
+This graphic illustrates the inverse relationship between vehicle weight
+and fuel efficiency (MPG). It aims to highlight how heavier vehicles generally
+consume more fuel, and how the complexity of an engine's cylinder count and
+transmission system can affect its fuel economy.
+"""
+
+from plotnine import *
+(
+    ggplot(mtcars, aes("mpg", "wt", colour="factor(cyl)", size="gear"))
+    + geom_point()
+    + labs(
+        x="Miles per Gallon",
+        y="Weight",
+        colour="Cylinders",
+        size="Gears",
+        title="Fuel Efficiency vs. Vehicle Weight",
+        subtitle ="Exploring Factors that Affect the Fuel Effeciency of a Car",
+        caption=caption,
+    )
+
+    + theme(
+        # left justify the caption and have one line of space between it and
+        # the x-axis label
+        plot_caption=element_text(ha="left", margin={"t": 1, "units": "lines"})
+    )
+    
+)
+```
+
+{{< include _save_img.qmd >}}

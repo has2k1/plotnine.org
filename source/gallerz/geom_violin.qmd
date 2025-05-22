@@ -1,0 +1,175 @@
+---
+title: Violins, Boxes, Points & Lines
+jupyter: python3
+author: Hassan Kibirige
+categories: [violin plot, segment]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:57.899546Z', iopub.status.busy: '2024-03-05T15:41:57.899226Z', iopub.status.idle: '2024-03-05T15:41:58.587961Z', shell.execute_reply: '2024-03-05T15:41:58.587240Z'}
+import pandas as pd
+import numpy as np
+import pandas.api.types as pdtypes
+
+from plotnine import (
+    ggplot,
+    aes,
+    stage,
+    geom_violin,
+    geom_point,
+    geom_line,
+    geom_boxplot,
+    guides,
+    scale_fill_manual,
+    theme,
+    theme_classic,
+)
+```
+
+
+*Comparing repeated measurements and their summaries*
+
+
+Suppose you have two sets of related data and each point in the first set maps onto a point in the second set. e.g. they could represent a transition from one state to another for example two measurements of the height of pupils in different years.
+
+For demonstration we shall generate data with a `before` measurement and an `after` measurement.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:58.591423Z', iopub.status.busy: '2024-03-05T15:41:58.591116Z', iopub.status.idle: '2024-03-05T15:41:58.604811Z', shell.execute_reply: '2024-03-05T15:41:58.604284Z'}
+np.random.seed(123)
+n = 20
+mu = (1, 2.3)
+sigma = (1, 1.6)
+
+before = np.random.normal(loc=mu[0], scale=sigma[0], size=n)
+after = np.random.normal(loc=mu[1], scale=sigma[1], size=n)
+
+df = pd.DataFrame(
+    {
+        "value": np.hstack([before, after]),
+        "when": np.repeat(["before", "after"], n),
+        "id": np.hstack([range(n), range(n)]),
+    }
+)
+
+df["when"] = df["when"].astype(pdtypes.CategoricalDtype(categories=["before", "after"]))
+df.head()
+```
+
+A basic violin plot shows distributions of the two sets of data.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:58.642924Z', iopub.status.busy: '2024-03-05T15:41:58.642681Z', iopub.status.idle: '2024-03-05T15:42:00.088818Z', shell.execute_reply: '2024-03-05T15:42:00.088231Z'}
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(df)
+)
+```
+
+Add the original data in form of points.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:00.092068Z', iopub.status.busy: '2024-03-05T15:42:00.091751Z', iopub.status.idle: '2024-03-05T15:42:00.376605Z', shell.execute_reply: '2024-03-05T15:42:00.375880Z'}
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(df)
+    + geom_point()
+)
+```
+
+The violins are symmetrical about the vertical axis and half a violin has the same information as the full violin.
+We cut (style) the violins in half and choose to alternate with the left half for the first one and the right half for the second.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:00.380017Z', iopub.status.busy: '2024-03-05T15:42:00.379729Z', iopub.status.idle: '2024-03-05T15:42:00.663076Z', shell.execute_reply: '2024-03-05T15:42:00.662411Z'}
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(df, style="left-right")  # changed
+    + geom_point()
+)
+```
+
+Link up the points to get a sense of how the data the moves.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:00.665895Z', iopub.status.busy: '2024-03-05T15:42:00.665660Z', iopub.status.idle: '2024-03-05T15:42:01.008306Z', shell.execute_reply: '2024-03-05T15:42:01.007774Z'}
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(df, style="left-right")  # changed
+    + geom_point()
+    + geom_line(aes(group="id"))  # new
+)
+```
+
+Make gap between the points and the violions. i.e. shift the violins outward and the points & lines inward. We used `stage` mapping to get it done. For example
+
+```python
+x=stage('when', after_scale='x+shift*alt_sign(x)')
+```
+
+says, map the `x`aesthetic to the 'when' column/variable and after the scale computed the `x` locations add a `shift` to them. The calculated `x` locations of a discrete scale are consecutive numbers `1, 2, 3, ...`, so we use that move objects of adjacent groups in opposite directions i.e $(-1)^1, (-1)^2, (-1)^3 ... = -1, 1, -1... $
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:01.011326Z', iopub.status.busy: '2024-03-05T15:42:01.011100Z', iopub.status.idle: '2024-03-05T15:42:01.447216Z', shell.execute_reply: '2024-03-05T15:42:01.446708Z'}
+# How much to shift the violin, points and lines
+# 0.1 is 10% of the allocated space for the category
+shift = 0.1
+
+
+def alt_sign(x):
+    "Alternate +1/-1 if x is even/odd"
+    return (-1) ** x
+
+
+m1 = aes(x=stage("when", after_scale="x+shift*alt_sign(x)"))  # shift outward
+m2 = aes(x=stage("when", after_scale="x-shift*alt_sign(x)"), group="id")  # shift inward
+
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(m1, style="left-right")  # changed
+    + geom_point(m2)  # changed
+    + geom_line(m2)  # changed
+)
+```
+
+Add a boxplot in the gap. The space between the flat edge of the violin and the center of the points is `2 * shift`, so we can use the `shift` to control the width of the boxplot.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:01.450499Z', iopub.status.busy: '2024-03-05T15:42:01.450278Z', iopub.status.idle: '2024-03-05T15:42:01.869162Z', shell.execute_reply: '2024-03-05T15:42:01.868655Z'}
+(
+    ggplot(df, aes("when", "value"))
+    + geom_violin(m1, style="left-right")
+    + geom_point(m2)
+    + geom_line(m2)
+    + geom_boxplot(width=shift)
+)
+```
+
+Finall, style it up.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:01.872524Z', iopub.status.busy: '2024-03-05T15:42:01.872082Z', iopub.status.idle: '2024-03-05T15:42:02.371079Z', shell.execute_reply: '2024-03-05T15:42:02.370565Z'}
+# Gallery, distributions
+
+lsize = 0.65
+fill_alpha = 0.7
+
+(
+    ggplot(df, aes("when", "value", fill="when"))
+    + geom_violin(m1, style="left-right", alpha=fill_alpha, size=lsize)
+    + geom_point(m2, color="none", alpha=fill_alpha, size=2)
+    + geom_line(m2, color="gray", size=lsize, alpha=0.6)
+    + geom_boxplot(width=shift, alpha=fill_alpha, size=lsize)
+    + scale_fill_manual(values=["dodgerblue", "darkorange"])
+    + guides(fill=False)  # Turn off the fill legend
+    + theme_classic()
+    + theme(figure_size=(8, 6))
+)
+```
+
+**Credit:** This is example is motivated by the work of [Jordy van Langen](https://github.com/jorvlan) (@jorvlan) at https://github.com/jorvlan/open-visualizations.
+
+{{< include _save_img.qmd >}}
