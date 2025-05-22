@@ -1,0 +1,195 @@
+---
+title: Two Variable Bar Plot
+jupyter: python3
+author: Hassan Kibirige
+categories: [bar chart, text]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| collapsed: true
+#| execution: {iopub.execute_input: '2024-03-05T11:28:30.285450Z', iopub.status.busy: '2024-03-05T11:28:30.285082Z', iopub.status.idle: '2024-03-05T11:28:30.887069Z', shell.execute_reply: '2024-03-05T11:28:30.886324Z'}
+#| jupyter: {outputs_hidden: true}
+import pandas as pd
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_col,
+    geom_text,
+    position_dodge,
+    lims,
+    theme,
+    element_text,
+    element_blank,
+    element_rect,
+    element_line,
+)
+```
+
+
+*Visualising on a single plot the values of a variable that has nested (and independent) variables*
+
+
+Create the data
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:30.890545Z', iopub.status.busy: '2024-03-05T11:28:30.890246Z', iopub.status.idle: '2024-03-05T11:28:30.903093Z', shell.execute_reply: '2024-03-05T11:28:30.902617Z'}
+df = pd.DataFrame(
+    {
+        "variable": [
+            "gender",
+            "gender",
+            "age",
+            "age",
+            "age",
+            "income",
+            "income",
+            "income",
+            "income",
+        ],
+        "category": [
+            "Female",
+            "Male",
+            "1-24",
+            "25-54",
+            "55+",
+            "Lo",
+            "Lo-Med",
+            "Med",
+            "High",
+        ],
+        "value": [60, 40, 50, 30, 20, 10, 25, 25, 40],
+    }
+)
+df["variable"] = pd.Categorical(df["variable"], categories=["gender", "age", "income"])
+df["category"] = pd.Categorical(df["category"], categories=df["category"])
+
+df
+```
+
+We want to visualise this data and at a galance get an idea to how the `value` breaks down along the `category`s for the different `variable`.
+Note that each `variable` has different `category`s.
+
+First we make a simple plot with all this information and see what to draw from it.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:30.941676Z', iopub.status.busy: '2024-03-05T11:28:30.941431Z', iopub.status.idle: '2024-03-05T11:28:32.277953Z', shell.execute_reply: '2024-03-05T11:28:32.277307Z'}
+(
+    ggplot(df, aes(x="variable", y="value", fill="category"))
+    + geom_col()
+)
+```
+
+All the `value`s along each variable add up to 100, but stacked together the difference within and without the groups is not clear. 
+The solution is to `dodge` the bars.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:32.281351Z', iopub.status.busy: '2024-03-05T11:28:32.281025Z', iopub.status.idle: '2024-03-05T11:28:32.591523Z', shell.execute_reply: '2024-03-05T11:28:32.590864Z'}
+(
+    ggplot(df, aes(x="variable", y="value", fill="category"))
+    + geom_col(stat="identity", position="dodge")  # modified
+)  
+```
+
+This is good, it gives us the plot we want but the legend is not great. Each `variable` has a different set of `category`s, but the legend has them all clamped together. We cannot easily change the legend, but we can replicate it's purpose by labelling the individual bars.
+
+To do this, we create a `geom_text` with `position_dodge(width=0.9)` to match the ratio of the space taken up by each variable. If there was no spacing between the bars of different variables, we would have `width=1`.
+
+A minor quack, when text extends beyond the limits we have to manually make space or it would get clipped. Therefore we adjust the bottom `y` limits.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:32.598155Z', iopub.status.busy: '2024-03-05T11:28:32.597872Z', iopub.status.idle: '2024-03-05T11:28:32.995783Z', shell.execute_reply: '2024-03-05T11:28:32.995160Z'}
+dodge_text = position_dodge(width=0.9)  # new
+
+(
+    ggplot(df, aes(x="variable", y="value", fill="category"))
+    + geom_col(stat="identity", position="dodge", show_legend=False)  # modified
+    + geom_text(
+        aes(y=-0.5, label="category"),  # new
+        position=dodge_text,
+        color="gray",
+        size=8,
+        angle=45,
+        va="top",
+    )
+    + lims(y=(-5, 60))  # new
+)
+```
+
+Would it look too crowded if we add value labels on top of the bars?
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:32.998816Z', iopub.status.busy: '2024-03-05T11:28:32.998568Z', iopub.status.idle: '2024-03-05T11:28:33.401618Z', shell.execute_reply: '2024-03-05T11:28:33.401085Z'}
+dodge_text = position_dodge(width=0.9)
+
+(
+    ggplot(df, aes(x="variable", y="value", fill="category"))
+    + geom_col(stat="identity", position="dodge", show_legend=False)
+    + geom_text(
+        aes(y=-0.5, label="category"),
+        position=dodge_text,
+        color="gray",
+        size=8,
+        angle=45,
+        va="top",
+    )
+    + geom_text(
+        aes(label="value"),  # new
+        position=dodge_text,
+        size=8,
+        va="bottom",
+        format_string="{}%",
+    )
+    + lims(y=(-5, 60))
+)
+```
+
+That looks okay. The `value`s line up with the `category`s because we used the same `dodge` parameters. For the final polish, we remove the y-axis, clear out the panel and make the `variable` and `category` labels have the same color.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:33.404400Z', iopub.status.busy: '2024-03-05T11:28:33.404164Z', iopub.status.idle: '2024-03-05T11:28:33.791213Z', shell.execute_reply: '2024-03-05T11:28:33.790579Z'}
+# Gallery, bars
+
+dodge_text = position_dodge(width=0.9)
+ccolor = "#555555"
+
+(
+    ggplot(df, aes(x="variable", y="value", fill="category"))
+    + geom_col(stat="identity", position="dodge", show_legend=False)
+    + geom_text(
+        aes(y=-0.5, label="category"),
+        position=dodge_text,
+        color=ccolor,
+        size=8,
+        angle=45,
+        va="top",
+    )  # modified
+    + geom_text(
+        aes(label="value"),
+        position=dodge_text,
+        size=8,
+        va="bottom",
+        format_string="{}%",
+    )
+    + lims(y=(-5, 60))
+    + theme(
+        panel_background=element_rect(fill="white"),  # new
+        axis_title_y=element_blank(),
+        axis_line_x=element_line(color="black"),
+        axis_line_y=element_blank(),
+        axis_text_y=element_blank(),
+        axis_text_x=element_text(color=ccolor),
+        axis_ticks_major_y=element_blank(),
+        panel_grid=element_blank(),
+        panel_border=element_blank(),
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
+**Credit**: I saved a plot this example is based on a while ago and forgot/misplaced the link to the source. The user considered it a minor coup.
+

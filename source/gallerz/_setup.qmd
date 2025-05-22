@@ -1,0 +1,24 @@
+<style>
+.cell-output img {
+    max-width: 100%;
+    height: auto;
+}
+.preview-image {
+    display: none;
+}
+</style>
+
+```{python}
+# | output: asis
+# | echo: false
+
+import os
+
+basename = os.path.splitext(os.environ["QUARTO_DOCUMENT_FILE"])[0]
+
+filename_img_small = f"img/small/{basename}.png"
+filename_img_medium = f"img/medium/{basename}.png"
+filename_img_large = f"img/large/{basename}.png"
+
+print(f"![]({filename_img_medium}){{.preview-image}}")
+```

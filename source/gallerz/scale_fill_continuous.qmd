@@ -1,0 +1,70 @@
+---
+title: Heatmap
+jupyter: python3
+author: Hassan Kibirige
+categories: [heatmap]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:26.360955Z', iopub.status.busy: '2024-03-05T15:41:26.360650Z', iopub.status.idle: '2024-03-05T15:41:27.070836Z', shell.execute_reply: '2024-03-05T15:41:27.070152Z'}
+from plotnine import (
+    ggplot,
+    aes,
+    theme_matplotlib,
+    theme_set,
+    geom_tile,
+    scale_fill_continuous,
+    coord_cartesian
+)
+
+from plotnine.data import faithfuld
+
+# Set default theme for all the plots
+theme_set(theme_matplotlib())
+```
+
+
+_Map data to color gradient_
+
+Without specifically calling `scale_fill_continuous()`, a default scale is applied to `geom_tile()`.
+
+
+```{python}
+faithfuld.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:27.074540Z', iopub.status.busy: '2024-03-05T15:41:27.074149Z', iopub.status.idle: '2024-03-05T15:41:27.079294Z', shell.execute_reply: '2024-03-05T15:41:27.078645Z'}
+(
+    ggplot(faithfuld, aes("waiting", "eruptions", fill="density")) 
+    + geom_tile()
+)
+```
+
+Notice that adding `scale_fill_continuous()` will not change the default plot.
+
+```{python}
+(
+    ggplot(faithfuld, aes("waiting", "eruptions", fill="density"))
+    + geom_tile()
+    + scale_fill_continuous()
+)
+```
+
+The scale aesthetics can be edited to other color maps. Use the `cmap_name` argument to specify an alternative palette. Find other [available color maps in the matplotlib documentation](https://matplotlib.org/stable/users/explain/colors/colormaps.html#classes-of-colormaps).
+
+```{python}
+# Gallery, tiles
+
+(
+    ggplot(faithfuld, aes("waiting", "eruptions", fill="density"))
+    + geom_tile()
+    + scale_fill_continuous(cmap_name="plasma")
+    + coord_cartesian(expand=False)
+)
+```
+
+{{< include _save_img.qmd >}}

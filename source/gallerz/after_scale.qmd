@@ -1,0 +1,70 @@
+---
+title: Using `after_scale()`
+jupyter: python3
+author: Hassan Kibirige
+categories: []
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:22.612690Z', iopub.status.busy: '2024-03-05T11:27:22.612355Z', iopub.status.idle: '2024-03-05T11:27:23.282545Z', shell.execute_reply: '2024-03-05T11:27:23.281865Z'}
+import pandas as pd
+
+from plotnine import ggplot, aes, after_scale, geom_bar, theme_classic
+```
+
+
+
+The bars in `geom_bar` have two aesthetics that control the coloring; `fill` for the interior and `color` for the boundary/edge. Using `after_scale` we can create a matching combination of these two.
+
+Start off with a mapping to the `color`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:23.286147Z', iopub.status.busy: '2024-03-05T11:27:23.285826Z', iopub.status.idle: '2024-03-05T11:27:24.565033Z', shell.execute_reply: '2024-03-05T11:27:24.564254Z'}
+df = pd.DataFrame({"var1": [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]})
+
+(
+    ggplot(df, aes("var1", color="factor(var1)"))
+    + geom_bar(size=1)
+)
+```
+
+We can match the `color` with the `fill`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:24.603298Z', iopub.status.busy: '2024-03-05T11:27:24.602923Z', iopub.status.idle: '2024-03-05T11:27:24.944859Z', shell.execute_reply: '2024-03-05T11:27:24.944282Z'}
+(
+    ggplot(df, aes("var1", color="factor(var1)"))
+    + geom_bar(aes(fill=after_scale("color")), size=1)
+)
+```
+
+As `after_scale` takes an expression, for the `fill` aesthetic we can modify the `color` by adding to it an alpha channel i.e. `'#AABBCC'` to `'#AABBCC66'`.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:24.947552Z', iopub.status.busy: '2024-03-05T11:27:24.947356Z', iopub.status.idle: '2024-03-05T11:27:25.291949Z', shell.execute_reply: '2024-03-05T11:27:25.291371Z'}
+(
+    ggplot(df, aes("var1", color="factor(var1)"))
+    + geom_bar(aes(fill=after_scale('color + "66"')), size=1)
+)
+```
+
+We rely on the fact that you can append a string to all elements of a pandas series
+
+    pd.Series(['#AABBCC', '#112233']) + '66' == pd.Series(['#AABBCC66', '#11223366'])
+
+With a fitting theme.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:25.295603Z', iopub.status.busy: '2024-03-05T11:27:25.295201Z', iopub.status.idle: '2024-03-05T11:27:25.664298Z', shell.execute_reply: '2024-03-05T11:27:25.663737Z'}
+(
+    ggplot(df, aes("var1", color="factor(var1)"))
+    + geom_bar(aes(fill=after_scale('color + "66"')), size=1)
+    + theme_classic()
+)
+```
+
+{{< include _save_img.qmd >}}

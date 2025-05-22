@@ -1,0 +1,100 @@
+---
+title: Trend Line
+jupyter: python3
+author: Hassan Kibirige
+categories: [scatter plot, line plot, facet]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:02.828235Z', iopub.status.busy: '2024-03-05T11:28:02.827928Z', iopub.status.idle: '2024-03-05T11:28:03.534084Z', shell.execute_reply: '2024-03-05T11:28:03.533296Z'}
+
+from plotnine import ggplot, aes, geom_point, labs, geom_abline, facet_grid
+from plotnine.data import mpg
+```
+
+
+`geom_abline()` draws a line when the yintercept and gradient is supplied, and is useful as a guide.
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:03.537484Z', iopub.status.busy: '2024-03-05T11:28:03.537227Z', iopub.status.idle: '2024-03-05T11:28:03.552210Z', shell.execute_reply: '2024-03-05T11:28:03.551541Z'}
+# inspect the data
+mpg.head()
+```
+
+It's useful to use `geom_abline()` with some data, so we start with a basic scatter plot:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:03.594384Z', iopub.status.busy: '2024-03-05T11:28:03.594117Z', iopub.status.idle: '2024-03-05T11:28:04.845358Z', shell.execute_reply: '2024-03-05T11:28:04.844726Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Now layer a line over the scatter plot using `geom_abline()`. `geom_abline()` requires inputs for the slope (default slope is 1) and y-intercept (default value is [0,0]).
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:04.848711Z', iopub.status.busy: '2024-03-05T11:28:04.848370Z', iopub.status.idle: '2024-03-05T11:28:05.144357Z', shell.execute_reply: '2024-03-05T11:28:05.143614Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_abline(
+        intercept=45,  # set the y-intercept value
+        slope=-5,  # set the slope value
+    )
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can plot two lines on one plot:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:05.147197Z', iopub.status.busy: '2024-03-05T11:28:05.146955Z', iopub.status.idle: '2024-03-05T11:28:05.435226Z', shell.execute_reply: '2024-03-05T11:28:05.434714Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_abline(
+        intercept=[45, 45],  # add many lines to a plot using a list for the y-intercepts...
+        slope=[-5, -7],  # ... and for the slopes
+    )
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can change the look of the line:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:05.437965Z', iopub.status.busy: '2024-03-05T11:28:05.437733Z', iopub.status.idle: '2024-03-05T11:28:05.733892Z', shell.execute_reply: '2024-03-05T11:28:05.733089Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_abline(
+        intercept=45,
+        slope=-5,
+        color="blue",  # set line colour
+        size=2,  # set line thickness
+        linetype="dashed",  # set line type
+    )
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+`geom_abline()` can be used with a facet plot:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:28:05.736657Z', iopub.status.busy: '2024-03-05T11:28:05.736430Z', iopub.status.idle: '2024-03-05T11:28:06.173758Z', shell.execute_reply: '2024-03-05T11:28:06.173085Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_abline(intercept=45, slope=-5)  # add a line ...
+    + facet_grid("drv")  # ... to a facet plot.
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+{{< include _save_img.qmd >}}

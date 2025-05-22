@@ -1,0 +1,159 @@
+---
+title: Facet grid
+jupyter: python3
+---
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:37.521352Z', iopub.status.busy: '2024-03-05T11:27:37.520985Z', iopub.status.idle: '2024-03-05T11:27:38.294517Z', shell.execute_reply: '2024-03-05T11:27:38.293687Z'}
+
+from plotnine import ggplot, aes, geom_point, labs, facet_grid, theme, element_text, element_rect
+from plotnine.data import mpg
+```
+
+
+`facet_grid()` is used to form a grid of plots, where the rows and columns of the grid are set by the faceting variables. It is useful for visualising two discrete variables.
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:38.298162Z', iopub.status.busy: '2024-03-05T11:27:38.297884Z', iopub.status.idle: '2024-03-05T11:27:38.313660Z', shell.execute_reply: '2024-03-05T11:27:38.313026Z'}
+mpg.head()
+```
+
+Basic scatter plot:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:38.355083Z', iopub.status.busy: '2024-03-05T11:27:38.354824Z', iopub.status.idle: '2024-03-05T11:27:39.523773Z', shell.execute_reply: '2024-03-05T11:27:39.523088Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Facet a discrete variable into rows:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:39.527209Z', iopub.status.busy: '2024-03-05T11:27:39.526887Z', iopub.status.idle: '2024-03-05T11:27:39.938671Z', shell.execute_reply: '2024-03-05T11:27:39.937988Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid("drv")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Facet a discrete variable into columns:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:39.941493Z', iopub.status.busy: '2024-03-05T11:27:39.941261Z', iopub.status.idle: '2024-03-05T11:27:40.610439Z', shell.execute_reply: '2024-03-05T11:27:40.609510Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid(cols="cyl")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Facet two discrete variables into rows and columns:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:40.613688Z', iopub.status.busy: '2024-03-05T11:27:40.613428Z', iopub.status.idle: '2024-03-05T11:27:41.796548Z', shell.execute_reply: '2024-03-05T11:27:41.796008Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid("drv", "cyl")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+To change the plot order of the rows or columns in the facet grid, reorder the levels of the faceting variable in the data.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:41.799376Z', iopub.status.busy: '2024-03-05T11:27:41.799165Z', iopub.status.idle: '2024-03-05T11:27:41.803106Z', shell.execute_reply: '2024-03-05T11:27:41.802537Z'}
+# re-order categories
+mpg["drv"] = mpg["drv"].cat.reorder_categories(["f", "r", "4"])
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:41.806052Z', iopub.status.busy: '2024-03-05T11:27:41.805793Z', iopub.status.idle: '2024-03-05T11:27:42.880971Z', shell.execute_reply: '2024-03-05T11:27:42.880328Z'}
+# facet plot with reorded drv category
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid("drv", "cyl")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can choose if the scale of x- and y-axes are fixed or variable by using the `scales` argument within the `facet_grid()` command:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:42.884080Z', iopub.status.busy: '2024-03-05T11:27:42.883845Z', iopub.status.idle: '2024-03-05T11:27:43.460127Z', shell.execute_reply: '2024-03-05T11:27:43.459321Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid("drv", scales="free")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can add additional information to your facet labels, by using the `labeller` argument within the `facet_grid()` command. Below we use `labeller = 'label_both'` to include the column name in the facet label.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:43.463725Z', iopub.status.busy: '2024-03-05T11:27:43.463376Z', iopub.status.idle: '2024-03-05T11:27:43.895284Z', shell.execute_reply: '2024-03-05T11:27:43.894683Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid("drv", labeller="label_both")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can add two discrete variables to a facet:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:43.899012Z', iopub.status.busy: '2024-03-05T11:27:43.898719Z', iopub.status.idle: '2024-03-05T11:27:43.902903Z', shell.execute_reply: '2024-03-05T11:27:43.902339Z'}
+# add additional column for plotting exercise
+mpg["transmission"] = mpg["trans"].map(
+    lambda x: "auto" if "auto" in x else "man" if "man" in x else ""
+)
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:43.905802Z', iopub.status.busy: '2024-03-05T11:27:43.905468Z', iopub.status.idle: '2024-03-05T11:27:43.917782Z', shell.execute_reply: '2024-03-05T11:27:43.917079Z'}
+# inspect new column transmission which identifies cars as having an automatic or manual transmission
+mpg.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:43.920734Z', iopub.status.busy: '2024-03-05T11:27:43.920520Z', iopub.status.idle: '2024-03-05T11:27:44.593362Z', shell.execute_reply: '2024-03-05T11:27:44.592488Z'}
+# facet plot with two variables on one facet
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + facet_grid(["drv", "transmission"])  # use a list to add additional faceting variables
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Facet labels can be rotated to make them easier to read using `strip_text_y = element_text(angle = 0)` for row labels within the `theme()` command (use `strip_text_x = element_text(angle = 0)` for column labels). 
+
+If the labels do not fit in the strip, adjust the width of the strip using `strip_background_y` for rows (use `strip_background_x` for columns). You may also need to adjust the text position so it fits in the strip: adjust the horizontal text position in the strip by specifying `ha` in `element_text()`(specify `va` in `element_text()` to adjust the vertical text position).
+
+You can also change the colour of the strip by specifying `color` in `element_text()` .
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:27:44.596108Z', iopub.status.busy: '2024-03-05T11:27:44.595892Z', iopub.status.idle: '2024-03-05T11:27:45.896403Z', shell.execute_reply: '2024-03-05T11:27:45.895888Z'}
+(
+    ggplot(mpg, aes(x="drv", y="model"))
+    + geom_point()
+    + facet_grid("manufacturer", scales="free")
+    + theme(
+        strip_text_y=element_text(angle=0),   # change facet text angle
+        strip_background_y=element_rect(fill="#969dff"),   # change background colour of facet background
+        figure_size=(6, 15),  # adjust width & height of figure to fit y-axis
+    )
+    + labs(x="displacement", y="")
+)
+```
+

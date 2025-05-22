@@ -1,0 +1,44 @@
+---
+title: Area Under Line
+jupyter: python3
+author: Hassan Kibirige
+categories: [area]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:03.584554Z', iopub.status.busy: '2024-03-05T15:41:03.584090Z', iopub.status.idle: '2024-03-05T15:41:04.360601Z', shell.execute_reply: '2024-03-05T15:41:04.359831Z'}
+from plotnine import (
+    ggplot,
+    aes,
+    geom_area,
+    geom_line,
+    scale_x_date,
+    scale_y_continuous,
+    theme_linedraw,
+    theme_set,
+)
+from plotnine.data import economics
+
+# Set default theme
+theme_set(theme_linedraw())
+```
+
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:04.363989Z', iopub.status.busy: '2024-03-05T15:41:04.363723Z', iopub.status.idle: '2024-03-05T15:41:06.386576Z', shell.execute_reply: '2024-03-05T15:41:06.385998Z'}
+# Gallery, areas
+(
+    ggplot(economics, aes(x="date", y="unemploy"))
+    + geom_line()
+    + geom_area(fill="#e5c8d6", color="#9e2f68")
+    + scale_x_date(expand=(0, 0), date_labels="%Y")
+    + scale_y_continuous(expand=(0, 0, 0.1, 0))
+    + theme_linedraw()
+)
+```
+
+{{< include _save_img.qmd >}}

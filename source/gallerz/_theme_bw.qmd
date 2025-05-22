@@ -1,0 +1,32 @@
+---
+title: Black & White
+jupyter: python3
+---
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:19.429002Z', iopub.status.busy: '2024-03-05T15:42:19.428440Z', iopub.status.idle: '2024-03-05T15:42:20.140691Z', shell.execute_reply: '2024-03-05T15:42:20.139939Z'}
+from plotnine import ggplot, geom_point, aes, labs, theme_bw
+from plotnine.data import mtcars
+```
+
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:42:20.144148Z', iopub.status.busy: '2024-03-05T15:42:20.143902Z', iopub.status.idle: '2024-03-05T15:42:21.348370Z', shell.execute_reply: '2024-03-05T15:42:21.347635Z'}
+# Gallery, themes
+(
+    ggplot(mtcars, aes(x="wt", y="mpg", colour="factor(gear)"))
+    + geom_point()
+    + labs(
+        title= "Fuel economy declines as weight increases",
+        subtitle="(1973-74)",
+        caption="Data from the 1974 Motor Trend US magazine.",
+        x="Weight (1000 lbs)",
+        y="Fuel economy (mpg)",
+        colour="Gears"
+    )
+    + theme_bw()
+)
+```
+
+

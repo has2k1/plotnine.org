@@ -177,4 +177,4 @@ site-cold: install interlinks site
 
 ## Build website and serve
 preview:
-	cd $(SOURCE_DIR) && quarto preview
+	cd $(SOURCE_DIR) && uv run quarto preview

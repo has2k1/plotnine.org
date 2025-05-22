@@ -1,0 +1,90 @@
+---
+title: Smoothed Conditional Means
+jupyter: python3
+author: Hassan Kibirige
+categories: [scatter plot, smooth]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:32.708085Z', iopub.status.busy: '2024-03-05T15:41:32.707718Z', iopub.status.idle: '2024-03-05T15:41:33.538594Z', shell.execute_reply: '2024-03-05T15:41:33.537945Z'}
+
+from plotnine import ggplot, aes, geom_point, geom_smooth, labs, theme_matplotlib, theme_set
+from plotnine.data import mpg
+
+theme_set(theme_matplotlib())
+```
+
+
+*Aids the eye in seeing patterns in the presence of overplotting.*
+
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:33.542346Z', iopub.status.busy: '2024-03-05T15:41:33.541871Z', iopub.status.idle: '2024-03-05T15:41:33.556463Z', shell.execute_reply: '2024-03-05T15:41:33.555887Z'}
+mpg.head()
+```
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:33.598005Z', iopub.status.busy: '2024-03-05T15:41:33.597745Z', iopub.status.idle: '2024-03-05T15:41:34.632357Z', shell.execute_reply: '2024-03-05T15:41:34.631743Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_smooth()
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+{{< include _save_img.qmd >}}
+
+Use `span` to control the "wiggliness" of the default loess smoother. The span is the fraction of points used to fit each local regression: small numbers make a wigglier curve, larger numbers make a smoother curve.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:34.635384Z', iopub.status.busy: '2024-03-05T15:41:34.635148Z', iopub.status.idle: '2024-03-05T15:41:34.905976Z', shell.execute_reply: '2024-03-05T15:41:34.905466Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_smooth(span=0.3)
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+You can remove confidence interval around smooth with `se=False`:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:34.908868Z', iopub.status.busy: '2024-03-05T15:41:34.908653Z', iopub.status.idle: '2024-03-05T15:41:35.159279Z', shell.execute_reply: '2024-03-05T15:41:35.158735Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_smooth(span=0.3, se=False)
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+Instead of a loess smooth, you can use any other modelling function:
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:35.162013Z', iopub.status.busy: '2024-03-05T15:41:35.161794Z', iopub.status.idle: '2024-03-05T15:41:35.808970Z', shell.execute_reply: '2024-03-05T15:41:35.808347Z'}
+(
+    ggplot(mpg, aes(x="displ", y="hwy"))
+    + geom_point()
+    + geom_smooth(method="lm")
+    + labs(x="displacement", y="horsepower")
+)
+```
+
+### Points & Linear Models
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T15:41:35.811760Z', iopub.status.busy: '2024-03-05T15:41:35.811435Z', iopub.status.idle: '2024-03-05T15:41:36.255796Z', shell.execute_reply: '2024-03-05T15:41:36.255287Z'}
+# Gallery, points
+
+(
+    ggplot(mpg, aes(x="displ", y="hwy", color="factor(drv)"))
+    + geom_point()
+    + geom_smooth(method="lm")
+    + labs(x="displacement", y="horsepower")
+)
+```
+

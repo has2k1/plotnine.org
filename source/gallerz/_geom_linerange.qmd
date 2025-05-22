@@ -1,0 +1,103 @@
+---
+title: Upper & Lower Trends
+jupyter: python3
+---
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:36.147069Z', iopub.status.busy: '2024-03-14T14:38:36.146682Z', iopub.status.idle: '2024-03-14T14:38:36.855676Z', shell.execute_reply: '2024-03-14T14:38:36.854829Z'}
+import pandas as pd
+from plotnine import (
+    ggplot,
+    aes,
+    geom_point,
+    geom_line,
+    geom_linerange,
+    element_blank,
+    element_rect,
+    theme,
+    theme_matplotlib,
+    theme_set,
+)
+
+# Set default theme
+# matplotlib + the background of 538
+theme_set(
+    theme_matplotlib()
+    + theme(
+        plot_background=element_rect(fill="#F0F0F0"),
+        panel_background=element_rect(fill="#F0F0F0"),
+    )
+)
+```
+
+
+
+The data
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:36.859400Z', iopub.status.busy: '2024-03-14T14:38:36.859057Z', iopub.status.idle: '2024-03-14T14:38:36.863221Z', shell.execute_reply: '2024-03-14T14:38:36.862566Z'}
+df = pd.DataFrame({
+    "x": range(0, 6),
+    "y": [3, 4, 3.5, 4.5, 4, 4]
+})
+```
+
+Create the line ranges
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:36.866465Z', iopub.status.busy: '2024-03-14T14:38:36.866210Z', iopub.status.idle: '2024-03-14T14:38:37.816164Z', shell.execute_reply: '2024-03-14T14:38:37.815402Z'}
+(ggplot(df, aes("x", "y"))
+ + geom_linerange(aes(ymin="y-2", ymax="y"))
+)
+```
+
+Add points at each end of the ranges.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:37.819538Z', iopub.status.busy: '2024-03-14T14:38:37.819301Z', iopub.status.idle: '2024-03-14T14:38:38.066266Z', shell.execute_reply: '2024-03-14T14:38:38.065630Z'}
+(ggplot(df, aes("x", "y"))
+ + geom_linerange(aes(ymin="y-2", ymax="y"))
+ + geom_point()
+ + geom_point(aes(y="y-2"))
+
+)
+```
+
+Add a trend-line along the top of the ranges and one along the bottom of the ranges. The line is added before(below) the points.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:38.069252Z', iopub.status.busy: '2024-03-14T14:38:38.068910Z', iopub.status.idle: '2024-03-14T14:38:38.370686Z', shell.execute_reply: '2024-03-14T14:38:38.370071Z'}
+(ggplot(df, aes("x", "y"))
+ + geom_linerange(aes(ymin="y-2", ymax="y"))
+ 
+ + geom_line()
+ + geom_point()
+
+ + geom_line(aes(y="y-2"))
+ + geom_point(aes(y="y-2"))
+
+)
+```
+
+Add some color.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-14T14:38:38.373391Z', iopub.status.busy: '2024-03-14T14:38:38.373160Z', iopub.status.idle: '2024-03-14T14:38:38.676303Z', shell.execute_reply: '2024-03-14T14:38:38.675785Z'}
+# Gallery, lines
+magenta = "#9E2F68"
+magenta_light = "#E5C8D6"
+
+sea_green = "#2F9E65"
+sea_green_light = "#C8E5D7"
+
+(ggplot(df, aes("x", "y"))
+ + geom_linerange(aes(ymin="y-2", ymax="y"))
+ 
+ + geom_line(color=magenta, size=3)
+ + geom_point(color=magenta, fill=magenta_light, size=3, stroke=0.5)
+ 
+ + geom_line(aes(y="y-2"), color=sea_green, size=3)
+ + geom_point(aes(y="y-2"), color=sea_green, fill=sea_green_light, size=3, stroke=0.5)
+)
+```
+

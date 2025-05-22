@@ -1,0 +1,54 @@
+---
+title: Anscombe's Quartet
+jupyter: python3
+author: Jeroen Janssens
+categories: [scatter plot, facet, contest]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+# | output: false
+
+import polars as pl
+from plotnine import *
+
+anscombe_datasets = [
+    {"x": [10.0, 8.0, 13.0, 9.0, 11.0, 14.0, 6.0, 4.0, 12.0, 7.0, 5.0],
+     "y": [8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68]},
+    {"x": [10.0, 8.0, 13.0, 9.0, 11.0, 14.0, 6.0, 4.0, 12.0, 7.0, 5.0],
+     "y": [9.14, 8.14, 8.74, 8.77, 9.26, 8.1, 6.13, 3.1, 9.13, 7.26, 4.74]},
+    {"x": [10.0, 8.0, 13.0, 9.0, 11.0, 14.0, 6.0, 4.0, 12.0, 7.0, 5.0],
+     "y": [7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73]},
+    {"x": [8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 19.0, 8.0, 8.0, 8.0],
+     "y": [6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.5, 5.56, 7.91, 6.89]}
+]
+
+anscombe_quartet = pl.concat([
+    pl.DataFrame(xy).select(pl.lit(d).alias("dataset"), "x", "y")
+    for d, xy in zip(["I", "II", "III", "IV"], anscombe_datasets)
+])
+
+(
+    ggplot(anscombe_quartet, aes("x", "y")) +
+    geom_point(color="sienna", fill="orange", size=3) +
+    geom_smooth(method="lm", se=False, fullrange=True, color="steelblue", size=1) +
+    facet_wrap("dataset") +
+    scale_y_continuous(breaks=(4, 8, 12)) +
+    coord_fixed(xlim=(3, 22), ylim=(2, 14)) +
+    theme_tufte() +
+    theme(
+        axis_line=element_line(color="#4d4d4d"),
+        axis_ticks_major=element_line(color="#00000000"),
+        axis_title=element_blank(),
+        plot_background=element_rect(fill="#ffffff", color="#ffffff"),
+        dpi=144,
+        panel_spacing=0.09,
+        strip_text=element_text(size=12),
+        title=element_text(size=16, margin={"b": 20})
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
