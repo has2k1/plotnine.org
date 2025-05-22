@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Save and display – plotnine 0.0.post20+g9bb7cb5</title>
+<title>Save and display – plotnine 0.15.0a2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,10 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Save and display – plotnine 0.0.post20+g9bb7cb5">
+<meta property="og:title" content="Save and display – plotnine 0.15.0a2">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/export_files/figure-html/cell-3-output-2.png">
-<meta property="og:site_name" content="plotnine 0.0.post20+g9bb7cb5">
+<meta property="og:site_name" content="plotnine 0.15.0a2">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.0.post20+g9bb7cb5</span>
+    <span class="navbar-title">plotnine 0.15.0a2</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -420,7 +420,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="1c49a923" class="cell" data-execution_count="1">
+<div id="3a32fddf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -429,7 +429,7 @@ Key points
 <h2 class="anchored" data-anchor-id="displaying-plots">Displaying plots</h2>
 <p>By default, plots in Jupyter and Quarto should be displayed automatically.</p>
 <p>For example, this website is built with Quarto, but the code below should also cause a plot to appear in a Jupyter notebook.</p>
-<div id="67b4ff68" class="cell" data-execution_count="2">
+<div id="a0d5486f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -453,7 +453,7 @@ Key points
 </div>
 </div>
 <p>If you want to explicitly display a plot, use the <code>.show()</code> method.</p>
-<div id="72ee4695" class="cell" data-execution_count="3">
+<div id="85196941" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
@@ -478,7 +478,7 @@ Key points
 <section id="saving-plots" class="level2">
 <h2 class="anchored" data-anchor-id="saving-plots">Saving plots</h2>
 <p>Use the <code>.save()</code> method to save a plot to a file. It takes as its first argument the name of the file to save the plot to.</p>
-<div id="a7fd3474" class="cell" data-execution_count="4">
+<div id="3a9333ae" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default, Plotnine tries to infer the file format from its name. For example, in the code above, Plotnine would save the plot in PNG format.</p>
@@ -491,7 +491,7 @@ Key points
 <li><code>theme()</code> settings.</li>
 <li><code>plotnine.options.set_option()</code> global options.</li>
 </ul>
-<div id="25aad600" class="cell" data-execution_count="5">
+<div id="c83b2548" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -515,7 +515,7 @@ Key points
 <section id="handling-fonts-in-svg" class="level2">
 <h2 class="anchored" data-anchor-id="handling-fonts-in-svg">Handling fonts in svg</h2>
 <p>When plots using custom fonts are saved as an SVG, it may not display correctly on computers that do not have the fonts installed. Use the <code>svg_usefonts</code> argument in the <code>theme()</code> function to ensure that fonts are self-contained in the SVG file.</p>
-<div id="6d277053" class="cell" data-execution_count="6">
+<div id="d0c01f21" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(svg_usefonts<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
