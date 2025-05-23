@@ -4,7 +4,6 @@ jupyter: python3
 ---
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:36.147069Z', iopub.status.busy: '2024-03-14T14:38:36.146682Z', iopub.status.idle: '2024-03-14T14:38:36.855676Z', shell.execute_reply: '2024-03-14T14:38:36.854829Z'}
 import pandas as pd
 from plotnine import (
     ggplot,
@@ -35,7 +34,6 @@ theme_set(
 The data
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:36.859400Z', iopub.status.busy: '2024-03-14T14:38:36.859057Z', iopub.status.idle: '2024-03-14T14:38:36.863221Z', shell.execute_reply: '2024-03-14T14:38:36.862566Z'}
 df = pd.DataFrame({
     "x": range(0, 6),
     "y": [3, 4, 3.5, 4.5, 4, 4]
@@ -45,7 +43,6 @@ df = pd.DataFrame({
 Create the line ranges
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:36.866465Z', iopub.status.busy: '2024-03-14T14:38:36.866210Z', iopub.status.idle: '2024-03-14T14:38:37.816164Z', shell.execute_reply: '2024-03-14T14:38:37.815402Z'}
 (ggplot(df, aes("x", "y"))
  + geom_linerange(aes(ymin="y-2", ymax="y"))
 )
@@ -54,7 +51,6 @@ Create the line ranges
 Add points at each end of the ranges.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:37.819538Z', iopub.status.busy: '2024-03-14T14:38:37.819301Z', iopub.status.idle: '2024-03-14T14:38:38.066266Z', shell.execute_reply: '2024-03-14T14:38:38.065630Z'}
 (ggplot(df, aes("x", "y"))
  + geom_linerange(aes(ymin="y-2", ymax="y"))
  + geom_point()
@@ -66,7 +62,6 @@ Add points at each end of the ranges.
 Add a trend-line along the top of the ranges and one along the bottom of the ranges. The line is added before(below) the points.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:38.069252Z', iopub.status.busy: '2024-03-14T14:38:38.068910Z', iopub.status.idle: '2024-03-14T14:38:38.370686Z', shell.execute_reply: '2024-03-14T14:38:38.370071Z'}
 (ggplot(df, aes("x", "y"))
  + geom_linerange(aes(ymin="y-2", ymax="y"))
  
@@ -82,7 +77,6 @@ Add a trend-line along the top of the ranges and one along the bottom of the ran
 Add some color.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-14T14:38:38.373391Z', iopub.status.busy: '2024-03-14T14:38:38.373160Z', iopub.status.idle: '2024-03-14T14:38:38.676303Z', shell.execute_reply: '2024-03-14T14:38:38.675785Z'}
 # Gallery, lines
 magenta = "#9E2F68"
 magenta_light = "#E5C8D6"

@@ -9,7 +9,6 @@ categories: [date, tutorial]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:48.978584Z', iopub.status.busy: '2024-03-05T11:33:48.978317Z', iopub.status.idle: '2024-03-05T11:33:49.799802Z', shell.execute_reply: '2024-03-05T11:33:49.799080Z'}
 
 from plotnine import (
     ggplot,
@@ -31,14 +30,12 @@ theme_set(theme_linedraw())  # default theme
 Using the `economics` dataset
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:49.803476Z', iopub.status.busy: '2024-03-05T11:33:49.803203Z', iopub.status.idle: '2024-03-05T11:33:49.815863Z', shell.execute_reply: '2024-03-05T11:33:49.815257Z'}
 economics.head()
 ```
 
 How does the saving rate vary with time?
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:49.859019Z', iopub.status.busy: '2024-03-05T11:33:49.858749Z', iopub.status.idle: '2024-03-05T11:33:51.015378Z', shell.execute_reply: '2024-03-05T11:33:51.014604Z'}
 (
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
@@ -53,7 +50,6 @@ functions from mizani.
 Set breaks every 10 years
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:51.019068Z', iopub.status.busy: '2024-03-05T11:33:51.018579Z', iopub.status.idle: '2024-03-05T11:33:51.306407Z', shell.execute_reply: '2024-03-05T11:33:51.305686Z'}
 (
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
@@ -67,7 +63,6 @@ Using `date_format` we override the format string. For more on the options for t
 the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-strptime-behavior).
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:51.309224Z', iopub.status.busy: '2024-03-05T11:33:51.308982Z', iopub.status.idle: '2024-03-05T11:33:51.599506Z', shell.execute_reply: '2024-03-05T11:33:51.598932Z'}
 (
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
@@ -81,7 +76,6 @@ the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-s
 We can achieve the same result with a custom formating function.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:51.602866Z', iopub.status.busy: '2024-03-05T11:33:51.602604Z', iopub.status.idle: '2024-03-05T11:33:51.899206Z', shell.execute_reply: '2024-03-05T11:33:51.898678Z'}
 def custom_date_format1(breaks):
     """
     Function to format the date
@@ -103,7 +97,6 @@ We can use a custom formatting function to get results that are not obtainable w
 For example if we have monthly breaks over a handful of years we can mix date formats as follows; specify beginning of the year and every other month. Such tricks can be used reduce overcrowding.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:51.902029Z', iopub.status.busy: '2024-03-05T11:33:51.901672Z', iopub.status.idle: '2024-03-05T11:33:52.171064Z', shell.execute_reply: '2024-03-05T11:33:52.170502Z'}
 from datetime import date
 
 
@@ -141,7 +134,6 @@ We removed the labels but not the breaks, leaving behind dangling ticks for the 
 We can fix that by wrapping `date_breaks` around a filtering function.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:52.173818Z', iopub.status.busy: '2024-03-05T11:33:52.173595Z', iopub.status.idle: '2024-03-05T11:33:52.505575Z', shell.execute_reply: '2024-03-05T11:33:52.505065Z'}
 def custom_date_format3(breaks):
     """
     Function to format the date

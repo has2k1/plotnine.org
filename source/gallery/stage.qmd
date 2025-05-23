@@ -9,7 +9,6 @@ categories: [bar chart, text]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:03.916205Z', iopub.status.busy: '2024-03-05T11:33:03.915851Z', iopub.status.idle: '2024-03-05T11:33:04.571704Z', shell.execute_reply: '2024-03-05T11:33:04.570909Z'}
 %load_ext autoreload
 %autoreload 2
 %aimport plotnine
@@ -32,7 +31,6 @@ from plotnine import (
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:04.575132Z', iopub.status.busy: '2024-03-05T11:33:04.574797Z', iopub.status.idle: '2024-03-05T11:33:05.879779Z', shell.execute_reply: '2024-03-05T11:33:05.878879Z'}
 df = pd.DataFrame({
     "var1": list("abbcccddddeeeee"),
     "cat": list("RSRSRSRRRSRSSRS")
@@ -47,7 +45,6 @@ df = pd.DataFrame({
 Add the corresponding count on top of each bar.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:05.917760Z', iopub.status.busy: '2024-03-05T11:33:05.916918Z', iopub.status.idle: '2024-03-05T11:33:06.254988Z', shell.execute_reply: '2024-03-05T11:33:06.254188Z'}
 (
     ggplot(df, aes("var1"))
     + geom_bar()
@@ -58,7 +55,6 @@ Add the corresponding count on top of each bar.
 Adjust the `y` position so that the counts do not overlap the bars.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:06.258966Z', iopub.status.busy: '2024-03-05T11:33:06.258696Z', iopub.status.idle: '2024-03-05T11:33:06.673358Z', shell.execute_reply: '2024-03-05T11:33:06.672768Z'}
 (
     ggplot(df, aes("var1"))
     + geom_bar()
@@ -72,7 +68,6 @@ Adjust the `y` position so that the counts do not overlap the bars.
 Note that this will work even nicely for stacked bars where adjustig the position with `nudge_y=0.1` would not.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:06.676252Z', iopub.status.busy: '2024-03-05T11:33:06.676047Z', iopub.status.idle: '2024-03-05T11:33:07.138082Z', shell.execute_reply: '2024-03-05T11:33:07.137439Z'}
 (
     ggplot(df, aes("var1", fill="cat"))
     + geom_bar()
@@ -89,7 +84,6 @@ Note that this will work even nicely for stacked bars where adjustig the positio
 ## Create a binned 2d plot with counts ##
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:07.140942Z', iopub.status.busy: '2024-03-05T11:33:07.140727Z', iopub.status.idle: '2024-03-05T11:33:07.161371Z', shell.execute_reply: '2024-03-05T11:33:07.160515Z'}
 np.random.seed(123)
 df = pd.DataFrame({
     "col_1": np.random.rand(1000),
@@ -98,7 +92,6 @@ df = pd.DataFrame({
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:07.164561Z', iopub.status.busy: '2024-03-05T11:33:07.164299Z', iopub.status.idle: '2024-03-05T11:33:07.527525Z', shell.execute_reply: '2024-03-05T11:33:07.526690Z'}
 (
     ggplot(df, aes(x="col_1", y="col_2"))
     + geom_bin_2d(position="identity", binwidth=0.1)
@@ -112,7 +105,6 @@ First `x` and `y` aesthetics are mapped to *col_1* and *col_2* variables, then a
 Note that the binning parameters for the `geom` and `stat` combination must be the same. In this case it is the `binwidth`.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:07.531041Z', iopub.status.busy: '2024-03-05T11:33:07.530620Z', iopub.status.idle: '2024-03-05T11:33:08.034209Z', shell.execute_reply: '2024-03-05T11:33:08.033210Z'}
 (
     ggplot(df, aes(x="col_1", y="col_2"))
     + geom_bin_2d(position="identity", binwidth=0.1)

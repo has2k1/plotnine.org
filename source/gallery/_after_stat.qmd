@@ -4,7 +4,6 @@ jupyter: python3
 ---
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:40:57.821158Z', iopub.status.busy: '2024-09-20T19:40:57.820782Z', iopub.status.idle: '2024-09-20T19:40:58.922355Z', shell.execute_reply: '2024-09-20T19:40:58.921358Z'}
 import pandas as pd
 import numpy as np
 
@@ -16,7 +15,6 @@ from plotnine import ggplot, aes, after_stat, geom_bar, labs
 `geom_bar` uses `stat_count` which by default maps the `y` aesthetic to the `count` which is the number of observations at a position.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:40:58.925780Z', iopub.status.busy: '2024-09-20T19:40:58.925443Z', iopub.status.idle: '2024-09-20T19:40:59.641695Z', shell.execute_reply: '2024-09-20T19:40:59.641103Z'}
 df = pd.DataFrame({
     "var1": [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
 })
@@ -30,7 +28,6 @@ df = pd.DataFrame({
 Using the `after_stat` function, we can instead map to the `prop` which is the ratio of points in the panel at a position.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:40:59.681011Z', iopub.status.busy: '2024-09-20T19:40:59.680675Z', iopub.status.idle: '2024-09-20T19:40:59.918305Z', shell.execute_reply: '2024-09-20T19:40:59.917628Z'}
 (
     ggplot(df, aes("var1"))
     + geom_bar(aes(y=after_stat("prop")))  # default is after_stat('count')
@@ -40,7 +37,6 @@ Using the `after_stat` function, we can instead map to the `prop` which is the r
 With `after_stat` you can used the variables calculated by the stat in expressions. For example we use the `count` to calculated the `prop`.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:40:59.921129Z', iopub.status.busy: '2024-09-20T19:40:59.920893Z', iopub.status.idle: '2024-09-20T19:41:00.163449Z', shell.execute_reply: '2024-09-20T19:41:00.162741Z'}
 (
     ggplot(df, aes("var1"))
     + geom_bar(aes(y=after_stat("count / np.sum(count)")))
@@ -53,14 +49,12 @@ By default `geom_bar` uses `stat_count` to compute a frequency table with the `x
 For example, below `fill='var1'` has no effect, but the `var1` variable has not been lost it has been turned into `x` aesthetic.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:41:00.166169Z', iopub.status.busy: '2024-09-20T19:41:00.165899Z', iopub.status.idle: '2024-09-20T19:41:00.426368Z', shell.execute_reply: '2024-09-20T19:41:00.425893Z'}
 (ggplot(df, aes("var1")) + geom_bar(aes(fill="var1")))
 ```
 
 We use `after_stat` to map `fill` to the `x` aesthetic after it has been computed.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-09-20T19:41:00.429399Z', iopub.status.busy: '2024-09-20T19:41:00.429168Z', iopub.status.idle: '2024-09-20T19:41:00.737177Z', shell.execute_reply: '2024-09-20T19:41:00.736453Z'}
 (
     ggplot(df, aes("var1"))
     + geom_bar(aes(fill=after_stat("x")))

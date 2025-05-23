@@ -9,7 +9,6 @@ categories: [scatter plot]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:26.360955Z', iopub.status.busy: '2024-03-05T15:41:26.360650Z', iopub.status.idle: '2024-03-05T15:41:27.070836Z', shell.execute_reply: '2024-03-05T15:41:27.070152Z'}
 
 import numpy as np
 import pandas as pd
@@ -26,7 +25,6 @@ theme_set(theme_matplotlib())
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:27.074540Z', iopub.status.busy: '2024-03-05T15:41:27.074149Z', iopub.status.idle: '2024-03-05T15:41:27.079294Z', shell.execute_reply: '2024-03-05T15:41:27.078645Z'}
 np.random.seed(123)
 n = 150
 
@@ -41,7 +39,6 @@ df = pd.DataFrame({
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:27.082621Z', iopub.status.busy: '2024-03-05T15:41:27.082356Z', iopub.status.idle: '2024-03-05T15:41:28.067076Z', shell.execute_reply: '2024-03-05T15:41:28.066271Z'}
 # Gallery, points
 (
     ggplot(df, aes("x", "y"))
@@ -52,7 +49,6 @@ df = pd.DataFrame({
 ### Coloured Point Bubbles
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:28.109130Z', iopub.status.busy: '2024-03-05T15:41:28.108859Z', iopub.status.idle: '2024-03-05T15:41:28.459855Z', shell.execute_reply: '2024-03-05T15:41:28.459249Z'}
 (
     ggplot(df, aes("x", "y", size="var1"))
     + geom_point(aes(color="var2"))
@@ -60,7 +56,6 @@ df = pd.DataFrame({
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:28.462716Z', iopub.status.busy: '2024-03-05T15:41:28.462487Z', iopub.status.idle: '2024-03-05T15:41:28.826909Z', shell.execute_reply: '2024-03-05T15:41:28.826378Z'}
 # Gallery, points
 (
     ggplot(df, aes("x", "y", size="var1"))
