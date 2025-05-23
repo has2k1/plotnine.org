@@ -37,7 +37,6 @@ The defaults are not exactly beautiful, but still quite clear.
 ### Basic Density Plot
 
 ```{python}
-# Gallery, distributions
 (
     ggplot(mpg, aes(x="cty"))
     + geom_density()
@@ -49,7 +48,6 @@ Plotting multiple groups is straightforward, but as each group is plotted as an 
 ### Density Plot with Groups
 
 ```{python}
-# Gallery, distributions
 (
     ggplot(mpg, aes(x="cty", color="drv", fill="drv"))
     + geom_density(alpha=0.1)
@@ -74,7 +72,6 @@ To overlay a histogram onto the density, the `y` aesthetic of the density should
 The `count` calculated by `stat_density` is $count = density * n$ where `n` is the number of points . The `density` curves have an area of 1 and have no information about the absolute frequency of the values along curve; only the relative frequencies. The `count` curve reveals the absolute frequencies. The scale of this `count` corresponds to the `count` calculated by the `stat_bin` for the histogram when the bins are 1 unit wide i.e. `binwidth=1`. The `count * binwidth` curve matches the scale of `count`s for the histogram for a give `binwidth`.
 
 ```{python}
-# Gallery, distributions
 
 binwidth = 2  # The same for geom_density and geom_histogram
 
@@ -190,7 +187,6 @@ region = (40, 60)
 That is it, but we can make it look better.
 
 ```{python}
-# Gallery, distributions
 
 class geom_density_highlight(geom_density):
     def __init__(self, *args, region=(-np.inf, np.inf), **kwargs):
