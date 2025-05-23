@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="tw:bg-white banner-x banner-y">
                     {% for item in items %}
-                    <a href="gallerz/{{ item.id }}.html" onmouseenter="visitItem({{ loop.index - 1 }});" class="banner-item tw:group
+                    <a href="gallery/{{ item.id }}.html" onmouseenter="visitItem({{ loop.index - 1 }});" class="banner-item tw:group
                     {%- for breakpoint in ['xs', 'sm', 'md', 'lg'] -%}
                         {%- if breakpoint in item.show %} tw:{{ breakpoint }}:block!
                         {%- else %} tw:{{ breakpoint }}:hidden!
@@ -160,14 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         ">
                         <div class="item-highlight">
                             <div>
-                                <img src="gallerz/img/large/{{ item.id }}.png">
+                                <img src="gallery/img/large/{{ item.id }}.png">
                             </div>
                         </div>
                         <div class="banner-cell">
                         <div class="banner-cell-back"><div></div><div></div><div></div><div></div></div>
                         <div class="banner-cell-front">
                             <div class="banner-thumbnail">
-                                <img src="gallerz/img/small/{{ item.id }}.png" class="{% if item.position is defined %}tw:object-{{ item.position }}{% else %}tw:object-left-top{% endif %}">
+                                <img src="gallery/img/small/{{ item.id }}.png" class="{% if item.position is defined %}tw:object-{{ item.position }}{% else %}tw:object-left-top{% endif %}">
                             </div>
                         </div>
                     </div>
