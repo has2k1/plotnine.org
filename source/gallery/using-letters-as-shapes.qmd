@@ -1,0 +1,45 @@
+---
+title: Using Letters As Shapes
+jupyter: python3
+author: Hassan Kibirige
+categories: [text, tutorial]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_point,
+    scale_shape_manual,
+)
+from plotnine.data import mtcars
+```
+
+You can create shape symbols using $\TeX$. For example
+
+```{python}
+#| scrolled: false
+mixed_shapes = (
+    r"$\mathrm{A}$",
+    r"$\mathrm{B}$",
+    r"$\mathrm{C}$",
+    r"$\mathrm{D}$",
+)
+
+
+(
+    ggplot(mtcars, aes("wt", "mpg", shape="factor(gear)", colour="factor(gear)"))
+    + geom_point(size=6)
+    + scale_shape_manual(values=mixed_shapes)
+)
+```
+
+
+
+See matplotlib [documentation](https://matplotlib.org/users/mathtext.html) for more.
+
+{{< include _save_img.qmd >}}
