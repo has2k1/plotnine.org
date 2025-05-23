@@ -4,7 +4,6 @@ jupyter: python3
 ---
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:49.365901Z', iopub.status.busy: '2024-03-05T11:30:49.365545Z', iopub.status.idle: '2024-03-05T11:30:50.425452Z', shell.execute_reply: '2024-03-05T11:30:50.424587Z'}
 import numpy as np
 import pandas as pd
 from plotnine import (
@@ -31,7 +30,6 @@ we create custom transformation.
 The key parts of *any* transform object are the `transform` and `inverse` functions.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:50.429076Z', iopub.status.busy: '2024-03-05T11:30:50.428751Z', iopub.status.idle: '2024-03-05T11:30:50.434785Z', shell.execute_reply: '2024-03-05T11:30:50.434250Z'}
 class frets_trans(trans):
     """
     Frets Transformation
@@ -70,7 +68,6 @@ The above transform is different from most in that, breaks and minor breaks do n
 Some chord Data
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:50.437940Z', iopub.status.busy: '2024-03-05T11:30:50.437702Z', iopub.status.idle: '2024-03-05T11:30:50.443628Z', shell.execute_reply: '2024-03-05T11:30:50.443028Z'}
 # Notes: the 0 fret is an open strum, all other frets are played half-way between fret bars.
 # The strings are 1:low E, 2: A, 3: D, 4: G, 5: B, 6: E
 c_chord = pd.DataFrame({"Fret": [0, 2.5, 1.5, 0, 0.5, 0], "String": [1, 2, 3, 4, 5, 6]})
@@ -90,7 +87,6 @@ markings = pd.DataFrame(
 Visualizing the chord
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:50.446505Z', iopub.status.busy: '2024-03-05T11:30:50.446274Z', iopub.status.idle: '2024-03-05T11:30:51.133645Z', shell.execute_reply: '2024-03-05T11:30:51.132775Z'}
 #| scrolled: true
 # Gallery, elaborate
 

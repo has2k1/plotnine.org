@@ -4,7 +4,6 @@ jupyter: python3
 ---
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:09.285691Z', iopub.status.busy: '2024-03-05T11:29:09.285391Z', iopub.status.idle: '2024-03-05T11:29:10.017087Z', shell.execute_reply: '2024-03-05T11:29:10.016336Z'}
 
 from plotnine import ggplot, aes, geom_point, geom_hline, facet_grid, labs
 from plotnine.data import mpg
@@ -15,14 +14,12 @@ from plotnine.data import mpg
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:10.020474Z', iopub.status.busy: '2024-03-05T11:29:10.020221Z', iopub.status.idle: '2024-03-05T11:29:10.034539Z', shell.execute_reply: '2024-03-05T11:29:10.033941Z'}
 mpg.head()
 ```
 
 It's useful to use `geom_hline()` with some data, so we start with a basic scatter plot:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:10.075781Z', iopub.status.busy: '2024-03-05T11:29:10.075513Z', iopub.status.idle: '2024-03-05T11:29:11.421669Z', shell.execute_reply: '2024-03-05T11:29:11.420924Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -33,7 +30,6 @@ It's useful to use `geom_hline()` with some data, so we start with a basic scatt
 Now add a horizontal line to the scatter plot:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:11.425092Z', iopub.status.busy: '2024-03-05T11:29:11.424723Z', iopub.status.idle: '2024-03-05T11:29:11.702126Z', shell.execute_reply: '2024-03-05T11:29:11.701593Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -45,7 +41,6 @@ Now add a horizontal line to the scatter plot:
 You can add many horizontal lines:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:11.704936Z', iopub.status.busy: '2024-03-05T11:29:11.704713Z', iopub.status.idle: '2024-03-05T11:29:11.973510Z', shell.execute_reply: '2024-03-05T11:29:11.972898Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -57,7 +52,6 @@ You can add many horizontal lines:
 You can change the look of the line:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:11.976482Z', iopub.status.busy: '2024-03-05T11:29:11.976123Z', iopub.status.idle: '2024-03-05T11:29:12.248734Z', shell.execute_reply: '2024-03-05T11:29:12.248145Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -74,7 +68,6 @@ You can change the look of the line:
 And you can add horizontal lines to a facet plot:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:12.251463Z', iopub.status.busy: '2024-03-05T11:29:12.251240Z', iopub.status.idle: '2024-03-05T11:29:12.680224Z', shell.execute_reply: '2024-03-05T11:29:12.679612Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()

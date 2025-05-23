@@ -9,7 +9,6 @@ categories: [scatter plot, smooth]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:32.708085Z', iopub.status.busy: '2024-03-05T15:41:32.707718Z', iopub.status.idle: '2024-03-05T15:41:33.538594Z', shell.execute_reply: '2024-03-05T15:41:33.537945Z'}
 
 from plotnine import ggplot, aes, geom_point, geom_smooth, labs, theme_matplotlib, theme_set
 from plotnine.data import mpg
@@ -22,12 +21,10 @@ theme_set(theme_matplotlib())
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:33.542346Z', iopub.status.busy: '2024-03-05T15:41:33.541871Z', iopub.status.idle: '2024-03-05T15:41:33.556463Z', shell.execute_reply: '2024-03-05T15:41:33.555887Z'}
 mpg.head()
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:33.598005Z', iopub.status.busy: '2024-03-05T15:41:33.597745Z', iopub.status.idle: '2024-03-05T15:41:34.632357Z', shell.execute_reply: '2024-03-05T15:41:34.631743Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -41,7 +38,6 @@ mpg.head()
 Use `span` to control the "wiggliness" of the default loess smoother. The span is the fraction of points used to fit each local regression: small numbers make a wigglier curve, larger numbers make a smoother curve.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:34.635384Z', iopub.status.busy: '2024-03-05T15:41:34.635148Z', iopub.status.idle: '2024-03-05T15:41:34.905976Z', shell.execute_reply: '2024-03-05T15:41:34.905466Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -53,7 +49,6 @@ Use `span` to control the "wiggliness" of the default loess smoother. The span i
 You can remove confidence interval around smooth with `se=False`:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:34.908868Z', iopub.status.busy: '2024-03-05T15:41:34.908653Z', iopub.status.idle: '2024-03-05T15:41:35.159279Z', shell.execute_reply: '2024-03-05T15:41:35.158735Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -65,7 +60,6 @@ You can remove confidence interval around smooth with `se=False`:
 Instead of a loess smooth, you can use any other modelling function:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:35.162013Z', iopub.status.busy: '2024-03-05T15:41:35.161794Z', iopub.status.idle: '2024-03-05T15:41:35.808970Z', shell.execute_reply: '2024-03-05T15:41:35.808347Z'}
 (
     ggplot(mpg, aes(x="displ", y="hwy"))
     + geom_point()
@@ -77,7 +71,6 @@ Instead of a loess smooth, you can use any other modelling function:
 ### Points & Linear Models
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:35.811760Z', iopub.status.busy: '2024-03-05T15:41:35.811435Z', iopub.status.idle: '2024-03-05T15:41:36.255796Z', shell.execute_reply: '2024-03-05T15:41:36.255287Z'}
 # Gallery, points
 
 (

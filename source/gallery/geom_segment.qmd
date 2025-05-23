@@ -9,7 +9,6 @@ categories: [segment]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:45.275784Z', iopub.status.busy: '2024-03-05T11:29:45.275424Z', iopub.status.idle: '2024-03-05T11:29:46.166659Z', shell.execute_reply: '2024-03-05T11:29:46.165750Z'}
 # NOTE: This notebook uses the polars package
 import numpy as np
 
@@ -26,12 +25,10 @@ Read the data.
 Source: Pew Research Global Attitudes Spring 2015
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.170636Z', iopub.status.busy: '2024-03-05T11:29:46.170281Z', iopub.status.idle: '2024-03-05T11:29:46.303078Z', shell.execute_reply: '2024-03-05T11:29:46.301841Z'}
 !head -n 20 "data/survey-social-media.csv"
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.307487Z', iopub.status.busy: '2024-03-05T11:29:46.307147Z', iopub.status.idle: '2024-03-05T11:29:46.402357Z', shell.execute_reply: '2024-03-05T11:29:46.401782Z'}
 columns = dict(
     COUNTRY="country",
     Q145="gender",
@@ -56,7 +53,6 @@ data.sample(10, seed=123)
 Create age groups for users of social media
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.405496Z', iopub.status.busy: '2024-03-05T11:29:46.405242Z', iopub.status.idle: '2024-03-05T11:29:46.470504Z', shell.execute_reply: '2024-03-05T11:29:46.469836Z'}
 yes_no = ["Yes", "No"]
 valid_age_groups = ["18-34", "35-49", "50+"]
 
@@ -92,7 +88,6 @@ rdata.head()
 Top 14 countries by response rate to the social media question.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.474179Z', iopub.status.busy: '2024-03-05T11:29:46.473900Z', iopub.status.idle: '2024-03-05T11:29:46.495550Z', shell.execute_reply: '2024-03-05T11:29:46.494903Z'}
 def col_format(name, fmt):
     # Format useing python formating
     # for more control over
@@ -127,7 +122,6 @@ point_data.head()
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.498945Z', iopub.status.busy: '2024-03-05T11:29:46.498669Z', iopub.status.idle: '2024-03-05T11:29:46.510323Z', shell.execute_reply: '2024-03-05T11:29:46.509430Z'}
 segment_data = (
     point_data.group_by("country")
     .agg(
@@ -153,7 +147,6 @@ Format the floating point data that will be plotted into strings
 First plot
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:46.513933Z', iopub.status.busy: '2024-03-05T11:29:46.513670Z', iopub.status.idle: '2024-03-05T11:29:48.081266Z', shell.execute_reply: '2024-03-05T11:29:48.080476Z'}
 # The right column (youngest-oldest gap) location
 xgap = 112
 
@@ -218,7 +211,6 @@ xgap = 112
 Tweak it
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:29:48.084362Z', iopub.status.busy: '2024-03-05T11:29:48.084041Z', iopub.status.idle: '2024-03-05T11:29:49.112056Z', shell.execute_reply: '2024-03-05T11:29:49.111447Z'}
 # Gallery, elaborate
 
 # The right column (youngest-oldest gap) location

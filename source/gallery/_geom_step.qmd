@@ -4,7 +4,6 @@ jupyter: python3
 ---
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:02.467296Z', iopub.status.busy: '2024-03-05T11:30:02.466751Z', iopub.status.idle: '2024-03-05T11:30:03.183867Z', shell.execute_reply: '2024-03-05T11:30:03.183193Z'}
 
 from plotnine import ggplot, aes, geom_step, geom_line, labs, theme, element_text
 from plotnine.data import economics
@@ -15,7 +14,6 @@ from plotnine.data import economics
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:03.187349Z', iopub.status.busy: '2024-03-05T11:30:03.187072Z', iopub.status.idle: '2024-03-05T11:30:03.199668Z', shell.execute_reply: '2024-03-05T11:30:03.199070Z'}
 # inspect the data
 economics.head()
 ```
@@ -23,7 +21,6 @@ economics.head()
 Plot a step plot using `geom_plot()`. Notice from the first point the line travels vertically then horizontally:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:03.241240Z', iopub.status.busy: '2024-03-05T11:30:03.240976Z', iopub.status.idle: '2024-03-05T11:30:04.517072Z', shell.execute_reply: '2024-03-05T11:30:04.516393Z'}
 (
     ggplot(
         economics.iloc[:20],  # filter for first twenty rows (dates) to make steps more visible
@@ -38,7 +35,6 @@ Plot a step plot using `geom_plot()`. Notice from the first point the line trave
 You can see how `geom_path()` (shown in pink) differs from `geom_line()` (black):
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:04.520547Z', iopub.status.busy: '2024-03-05T11:30:04.520179Z', iopub.status.idle: '2024-03-05T11:30:04.943928Z', shell.execute_reply: '2024-03-05T11:30:04.943323Z'}
 (
     ggplot(economics.iloc[:20], aes("date", "unemploy"))
     + geom_step(
@@ -55,7 +51,6 @@ You can see how `geom_path()` (shown in pink) differs from `geom_line()` (black)
 Rather than a line that travels vertically then horizontally, this order can be switched by specifying `direction='vh'` within `geom_step()`. Below `direction='vh'` is shown in black with the default `direction='hv'` shown in pink:
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:30:04.947025Z', iopub.status.busy: '2024-03-05T11:30:04.946787Z', iopub.status.idle: '2024-03-05T11:30:05.345553Z', shell.execute_reply: '2024-03-05T11:30:05.341340Z'}
 (
     ggplot(economics.iloc[:20], aes("date", "unemploy"))
     + geom_step(

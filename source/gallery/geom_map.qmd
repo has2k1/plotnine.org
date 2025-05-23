@@ -9,7 +9,6 @@ categories: [map]
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:02.454129Z', iopub.status.busy: '2024-12-02T00:18:02.453778Z', iopub.status.idle: '2024-12-02T00:18:03.295349Z', shell.execute_reply: '2024-12-02T00:18:03.294735Z'}
 import geopandas as gp
 import geodatasets
 from plotnine import (
@@ -38,7 +37,6 @@ from plotnine import (
 Define some useful functions
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:03.297936Z', iopub.status.busy: '2024-12-02T00:18:03.297666Z', iopub.status.idle: '2024-12-02T00:18:03.302035Z', shell.execute_reply: '2024-12-02T00:18:03.301436Z'}
 def good_centroid(geometry):
     """
     Calculate "good" centroids for polygons in the geometry
@@ -76,14 +74,12 @@ We choose the dataset of Sudden Infant Death (SIDS) counts from counties in Nort
 Download the dataset we want (it is automatically cached).
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:03.304577Z', iopub.status.busy: '2024-12-02T00:18:03.304368Z', iopub.status.idle: '2024-12-02T00:18:03.310989Z', shell.execute_reply: '2024-12-02T00:18:03.310357Z'}
 geodatasets.fetch("geoda sids")
 ```
 
 Read data
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:03.313313Z', iopub.status.busy: '2024-12-02T00:18:03.313116Z', iopub.status.idle: '2024-12-02T00:18:03.605271Z', shell.execute_reply: '2024-12-02T00:18:03.604789Z'}
 sids = gp.read_file(geodatasets.get_path("geoda.sids"))
 sids.head()
 ```
@@ -91,7 +87,6 @@ sids.head()
 The `sids` data has two periods `1974 - 1978` and `1979 - 1985`. For each period there is a number of births and a number of deaths. We want to visually compare the deaths per 1000 in each county for the two periods.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:03.638191Z', iopub.status.busy: '2024-12-02T00:18:03.637902Z', iopub.status.idle: '2024-12-02T00:18:03.691837Z', shell.execute_reply: '2024-12-02T00:18:03.691316Z'}
 data = sids.copy()
 
 # Calculate the death per 1000
@@ -119,7 +114,6 @@ data.head()
 Plot the data
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-12-02T00:18:03.694108Z', iopub.status.busy: '2024-12-02T00:18:03.693880Z', iopub.status.idle: '2024-12-02T00:18:05.289064Z', shell.execute_reply: '2024-12-02T00:18:05.288365Z'}
 # Gallery, maps
 
 (

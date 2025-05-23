@@ -9,7 +9,6 @@ author: Hassan Kibirige
 {{< include _add_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:10.732818Z', iopub.status.busy: '2024-03-05T15:41:10.732483Z', iopub.status.idle: '2024-03-05T15:41:11.521629Z', shell.execute_reply: '2024-03-05T15:41:11.520937Z'}
 from plotnine import (
     ggplot,
     aes,
@@ -28,14 +27,12 @@ from plotnine.data import meat
 
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:11.525190Z', iopub.status.busy: '2024-03-05T15:41:11.524926Z', iopub.status.idle: '2024-03-05T15:41:11.538846Z', shell.execute_reply: '2024-03-05T15:41:11.538268Z'}
 meat.head()
 ```
 
 Make it tidy.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:11.581108Z', iopub.status.busy: '2024-03-05T15:41:11.580833Z', iopub.status.idle: '2024-03-05T15:41:11.592856Z', shell.execute_reply: '2024-03-05T15:41:11.592186Z'}
 meat_long = meat.melt(
     id_vars="date",
     value_vars=["beef", "veal", "pork", "lamb_and_mutton", "broilers", "turkey"],
@@ -49,7 +46,6 @@ meat_long.head()
 First try
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:11.595878Z', iopub.status.busy: '2024-03-05T15:41:11.595634Z', iopub.status.idle: '2024-03-05T15:41:13.012575Z', shell.execute_reply: '2024-03-05T15:41:13.011988Z'}
 p = (
     ggplot(meat_long, aes(x="date", y="weight"))
     + geom_line()
@@ -61,7 +57,6 @@ It looks crowded because each there is more than one monthly entry at each x-poi
 We can get a single trend line by getting a monthly aggregate of the weights.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:13.015534Z', iopub.status.busy: '2024-03-05T15:41:13.015226Z', iopub.status.idle: '2024-03-05T15:41:13.025519Z', shell.execute_reply: '2024-03-05T15:41:13.024894Z'}
 meat_long_monthly_agg = meat_long.groupby("date").agg({"weight": "sum"}).reset_index()
 meat_long_monthly_agg
 ```
@@ -69,7 +64,6 @@ meat_long_monthly_agg
 ### A Single Trend Line
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:13.028516Z', iopub.status.busy: '2024-03-05T15:41:13.028287Z', iopub.status.idle: '2024-03-05T15:41:13.273710Z', shell.execute_reply: '2024-03-05T15:41:13.273034Z'}
 (
     ggplot(meat_long_monthly_agg, aes(x="date", y="weight"))
     + geom_line()
@@ -79,7 +73,6 @@ meat_long_monthly_agg
 Add some style
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:13.276520Z', iopub.status.busy: '2024-03-05T15:41:13.276286Z', iopub.status.idle: '2024-03-05T15:41:13.563650Z', shell.execute_reply: '2024-03-05T15:41:13.563143Z'}
 # Gallery, lines
 (
     ggplot(meat_long_monthly_agg, aes(x="date", y="weight"))
@@ -95,7 +88,6 @@ Or we can group by the animals to get a trend line for each animal
 ### Multiple Trend Lines
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:13.566507Z', iopub.status.busy: '2024-03-05T15:41:13.566276Z', iopub.status.idle: '2024-03-05T15:41:13.904212Z', shell.execute_reply: '2024-03-05T15:41:13.903640Z'}
 (
     ggplot(meat_long, aes(x="date", y="weight", group="animal"))
     + geom_line()
@@ -108,7 +100,6 @@ Or we can group by the animals to get a trend line for each animal
 Make each group be a different color.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:13.907583Z', iopub.status.busy: '2024-03-05T15:41:13.907352Z', iopub.status.idle: '2024-03-05T15:41:14.330240Z', shell.execute_reply: '2024-03-05T15:41:14.329688Z'}
 # Gallery, lines
 (
     ggplot(meat_long, aes(x="date", y="weight", color="animal"))
@@ -124,7 +115,6 @@ Make each group be a different color.
 Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the `size` of the line, `size` of the text and the number of grid lines.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T15:41:14.333611Z', iopub.status.busy: '2024-03-05T15:41:14.333383Z', iopub.status.idle: '2024-03-05T15:41:15.119156Z', shell.execute_reply: '2024-03-05T15:41:15.118578Z'}
 # Gallery, lines
 def titled(strip_title):
     return " ".join(s.title() if s != "and" else s for s in strip_title.split("_"))

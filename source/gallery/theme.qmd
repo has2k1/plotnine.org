@@ -8,7 +8,6 @@ categories: [theme]
 {{< include _setup.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:11.910664Z', iopub.status.busy: '2024-03-05T11:33:11.910351Z', iopub.status.idle: '2024-03-05T11:33:12.717378Z', shell.execute_reply: '2024-03-05T11:33:12.716312Z'}
 
 from plotnine import (
     ggplot,
@@ -33,14 +32,12 @@ theme_set(theme_void())
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:12.720621Z', iopub.status.busy: '2024-03-05T11:33:12.720360Z', iopub.status.idle: '2024-03-05T11:33:12.734561Z', shell.execute_reply: '2024-03-05T11:33:12.734024Z'}
 mtcars.head()
 ```
 
 The base plots we will use for the demonstation and some colors.
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:12.775629Z', iopub.status.busy: '2024-03-05T11:33:12.775363Z', iopub.status.idle: '2024-03-05T11:33:12.782380Z', shell.execute_reply: '2024-03-05T11:33:12.781831Z'}
 p1 = (
     ggplot(mtcars, aes("wt", "mpg", color="factor(cyl)"))
     + geom_point()
@@ -62,12 +59,10 @@ yellow = "#FFFF33"
 What the plots look like unmodified (unthemed).
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:12.785477Z', iopub.status.busy: '2024-03-05T11:33:12.785228Z', iopub.status.idle: '2024-03-05T11:33:13.952215Z', shell.execute_reply: '2024-03-05T11:33:13.951605Z'}
 p1
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:13.955226Z', iopub.status.busy: '2024-03-05T11:33:13.954899Z', iopub.status.idle: '2024-03-05T11:33:14.516734Z', shell.execute_reply: '2024-03-05T11:33:14.515922Z'}
 p2
 ```
 
@@ -83,21 +78,18 @@ use `text` to change the appearance of objects plotted with `geom_text`.
 **text**
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:14.519586Z', iopub.status.busy: '2024-03-05T11:33:14.519368Z', iopub.status.idle: '2024-03-05T11:33:14.775547Z', shell.execute_reply: '2024-03-05T11:33:14.774906Z'}
 p1 + theme(text=element_text(color=purple))
 ```
 
 **rect**
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:14.778241Z', iopub.status.busy: '2024-03-05T11:33:14.778028Z', iopub.status.idle: '2024-03-05T11:33:15.104832Z', shell.execute_reply: '2024-03-05T11:33:15.104272Z'}
 p1 + theme(rect=element_rect(color=black, size=3, fill="#EEBB0050"))
 ```
 
 **line**
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:15.107529Z', iopub.status.busy: '2024-03-05T11:33:15.107294Z', iopub.status.idle: '2024-03-05T11:33:15.333671Z', shell.execute_reply: '2024-03-05T11:33:15.332980Z'}
 p1 + theme(line=element_line(color=black))
 ```
 
@@ -106,7 +98,6 @@ p1 + theme(line=element_line(color=black))
 ### axis_line and axis_text
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:15.336600Z', iopub.status.busy: '2024-03-05T11:33:15.336370Z', iopub.status.idle: '2024-03-05T11:33:15.598610Z', shell.execute_reply: '2024-03-05T11:33:15.598061Z'}
 p1 + theme(
     axis_line=element_line(size=2),
     axis_line_x=element_line(color=red),
@@ -120,7 +111,6 @@ p1 + theme(
 {{< include _save_img.qmd >}}
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:15.601564Z', iopub.status.busy: '2024-03-05T11:33:15.601326Z', iopub.status.idle: '2024-03-05T11:33:15.940921Z', shell.execute_reply: '2024-03-05T11:33:15.940260Z'}
 p1 + theme(
     axis_line=element_line(size=0.7, color=gray),
     # We are focusing on the ticks, make them long
@@ -140,7 +130,6 @@ p1 + theme(
 ### axis_title and axis_ticks_pad
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:15.943544Z', iopub.status.busy: '2024-03-05T11:33:15.943282Z', iopub.status.idle: '2024-03-05T11:33:16.189188Z', shell.execute_reply: '2024-03-05T11:33:16.188656Z'}
 p1 + theme(
     axis_line=element_line(size=0.7, color=gray),
     axis_ticks=element_line(),
@@ -157,7 +146,6 @@ p1 + theme(
 ### axis_ticks_direction
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:16.191971Z', iopub.status.busy: '2024-03-05T11:33:16.191736Z', iopub.status.idle: '2024-03-05T11:33:16.435252Z', shell.execute_reply: '2024-03-05T11:33:16.433309Z'}
 p1 + theme(
     axis_line=element_line(size=0.7, color=gray),
     axis_ticks=element_line(),
@@ -172,7 +160,6 @@ p1 + theme(
 Not all themeables that affect the legend box are demonstrated
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:16.438066Z', iopub.status.busy: '2024-03-05T11:33:16.437849Z', iopub.status.idle: '2024-03-05T11:33:16.722146Z', shell.execute_reply: '2024-03-05T11:33:16.721573Z'}
 (
     p1
     + aes(fill="drat")
@@ -197,7 +184,6 @@ Not all themeables that affect the legend box are demonstrated
 ### plot_background, panel_background and panel_border
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:16.724838Z', iopub.status.busy: '2024-03-05T11:33:16.724518Z', iopub.status.idle: '2024-03-05T11:33:17.491996Z', shell.execute_reply: '2024-03-05T11:33:17.491414Z'}
 p2 + theme(
     plot_background=element_rect(fill="gray", alpha=0.3),
     panel_background=element_rect(fill=purple, alpha=0.2),
@@ -209,7 +195,6 @@ p2 + theme(
 ### panel_grid
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:17.494645Z', iopub.status.busy: '2024-03-05T11:33:17.494425Z', iopub.status.idle: '2024-03-05T11:33:17.752955Z', shell.execute_reply: '2024-03-05T11:33:17.752375Z'}
 p1 + theme(
     panel_grid=element_line(color=purple),
     panel_grid_major=element_line(size=1.4, alpha=1),
@@ -225,7 +210,6 @@ p1 + theme(
 ### strip_background, strip_align and strip_text
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:17.755852Z', iopub.status.busy: '2024-03-05T11:33:17.755610Z', iopub.status.idle: '2024-03-05T11:33:18.338444Z', shell.execute_reply: '2024-03-05T11:33:18.337872Z'}
 p2 + theme(
     panel_spacing=0.025,
     panel_background=element_rect(fill=gray, alpha=0.2),
@@ -252,7 +236,6 @@ height = figure_size[0] * aspect_ratio
 ```
 
 ```{python}
-#| execution: {iopub.execute_input: '2024-03-05T11:33:18.341043Z', iopub.status.busy: '2024-03-05T11:33:18.340823Z', iopub.status.idle: '2024-03-05T11:33:18.761397Z', shell.execute_reply: '2024-03-05T11:33:18.760867Z'}
 p1 + theme(
     panel_background=element_rect(fill=gray, alpha=0.2),
     figure_size=(8, 6),  # inches
