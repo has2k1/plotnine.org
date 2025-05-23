@@ -73,7 +73,6 @@ meat_long_monthly_agg
 Add some style
 
 ```{python}
-# Gallery, lines
 (
     ggplot(meat_long_monthly_agg, aes(x="date", y="weight"))
     + geom_line()
@@ -100,7 +99,6 @@ Or we can group by the animals to get a trend line for each animal
 Make each group be a different color.
 
 ```{python}
-# Gallery, lines
 (
     ggplot(meat_long, aes(x="date", y="weight", color="animal"))
     + geom_line()
@@ -115,7 +113,6 @@ Make each group be a different color.
 Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the `size` of the line, `size` of the text and the number of grid lines.
 
 ```{python}
-# Gallery, lines
 def titled(strip_title):
     return " ".join(s.title() if s != "and" else s for s in strip_title.split("_"))
 
