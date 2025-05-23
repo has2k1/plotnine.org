@@ -1,0 +1,191 @@
+---
+title: Manipulating Date Breaks and Labels
+jupyter: python3
+author: Hassan Kibirige
+categories: [date, tutorial]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:48.978584Z', iopub.status.busy: '2024-03-05T11:33:48.978317Z', iopub.status.idle: '2024-03-05T11:33:49.799802Z', shell.execute_reply: '2024-03-05T11:33:49.799080Z'}
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_point,
+    scale_x_datetime,
+    labs,
+    theme_set,
+    theme_linedraw,
+)
+from plotnine.data import economics
+
+from mizani.breaks import date_breaks
+from mizani.formatters import date_format
+
+theme_set(theme_linedraw())  # default theme
+```
+
+Using the `economics` dataset
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:49.803476Z', iopub.status.busy: '2024-03-05T11:33:49.803203Z', iopub.status.idle: '2024-03-05T11:33:49.815863Z', shell.execute_reply: '2024-03-05T11:33:49.815257Z'}
+economics.head()
+```
+
+How does the saving rate vary with time?
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:49.859019Z', iopub.status.busy: '2024-03-05T11:33:49.858749Z', iopub.status.idle: '2024-03-05T11:33:51.015378Z', shell.execute_reply: '2024-03-05T11:33:51.014604Z'}
+(
+    ggplot(economics)
+    + geom_point(aes("date", "psavert"))
+    + labs(y="personal saving rate")
+)
+```
+
+Yikes! the calculated breaks are awful, we need to intervene. We do so using the [date_breaks](https://mizani.readthedocs.io/en/stable/breaks.html#mizani.breaks.date_breaks) and
+[date_format](https://mizani.readthedocs.io/en/stable/formatters.html#mizani.formatters.date_format)
+functions from mizani.
+
+Set breaks every 10 years
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:51.019068Z', iopub.status.busy: '2024-03-05T11:33:51.018579Z', iopub.status.idle: '2024-03-05T11:33:51.306407Z', shell.execute_reply: '2024-03-05T11:33:51.305686Z'}
+(
+    ggplot(economics)
+    + geom_point(aes("date", "psavert"))
+    + scale_x_datetime(breaks=date_breaks("10 years"))  # new
+    + labs(y="personal saving rate")
+)
+```
+
+That is better. Since all the breaks are at the beginning of the year, we can omit the month and day.
+Using `date_format` we override the format string. For more on the options for the format string see
+the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-strptime-behavior).
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:51.309224Z', iopub.status.busy: '2024-03-05T11:33:51.308982Z', iopub.status.idle: '2024-03-05T11:33:51.599506Z', shell.execute_reply: '2024-03-05T11:33:51.598932Z'}
+(
+    ggplot(economics)
+    + geom_point(aes("date", "psavert"))
+    + scale_x_datetime(
+        breaks=date_breaks("10 years"), labels=date_format("%Y")
+    )  # modified
+    + labs(y="personal saving rate")
+)
+```
+
+We can achieve the same result with a custom formating function.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:51.602866Z', iopub.status.busy: '2024-03-05T11:33:51.602604Z', iopub.status.idle: '2024-03-05T11:33:51.899206Z', shell.execute_reply: '2024-03-05T11:33:51.898678Z'}
+def custom_date_format1(breaks):
+    """
+    Function to format the date
+    """
+    return [x.year if x.month == 1 and x.day == 1 else "" for x in breaks]
+
+
+(
+    ggplot(economics)
+    + geom_point(aes("date", "psavert"))
+    + scale_x_datetime(  # modified
+        breaks=date_breaks("10 years"), labels=custom_date_format1
+    )
+    + labs(y="personal saving rate")
+)
+```
+
+We can use a custom formatting function to get results that are not obtainable with the `date_format` function.
+For example if we have monthly breaks over a handful of years we can mix date formats as follows; specify beginning of the year and every other month. Such tricks can be used reduce overcrowding.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:51.902029Z', iopub.status.busy: '2024-03-05T11:33:51.901672Z', iopub.status.idle: '2024-03-05T11:33:52.171064Z', shell.execute_reply: '2024-03-05T11:33:52.170502Z'}
+from datetime import date
+
+
+def custom_date_format2(breaks):
+    """
+    Function to format the date
+    """
+    res = []
+    for x in breaks:
+        # First day of the year
+        if x.month == 1 and x.day == 1:
+            fmt = "%Y"
+        # Every other month
+        elif x.month % 2 != 0:
+            fmt = "%b"
+        else:
+            fmt = ""
+
+        res.append(date.strftime(x, fmt))
+
+    return res
+
+
+(
+    ggplot(economics.loc[40:60, :])  # modified
+    + geom_point(aes("date", "psavert"))
+    + scale_x_datetime(
+        breaks=date_breaks("1 months"), labels=custom_date_format2, minor_breaks=[]
+    )
+    + labs(y="personal saving rate")
+)
+```
+
+We removed the labels but not the breaks, leaving behind dangling ticks for the skipped months.
+We can fix that by wrapping `date_breaks` around a filtering function.
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:33:52.173818Z', iopub.status.busy: '2024-03-05T11:33:52.173595Z', iopub.status.idle: '2024-03-05T11:33:52.505575Z', shell.execute_reply: '2024-03-05T11:33:52.505065Z'}
+def custom_date_format3(breaks):
+    """
+    Function to format the date
+    """
+    res = []
+    for x in breaks:
+        # First day of the year
+        if x.month == 1:
+            fmt = "%Y"
+        else:
+            fmt = "%b"
+
+        res.append(date.strftime(x, fmt))
+
+    return res
+
+
+def custom_date_breaks(width=None):
+    """
+    Create a function that calculates date breaks
+
+    It delegates the work to `date_breaks`
+    """
+
+    def filter_func(limits):
+        breaks = date_breaks(width)(limits)
+        # filter
+        return [x for x in breaks if x.month % 2]
+
+    return filter_func
+
+
+(
+    ggplot(economics.loc[40:60, :])
+    + geom_point(aes("date", "psavert"))
+    + scale_x_datetime(  # modified
+        breaks=custom_date_breaks("1 months"), labels=custom_date_format3
+    )
+    + labs(y="personal saving rate")
+)
+```
+
+The breaks and labels functions are tightly coupled to give us exactly what we want.
+
+**Credit:** This example was motivated by the github user [lorin](https://github.com/lorin) (Lorin Hochstein) and his endeavor to control date breaks and date labels.
+
+{{< include _save_img.qmd >}}

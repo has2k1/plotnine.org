@@ -1,0 +1,47 @@
+---
+title: Using Letters As Shapes
+jupyter: python3
+author: Hassan Kibirige
+categories: [text, tutorial]
+---
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:34:27.277710Z', iopub.status.busy: '2024-03-05T11:34:27.277388Z', iopub.status.idle: '2024-03-05T11:34:28.062241Z', shell.execute_reply: '2024-03-05T11:34:28.061606Z'}
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_point,
+    scale_shape_manual,
+)
+from plotnine.data import mtcars
+```
+
+You can create shape symbols using $\TeX$. For example
+
+```{python}
+#| execution: {iopub.execute_input: '2024-03-05T11:34:28.065324Z', iopub.status.busy: '2024-03-05T11:34:28.064959Z', iopub.status.idle: '2024-03-05T11:34:29.425365Z', shell.execute_reply: '2024-03-05T11:34:29.424582Z'}
+#| scrolled: false
+mixed_shapes = (
+    r"$\mathrm{A}$",
+    r"$\mathrm{B}$",
+    r"$\mathrm{C}$",
+    r"$\mathrm{D}$",
+)
+
+
+(
+    ggplot(mtcars, aes("wt", "mpg", shape="factor(gear)", colour="factor(gear)"))
+    + geom_point(size=6)
+    + scale_shape_manual(values=mixed_shapes)
+)
+```
+
+
+
+See matplotlib [documentation](https://matplotlib.org/users/mathtext.html) for more.
+
+{{< include _save_img.qmd >}}
