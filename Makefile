@@ -3,20 +3,7 @@
 
 SOURCE_DIR=source
 SITE_DIR=$(SOURCE_DIR)/_site
-
-# The order of precedence of the python we shall use:
-#
-#   1. Set from the $PYTHON environment variable (the ? in ?=)
-#   2. From an active virtual environment (uv run --active)
-#   3. From an exisiting local .venv virtual environment (uv run)
-#   4. From a newly created local .venv virtual environment (uv run)
-#
-# Given that we are in a python project (pyproject.toml), it is gauranteed
-# to be from a virtual environment.
-PYTHON ?= uv run --active python
-
-# NOTE: Take care not to use tabs in any programming flow outside the
-# make target
+PYTHON ?= python
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -62,7 +49,7 @@ help:
 clean:
 	rm -rf $(SITE_DIR)/
 	rm -rf $(SOURCE_DIR)/_extensions
-	# rm -rf $(SOURCE_DIR)/images   # posit-logo.svg is checked in
+	rm -rf $(SOURCE_DIR)/images
 	rm -rf $(SOURCE_DIR)/reference
 	rm -f  $(SOURCE_DIR)/_variables.yml
 	rm -f  $(SOURCE_DIR)/changelog.qmd
@@ -101,10 +88,10 @@ checkout-dev: submodules submodules-pull submodules-tags
 	cd plotnine && git fetch --depth=1 origin dev && git checkout -b dev
 
 ## Install build dependencies
-
-install:
-	uv sync
-	make -C plotnine/doc dependencies
+deps:
+	cd plotnine && make doc-deps
+	uv pip install jupyter
+	uv pip install git+https://github.com/has2k1/qrenderer
 
 ## Setup notebooks from plotnine-examples
 plotnine-examples:
@@ -112,13 +99,7 @@ plotnine-examples:
 
 ## Build plotnine API qmd pages
 api-pages: plotnine-examples
-	# We want to use the same virtual environment so we export the PYTHON
-	# Other, since plotnine is also a python project the
-	# PYTHON := uv run --active python
-	# in there would create a new local .venv if we do not set it with
-	# and environment variable
-	export PYTHON=$$(uv run --active which python); \
-	make -C plotnine/doc docstrings
+	cd plotnine/doc && make docstrings
 
 ## Copy API artefacts into website
 copy-api-artefacts: api-pages
@@ -137,7 +118,7 @@ copy-api-artefacts: api-pages
 
 ## Download interlinks
 interlinks:
-	cd $(SOURCE_DIR) && uv run quartodoc interlinks
+	cd $(SOURCE_DIR) && quartodoc interlinks
 
 ## Build all pages for the website
 pages: copy-api-artefacts
@@ -147,12 +128,12 @@ pages: copy-api-artefacts
 
 ## Build website
 site: pages
-	cd $(SOURCE_DIR) && uv run quarto render
+	cd $(SOURCE_DIR) && quarto render
 	$(PYTHON) ./scripts/postprocess_site.py $(SOURCE_DIR)/_quarto.yml
 	touch $(SITE_DIR)/.nojekyll
 
 ## Build website in a new environment
-site-cold: install interlinks site
+site-cold: deps interlinks site
 
 ## Build website and serve
 preview:

@@ -11,14 +11,8 @@ jobs:
     outputs:
       env: ${{ steps.config.outputs.env }}
       deployment_id: ${{ steps.capture_vars.outputs.deployment_id }}
-      plotnine-branch: ${{ steps.target.outputs.plotnine-branch }}
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Configure Pull Request Release Name
         id: config
         if: ${{github.event_name == 'pull_request'}}
@@ -46,25 +40,12 @@ jobs:
         env:
           DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
 
-      - name: Get Build Target
-        id: target
-        run: |
-          echo "${{ github.event.pull_request.body }}" > pr_message.txt
-          python .github/utils/please.py set_plotnine_branch pr_message.txt
-          rm -f pr_message.txt
-
-      - name: See outputs
-        run: |
-          echo 'env=${{ steps.config.outputs.env }}'
-          echo 'deployment_id=${{ steps.capture_vars.outputs.deployment_id }}'
-          echo 'plotnine-branch=${{ steps.target.outputs.plotnine-branch }}'
-
   build-site:
     name: Build site
     needs: start-deployment
     uses: ./.github/workflows/build.yml
     with:
-      plotnine-branch: ${{ needs.start-deployment.outputs.plotnine-branch }}
+      plotnine-branch: release
       target-folder: ""
 
   deploy-site:
