@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
 <meta property="og:title" content="Facets (subplots) – plotnine 0.15.0a2">
@@ -416,12 +417,12 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="10546cd9" class="cell" data-execution_count="1">
+<div id="97794270" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg, penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here is a single big plot that you might want to split into subplots.</p>
-<div id="432b557b" class="cell" data-execution_count="2">
+<div id="24f784cd" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -437,7 +438,7 @@ Key points
 <section id="facet_wrap-subplot-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="facet_wrap-subplot-sequence">facet_wrap(): subplot sequence</h2>
 <p>Use <code>facet_wrap()</code> to create a sequence of subplots. It accepts as its first argument the name of the column that should be used to split the data for subplots.</p>
-<div id="97d2eb67" class="cell" data-execution_count="3">
+<div id="006b93a3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(show_legend<span class="op">=</span><span class="va">False</span>)</span>
@@ -452,7 +453,7 @@ Key points
 </div>
 </div>
 <p>Note that by default <code>facet_wrap()</code> fills row-by-row, with defaults for the number of subplots per row and column. Use either the <code>ncol=</code> or <code>nrow=</code> argument to fix the number of plots per column or row, respectively.</p>
-<div id="98969832" class="cell" data-execution_count="4">
+<div id="1276553f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(show_legend<span class="op">=</span><span class="va">False</span>)</span>
@@ -470,7 +471,7 @@ Key points
 <section id="facet_grid-subplot-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="facet_grid-subplot-matrix">facet_grid(): subplot matrix</h2>
 <p>Use <code>facet_grid()</code> to create a matrix of subplots. It accepts two column names as arguments, the first for the rows and the second for the columns.</p>
-<div id="ae8602ae" class="cell" data-execution_count="5">
+<div id="a68bfd11" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> facet_grid(<span class="st">"cyl"</span>, <span class="st">"year"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -484,7 +485,7 @@ Key points
 <section id="facetting-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="facetting-syntax">facetting syntax</h2>
 <p>Both <code>facet_wrap()</code> and <code>facet_grid()</code> support a special syntax for defining subplots. It takes the form <code>"var1 ~ var2 + var3"</code></p>
-<div id="7f9f6ff9" class="cell" data-execution_count="6">
+<div id="702e71ad" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> facet_grid(<span class="st">"cyl ~ year"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -500,7 +501,7 @@ Key points
 <section id="scales-for-freeing-axes" class="level2">
 <h2 class="anchored" data-anchor-id="scales-for-freeing-axes"><code>scales=</code> for freeing axes</h2>
 <p>By default, the x- and y-axes of each subplot have the same range. Use the <code>scales=</code> argument to allow each row or column to have its own range.</p>
-<div id="1d971173" class="cell" data-execution_count="7">
+<div id="4cfc8d44" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>

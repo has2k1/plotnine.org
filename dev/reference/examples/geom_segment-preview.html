@@ -192,7 +192,7 @@
   }
 }</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>  
       <meta property="og:title" content="An Elaborate Range Plot – plotnine 0.15.0a2">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_segment_files/figure-html/cell-8-output-1.png">
 <meta property="og:site_name" content="plotnine 0.15.0a2">
@@ -310,7 +310,7 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:45.275784Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:45.275424Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.166659Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.165750Z&quot;}}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.393129Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.392537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.651100Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.650768Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This notebook uses the polars package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -325,7 +325,7 @@
 <p>Read the data.</p>
 <p>Source: Pew Research Global Attitudes Spring 2015</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.170636Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.170281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.303078Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.301841Z&quot;}}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.652487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.652409Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.779385Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.778883Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head <span class="op">-</span>n <span class="dv">20</span> <span class="st">"data/survey-social-media.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PSRAID,COUNTRY,Q145,Q146,Q70,Q74
@@ -350,7 +350,7 @@
 100018,Ethiopia,Female,22,No, </code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.307487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.307147Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.402357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.401782Z&quot;}}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.781391Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.781269Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.791045Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.790803Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    COUNTRY<span class="op">=</span><span class="st">"country"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Q145<span class="op">=</span><span class="st">"gender"</span>,</span>
@@ -362,7 +362,7 @@
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> (</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    pl.scan_csv(</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data/survey-social-media.csv"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        dtypes<span class="op">=</span><span class="bu">dict</span>(Q146<span class="op">=</span>pl.Utf8),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        schema_overrides<span class="op">=</span><span class="bu">dict</span>(Q146<span class="op">=</span>pl.Utf8),</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    .rename(columns)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    .select([<span class="st">"country"</span>, <span class="st">"age"</span>, <span class="st">"use_social_media"</span>])</span>
@@ -414,7 +414,7 @@
 <td>" "</td>
 </tr>
 <tr class="odd">
-<td>"United Kingdom…</td>
+<td>"United Kingdom"</td>
 <td>"35"</td>
 <td>"Yes"</td>
 </tr>
@@ -451,7 +451,7 @@
 <div id="cell-6" class="cell markdown">
 <p>Create age groups for users of social media</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.405496Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.405242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.470504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.469836Z&quot;}}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.792380Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.792297Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.800644Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.800398Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yes_no <span class="op">=</span> [<span class="st">"Yes"</span>, <span class="st">"No"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>valid_age_groups <span class="op">=</span> [<span class="st">"18-34"</span>, <span class="st">"35-49"</span>, <span class="st">"50+"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -464,7 +464,7 @@
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        .when(col(<span class="st">"age"</span>) <span class="op">&lt;</span> <span class="st">"98"</span>)</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        .then(pl.lit(<span class="st">"50+"</span>))</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        .otherwise(pl.lit(<span class="st">""</span>)),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        country_count<span class="op">=</span>pl.count().over(<span class="st">"country"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        country_count<span class="op">=</span>pl.<span class="bu">len</span>().over(<span class="st">"country"</span>),</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        col(<span class="st">"age_group"</span>).is_in(valid_age_groups) <span class="op">&amp;</span> col(<span class="st">"use_social_media"</span>).is_in(yes_no)</span>
@@ -472,7 +472,7 @@
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    .group_by([<span class="st">"country"</span>, <span class="st">"age_group"</span>])</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># social media use percentage</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        sm_use_percent<span class="op">=</span>(col(<span class="st">"use_social_media"</span>) <span class="op">==</span> <span class="st">"Yes"</span>).<span class="bu">sum</span>() <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> pl.count(),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        sm_use_percent<span class="op">=</span>(col(<span class="st">"use_social_media"</span>) <span class="op">==</span> <span class="st">"Yes"</span>).<span class="bu">sum</span>() <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> pl.<span class="bu">len</span>(),</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># social media question response rate</span></span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        smq_response_rate<span class="op">=</span>col(<span class="st">"use_social_media"</span>).is_in(yes_no).<span class="bu">sum</span>()</span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span> <span class="dv">100</span></span>
@@ -545,38 +545,35 @@
 <div id="cell-8" class="cell markdown">
 <p>Top 14 countries by response rate to the social media question.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.474179Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.473900Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.495550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.494903Z&quot;}}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> col_format(name, fmt):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format useing python formating</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for more control over</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> col(name).map_elements(<span class="kw">lambda</span> x: fmt.<span class="bu">format</span>(x<span class="op">=</span>x))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.801782Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.801715Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.805464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.805235Z&quot;}}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_column(column, fmt):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Format column using python format"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fmt(s):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pl.Series([fmt.<span class="bu">format</span>(x) <span class="cf">if</span> x <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> x <span class="cf">for</span> x <span class="kw">in</span> s])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pl.col(column).map_batches(_fmt)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> float_to_str_round(name):</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> col_format(name, <span class="st">"</span><span class="sc">{x:.0f}</span><span class="st">"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">14</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> (</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    rdata.group_by(<span class="st">"country"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    .agg(r<span class="op">=</span>col(<span class="st">"smq_response_rate"</span>).<span class="bu">sum</span>())</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">"r"</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    .head(n)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>top_countries <span class="op">=</span> top[<span class="st">"country"</span>]</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>expr <span class="op">=</span> float_to_str_round(<span class="st">"sm_use_percent"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>expr_pct <span class="op">=</span> expr <span class="op">+</span> <span class="st">"%"</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>point_data <span class="op">=</span> rdata.<span class="bu">filter</span>(col(<span class="st">"country"</span>).is_in(top_countries)).with_columns(</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    col(<span class="st">"country"</span>).cast(pl.Categorical),</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    sm_use_percent_str<span class="op">=</span>pl.when(col(<span class="st">"country"</span>) <span class="op">==</span> <span class="st">"France"</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    .then(expr_pct)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    .otherwise(expr),</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>point_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">14</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> (</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    rdata.group_by(<span class="st">"country"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    .agg(r<span class="op">=</span>col(<span class="st">"smq_response_rate"</span>).<span class="bu">sum</span>())</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">"r"</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    .head(n)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>top_countries <span class="op">=</span> <span class="bu">set</span>(top[<span class="st">"country"</span>])</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>point_data <span class="op">=</span> rdata.<span class="bu">filter</span>(col(<span class="st">"country"</span>).is_in(top_countries)).with_columns(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    col(<span class="st">"country"</span>).cast(pl.Categorical),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    sm_use_percent_str<span class="op">=</span>pl.when(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        col(<span class="st">"country"</span>)<span class="op">==</span><span class="st">"United States"</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    ).then(</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        format_column(<span class="st">"sm_use_percent"</span>, <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">%"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    ).otherwise(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        format_column(<span class="st">"sm_use_percent"</span>, <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>point_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div><style>
 .dataframe > thead > tr,
@@ -644,7 +641,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.498945Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.498669Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:46.510323Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:46.509430Z&quot;}}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.806504Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.806443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.809437Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.809233Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>segment_data <span class="op">=</span> (</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    point_data.group_by(<span class="st">"country"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -656,9 +653,9 @@
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"gap"</span>,</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    .with_columns(</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        min_str<span class="op">=</span>float_to_str_round(<span class="st">"min"</span>),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        max_str<span class="op">=</span>float_to_str_round(<span class="st">"max"</span>),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        gap_str<span class="op">=</span>float_to_str_round(<span class="st">"gap"</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        min_str<span class="op">=</span>format_column(<span class="st">"min"</span>, <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">"</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        max_str<span class="op">=</span>format_column(<span class="st">"max"</span>, <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">"</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        gap_str<span class="op">=</span>format_column(<span class="st">"gap"</span>, <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">"</span>),</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -713,7 +710,7 @@
 <td>"33"</td>
 </tr>
 <tr class="odd">
-<td>"United Kingdom…</td>
+<td>"United Kingdom"</td>
 <td>52.74463</td>
 <td>86.096257</td>
 <td>33.351627</td>
@@ -750,7 +747,7 @@
 <div id="cell-12" class="cell markdown">
 <p>First plot</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:46.513933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:46.513670Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:48.081266Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:48.080476Z&quot;}}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.810541Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.810477Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.098226Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.097986Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>xgap <span class="op">=</span> <span class="dv">112</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -781,35 +778,37 @@
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        ),</span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"35-49"</span>),</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>),</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"white"</span>,</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"18-34"</span>),</span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        aes(</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>,</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"country"</span>,</span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>,</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">"age_group"</span>,</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># gap difference</span></span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span>xgap, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"gap_str"</span>),</span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"+</span><span class="sc">{}</span><span class="st">"</span>,</span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"35-49"</span>),</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>),</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"white"</span>,</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"18-34"</span>),</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        aes(</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>,</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>,</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">"age_group"</span>,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># gap difference</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span>xgap, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"gap_str"</span>),</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"+</span><span class="sc">{}</span><span class="st">"</span>,</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="">
 <figure class="figure">
@@ -821,7 +820,7 @@
 <div id="cell-14" class="cell markdown">
 <p>Tweak it</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:48.084362Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:48.084041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.112056Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.111447Z&quot;}}" data-execution_count="8">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.099403Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.099305Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.296678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.296427Z&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
@@ -872,88 +871,93 @@
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        ),</span>
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
 <span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"35-49"</span>),</span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>),</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"white"</span>,</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"18-34"</span>),</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>        aes(</span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>,</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"country"</span>,</span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>,</span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">"age_group"</span>,</span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>    <span class="co"># countries right-hand-size (instead of y-axis)         # new</span></span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>        aes(y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"country"</span>),</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=-</span><span class="dv">1</span>,</span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"right"</span>,</span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#222222"</span>,</span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># gap difference</span></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_vline(xintercept<span class="op">=</span>xgap, color<span class="op">=</span><span class="st">"#edece3"</span>, size<span class="op">=</span><span class="dv">32</span>)  <span class="co"># new</span></span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span>xgap, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"gap_str"</span>),</span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"+</span><span class="sc">{}</span><span class="st">"</span>,</span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Annotations                                            # new</span></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(<span class="st">"text"</span>, x<span class="op">=</span><span class="dv">31</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"50+"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#ea9f2f"</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>, x<span class="op">=</span><span class="dv">56</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"35-49"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#6d6e71"</span>, va<span class="op">=</span><span class="st">"top"</span></span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>, x<span class="op">=</span><span class="dv">85</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"18-34"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#939c49"</span>, va<span class="op">=</span><span class="st">"top"</span></span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>,</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>xgap,</span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.5</span>,</span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Youngest-</span><span class="ch">\n</span><span class="st">Oldest Gap"</span>,</span>
-<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#444444"</span>,</span>
-<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"bottom"</span>,</span>
-<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(<span class="st">"point"</span>, x<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>], y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.3</span>, alpha<span class="op">=</span><span class="fl">0.85</span>, stroke<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
-<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>        <span class="st">"segment"</span>,</span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>],</span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>        xend<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>],</span>
-<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.3</span>,</span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>        yend<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.8</span>,</span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.85</span>,</span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hline"</span>,</span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>        yintercept<span class="op">=</span>[x <span class="op">+</span> <span class="fl">0.5</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n, <span class="dv">2</span>)],</span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        linetype<span class="op">=</span><span class="st">"dotted"</span>,</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="fl">0.7</span>,</span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Better spacing and color                              # new</span></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>(<span class="op">-</span><span class="dv">18</span>, xgap <span class="op">+</span> <span class="dv">2</span>))</span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_discrete(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))</span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>[<span class="st">"#c3ca8c"</span>, <span class="st">"#d1d3d4"</span>, <span class="st">"#f2c480"</span>])</span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_color_manual(values<span class="op">=</span>[<span class="st">"#939c49"</span>, <span class="st">"#6d6e71"</span>, <span class="st">"#ea9f2f"</span>])</span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(color<span class="op">=</span><span class="va">None</span>, fill<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">8.5</span>))</span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"35-49"</span>),</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>),</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"white"</span>,</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>        point_data.<span class="bu">filter</span>(col(<span class="st">"age_group"</span>) <span class="op">==</span> <span class="st">"18-34"</span>),</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        aes(</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"sm_use_percent+2"</span>,</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="st">"sm_use_percent_str"</span>,</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">"age_group"</span>,</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    <span class="co"># countries right-hand-size (instead of y-axis)         # new</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>        aes(y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"country"</span>),</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#222222"</span>,</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>    <span class="co"># gap difference</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_vline(xintercept<span class="op">=</span>xgap, color<span class="op">=</span><span class="st">"#edece3"</span>, size<span class="op">=</span><span class="dv">32</span>)  <span class="co"># new</span></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>        segment_data,</span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        aes(x<span class="op">=</span>xgap, y<span class="op">=</span><span class="st">"country"</span>, label<span class="op">=</span><span class="st">"gap_str"</span>),</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center_baseline"</span>,</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>        fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"+</span><span class="sc">{}</span><span class="st">"</span>,</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Annotations                                            # new</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(<span class="st">"text"</span>, x<span class="op">=</span><span class="dv">31</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"50+"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#ea9f2f"</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>, x<span class="op">=</span><span class="dv">56</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"35-49"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#6d6e71"</span>, va<span class="op">=</span><span class="st">"top"</span></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>, x<span class="op">=</span><span class="dv">85</span>, y<span class="op">=</span>n <span class="op">+</span> <span class="fl">1.1</span>, label<span class="op">=</span><span class="st">"18-34"</span>, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">"#939c49"</span>, va<span class="op">=</span><span class="st">"top"</span></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>,</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>xgap,</span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.5</span>,</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Youngest-</span><span class="ch">\n</span><span class="st">Oldest Gap"</span>,</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#444444"</span>,</span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"bottom"</span>,</span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(<span class="st">"point"</span>, x<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>], y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.3</span>, alpha<span class="op">=</span><span class="fl">0.85</span>, stroke<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>        <span class="st">"segment"</span>,</span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>],</span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>        xend<span class="op">=</span>[<span class="dv">31</span>, <span class="dv">56</span>, <span class="dv">85</span>],</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.3</span>,</span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>        yend<span class="op">=</span>n <span class="op">+</span> <span class="fl">0.8</span>,</span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.85</span>,</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> annotate(</span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hline"</span>,</span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>        yintercept<span class="op">=</span>[x <span class="op">+</span> <span class="fl">0.5</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n, <span class="dv">2</span>)],</span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        linetype<span class="op">=</span><span class="st">"dotted"</span>,</span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Better spacing and color                              # new</span></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>(<span class="op">-</span><span class="dv">18</span>, xgap <span class="op">+</span> <span class="dv">2</span>))</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_discrete(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_fill_manual(values<span class="op">=</span>[<span class="st">"#c3ca8c"</span>, <span class="st">"#d1d3d4"</span>, <span class="st">"#f2c480"</span>])</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_color_manual(values<span class="op">=</span>[<span class="st">"#939c49"</span>, <span class="st">"#6d6e71"</span>, <span class="st">"#ea9f2f"</span>])</span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(color<span class="op">=</span><span class="va">None</span>, fill<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">8.5</span>))</span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="">
 <figure class="figure">
@@ -976,7 +980,7 @@
 <p>Read the data.</p>
 <p>Source: World Bank - Infanct Mortality Rate (per 1,000 live births)b</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.115557Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.115333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.133221Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.132574Z&quot;}}" data-execution_count="9">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.297858Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.297783Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.302796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.302576Z&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pl.read_csv(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/API_SP.DYN.IMRT.IN_DS2_en_csv_v2/API_SP.DYN.IMRT.IN_DS2_en_csv_v2.csv"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    skip_rows<span class="op">=</span><span class="dv">4</span>,</span>
@@ -998,7 +1002,7 @@
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (5, 59)</small>
+<small>shape: (5, 60)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1061,6 +1065,7 @@
 <th data-quarto-table-cell-role="th">y2014</th>
 <th data-quarto-table-cell-role="th">y2015</th>
 <th data-quarto-table-cell-role="th">y2016</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 <tr class="even">
 <th>str</th>
@@ -1122,12 +1127,14 @@
 <th>f64</th>
 <th>f64</th>
 <th>str</th>
+<th>str</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>"Aruba"</td>
 <td>"ABW"</td>
+<td>null</td>
 <td>null</td>
 <td>null</td>
 <td>null</td>
@@ -1246,6 +1253,7 @@
 <td>68.1</td>
 <td>66.3</td>
 <td>null</td>
+<td>null</td>
 </tr>
 <tr class="odd">
 <td>"Angola"</td>
@@ -1306,6 +1314,7 @@
 <td>101.4</td>
 <td>98.8</td>
 <td>96.0</td>
+<td>null</td>
 <td>null</td>
 </tr>
 <tr class="even">
@@ -1368,6 +1377,7 @@
 <td>12.9</td>
 <td>12.5</td>
 <td>null</td>
+<td>null</td>
 </tr>
 <tr class="odd">
 <td>"Andorra"</td>
@@ -1429,6 +1439,7 @@
 <td>2.1</td>
 <td>2.1</td>
 <td>null</td>
+<td>null</td>
 </tr>
 </tbody>
 </table>
@@ -1438,7 +1449,7 @@
 <div id="cell-20" class="cell markdown">
 <p>The data includes regional aggregates. To tell apart the regional aggregates we need the metadata. Every row in the data table has a corresponding row in the metadata table. Where the row has regional aggregate data, the <code>Region</code> column in the metadata table is <code>NaN</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.136147Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.135907Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.147950Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.147349Z&quot;}}" data-execution_count="10">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.303836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.303781Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.307252Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.307056Z&quot;}}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordered_categorical(s, categories<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Create a categorical ordered according to the categories</span></span>
@@ -1498,7 +1509,7 @@
 <tbody>
 <tr class="odd">
 <td>"ABW"</td>
-<td>"Latin America …</td>
+<td>"Latin America &amp; Caribbean"</td>
 <td>"High income"</td>
 </tr>
 <tr class="even">
@@ -1508,42 +1519,42 @@
 </tr>
 <tr class="odd">
 <td>"AGO"</td>
-<td>"Sub-Saharan Af…</td>
-<td>"Lower middle i…</td>
+<td>"Sub-Saharan Africa"</td>
+<td>"Lower middle income"</td>
 </tr>
 <tr class="even">
 <td>"ALB"</td>
-<td>"Europe &amp; Centr…</td>
-<td>"Upper middle i…</td>
+<td>"Europe &amp; Central Asia"</td>
+<td>"Upper middle income"</td>
 </tr>
 <tr class="odd">
 <td>"AND"</td>
-<td>"Europe &amp; Centr…</td>
+<td>"Europe &amp; Central Asia"</td>
 <td>"High income"</td>
 </tr>
 <tr class="even">
 <td>"ARE"</td>
-<td>"Middle East &amp; …</td>
+<td>"Middle East &amp; North Africa"</td>
 <td>"High income"</td>
 </tr>
 <tr class="odd">
 <td>"ARG"</td>
-<td>"Latin America …</td>
-<td>"Upper middle i…</td>
+<td>"Latin America &amp; Caribbean"</td>
+<td>"Upper middle income"</td>
 </tr>
 <tr class="even">
 <td>"ARM"</td>
-<td>"Europe &amp; Centr…</td>
-<td>"Lower middle i…</td>
+<td>"Europe &amp; Central Asia"</td>
+<td>"Lower middle income"</td>
 </tr>
 <tr class="odd">
 <td>"ASM"</td>
-<td>"East Asia &amp; Pa…</td>
-<td>"Upper middle i…</td>
+<td>"East Asia &amp; Pacific"</td>
+<td>"Upper middle income"</td>
 </tr>
 <tr class="even">
 <td>"ATG"</td>
-<td>"Latin America …</td>
+<td>"Latin America &amp; Caribbean"</td>
 <td>"High income"</td>
 </tr>
 </tbody>
@@ -1554,7 +1565,7 @@
 <div id="cell-22" class="cell markdown">
 <p>Remove the regional aggregates, to create a table with only country data</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.151007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.150767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.165433Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.164860Z&quot;}}" data-execution_count="11">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.308253Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.308205Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.312112Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.311899Z&quot;}}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="op">=</span> data.join(metadata, on<span class="op">=</span><span class="st">"code"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>country_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1565,7 +1576,7 @@
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (5, 61)</small>
+<small>shape: (5, 62)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1628,6 +1639,7 @@
 <th data-quarto-table-cell-role="th">y2014</th>
 <th data-quarto-table-cell-role="th">y2015</th>
 <th data-quarto-table-cell-role="th">y2016</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">region</th>
 <th data-quarto-table-cell-role="th">income_group</th>
 </tr>
@@ -1690,6 +1702,7 @@
 <th>f64</th>
 <th>f64</th>
 <th>f64</th>
+<th>str</th>
 <th>str</th>
 <th>str</th>
 <th>cat</th>
@@ -1756,7 +1769,8 @@
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>"Latin America …</td>
+<td>null</td>
+<td>"Latin America &amp; Caribbean"</td>
 <td>"High income"</td>
 </tr>
 <tr class="even">
@@ -1818,6 +1832,7 @@
 <td>69.9</td>
 <td>68.1</td>
 <td>66.3</td>
+<td>null</td>
 <td>null</td>
 <td>"South Asia"</td>
 <td>"Low income"</td>
@@ -1882,8 +1897,9 @@
 <td>98.8</td>
 <td>96.0</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
-<td>"Lower middle i…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
+<td>"Lower middle income"</td>
 </tr>
 <tr class="even">
 <td>"Albania"</td>
@@ -1945,8 +1961,9 @@
 <td>12.9</td>
 <td>12.5</td>
 <td>null</td>
-<td>"Europe &amp; Centr…</td>
-<td>"Upper middle i…</td>
+<td>null</td>
+<td>"Europe &amp; Central Asia"</td>
+<td>"Upper middle income"</td>
 </tr>
 <tr class="odd">
 <td>"Andorra"</td>
@@ -2008,7 +2025,8 @@
 <td>2.1</td>
 <td>2.1</td>
 <td>null</td>
-<td>"Europe &amp; Centr…</td>
+<td>null</td>
+<td>"Europe &amp; Central Asia"</td>
 <td>"High income"</td>
 </tr>
 </tbody>
@@ -2019,7 +2037,7 @@
 <div id="cell-24" class="cell markdown">
 <p>We are interested in the changes in rank between 1960 and 2015. To plot a reasonable sized graph, we randomly sample 35 countries.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.168430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.168188Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.184428Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.183839Z&quot;}}" data-execution_count="12">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.313060Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.313013Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.316507Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.316324Z&quot;}}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="op">=</span> (</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    country_data.drop_nulls(subset<span class="op">=</span>[<span class="st">"y1960"</span>, <span class="st">"y2015"</span>])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">35</span>, seed<span class="op">=</span><span class="dv">123</span>)</span>
@@ -2039,7 +2057,7 @@
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (5, 63)</small>
+<small>shape: (5, 64)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -2102,6 +2120,7 @@
 <th data-quarto-table-cell-role="th">y2014</th>
 <th data-quarto-table-cell-role="th">y2015</th>
 <th data-quarto-table-cell-role="th">y2016</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">region</th>
 <th data-quarto-table-cell-role="th">income_group</th>
 <th data-quarto-table-cell-role="th">y1960_rank</th>
@@ -2166,6 +2185,7 @@
 <th>f64</th>
 <th>f64</th>
 <th>f64</th>
+<th>str</th>
 <th>str</th>
 <th>str</th>
 <th>cat</th>
@@ -2234,7 +2254,8 @@
 <td>90.2</td>
 <td>87.1</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
 <td>"Low income"</td>
 <td>35</td>
 <td>35</td>
@@ -2299,8 +2320,9 @@
 <td>68.5</td>
 <td>66.6</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
-<td>"Lower middle i…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
+<td>"Lower middle income"</td>
 <td>33</td>
 <td>34</td>
 </tr>
@@ -2364,7 +2386,8 @@
 <td>65.7</td>
 <td>64.2</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
 <td>"Low income"</td>
 <td>32</td>
 <td>33</td>
@@ -2429,7 +2452,8 @@
 <td>62.2</td>
 <td>60.9</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
 <td>"Low income"</td>
 <td>30</td>
 <td>32</td>
@@ -2494,8 +2518,9 @@
 <td>44.2</td>
 <td>42.8</td>
 <td>null</td>
-<td>"Sub-Saharan Af…</td>
-<td>"Lower middle i…</td>
+<td>null</td>
+<td>"Sub-Saharan Africa"</td>
+<td>"Lower middle income"</td>
 <td>25</td>
 <td>31</td>
 </tr>
@@ -2507,7 +2532,7 @@
 <div id="cell-26" class="cell markdown">
 <p>First graph</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.187451Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.187212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:49.786396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:49.785891Z&quot;}}" data-execution_count="13">
+<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.317473Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.317420Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.419321Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.419110Z&quot;}}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    ggplot(sampled_data)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(<span class="dv">1</span>, <span class="st">"y1960_rank"</span>, label<span class="op">=</span><span class="st">"country"</span>), ha<span class="op">=</span><span class="st">"right"</span>, size<span class="op">=</span><span class="dv">9</span>)</span>
@@ -2530,7 +2555,7 @@
 <div id="cell-28" class="cell markdown">
 <p>It has the form we want, but we need to tweak it.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:29:49.791124Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:29:49.790918Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:29:50.728879Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:29:50.728327Z&quot;}}" data-execution_count="14">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.420431Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.420353Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.573758Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.573471Z&quot;}}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Text colors</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>black1 <span class="op">=</span> <span class="st">"#252525"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>black2 <span class="op">=</span> <span class="st">"#222222"</span></span>

@@ -103,6 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
 <meta property="og:title" content="Changelog – plotnine 0.15.0a2">
@@ -370,7 +371,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="api-changes" class="level3">
 <h3 class="anchored" data-anchor-id="api-changes">API Changes</h3>
 <ul>
-<li>Themeables <code>axis_ticks_pad</code>, <code>axis_ticks_pad_minor</code>, <code>axis_ticks_pad_major</code>, <code>axis_ticks_pad_minor_x</code>, <code>axis_ticks_pad_minor_y</code>, <code>axis_ticks_pad_major_x</code> and <code>axis_ticks_pad_major_y</code> have been deprecated. Use the <code>margin</code> parameter of <a href="./reference/element_text.html#plotnine.element_text"><code>element_text</code></a> with <code>axis_text</code>, <code>axis_text_x</code> or <code>axis_text_y</code> to control the spacing between the axis text and the ticks. (<a href="https://github.com/has2k1/plotnine/issues/843" title="Issue: #843">#843</a>)</li>
+<li><p>Themeables <code>axis_ticks_pad</code>, <code>axis_ticks_pad_minor</code>, <code>axis_ticks_pad_major</code>, <code>axis_ticks_pad_minor_x</code>, <code>axis_ticks_pad_minor_y</code>, <code>axis_ticks_pad_major_x</code> and <code>axis_ticks_pad_major_y</code> have been deprecated. Use the <code>margin</code> parameter of <a href="./reference/element_text.html#plotnine.element_text"><code>element_text</code></a> with <code>axis_text</code>, <code>axis_text_x</code> or <code>axis_text_y</code> to control the spacing between the axis text and the ticks. (<a href="https://github.com/has2k1/plotnine/issues/843" title="Issue: #843">#843</a>)</p></li>
+<li><p>The <code>stat</code> class methods <code>stat.compute_layer</code>, <code>stat.compute_panel</code> and <code>stat.compute_group</code> are now instance methods and they no longer accept <code>**params</code> arguments. Access to the parameters is through <code>self.params</code>.</p></li>
+<li><p>The <code>geom</code> class methods <code>geom.draw_layer</code> and <code>geom.draw_panel</code> do no longer accept <code>**param</code> arguments. Access to the parameters is through <code>self.params</code>.</p></li>
+<li><p>Method <code>geom.draw_group</code> now accepts the <code>params</code> argument as a dictionary and not <code>**params</code>.</p></li>
 </ul>
 </section>
 <section id="new-features" class="level3">
@@ -428,6 +432,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Fixed the empty space below the plot title (or subtitle) when <code>strip_text_x_background</code>s are partly or fully aligned within the panel. This space (hole), was not accounted for by any of the themeables. This affected <code>theme_xkcd</code> and any <code>theme</code> settings that tried to slide the text / background into the panel.</p></li>
 <li><p>Fixed the empty space to the left the right margin when the <code>strip_text_y_background</code>s are partly or fully aligned within the panel. This space (hole), was not accounted for by any of the themeables. This affected <code>theme_xkcd</code> and any <code>theme</code> settings that tried to slide the text / background into the panel.</p></li>
 <li><p>Fixed bug in <a href="./reference/geom_histogram.html#plotnine.geom_histogram"><code>geom_histogram</code></a> where mapping to the <code>weight</code> aesthetic lead to an error. <a href="https://github.com/has2k1/plotnine/issues/936" title="Issue: #936">#936</a></p></li>
+<li><p>Fixed bug in <a href="./reference/geom_vline.html#plotnine.geom_vline"><code>geom_vline</code></a> where you could not map the <code>xintercept</code> aesthetic to a discrete variable.</p></li>
+<li><p>Fixed bug in <a href="./reference/geom_hline.html#plotnine.geom_hline"><code>geom_hline</code></a> where you could not map the <code>yintercept</code> aesthetic to a discrete variable.</p></li>
 </ul>
 </section>
 </section>

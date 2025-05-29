@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.2">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeroen Janssens">
+
+<title>Anscombe’s Quartet – plotnine 0.15.0a2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Anscombe’s Quartet – plotnine 0.15.0a2">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://plotnine.org/gallery/img/medium/anscombes-quartet.png">
+<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:image:height" content="250">
+<meta property="og:image:width" content="350">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">plotnine 0.15.0a2</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/install.html"> 
+<span class="menu-text">Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../gallery/index.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tutorials/index.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pages</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pages">    
+        <li>
+    <a class="dropdown-item" href="../changelog.html">
+ <span class="dropdown-text">Changelog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../external-resources.html">
+ <span class="dropdown-text">External Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../about.html">
+ <span class="dropdown-text">About Plotnine</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/has2k1/plotnine"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#create-a-long-dataframe" id="toc-create-a-long-dataframe" class="nav-link active" data-scroll-target="#create-a-long-dataframe">Create a Long DataFrame</a></li>
+  <li><a href="#compute-descriptive-statistics" id="toc-compute-descriptive-statistics" class="nav-link" data-scroll-target="#compute-descriptive-statistics">Compute Descriptive Statistics</a></li>
+  <li><a href="#exploratory-data-visualization" id="toc-exploratory-data-visualization" class="nav-link" data-scroll-target="#exploratory-data-visualization">Exploratory Data Visualization</a></li>
+  <li><a href="#a-fine-tuned-data-visualization" id="toc-a-fine-tuned-data-visualization" class="nav-link" data-scroll-target="#a-fine-tuned-data-visualization">A Fine-Tuned Data Visualization</a></li>
+  <li><a href="#bonus-apply-linear-regression" id="toc-bonus-apply-linear-regression" class="nav-link" data-scroll-target="#bonus-apply-linear-regression">Bonus: Apply Linear Regression</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Anscombe’s Quartet</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">scatter plot</div>
+    <div class="quarto-category">contest</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeroen Janssens </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.cell-output img {
+    max-width: 100%;
+    height: auto;
+}
+.preview-image {
+    display: none;
+}
+.large-image {
+    border: 1px solid #222222;
+    margin: auto !important;
+    max-width: 80% !important;
+    height: auto !important;
+    display: block;
+}
+</style>
+<p><img src="img/medium/anscombes-quartet.png" class="preview-image img-fluid"></p>
+<p><img src="img/large/anscombes-quartet.png" class="large-image img-fluid"></p>
+<p>In 1973, statistician Francis Anscombe challenged the commonly held belief that “numerical calculations are exact, but graphs are rough” (Anscombe, 1973). His strategy was to manually construct four small datasets—now known as Anscombe’s Quartet—that have different distributions but nearly identical descriptive statistics. It’s perhaps the best argument for visualizing data.</p>
+<p>In this notebook we replicate his paper by using Plotnine to visualize those datasets and Polars to verify their descriptive statistics. More specifically, we:</p>
+<ul>
+<li>Turn the original values that Anscombe used into one long DataFrame</li>
+<li>Verify the descriptive statistics</li>
+<li>Create a couple of exploratory data visualizations</li>
+<li>Fine-tune the visualization to make it suitable for communication</li>
+</ul>
+<div id="5d1cfd4a" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="create-a-long-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-long-dataframe">Create a Long DataFrame</h2>
+<p>First, we turn the original four datasets into one Polars DataFrame. With 3 columns and 44 rows, the DataFrame is in long format, making it convenient for Polars to compute descriptive statistics and for Plotnine to visualize each row as a point. The column <code>dataset</code> indicates which rows belong to which dataset using the Roman numerals <code>I</code> through <code>IV</code>. (The Roman numerals are purely for visualization purposes.)</p>
+<div id="ee9a5bc7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anscombe_datasets <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="fl">10.0</span>, <span class="fl">8.0</span>, <span class="fl">13.0</span>, <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">6.0</span>, <span class="fl">4.0</span>, <span class="fl">12.0</span>, <span class="fl">7.0</span>, <span class="fl">5.0</span>],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"y"</span>: [<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>]},</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="fl">10.0</span>, <span class="fl">8.0</span>, <span class="fl">13.0</span>, <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">6.0</span>, <span class="fl">4.0</span>, <span class="fl">12.0</span>, <span class="fl">7.0</span>, <span class="fl">5.0</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="st">"y"</span>: [<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.1</span>, <span class="fl">6.13</span>, <span class="fl">3.1</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>]},</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="fl">10.0</span>, <span class="fl">8.0</span>, <span class="fl">13.0</span>, <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">6.0</span>, <span class="fl">4.0</span>, <span class="fl">12.0</span>, <span class="fl">7.0</span>, <span class="fl">5.0</span>],</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">"y"</span>: [<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>]},</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">19.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>, <span class="fl">8.0</span>],</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">"y"</span>: [<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.5</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>]}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>anscombe_quartet <span class="op">=</span> pl.concat([</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    pl.DataFrame(xy).select(pl.lit(d).alias(<span class="st">"dataset"</span>), <span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d, xy <span class="kw">in</span> <span class="bu">zip</span>([<span class="st">"I"</span>, <span class="st">"II"</span>, <span class="st">"III"</span>, <span class="st">"IV"</span>], anscombe_datasets)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>anscombe_quartet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (44, 3)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"I"</td>
+<td>10.0</td>
+<td>8.04</td>
+</tr>
+<tr class="even">
+<td>"I"</td>
+<td>8.0</td>
+<td>6.95</td>
+</tr>
+<tr class="odd">
+<td>"I"</td>
+<td>13.0</td>
+<td>7.58</td>
+</tr>
+<tr class="even">
+<td>"I"</td>
+<td>9.0</td>
+<td>8.81</td>
+</tr>
+<tr class="odd">
+<td>"I"</td>
+<td>11.0</td>
+<td>8.33</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"IV"</td>
+<td>8.0</td>
+<td>5.25</td>
+</tr>
+<tr class="even">
+<td>"IV"</td>
+<td>19.0</td>
+<td>12.5</td>
+</tr>
+<tr class="odd">
+<td>"IV"</td>
+<td>8.0</td>
+<td>5.56</td>
+</tr>
+<tr class="even">
+<td>"IV"</td>
+<td>8.0</td>
+<td>7.91</td>
+</tr>
+<tr class="odd">
+<td>"IV"</td>
+<td>8.0</td>
+<td>6.89</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="compute-descriptive-statistics">Compute Descriptive Statistics</h2>
+<p>To verify that the four datasets have identical descriptive statistics, we use Polars to compute the mean and the variance of both <code>x</code> and <code>y</code>. We also compute the correlation between <code>x</code> and <code>y</code>:</p>
+<div id="1ba449c0" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pl.Config.set_float_precision(<span class="dv">2</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>anscombe_quartet.group_by(<span class="st">"dataset"</span>, maintain_order<span class="op">=</span><span class="va">True</span>).agg(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"x"</span>, <span class="st">"y"</span>).mean().name.prefix(<span class="st">"mean_"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"x"</span>, <span class="st">"y"</span>).var().name.prefix(<span class="st">"variance_"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    pl.corr(<span class="st">"x"</span>, <span class="st">"y"</span>).alias(<span class="st">"correlation_xy"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">mean_x</th>
+<th data-quarto-table-cell-role="th">mean_y</th>
+<th data-quarto-table-cell-role="th">variance_x</th>
+<th data-quarto-table-cell-role="th">variance_y</th>
+<th data-quarto-table-cell-role="th">correlation_xy</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"I"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.13</td>
+<td>0.82</td>
+</tr>
+<tr class="even">
+<td>"II"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.13</td>
+<td>0.82</td>
+</tr>
+<tr class="odd">
+<td>"III"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.12</td>
+<td>0.82</td>
+</tr>
+<tr class="even">
+<td>"IV"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.12</td>
+<td>0.82</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>As you can see, the descriptive statistics are nearly identical. At the end of this notebook there’s a bonus section where we use scikit-learn to fit a linear regression line to each dataset and verify that the intercept, slope, and <span class="math inline">\(R^2\)</span> are also identical. (Spoiler alert: they are!)</p>
+</section>
+<section id="exploratory-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-visualization">Exploratory Data Visualization</h2>
+<p>Let’s create a few basic data visualizations to get a better feeling for the data. What’s great about Plotnine is that you can get a first plot with relatively little code. We have two continuous variables <code>x</code> and <code>y</code>, so a scatter plot might work:</p>
+<div id="e67a7e91" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That doesn’t make much sense yet. We need a way to distinguish between the datasets. Let’s color each point according to the dataset it belongs to:</p>
+<div id="9aa699ff" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Well, that’s rather messy. Let’s create a panel for each dataset using the <code>facet_wrap()</code> function instead. To make the code easier to read and to edit, we’ll put each function on its own line:</p>
+<div id="20788019" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">"dataset"</span>) <span class="op">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    geom_point()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That’s better. The panels make the use of color redundant, so we’ll make each point black again. Let’s also add a regression line using the <code>geom_smooth()</code> function, to visualize that the four datasets have identical descriptive statistics.</p>
+<div id="593833c0" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    geom_point() <span class="op">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    geom_smooth(method<span class="op">=</span><span class="st">"lm"</span>, se<span class="op">=</span><span class="va">False</span>, fullrange<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"blue"</span>) <span class="op">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">"dataset"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-10-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This data visualization clearly supports Anscombe’s point: that datasets with different distributions can have the same descriptive statistics.</p>
+</section>
+<section id="a-fine-tuned-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="a-fine-tuned-data-visualization">A Fine-Tuned Data Visualization</h2>
+<p>Our final exploratory data visualization gets the job done, but it doesn’t hurt to make it more visually appealing. In the following code snippet, we:</p>
+<ul>
+<li>Remove many elements, including grid lines, tick marks, and axis labels. They’re not needed to bring the point across.</li>
+<li>Add a title.</li>
+<li>Change the colors and the font.</li>
+</ul>
+<p>As you can see, there’s quite some code needed for this fine-tuning. Luckily, because of its composable API, Plotnine allows you to gradually move from a exploratory data visualization to a fine-tuned explanatory one.</p>
+<div id="90ac4656" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    geom_point(color<span class="op">=</span><span class="st">"sienna"</span>, fill<span class="op">=</span><span class="st">"darkorange"</span>, size<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    geom_smooth(method<span class="op">=</span><span class="st">"lm"</span>, se<span class="op">=</span><span class="va">False</span>, fullrange<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"steelblue"</span>, size<span class="op">=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">"dataset"</span>) <span class="op">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    scale_y_continuous(breaks<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>)) <span class="op">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    coord_fixed(xlim<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">22</span>), ylim<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">14</span>)) <span class="op">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    labs(title<span class="op">=</span><span class="st">"Anscombe’s Quartet"</span>) <span class="op">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    theme_tufte(base_family<span class="op">=</span><span class="st">"Futura"</span>) <span class="op">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    theme(</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        axis_line<span class="op">=</span>element_line(color<span class="op">=</span><span class="st">"#4d4d4d"</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        axis_ticks_major<span class="op">=</span>element_line(color<span class="op">=</span><span class="st">"#00000000"</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        axis_title<span class="op">=</span>element_blank(),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#ffffff"</span>, color<span class="op">=</span><span class="st">"#ffffff"</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        dpi<span class="op">=</span><span class="dv">144</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        panel_spacing<span class="op">=</span><span class="fl">0.09</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        strip_text<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">16</span>, margin<span class="op">=</span>{<span class="st">"b"</span>: <span class="dv">20</span>})</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-11-output-2.png" width="1008" height="720" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="6f614011" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-stderr">
+<pre><code>findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.
+findfont: Font family 'Futura' not found.</code></pre>
+</div>
+</div>
+</section>
+<section id="bonus-apply-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-apply-linear-regression">Bonus: Apply Linear Regression</h2>
+<p>In this bonus section, we use scikit-learn to fit a linear regression line to each dataset and confirm that the intercept, slope, and <span class="math inline">\(R^2\)</span> are also identical. The <code>geom_smooth()</code> function added regression lines to our scatter plots, but now we get to see the raw values as well.</p>
+<div id="91011f56" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_lr(s):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> s.struct.field(<span class="st">"x"</span>).to_numpy().reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> s.struct.field(<span class="st">"y"</span>).to_numpy()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute intercept and coefficient</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    lr.fit(X, y)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    intercept <span class="op">=</span> lr.intercept_</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    slope <span class="op">=</span> lr.coef_[<span class="dv">0</span>]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute R^2</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    r2 <span class="op">=</span> r2_score(y, intercept <span class="op">+</span> slope <span class="op">*</span> X)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"intercept"</span>: intercept, <span class="st">"slope"</span>: slope, <span class="st">"r2"</span>: r2}</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>anscombe_quartet.group_by(<span class="st">"dataset"</span>, maintain_order<span class="op">=</span><span class="va">True</span>).agg(</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"x"</span>, <span class="st">"y"</span>).mean().name.prefix(<span class="st">"mean_"</span>),</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"x"</span>, <span class="st">"y"</span>).var().name.prefix(<span class="st">"variance_"</span>),</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    pl.corr(<span class="st">"x"</span>, <span class="st">"y"</span>).alias(<span class="st">"correlation_xy"</span>),</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    (</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        pl.struct(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        .map_elements(fit_lr, return_dtype<span class="op">=</span>pl.Struct({<span class="st">"intercept"</span>: pl.Float64,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"slope"</span>: pl.Float64,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"r2"</span>: pl.Float64}))</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        .alias(<span class="st">"lr"</span>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>).unnest(<span class="st">"lr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 9)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dataset</th>
+<th data-quarto-table-cell-role="th">mean_x</th>
+<th data-quarto-table-cell-role="th">mean_y</th>
+<th data-quarto-table-cell-role="th">variance_x</th>
+<th data-quarto-table-cell-role="th">variance_y</th>
+<th data-quarto-table-cell-role="th">correlation_xy</th>
+<th data-quarto-table-cell-role="th">intercept</th>
+<th data-quarto-table-cell-role="th">slope</th>
+<th data-quarto-table-cell-role="th">r2</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"I"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.13</td>
+<td>0.82</td>
+<td>3.00</td>
+<td>0.50</td>
+<td>0.67</td>
+</tr>
+<tr class="even">
+<td>"II"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.13</td>
+<td>0.82</td>
+<td>3.00</td>
+<td>0.50</td>
+<td>0.67</td>
+</tr>
+<tr class="odd">
+<td>"III"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.12</td>
+<td>0.82</td>
+<td>3.00</td>
+<td>0.50</td>
+<td>0.67</td>
+</tr>
+<tr class="even">
+<td>"IV"</td>
+<td>9.00</td>
+<td>7.50</td>
+<td>11.00</td>
+<td>4.12</td>
+<td>0.82</td>
+<td>3.00</td>
+<td>0.50</td>
+<td>0.67</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Anscombe, F. J. (1973). “Graphs in Statistical Analysis”. American Statistician. 27 (1): 17–21.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/plotnine\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
