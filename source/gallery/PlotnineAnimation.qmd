@@ -19,7 +19,6 @@ from matplotlib import rc
 rc("animation", html="html5")
 ```
 
-
 The `PlotnineAnimation` methods takes a sequence of plots and animates them. The best way to create the sequence is
 to use a function that generates plots.
 
@@ -34,7 +33,6 @@ kmin = 1
 kmax = 25
 num_frames = 25
 theta = np.linspace(-np.pi, np.pi, n)
-
 
 def plot(k):
     # For every plot we change the theta
@@ -63,19 +61,53 @@ def plot(k):
         + theme(aspect_ratio=1)
     )
     return p
+```
 
+When creating the plots that make up the animation, it is better to use a generator instead of a list
 
-# It is better to use a generator instead of a list
+<!--
+   Goal: Not to have ffmpeg on CI
+   Trick: Use a cached animation
+
+   1. Show code that creates the animation and outputs the animation but don't run it
+   2. Run code that creates the animation, but don't show it
+   3. Include expected output of the animation
+   4. Have code that we turnon to save (cache) the animation
+-->
+
+```{python}
+# | eval: False
 plots = (plot(k) for k in np.linspace(kmin, kmax, num_frames))
 ani = PlotnineAnimation(plots, interval=100, repeat_delay=500)
-# ani.save('/tmp/animation.mp4')
 ani
+```
+
+```{python}
+# | echo: False
+plots = (plot(k) for k in np.linspace(kmin, kmax, num_frames))
+ani = PlotnineAnimation(plots, interval=100, repeat_delay=500)
+```
+
+<!--
+   For a "retina" video, use dpi=200, before saving but set the height & width to half
+   the size in pixels. Using % doesn't work.
+   ref: https://github.com/quarto-dev/quarto-cli/issues/6296
+
+   {{< video animations/spiral.mp4 width="50%" height="50%" >}}
+-->
+{{< video animations/spiral.mp4 width="672px" height="480px" >}}
+
+You can save the animation.
+
+```{python}
+# | eval: False
+# Disable the echo to save the animation
+ani.save("animations/spiral.mp4")
 ```
 
 The final image of the spiral
 
 ```{python}
-
 plot(kmax)
 ```
 
