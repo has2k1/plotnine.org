@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 <p><img src="img/medium/geom_line.png" class="preview-image img-fluid"></p>
 <p><img src="img/large/geom_line.png" class="large-image img-fluid"></p>
-<div id="26b55b2f" class="cell" data-execution_count="3">
+<div id="59d3667b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> meat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>geom_line()</code> connects the dots, and is useful for time series data.</p>
-<div id="9c669043" class="cell" data-execution_count="4">
+<div id="25fcd43d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>meat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Make it tidy.</p>
-<div id="acfff9a9" class="cell" data-execution_count="5">
+<div id="7d20eb07" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meat_long <span class="op">=</span> meat.melt(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"date"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"beef"</span>, <span class="st">"veal"</span>, <span class="st">"pork"</span>, <span class="st">"lamb_and_mutton"</span>, <span class="st">"broilers"</span>, <span class="st">"turkey"</span>],</span>
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>First try</p>
-<div id="cb79cea7" class="cell" data-execution_count="6">
+<div id="ae6dfce7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It looks crowded because each there is more than one monthly entry at each x-point. We can get a single trend line by getting a monthly aggregate of the weights.</p>
-<div id="7c4c85a0" class="cell" data-execution_count="7">
+<div id="af030a31" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg <span class="op">=</span> meat_long.groupby(<span class="st">"date"</span>).agg({<span class="st">"weight"</span>: <span class="st">"sum"</span>}).reset_index()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -506,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="a-single-trend-line" class="level3">
 <h3 class="anchored" data-anchor-id="a-single-trend-line">A Single Trend Line</h3>
-<div id="82ff55b9" class="cell" data-execution_count="8">
+<div id="7ae0fc4f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Add some style</p>
-<div id="c7569ca9" class="cell" data-execution_count="9">
+<div id="eeef1c4c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -528,13 +528,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"10 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538()</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width="4 years")</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_line_files/figure-html/cell-10-output-2.png" width="672" height="480" class="figure-img"></p>
+<p><img src="geom_line_files/figure-html/cell-10-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -543,41 +540,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="multiple-trend-lines" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-trend-lines">Multiple Trend Lines</h3>
-<div id="c31b4363" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, group<span class="op">=</span><span class="st">"animal"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"10 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538()</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width="4 years")</code></pre>
-</div>
+<div id="f8b19886" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, group<span class="op">=</span><span class="st">"animal"</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"10 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_line_files/figure-html/cell-11-output-2.png" width="672" height="480" class="figure-img"></p>
+<p><img src="geom_line_files/figure-html/cell-11-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Make each group be a different color.</p>
-<div id="bb4c2259" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"10 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538()</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width="4 years")</code></pre>
-</div>
+<div id="5c3b36ac" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"10 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_line_files/figure-html/cell-12-output-2.png" width="672" height="480" class="figure-img"></p>
+<p><img src="geom_line_files/figure-html/cell-12-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -586,29 +577,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-trend-line-per-facet" class="level3">
 <h3 class="anchored" data-anchor-id="a-trend-line-per-facet">A Trend Line Per Facet</h3>
 <p>Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the <code>size</code> of the line, <code>size</code> of the text and the number of grid lines.</p>
-<div id="51c45ee9" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> titled(strip_title):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join(s.title() <span class="cf">if</span> s <span class="op">!=</span> <span class="st">"and"</span> <span class="cf">else</span> s <span class="cf">for</span> s <span class="kw">in</span> strip_title.split(<span class="st">"_"</span>))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(<span class="st">"date"</span>, <span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(size<span class="op">=</span><span class="fl">.5</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"animal"</span>, labeller<span class="op">=</span>titled)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"20 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Date"</span>,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Weight (million pounds)"</span>,</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Meat Production"</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538(base_size<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/mizani/breaks.py:448: FutureWarning: Passing the width as the parameter has been deprecated and will not work in a future version. Use breaks_date(width="4 years")</code></pre>
-</div>
+<div id="c4503fcd" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> titled(strip_title):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join(s.title() <span class="cf">if</span> s <span class="op">!=</span> <span class="st">"and"</span> <span class="cf">else</span> s <span class="cf">for</span> s <span class="kw">in</span> strip_title.split(<span class="st">"_"</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(<span class="st">"date"</span>, <span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(size<span class="op">=</span><span class="fl">.5</span>, show_legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"animal"</span>, labeller<span class="op">=</span>titled)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(date_breaks<span class="op">=</span><span class="st">"20 years"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Date"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Weight (million pounds)"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Meat Production"</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_538(base_size<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_line_files/figure-html/cell-13-output-2.png" width="672" height="480" class="figure-img"></p>
+<p><img src="geom_line_files/figure-html/cell-13-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>

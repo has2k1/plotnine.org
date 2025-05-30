@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Save and display – plotnine 0.15.0a2">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://plotnine.org/guide/export_files/figure-html/cell-3-output-2.png">
+<meta property="og:image" content="https://plotnine.org/guide/export_files/figure-html/cell-3-output-1.png">
 <meta property="og:site_name" content="plotnine 0.15.0a2">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
@@ -204,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation</span></a>
+  <a href="../guide/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -324,8 +324,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../guide/maps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operators: `+`, `&gt;&gt;`</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -421,7 +433,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="73bb57ec" class="cell" data-execution_count="1">
+<div id="33de839b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -430,7 +442,7 @@ Key points
 <h2 class="anchored" data-anchor-id="displaying-plots">Displaying plots</h2>
 <p>By default, plots in Jupyter and Quarto should be displayed automatically.</p>
 <p>For example, this website is built with Quarto, but the code below should also cause a plot to appear in a Jupyter notebook.</p>
-<div id="a7284346" class="cell" data-execution_count="2">
+<div id="8d40a11c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -442,27 +454,21 @@ Key points
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="export_files/figure-html/cell-3-output-2.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="export_files/figure-html/cell-3-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>If you want to explicitly display a plot, use the <code>.show()</code> method.</p>
-<div id="12643eec" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-</div>
+<div id="7287940e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="export_files/figure-html/cell-4-output-2.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="export_files/figure-html/cell-4-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -479,8 +485,8 @@ Key points
 <section id="saving-plots" class="level2">
 <h2 class="anchored" data-anchor-id="saving-plots">Saving plots</h2>
 <p>Use the <code>.save()</code> method to save a plot to a file. It takes as its first argument the name of the file to save the plot to.</p>
-<div id="ddc1def5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7b6a04fb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default, Plotnine tries to infer the file format from its name. For example, in the code above, Plotnine would save the plot in PNG format.</p>
 </section>
@@ -492,32 +498,32 @@ Key points
 <li><code>theme()</code> settings.</li>
 <li><code>plotnine.options.set_option()</code> global options.</li>
 </ul>
-<div id="c7ee4aa4" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize in save method ---</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>, width<span class="op">=</span><span class="dv">6</span>, height<span class="op">=</span><span class="dv">4</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display or save with custom theme ---</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>my_theme <span class="op">=</span> theme(figure_size<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> my_theme</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Save using global option ---</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.options <span class="im">import</span> set_option</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>set_option(<span class="st">"figure_size"</span>, (<span class="dv">6</span>, <span class="dv">4</span>))</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>p.save()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6fba0169" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize in save method ---</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>, width<span class="op">=</span><span class="dv">6</span>, height<span class="op">=</span><span class="dv">4</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display or save with custom theme ---</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>my_theme <span class="op">=</span> theme(figure_size<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> my_theme</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Save using global option ---</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.options <span class="im">import</span> set_option</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>set_option(<span class="st">"figure_size"</span>, (<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>p.save()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="handling-fonts-in-svg" class="level2">
 <h2 class="anchored" data-anchor-id="handling-fonts-in-svg">Handling fonts in svg</h2>
 <p>When plots using custom fonts are saved as an SVG, it may not display correctly on computers that do not have the fonts installed. Use the <code>svg_usefonts</code> argument in the <code>theme()</code> function to ensure that fonts are self-contained in the SVG file.</p>
-<div id="f3ab476a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(svg_usefonts<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b4f1b4ac" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(svg_usefonts<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

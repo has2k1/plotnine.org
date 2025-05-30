@@ -204,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation</span></a>
+  <a href="../guide/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -324,8 +324,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../guide/maps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operators: `+`, `&gt;&gt;`</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -416,7 +428,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="aeaf6253" class="cell" data-execution_count="1">
+<div id="43936664" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -440,20 +452,17 @@ Key points
 <section id="labelling-quickly-with-labs" class="level2">
 <h2 class="anchored" data-anchor-id="labelling-quickly-with-labs">Labelling quickly with <code>labs()</code></h2>
 <p>Use the <code>labs()</code> function to quickly set plot labels and guide names.</p>
-<div id="f2f52f71" class="cell" data-execution_count="2">
+<div id="331780c4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Penguin flipper length vs body mass"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Flipper length (mm)"</span>,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"Body mass (g)"</span>,</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"SPECIES"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="labels_files/figure-html/cell-3-output-2.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="labels_files/figure-html/cell-3-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -463,22 +472,19 @@ Key points
 <section id="styling-labels-with-theme" class="level2">
 <h2 class="anchored" data-anchor-id="styling-labels-with-theme">Styling labels with theme()</h2>
 <p>Use the <code>theme()</code> function to style labels. For example, by changing their color or size.</p>
-<div id="2fc76b7b" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        axis_text_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"orange"</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        axis_title_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="dv">16</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-</div>
+<div id="5f1f4061" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        axis_text_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"orange"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        axis_title_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="labels_files/figure-html/cell-4-output-2.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="labels_files/figure-html/cell-4-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -488,20 +494,16 @@ Key points
 <h2 class="anchored" data-anchor-id="scale-breaks-labels">Scale breaks labels</h2>
 <p>Use the <code>labels=</code> arguments to the appropriate <code>scale_*()</code> function, in order to customize break labels.</p>
 <p>For example, the code below changes the y-axis labels from grams to kilograms.</p>
-<div id="64a4848e" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: how to make disappear in labs?</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    p</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(labels<span class="op">=</span><span class="kw">lambda</span> x: [val <span class="op">/</span> <span class="dv">1_000</span> <span class="cf">for</span> val <span class="kw">in</span> x])</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"Body mass (kg)"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-</div>
+<div id="c7b6e5db" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    p</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(labels<span class="op">=</span><span class="kw">lambda</span> x: [val <span class="op">/</span> <span class="dv">1_000</span> <span class="cf">for</span> val <span class="kw">in</span> x])</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"Body mass (kg)"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="labels_files/figure-html/cell-5-output-2.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="labels_files/figure-html/cell-5-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
