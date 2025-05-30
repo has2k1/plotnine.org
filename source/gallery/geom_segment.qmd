@@ -40,7 +40,7 @@ columns = dict(
 data = (
     pl.scan_csv(
         "data/survey-social-media.csv",
-        dtypes=dict(Q146=pl.Utf8),
+        schema_overrides=dict(Q146=pl.Utf8),
     )
     .rename(columns)
     .select(["country", "age", "use_social_media"])
@@ -65,7 +65,7 @@ rdata = (
         .when(col("age") < "98")
         .then(pl.lit("50+"))
         .otherwise(pl.lit("")),
-        country_count=pl.count().over("country"),
+        country_count=pl.len().over("country"),
     )
     .filter(
         col("age_group").is_in(valid_age_groups) & col("use_social_media").is_in(yes_no)
@@ -73,7 +73,7 @@ rdata = (
     .group_by(["country", "age_group"])
     .agg(
         # social media use percentage
-        sm_use_percent=(col("use_social_media") == "Yes").sum() * 100 / pl.count(),
+        sm_use_percent=(col("use_social_media") == "Yes").sum() * 100 / pl.len(),
         # social media question response rate
         smq_response_rate=col("use_social_media").is_in(yes_no).sum()
         * 100
@@ -88,15 +88,11 @@ rdata.head()
 Top 14 countries by response rate to the social media question.
 
 ```{python}
-def col_format(name, fmt):
-    # Format useing python formating
-    # for more control over
-    return col(name).map_elements(lambda x: fmt.format(x=x))
-
-
-def float_to_str_round(name):
-    return col_format(name, "{x:.0f}")
-
+def format_column(column, fmt):
+    """Format column using python format"""
+    def _fmt(s):
+        return pl.Series([fmt.format(x) if x is not None else x for x in s])
+    return pl.col(column).map_batches(_fmt)
 
 n = 14
 
@@ -106,16 +102,17 @@ top = (
     .sort("r", descending=True)
     .head(n)
 )
-top_countries = top["country"]
-
-expr = float_to_str_round("sm_use_percent")
-expr_pct = expr + "%"
+top_countries = set(top["country"])
 
 point_data = rdata.filter(col("country").is_in(top_countries)).with_columns(
     col("country").cast(pl.Categorical),
-    sm_use_percent_str=pl.when(col("country") == "France")
-    .then(expr_pct)
-    .otherwise(expr),
+    sm_use_percent_str=pl.when(
+        col("country")=="United States"
+    ).then(
+        format_column("sm_use_percent", "{:.0f}%")
+    ).otherwise(
+        format_column("sm_use_percent", "{:.0f}")
+    )
 )
 
 point_data.head()
@@ -133,9 +130,9 @@ segment_data = (
         "gap",
     )
     .with_columns(
-        min_str=float_to_str_round("min"),
-        max_str=float_to_str_round("max"),
-        gap_str=float_to_str_round("gap"),
+        min_str=format_column("min", "{:.0f}"),
+        max_str=format_column("max", "{:.0f}"),
+        gap_str=format_column("gap", "{:.0f}"),
     )
 )
 
@@ -177,13 +174,14 @@ xgap = 112
         ),
         size=8,
         ha="right",
+        va="center_baseline",
     )
     + geom_text(
         point_data.filter(col("age_group") == "35-49"),
         aes(x="sm_use_percent+2", y="country", label="sm_use_percent_str"),
         size=8,
         ha="left",
-        va="center",
+        va="center_baseline",
         color="white",
     )
     + geom_text(
@@ -196,6 +194,7 @@ xgap = 112
         ),
         size=8,
         ha="left",
+        va="center_baseline",
     )
     # gap difference
     + geom_text(
@@ -204,6 +203,7 @@ xgap = 112
         size=9,
         fontweight="bold",
         format_string="+{}",
+        va="center_baseline",
     )
 )
 ```
@@ -260,13 +260,14 @@ xgap = 115
         ),
         size=8,
         ha="right",
+        va="center_baseline",
     )
     + geom_text(
         point_data.filter(col("age_group") == "35-49"),
         aes(x="sm_use_percent+2", y="country", label="sm_use_percent_str"),
         size=8,
         ha="left",
-        va="center",
+        va="center_baseline",
         color="white",
     )
     + geom_text(
@@ -287,6 +288,7 @@ xgap = 115
         x=-1,
         size=8,
         ha="right",
+        va="center_baseline",
         fontweight="bold",
         color="#222222",
     )
@@ -296,6 +298,7 @@ xgap = 115
         segment_data,
         aes(x=xgap, y="country", label="gap_str"),
         size=9,
+        va="center_baseline",
         fontweight="bold",
         format_string="+{}",
     )

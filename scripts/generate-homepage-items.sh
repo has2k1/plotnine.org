@@ -13,16 +13,31 @@ uv run jinja2 "${HOMEPAGE_DIR}/banner/template.jinja" "${HOMEPAGE_DIR}/banner/it
 uv run jinja2 "${HOMEPAGE_DIR}/features/template.jinja" "${HOMEPAGE_DIR}/features/items.yaml" > "${HOMEPAGE_DIR}/features/output.html"
 
 # Process Python code chunks for features
+# The twokey parts are:
+#
+# 1. The python code chunks have pairs of !!! and ??? markers which enclose code
+#    that should be rendered with less opacity. When converted to html, those
+#    marked-up as a pair of errors. We process this pair into a single span that
+#    changes the opacity of the code between the pairs.
+#    From
+#        <span class="err">!!!</span>...<span class="err">???</span>
+#                    ^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^^^^^^
+#    to
+#        <span class="tw:opacity-50">...</span>
+#
+# 2. Replace recognisable variables names with links
+#    From
+#        ggplot(...)
+#    to
+#        <a class="code_xref" href="/reference/ggplot.html">ggplot</a>(...)
 for python_file in "${HOMEPAGE_DIR}"/features/code/*.py; do
   echo Processing "${python_file}...";
   html_file="${HOMEPAGE_DIR}/features/html/$(basename "${python_file}").html"
 
-  # cat "${python_file}" | \
-  # sed 's/#skip//g' | \
   sed 's/#skip//g' < "${python_file}" | \
   uv run pygmentize -f html -l python | \
   sed 's|"err">!!!</span>|"tw:opacity-50">|g;s|<span class="err">???||g;' | \
-  sed -re 's^(ggplot|aes|geom_smooth|geom_point|facet_wrap|scale_y_continuous|coord_fixed|labs|theme_tufte|theme|element_blank|element_line)^<a style="color: inherit; text-underline-offset: 0.3em;" href="/reference/\1.html">\1</a>^g' > "$html_file"
+  sed -re 's^(ggplot|aes|geom_smooth|geom_point|facet_wrap|scale_y_continuous|coord_fixed|labs|theme_tufte|theme|element_blank|element_line)^<a class="code_xref" href="/reference/\1.html">\1</a>^g' > "$html_file"
 done
 
 # Create thumbnails

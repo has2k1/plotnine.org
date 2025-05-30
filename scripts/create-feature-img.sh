@@ -14,12 +14,15 @@ HOMEPAGE_DIR="${SCRIPT_DIR}/../source/homepage"
 
 # Create a temporary file with the given ID
 temp_file=$(mktemp "/tmp/${ID}_XXXXXX")
+py_file="${HOMEPAGE_DIR}/features/code/${ID}.py"
+img_file="${HOMEPAGE_DIR}/features/img/${ID}.png"
 
 cat "$SCRIPT_DIR/img-start.py" > "${temp_file}"
 
 echo -n "plot = " >> "${temp_file}"
-sed -e 's/!!!//g;s/???//g;/#skip/d' < "${HOMEPAGE_DIR}/features/code/${ID}.py" >> "${temp_file}"
-echo -e "\n\nplot.save('$HOMEPAGE_DIR/features/img/$ID.png')" >> "${temp_file}"
+sed -e 's/!!!//g;s/???//g;/#skip/d' < "${py_file}" >> "${temp_file}"
+echo -e "\n\nplot.save('${img_file}')" >> "${temp_file}"
 
 cat "${temp_file}"
 python "${temp_file}"
+magick "${img_file}" -strip "${img_file}"
