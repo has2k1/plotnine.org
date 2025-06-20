@@ -21,8 +21,8 @@ from plotnine import (
 )
 from plotnine.data import economics
 
-from mizani.breaks import date_breaks
-from mizani.formatters import date_format
+from mizani.breaks import breaks_date_width
+from mizani.formatters import label_date
 
 theme_set(theme_linedraw())  # default theme
 ```
@@ -43,8 +43,9 @@ How does the saving rate vary with time?
 )
 ```
 
-Yikes! the calculated breaks are awful, we need to intervene. We do so using the [date_breaks](https://mizani.readthedocs.io/en/stable/breaks.html#mizani.breaks.date_breaks) and
-[date_format](https://mizani.readthedocs.io/en/stable/formatters.html#mizani.formatters.date_format)
+Yikes! the calculated breaks are awful, we need to intervene. We do so using the [breaks_date_width](https://mizani.readthedocs.io/en/stable/breaks.html#mizani.breaks.breaks_date_width) and
+[label_date](https://mizani.readthedocs.io/en/stable/labels.html#mizani.labels.label_date)
+
 functions from mizani.
 
 Set breaks every 10 years
@@ -53,13 +54,13 @@ Set breaks every 10 years
 (
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
-    + scale_x_datetime(breaks=date_breaks("10 years"))  # new
+    + scale_x_datetime(breaks=breaks_date_width("10 years"))  # new
     + labs(y="personal saving rate")
 )
 ```
 
 That is better. Since all the breaks are at the beginning of the year, we can omit the month and day.
-Using `date_format` we override the format string. For more on the options for the format string see
+Using `label_date` we override the format string. For more on the options for the format string see
 the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-strptime-behavior).
 
 ```{python}
@@ -67,7 +68,7 @@ the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-s
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
     + scale_x_datetime(
-        breaks=date_breaks("10 years"), labels=date_format("%Y")
+        breaks=breaks_date_width("10 years"), labels=label_date("%Y")
     )  # modified
     + labs(y="personal saving rate")
 )
@@ -76,7 +77,7 @@ the [strftime behavior](https://docs.python.org/library/datetime.html#strftime-s
 We can achieve the same result with a custom formating function.
 
 ```{python}
-def custom_date_format1(breaks):
+def custom_label_date1(breaks):
     """
     Function to format the date
     """
@@ -87,20 +88,20 @@ def custom_date_format1(breaks):
     ggplot(economics)
     + geom_point(aes("date", "psavert"))
     + scale_x_datetime(  # modified
-        breaks=date_breaks("10 years"), labels=custom_date_format1
+        breaks=breaks_date_width("10 years"), labels=custom_label_date1
     )
     + labs(y="personal saving rate")
 )
 ```
 
-We can use a custom formatting function to get results that are not obtainable with the `date_format` function.
+We can use a custom formatting function to get results that are not obtainable with the `label_date` function.
 For example if we have monthly breaks over a handful of years we can mix date formats as follows; specify beginning of the year and every other month. Such tricks can be used reduce overcrowding.
 
 ```{python}
 from datetime import date
 
 
-def custom_date_format2(breaks):
+def custom_label_date2(breaks):
     """
     Function to format the date
     """
@@ -124,17 +125,17 @@ def custom_date_format2(breaks):
     ggplot(economics.loc[40:60, :])  # modified
     + geom_point(aes("date", "psavert"))
     + scale_x_datetime(
-        breaks=date_breaks("1 months"), labels=custom_date_format2, minor_breaks=[]
+        breaks=breaks_date_width("1 months"), labels=custom_label_date2, minor_breaks=[]
     )
     + labs(y="personal saving rate")
 )
 ```
 
 We removed the labels but not the breaks, leaving behind dangling ticks for the skipped months.
-We can fix that by wrapping `date_breaks` around a filtering function.
+We can fix that by wrapping `breaks_date_width` around a filtering function.
 
 ```{python}
-def custom_date_format3(breaks):
+def custom_label_date3(breaks):
     """
     Function to format the date
     """
@@ -151,15 +152,15 @@ def custom_date_format3(breaks):
     return res
 
 
-def custom_date_breaks(width=None):
+def custom_breaks_date_width(width=None):
     """
     Create a function that calculates date breaks
 
-    It delegates the work to `date_breaks`
+    It delegates the work to `breaks_date_width`
     """
 
     def filter_func(limits):
-        breaks = date_breaks(width)(limits)
+        breaks = breaks_date_width(width)(limits)
         # filter
         return [x for x in breaks if x.month % 2]
 
@@ -170,7 +171,7 @@ def custom_date_breaks(width=None):
     ggplot(economics.loc[40:60, :])
     + geom_point(aes("date", "psavert"))
     + scale_x_datetime(  # modified
-        breaks=custom_date_breaks("1 months"), labels=custom_date_format3
+        breaks=custom_breaks_date_width("1 months"), labels=custom_label_date3
     )
     + labs(y="personal saving rate")
 )
