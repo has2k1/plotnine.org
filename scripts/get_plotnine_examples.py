@@ -18,11 +18,11 @@ NOTEBOOK_PATHS = [
         ROOT_DIR / "plotnine-examples/plotnine_examples/examples",
         ROOT_DIR / "plotnine/doc/reference/examples",
     ),
-    # The tutorials are built as part of the wider website.
-    (
-        ROOT_DIR / "plotnine-examples/plotnine_examples/tutorials",
-        SOURCE_DIR / "tutorials",
-    ),
+    # # The tutorials are built as part of the wider website.
+    # (
+    #     ROOT_DIR / "plotnine-examples/plotnine_examples/tutorials",
+    #     SOURCE_DIR / "tutorials",
+    # ),
 ]
 
 
