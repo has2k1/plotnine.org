@@ -83,6 +83,7 @@ Here is an example table of raw data:
 | Sat | 60 | 71 | Heavy rain |
 
 ```{python}
+from io import StringIO
 import polars as pl
 import plotnine as p9
 
@@ -109,7 +110,18 @@ Don't be concerned about the "Conditions" column for now.
 We'll figure out what, if anything, to do with it after figuring out most of the other parts.
 
 ```{python}
-raw_data = pl.read_csv('./data/7-day_forecast.csv')
+io = StringIO("""
+Day,Low,High,Conditions
+Today,65,77,Cloudy
+Mon,61,84,Sunny
+Tue,67,93,Hot
+Wed,59,76,Drizzle
+Thu,54,75,Windy
+Fri,57,81,Partly cloudy
+Sat,60,71,Heavy rain
+"""
+)
+raw_data = pl.read_csv(io)
 raw_data = raw_data.with_columns(pl.col('Day').cast(pl.Categorical))
 raw_data
 ```
@@ -126,9 +138,8 @@ plot = (
     p9.ggplot(raw_data, p9.aes(x='Low', xend='High', y='Day', yend='Day'))
     + p9.labs(title='Prototype 1')
     + p9.geom_segment(size=8, lineend='round', color='steelblue')
-    # + p9.geom_segment()
 )
-plot.show()
+plot
 ```
 
 ## Prototype 1 learnings
@@ -149,7 +160,7 @@ I use `scale_y_discrete` to reverse the order as demonstrated below.
     plot
     + p9.labs(title='Prototype 1', caption='Fix day order')
     + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list())
-).show()
+)
 ```
 
 It looks like `geom_segment` doesn't produce round ends although the code specifies `lineend='round'`.
@@ -173,12 +184,11 @@ plot_data
 ```
 
 ```{python}
-plot = (
+(
     p9.ggplot(plot_data, p9.aes(x='x', xend='xend', y='y', yend='y', color='z'))
     + p9.labs(caption='Color gradient testing')
     + p9.geom_segment(size=8, lineend='round')
 )
-plot.show()
 ```
 
 Here's the start of a color gradient effect, but we'll need a lot more segments to get a smooth gradient.
@@ -203,7 +213,7 @@ I'm going to work from the raw_data that was read in previously where Day is a c
 ```{python}
 plot_data = (
     raw_data
-    .melt(id_vars=['Day'], value_vars=['High', 'Low'], variable_name='Low/High', value_name='Temperature')
+    .unpivot(index=['Day'], on=['High', 'Low'], variable_name='Low/High', value_name='Temperature')
     .sort(['Day', 'Temperature'], descending=False)
 )
 plot_data
@@ -214,13 +224,12 @@ plot_data
 I had imagined/hoped that `geom_path` might be able to auto-calculate a color gradient for the line between each of the two points, but ultimately the plot below demonstrates that this isn't the case.
 
 ```{python}
-plot = (
+(
     p9.ggplot(plot_data, p9.aes(x='Temperature', y='Day', color='Temperature'))
     + p9.labs(title='Prototype 2')
     + p9.geom_path(size=8, lineend='round')
     + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list())
 )
-plot.show()
 ```
 
 ### No `group` aesthetic?
@@ -249,14 +258,12 @@ plot_data_test
 
 ```{python}
 # plot with Day_int mapped to y; switch between commenting out lines 3 and 4 to see what happens
-plot = (
+(
     p9.ggplot(plot_data_test, p9.aes(x='Temperature', y='Day_int', color='Temperature'))
-    # p9.ggplot(plot_data_test, p9.aes(x='Temperature', y='Day_int', color='Temperature', group='Day_int'))
     + p9.labs(title='Prototype 2', caption='Continuous variable testing')
     + p9.geom_path(size=8, lineend='round')
     + p9.scale_y_reverse()
 )
-plot.show()
 ```
 
 ### Extra `geom_path` testing
@@ -267,20 +274,19 @@ The continuous variable testing plot above hints at this but let's take another 
 plot_data = (
     raw_data
     .with_columns(Mid = (pl.col('High') + pl.col('Low')) / 2)
-    .melt(id_vars=['Day'], value_vars=['High', 'Mid', 'Low'], variable_name='Low/High', value_name='Temperature')
+    .unpivot(index=['Day'], on=['High', 'Mid', 'Low'], variable_name='Low/High', value_name='Temperature')
     .sort(['Day', 'Temperature'], descending=False)
 )
 plot_data
 ```
 
 ```{python}
-plot = (
+(
     p9.ggplot(plot_data, p9.aes(x='Temperature', y='Day', color='Temperature'))
     + p9.labs(title='Prototype 2', caption='Color gradient testing')
     + p9.geom_path(size=8, lineend='round')
     + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list())
 )
-plot.show()
 ```
 
 ## Prototype 2 learnings
@@ -320,13 +326,12 @@ plot_data
 Let's use our exploded out dataframe and see if the color gradient works.
 
 ```{python}
-plot = (
+(
     p9.ggplot(plot_data, p9.aes(x='Temperature', y='Day'))
     + p9.labs(title="Color gradient prototype")
     + p9.geom_path(p9.aes(color='Temperature'), size=8, lineend='round')
     + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list())
 )
-plot.show()
 ```
 
 The gradient looks good!
@@ -367,7 +372,7 @@ temp_range
 x_offset = 5
 temp_labels = (
     raw_data.lazy()
-    .melt(id_vars=['Day', 'Conditions'], value_vars=['Low', 'High'], value_name='temperature')
+    .unpivot(index=['Day', 'Conditions'], on=['Low', 'High'], value_name='temperature')
     .with_columns(
         (pl.col('temperature').cast(str) + pl.lit('°')).alias('label'),
         pl.when(pl.col('variable') == 'Low')
@@ -382,7 +387,7 @@ temp_labels
 ```
 
 ```{python}
-plot = (
+(
     p9.ggplot(plot_data, p9.aes(x='Temperature', y='Day'))
     + p9.labs(title="Full temperature prototype")
     + p9.geom_path(data=temp_range, size=9, color='black', lineend='round', alpha=0.8)
@@ -390,7 +395,6 @@ plot = (
     + p9.geom_text(data=temp_labels, mapping=p9.aes(x='x', label='label'), ha='center', va='center')
     + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list())
 )
-plot.show()
 ```
 
 ## Temperature info prototype learnings
@@ -435,7 +439,7 @@ temp_range = pl.DataFrame({
 x_offset = 5  # this is calculated dynamically in plot_forecast.py
 temp_labels = (
     raw_data
-    .melt(id_vars=['Day', 'Conditions'], value_vars=['Low', 'High'], value_name='temperature')
+    .unpivot(index=['Day', 'Conditions'], on=['Low', 'High'], value_name='temperature')
     .with_columns(
         (pl.col('temperature').cast(str) + pl.lit('°')).alias('label'),
         pl.when(pl.col('variable') == 'Low')
@@ -476,23 +480,21 @@ plot = (
     + p9.geom_path(p9.aes(color='Temperature'), size=8, lineend='round')
     + p9.geom_text(data=temp_labels, mapping=p9.aes(x='x', label='label'), color='white', size=font_size, ha='center', va='center')
     + p9.scale_color_gradientn(colors=['deepskyblue', 'aqua', 'palegreen', 'yellow', 'orange', 'red'], limits=[0, 100])
-    + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list(), expand=(0, 0.5, 0, 0.4))
+    + p9.scale_y_discrete(limits=raw_data['Day'].reverse().to_list(), expand=(0, 0.2, 0, 0.4))
     + p9.theme_void()
     + p9.theme(
+        figure_size=(6.5, 6.5),
         text=p9.element_text(family=font_family, color='white'),
         plot_background=p9.element_rect(fill='royalblue'),
         plot_title=p9.element_text(size=24),
         plot_subtitle=p9.element_text(size=16, ha='center'),
-        plot_margin_top=0.05,
-        plot_margin_right=0.04,
-        plot_margin_bottom=0.03,
-        plot_margin_left=-0.05,
+        plot_margin=0.05,
         axis_text_y=p9.element_text(angle=0, size=font_size, va='center', ha='left', margin={'t': 0, 'r': 95, 'b': 0, 'l': 0, 'units': 'pt'}),
         axis_text_x=p9.element_blank(),
         legend_position='none',
     )
 )
-plot.show()
+plot
 ```
 
 ## Plot with weather icons
@@ -506,15 +508,15 @@ I didn't expect it to work but I did try using an `.svg` image with `watermark` 
 # add 3 weather icons to the plot in the bottom-left corner
 (
     plot
-    + p9.watermark('./img/misc/weather-forecast/drizzle_32px.png')
-    + p9.watermark('./img/misc/weather-forecast/rain_32px.png', xo=40, yo=10)
-    + p9.watermark('./img/misc/weather-forecast/heavy_rain_32px.png', xo=80, yo=20)
-).show()
+    + p9.watermark('./img/misc/weather-forecast/icons/drizzle_32px.png')
+    + p9.watermark('./img/misc/weather-forecast/icons/rain_32px.png', xo=40, yo=10)
+    + p9.watermark('./img/misc/weather-forecast/icons/heavy_rain_32px.png', xo=80, yo=20)
+)
 ```
 
 Since the coordinates are in pixels, this makes things a little trickier.
 To handle this, I created a version of the plot at a specific resolution to figure out where the place the icons for each day.
-I'm not going to use `plot.show()` since the placement probably will look off, but I'll save the plot to a file and then display it in this jupyter notebook.
+I'm not going to output the plot since the placement probably will look off, but I'll save the plot to a file and then display it in this jupyter notebook.
 
 ```{python}
 raw_data
@@ -531,12 +533,12 @@ for i, row in enumerate(rows):
     yo = yo_max - i * yo_mod
     plot_w_icons = (
         plot_w_icons 
-        + p9.watermark(f'./img/misc/weather-forecast/{row["Conditions"].lower().replace(" ", "_")}_32px.png', xo=xo, yo=yo)
+        + p9.watermark(f'./img/misc/weather-forecast/icons/{row["Conditions"].lower().replace(" ", "_")}_32px.png', xo=xo, yo=yo)
     )
 ```
 
-Here's the final plot:
-
+<!-- Here's the final plot: -->
+<!---->
 ![7-day forecast](img/misc/weather-forecast/weather.png)
 
 I think this is a satisfying detail: zoom into the extreme low or high temperature on the plot and see the border formed by the underlayment around the temperature range.
@@ -560,4 +562,3 @@ I included 11 weather icons but there are additional weather icons available in 
 
 I learned some new things while working on this.
 If you went through this notebook, I hope you did too.
-
