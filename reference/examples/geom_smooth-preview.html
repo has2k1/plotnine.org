@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Smoothed conditional means – plotnine 0.15.0a2</title>
+    <title>Smoothed conditional means – plotnine 0.15.0a5</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1a4c0345fa69bbbde6efb8208a9792f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
      <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -193,9 +193,9 @@
 }</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>  
-      <meta property="og:title" content="Smoothed conditional means – plotnine 0.15.0a2">
+      <meta property="og:title" content="Smoothed conditional means – plotnine 0.15.0a5">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_smooth_files/figure-html/cell-4-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a5">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -215,7 +215,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a5</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -240,10 +240,6 @@
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -256,10 +252,6 @@
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -310,7 +302,7 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:32.708085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:32.707718Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.538594Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.537945Z&quot;}}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:14.229155Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:14.228999Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:14.537227Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:14.536885Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_smooth, labs, theme_matplotlib, theme_set</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
@@ -320,7 +312,7 @@
 <div id="cell-2" class="cell markdown">
 <p><em>Aids the eye in seeing patterns in the presence of overplotting.</em></p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.542346Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.541871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:33.556463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:33.555887Z&quot;}}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:14.538607Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:14.538518Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:14.543089Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:14.542894Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -420,7 +412,7 @@
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:33.598005Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:33.597745Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.632357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.631743Z&quot;}}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:14.555514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:14.555422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:15.517824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:15.517562Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -438,7 +430,7 @@
 <div id="cell-5" class="cell markdown">
 <p>Use <code>span</code> to control the “wiggliness” of the default loess smoother. The span is the fraction of points used to fit each local regression: small numbers make a wigglier curve, larger numbers make a smoother curve.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.635384Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.635148Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:34.905976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:34.905466Z&quot;}}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:15.519077Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:15.518982Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:15.575767Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:15.575545Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -456,7 +448,7 @@
 <div id="cell-7" class="cell markdown">
 <p>You can remove confidence interval around smooth with <code>se=False</code>:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:34.908868Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:34.908653Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.159279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.158735Z&quot;}}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:15.576952Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:15.576884Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:15.625747Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:15.625524Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -474,7 +466,7 @@
 <div id="cell-9" class="cell markdown">
 <p>Instead of a loess smooth, you can use any other modelling function:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.162013Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.161794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:35.808970Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:35.808347Z&quot;}}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:15.626767Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:15.626712Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:16.048783Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:16.048562Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -494,7 +486,7 @@
 <h3 class="anchored" data-anchor-id="points-linear-models">Points &amp; Linear Models</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:35.811760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:35.811435Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:36.255796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:36.255287Z&quot;}}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:16.049992Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:16.049876Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:16.123571Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:16.123355Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, points</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>(</span>

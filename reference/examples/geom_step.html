@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Step plots – plotnine 0.15.0a2</title>
+<title>Step plots – plotnine 0.15.0a5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1a4c0345fa69bbbde6efb8208a9792f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Step plots – plotnine 0.15.0a2">
+<meta property="og:title" content="Step plots – plotnine 0.15.0a5">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_step_files/figure-html/cell-4-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a5">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a5</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -150,10 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -166,10 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -216,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:02.467296Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:02.466751Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:03.183867Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:03.183193Z&quot;}}" data-execution_count="1">
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:17.457339Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:17.457208Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:17.715122Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:17.714794Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_step, geom_line, labs, theme, element_text</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> economics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>geom_step()</code> connects points using ‘steps’ instead of a line.</p>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:03.187349Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:03.187072Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:03.199668Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:03.199070Z&quot;}}" data-execution_count="2">
+<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:17.716465Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:17.716397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:17.722089Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:17.721866Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>economics.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -294,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Plot a step plot using <code>geom_plot()</code>. Notice from the first point the line travels vertically then horizontally:</p>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:03.241240Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:03.240976Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:04.517072Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:04.516393Z&quot;}}" data-execution_count="3">
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:17.735207Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:17.735108Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:17.929506Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:17.929254Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        economics.iloc[:<span class="dv">20</span>],  <span class="co"># filter for first twenty rows (dates) to make steps more visible</span></span>
@@ -313,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can see how <code>geom_path()</code> (shown in pink) differs from <code>geom_line()</code> (black):</p>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:04.520547Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:04.520179Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:04.943928Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:04.943323Z&quot;}}" data-execution_count="4">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:17.930707Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:17.930589Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:17.986330Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:17.986102Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics.iloc[:<span class="dv">20</span>], aes(<span class="st">"date"</span>, <span class="st">"unemploy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_step(</span>
@@ -334,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Rather than a line that travels vertically then horizontally, this order can be switched by specifying <code>direction='vh'</code> within <code>geom_step()</code>. Below <code>direction='vh'</code> is shown in black with the default <code>direction='hv'</code> shown in pink:</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:04.947025Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:04.946787Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:05.345553Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:05.341340Z&quot;}}" data-execution_count="5">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:17.987433Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:17.987352Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:18.036495Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:18.036297Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics.iloc[:<span class="dv">20</span>], aes(<span class="st">"date"</span>, <span class="st">"unemploy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_step(</span>

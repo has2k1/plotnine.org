@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>An Elaborate Range Plot – plotnine 0.15.0a2</title>
+<title>An Elaborate Range Plot – plotnine 0.15.0a5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1a4c0345fa69bbbde6efb8208a9792f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="An Elaborate Range Plot – plotnine 0.15.0a2">
+<meta property="og:title" content="An Elaborate Range Plot – plotnine 0.15.0a5">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_segment_files/figure-html/cell-8-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a5">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a5</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -150,10 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -166,10 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -222,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.393129Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.392537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.651100Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.650768Z&quot;}}" data-execution_count="1">
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:11.573466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:11.573219Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:11.982803Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:11.982557Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This notebook uses the polars package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -233,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Comparing the point to point difference of many similar variables</em></p>
 <p>Read the data.</p>
 <p>Source: Pew Research Global Attitudes Spring 2015</p>
-<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.652487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.652409Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.779385Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.778883Z&quot;}}" data-execution_count="2">
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:11.984193Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:11.984094Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.118554Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.118143Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head <span class="op">-</span>n <span class="dv">20</span> <span class="st">"data/survey-social-media.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PSRAID,COUNTRY,Q145,Q146,Q70,Q74
@@ -258,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 100018,Ethiopia,Female,22,No, </code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.781391Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.781269Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.791045Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.790803Z&quot;}}" data-execution_count="3">
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.120084Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.119982Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.138976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.138736Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    COUNTRY<span class="op">=</span><span class="st">"country"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Q145<span class="op">=</span><span class="st">"gender"</span>,</span>
@@ -357,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Create age groups for users of social media</p>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.792380Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.792297Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.800644Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.800398Z&quot;}}" data-execution_count="4">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.140132Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.140042Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.150039Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.149773Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yes_no <span class="op">=</span> [<span class="st">"Yes"</span>, <span class="st">"No"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>valid_age_groups <span class="op">=</span> [<span class="st">"18-34"</span>, <span class="st">"35-49"</span>, <span class="st">"50+"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -449,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Top 14 countries by response rate to the social media question.</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.801782Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.801715Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.805464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.805235Z&quot;}}" data-execution_count="5">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.151175Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.151113Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.154891Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.154672Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_column(column, fmt):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Format column using python format"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fmt(s):</span>
@@ -545,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.806504Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.806443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:35.809437Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:35.809233Z&quot;}}" data-execution_count="6">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.155927Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.155857Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.158989Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.158772Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>segment_data <span class="op">=</span> (</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    point_data.group_by(<span class="st">"country"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -647,7 +639,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Format the floating point data that will be plotted into strings</p>
 <p>First plot</p>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:35.810541Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:35.810477Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.098226Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.097986Z&quot;}}" data-execution_count="7">
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.160043Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.159983Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.463510Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.463279Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>xgap <span class="op">=</span> <span class="dv">112</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -718,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Tweak it</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.099403Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.099305Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.296678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.296427Z&quot;}}" data-execution_count="8">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.464689Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.464585Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.669418Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.669172Z&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
@@ -871,7 +863,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Comparing a group of ranked items at two different times</em></p>
 <p>Read the data.</p>
 <p>Source: World Bank - Infanct Mortality Rate (per 1,000 live births)b</p>
-<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.297858Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.297783Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.302796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.302576Z&quot;}}" data-execution_count="9">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.670689Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.670592Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.676838Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.676627Z&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pl.read_csv(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/API_SP.DYN.IMRT.IN_DS2_en_csv_v2/API_SP.DYN.IMRT.IN_DS2_en_csv_v2.csv"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    skip_rows<span class="op">=</span><span class="dv">4</span>,</span>
@@ -1338,7 +1330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The data includes regional aggregates. To tell apart the regional aggregates we need the metadata. Every row in the data table has a corresponding row in the metadata table. Where the row has regional aggregate data, the <code>Region</code> column in the metadata table is <code>NaN</code>.</p>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.303836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.303781Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.307252Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.307056Z&quot;}}" data-execution_count="10">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.677898Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.677757Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.681773Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.681595Z&quot;}}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordered_categorical(s, categories<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Create a categorical ordered according to the categories</span></span>
@@ -1452,7 +1444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Remove the regional aggregates, to create a table with only country data</p>
-<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.308253Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.308205Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.312112Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.311899Z&quot;}}" data-execution_count="11">
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.682713Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.682649Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.686657Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.686476Z&quot;}}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="op">=</span> data.join(metadata, on<span class="op">=</span><span class="st">"code"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>country_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1922,7 +1914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We are interested in the changes in rank between 1960 and 2015. To plot a reasonable sized graph, we randomly sample 35 countries.</p>
-<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.313060Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.313013Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.316507Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.316324Z&quot;}}" data-execution_count="12">
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.687598Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.687536Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.691364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.691188Z&quot;}}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="op">=</span> (</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    country_data.drop_nulls(subset<span class="op">=</span>[<span class="st">"y1960"</span>, <span class="st">"y2015"</span>])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">35</span>, seed<span class="op">=</span><span class="dv">123</span>)</span>
@@ -2415,7 +2407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>First graph</p>
-<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.317473Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.317420Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.419321Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.419110Z&quot;}}" data-execution_count="13">
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.692283Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.692226Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.797550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.797305Z&quot;}}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    ggplot(sampled_data)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(<span class="dv">1</span>, <span class="st">"y1960_rank"</span>, label<span class="op">=</span><span class="st">"country"</span>), ha<span class="op">=</span><span class="st">"right"</span>, size<span class="op">=</span><span class="dv">9</span>)</span>
@@ -2436,7 +2428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It has the form we want, but we need to tweak it.</p>
-<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-28T10:45:36.420431Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-28T10:45:36.420353Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-28T10:45:36.573758Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-28T10:45:36.573471Z&quot;}}" data-execution_count="14">
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:12.799208Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:12.799126Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:12.960901Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:12.960637Z&quot;}}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Text colors</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>black1 <span class="op">=</span> <span class="st">"#252525"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>black2 <span class="op">=</span> <span class="st">"#222222"</span></span>
