@@ -40,13 +40,6 @@ for python_file in "${HOMEPAGE_DIR}"/features/code/*.py; do
   sed -re 's^(ggplot|aes|geom_smooth|geom_point|facet_wrap|scale_y_continuous|coord_fixed|labs|theme_tufte|theme|element_blank|element_line)^<a class="code_xref" href="/reference/\1.html">\1</a>^g' > "$html_file"
 done
 
-# Create thumbnails
-for img in "${HOMEPAGE_DIR}"/banner/img/highlights/*.png; do
-  filename="${HOMEPAGE_DIR}/banner/img/thumbnails/$(basename "${img}")"
-  echo Processing "${filename}...";
-  magick "${img}" -resize '228x140^>' -strip "${filename}"
-done
-
 # Render plot images for the features
 for python_file in "${HOMEPAGE_DIR}"/features/code/*.py; do
   id=$(basename "${python_file::-3}")
