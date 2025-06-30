@@ -1,0 +1,143 @@
+---
+title: "Analysis of Horror Movies"
+author: "Deepali Kank"
+jupyter: python3
+categories: [area, contest]
+---
+
+We analyze the trends and box office success of horror movies over the years.
+We will explore the data to understand the rise of horror films and identify the top-grossing english movies per decade.
+
+{{< include _setup.qmd >}}
+{{< include _add_img.qmd >}}
+
+```{python}
+import polars as pl
+from plotnine import *
+import datetime
+```
+
+## Read the movie data
+
+```{python}
+movies = pl.read_csv(
+    "data/english_horror_movies.csv",
+    schema_overrides={"release_date": pl.Date},
+).with_columns(
+    year=pl.col("release_date").dt.year(),
+    revenue_millions=(pl.col("revenue") / 1_000_000).round(0).cast(int),
+)
+movies.head()
+```
+
+## Get a tally of the movies per year
+
+```{python} 
+movies_per_year = movies.group_by("year").len("count").sort("year")
+movies_per_year.head()
+```
+
+## Calculate the top movies per decade
+
+```{python} 
+top_movies_per_decade = movies.with_columns(
+    decade=(pl.col("year") // 10 ) * 10
+).filter(
+    pl.col("year") < 2020,
+).sort(
+    "revenue_millions",
+    descending=True
+).group_by(
+    "decade",
+).first(
+).select(
+    "title", "year", "decade", "revenue_millions"
+).sort(
+    "decade"
+).with_columns(
+   label=pl.col("title") + "\n$" + pl.col("revenue_millions").cast(str) + "M",
+    # Keep the labels in order of revenue, and adjust them
+    # vertically so that they do not overlap
+    label_position=pl.when(
+        pl.col("title") == "Van Helsing"
+    ).then(
+        pl.col("revenue_millions") + 300
+    ).otherwise(
+        pl.col("revenue_millions") + 200
+    ),
+)
+top_movies_per_decade
+```
+
+For the contest submission, Deepali used _Corbel_, a proprietary font that aligns well with the theme of the plot.
+Since _Corbel_ isn't freely available, we instead use a generic sans-serif font available on the system; most likely _Arial_, if it's installed.
+
+```{python}
+body_font = "sans-serif"
+```
+
+## Plot
+
+```{python}
+(
+    ggplot(movies_per_year, aes("year", "count"))
+    + geom_area(fill="#911010")
+    + geom_line(color="#F40D0D", size=1.3)
+    + geom_segment(
+        aes(x="year", xend="year", y=0, yend="label_position"),
+        top_movies_per_decade,
+        color="#ADB5BD",
+        linetype="dashed",
+        size=0.4,
+    )
+    + geom_label(
+        aes(
+            "year",
+            "label_position",
+            label="label"
+        ),
+        top_movies_per_decade,
+        color="#DEE2E6",
+        fill="black",
+        size=8,
+        lineheight=1.5,
+    )
+    + labs(
+        y="Number of Horror Movies",
+        title="The Rise of Horror: A Century of Screams and Box Office Success",
+        subtitle="Charting the exponential growth of horror films and their top-grossing entries per decade",
+        caption="Graphic: Deepali Kank"
+    )
+    + scale_x_continuous(breaks=range(1950, 2022, 10), expand=(0, 1, 0, 0))
+    + scale_y_continuous(expand=(0, 0))
+    + theme(
+        figure_size=(8, 6),
+        plot_margin=0.015,
+        panel_background=element_rect(fill="black"),
+        plot_background=element_rect(fill="black"),
+        plot_title=element_text(size=18),
+        text=element_text(color="#D7DADD", family=body_font),
+        panel_grid=element_blank(),
+        panel_grid_major_x=element_blank(),
+        axis_ticks=element_blank(),
+        plot_title_position="plot",
+        axis_title_x=element_blank(),
+        axis_text_x=element_text(margin={"t": 5, "units": "pt"}),
+        plot_caption=element_text(margin={"t": 10, "units": "pt"}),
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
+Where to find Deepali Kank:
+
+{{< fa brands github >}} [@deepdk](https://github.com/deepdk)
+
+{{< fa solid link >}} [https://deepalikank.in](https://deepalikank.in)
+
+{{< fa brands linkedin >}} [in/deepali-kank](https://www.linkedin.com/in/deepali-kank/)
+
+{{< fa brands x-twitter >}} [@deepalikank](https://x.com/deepalikank)
+
+{{< fa brands bluesky >}} [@deepalikank.in](https://bsky.app/profile/deepalikank.in)
