@@ -73,7 +73,7 @@ flights.head()
 )
 ```
 
-Last tweaks, put `January` at the top and remove the axis ticks and plot background.
+Last tweaks, put `January` at the top and remove the axis titles, axis ticks and plot background.
 
 ```{python}
 
@@ -84,6 +84,7 @@ Last tweaks, put `January` at the top and remove the axis ticks and plot backgro
     + scale_color_manual(["white", "black"])  # new
     + scale_y_discrete(limits=months[::-1])  # new
     + theme(  # new
+        axis_title=element_blank(),
         axis_ticks=element_blank(),
         panel_background=element_rect(fill="white"),
     )
