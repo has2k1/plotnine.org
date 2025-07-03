@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>scale_color_discrete – plotnine 0.15.0a2</title>
+    <title>scale_color_discrete – plotnine 0.15.0a6</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-70bd9803da433bc133ca15e7ddddcca9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
      <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -191,9 +191,9 @@
     "search-label": "Search"
   }
 }</script>  <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>  
-      <meta property="og:title" content="plotnine 0.15.0a2">
+      <meta property="og:title" content="plotnine 0.15.0a6">
 <meta property="og:image" content="https://plotnine.org/reference/examples/scale_color_discrete_files/figure-html/cell-4-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a6">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -213,7 +213,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a6</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -238,10 +238,6 @@
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -254,10 +250,6 @@
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -305,7 +297,7 @@
 <div id="08c41047-a13a-439c-889d-c1a2469307c6" class="cell markdown">
 <p>Make some data</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="65262c66-751d-4da9-bf99-ebb942ef217c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:38.757261Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:38.757173Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:38.759237Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:38.758955Z&quot;}}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="65262c66-751d-4da9-bf99-ebb942ef217c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.455290Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.455211Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.457173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.456966Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">9</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    {</span>
@@ -319,7 +311,7 @@
 <div id="88015bd2-cd0a-4d03-8588-83fb622c3947" class="cell markdown">
 <p>Draw an initial plot.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="e81af6ab-5d38-4e34-aa25-269f91e14765" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:38.760281Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:38.760224Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:38.934717Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:38.934496Z&quot;}}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="e81af6ab-5d38-4e34-aa25-269f91e14765" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.458163Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.458101Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.638318Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.638074Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
@@ -335,7 +327,7 @@
 <div id="956ade56-1373-44f9-a1a1-c67136f6075b" class="cell markdown">
 <p>Mapping the <code>fill</code> to a discrete variable uses the default color palette from the <code>scale_fill_discrete</code></p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="951461e6-5a2b-477c-864c-706133571b25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:38.935857Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:38.935778Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:38.984633Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:38.984407Z&quot;}}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="951461e6-5a2b-477c-864c-706133571b25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.639458Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.639369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.688985Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.688753Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>)) <span class="co"># changed</span></span>
@@ -351,7 +343,7 @@
 <div id="3cdac342-1ecd-4e8a-b70b-abc5fdc8d64b" class="cell markdown">
 <p>Assuming we want to visualise a “model” on top of the data. We could add this model data as points and a path through the points.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="d23a3c92-7f8b-4a9a-ad63-4c7d9e6548e9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:38.985724Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:38.985666Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:39.051554Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:39.051331Z&quot;}}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="d23a3c92-7f8b-4a9a-ad63-4c7d9e6548e9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.690046Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.689984Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.756465Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.756218Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>))</span>
@@ -369,7 +361,7 @@
 <div id="4cc92425-9d31-473f-85fd-145c1e18ddd3" class="cell markdown">
 <p>There is a clash of colors between the actual data (the bars) and the fitted model (the points and lines). A simple solution is to adjust the colors of the fitted model slightly. We do that by varying the lightness of the default color scale, make them a little darker.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="a7c8fb66-a6d7-4b2d-a60c-5de2298bf85f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:39.052692Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:39.052607Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:39.118393Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:39.118167Z&quot;}}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="a7c8fb66-a6d7-4b2d-a60c-5de2298bf85f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.757610Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.757513Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.824282Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.824042Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>))</span>
@@ -388,7 +380,7 @@
 <div id="f39cc7f8-2a56-4bc0-bc20-c8f9dfda1a73" class="cell markdown">
 <p>There are two main pieces of information in the plot, but we a single combined legend. Since we use separate aesthetics for the actual data and fitted model, we can have distinct legends for both by giving a name to the scales associated with each.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="3a277942-30bb-4d39-8201-8d0eb0cea5fe" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:39.119486Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:39.119423Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:39.191933Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:39.191720Z&quot;}}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="3a277942-30bb-4d39-8201-8d0eb0cea5fe" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.825468Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.825400Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.897525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.897294Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>))</span>
@@ -408,7 +400,7 @@
 <div id="4909b02d-f8f8-4197-8ab0-af23a1863548" class="cell markdown">
 <p>Alternatively, we could use the <code>labs</code> class to set the names.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="b791b949-2ed8-4f06-8d14-90ed8fdb99f3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:39.193031Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:39.192971Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:39.264025Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:39.263807Z&quot;}}" data-execution_count="8">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="b791b949-2ed8-4f06-8d14-90ed8fdb99f3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.898676Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.898614Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:37.971314Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:37.971085Z&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>))</span>
@@ -428,7 +420,7 @@
 <div id="6bf3c896-6e19-49d0-8b24-85dd32abd593" class="cell markdown">
 <p>Or we could use <code>guide_legend</code> to rename the titles of the legends.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="8670125e-e47b-4d17-819b-17166de35258" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-05-26T16:21:39.265078Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-05-26T16:21:39.265021Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-05-26T16:21:39.336791Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-05-26T16:21:39.336571Z&quot;}}" data-execution_count="9">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="8670125e-e47b-4d17-819b-17166de35258" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:37.972400Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:37.972339Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:38.047444Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:38.047213Z&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(aes(<span class="st">"x"</span>, <span class="st">"y"</span>, fill<span class="op">=</span><span class="st">"cat"</span>))</span>

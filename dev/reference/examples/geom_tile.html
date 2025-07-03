@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Periodic Table – plotnine 0.15.0a2</title>
+<title>Periodic Table – plotnine 0.15.0a6</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-70bd9803da433bc133ca15e7ddddcca9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Periodic Table – plotnine 0.15.0a2">
+<meta property="og:title" content="Periodic Table – plotnine 0.15.0a6">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_tile_files/figure-html/cell-9-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a6">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a6</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -150,10 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -166,10 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -222,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:40.448847Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:40.448495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.120173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.119487Z&quot;}}" data-execution_count="1">
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.494199Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.493485Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.725505Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.725179Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -245,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Graphing of highly organised tabular information</em></p>
 <p>Read the data.</p>
-<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.123810Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.123499Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.146818Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.146244Z&quot;}}" data-scrolled="true" data-execution_count="2">
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.726778Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.726697Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.734389Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.734172Z&quot;}}" data-scrolled="true" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elements <span class="op">=</span> pd.read_csv(<span class="st">"data/elements.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>elements.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -408,24 +400,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Alter the data types of the information that will be plotted. This makes it convenient to work with.</p>
-<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.186535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.186288Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.192658Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.192088Z&quot;}}" data-execution_count="3">
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.746507Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.746422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.748870Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.748668Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"group"</span>] <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> g <span class="op">==</span> <span class="st">"-"</span> <span class="cf">else</span> <span class="bu">int</span>(g) <span class="cf">for</span> g <span class="kw">in</span> elements.group]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"bonding type"</span>] <span class="op">=</span> elements[<span class="st">"bonding type"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"metal"</span>] <span class="op">=</span> elements[<span class="st">"metal"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"atomic_number"</span>] <span class="op">=</span> elements[<span class="st">"atomic number"</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The periodic table has two tables, a <code>top</code> and <code>bottom</code>. The elements in the <code>top</code> have groups, and those in the <code>bottom</code> have no groups. We make separate dataframes for both – they have different alignments.</p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.195615Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.195369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.205450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.204917Z&quot;}}" data-execution_count="4">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.749891Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.749818Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.753531Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.753294Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> elements.query(<span class="st">"group != -1"</span>).copy()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bottom <span class="op">=</span> elements.query(<span class="st">"group == -1"</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>top</code> table is nice and well behaving. The <code>x</code> location of the elements indicate the group and the <code>y</code> locations the period.</p>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.208470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.208242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.211978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.211422Z&quot;}}" data-execution_count="5">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.754501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.754444Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.755996Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.755809Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"x"</span>] <span class="op">=</span> top.group</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"y"</span>] <span class="op">=</span> top.period</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>bottom</code> table has 2 rows, with the <code>atomic number</code> increasing to the right. We create an <code>x</code> based on the <code>atomic number</code> and add a <code>horizontal shift</code>. As the dataframe is ordered by <code>atomic number</code>, the operation is easier. The <code>bottom</code> elements are labelled with a “period”. We add a vertical shift to give us a good <code>y</code> location that gives the appearance of two tables.</p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.214871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.214592Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.218924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.218361Z&quot;}}" data-execution_count="6">
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.756973Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.756898Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.758493Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.758305Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nrows <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>hshift <span class="op">=</span> <span class="fl">3.5</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>vshift <span class="op">=</span> <span class="dv">3</span></span>
@@ -433,12 +425,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bottom[<span class="st">"y"</span>] <span class="op">=</span> bottom.period <span class="op">+</span> vshift</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will be plotting using tiles and we want to have some space between the tiles. We have set the <code>x</code> and <code>y</code> locations above to take up a unit of space. To get a good effect, the tile dimensions should be less than 1.</p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.221812Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.221600Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:41.224575Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:41.223891Z&quot;}}" data-execution_count="7">
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.759400Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.759349Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.760633Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.760437Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tile_width <span class="op">=</span> <span class="fl">0.95</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tile_height <span class="op">=</span> <span class="fl">0.95</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>First peak</p>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:41.227375Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:41.227141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.338268Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.337655Z&quot;}}" data-execution_count="8">
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.761544Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.761482Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.950203Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.949962Z&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -453,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The table upside down. We could have been more careful when creating the <code>y</code> locations since the periods are drawn in descending order. But, we can fix that with a <code>reverse</code> scale.</p>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.341767Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.341453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.589115Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.588544Z&quot;}}" data-execution_count="9">
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.951466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.951372Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:19.996449Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:19.996219Z&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -469,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let us apply some color to it.</p>
-<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.592122Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.591897Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.941724Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.941171Z&quot;}}" data-execution_count="10">
+<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:19.997597Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:19.997528Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.064383Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.064151Z&quot;}}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)  <span class="co"># new</span></span>
@@ -490,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Goal: To add text to the tiles</p>
 <p>There are four pieces of text that we shall add to the tiles, that is 4 <code>geom_text</code> additions. As we have two tables, that comes to 8 <code>geom_text</code> additions. When any <code>geom</code> is added to a <code>ggplot</code> object, behind the scenes a layer is created and added. We can create a group of layers that can be added to a <code>ggplot</code> object in one go using a list.</p>
 <p>We use a function that accepts a dataframe, and returns a list of geoms.</p>
-<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.944538Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.944312Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:42.948435Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:42.947893Z&quot;}}" data-execution_count="11">
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.065516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.065455Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.067361Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.067160Z&quot;}}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner_text(data):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    layers <span class="op">=</span> [</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        geom_text(</span>
@@ -513,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> layers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:42.951151Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:42.950936Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:44.075550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:44.075009Z&quot;}}" data-execution_count="12">
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.068333Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.068276Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.316320Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.316048Z&quot;}}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -532,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It is crowded in there and the tiles do not have equal dimentions. Use the <code>theme</code> create a larger figure. <code>coord_equal</code> give us equal units along the axes, this makes the tiles square.</p>
-<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:44.080976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:44.080744Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.605586Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.605058Z&quot;}}" data-execution_count="13">
+<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.317584Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.317515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.574697Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.574484Z&quot;}}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -554,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It is has all the information we want, except one for complication. Elements <code>Lu</code> and <code>Lr</code> also belong in the bottom table. One way to show this duality is to have tiles with two colors split horizontally.</p>
 <p>The colors are determined by the <code>metal</code> field, and we know the <code>x</code> and <code>y</code> locations. We create a dataframe with this information to create a half-tile. A half-tile is centered at the quarter mark.</p>
-<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.610951Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.610714Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:45.614671Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:45.614089Z&quot;}}" data-execution_count="14">
+<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.575929Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.575846Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.577623Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.577423Z&quot;}}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>split_df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"x"</span>: <span class="dv">3</span> <span class="op">-</span> tile_width <span class="op">/</span> <span class="dv">4</span>,</span>
@@ -563,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:45.617363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:45.617173Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:47.323156Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:47.322454Z&quot;}}" data-execution_count="15">
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.578720Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.578657Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:20.847187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:20.846968Z&quot;}}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -585,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Change the <code>fill</code> color for a different look and use a <code>theme</code> that clears out all the clutter.</p>
-<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:47.330052Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:47.329815Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.876387Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.875748Z&quot;}}" data-execution_count="16">
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:20.848377Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:20.848295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.105771Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.105538Z&quot;}}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> guides</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
@@ -616,13 +608,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Add the group number along the top most row of each column, and period number along the left side of the top table.</p>
 <p>For the period number, we set the <code>breaks</code> on the <code>y scale</code>.</p>
-<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.881441Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.881209Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:48.887917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:48.887372Z&quot;}}" data-execution_count="17">
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.107194Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.107106Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.109886Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.109702Z&quot;}}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The location of the group number is the top most (and therefore smallest period)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># element with the group</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>groupdf <span class="op">=</span> top.groupby(<span class="st">"group"</span>).agg(y<span class="op">=</span>(<span class="st">"period"</span>, <span class="st">"min"</span>)).reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally,</p>
-<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:48.890730Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:48.890515Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.363011Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.362379Z&quot;}}" data-execution_count="18">
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.110915Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.110840Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.443422Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.443200Z&quot;}}" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, tiles</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -673,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="annotated-heatmap">Annotated Heatmap</h3>
 <p><em>Conditinous data recorded at discrete time intervals over many cycles</em></p>
 <p>Read data</p>
-<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.368154Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.367881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:50.376977Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:50.376500Z&quot;}}" data-execution_count="19">
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.444637Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.444560Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.448051Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.447818Z&quot;}}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(<span class="st">"data/flights.csv"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> flights[<span class="st">"month"</span>].unique()  <span class="co"># Months ordered January, ..., December</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"month"</span>] <span class="op">=</span> pd.Categorical(flights[<span class="st">"month"</span>], categories<span class="op">=</span>months)</span>
@@ -728,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:50.379762Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:50.379537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.535730Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.535193Z&quot;}}" data-execution_count="20">
+<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.449046Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.448994Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.633874Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.633653Z&quot;}}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We use 'factor(year)' -- a discrete -- instead of 'year' so that all the years</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># are displayed along the x-axis.</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The .95s create spacing between the tiles.</span></span>
@@ -747,7 +739,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>That looks like what we want, but it could do with a few tweaks. First the contrast between the tiles and the text is not good for the lower passenger numbers. We use <code>pd.cut</code> to partition the number of passengers into two <em>discrete</em> groups.</p>
-<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.539519Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.539300Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:51.547425Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:51.546964Z&quot;}}" data-execution_count="21">
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.634978Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.634898Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.637862Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.637663Z&quot;}}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"p_group"</span>] <span class="op">=</span> pd.cut(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    flights[<span class="st">"passengers"</span>], (<span class="dv">0</span>, <span class="dv">300</span>, <span class="dv">1000</span>), labels<span class="op">=</span>(<span class="st">"low"</span>, <span class="st">"high"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -808,7 +800,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:51.550043Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:51.549849Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:52.495780Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:52.495276Z&quot;}}" data-execution_count="22">
+<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.638903Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.638835Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:21.826660Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:21.826430Z&quot;}}" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    ggplot(flights, aes(<span class="st">"factor(year)"</span>, <span class="st">"month"</span>, fill<span class="op">=</span><span class="st">"passengers"</span>))</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(aes(width<span class="op">=</span><span class="fl">0.95</span>, height<span class="op">=</span><span class="fl">0.95</span>))</span>
@@ -824,7 +816,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Last tweaks, put <code>January</code> at the top and remove the axis ticks and plot background.</p>
-<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:52.499831Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:52.499570Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:53.459675Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:53.459132Z&quot;}}" data-execution_count="23">
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:21.827798Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:21.827712Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:22.007826Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:22.007615Z&quot;}}" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, tiles</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>(</span>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Line plots – plotnine 0.15.0a2</title>
+    <title>Line plots – plotnine 0.15.0a6</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bf4b79f1ebaa1752a05d8c7b32333050.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-70bd9803da433bc133ca15e7ddddcca9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
      <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -193,9 +193,9 @@
 }</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>  
-      <meta property="og:title" content="Line plots – plotnine 0.15.0a2">
+      <meta property="og:title" content="Line plots – plotnine 0.15.0a6">
 <meta property="og:image" content="https://plotnine.org/reference/examples/geom_line_files/figure-html/cell-5-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a6">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1280">
 </head>
@@ -215,7 +215,7 @@
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a6</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -240,10 +240,6 @@
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -256,10 +252,6 @@
         <li>
     <a class="dropdown-item" href="../../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -312,7 +304,7 @@
   
 
 
-</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:10.732818Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:10.732483Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.521629Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.520937Z&quot;}}" data-execution_count="1">
+</header>     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:54.943924Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:54.943830Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.189901Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.189566Z&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -328,7 +320,7 @@
 <div id="cell-2" class="cell markdown">
 <p><code>geom_line()</code> connects the dots, and is useful for time series data.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.525190Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.524926Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.538846Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.538268Z&quot;}}" data-execution_count="2">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.191227Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.191156Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.197347Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.197151Z&quot;}}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>meat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -413,7 +405,7 @@
 <div id="cell-4" class="cell markdown">
 <p>Make it tidy.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.581108Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.580833Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:11.592856Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:11.592186Z&quot;}}" data-execution_count="3">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.209397Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.209312Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.213473Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.213272Z&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meat_long <span class="op">=</span> meat.melt(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"date"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"beef"</span>, <span class="st">"veal"</span>, <span class="st">"pork"</span>, <span class="st">"lamb_and_mutton"</span>, <span class="st">"broilers"</span>, <span class="st">"turkey"</span>],</span>
@@ -475,7 +467,7 @@
 <div id="cell-6" class="cell markdown">
 <p>First try</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:11.595878Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:11.595634Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.012575Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.011988Z&quot;}}" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.214488Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.214425Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.463933Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.463690Z&quot;}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -492,7 +484,7 @@
 <div id="cell-8" class="cell markdown">
 <p>It looks crowded because each there is more than one monthly entry at each x-point. We can get a single trend line by getting a monthly aggregate of the weights.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.015534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.015226Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.025519Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.024894Z&quot;}}" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.465134Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.465023Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.468866Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.468647Z&quot;}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg <span class="op">=</span> meat_long.groupby(<span class="st">"date"</span>).agg({<span class="st">"weight"</span>: <span class="st">"sum"</span>}).reset_index()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -575,7 +567,7 @@
 <h3 class="anchored" data-anchor-id="a-single-trend-line">A Single Trend Line</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.028516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.028287Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.273710Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.273034Z&quot;}}" data-execution_count="6">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.469923Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.469863Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.517500Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.517289Z&quot;}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -591,7 +583,7 @@
 <div id="cell-12" class="cell markdown">
 <p>Add some style</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.276520Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.276286Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.563650Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.563143Z&quot;}}" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.518539Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.518459Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.574519Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.574307Z&quot;}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
@@ -616,7 +608,7 @@
 <h3 class="anchored" data-anchor-id="multiple-trend-lines">Multiple Trend Lines</h3>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.566507Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.566276Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:13.904212Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:13.903640Z&quot;}}" data-execution_count="8">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.575611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.575546Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.645835Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.645619Z&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, group<span class="op">=</span><span class="st">"animal"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -635,7 +627,7 @@
 <div id="cell-17" class="cell markdown">
 <p>Make each group be a different color.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:13.907583Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:13.907352Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:14.330240Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:14.329688Z&quot;}}" data-execution_count="9">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.646979Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.646892Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.729762Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.729540Z&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
@@ -660,7 +652,7 @@
 <div id="cell-20" class="cell markdown">
 <p>Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the <code>size</code> of the line, <code>size</code> of the text and the number of grid lines.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2024-03-05T15:41:14.333611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T15:41:14.333383Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T15:41:15.119156Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T15:41:15.118578Z&quot;}}" data-execution_count="10">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:06:55.730928Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:06:55.730842Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:06:55.857917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:06:55.857703Z&quot;}}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, lines</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> titled(strip_title):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join(s.title() <span class="cf">if</span> s <span class="op">!=</span> <span class="st">"and"</span> <span class="cf">else</span> s <span class="cf">for</span> s <span class="kw">in</span> strip_title.split(<span class="st">"_"</span>))</span>

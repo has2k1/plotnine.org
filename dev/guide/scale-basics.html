@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scales, legends, and guides – plotnine 0.15.0a2</title>
+<title>Scales, legends, and guides – plotnine 0.15.0a6</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4ed5bcecf48ca55591710b980d76cf63.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d6bd5c7882def3fd55ae090392f58760.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,10 +108,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Scales, legends, and guides – plotnine 0.15.0a2">
+<meta property="og:title" content="Scales, legends, and guides – plotnine 0.15.0a6">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/scale-basics_files/figure-html/cell-3-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a2">
+<meta property="og:site_name" content="plotnine 0.15.0a6">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a2</span>
+    <span class="navbar-title">plotnine 0.15.0a6</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -149,10 +149,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -165,10 +161,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../external-resources.html">
  <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -204,8 +196,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation</span></a>
+  <a href="../guide/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -324,8 +316,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../guide/install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../guide/maps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operators: `+`, `&gt;&gt;`</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -348,10 +352,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#scale-basics" id="toc-scale-basics" class="nav-link" data-scroll-target="#scale-basics">Scale basics</a></li>
-  <li><a href="#types-of-scales" id="toc-types-of-scales" class="nav-link" data-scroll-target="#types-of-scales">Types of scales</a>
+  <li><a href="#scale-parts" id="toc-scale-parts" class="nav-link" data-scroll-target="#scale-parts">Scale parts</a></li>
+  <li><a href="#varieties-of-scales" id="toc-varieties-of-scales" class="nav-link" data-scroll-target="#varieties-of-scales">Varieties of scales</a>
   <ul class="collapse">
   <li><a href="#default-scales" id="toc-default-scales" class="nav-link" data-scroll-target="#default-scales">Default scales</a></li>
-  <li><a href="#position-types" id="toc-position-types" class="nav-link" data-scroll-target="#position-types">Position types</a></li>
+  <li><a href="#position-scales" id="toc-position-scales" class="nav-link" data-scroll-target="#position-scales">Position scales</a></li>
   <li><a href="#identity-type" id="toc-identity-type" class="nav-link" data-scroll-target="#identity-type">Identity type</a></li>
   </ul></li>
   <li><a href="#name-to-set-guide-legend-labels" id="toc-name-to-set-guide-legend-labels" class="nav-link" data-scroll-target="#name-to-set-guide-legend-labels"><code>name=</code> to set guide (legend) labels</a></li>
@@ -390,7 +395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Scales specify how aesthetic mappings are ultimately styled as colors, shapes, positions, sizes, and more. This includes choosing the colors used or scaling the size of points based on values of data.</p>
 <p>Scale functions follow the naming pattern <code>scale_{aesthetic}_{type}</code>, where aesthetic is the name of the mapping (e.g.&nbsp;<code>x</code>, <code>y</code>, <code>fill</code>, <code>shape</code>), and type is the type of scale (e.g.&nbsp;<code>continuous</code>, <code>discrete</code>, <code>color</code>, <code>shape</code>).</p>
 <p>Plotnine produces a legend automatically, which tells viewers how to map scale values back to the underlying data. These mappings back to data are called guides.</p>
-<p>TODO: a graphic with annotations around scales, legends, and guides</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="You will learn">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -423,13 +427,29 @@ Key points
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO</p>
+<ul>
+<li>Scale functions follow the pattern <code>scale_{aesthetic}_{type}</code> (e.g.&nbsp;<code>scale_color_continuous</code>)</li>
+<li>Scales have default types based on the aesthetic and data.</li>
+<li>Scales have an identity type that uses data values directly.</li>
+<li>Position scale types include log and reverse.</li>
+<li>Common scale arguments:
+<ul>
+<li><code>name=</code> sets guide names.</li>
+<li><code>values=</code> sets manual styles (e.g.&nbsp;color or shape).</li>
+<li><code>breaks=</code> sets pieces like axis ticks.</li>
+<li><code>limits=</code> restricts the range of the scale.</li>
+<li><code>labels=</code> sets custom labels for breaks.</li>
+</ul></li>
+<li>Legends can be merged by giving scales the same name.</li>
+<li><code>theme(legend_position=...)</code> sets the position of the legend.</li>
+<li>The <code>guide_*()</code> functions customize pieces like reversing a colorbar.</li>
+</ul>
 </div>
 </div>
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="6fab118e" class="cell" data-execution_count="1">
+<div id="ce243898" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -438,7 +458,7 @@ Key points
 <h2 class="anchored" data-anchor-id="scale-basics">Scale basics</h2>
 <p>In order to illustrate scales, we’ll show two very different uses: manually mapping values of data to colors, and selecting a color palette.</p>
 <p>For manually mapping values to colors, we can use a manual type scale. For example, the code below uses <code>scale_color_manual()</code> to map two values in the <code>class</code> column to classes to red and blue.</p>
-<div id="e2064e4f" class="cell" data-execution_count="2">
+<div id="0ec52285" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -458,7 +478,7 @@ Key points
 </div>
 <p>Notice that “2seater” is red, “compact” is blue, and all other points are grey. The box on the right side of the plot with “Car class” in it is the legend. The piece inside it showing the colors with “2seater” and “compact” labeled is called a guide.</p>
 <p>Generally, when using scales you’ll often want to use a scale that can automatically map values to colors. For example, <code>scale_color_brewer()</code> automatically applies a <a href="https://colorbrewer2.org/">ColorBrewer</a> palette.</p>
-<div id="7d32b6ac" class="cell" data-execution_count="3">
+<div id="0fb5a42e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -474,8 +494,20 @@ Key points
 </div>
 <p>Notice that there are 7 colors in the plot, one for each level of the <code>class</code> column.</p>
 </section>
-<section id="types-of-scales" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-scales">Types of scales</h2>
+<section id="scale-parts" class="level2">
+<h2 class="anchored" data-anchor-id="scale-parts">Scale parts</h2>
+<p>Scales have many parts, including the overall guide, breaks, break labels, and break values (shown below).</p>
+<p><img src="./assets/plot-guides-marked.png" class="img-fluid"></p>
+<p>Notice the pieces marked in the diagram above:</p>
+<ul>
+<li><strong>Guide</strong>: the x-axis, y-axis, and the color guide on the right.</li>
+<li><strong>Breaks</strong>: the data points where pieces like labels are applied.</li>
+<li><strong>Break labels</strong>: the text displayed for each break.</li>
+<li><strong>Break values</strong>: pieces like the position on the axis, or key color in the color guide for a break.</li>
+</ul>
+</section>
+<section id="varieties-of-scales" class="level2">
+<h2 class="anchored" data-anchor-id="varieties-of-scales">Varieties of scales</h2>
 <section id="default-scales" class="level3">
 <h3 class="anchored" data-anchor-id="default-scales">Default scales</h3>
 <p>Different scale types are applied by default, depending on the kind of data being mapped. For example, <code>scale_color_continuous()</code> is the default for numeric data, but <code>scale_color_discrete()</code> is the default for string data.</p>
@@ -487,7 +519,7 @@ Key points
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># defaults to scale_color_discrete</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="d4ac134d" class="cell quarto-layout-panel" data-execution_count="4" data-layout-nrow="1">
+<div id="d4802651" class="cell quarto-layout-panel" data-execution_count="4" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="1400"></p>
@@ -498,10 +530,10 @@ Key points
 </div>
 </div>
 </section>
-<section id="position-types" class="level3">
-<h3 class="anchored" data-anchor-id="position-types">Position types</h3>
+<section id="position-scales" class="level3">
+<h3 class="anchored" data-anchor-id="position-scales">Position scales</h3>
 <p>The <strong>position scales</strong> for the x- and y-axis also have many extra transformations available. For example, reversing or log transforming.</p>
-<div id="a2aec67f" class="cell" data-execution_count="5">
+<div id="9d864737" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> scale_x_reverse() <span class="op">+</span> scale_y_log10())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -515,7 +547,7 @@ Key points
 <section id="identity-type" class="level3">
 <h3 class="anchored" data-anchor-id="identity-type">Identity type</h3>
 <p>Finally, the scale <strong>identity type</strong> uses the values of the data as styles directly. For example, the code below sets the color of points to the values in the <code>my_color</code> column.</p>
-<div id="eebb5055" class="cell" data-execution_count="6">
+<div id="b27cc3cc" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
@@ -540,7 +572,7 @@ Key points
 <section id="name-to-set-guide-legend-labels" class="level2">
 <h2 class="anchored" data-anchor-id="name-to-set-guide-legend-labels"><code>name=</code> to set guide (legend) labels</h2>
 <p>Use the <code>name=</code> argument to scale functions to set the label of that scale’s guide.</p>
-<div id="e9439bbf" class="cell" data-execution_count="7">
+<div id="aa860b1e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -568,7 +600,7 @@ labs() shortcut
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>labs()</code> function is a convenient way to set names for guides in one place, along with other pieces like a title.</p>
-<div id="399f701b" class="cell" data-execution_count="8">
+<div id="cb6d4af0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -593,7 +625,7 @@ labs() shortcut
 <section id="values-for-manual-styles" class="level2">
 <h2 class="anchored" data-anchor-id="values-for-manual-styles"><code>values=</code> for manual styles</h2>
 <p>Use the <code>values=</code> argument to manually specify stylings like colors, shapes, or sizes of the scale. For example, the plot below manually sets point shapes (see the <a href="../guide/aesthetic-specification.html#point">aesthetic specification</a> for shape value options).</p>
-<div id="16888d0e" class="cell" data-execution_count="9">
+<div id="8587c99c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>keep_classes <span class="op">=</span> [<span class="st">"2seater"</span>, <span class="st">"compact"</span>, <span class="st">"midsize"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -613,7 +645,7 @@ labs() shortcut
 </section>
 <section id="breaks-for-axis-ticks-color-bins" class="level2">
 <h2 class="anchored" data-anchor-id="breaks-for-axis-ticks-color-bins"><code>breaks=</code> for axis ticks, color bins</h2>
-<div id="280aeca8" class="cell" data-execution_count="10">
+<div id="606b4a0a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(breaks <span class="op">=</span> [<span class="dv">4</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">5.5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -636,27 +668,24 @@ labs() shortcut
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"default"</span>)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>[<span class="dv">1950</span>, <span class="dv">1960</span>]) <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"zoom in"</span>)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>[<span class="dv">1800</span>, <span class="dv">2000</span>]) <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"zoom out"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/geoms/geom_path.py:100: PlotnineWarning: geom_path: Removed 87 rows containing missing values.</code></pre>
-</div>
-<div id="f35fd4a4" class="cell quarto-layout-panel" data-execution_count="12" data-layout-nrow="1">
+<div id="3627589c" class="cell quarto-layout-panel" data-execution_count="12" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-13-output-1.png" class="img-fluid" width="1400"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="scale-basics_files/figure-html/cell-13-output-3.png" class="img-fluid" width="1400"></p>
+<p><img src="scale-basics_files/figure-html/cell-13-output-2.png" class="img-fluid" width="1400"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="scale-basics_files/figure-html/cell-13-output-4.png" class="img-fluid" width="1400"></p>
+<p><img src="scale-basics_files/figure-html/cell-13-output-3.png" class="img-fluid" width="1400"></p>
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(huron, aes(<span class="st">"year"</span>, <span class="st">"level"</span>, color<span class="op">=</span><span class="st">"year"</span>)) <span class="op">+</span> geom_line() </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_continuous(limits<span class="op">=</span>[<span class="va">None</span>, <span class="dv">1900</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="56841fe0" class="cell quarto-layout-panel" data-execution_count="13" data-layout-nrow="1">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(huron, aes(<span class="st">"year"</span>, <span class="st">"level"</span>, color<span class="op">=</span><span class="st">"year"</span>)) <span class="op">+</span> geom_line() </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_continuous(limits<span class="op">=</span>[<span class="va">None</span>, <span class="dv">1900</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="81a4b98c" class="cell quarto-layout-panel" data-execution_count="13" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-14-output-1.png" class="img-fluid" width="1400"></p>
@@ -671,10 +700,10 @@ labs() shortcut
 <h2 class="anchored" data-anchor-id="labels-for-break-labels"><code>labels=</code> for break labels</h2>
 <p>Use the <code>labels=</code> argument to set custom labels for breaks. This argument supports either a function that operates on a list of breaks, or a list of labels.</p>
 <p>For example, the plot below sets the color labels to uppercase.</p>
-<div id="0db657e6" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_discrete(labels<span class="op">=</span><span class="kw">lambda</span> breaks: [s.upper() <span class="cf">for</span> s <span class="kw">in</span> breaks])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="07b400ff" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_discrete(labels<span class="op">=</span><span class="kw">lambda</span> breaks: [s.upper() <span class="cf">for</span> s <span class="kw">in</span> breaks])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -684,8 +713,8 @@ labs() shortcut
 </div>
 </div>
 <p>The plot below manually sets the x-axis breaks and labels.</p>
-<div id="4597a7b9" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(breaks <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>], labels <span class="op">=</span> [<span class="st">"TWO"</span>, <span class="st">"FOUR"</span>, <span class="st">"SIX"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="83e033d7" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(breaks <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>], labels <span class="op">=</span> [<span class="st">"TWO"</span>, <span class="st">"FOUR"</span>, <span class="st">"SIX"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -698,15 +727,15 @@ labs() shortcut
 <section id="legend-merging" class="level2">
 <h2 class="anchored" data-anchor-id="legend-merging">Legend merging</h2>
 <p>Sometimes aesthetics mapped to the same variable have their guides merged. For example, color and shape might be shown on the same guide. To split a merged guide, give the scales their own names.</p>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"factor(cyl)"</span>, shape<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_grey(base_size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Unmerged"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Merged"</span>) <span class="op">+</span> scale_shape_discrete(name<span class="op">=</span><span class="st">"Shape"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ec16d5a0" class="cell quarto-layout-panel" data-execution_count="16" data-layout-nrow="1">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"factor(cyl)"</span>, shape<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_grey(base_size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Unmerged"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Merged"</span>) <span class="op">+</span> scale_shape_discrete(name<span class="op">=</span><span class="st">"Shape"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8ef6adb2" class="cell quarto-layout-panel" data-execution_count="16" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-17-output-1.png" class="img-fluid" width="1400"></p>
@@ -720,14 +749,14 @@ labs() shortcut
 <section id="legend-position" class="level2">
 <h2 class="anchored" data-anchor-id="legend-position">Legend position</h2>
 <p>Use <code>theme(legend_position=...)</code> argument to set the position of the legend in a plot. The options are <code>"none"</code>, <code>"left"</code>, <code>"right"</code>, <code>"top"</code>, and <code>"bottom"</code>.</p>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"factor(cyl)"</span>, shape<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"top"</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="8acae0fb" class="cell quarto-layout-panel" data-execution_count="17" data-layout-nrow="1">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"factor(cyl)"</span>, shape<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eeb88b47" class="cell quarto-layout-panel" data-execution_count="17" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="1400"></p>
@@ -742,14 +771,14 @@ labs() shortcut
 <h2 class="anchored" data-anchor-id="guide-customization">Guide customization</h2>
 <p>Customize guides by passing arguments like <code>guide_colorbar()</code> or <code>guide_legend()</code> to the <code>guides()</code> function.</p>
 <p>The example below uses <code>guide_colorbar()</code> to reverse the colorbar (in the legend on the right; note the styles are the same, but the way the guide colorbar is shown is reversed).</p>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"cyl"</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(legend_key_size<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> guides(color<span class="op">=</span>guide_colorbar(reverse<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="61cee8c0" class="cell quarto-layout-panel" data-execution_count="18" data-layout-nrow="1">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"cyl"</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(legend_key_size<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> guides(color<span class="op">=</span>guide_colorbar(reverse<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e9104135" class="cell quarto-layout-panel" data-execution_count="18" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="1400"></p>
@@ -760,23 +789,23 @@ labs() shortcut
 </div>
 </div>
 <p>Here’s a funky example that merges guides for color, size, and shape by giving them all the same title in the legend.</p>
-<div id="c98dac6b" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">str</span>, <span class="bu">range</span>(<span class="dv">5</span>)))</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: ser, <span class="st">"y"</span>: ser, <span class="st">"p"</span>: ser, <span class="st">"q"</span>: ser, <span class="st">"r"</span>: ser})</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"p"</span>, size<span class="op">=</span><span class="st">"q"</span>, shape<span class="op">=</span><span class="st">"r"</span>))</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Merged color, size, and shape guides"</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        shape<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fe44f57e" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">str</span>, <span class="bu">range</span>(<span class="dv">5</span>)))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: ser, <span class="st">"y"</span>: ser, <span class="st">"p"</span>: ser, <span class="st">"q"</span>: ser, <span class="st">"r"</span>: ser})</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"p"</span>, size<span class="op">=</span><span class="st">"q"</span>, shape<span class="op">=</span><span class="st">"r"</span>))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Merged color, size, and shape guides"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        shape<span class="op">=</span>guide_legend(<span class="st">"THE GUIDE"</span>),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
