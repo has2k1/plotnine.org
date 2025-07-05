@@ -1,0 +1,89 @@
+---
+title: Same Color, Different Shade
+jupyter: python3
+author: Hassan Kibirige
+categories: [aesthetic evaluation, violin plot]
+---
+
+{{< include _setup.qmd >}}
+
+_Here is a dark art for you_.
+
+When visualising the same variable in different layers, and it is mapped to the same `color` or `fill` in both layers, you can slightly lighten or darken one of the layers.
+
+```{python}
+import numpy as np
+from plotnine.data import penguins
+from plotnine import (
+    ggplot,
+    aes,
+    geom_violin,
+    geom_segment,
+    facet_wrap,
+    labs,
+    scale_fill_manual,
+    stage,
+    after_stat,
+    after_scale,
+    element_rect,
+    theme_xkcd,
+    theme,
+)
+
+def darken(hex_colors, f):
+    """
+    Make colors darker by a factor f
+    """
+    from colorsys import rgb_to_hls, hls_to_rgb
+
+    def _hex_to_int(hx):
+        return int(hx, 16) / 255
+
+    def _hex_to_rgb(hex_color):
+        hxs = (hex_color[i:i+2] for i in (1, 3, 5))
+        return tuple(_hex_to_int(hx) for hx in hxs)
+
+    def _rgb_to_hex(rgb_color):
+         ints = (round(c * 255) for c in rgb_color)
+         hxs = ("{:#04X}".format(i)[2:] for i in ints)
+         return f"#{''.join(hxs)}"
+
+    def _darken(hex_color):
+        """
+        Make a hex color darker by a factor f
+        """
+        h, l, s = rgb_to_hls(*_hex_to_rgb(hex_color))
+        l = l * (1-f)
+        l = min(max(l, 0), 1)
+        return _rgb_to_hex(hls_to_rgb(h, l, s))
+
+    return [_darken(color) for color in hex_colors]
+```
+
+```{python}
+(
+    ggplot(penguins.dropna(), aes("species", "bill_length_mm", fill="species"))
+    + geom_violin(size=.25, show_legend=False)
+    + geom_segment(
+        aes(
+             x=stage("species", after_stat="x-.45"),
+             xend=stage("species", after_stat="x+.45"),
+             yend=after_stat("y"),
+             color=after_scale("darken(fill, 0.35)")
+        ),
+        stat="summary",
+        fun_y=np.mean,
+        size=1
+    )
+    + facet_wrap("sex")
+    + labs(x="Species", y="Bill Length (mm)")
+    + scale_fill_manual(values=["#1C9E78", "#D95F01", "#7570B3"])
+    + theme_xkcd()
+    + theme(
+        rect=element_rect(fill="#F5F2F1"),
+    )
+)
+```
+
+{{< include _save_img.qmd >}}
+
