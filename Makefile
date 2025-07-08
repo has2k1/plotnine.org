@@ -118,7 +118,7 @@ extensions:  ## Install quarto/pandoc extensions
 	cd $(SOURCE_DIR) && uv run quarto add --no-prompt quarto-ext/fontawesome
 
 ## Install build dependencies
-install:
+install: extensions
 	uv sync
 	npm install tailwindcss @tailwindcss/cli @iconify/tailwind4 @iconify-json/mdi
 	make -C plotnine/doc dependencies
