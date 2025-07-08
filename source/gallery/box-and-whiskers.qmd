@@ -1,0 +1,80 @@
+---
+title: "Whisker Wars: The Outliers are Out of the Box"
+jupyter: python3
+author: Gram Orsinium
+categories: [box plot]
+---
+
+{{< include _setup.qmd >}}
+
+```{python}
+import pandas as pd
+
+from plotnine import (
+    ggplot,
+    aes,
+    geom_boxplot,
+    geom_jitter,
+    scale_x_discrete,
+    coord_flip,
+)
+```
+
+
+*The boxplot compactly displays the distribution of a continuous variable.*
+
+Read more:
++ [wikipedia](https://en.wikipedia.org/wiki/Box_plot)
++ [ggplot2 docs](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
+
+
+```{python}
+flights = pd.read_csv("data/flights.csv")
+flights.head()
+```
+
+Basic boxplot
+
+```{python}
+months = [month[:3] for month in flights.month[:12]]
+print(months)
+```
+
+### A Basic Boxplot
+
+```{python}
+(
+    ggplot(flights)
+    + geom_boxplot(aes(x="factor(month)", y="passengers"))
+    + scale_x_discrete(labels=months, name="month")  # change ticks labels on OX
+)
+```
+
+Horizontal boxplot
+
+```{python}
+(
+    ggplot(flights)
+    + geom_boxplot(aes(x="factor(month)", y="passengers"))
+    + coord_flip()
+    + scale_x_discrete(
+        labels=months[::-1],
+        limits=flights.month[11::-1],
+        name="month",
+    )
+)
+```
+
+Boxplot with jittered points:
+
+```{python}
+(
+    ggplot(flights, aes(x="factor(month)", y="passengers"))
+    + geom_boxplot()
+    + geom_jitter()
+    + scale_x_discrete(labels=months, name="month")  # change ticks labels on OX
+)
+```
+
+{{< include _save_img.qmd >}}
+

@@ -114,8 +114,11 @@ checkout-main: submodules submodules-pull submodules-tags
 checkout-dev: submodules submodules-pull submodules-tags
 	cd plotnine && git fetch --depth=1 origin dev && git checkout -b dev
 
+extensions:  ## Install quarto/pandoc extensions
+	cd $(SOURCE_DIR) && uv run quarto add --no-prompt quarto-ext/fontawesome
+
 ## Install build dependencies
-install:
+install: extensions
 	uv sync
 	npm install tailwindcss @tailwindcss/cli @iconify/tailwind4 @iconify-json/mdi
 	make -C plotnine/doc dependencies
