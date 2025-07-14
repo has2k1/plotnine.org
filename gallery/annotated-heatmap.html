@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Annotated Heatmap – plotnine 0.15.0a5</title>
+<title>Annotated Heatmap – plotnine 0.15.0a8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1a4c0345fa69bbbde6efb8208a9792f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c8529798e95e828767f0ccc7c337df2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,12 +110,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Annotated Heatmap – plotnine 0.15.0a5">
+<meta property="og:title" content="Annotated Heatmap – plotnine 0.15.0a8">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://plotnine.org/gallery/img/medium/annotated-heatmap.png">
-<meta property="og:site_name" content="plotnine 0.15.0a5">
-<meta property="og:image:height" content="250">
-<meta property="og:image:width" content="350">
+<meta property="og:image" content="https://plotnine.org/gallery/img/large/annotated-heatmap.png">
+<meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:width" content="1400">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a5</span>
+    <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -225,19 +225,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     height: auto;
 }
 .preview-image {
-    display: none;
-}
-.large-image {
-    border: 1px solid #222222;
     margin: auto !important;
     max-width: 80% !important;
     height: auto !important;
     display: block;
 }
 </style>
-<p><img src="img/medium/annotated-heatmap.png" class="preview-image img-fluid"></p>
-<p><img src="img/large/annotated-heatmap.png" class="large-image img-fluid"></p>
-<div id="3c726ac3" class="cell" data-execution_count="3">
+<p><img src="img/large/annotated-heatmap.png" class="preview-image img-fluid"></p>
+<div id="417a5477" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -260,12 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Conditinous data recorded at discrete time intervals over many cycles</em></p>
 <p>Read data</p>
-<div id="8ee04471" class="cell" data-execution_count="4">
+<div id="862e2502" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(<span class="st">"data/flights.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> flights[<span class="st">"month"</span>].unique()  <span class="co"># Months ordered January, ..., December</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"month"</span>] <span class="op">=</span> pd.Categorical(flights[<span class="st">"month"</span>], categories<span class="op">=</span>months)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>flights.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -315,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="bd1e47ca" class="cell" data-execution_count="5">
+<div id="16ebeb96" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We use 'factor(year)' -- a discrete -- instead of 'year' so that all the years</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># are displayed along the x-axis.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The .95s create spacing between the tiles.</span></span>
@@ -328,18 +323,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="annotated-heatmap_files/figure-html/cell-6-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="annotated-heatmap_files/figure-html/cell-5-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>That looks like what we want, but it could do with a few tweaks. First the contrast between the tiles and the text is not good for the lower passenger numbers. We use <code>pd.cut</code> to partition the number of passengers into two <em>discrete</em> groups.</p>
-<div id="32b35bf9" class="cell" data-execution_count="6">
+<div id="f00a62ee" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"p_group"</span>] <span class="op">=</span> pd.cut(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    flights[<span class="st">"passengers"</span>], (<span class="dv">0</span>, <span class="dv">300</span>, <span class="dv">1000</span>), labels<span class="op">=</span>(<span class="st">"low"</span>, <span class="st">"high"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>flights.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -395,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="4726617a" class="cell" data-execution_count="7">
+<div id="2f1f64a3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(flights, aes(<span class="st">"factor(year)"</span>, <span class="st">"month"</span>, fill<span class="op">=</span><span class="st">"passengers"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(aes(width<span class="op">=</span><span class="fl">0.95</span>, height<span class="op">=</span><span class="fl">0.95</span>))</span>
@@ -405,13 +400,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="annotated-heatmap_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="annotated-heatmap_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Last tweaks, put <code>January</code> at the top and remove the axis ticks and plot background.</p>
-<div id="2c3b3def" class="cell" data-execution_count="8">
+<p>Last tweaks, put <code>January</code> at the top and remove the axis titles, axis ticks and plot background.</p>
+<div id="ab8c9725" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(flights, aes(<span class="st">"factor(year)"</span>, <span class="st">"month"</span>, fill<span class="op">=</span><span class="st">"passengers"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(aes(width<span class="op">=</span><span class="fl">0.95</span>, height<span class="op">=</span><span class="fl">0.95</span>))</span>
@@ -419,14 +414,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_color_manual([<span class="st">"white"</span>, <span class="st">"black"</span>])  <span class="co"># new</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_discrete(limits<span class="op">=</span>months[::<span class="op">-</span><span class="dv">1</span>])  <span class="co"># new</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(  <span class="co"># new</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        axis_ticks<span class="op">=</span>element_blank(),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"white"</span>),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        axis_title<span class="op">=</span>element_blank(),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        axis_ticks<span class="op">=</span>element_blank(),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        panel_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"white"</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="annotated-heatmap_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="annotated-heatmap_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>

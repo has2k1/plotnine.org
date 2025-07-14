@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Using after_scale() – plotnine 0.15.0a5</title>
+<title>Using after_scale() – plotnine 0.15.0a8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1a4c0345fa69bbbde6efb8208a9792f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c8529798e95e828767f0ccc7c337df2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,12 +107,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Using after_scale() – plotnine 0.15.0a5">
+<meta property="og:title" content="Using after_scale() – plotnine 0.15.0a8">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://plotnine.org/gallery/img/medium/after_scale.png">
-<meta property="og:site_name" content="plotnine 0.15.0a5">
-<meta property="og:image:height" content="250">
-<meta property="og:image:width" content="350">
+<meta property="og:image" content="https://plotnine.org/gallery/img/large/after_scale.png">
+<meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:width" content="1400">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a5</span>
+    <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -190,7 +190,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Using <code>after_scale()</code></h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">aesthetic evaluation</div>
+  </div>
+  </div>
 
 
 
@@ -218,26 +221,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     height: auto;
 }
 .preview-image {
-    display: none;
-}
-.large-image {
-    border: 1px solid #222222;
     margin: auto !important;
     max-width: 80% !important;
     height: auto !important;
     display: block;
 }
 </style>
-<p><img src="img/medium/after_scale.png" class="preview-image img-fluid"></p>
-<p><img src="img/large/after_scale.png" class="large-image img-fluid"></p>
-<div id="f8c83d2c" class="cell" data-execution_count="3">
+<p><img src="img/large/after_scale.png" class="preview-image img-fluid"></p>
+<div id="0c718b65" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, after_scale, geom_bar, theme_classic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The bars in <code>geom_bar</code> have two aesthetics that control the coloring; <code>fill</code> for the interior and <code>color</code> for the boundary/edge. Using <code>after_scale</code> we can create a matching combination of these two.</p>
 <p>Start off with a mapping to the <code>color</code>.</p>
-<div id="5afe011c" class="cell" data-execution_count="4">
+<div id="31f3959e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"var1"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>]})</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -247,17 +245,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_scale_files/figure-html/cell-5-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="after_scale_files/figure-html/cell-4-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We can match the <code>color</code> with the <code>fill</code>.</p>
-<div id="5b406b46" class="cell" data-execution_count="5">
+<div id="40005460" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>, color<span class="op">=</span><span class="st">"factor(var1)"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_scale(<span class="st">"color"</span>)), size<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="after_scale_files/figure-html/cell-5-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As <code>after_scale</code> takes an expression, for the <code>fill</code> aesthetic we can modify the <code>color</code> by adding to it an alpha channel i.e.&nbsp;<code>'#AABBCC'</code> to <code>'#AABBCC66'</code>.</p>
+<div id="a3a0e934" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>, color<span class="op">=</span><span class="st">"factor(var1)"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_scale(<span class="st">'color + "66"'</span>)), size<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -266,24 +278,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>As <code>after_scale</code> takes an expression, for the <code>fill</code> aesthetic we can modify the <code>color</code> by adding to it an alpha channel i.e.&nbsp;<code>'#AABBCC'</code> to <code>'#AABBCC66'</code>.</p>
-<div id="291ccf6d" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>, color<span class="op">=</span><span class="st">"factor(var1)"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_scale(<span class="st">'color + "66"'</span>)), size<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="after_scale_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>We rely on the fact that you can append a string to all elements of a pandas series</p>
 <pre><code>pd.Series(['#AABBCC', '#112233']) + '66' == pd.Series(['#AABBCC66', '#11223366'])</code></pre>
 <p>With a fitting theme.</p>
-<div id="e6865454" class="cell" data-execution_count="7">
+<div id="67b4de30" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"var1"</span>, color<span class="op">=</span><span class="st">"factor(var1)"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(aes(fill<span class="op">=</span>after_scale(<span class="st">'color + "66"'</span>)), size<span class="op">=</span><span class="dv">1</span>)</span>
@@ -292,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="after_scale_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="after_scale_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
