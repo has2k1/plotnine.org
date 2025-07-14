@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Plotnine overloads the <code>+</code> and <code>&gt;&gt;</code> operators to make it easier to compose and pass data to plots.</p>
-<div id="2d2883ed" class="cell" data-execution_count="1">
+<div id="8cc7850b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(fill<span class="op">=</span><span class="st">"class"</span>))  <span class="co"># first geom</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_minimal()  <span class="co"># theme</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fcc7ada1" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
+<div id="ccc1181a" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="operators_files/figure-html/cell-3-output-1.png" class="img-fluid" width="1400"></p>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-operator-1" class="level2">
 <h2 class="anchored" data-anchor-id="the-operator-1">The <code>&gt;&gt;</code> operator</h2>
 <p>Use the <code>&gt;&gt;</code> operator to pipe data into a plot.</p>
-<div id="6f649845" class="cell" data-execution_count="3">
+<div id="f2b99797" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    mpg</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># piped into plot</span></span>
@@ -431,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>extendable</strong>: components defined in other libraries—like new kinds of geoms—can be added to a plot using the same <code>+</code> syntax.</li>
 </ul>
 <p>For example, suppose you <a href="../guide/themes-basics.html">defined your own Plotnine theme</a>, as shown below:</p>
-<div id="40250ca6" class="cell" data-execution_count="4">
+<div id="123b9038" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_theme(base_size<span class="op">=</span><span class="dv">11</span>):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        theme_grey(base_size<span class="op">=</span>base_size)  <span class="co"># start with grey theme</span></span>
@@ -439,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can use this theme with the <code>+</code> operator, just like the built-in Plotnine themes:</p>
-<div id="4cf99ada" class="cell" data-execution_count="5">
+<div id="d679d75b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, fill<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -458,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="keep-method-chains-going" class="level3">
 <h3 class="anchored" data-anchor-id="keep-method-chains-going">Keep method chains going</h3>
 <p>The <code>&gt;&gt;</code> operator allows you to keep method chains going, without needing to create intermediate variables. This is especially useful when using Polars DataFrames, where you often want to do small bits of data wrangling before piping into the plot.</p>
-<div id="08e0506a" class="cell" data-execution_count="6">
+<div id="6322b4e3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pl_mpg <span class="op">=</span> pl.from_pandas(mpg)</span>

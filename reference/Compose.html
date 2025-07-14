@@ -107,7 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="plotnine 0.15.0a8">
+<meta property="og:image" content="https://plotnine.org/reference/Compose_files/figure-html/examples-Compose-cell-4-output-1.png">
 <meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1280">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -184,13 +187,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plotnine.composition.Compose" id="toc-plotnine.composition.Compose" class="nav-link active" data-scroll-target="#plotnine.composition.Compose"><code class="doc-symbol doc-symbol-class"></code> <span class="doc-object-name doc-class-name">plotnine.composition.Compose</span></a></li>
   <li><a href="#parameter-attributes" id="toc-parameter-attributes" class="nav-link" data-scroll-target="#parameter-attributes">Parameter Attributes</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
   <li><a href="#plotnine.composition.Compose.draw" id="toc-plotnine.composition.Compose.draw" class="nav-link" data-scroll-target="#plotnine.composition.Compose.draw"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw</span></a></li>
   <li><a href="#plotnine.composition.Compose.save" id="toc-plotnine.composition.Compose.save" class="nav-link" data-scroll-target="#plotnine.composition.Compose.save"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">save</span></a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="examples/Compose-preview.html"><i class="bi bi-journal-code"></i>Plots</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -274,6 +278,349 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<div class="quarto-embed-nb-cell">
+<div id="285462e3-5e93-4d29-8195-19eddd4462a2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:21.620929Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:21.620808Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:23.186833Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:23.185402Z&quot;}}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    geom_point,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    geom_boxplot,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    geom_bar,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    geom_smooth,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    facet_wrap,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    labs,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    theme,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    theme_538,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    element_text,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.composition <span class="im">import</span> plot_spacer</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="plots" class="level2">
+<h2 class="anchored" data-anchor-id="plots">Plots</h2>
+<div id="61aa6515-af2b-41de-aff2-d9b20c43e22c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:23.188883Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:23.188825Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:23.194593Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:23.193252Z&quot;}}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> ggplot(mtcars, aes(<span class="st">"disp"</span>, <span class="st">"qsec"</span>)) <span class="op">+</span> geom_smooth()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> ggplot(mtcars, aes(<span class="st">"wt"</span>, <span class="st">"mpg"</span>)) <span class="op">+</span> geom_point()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">=</span> ggplot(mtcars, aes(<span class="st">"factor(gear)"</span>, <span class="st">"mpg"</span>)) <span class="op">+</span> geom_boxplot()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">=</span> ggplot(mtcars, aes(<span class="st">"carb"</span>)) <span class="op">+</span> geom_bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-arithmetic" class="level2">
+<h2 class="anchored" data-anchor-id="the-arithmetic">The Arithmetic</h2>
+<div id="e075ed87-8048-408e-bea9-d13145b38086" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:23.196409Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:23.196351Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:23.821240Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:23.819681Z&quot;}}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">|</span> p2 <span class="op">|</span> p3) <span class="op">/</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-4-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1fef11bd-fdff-4c15-9149-212ca99b87a6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:23.823201Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:23.823111Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:23.976957Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:23.975611Z&quot;}}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">/</span> p2 <span class="op">/</span> p3) <span class="op">|</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-5-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The grouping of the plots is determined by the precedence of the operators which means these two:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">/</span> p2 <span class="op">/</span> p3 <span class="op">|</span> p4</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">/</span> p2 <span class="op">/</span> p3) <span class="op">|</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>are equivalent.</p>
+<p>The space allocated within the overall composition is determined by the groups. e.g.&nbsp;Below, the <em>panel</em> in <code>p1</code> has the same height as the <em>panels</em> of <code>p2</code> and <code>p3</code> combined.</p>
+<div id="1e002022-fcee-44d5-9c73-cdfc8b29feec" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:23.978913Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:23.978836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.139322Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.137932Z&quot;}}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">/</span> (p2 <span class="op">/</span> p3)) <span class="op">|</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-6-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e448d88b-96ce-4dee-8f2e-0808d8a02421" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.141257Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.141180Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.295290Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.293952Z&quot;}}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">/</span> p3) <span class="op">|</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-7-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For a 2x wider panel on the left, we group the items on the right.</p>
+<div id="9ddb7f41-601c-4ad6-8441-26db2161975a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.297197Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.297127Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.459450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.457962Z&quot;}}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> ((p2 <span class="op">/</span> p3) <span class="op">|</span> p4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-8-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For a 2x wider panel on the right, we put together the left and right at the same nesting level.</p>
+<div id="b2b6e644-7427-464b-a3a4-4c19f7ddb30a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.461433Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.461357Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.622592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.621257Z&quot;}}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">|</span> (p2 <span class="op">/</span> p3)) <span class="op">-</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-9-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="modifying-the-composition" class="level2">
+<h2 class="anchored" data-anchor-id="modifying-the-composition">Modifying the composition</h2>
+<section id="add-to-the-last-plot-in-the-composition" class="level3">
+<h3 class="anchored" data-anchor-id="add-to-the-last-plot-in-the-composition">Add to the last plot in the composition</h3>
+<p>When an object <em>that is not a plot or composition</em> is added (<code>+</code>) to the composition, it is added (<code>+</code>) to the last plot in the composition.</p>
+<div id="6694cd7f-e767-4000-a3d0-cc5cde978eef" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.624550Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.624476Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.778735Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.777245Z&quot;}}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>composition <span class="op">=</span> (p1 <span class="op">|</span> (p2 <span class="op">/</span> p3) <span class="op">|</span> p4)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>composition <span class="op">+</span> theme_bw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-10-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <code>dpi</code> and <code>figure_size</code> of the composition are taken from the last plot, so we can add to the composition to change them.</p>
+<div id="79f25836-c289-4ff0-b2d3-b9ae5937b09a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.780635Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.780560Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:24.925543Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:24.924128Z&quot;}}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>composition <span class="op">+</span> theme(figure_size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-11-output-1.png" width="400" height="300" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d51836e1-12d9-4099-a1fe-b439f8b76265" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:24.927603Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:24.927524Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.129360Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.127919Z&quot;}}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>composition <span class="op">+</span> geom_line(aes(y<span class="op">=</span>after_stat(<span class="st">"count"</span>)), stat<span class="op">=</span><span class="st">"count"</span>, color<span class="op">=</span><span class="st">"cyan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-12-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="add-to-plots-at-the-top-level-of-the-composition" class="level3">
+<h3 class="anchored" data-anchor-id="add-to-plots-at-the-top-level-of-the-composition">Add to plots at the top level of the composition</h3>
+<div id="00ee6126-49aa-44f0-9cbd-e8114cde9ba7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.131244Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.131175Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.286889Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.285532Z&quot;}}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>composition <span class="op">*</span> theme_bw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-13-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="add-to-all-plots-in-the-composition" class="level3">
+<h3 class="anchored" data-anchor-id="add-to-all-plots-in-the-composition">Add to all plots in the composition</h3>
+<div id="82f50680-4fdd-406f-95f9-8d612bb68474" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.288861Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.288788Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.443411Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.442081Z&quot;}}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>composition <span class="op">&amp;</span> theme_bw()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-14-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-space-to-the-composition" class="level3">
+<h3 class="anchored" data-anchor-id="adding-space-to-the-composition">Adding space to the composition</h3>
+<p>You can create space within the composition by adding a <code>plot_spacer</code> or by adjusting <code>plot_margin</code>.</p>
+<div id="4372f330-d6a1-4017-a91d-d50388a360ae" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.445218Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.445158Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.520238Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.518792Z&quot;}}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-15-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="369205af-27fe-4a83-ad88-d5356f59314a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.522421Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.522351Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.604046Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.602670Z&quot;}}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> plot_spacer() <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-16-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d6765ca1-2cd7-4ad1-b97e-85e43f4314c7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.605938Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.605868Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.681437Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.680110Z&quot;}}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">+</span> theme(plot_margin_left<span class="op">=</span><span class="fl">.25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-17-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="a8336542-d0ab-4314-9910-a64b3e6ec2bb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.683410Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.683335Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.759785Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.758174Z&quot;}}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">+</span> theme(plot_margin_right<span class="op">=</span><span class="fl">.25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-18-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="831e62c7-f911-4133-90a7-83a6acdd7073" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.761712Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.761635Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.835373Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.834010Z&quot;}}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">+</span> theme(plot_margin_bottom<span class="op">=</span><span class="fl">.25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-19-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>While the margin is added to <code>p2</code>, the height of <code>p1</code> is adjusted so that the panels align.</p>
+<section id="how-space-is-allocated" class="level4">
+<h4 class="anchored" data-anchor-id="how-space-is-allocated">How space is allocated</h4>
+<p>For any composition group, the space is allocated such that the edges of the panels align along one dimension, and the sizes are equal along the other dimension. For example, when a plot has a legend, it is allocated more space so that its panel has the same size as the adjacent panel.</p>
+<div id="ef4a03ab-9f60-4723-8528-2f7bddf42955" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.837402Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.837319Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:25.923326Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:25.921918Z&quot;}}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2 <span class="op">+</span> aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-20-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Making the plot backgrounds visible reveals the size of each plot.</p>
+<div id="0705670f-3156-469b-a64b-3d963d8cdc28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:25.925208Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:25.925137Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.013089Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.011660Z&quot;}}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>brown_bg <span class="op">=</span> theme(plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#FF000022"</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cyan_bg <span class="op">=</span> theme(plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">"#00FF0022"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">+</span> brown_bg) <span class="op">|</span> (p2 <span class="op">+</span> aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>) <span class="op">+</span> cyan_bg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-21-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Facetted plots are treated as if all the panels were one.</p>
+<div id="0ad2baff-b70b-4570-8af2-aca87634455f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:26.015088Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:26.015020Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.138622Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.137258Z&quot;}}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">+</span> aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>) <span class="op">+</span> facet_wrap(<span class="st">"cyl"</span>, ncol<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-22-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And the space between the facet panels counts towards the panel area of the plot.</p>
+<div id="eb91f35c-4236-4bb0-beb9-ca7409dc0519" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:26.140604Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:26.140521Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.262730Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.261413Z&quot;}}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> (p2 <span class="op">+</span> aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>) <span class="op">+</span> facet_wrap(<span class="st">"cyl"</span>, ncol<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-23-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="tagging-plots" class="level2">
+<h2 class="anchored" data-anchor-id="tagging-plots">Tagging Plots</h2>
+<p>Tags are an essential part of plot compositions and the by default the are placed in the top-left margin of each plot.</p>
+<div id="15a8cc73-3414-43eb-ba76-83debc33dc02" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:26.264792Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:26.264722Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.422105Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.420779Z&quot;}}" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>p1_a <span class="op">=</span> p1 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"a)"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p2_b <span class="op">=</span> p2 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"b)"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>p3_c <span class="op">=</span> p3 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"c)"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>p4_d <span class="op">=</span> p4 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"d)"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>(p1_a <span class="op">|</span> p2_b <span class="op">|</span> p3_c) <span class="op">/</span> p4_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-24-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The position of each tag can be changed.</p>
+<div id="99c5c824-fdfd-49a7-b8f3-0729f02b8cf4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:26.424049Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:26.423984Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.643770Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.642387Z&quot;}}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>top_right <span class="op">=</span> theme(plot_tag_position<span class="op">=</span><span class="st">"topright"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> theme(plot_tag_position<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>p1_a <span class="op">=</span> p1 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"a)"</span>) <span class="op">+</span> top_right</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>p2_b <span class="op">=</span> p2 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"b)"</span>) <span class="op">+</span> top_right</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>p3_c <span class="op">=</span> p3 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"c)"</span>) <span class="op">+</span> top_right</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>p4_d <span class="op">=</span> p4 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"d)"</span>) <span class="op">+</span> top</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>(p1_a <span class="op">|</span> p2_b <span class="op">|</span> p3_c) <span class="op">/</span> p4_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-25-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can also set the location to one of <code>margin</code> (the default), <code>panel</code>, <code>plot</code>.</p>
+<div id="474b0e76-0224-4924-b20d-3e1e5910c3d8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-07-14T09:33:26.645775Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-07-14T09:33:26.645700Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-07-14T09:33:26.802596Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-07-14T09:33:26.801229Z&quot;}}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>panel_top_right <span class="op">=</span> theme(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    plot_tag_position<span class="op">=</span><span class="st">"topright"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    plot_tag_location<span class="op">=</span><span class="st">"panel"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    plot_tag<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"brown"</span>, margin<span class="op">=</span>{<span class="st">"t"</span>: <span class="dv">2</span>, <span class="st">"r"</span>: <span class="dv">2</span>})</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>p1_a <span class="op">=</span> p1 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"a)"</span>) <span class="op">+</span> panel_top_right</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p2_b <span class="op">=</span> p2 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"b)"</span>) <span class="op">+</span> panel_top_right</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>p3_c <span class="op">=</span> p3 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"c)"</span>) <span class="op">+</span> panel_top_right</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>p4_d <span class="op">=</span> p4 <span class="op">+</span> labs(tag<span class="op">=</span><span class="st">"d)"</span>) <span class="op">+</span> panel_top_right</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>(p1_a <span class="op">|</span> p2_b <span class="op">|</span> p3_c) <span class="op">/</span> p4_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Compose_files/figure-html/examples-Compose-cell-26-output-1.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The valid positions for tags are <em>topleft</em>, <em>top</em>, <em>topright</em>, <em>right</em>, <em>bottomright</em>, <em>bottom</em>, <em>bottomleft</em>, <em>left</em> or a <em><code>tuple[float, float]</code></em>.</p>
+</section>
+<section id="save" class="level2">
+<h2 class="anchored" data-anchor-id="save">Save</h2>
+<p>Use the <code>save</code> method to save the composition as an image e.g.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>composition.save(<span class="st">"plot.png"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>composition.save(<span class="st">"plot.png"</span>, dpi<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>composition.save(<span class="st">"plot.jpg"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>composition.save(<span class="st">"plot.svg"</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>composition.save(<span class="st">"plot.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<a class="quarto-notebook-link" id="nblink-1" href="examples/Compose-preview.html#285462e3-5e93-4d29-8195-19eddd4462a2">Source: Plots</a></div>
+</section>
 <section id="methods" class="level2 doc-methods">
 <h2 class="doc-methods anchored" data-anchor-id="methods">Methods</h2>
 <table class="caption-top table">
@@ -297,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.composition.Compose.draw" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.composition.Compose.draw"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">draw</span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>draw(<span class="op">*</span>, show<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>draw(<span class="op">*</span>, show<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Render the arranged plots</p>
@@ -328,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotnine.composition.Compose.save" class="level3 title doc-object doc-method">
 <h3 class="title doc-object doc-method anchored" data-anchor-id="plotnine.composition.Compose.save"><code class="doc-symbol doc-symbol-method"></code> <span class="doc-object-name doc-method-name">save</span></h3>
 <div class="doc-signature doc-method">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>save(filename, <span class="bu">format</span><span class="op">=</span><span class="va">None</span>, dpi<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>save(filename, <span class="bu">format</span><span class="op">=</span><span class="va">None</span>, dpi<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="doc-text">
 <p>Save a composition as an image file</p>

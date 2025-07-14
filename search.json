@@ -154,11 +154,39 @@
     "text": "from plotnine import *\nfrom plotnine.composition import Stack\nfrom plotnine.data import huron\n\n\np1 = (\n    ggplot(huron, aes(\"year\", \"level\"))\n    + geom_line()\n)\n\np2 = (\n    ggplot(huron, aes(\"factor(decade)\", \"level\"))\n    + geom_boxplot()\n    + labs(x=\"decade\")\n)\n\np3 = (\n    ggplot(huron, aes(\"level\"))\n    + geom_histogram(bins=12)\n    + scale_y_continuous(expand=(0.015, 0))\n    + coord_flip()\n)\n\np1 / p2 / p3\n\n\n\n\n\n\n\n\nWhich is equivalent to\n\nStack([p1, p2, p3])"
   },
   {
-    "objectID": "reference/examples/Beside.html",
-    "href": "reference/examples/Beside.html",
-    "title": "plotnine {{< var version >}}",
+    "objectID": "reference/examples/Compose.html",
+    "href": "reference/examples/Compose.html",
+    "title": "Plots",
     "section": "",
-    "text": "from plotnine import (\n    ggplot,\n    aes,\n    geom_boxplot,\n    geom_violin,\n    geom_sina,\n    labs,\n    element_blank,\n    theme,\n    theme_xkcd,\n    theme_538,\n)\nfrom plotnine.composition import Beside\nfrom plotnine.data import mpg\n\n\np = ggplot(mpg, aes(\"factor(year)\", \"hwy\")) + labs(x=\"year\")\n\np1 = p + geom_boxplot()\np2 = p + geom_violin()\np3 = p + geom_sina()\n\np1 | p2 | p3\n\n\n\n\n\n\n\n\nWhich is equivalent to\n\nBeside([p1, p2, p3])\n\n\n\n\n\n\n\n\nRemove unnecessary breaks and texts.\n\nno_y = theme(\n    axis_title_y=element_blank(),\n    axis_text_y=element_blank(),\n    axis_ticks_y=element_blank()\n)\nno_title_x = theme(axis_title_x=element_blank())\n\n(p1 + no_title_x) | (p2 + no_y) | (p3 + no_y + no_title_x)\n\n\n\n\n\n\n\n\nEach plot in the composition can have a completely different theme.\n\n(p1 + theme_xkcd() + no_title_x) | (p2 + no_y) | (p3 + theme_538() + no_y + no_title_x)\n\n\n\n\n\n\n\n\nThe space taken up by the plots and “sub-compositions” is distributed equally with in the group.\n\np1 | (p2 | p3)\n\n\n\n\n\n\n\n\nWhich is the same as:\nBeside([p1, Beside([p2, p3])])"
+    "text": "from plotnine import (\n    ggplot,\n    aes,\n    geom_point,\n    geom_boxplot,\n    geom_bar,\n    geom_smooth,\n    facet_wrap,\n    labs,\n    theme,\n    theme_538,\n    element_rect,\n    element_text,\n)\nfrom plotnine import *\nfrom plotnine.composition import plot_spacer\nfrom plotnine.data import mtcars\np1 = ggplot(mtcars, aes(\"disp\", \"qsec\")) + geom_smooth()\np2 = ggplot(mtcars, aes(\"wt\", \"mpg\")) + geom_point()\np3 = ggplot(mtcars, aes(\"factor(gear)\", \"mpg\")) + geom_boxplot()\np4 = ggplot(mtcars, aes(\"carb\")) + geom_bar()"
+  },
+  {
+    "objectID": "reference/examples/Compose.html#the-arithmetic",
+    "href": "reference/examples/Compose.html#the-arithmetic",
+    "title": "Plots",
+    "section": "The Arithmetic",
+    "text": "The Arithmetic\n\n(p1 | p2 | p3) / p4\n\n\n\n\n\n\n\n\n\n(p1 / p2 / p3) | p4\n\n\n\n\n\n\n\n\nThe grouping of the plots is determined by the precedence of the operators which means these two:\np1 / p2 / p3 | p4\n(p1 / p2 / p3) | p4\nare equivalent.\nThe space allocated within the overall composition is determined by the groups. e.g. Below, the panel in p1 has the same height as the panels of p2 and p3 combined.\n\n(p1 / (p2 / p3)) | p4\n\n\n\n\n\n\n\n\n\np1 | (p2 / p3) | p4\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the left, we group the items on the right.\n\np1 | ((p2 / p3) | p4)\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the right, we put together the left and right at the same nesting level.\n\n(p1 | (p2 / p3)) - p4"
+  },
+  {
+    "objectID": "reference/examples/Compose.html#modifying-the-composition",
+    "href": "reference/examples/Compose.html#modifying-the-composition",
+    "title": "Plots",
+    "section": "Modifying the composition",
+    "text": "Modifying the composition\n\nAdd to the last plot in the composition\nWhen an object that is not a plot or composition is added (+) to the composition, it is added (+) to the last plot in the composition.\n\ncomposition = (p1 | (p2 / p3) | p4)\ncomposition + theme_bw()\n\n\n\n\n\n\n\n\nThe dpi and figure_size of the composition are taken from the last plot, so we can add to the composition to change them.\n\ncomposition + theme(figure_size=(4, 3))\n\n\n\n\n\n\n\n\n\ncomposition + geom_line(aes(y=after_stat(\"count\")), stat=\"count\", color=\"cyan\")\n\n\n\n\n\n\n\n\n\n\nAdd to plots at the top level of the composition\n\ncomposition * theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdd to all plots in the composition\n\ncomposition & theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdding space to the composition\nYou can create space within the composition by adding a plot_spacer or by adjusting plot_margin.\n\np1 | p2\n\n\n\n\n\n\n\n\n\np1 | plot_spacer() | p2\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_left=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_right=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_bottom=.25))\n\n\n\n\n\n\n\n\nWhile the margin is added to p2, the height of p1 is adjusted so that the panels align.\n\nHow space is allocated\nFor any composition group, the space is allocated such that the edges of the panels align along one dimension, and the sizes are equal along the other dimension. For example, when a plot has a legend, it is allocated more space so that its panel has the same size as the adjacent panel.\n\np1 | p2 + aes(color=\"factor(cyl)\")\n\n\n\n\n\n\n\n\nMaking the plot backgrounds visible reveals the size of each plot.\n\nbrown_bg = theme(plot_background=element_rect(fill=\"#FF000022\"))\ncyan_bg = theme(plot_background=element_rect(fill=\"#00FF0022\"))\n\n(p1 + brown_bg) | (p2 + aes(color=\"factor(cyl)\") + cyan_bg)\n\n\n\n\n\n\n\n\nFacetted plots are treated as if all the panels were one.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=1))\n\n\n\n\n\n\n\n\nAnd the space between the facet panels counts towards the panel area of the plot.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=2))"
+  },
+  {
+    "objectID": "reference/examples/Compose.html#tagging-plots",
+    "href": "reference/examples/Compose.html#tagging-plots",
+    "title": "Plots",
+    "section": "Tagging Plots",
+    "text": "Tagging Plots\nTags are an essential part of plot compositions and the by default the are placed in the top-left margin of each plot.\n\np1_a = p1 + labs(tag=\"a)\")\np2_b = p2 + labs(tag=\"b)\")\np3_c = p3 + labs(tag=\"c)\")\np4_d = p4 + labs(tag=\"d)\")\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe position of each tag can be changed.\n\ntop_right = theme(plot_tag_position=\"topright\")\ntop = theme(plot_tag_position=\"top\")\n\np1_a = p1 + labs(tag=\"a)\") + top_right\np2_b = p2 + labs(tag=\"b)\") + top_right\np3_c = p3 + labs(tag=\"c)\") + top_right\np4_d = p4 + labs(tag=\"d)\") + top\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nYou can also set the location to one of margin (the default), panel, plot.\n\npanel_top_right = theme(\n    plot_tag_position=\"topright\",\n    plot_tag_location=\"panel\",\n    plot_tag=element_text(color=\"brown\", margin={\"t\": 2, \"r\": 2})\n)\n\np1_a = p1 + labs(tag=\"a)\") + panel_top_right\np2_b = p2 + labs(tag=\"b)\") + panel_top_right\np3_c = p3 + labs(tag=\"c)\") + panel_top_right\np4_d = p4 + labs(tag=\"d)\") + panel_top_right\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe valid positions for tags are topleft, top, topright, right, bottomright, bottom, bottomleft, left or a tuple[float, float]."
+  },
+  {
+    "objectID": "reference/examples/Compose.html#save",
+    "href": "reference/examples/Compose.html#save",
+    "title": "Plots",
+    "section": "Save",
+    "text": "Save\nUse the save method to save the composition as an image e.g.\ncomposition.save(\"plot.png\")\ncomposition.save(\"plot.png\", dpi=200)\ncomposition.save(\"plot.jpg\")\ncomposition.save(\"plot.svg\")\ncomposition.save(\"plot.pdf\")"
   },
   {
     "objectID": "gallery/dev/theme_classic.html",
@@ -5366,7 +5394,7 @@
     "href": "guide/annotations.html#geom_textadjust_text...",
     "title": "Annotations",
     "section": "geom_text(adjust_text=...)",
-    "text": "geom_text(adjust_text=...)\nUse the geom_text(adjust_text=...) argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the adjustText package’s adjust_text() function.\n\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg.drop_duplicates(\"model\"), aes(\"displ\", \"hwy\", label=\"model\"))\n    + geom_point()\n    + geom_text(adjust_text={\"arrowprops\": {\"arrowstyle\": \"-\"}})\n)\n\n0 [-0.39641688  0.05747177]\n37 [ 0.50041431 -0.76200655]\n35 [-0.17005494  0.05408004]\n36 [-0.37376525  0.37042141]",
+    "text": "geom_text(adjust_text=...)\nUse the geom_text(adjust_text=...) argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the adjustText package’s adjust_text() function.\n\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg.drop_duplicates(\"model\"), aes(\"displ\", \"hwy\", label=\"model\"))\n    + geom_point()\n    + geom_text(adjust_text={\"arrowprops\": {\"arrowstyle\": \"-\"}})\n)\n\n0 [0.38195762 0.72673091]\n37 [-0.72590655 -0.79379284]\n35 [ 0.65396958 -0.71481317]\n36 [-0.81876689  0.7945559 ]",
     "crumbs": [
       "Guide",
       "Polishing",
@@ -6263,6 +6291,48 @@
     "title": " plotnine.composition.Compose",
     "section": "See Also",
     "text": "See Also\n\nBeside\n\nTo arrange plots side by side\n\nStack\n\nTo arrange plots vertically\n\nplot_spacer\n\nTo add a blank space between plots"
+  },
+  {
+    "objectID": "reference/Compose.html#examples",
+    "href": "reference/Compose.html#examples",
+    "title": " plotnine.composition.Compose",
+    "section": "Examples",
+    "text": "Examples\n\n\nfrom plotnine import (\n    ggplot,\n    aes,\n    geom_point,\n    geom_boxplot,\n    geom_bar,\n    geom_smooth,\n    facet_wrap,\n    labs,\n    theme,\n    theme_538,\n    element_rect,\n    element_text,\n)\nfrom plotnine import *\nfrom plotnine.composition import plot_spacer\nfrom plotnine.data import mtcars\n\n\nPlots\n\np1 = ggplot(mtcars, aes(\"disp\", \"qsec\")) + geom_smooth()\np2 = ggplot(mtcars, aes(\"wt\", \"mpg\")) + geom_point()\np3 = ggplot(mtcars, aes(\"factor(gear)\", \"mpg\")) + geom_boxplot()\np4 = ggplot(mtcars, aes(\"carb\")) + geom_bar()\n\n\n\nThe Arithmetic\n\n(p1 | p2 | p3) / p4\n\n\n\n\n\n\n\n\n\n(p1 / p2 / p3) | p4\n\n\n\n\n\n\n\n\nThe grouping of the plots is determined by the precedence of the operators which means these two:\np1 / p2 / p3 | p4\n(p1 / p2 / p3) | p4\nare equivalent.\nThe space allocated within the overall composition is determined by the groups. e.g. Below, the panel in p1 has the same height as the panels of p2 and p3 combined.\n\n(p1 / (p2 / p3)) | p4\n\n\n\n\n\n\n\n\n\np1 | (p2 / p3) | p4\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the left, we group the items on the right.\n\np1 | ((p2 / p3) | p4)\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the right, we put together the left and right at the same nesting level.\n\n(p1 | (p2 / p3)) - p4\n\n\n\n\n\n\n\n\n\n\nModifying the composition\n\nAdd to the last plot in the composition\nWhen an object that is not a plot or composition is added (+) to the composition, it is added (+) to the last plot in the composition.\n\ncomposition = (p1 | (p2 / p3) | p4)\ncomposition + theme_bw()\n\n\n\n\n\n\n\n\nThe dpi and figure_size of the composition are taken from the last plot, so we can add to the composition to change them.\n\ncomposition + theme(figure_size=(4, 3))\n\n\n\n\n\n\n\n\n\ncomposition + geom_line(aes(y=after_stat(\"count\")), stat=\"count\", color=\"cyan\")\n\n\n\n\n\n\n\n\n\n\nAdd to plots at the top level of the composition\n\ncomposition * theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdd to all plots in the composition\n\ncomposition & theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdding space to the composition\nYou can create space within the composition by adding a plot_spacer or by adjusting plot_margin.\n\np1 | p2\n\n\n\n\n\n\n\n\n\np1 | plot_spacer() | p2\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_left=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_right=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_bottom=.25))\n\n\n\n\n\n\n\n\nWhile the margin is added to p2, the height of p1 is adjusted so that the panels align.\n\nHow space is allocated\nFor any composition group, the space is allocated such that the edges of the panels align along one dimension, and the sizes are equal along the other dimension. For example, when a plot has a legend, it is allocated more space so that its panel has the same size as the adjacent panel.\n\np1 | p2 + aes(color=\"factor(cyl)\")\n\n\n\n\n\n\n\n\nMaking the plot backgrounds visible reveals the size of each plot.\n\nbrown_bg = theme(plot_background=element_rect(fill=\"#FF000022\"))\ncyan_bg = theme(plot_background=element_rect(fill=\"#00FF0022\"))\n\n(p1 + brown_bg) | (p2 + aes(color=\"factor(cyl)\") + cyan_bg)\n\n\n\n\n\n\n\n\nFacetted plots are treated as if all the panels were one.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=1))\n\n\n\n\n\n\n\n\nAnd the space between the facet panels counts towards the panel area of the plot.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=2))\n\n\n\n\n\n\n\n\n\n\n\n\nTagging Plots\nTags are an essential part of plot compositions and the by default the are placed in the top-left margin of each plot.\n\np1_a = p1 + labs(tag=\"a)\")\np2_b = p2 + labs(tag=\"b)\")\np3_c = p3 + labs(tag=\"c)\")\np4_d = p4 + labs(tag=\"d)\")\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe position of each tag can be changed.\n\ntop_right = theme(plot_tag_position=\"topright\")\ntop = theme(plot_tag_position=\"top\")\n\np1_a = p1 + labs(tag=\"a)\") + top_right\np2_b = p2 + labs(tag=\"b)\") + top_right\np3_c = p3 + labs(tag=\"c)\") + top_right\np4_d = p4 + labs(tag=\"d)\") + top\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nYou can also set the location to one of margin (the default), panel, plot.\n\npanel_top_right = theme(\n    plot_tag_position=\"topright\",\n    plot_tag_location=\"panel\",\n    plot_tag=element_text(color=\"brown\", margin={\"t\": 2, \"r\": 2})\n)\n\np1_a = p1 + labs(tag=\"a)\") + panel_top_right\np2_b = p2 + labs(tag=\"b)\") + panel_top_right\np3_c = p3 + labs(tag=\"c)\") + panel_top_right\np4_d = p4 + labs(tag=\"d)\") + panel_top_right\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe valid positions for tags are topleft, top, topright, right, bottomright, bottom, bottomleft, left or a tuple[float, float].\n\n\nSave\nUse the save method to save the composition as an image e.g.\ncomposition.save(\"plot.png\")\ncomposition.save(\"plot.png\", dpi=200)\ncomposition.save(\"plot.jpg\")\ncomposition.save(\"plot.svg\")\ncomposition.save(\"plot.pdf\")\n\nSource: Plots"
+  },
+  {
+    "objectID": "reference/Compose.html#plots",
+    "href": "reference/Compose.html#plots",
+    "title": " plotnine.composition.Compose",
+    "section": "Plots",
+    "text": "Plots\n\np1 = ggplot(mtcars, aes(\"disp\", \"qsec\")) + geom_smooth()\np2 = ggplot(mtcars, aes(\"wt\", \"mpg\")) + geom_point()\np3 = ggplot(mtcars, aes(\"factor(gear)\", \"mpg\")) + geom_boxplot()\np4 = ggplot(mtcars, aes(\"carb\")) + geom_bar()"
+  },
+  {
+    "objectID": "reference/Compose.html#the-arithmetic",
+    "href": "reference/Compose.html#the-arithmetic",
+    "title": " plotnine.composition.Compose",
+    "section": "The Arithmetic",
+    "text": "The Arithmetic\n\n(p1 | p2 | p3) / p4\n\n\n\n\n\n\n\n\n\n(p1 / p2 / p3) | p4\n\n\n\n\n\n\n\n\nThe grouping of the plots is determined by the precedence of the operators which means these two:\np1 / p2 / p3 | p4\n(p1 / p2 / p3) | p4\nare equivalent.\nThe space allocated within the overall composition is determined by the groups. e.g. Below, the panel in p1 has the same height as the panels of p2 and p3 combined.\n\n(p1 / (p2 / p3)) | p4\n\n\n\n\n\n\n\n\n\np1 | (p2 / p3) | p4\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the left, we group the items on the right.\n\np1 | ((p2 / p3) | p4)\n\n\n\n\n\n\n\n\nFor a 2x wider panel on the right, we put together the left and right at the same nesting level.\n\n(p1 | (p2 / p3)) - p4"
+  },
+  {
+    "objectID": "reference/Compose.html#modifying-the-composition",
+    "href": "reference/Compose.html#modifying-the-composition",
+    "title": " plotnine.composition.Compose",
+    "section": "Modifying the composition",
+    "text": "Modifying the composition\n\nAdd to the last plot in the composition\nWhen an object that is not a plot or composition is added (+) to the composition, it is added (+) to the last plot in the composition.\n\ncomposition = (p1 | (p2 / p3) | p4)\ncomposition + theme_bw()\n\n\n\n\n\n\n\n\nThe dpi and figure_size of the composition are taken from the last plot, so we can add to the composition to change them.\n\ncomposition + theme(figure_size=(4, 3))\n\n\n\n\n\n\n\n\n\ncomposition + geom_line(aes(y=after_stat(\"count\")), stat=\"count\", color=\"cyan\")\n\n\n\n\n\n\n\n\n\n\nAdd to plots at the top level of the composition\n\ncomposition * theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdd to all plots in the composition\n\ncomposition & theme_bw()\n\n\n\n\n\n\n\n\n\n\nAdding space to the composition\nYou can create space within the composition by adding a plot_spacer or by adjusting plot_margin.\n\np1 | p2\n\n\n\n\n\n\n\n\n\np1 | plot_spacer() | p2\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_left=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_right=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_bottom=.25))\n\n\n\n\n\n\n\n\nWhile the margin is added to p2, the height of p1 is adjusted so that the panels align.\n\nHow space is allocated\nFor any composition group, the space is allocated such that the edges of the panels align along one dimension, and the sizes are equal along the other dimension. For example, when a plot has a legend, it is allocated more space so that its panel has the same size as the adjacent panel.\n\np1 | p2 + aes(color=\"factor(cyl)\")\n\n\n\n\n\n\n\n\nMaking the plot backgrounds visible reveals the size of each plot.\n\nbrown_bg = theme(plot_background=element_rect(fill=\"#FF000022\"))\ncyan_bg = theme(plot_background=element_rect(fill=\"#00FF0022\"))\n\n(p1 + brown_bg) | (p2 + aes(color=\"factor(cyl)\") + cyan_bg)\n\n\n\n\n\n\n\n\nFacetted plots are treated as if all the panels were one.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=1))\n\n\n\n\n\n\n\n\nAnd the space between the facet panels counts towards the panel area of the plot.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=2))"
+  },
+  {
+    "objectID": "reference/Compose.html#tagging-plots",
+    "href": "reference/Compose.html#tagging-plots",
+    "title": " plotnine.composition.Compose",
+    "section": "Tagging Plots",
+    "text": "Tagging Plots\nTags are an essential part of plot compositions and the by default the are placed in the top-left margin of each plot.\n\np1_a = p1 + labs(tag=\"a)\")\np2_b = p2 + labs(tag=\"b)\")\np3_c = p3 + labs(tag=\"c)\")\np4_d = p4 + labs(tag=\"d)\")\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe position of each tag can be changed.\n\ntop_right = theme(plot_tag_position=\"topright\")\ntop = theme(plot_tag_position=\"top\")\n\np1_a = p1 + labs(tag=\"a)\") + top_right\np2_b = p2 + labs(tag=\"b)\") + top_right\np3_c = p3 + labs(tag=\"c)\") + top_right\np4_d = p4 + labs(tag=\"d)\") + top\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nYou can also set the location to one of margin (the default), panel, plot.\n\npanel_top_right = theme(\n    plot_tag_position=\"topright\",\n    plot_tag_location=\"panel\",\n    plot_tag=element_text(color=\"brown\", margin={\"t\": 2, \"r\": 2})\n)\n\np1_a = p1 + labs(tag=\"a)\") + panel_top_right\np2_b = p2 + labs(tag=\"b)\") + panel_top_right\np3_c = p3 + labs(tag=\"c)\") + panel_top_right\np4_d = p4 + labs(tag=\"d)\") + panel_top_right\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nThe valid positions for tags are topleft, top, topright, right, bottomright, bottom, bottomleft, left or a tuple[float, float]."
+  },
+  {
+    "objectID": "reference/Compose.html#save",
+    "href": "reference/Compose.html#save",
+    "title": " plotnine.composition.Compose",
+    "section": "Save",
+    "text": "Save\nUse the save method to save the composition as an image e.g.\ncomposition.save(\"plot.png\")\ncomposition.save(\"plot.png\", dpi=200)\ncomposition.save(\"plot.jpg\")\ncomposition.save(\"plot.svg\")\ncomposition.save(\"plot.pdf\")"
   },
   {
     "objectID": "reference/Compose.html#methods",
@@ -9709,53 +9779,11 @@
     "text": "from plotnine import ggplot, geom_point, aes, labs, theme_bw\nfrom plotnine.data import mtcars\n\n\n# Gallery, themes\n(\n    ggplot(mtcars, aes(x=\"wt\", y=\"mpg\", colour=\"factor(gear)\"))\n    + geom_point()\n    + labs(\n        title= \"Fuel economy declines as weight increases\",\n        subtitle=\"(1973-74)\",\n        caption=\"Data from the 1974 Motor Trend US magazine.\",\n        x=\"Weight (1000 lbs)\",\n        y=\"Fuel economy (mpg)\",\n        colour=\"Gears\"\n    )\n    + theme_bw()\n)"
   },
   {
-    "objectID": "reference/examples/Arrange.html",
-    "href": "reference/examples/Arrange.html",
-    "title": "Plots",
+    "objectID": "reference/examples/Beside.html",
+    "href": "reference/examples/Beside.html",
+    "title": "plotnine {{< var version >}}",
     "section": "",
-    "text": "from plotnine import (\n    ggplot,\n    aes,\n    geom_point,\n    geom_boxplot,\n    geom_bar,\n    geom_smooth,\n    facet_wrap,\n    labs,\n    theme,\n    theme_538,\n    element_rect,\n    element_text,\n)\nfrom plotnine.composition import plot_spacer\nfrom plotnine.data import mtcars\np1 = ggplot(mtcars) + geom_smooth(aes(\"disp\", \"qsec\"))\np2 = ggplot(mtcars) + geom_point(aes(\"wt\", \"mpg\"))\np3 = ggplot(mtcars) + geom_boxplot(aes(\"factor(gear)\", \"mpg\"))\np4 = ggplot(mtcars) + geom_bar(aes(\"carb\"))"
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#the-arithmetic",
-    "href": "reference/examples/Arrange.html#the-arithmetic",
-    "title": "Plots",
-    "section": "The Arithmetic",
-    "text": "The Arithmetic\n\n(p1 | p2 | p3) / p4\n\n\n\n\n\n\n\n\n\n(p1 / p2 / p3) | p4\n\n\n\n\n\n\n\n\nThe grouping of the plots is determined by the precedence of the operators which means these two:\np1 / p2 / p3 | p4\n(p1 / p2 / p3) | p4\nare equivalent.\n\np1 / p2 / p3 | p4\n\n\n\n\n\n\n\n\nThe space allocated within the overall composition is determined by the groups.\n\n(p1 / (p2 / p3)) | p4\n\n\n\n\n\n\n\n\nThe panel in p1 has the same height as the panels of p2 and p3 combined."
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#add-to-the-composition",
-    "href": "reference/examples/Arrange.html#add-to-the-composition",
-    "title": "Plots",
-    "section": "Add to the composition",
-    "text": "Add to the composition\nWhen an object that is not a plot or composition is added to the composition, it is added to the last plot in the composition.\n\ncomposition = (p1 / p2 / p3) | p4\ncomposition + theme_538()\n\n\n\n\n\n\n\n\nWhich is the same as\n((p1 / p2 / p3) | (p4 + theme_538())\nWhen anything you can add to a ggplot e.g. geoms, stats scales, coords, … is added to composition, it is passed through to the last plot in the composition."
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#changing-the-image-size",
-    "href": "reference/examples/Arrange.html#changing-the-image-size",
-    "title": "Plots",
-    "section": "Changing the image size",
-    "text": "Changing the image size\nThe size of each plot is determined by the arrangement within the whole composition and you cannot affect. For example, with:\np1 / p2 / p3\neach plot will take up 1/3 of the image height and the panels have the same area.\nBut you can change the size of the entire composition by setting the figure_size of the last plot.\n\n((p1 / p2 / p3) | p4) + theme(figure_size=(4, 3))"
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#space-and-panel-sizes",
-    "href": "reference/examples/Arrange.html#space-and-panel-sizes",
-    "title": "Plots",
-    "section": "Space and Panel Sizes",
-    "text": "Space and Panel Sizes\nYou can create space within the composition by adding a plot_spacer or by adjusting plot_margin.\n\np1 | p2\n\n\n\n\n\n\n\n\n\np1 | plot_spacer() | p2\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_left=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_right=.25))\n\n\n\n\n\n\n\n\n\np1 | (p2 + theme(plot_margin_bottom=.25))\n\n\n\n\n\n\n\n\nWhile the margin is added to p2, the height of p1 is adjusted so that the panels align.\nFor any composition group, the space is managed such that the edges of the panels align along one dimension, and the sizes are equal along the other dimension. For example, when a plot has a legend, it is allocated more space so that its panel has the same size as the adjacent panel.\n\np1 | p2 + aes(color=\"factor(cyl)\")\n\n\n\n\n\n\n\n\nMaking the plot backgrounds visible reveals the size of each plot.\n\nbrown_bg = theme(plot_background=element_rect(fill=\"#FF000022\"))\ncyan_bg = theme(plot_background=element_rect(fill=\"#00FF0022\"))\n\n(p1 + brown_bg) | (p2 + aes(color=\"factor(cyl)\") + cyan_bg)\n\n\n\n\n\n\n\n\nFacets also align along the edges of the extreme panels.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=1))\n\n\n\n\n\n\n\n\nAnd the space between the facet panels counts towards the panel area of the plot.\n\np1 | (p2 + aes(color=\"factor(cyl)\") + facet_wrap(\"cyl\", ncol=2))"
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#tagging-plots",
-    "href": "reference/examples/Arrange.html#tagging-plots",
-    "title": "Plots",
-    "section": "Tagging Plots",
-    "text": "Tagging Plots\n\np1_a = p1 + labs(tag=\"a)\")\np2_b = p2 + labs(tag=\"b)\")\np3_c = p3 + labs(tag=\"c)\")\np4_d = p4 + labs(tag=\"d)\")\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nBy default tags are placed in the top-left margin of each plot, but the position of each tag can be changed.\n\ntop_right = theme(plot_tag_position=\"topright\")\n\np1_a = p1 + labs(tag=\"a)\") + top_right\np2_b = p2 + labs(tag=\"b)\") + top_right\np3_c = p3 + labs(tag=\"c)\") + top_right\np4_d = p4 + labs(tag=\"d)\") + top_right\n\n(p1_a | p2_b | p3_c) / p4_d\n\n\n\n\n\n\n\n\nYou can also set the location to one of margin (the default), panel, plot.\n\ntop_right = theme(\n    plot_tag_position=\"topright\",\n    plot_tag_location=\"panel\",\n    plot_tag=element_text(color=\"brown\", margin={\"t\": 2, \"r\": 2})\n)\n\np1_a = p1 + labs(tag=\"a)\") + top_right\np2_b = p2 + labs(tag=\"b)\") + top_right\np3_c = p3 + labs(tag=\"c)\") + top_right\np4_d = p4 + labs(tag=\"d)\") + top_right\n\n(p1_a | p2_b | p3_c) / p4_d"
-  },
-  {
-    "objectID": "reference/examples/Arrange.html#save",
-    "href": "reference/examples/Arrange.html#save",
-    "title": "Plots",
-    "section": "Save",
-    "text": "Save\nUse the save method to save the composition as an image e.g.\n(p1 / p2 / p3) | p4).save(\"plot.png\")"
+    "text": "from plotnine import (\n    ggplot,\n    aes,\n    geom_boxplot,\n    geom_violin,\n    geom_sina,\n    labs,\n    element_blank,\n    theme,\n    theme_xkcd,\n    theme_538,\n)\nfrom plotnine.composition import Beside\nfrom plotnine.data import mpg\n\n\np = ggplot(mpg, aes(\"factor(year)\", \"hwy\")) + labs(x=\"year\")\n\np1 = p + geom_boxplot()\np2 = p + geom_violin()\np3 = p + geom_sina()\n\np1 | p2 | p3\n\n\n\n\n\n\n\n\nWhich is equivalent to\n\nBeside([p1, p2, p3])\n\n\n\n\n\n\n\n\nRemove unnecessary breaks and texts.\n\nno_y = theme(\n    axis_title_y=element_blank(),\n    axis_text_y=element_blank(),\n    axis_ticks_y=element_blank()\n)\nno_title_x = theme(axis_title_x=element_blank())\n\n(p1 + no_title_x) | (p2 + no_y) | (p3 + no_y + no_title_x)\n\n\n\n\n\n\n\n\nEach plot in the composition can have a completely different theme.\n\n(p1 + theme_xkcd() + no_title_x) | (p2 + no_y) | (p3 + theme_538() + no_y + no_title_x)\n\n\n\n\n\n\n\n\nThe space taken up by the plots and “sub-compositions” is distributed equally with in the group.\n\np1 | (p2 | p3)\n\n\n\n\n\n\n\n\nWhich is the same as:\nBeside([p1, Beside([p2, p3])])"
   },
   {
     "objectID": "reference/examples/PlotnineAnimation.html",

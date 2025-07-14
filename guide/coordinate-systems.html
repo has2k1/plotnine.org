@@ -422,7 +422,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="77dfc37c" class="cell" data-execution_count="1">
+<div id="2570bf95" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds, mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -434,7 +434,7 @@ Key points
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> coord_flip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="55be508a" class="cell quarto-layout-panel" data-execution_count="2" data-layout-nrow="1">
+<div id="6a865869" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="coordinate-systems_files/figure-html/cell-3-output-1.png" class="img-fluid" width="1400"></p>
@@ -446,7 +446,7 @@ Key points
 </div>
 <p>Notice that cut is the x-axis on the default plot (left), but the y-axis of the flipped one (right). This can be helpful for barplots with many individually labeled bars, since the labels won’t overlap with eachother. It can also be useful for taking advantage of wider plots.</p>
 <p>Flipped plots use the original axis names for setting titles and scales, but the final plot axis names for theme options.</p>
-<div id="ba482462" class="cell" data-execution_count="3">
+<div id="53e2212f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(diamonds, aes(<span class="st">"cut"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -475,7 +475,7 @@ Key points
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> coord_cartesian(ylim <span class="op">=</span> [<span class="dv">5000</span>, <span class="va">None</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="0490f7e6" class="cell quarto-layout-panel" data-execution_count="4" data-layout-nrow="1">
+<div id="0768c344" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="coordinate-systems_files/figure-html/cell-5-output-1.png" class="img-fluid" width="1400"></p>
@@ -487,7 +487,7 @@ Key points
 </div>
 <p>Notice that the second plot is zoomed in, so the y-axis starts at the top of the boxplots. Importantly, <code>coord_cartesian()</code> doesn’t affect any statistical calculations.</p>
 <p>By contrast, setting limits in scales excludes any data outside those limits.</p>
-<div id="6b0e4f3f" class="cell" data-execution_count="5">
+<div id="67cc7528" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_y_continuous(limits <span class="op">=</span> [<span class="dv">5000</span>, <span class="va">None</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -502,7 +502,7 @@ Key points
 <section id="coord_fixed" class="level2">
 <h2 class="anchored" data-anchor-id="coord_fixed">coord_fixed()</h2>
 <p>Use <code>coord_fixed()</code> to ensure the x- and y-axes have the same spacing.</p>
-<div id="2928a2f0" class="cell" data-execution_count="6">
+<div id="3f3a2b01" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> coord_fixed(xlim<span class="op">=</span>[<span class="dv">0</span>, <span class="va">None</span>], ylim<span class="op">=</span>[<span class="dv">0</span>,<span class="va">None</span>])</span>
@@ -521,7 +521,7 @@ Key points
 <h2 class="anchored" data-anchor-id="cartographic-maps">Cartographic maps</h2>
 <p>While currently not available as a coordinate system, Plotnine supports maps using <code>geom_map()</code>. In the future, maps will have a <code>coord_map()</code> function.</p>
 <p>Here is an example which uses geopandas to plot grocery stores in Chicago.</p>
-<div id="2c287b80" class="cell" data-execution_count="7">
+<div id="eb9c64c7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -544,7 +544,7 @@ Key points
 </div>
 <p>Notice that <code>coord_fixed()</code> was used to avoid stretching the map along the x- or y-axis. In addition, <code>theme_void()</code> removed the x- and y- tick marks, and labels.</p>
 <p>You can plot multiple layers on the same map by using multiple <code>geom_map()</code> calls with different <code>data=</code> arguments.</p>
-<div id="7f824d83" class="cell" data-execution_count="8">
+<div id="1032a4a7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>crs_groceries <span class="op">=</span> groceries.to_crs(chicago.crs)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(</span>
