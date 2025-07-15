@@ -444,7 +444,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="9b0e097b" class="cell" data-execution_count="1">
+<div id="0d9a6669" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -458,7 +458,7 @@ Key points
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(fill<span class="op">=</span><span class="st">"class"</span>), size<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(shape<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c590df8d" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
+<div id="71466e84" class="cell quarto-layout-panel" data-execution_count="2" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="geometric-objects_files/figure-html/cell-3-output-1.png" class="img-fluid" width="1400"></p>
@@ -475,7 +475,7 @@ Key points
 <li><strong>Collective geoms</strong>: draw based on groups of rows, or relationships between them.</li>
 </ul>
 <p>This is shown below for points, boxplots, and lines.</p>
-<div id="30cf996b" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="3">
+<div id="c267f315" class="cell quarto-layout-panel" data-execution_count="3" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="geometric-objects_files/figure-html/cell-4-output-1.png" class="img-fluid" width="1400"></p>
@@ -495,7 +495,7 @@ Key points
 <p>This section illustrates individual geoms. These range from simple points, to text, to bars and rectangles.</p>
 <section id="scatterplot-with-text" class="level3">
 <h3 class="anchored" data-anchor-id="scatterplot-with-text">Scatterplot with text</h3>
-<div id="291af0a1" class="cell" data-execution_count="4">
+<div id="0c78cc47" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>highest_mpg <span class="op">=</span> mpg[(mpg[<span class="st">"hwy"</span>] <span class="op">==</span> mpg[<span class="st">"hwy"</span>].<span class="bu">max</span>()) <span class="op">&amp;</span> (mpg[<span class="st">"cty"</span>] <span class="op">==</span> mpg[<span class="st">"cty"</span>].<span class="bu">max</span>())]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -519,7 +519,7 @@ Key points
 </section>
 <section id="barchart-on-counts" class="level3">
 <h3 class="anchored" data-anchor-id="barchart-on-counts">Barchart on counts</h3>
-<div id="c5a95f32" class="cell" data-execution_count="5">
+<div id="83eb94ba" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ttl_mpg_class <span class="op">=</span> mpg.value_counts([<span class="st">"class"</span>, <span class="st">"drv"</span>]).reset_index()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ttl_mpg_class.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -560,7 +560,7 @@ Key points
 </div>
 </div>
 </div>
-<div id="53819583" class="cell" data-execution_count="6">
+<div id="479c7ff4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot(ttl_mpg_class, aes(<span class="st">"class"</span>, <span class="st">"count"</span>, fill <span class="op">=</span> <span class="st">"drv"</span>)) <span class="op">+</span> geom_col()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -574,7 +574,7 @@ Key points
 <section id="rectangles" class="level3">
 <h3 class="anchored" data-anchor-id="rectangles">Rectangles</h3>
 <p>Use <code>geom_rect()</code> to draw rectangles.</p>
-<div id="f34dbab8" class="cell" data-execution_count="7">
+<div id="1e27158d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df_rect <span class="op">=</span> pd.DataFrame(</span>
@@ -606,7 +606,7 @@ Key points
 <section id="boxplots-and-violins" class="level3">
 <h3 class="anchored" data-anchor-id="boxplots-and-violins">Boxplots and violins</h3>
 <p>Use <code>geom_boxplot()</code> and <code>geom_violin()</code> to create boxplots and violin plots, respectively.</p>
-<div id="6c9c0f9a" class="cell" data-execution_count="8">
+<div id="49b5c2b8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>indx <span class="op">=</span> mpg[<span class="st">"class"</span>].isin([<span class="st">"2seater"</span>, <span class="st">"compact"</span>, <span class="st">"midsize"</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -629,7 +629,7 @@ Key points
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"cty"</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_histogram()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_density(fill<span class="op">=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="300716b3" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="9">
+<div id="77157600" class="cell quarto-layout-panel" data-execution_count="9" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="geometric-objects_files/figure-html/cell-10-output-1.png" class="img-fluid" width="1400"></p>
@@ -642,7 +642,7 @@ Key points
 </section>
 <section id="smoothing" class="level3">
 <h3 class="anchored" data-anchor-id="smoothing">Smoothing</h3>
-<div id="47c3c44b" class="cell" data-execution_count="10">
+<div id="b204c666" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -662,7 +662,7 @@ Key points
 <h2 class="anchored" data-anchor-id="collective-lines-and-fills">Collective: lines and fills</h2>
 <p>Lines and fills are collective geoms because they connect or fill between data points.</p>
 <p>For example, <code>geom_line()</code> connects points along the x-axis. This is especially useful when x is a time series.</p>
-<div id="f6a16bf1" class="cell" data-execution_count="11">
+<div id="dae6a799" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> huron</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -680,7 +680,7 @@ Key points
 </div>
 </div>
 <p>Similarly, <code>geom_ribbon()</code> draws a ribbon along the x-axis, based on minimum and maximum values for the y-axis.</p>
-<div id="b96363db" class="cell" data-execution_count="12">
+<div id="b7606339" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> huron</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -712,7 +712,7 @@ Key points
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(position<span class="op">=</span>position_jitter())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ff703758" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="13">
+<div id="1ce2e62e" class="cell quarto-layout-panel" data-execution_count="13" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="geometric-objects_files/figure-html/cell-14-output-1.png" class="img-fluid" width="1400"></p>
@@ -734,7 +734,7 @@ Key points
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar()</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_fill())</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_dodge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="3741cdb8" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="14">
+<div id="683200f2" class="cell quarto-layout-panel" data-execution_count="14" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="geometric-objects_files/figure-html/cell-15-output-1.png" class="img-fluid" width="1400"></p>
@@ -753,7 +753,7 @@ Key points
 <section id="stat-for-statistical-calculations" class="level2">
 <h2 class="anchored" data-anchor-id="stat-for-statistical-calculations"><code>stat=</code> for statistical calculations</h2>
 <p>Use the <code>stat=</code> argument to geom functions to run calculations before plotting. For example, the plot below uses <code>stat="summary"</code> with the <code>fun_y=</code> argument, to add a point for the mean of each group.</p>
-<div id="6fb87b04" class="cell" data-execution_count="15">
+<div id="94f598e6" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"trans"</span>, <span class="st">"cty"</span>))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -772,7 +772,7 @@ Key points
 </div>
 </div>
 <p>Note that in practice it’s often easier to just pass summarized data directly to a geom function. For example, the plot above could also be created with the following code.</p>
-<div id="8c697294" class="cell" data-execution_count="16">
+<div id="b30d8a6f" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mean_mpg <span class="op">=</span> mpg.groupby(<span class="st">"trans"</span>)[<span class="st">"cty"</span>].mean().reset_index()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>(</span>
