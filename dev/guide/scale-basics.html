@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scales, legends, and guides – plotnine 0.15.0a8</title>
+<title>Scales, legends, and guides – plotnine 0.15.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Scales, legends, and guides – plotnine 0.15.0a8">
+<meta property="og:title" content="Scales, legends, and guides – plotnine 0.15.0">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/scale-basics_files/figure-html/cell-3-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:site_name" content="plotnine 0.15.0">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -127,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a8</span>
+    <span class="navbar-title">plotnine 0.15.0</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="cea588de" class="cell" data-execution_count="1">
+<div id="a8c0c256" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -465,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="scale-basics">Scale basics</h2>
 <p>In order to illustrate scales, we’ll show two very different uses: manually mapping values of data to colors, and selecting a color palette.</p>
 <p>For manually mapping values to colors, we can use a manual type scale. For example, the code below uses <code>scale_color_manual()</code> to map two values in the <code>class</code> column to classes to red and blue.</p>
-<div id="9e65f299" class="cell" data-execution_count="2">
+<div id="99e2d79c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -485,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Notice that “2seater” is red, “compact” is blue, and all other points are grey. The box on the right side of the plot with “Car class” in it is the legend. The piece inside it showing the colors with “2seater” and “compact” labeled is called a guide.</p>
 <p>Generally, when using scales you’ll often want to use a scale that can automatically map values to colors. For example, <code>scale_color_brewer()</code> automatically applies a <a href="https://colorbrewer2.org/">ColorBrewer</a> palette.</p>
-<div id="8697bc08" class="cell" data-execution_count="3">
+<div id="9540b477" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -526,7 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># defaults to scale_color_discrete</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(aes(color<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cfccf70b" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="4">
+<div id="81642cee" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="1400"></p>
@@ -540,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="position-scales" class="level3">
 <h3 class="anchored" data-anchor-id="position-scales">Position scales</h3>
 <p>The <strong>position scales</strong> for the x- and y-axis also have many extra transformations available. For example, reversing or log transforming.</p>
-<div id="91f7f153" class="cell" data-execution_count="5">
+<div id="4cffd6da" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> scale_x_reverse() <span class="op">+</span> scale_y_log10())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -554,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="identity-type" class="level3">
 <h3 class="anchored" data-anchor-id="identity-type">Identity type</h3>
 <p>Finally, the scale <strong>identity type</strong> uses the values of the data as styles directly. For example, the code below sets the color of points to the values in the <code>my_color</code> column.</p>
-<div id="24307e2b" class="cell" data-execution_count="6">
+<div id="42858c63" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
@@ -579,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="name-to-set-guide-legend-labels" class="level2">
 <h2 class="anchored" data-anchor-id="name-to-set-guide-legend-labels"><code>name=</code> to set guide (legend) labels</h2>
 <p>Use the <code>name=</code> argument to scale functions to set the label of that scale’s guide.</p>
-<div id="fdce7ea1" class="cell" data-execution_count="7">
+<div id="60f36d70" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -607,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>labs()</code> function is a convenient way to set names for guides in one place, along with other pieces like a title.</p>
-<div id="cd28094a" class="cell" data-execution_count="8">
+<div id="1467db01" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -632,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="values-for-manual-styles" class="level2">
 <h2 class="anchored" data-anchor-id="values-for-manual-styles"><code>values=</code> for manual styles</h2>
 <p>Use the <code>values=</code> argument to manually specify stylings like colors, shapes, or sizes of the scale. For example, the plot below manually sets point shapes (see the <a href="../guide/aesthetic-specification.html#point">aesthetic specification</a> for shape value options).</p>
-<div id="96e74d5e" class="cell" data-execution_count="9">
+<div id="db3cbd62" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>keep_classes <span class="op">=</span> [<span class="st">"2seater"</span>, <span class="st">"compact"</span>, <span class="st">"midsize"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -652,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="breaks-for-axis-ticks-color-bins" class="level2">
 <h2 class="anchored" data-anchor-id="breaks-for-axis-ticks-color-bins"><code>breaks=</code> for axis ticks, color bins</h2>
-<div id="a39f21fa" class="cell" data-execution_count="10">
+<div id="bce7b503" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(breaks <span class="op">=</span> [<span class="dv">4</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">5.5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -675,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"default"</span>)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>[<span class="dv">1950</span>, <span class="dv">1960</span>]) <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"zoom in"</span>)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(limits<span class="op">=</span>[<span class="dv">1800</span>, <span class="dv">2000</span>]) <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"zoom out"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="4414173f" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="12">
+<div id="6aa19c4c" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="12">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-13-output-1.png" class="img-fluid" width="1400"></p>
@@ -692,7 +692,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_continuous(limits<span class="op">=</span>[<span class="va">None</span>, <span class="dv">1900</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e3b5eaae" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="13">
+<div id="1ce51f2a" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-14-output-1.png" class="img-fluid" width="1400"></p>
@@ -707,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="labels-for-break-labels"><code>labels=</code> for break labels</h2>
 <p>Use the <code>labels=</code> argument to set custom labels for breaks. This argument supports either a function that operates on a list of breaks, or a list of labels.</p>
 <p>For example, the plot below sets the color labels to uppercase.</p>
-<div id="bc4ea231" class="cell" data-execution_count="14">
+<div id="a234efed" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_color_discrete(labels<span class="op">=</span><span class="kw">lambda</span> breaks: [s.upper() <span class="cf">for</span> s <span class="kw">in</span> breaks])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -720,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The plot below manually sets the x-axis breaks and labels.</p>
-<div id="c07d51bf" class="cell" data-execution_count="15">
+<div id="4b917bd9" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> scale_x_continuous(breaks <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>], labels <span class="op">=</span> [<span class="st">"TWO"</span>, <span class="st">"FOUR"</span>, <span class="st">"SIX"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -742,7 +742,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Unmerged"</span>)</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Merged"</span>) <span class="op">+</span> scale_shape_discrete(name<span class="op">=</span><span class="st">"Shape"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d5f9e2a2" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="16">
+<div id="479e094a" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="16">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-17-output-1.png" class="img-fluid" width="1400"></p>
@@ -763,7 +763,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"top"</span>)</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9b77d7da" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="17">
+<div id="7af7136e" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="17">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="1400"></p>
@@ -785,7 +785,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> guides(color<span class="op">=</span>guide_colorbar(reverse<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b3737c13" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="18">
+<div id="a70b0065" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="18">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="scale-basics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="1400"></p>
@@ -796,7 +796,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here’s a funky example that merges guides for color, size, and shape by giving them all the same title in the legend.</p>
-<div id="337e3487" class="cell" data-execution_count="19">
+<div id="3a9092b2" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
