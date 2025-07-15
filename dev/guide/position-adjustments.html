@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.2">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,14 +70,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8fffac7b3563928a82dfa301995fb93b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c5b3008417511be1896b218a7240bb42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,6 +124,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
@@ -192,6 +195,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -394,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-You will learn
+<span class="screen-reader-only">Tip</span>You will learn
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -412,7 +419,7 @@ You will learn
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key points
+<span class="screen-reader-only">Note</span>Key points
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -431,20 +438,20 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="03f0f40e" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c5460af5" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="jittering-points" class="level2">
 <h2 class="anchored" data-anchor-id="jittering-points">Jittering points</h2>
 <p>Use <code>position_jitter()</code> to add a small amount of noise to the x- and y-axis for geoms like points. This enables viewers to see overlapping items on dense plots.</p>
 <p>The plots below show points before and after applying jitter.</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(diamonds.head(<span class="dv">1000</span>), aes(<span class="st">"cut"</span>, <span class="st">"carat"</span>, fill<span class="op">=</span><span class="st">"clarity"</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(diamonds.head(<span class="dv">1000</span>), aes(<span class="st">"cut"</span>, <span class="st">"carat"</span>, fill<span class="op">=</span><span class="st">"clarity"</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(position<span class="op">=</span>position_jitter())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2fbf324a" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_point(position<span class="op">=</span>position_jitter())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="77d4fc86" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="position-adjustments_files/figure-html/cell-3-output-1.png" class="img-fluid" width="1400"></p>
@@ -458,14 +465,14 @@ Key points
 <section id="stacking-filling-and-dodging-bars" class="level2">
 <h2 class="anchored" data-anchor-id="stacking-filling-and-dodging-bars">Stacking, filling, and dodging bars</h2>
 <p>By default, geoms like <code>geom_bar()</code> stack bars on top of each other (<code>position_stack()</code>). Use <code>position_fill()</code> to make the stacked bars all together the same height (set at 1), and <code>position_dodge()</code> to move bars side-by-side.</p>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> diamonds</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(diamonds, aes(<span class="st">"color"</span>, fill<span class="op">=</span><span class="st">"cut"</span>)) <span class="op">+</span> theme(legend_position<span class="op">=</span><span class="st">"none"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_stack())  <span class="co"># default</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_fill())</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_dodge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c449d1bd" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="3">
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_dodge())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="63b774df" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="position-adjustments_files/figure-html/cell-4-output-1.png" class="img-fluid" width="1400"></p>
@@ -481,11 +488,11 @@ Key points
 <section id="reversing-order" class="level3">
 <h3 class="anchored" data-anchor-id="reversing-order">Reversing order</h3>
 <p>The <code>position_stack()</code> and <code>position_fill()</code> functions supports a <code>reverse</code> argument. This reverses the order within stacked bars.</p>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(diamonds, aes(<span class="st">"color"</span>, fill<span class="op">=</span><span class="st">"cut"</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(diamonds, aes(<span class="st">"color"</span>, fill<span class="op">=</span><span class="st">"cut"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_fill())</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_fill(reverse<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e6c7d5d2" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="4">
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> geom_bar(position<span class="op">=</span>position_fill(reverse<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4b427b6c" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="position-adjustments_files/figure-html/cell-5-output-1.png" class="img-fluid" width="1400"></p>
@@ -499,12 +506,12 @@ Key points
 <section id="spacing-between-dodged-bars" class="level3">
 <h3 class="anchored" data-anchor-id="spacing-between-dodged-bars">Spacing between dodged bars</h3>
 <p>Use the <code>width</code> argument to <code>position_dodge()</code> to increase or decrease the spacing between dodged bars.</p>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>], <span class="st">"n"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], <span class="st">"fill"</span>: [<span class="st">"A"</span>, <span class="st">"B"</span>] <span class="op">*</span> <span class="dv">2</span>})</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"n"</span>, fill<span class="op">=</span><span class="st">"fill"</span>)) <span class="op">+</span> geom_col(position<span class="op">=</span>position_dodge(width<span class="op">=</span><span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="f6577d19" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="5">
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"n"</span>, fill<span class="op">=</span><span class="st">"fill"</span>)) <span class="op">+</span> geom_col(position<span class="op">=</span>position_dodge(width<span class="op">=</span><span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bd611a93" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="position-adjustments_files/figure-html/cell-6-output-1.png" class="img-fluid" width="1400"></p>
@@ -516,13 +523,13 @@ Key points
 <section id="labelling-bars" class="level3">
 <h3 class="anchored" data-anchor-id="labelling-bars">Labelling bars</h3>
 <p>If you want to add a label to dodged bars, it’s often necessary to set the dodge width for both the bars and the text.</p>
-<div id="ac199557" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dodge <span class="op">=</span> position_dodge(width<span class="op">=</span><span class="fl">0.6</span>)</span>
+<div id="c69c08e6" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dodge <span class="op">=</span> position_dodge(width<span class="op">=</span><span class="fl">0.6</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"n"</span>, fill<span class="op">=</span><span class="st">"fill"</span>, label<span class="op">=</span><span class="st">"n"</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(position<span class="op">=</span>dodge, width<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(position<span class="op">=</span>dodge)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -540,10 +547,10 @@ Key points
 <section id="dodging-with-missing-bars" class="level2">
 <h2 class="anchored" data-anchor-id="dodging-with-missing-bars">Dodging with missing bars</h2>
 <p>When dodging bars, if a bar is missing from the plot (e.g.&nbsp;due to missing data), it often shows up by making another bar especially wide.</p>
-<div id="af99b528" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
+<div id="1d2f65aa" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ggplot(mpg, aes(<span class="st">"class"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>)) <span class="op">+</span> geom_bar(position<span class="op">=</span>position_dodge())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ggplot(mpg, aes(<span class="st">"class"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>)) <span class="op">+</span> geom_bar(position<span class="op">=</span>position_dodge())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -554,8 +561,8 @@ Key points
 </div>
 <p>Notice that 2seater on the left has only a single bar that’s as wide as car classes with 4 bars. This is because bars occupy the same amount of room within an x-axis grouping.</p>
 <p>In order to preserve space within a grouping for missing bars, you can calculate counts yourself, and add explicit rows for missing combinations in the data.</p>
-<div id="6e4c8346" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_crossed <span class="op">=</span> mpg[[<span class="st">"cyl"</span>]].merge(mpg[[<span class="st">"class"</span>]], how<span class="op">=</span><span class="st">"cross"</span>)</span>
+<div id="7b1f1f25" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_crossed <span class="op">=</span> mpg[[<span class="st">"cyl"</span>]].merge(mpg[[<span class="st">"class"</span>]], how<span class="op">=</span><span class="st">"cross"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># count rows, then explicitly add 0 counts for missing combinations</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>full_counts <span class="op">=</span> (</span>
@@ -572,7 +579,7 @@ Key points
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        aes(<span class="st">"class"</span>, <span class="st">"n"</span>, color<span class="op">=</span><span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>),</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_col(position<span class="op">=</span>position_dodge())</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -586,8 +593,8 @@ Key points
 <section id="dodging-lines-and-points" class="level2">
 <h2 class="anchored" data-anchor-id="dodging-lines-and-points">Dodging lines and points</h2>
 <p>When dodging lines and points, the <code>width=</code> argument to <code>position_dodge()</code> is necessary.</p>
-<div id="0d8f8b2f" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<div id="2a4112f4" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"group"</span>: [<span class="st">"A"</span>] <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> [<span class="st">"B"</span>] <span class="op">*</span> <span class="dv">2</span>,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"condition"</span>: [<span class="st">"treatment"</span>, <span class="st">"control"</span>] <span class="op">*</span> <span class="dv">2</span>,</span>
@@ -603,7 +610,7 @@ Key points
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(position<span class="op">=</span>dodge)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(size<span class="op">=</span><span class="dv">4</span>, position<span class="op">=</span>dodge)</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> expand_limits(y<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -616,8 +623,8 @@ Key points
 <section id="nudge-a-fixed-amount" class="level2">
 <h2 class="anchored" data-anchor-id="nudge-a-fixed-amount">Nudge a fixed amount</h2>
 <p>Use <code>position_nudge()</code> to move points or text a fixed amount in the x- and y-directions.</p>
-<div id="f0b3dc5b" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>highest_mpg <span class="op">=</span> mpg[(mpg[<span class="st">"hwy"</span>] <span class="op">==</span> mpg[<span class="st">"hwy"</span>].<span class="bu">max</span>()) <span class="op">&amp;</span> (mpg[<span class="st">"cty"</span>] <span class="op">==</span> mpg[<span class="st">"cty"</span>].<span class="bu">max</span>())]</span>
+<div id="364fd8ac" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>highest_mpg <span class="op">=</span> mpg[(mpg[<span class="st">"hwy"</span>] <span class="op">==</span> mpg[<span class="st">"hwy"</span>].<span class="bu">max</span>()) <span class="op">&amp;</span> (mpg[<span class="st">"cty"</span>] <span class="op">==</span> mpg[<span class="st">"cty"</span>].<span class="bu">max</span>())]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
@@ -627,7 +634,7 @@ Key points
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        position<span class="op">=</span>position_nudge(x<span class="op">=-</span><span class="dv">1</span>, y<span class="op">=-</span><span class="dv">2</span>),</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>highest_mpg,</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
