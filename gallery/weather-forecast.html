@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.2">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John T. Randolph">
 
-<title>Weather Forecast – plotnine 0.15.0a8</title>
+<title>Weather Forecast – plotnine 0.15.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c8529798e95e828767f0ccc7c337df2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-72329d7a58af5ea5ba42aa57462dba9a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,16 +105,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Weather Forecast – plotnine 0.15.0a8">
+<meta property="og:title" content="Weather Forecast – plotnine 0.15.0">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/gallery/img/misc/weather-forecast/weather.png">
-<meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:site_name" content="plotnine 0.15.0">
 <meta property="og:image:height" content="650">
 <meta property="og:image:width" content="650">
 </head>
@@ -125,8 +126,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a8</span>
+    <span class="navbar-title">plotnine 0.15.0</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -323,14 +326,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="4dd81b84" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
+<div id="432c8b7e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pl.__version__, p9.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pl.__version__, p9.__version__</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('1.31.0', '0.15.0a8')</code></pre>
+<pre><code>('1.31.0', '0.15.0')</code></pre>
 </div>
 </div>
 </section>
@@ -343,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We can use the raw data with <code>geom_segment</code> with minimal work: we’ll just want to type the “Day” column as a categorical column to establish the correct plotting order. If we don’t do this, the days will be plot in alphabetical order.</p>
 <p>Since this is just a 7-day forecast, we don’t need to worry about non-unique “Day” values. If there were non-unique “Day” values, we would need a different strategy such as using a unique value to order the days while using the “Day” value for labeling.</p>
 <p>Don’t be concerned about the “Conditions” column for now. We’ll figure out what, if anything, to do with it after figuring out most of the other parts.</p>
-<div id="72f9e17d" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>io <span class="op">=</span> StringIO(<span class="st">"""</span></span>
+<div id="d6e9ec46" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>io <span class="op">=</span> StringIO(<span class="st">"""</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">Day,Low,High,Conditions</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">Today,65,77,Cloudy</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">Mon,61,84,Sunny</span></span>
@@ -357,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> pl.read_csv(io)</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> raw_data.with_columns(pl.col(<span class="st">'Day'</span>).cast(pl.Categorical))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>raw_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -367,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (7, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -376,10 +379,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Conditions</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>i64</th>
-<th>i64</th>
-<th>str</th>
+<td>cat</td>
+<td>i64</td>
+<td>i64</td>
+<td>str</td>
 </tr>
 </thead>
 <tbody>
@@ -435,13 +438,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="create-plot">Create plot</h2>
 <p>I’m not showing the most basic prototype below, but if you want to see it, comment out line 4 and uncomment line 5 in the code block below.</p>
 <p>From the most basic prototype, I made the design choices that I want a thicker line, I want round ends, and I want color in the line, ideally a color gradient. The first prototype on display below shows attempts at working towards the design choices.</p>
-<div id="b70ae194" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> (</span>
+<div id="c3a5fa55" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(raw_data, p9.aes(x<span class="op">=</span><span class="st">'Low'</span>, xend<span class="op">=</span><span class="st">'High'</span>, y<span class="op">=</span><span class="st">'Day'</span>, yend<span class="op">=</span><span class="st">'Day'</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">'Prototype 1'</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_segment(size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -460,13 +463,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A color gradient is going to require some work</li>
 </ol>
 <p>There are a couple of strategies we can use to get the days ordered the way I want: we can either reverse the ordinality of the days in the dataframe or we can flip the y-axis. We can’t use <code>scale_y_reverse</code> because we do not have continuous values, but we can use <code>scale_y_discrete</code> and set the limits in reverse order. I use <code>scale_y_discrete</code> to reverse the order as demonstrated below.</p>
-<div id="4e2022ec" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse order of the days with scale_y_discrete</span></span>
+<div id="816c3d42" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse order of the days with scale_y_discrete</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    plot</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">'Prototype 1'</span>, caption<span class="op">=</span><span class="st">'Fix day order'</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_discrete(limits<span class="op">=</span>raw_data[<span class="st">'Day'</span>].reverse().to_list())</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -477,8 +480,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It looks like <code>geom_segment</code> doesn’t produce round ends although the code specifies <code>lineend='round'</code>. I’d like to dig into the code a bit to see if this observation might be similar to this <a href="https://github.com/has2k1/plotnine/issues/727">issue</a> and <a href="https://github.com/has2k1/plotnine/commit/18b748fab0c8b0c6e9ab28090982ecf2c054cefc">commit</a> <del>but I don’t have cycles available to do that right now</del>. It took me a couple weeks to get to it but taking a look at the <a href="https://github.com/has2k1/plotnine/blob/main/plotnine/geoms/geom_segment.py"><code>geom_segment</code></a> code, I believe that <code>geom_segment</code> does not pass on the value of <code>lineend</code> and it can be solved similarly to the commit noted above; I’ve opened an <a href="https://github.com/has2k1/plotnine/issues/854">issue</a>.</p>
 <p>Before moving on, let’s try one thing with <code>geom_segment</code> and a color gradient. I create a simple dataframe that has data to draw horizontal line segments at y=1. Each line segment has a <code>z</code> value ranging from 0 - 1 which we map to the color aesthetic.</p>
-<div id="0c5a50db" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> pl.DataFrame({</span>
+<div id="36e3fefc" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> pl.DataFrame({</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'x'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'y'</span>: [<span class="dv">1</span>] <span class="op">*</span> <span class="dv">10</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'z'</span>: [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>]  <span class="op">+</span> [<span class="dv">1</span>] <span class="op">*</span> <span class="dv">3</span></span>
@@ -486,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> plot_data.with_columns(</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    xend <span class="op">=</span> pl.col(<span class="st">'x'</span>) <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plot_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div><style>
 .dataframe > thead > tr,
@@ -496,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (10, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">x</th>
@@ -505,10 +508,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">xend</th>
 </tr>
 <tr class="even">
-<th>i64</th>
-<th>i64</th>
-<th>f64</th>
-<th>i64</th>
+<td>i64</td>
+<td>i64</td>
+<td>f64</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
@@ -577,12 +580,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e4a4fd57" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div id="c4a84975" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data, p9.aes(x<span class="op">=</span><span class="st">'x'</span>, xend<span class="op">=</span><span class="st">'xend'</span>, y<span class="op">=</span><span class="st">'y'</span>, yend<span class="op">=</span><span class="st">'y'</span>, color<span class="op">=</span><span class="st">'z'</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(caption<span class="op">=</span><span class="st">'Color gradient testing'</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_segment(size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -601,13 +604,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="import-data-1">Import data</h2>
 <p><code>geom_path</code> requires <code>x</code> and <code>y</code> aesthetics where it connects points according to their order in the dataframe. I want to map a temperature to <code>x</code> and “Day” to <code>y</code>, so I need the Low and High temperatures for each day to be separated to different rows. This will require reshaping the data: in this case, we’ll melt the data from wide to long format so that we have “Temperature” (<code>x</code>) and “Day” (<code>y</code>) columns.</p>
 <p>I’m going to work from the raw_data that was read in previously where Day is a categorical column.</p>
-<div id="787e010f" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> (</span>
+<div id="37a85f0f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> (</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    raw_data</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .unpivot(index<span class="op">=</span>[<span class="st">'Day'</span>], on<span class="op">=</span>[<span class="st">'High'</span>, <span class="st">'Low'</span>], variable_name<span class="op">=</span><span class="st">'Low/High'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    .sort([<span class="st">'Day'</span>, <span class="st">'Temperature'</span>], descending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plot_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div><style>
 .dataframe > thead > tr,
@@ -617,7 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (14, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -625,9 +628,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Temperature</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>str</th>
-<th>i64</th>
+<td>cat</td>
+<td>str</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
@@ -695,13 +698,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="create-plot-1" class="level2">
 <h2 class="anchored" data-anchor-id="create-plot-1">Create plot</h2>
 <p>I had imagined/hoped that <code>geom_path</code> might be able to auto-calculate a color gradient for the line between each of the two points, but ultimately the plot below demonstrates that this isn’t the case.</p>
-<div id="13622418" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div id="b746b18b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data, p9.aes(x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Day'</span>, color<span class="op">=</span><span class="st">'Temperature'</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">'Prototype 2'</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_discrete(limits<span class="op">=</span>raw_data[<span class="st">'Day'</span>].reverse().to_list())</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -714,21 +717,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="no-group-aesthetic">No <code>group</code> aesthetic?</h3>
 <p>You might have noticed that the code above doesn’t map anything to the <code>group</code> aesthetic. Initially, I mapped “Day” to the <code>group</code> aesthetic, but it doesn’t appear to matter in this case. I believe it’s because <code>y</code> is mapped to discrete rather than continuous values. Look at the plot below to see what happens if <code>y</code> is mapped to continuous values without a <code>group</code> aesthetic.</p>
 <p>Since we’ll have continuous values, we can use <code>scale_y_reverse</code> to reverse the order of the days.</p>
-<div id="e6a31551" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prep dictionary to map days to numbers</span></span>
+<div id="82890a62" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prep dictionary to map days to numbers</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> plot_data.get_column(<span class="st">'Day'</span>).unique(maintain_order<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(days, <span class="bu">range</span>(days.<span class="bu">len</span>())))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>days</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>days</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>{'Today': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6}</code></pre>
 </div>
 </div>
-<div id="85908221" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert days to numbers in "Day_int" column</span></span>
+<div id="cc23b699" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert days to numbers in "Day_int" column</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plot_data_test <span class="op">=</span> plot_data.with_columns(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'Day'</span>).cast(<span class="bu">str</span>).replace(days).cast(<span class="bu">int</span>).alias(<span class="st">'Day_int'</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plot_data_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plot_data_test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div><style>
 .dataframe > thead > tr,
@@ -738,7 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (14, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -747,10 +750,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Day_int</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>str</th>
-<th>i64</th>
-<th>i64</th>
+<td>cat</td>
+<td>str</td>
+<td>i64</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
@@ -825,14 +828,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="97ed17fe" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot with Day_int mapped to y; switch between commenting out lines 3 and 4 to see what happens</span></span>
+<div id="29da01b0" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot with Day_int mapped to y; switch between commenting out lines 3 and 4 to see what happens</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data_test, p9.aes(x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Day_int'</span>, color<span class="op">=</span><span class="st">'Temperature'</span>))</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">'Prototype 2'</span>, caption<span class="op">=</span><span class="st">'Continuous variable testing'</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_reverse()</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -845,14 +848,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="extra-geom_path-testing" class="level3">
 <h3 class="anchored" data-anchor-id="extra-geom_path-testing">Extra <code>geom_path</code> testing</h3>
 <p>The continuous variable testing plot above hints at this but let’s take another look at what’s going on with <code>geom_path</code> and the color: calculate a midpoint between Low and High and then remake the plot with <code>geom_path</code>.</p>
-<div id="e7640d18" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> (</span>
+<div id="a9b5ed11" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> (</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    raw_data</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    .with_columns(Mid <span class="op">=</span> (pl.col(<span class="st">'High'</span>) <span class="op">+</span> pl.col(<span class="st">'Low'</span>)) <span class="op">/</span> <span class="dv">2</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    .unpivot(index<span class="op">=</span>[<span class="st">'Day'</span>], on<span class="op">=</span>[<span class="st">'High'</span>, <span class="st">'Mid'</span>, <span class="st">'Low'</span>], variable_name<span class="op">=</span><span class="st">'Low/High'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    .sort([<span class="st">'Day'</span>, <span class="st">'Temperature'</span>], descending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plot_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div><style>
 .dataframe > thead > tr,
@@ -862,7 +865,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (21, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -870,9 +873,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Temperature</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>str</th>
-<th>f64</th>
+<td>cat</td>
+<td>str</td>
+<td>f64</td>
 </tr>
 </thead>
 <tbody>
@@ -936,13 +939,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="2793a564" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div id="99f4d9af" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data, p9.aes(x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Day'</span>, color<span class="op">=</span><span class="st">'Temperature'</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">'Prototype 2'</span>, caption<span class="op">=</span><span class="st">'Color gradient testing'</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_discrete(limits<span class="op">=</span>raw_data[<span class="st">'Day'</span>].reverse().to_list())</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -966,9 +969,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Temperature info prototypes</h1>
 <p>Let’s move quickly through a couple prototypes that get all of the temperature info onto the plot.</p>
 <p>We’ll use <code>geom_path</code> still, but we’re going to create a dataframe which has a row for every 0.1 degree between the Low and High temperatures on each day. This let’s us get a nice color gradient for the temperature range.</p>
-<div id="b8fc14c3" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reminder: this is what raw_data looks like</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7fa790aa" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reminder: this is what raw_data looks like</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div><style>
 .dataframe > thead > tr,
@@ -978,7 +981,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (7, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -987,10 +990,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Conditions</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>i64</th>
-<th>i64</th>
-<th>str</th>
+<td>cat</td>
+<td>i64</td>
+<td>i64</td>
+<td>str</td>
 </tr>
 </thead>
 <tbody>
@@ -1041,8 +1044,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="7bd768d2" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create "Temperature" column that is a list of values from Low to High by 0.1 increments</span></span>
+<div id="eff71638" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create "Temperature" column that is a list of values from Low to High by 0.1 increments</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> (</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    raw_data</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    .with_columns(</span>
@@ -1051,7 +1054,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    .select(<span class="st">'Day'</span>, <span class="st">'Conditions'</span>, <span class="st">'Temperature'</span>)</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    .explode(<span class="st">'Temperature'</span>)</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plot_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div><style>
 .dataframe > thead > tr,
@@ -1061,7 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (1_347, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -1069,9 +1072,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Temperature</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>str</th>
-<th>f64</th>
+<td>cat</td>
+<td>str</td>
+<td>f64</td>
 </tr>
 </thead>
 <tbody>
@@ -1138,13 +1141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="color-gradient-prototype" class="level2">
 <h2 class="anchored" data-anchor-id="color-gradient-prototype">Color gradient prototype</h2>
 <p>Let’s use our exploded out dataframe and see if the color gradient works.</p>
-<div id="cfcd45b7" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div id="d6848397" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data, p9.aes(x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Day'</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">"Color gradient prototype"</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(p9.aes(color<span class="op">=</span><span class="st">'Temperature'</span>), size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_discrete(limits<span class="op">=</span>raw_data[<span class="st">'Day'</span>].reverse().to_list())</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1164,20 +1167,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>For the 7-day range, I want something that’s underneath (on the z-axis) and a little larger than the temperature range. The effect I want is a thin border around the edges, especially at the extreme low and high temperatures. This means using a <code>geom_path</code> with a slightly larger <code>size</code> that spans from the lowest low temperature to the highest high temperature. Then, add the daily temperature ranges with another <code>geom_path</code> that layers on top. We’ll create a dataframe to make the underlayment easy to add.</p>
 <p>For the temperature labels, we’ll use <code>geom_text</code> and create a dataframe with columns that can map to the <code>x</code>, <code>y</code>, and <code>label</code> aesthetics to make them easy to add. The labels will be placed to the left and right of the full 7-day temperature range for each day.</p>
-<div id="774b60a8" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>low_high <span class="op">=</span> [raw_data.get_column(<span class="st">'Low'</span>).<span class="bu">min</span>(), raw_data.get_column(<span class="st">'High'</span>).<span class="bu">max</span>()]</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>low_high</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5cb47037" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>low_high <span class="op">=</span> [raw_data.get_column(<span class="st">'Low'</span>).<span class="bu">min</span>(), raw_data.get_column(<span class="st">'High'</span>).<span class="bu">max</span>()]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>low_high</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>[54, 93]</code></pre>
 </div>
 </div>
-<div id="d57e8e9a" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe for temperature range underlayment</span></span>
+<div id="3d3cef68" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe for temperature range underlayment</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>temp_range <span class="op">=</span> pl.DataFrame({</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Day'</span>: raw_data.get_column(<span class="st">'Day'</span>),</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Temperature'</span>: [low_high] <span class="op">*</span> <span class="bu">len</span>(raw_data)</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}).explode(<span class="st">'Temperature'</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>temp_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>temp_range</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div><style>
 .dataframe > thead > tr,
@@ -1187,15 +1190,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (14, 2)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
 <th data-quarto-table-cell-role="th">Temperature</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>i64</th>
+<td>cat</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
@@ -1248,8 +1251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5e67d8c4" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe for temperature labels; the offset used here will look better in the final plot</span></span>
+<div id="de4e9716" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe for temperature labels; the offset used here will look better in the final plot</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x_offset <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>temp_labels <span class="op">=</span> (</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    raw_data.lazy()</span>
@@ -1264,7 +1267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">'Day'</span>)</span>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    .collect()</span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>temp_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>temp_labels</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div><style>
 .dataframe > thead > tr,
@@ -1274,7 +1277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (14, 6)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -1285,12 +1288,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">x</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>str</th>
-<th>str</th>
-<th>i64</th>
-<th>str</th>
-<th>i32</th>
+<td>cat</td>
+<td>str</td>
+<td>str</td>
+<td>i64</td>
+<td>str</td>
+<td>i32</td>
 </tr>
 </thead>
 <tbody>
@@ -1387,15 +1390,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="4032f995" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div id="f4958155" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    p9.ggplot(plot_data, p9.aes(x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Day'</span>))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(title<span class="op">=</span><span class="st">"Full temperature prototype"</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(data<span class="op">=</span>temp_range, size<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span><span class="st">'black'</span>, lineend<span class="op">=</span><span class="st">'round'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_path(p9.aes(color<span class="op">=</span><span class="st">'Temperature'</span>), size<span class="op">=</span><span class="dv">8</span>, lineend<span class="op">=</span><span class="st">'round'</span>)</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_text(data<span class="op">=</span>temp_labels, mapping<span class="op">=</span>p9.aes(x<span class="op">=</span><span class="st">'x'</span>, label<span class="op">=</span><span class="st">'label'</span>), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.scale_y_discrete(limits<span class="op">=</span>raw_data[<span class="st">'Day'</span>].reverse().to_list())</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1420,8 +1423,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prep-data" class="level2">
 <h2 class="anchored" data-anchor-id="prep-data">Prep data</h2>
 <p>For convenience, here is all of the code to prep the data for the final plot in one place.</p>
-<div id="09527276" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> pl.read_csv(<span class="st">'./data/7-day_forecast.csv'</span>)</span>
+<div id="c9782e05" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> pl.read_csv(<span class="st">'./data/7-day_forecast.csv'</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> raw_data.with_columns(pl.col(<span class="st">'Day'</span>).cast(pl.Categorical))</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>low_high <span class="op">=</span> [raw_data.get_column(<span class="st">'Low'</span>).<span class="bu">min</span>(), raw_data.get_column(<span class="st">'High'</span>).<span class="bu">max</span>()]</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1454,7 +1457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>        .alias(<span class="st">'x'</span>)</span>
 <span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">'Day'</span>)</span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="plot-without-weather-icons" class="level2">
@@ -1462,8 +1465,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Madison, WI is my current location and this is an actual 7-day forecast from late mid-June when I first started thinking about this. I did take some liberty on Tuesday to increase the high temperature for reasons you’ll see in the plot with icons. Check line 11 to see how I define the color gradient. I’ve left a gap for the weather icons to be added later, and this plot is going to get stretched out vertically.</p>
 <p>You’ll notice that a lot of work happens in <code>theme()</code>. Also, there are a few variables I define at the top and these are where I spent more time trying out different settings. I had never used named colors from the <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">xkcd color name survey</a> before, but you can use them by placing <code>xkcd:</code> before the color name.</p>
 <p>Final comment here on the tweaks: I use Arial instead of Helvetica font. Look at the “Full temperature prototype” plot above and you might notice that some of the numbers look a little uneven. The “65°” text label in the upper-left is an example of this. I think the Helvetica font is getting rendered a little unevenly and Arial looks better. I tried 20 different fonts and settled on Arial.</p>
-<div id="ba7c14ab" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>range_bg <span class="op">=</span> <span class="st">'xkcd:dark blue grey'</span></span>
+<div id="b21ba2c8" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>range_bg <span class="op">=</span> <span class="st">'xkcd:dark blue grey'</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>font_size <span class="op">=</span> <span class="dv">18</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>font_family <span class="op">=</span> <span class="st">'Arial'</span> <span class="co"># default is Helvetica; I think Arial looks a tiny bit better</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1488,7 +1491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>        legend_position<span class="op">=</span><span class="st">'none'</span>,</span>
 <span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1502,14 +1505,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="plot-with-weather-icons">Plot with weather icons</h2>
 <p>Let’s take a quick look at using <code>watermark</code> to add <code>.png</code> images to a plot. The <code>watermark</code> feature takes the path to an image, and x and y pixel coordinates, then places the image with respect to the origin, <code>[0, 0]</code>, which is the bottom-left corner of the plot.</p>
 <p>I didn’t expect it to work but I did try using an <code>.svg</code> image with <code>watermark</code> and it didn’t work.</p>
-<div id="8da23db8" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add 3 weather icons to the plot in the bottom-left corner</span></span>
+<div id="77821db5" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add 3 weather icons to the plot in the bottom-left corner</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    plot</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.watermark(<span class="st">'./img/misc/weather-forecast/icons/drizzle_32px.png'</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.watermark(<span class="st">'./img/misc/weather-forecast/icons/rain_32px.png'</span>, xo<span class="op">=</span><span class="dv">40</span>, yo<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.watermark(<span class="st">'./img/misc/weather-forecast/icons/heavy_rain_32px.png'</span>, xo<span class="op">=</span><span class="dv">80</span>, yo<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1519,8 +1522,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Since the coordinates are in pixels, this makes things a little trickier. To handle this, I created a version of the plot at a specific resolution to figure out where the place the icons for each day. I’m not going to output the plot since the placement probably will look off, but I’ll save the plot to a file and then display it in this jupyter notebook.</p>
-<div id="3f5c62ec" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cfad2a97" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>raw_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div><style>
 .dataframe > thead > tr,
@@ -1530,7 +1533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <small>shape: (7, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Day</th>
@@ -1539,10 +1542,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Conditions</th>
 </tr>
 <tr class="even">
-<th>cat</th>
-<th>i64</th>
-<th>i64</th>
-<th>str</th>
+<td>cat</td>
+<td>i64</td>
+<td>i64</td>
+<td>str</td>
 </tr>
 </thead>
 <tbody>
@@ -1593,8 +1596,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="6e9ea726" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_w_icons <span class="op">=</span> plot</span>
+<div id="33129cd1" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_w_icons <span class="op">=</span> plot</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>xo <span class="op">=</span> <span class="dv">120</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>yo_max <span class="op">=</span> <span class="dv">509</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>yo_mod <span class="op">=</span> <span class="dv">78</span></span>
@@ -1605,7 +1608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    plot_w_icons <span class="op">=</span> (</span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        plot_w_icons </span>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> p9.watermark(<span class="ss">f'./img/misc/weather-forecast/icons/</span><span class="sc">{</span>row[<span class="st">"Conditions"</span>]<span class="sc">.</span>lower()<span class="sc">.</span>replace(<span class="st">" "</span>, <span class="st">"_"</span>)<span class="sc">}</span><span class="ss">_32px.png'</span>, xo<span class="op">=</span>xo, yo<span class="op">=</span>yo)</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- Here's the final plot: -->
 <!---->
