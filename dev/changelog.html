@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Changelog – plotnine 0.15.0a6</title>
+<title>Changelog – plotnine 0.15.0a8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70bd9803da433bc133ca15e7ddddcca9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c8529798e95e828767f0ccc7c337df2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Changelog – plotnine 0.15.0a6">
+<meta property="og:title" content="Changelog – plotnine 0.15.0a8">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="plotnine 0.15.0a6">
+<meta property="og:site_name" content="plotnine 0.15.0a8">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">plotnine 0.15.0a6</span>
+    <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -430,6 +430,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Fixed bug in <a href="./reference/geom_vline.html#plotnine.geom_vline"><code>geom_vline</code></a> where you could not map the <code>xintercept</code> aesthetic to a discrete variable.</p></li>
 <li><p>Fixed bug in <a href="./reference/geom_hline.html#plotnine.geom_hline"><code>geom_hline</code></a> where you could not map the <code>yintercept</code> aesthetic to a discrete variable.</p></li>
 <li><p>Fixed bug in all manual scales (<code>scale_*_manual</code>) where if you set <code>values</code> to a <code>dict</code> then setting the breaks would lead to an error. <a href="https://github.com/has2k1/plotnine/issues/949" title="Issue: #949">#949</a></p></li>
+<li><p>Fixed using <a href="./reference/theme_void.html#plotnine.theme_void"><code>theme_void</code></a> with facetting so that the strip text are always fully within the figure bounds.</p></li>
+<li><p>Fixed the ordinal color scales <code>scale_color_ordinal</code>, <code>scale_color_cmap_d</code> <code>scale_fill_ordinal</code> and <code>scale_fill_cmap_d</code> to handle missing (<code>NaN</code> or <code>None</code>) values. <a href="https://github.com/has2k1/plotnine/issues/953" title="Issue: #953">#953</a></p></li>
 </ul>
 </section>
 </section>
@@ -808,7 +810,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="./reference/ggplot.html#plotnine.ggplot.__add__"><code>__add__</code></a> and <a href="./reference/ggplot.html#plotnine.ggplot.__iadd__"><code>__iadd__</code></a> now accept the same types of objects. In this change <a href="./reference/ggplot.html#plotnine.ggplot.__iadd__"><code>__iadd__</code></a> has gained the ability to accept a list of objects.</p></li>
 <li><p><a href="./reference/ggplot.html#plotnine.ggplot.draw"><code>draw</code></a> no longer accepts the argument <code>return_ggplot</code> and the return value is always a matplolib figure.</p></li>
 <li><p>Themeables <code>strip_margin</code>, <code>strip_margin_x</code> and <code>strip_margin_y</code>) have been renamed to <a href="./reference/strip_align.html#plotnine.themes.themeable.strip_align"><code>strip_align</code></a>, <a href="./reference/strip_align_x.html#plotnine.themes.themeable.strip_align_x"><code>strip_align_x</code></a> <a href="./reference/strip_align_y.html#plotnine.themes.themeable.strip_align_y"><code>strip_align_y</code></a> respectively.</p></li>
-<li><p><a href="./reference/subplots_adjust.html#plotnine.themes.themeable.subplots_adjust"><code>subplots_adjust</code></a> has been deprecated. You no longer need to use <code class="sourceCode python">theme(subplots_adjust<span class="op">=</span>{<span class="st">"right"</span>: <span class="fl">0.85</span>})</code> and the like to make space for the legend or text around the panels. In the future, this will through an error.</p></li>
+<li><p><code>subplots_adjust</code> has been deprecated. You no longer need to use <code class="sourceCode python">theme(subplots_adjust<span class="op">=</span>{<span class="st">"right"</span>: <span class="fl">0.85</span>})</code> and the like to make space for the legend or text around the panels. In the future, this will through an error.</p></li>
 <li><p>Changed default font-family (san-serif) from DejaVu Sans to Helvetica.</p></li>
 </ul>
 </section>

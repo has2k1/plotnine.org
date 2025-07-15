@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeroen Janssens">
 
-<title>Anscombe’s Quartet – plotnine 0.15.0a6</title>
+<title>Anscombe’s Quartet – plotnine 0.15.0a8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-70bd9803da433bc133ca15e7ddddcca9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c8529798e95e828767f0ccc7c337df2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -139,12 +139,12 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Anscombe’s Quartet – plotnine 0.15.0a6">
+<meta property="og:title" content="Anscombe’s Quartet – plotnine 0.15.0a8">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://plotnine.org/gallery/img/medium/anscombes-quartet.png">
-<meta property="og:site_name" content="plotnine 0.15.0a6">
-<meta property="og:image:height" content="250">
-<meta property="og:image:width" content="350">
+<meta property="og:image" content="https://plotnine.org/gallery/img/large/anscombes-quartet.png">
+<meta property="og:site_name" content="plotnine 0.15.0a8">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:width" content="1400">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -155,7 +155,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a6</span>
+    <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -265,18 +265,13 @@ window.Quarto = {
     height: auto;
 }
 .preview-image {
-    display: none;
-}
-.large-image {
-    border: 1px solid #222222;
     margin: auto !important;
     max-width: 80% !important;
     height: auto !important;
     display: block;
 }
 </style>
-<p><img src="img/medium/anscombes-quartet.png" class="preview-image img-fluid"></p>
-<p><img src="img/large/anscombes-quartet.png" class="large-image img-fluid"></p>
+<p><img src="img/large/anscombes-quartet.png" class="preview-image img-fluid"></p>
 <p>In 1973, statistician Francis Anscombe challenged the commonly held belief that “numerical calculations are exact, but graphs are rough” (Anscombe, 1973). His strategy was to manually construct four small datasets—now known as Anscombe’s Quartet—that have different distributions but nearly identical descriptive statistics. It’s perhaps the best argument for visualizing data.</p>
 <p>In this notebook we replicate his paper by using Plotnine to visualize those datasets and Polars to verify their descriptive statistics. More specifically, we:</p>
 <ul>
@@ -285,7 +280,7 @@ window.Quarto = {
 <li>Create a couple of exploratory data visualizations</li>
 <li>Fine-tune the visualization to make it suitable for communication</li>
 </ul>
-<div id="df669d4d" class="cell" data-execution_count="3">
+<div id="c0107455" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> anscombe_quartet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -293,10 +288,10 @@ window.Quarto = {
 <section id="convert-dataframe-to-polars" class="level2">
 <h2 class="anchored" data-anchor-id="convert-dataframe-to-polars">Convert DataFrame to Polars</h2>
 <p>We prefer to do our data manipulation with polars, so we convert the dataset to a polars DataFrame.</p>
-<div id="caa30724" class="cell" data-execution_count="4">
+<div id="f2ae7d80" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anscombe_quartet <span class="op">=</span> pl.from_pandas(anscombe_quartet)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>anscombe_quartet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -383,7 +378,7 @@ window.Quarto = {
 <section id="compute-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="compute-descriptive-statistics">Compute Descriptive Statistics</h2>
 <p>To verify that the four datasets have identical descriptive statistics, we use Polars to compute the mean and the variance of both <code>x</code> and <code>y</code>. We also compute the correlation between <code>x</code> and <code>y</code>:</p>
-<div id="4c51f12c" class="cell" data-execution_count="5">
+<div id="08e6a571" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pl.Config.set_float_precision(<span class="dv">2</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>anscombe_quartet.group_by(<span class="st">"dataset"</span>, maintain_order<span class="op">=</span><span class="va">True</span>).agg(</span>
@@ -391,7 +386,7 @@ window.Quarto = {
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"x"</span>, <span class="st">"y"</span>).var().name.prefix(<span class="st">"variance_"</span>),</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    pl.corr(<span class="st">"x"</span>, <span class="st">"y"</span>).alias(<span class="st">"correlation_xy"</span>),</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -462,8 +457,19 @@ window.Quarto = {
 <section id="exploratory-data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-visualization">Exploratory Data Visualization</h2>
 <p>Let’s create a few basic data visualizations to get a better feeling for the data. What’s great about Plotnine is that you can get a first plot with relatively little code. We have two continuous variables <code>x</code> and <code>y</code>, so a scatter plot might work:</p>
-<div id="09fc07a6" class="cell" data-execution_count="6">
+<div id="7576f982" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anscombes-quartet_files/figure-html/cell-6-output-1.png" width="672" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That doesn’t make much sense yet. We need a way to distinguish between the datasets. Let’s color each point according to the dataset it belongs to:</p>
+<div id="135b66be" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -472,19 +478,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>That doesn’t make much sense yet. We need a way to distinguish between the datasets. Let’s color each point according to the dataset it belongs to:</p>
-<div id="7af78d8c" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span> geom_point()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="anscombes-quartet_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>Well, that’s rather messy. Let’s create a panel for each dataset using the <code>facet_wrap()</code> function instead. To make the code easier to read and to edit, we’ll put each function on its own line:</p>
-<div id="1e35b065" class="cell" data-execution_count="8">
+<div id="91c111ba" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">"dataset"</span>) <span class="op">+</span></span>
@@ -493,13 +488,13 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="anscombes-quartet_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="anscombes-quartet_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>That’s better. The panels make the use of color redundant, so we’ll make each point black again. Let’s also add a regression line using the <code>geom_smooth()</code> function, to visualize that the four datasets have identical descriptive statistics.</p>
-<div id="9eccfc2e" class="cell" data-execution_count="9">
+<div id="2a7dda6a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    geom_point() <span class="op">+</span></span>
@@ -509,7 +504,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="anscombes-quartet_files/figure-html/cell-10-output-1.png" width="672" height="480" class="figure-img"></p>
+<p><img src="anscombes-quartet_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -525,7 +520,7 @@ window.Quarto = {
 <li>Change the colors and the font.</li>
 </ul>
 <p>As you can see, there’s quite some code needed for this fine-tuning. Luckily, because of its composable API, Plotnine allows you to gradually move from a exploratory data visualization to a fine-tuned explanatory one.</p>
-<div id="a0f59018" class="cell" data-execution_count="10">
+<div id="236ee64c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    geom_point(color<span class="op">=</span><span class="st">"sienna"</span>, fill<span class="op">=</span><span class="st">"darkorange"</span>, size<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
@@ -549,7 +544,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="anscombes-quartet_files/figure-html/cell-11-output-1.png" width="1008" height="720" class="figure-img"></p>
+<p><img src="anscombes-quartet_files/figure-html/cell-10-output-1.png" width="1008" height="720" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -558,7 +553,7 @@ window.Quarto = {
 <section id="bonus-apply-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-apply-linear-regression">Bonus: Apply Linear Regression</h2>
 <p>In this bonus section, we use scikit-learn to fit a linear regression line to each dataset and confirm that the intercept, slope, and <span class="math inline">\(R^2\)</span> are also identical. The <code>geom_smooth()</code> function added regression lines to our scatter plots, but now we get to see the raw values as well.</p>
-<div id="4bae10f7" class="cell" data-execution_count="12">
+<div id="4cadfb5b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -589,7 +584,7 @@ window.Quarto = {
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        .alias(<span class="st">"lr"</span>)</span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>).unnest(<span class="st">"lr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {

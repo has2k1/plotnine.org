@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Annotations – plotnine 0.15.0a6</title>
+<title>Annotations – plotnine 0.15.0a8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d6bd5c7882def3fd55ae090392f58760.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8fffac7b3563928a82dfa301995fb93b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,10 +108,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
 
 
-<meta property="og:title" content="Annotations – plotnine 0.15.0a6">
+<meta property="og:title" content="Annotations – plotnine 0.15.0a8">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/annotations_files/figure-html/cell-3-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0a6">
+<meta property="og:site_name" content="plotnine 0.15.0a8">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a6</span>
+    <span class="navbar-title">plotnine 0.15.0a8</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -426,7 +426,7 @@ Key points
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="c4bd175f" class="cell" data-execution_count="1">
+<div id="e8c687f1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -434,7 +434,7 @@ Key points
 <section id="annotate" class="level2">
 <h2 class="anchored" data-anchor-id="annotate"><code>annotate()</code></h2>
 <p>Use <code>annotate()</code> to write some text on a plot.</p>
-<div id="fad5928e" class="cell" data-execution_count="2">
+<div id="46b3adef" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r_coef <span class="op">=</span> penguins[<span class="st">"flipper_length_mm"</span>].corr(penguins[<span class="st">"body_mass_g"</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>))</span>
@@ -461,7 +461,7 @@ Key points
 </div>
 <p>Notice that the correlation coefficient is shown on the top-left of the plot. The first argument to annotate, specifies the geom to use (in this case, the <code>"text"</code> means to use <code>geom_text()</code>).</p>
 <p>In order to use annotate with another geom, pass the name of the geom as the first argument. For example, the code below draws a rectangle around the text.</p>
-<div id="5dd60157" class="cell" data-execution_count="3">
+<div id="9dbb7113" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> annotate(<span class="st">"rect"</span>, xmin<span class="op">=</span><span class="dv">170</span>, xmax<span class="op">=</span><span class="dv">190</span>, ymin<span class="op">=</span><span class="dv">5500</span>, ymax<span class="op">=</span><span class="dv">6000</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -476,7 +476,7 @@ Key points
 <section id="geom_textpath_effects..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textpath_effects..."><code>geom_text(path_effects=...)</code></h2>
 <p>Use the <code>geom_text(path_effects=...)</code> argument to add more complex styling to your text. This argument takes a list of objects created by the <code>matplotlib.patheffects</code> submodule.</p>
-<div id="edc392f5" class="cell" data-execution_count="4">
+<div id="340e3e7c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patheffects <span class="im">as</span> pe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>effect <span class="op">=</span> [</span>
@@ -501,7 +501,7 @@ Key points
 <section id="geom_textadjust_text..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textadjust_text..."><code>geom_text(adjust_text=...)</code></h2>
 <p>Use the <code>geom_text(adjust_text=...)</code> argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the <code>adjustText</code> package’s <code>adjust_text()</code> function.</p>
-<div id="1e499959" class="cell" data-execution_count="5">
+<div id="5be07e4f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -510,10 +510,10 @@ Key points
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(adjust_text<span class="op">=</span>{<span class="st">"arrowprops"</span>: {<span class="st">"arrowstyle"</span>: <span class="st">"-"</span>}})</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 [-0.13460508  0.78568863]
-37 [ 0.69209695 -0.88821294]
-35 [0.82494845 0.84825972]
-36 [-0.78620801  0.54410702]</code></pre>
+<pre><code>0 [0.8846234  0.36704643]
+37 [0.83427694 0.88674176]
+35 [-0.21874758 -0.08150075]
+36 [-0.19877945  0.59296797]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -530,7 +530,7 @@ Key points
 </section>
 <section id="emphasis-with-shading" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-shading">Emphasis with shading</h2>
-<div id="035e35de" class="cell" data-execution_count="6">
+<div id="d67e3058" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> huron</span>
@@ -569,7 +569,7 @@ Key points
 </section>
 <section id="emphasis-with-arrows" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-arrows">Emphasis with arrows</h2>
-<div id="5d3092db" class="cell" data-execution_count="7">
+<div id="25a41a39" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> economics</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(</span>
