@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-72329d7a58af5ea5ba42aa57462dba9a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-167b476174dea9c2aed737ddb5f4eea1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -163,10 +163,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../external-resources.html">
- <span class="dropdown-text">External Resources</span></a>
-  </li>  
     </ul>
   </li>
 </ul>
@@ -236,12 +232,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/my-slope-and-intercept-for-a-line.png" class="preview-image img-fluid"></p>
-<div id="d0316f0c" class="cell" data-execution_count="2">
+<div id="7a451a37" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, labs, geom_abline, facet_grid</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>geom_abline()</code> draws a line when the yintercept and gradient is supplied, and is useful as a guide.</p>
-<div id="7c2c4636" class="cell" data-execution_count="3">
+<div id="03b24438" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -343,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It’s useful to use <code>geom_abline()</code> with some data, so we start with a basic scatter plot:</p>
-<div id="054be6a0" class="cell" data-execution_count="4">
+<div id="516b718b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -358,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now layer a line over the scatter plot using <code>geom_abline()</code>. <code>geom_abline()</code> requires inputs for the slope (default slope is 1) and y-intercept (default value is [0,0]).</p>
-<div id="90b2edb4" class="cell" data-execution_count="5">
+<div id="50ffd585" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -377,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can plot two lines on one plot:</p>
-<div id="22a30559" class="cell" data-execution_count="6">
+<div id="5449e906" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -396,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can change the look of the line:</p>
-<div id="abcd8283" class="cell" data-execution_count="7">
+<div id="e1f60cf8" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -418,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>geom_abline()</code> can be used with a facet plot:</p>
-<div id="52cd2173" class="cell" data-execution_count="8">
+<div id="bdaeb0aa" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(x<span class="op">=</span><span class="st">"displ"</span>, y<span class="op">=</span><span class="st">"hwy"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
