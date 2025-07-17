@@ -279,7 +279,7 @@ window.Quarto = {
 <li>Create a couple of exploratory data visualizations</li>
 <li>Fine-tune the visualization to make it suitable for communication</li>
 </ul>
-<div id="c7492a0f" class="cell" data-execution_count="2">
+<div id="5f72a43f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> anscombe_quartet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -287,7 +287,7 @@ window.Quarto = {
 <section id="convert-dataframe-to-polars" class="level2">
 <h2 class="anchored" data-anchor-id="convert-dataframe-to-polars">Convert DataFrame to Polars</h2>
 <p>We prefer to do our data manipulation with polars, so we convert the dataset to a polars DataFrame.</p>
-<div id="8f75f9b4" class="cell" data-execution_count="3">
+<div id="6f26960c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anscombe_quartet <span class="op">=</span> pl.from_pandas(anscombe_quartet)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>anscombe_quartet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -377,7 +377,7 @@ window.Quarto = {
 <section id="compute-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="compute-descriptive-statistics">Compute Descriptive Statistics</h2>
 <p>To verify that the four datasets have identical descriptive statistics, we use Polars to compute the mean and the variance of both <code>x</code> and <code>y</code>. We also compute the correlation between <code>x</code> and <code>y</code>:</p>
-<div id="7f1914a9" class="cell" data-execution_count="4">
+<div id="9812f157" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pl.Config.set_float_precision(<span class="dv">2</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>anscombe_quartet.group_by(<span class="st">"dataset"</span>, maintain_order<span class="op">=</span><span class="va">True</span>).agg(</span>
@@ -456,7 +456,7 @@ window.Quarto = {
 <section id="exploratory-data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-visualization">Exploratory Data Visualization</h2>
 <p>Let’s create a few basic data visualizations to get a better feeling for the data. What’s great about Plotnine is that you can get a first plot with relatively little code. We have two continuous variables <code>x</code> and <code>y</code>, so a scatter plot might work:</p>
-<div id="384d11fc" class="cell" data-execution_count="5">
+<div id="457d3805" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> geom_point()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -467,7 +467,7 @@ window.Quarto = {
 </div>
 </div>
 <p>That doesn’t make much sense yet. We need a way to distinguish between the datasets. Let’s color each point according to the dataset it belongs to:</p>
-<div id="81dab16a" class="cell" data-execution_count="6">
+<div id="130d8168" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span> geom_point()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -478,7 +478,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Well, that’s rather messy. Let’s create a panel for each dataset using the <code>facet_wrap()</code> function instead. To make the code easier to read and to edit, we’ll put each function on its own line:</p>
-<div id="be004a9b" class="cell" data-execution_count="7">
+<div id="a7d448fa" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>, color<span class="op">=</span><span class="st">"dataset"</span>)) <span class="op">+</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">"dataset"</span>) <span class="op">+</span></span>
@@ -493,7 +493,7 @@ window.Quarto = {
 </div>
 </div>
 <p>That’s better. The panels make the use of color redundant, so we’ll make each point black again. Let’s also add a regression line using the <code>geom_smooth()</code> function, to visualize that the four datasets have identical descriptive statistics.</p>
-<div id="876278d3" class="cell" data-execution_count="8">
+<div id="a13ef764" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    geom_point() <span class="op">+</span></span>
@@ -519,7 +519,7 @@ window.Quarto = {
 <li>Change the colors and the font.</li>
 </ul>
 <p>As you can see, there’s quite some code needed for this fine-tuning. Luckily, because of its composable API, Plotnine allows you to gradually move from a exploratory data visualization to a fine-tuned explanatory one.</p>
-<div id="b22e9468" class="cell" data-execution_count="9">
+<div id="ecec46bf" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(anscombe_quartet, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    geom_point(color<span class="op">=</span><span class="st">"sienna"</span>, fill<span class="op">=</span><span class="st">"darkorange"</span>, size<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
@@ -552,7 +552,7 @@ window.Quarto = {
 <section id="bonus-apply-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-apply-linear-regression">Bonus: Apply Linear Regression</h2>
 <p>In this bonus section, we use scikit-learn to fit a linear regression line to each dataset and confirm that the intercept, slope, and <span class="math inline">\(R^2\)</span> are also identical. The <code>geom_smooth()</code> function added regression lines to our scatter plots, but now we get to see the raw values as well.</p>
-<div id="8fe8c876" class="cell" data-execution_count="11">
+<div id="37a33e73" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -243,14 +243,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/a-century-of-screams.png" class="preview-image img-fluid"></p>
-<div id="1e7958ba" class="cell" data-execution_count="2">
+<div id="40878ad4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="read-the-movie-data" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-movie-data">Read the movie data</h2>
-<div id="38a19b77" class="cell" data-execution_count="3">
+<div id="820207ab" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pl.read_csv(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/english_horror_movies.csv"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    schema_overrides<span class="op">=</span>{<span class="st">"release_date"</span>: pl.Date},</span>
@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="get-a-tally-of-the-movies-per-year" class="level2">
 <h2 class="anchored" data-anchor-id="get-a-tally-of-the-movies-per-year">Get a tally of the movies per year</h2>
-<div id="03405656" class="cell" data-execution_count="4">
+<div id="f4de2496" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>movies_per_year <span class="op">=</span> movies.group_by(<span class="st">"year"</span>).<span class="bu">len</span>(<span class="st">"count"</span>).sort(<span class="st">"year"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>movies_per_year.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -437,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="calculate-the-top-movies-per-decade" class="level2">
 <h2 class="anchored" data-anchor-id="calculate-the-top-movies-per-decade">Calculate the top movies per decade</h2>
-<div id="b34ff193" class="cell" data-execution_count="5">
+<div id="6aa6cf7e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top_movies_per_decade <span class="op">=</span> movies.with_columns(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    decade<span class="op">=</span>(pl.col(<span class="st">"year"</span>) <span class="op">//</span> <span class="dv">10</span> ) <span class="op">*</span> <span class="dv">10</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>).<span class="bu">filter</span>(</span>
@@ -556,13 +556,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>For the contest submission, Deepali used <em>Corbel</em>, a proprietary font that matches well with the theme of the plot. Since <em>Corbel</em> isn’t freely available, we instead use <em>Lato</em> which is an open-source font that is likely available most systems.</p>
-<div id="c10d854c" class="cell" data-execution_count="6">
+<div id="d344fe9b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>body_font <span class="op">=</span> <span class="st">"Lato"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="plot" class="level2">
 <h2 class="anchored" data-anchor-id="plot">Plot</h2>
-<div id="0bf61964" class="cell" data-execution_count="7">
+<div id="63cb1900" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(movies_per_year, aes(<span class="st">"year"</span>, <span class="st">"count"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_area(fill<span class="op">=</span><span class="st">"#911010"</span>)</span>
