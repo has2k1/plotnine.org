@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c5b3008417511be1896b218a7240bb42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-aea6238f2250672874d1f5ad1cc722f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,10 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../external-resources.html">
- <span class="dropdown-text">External Resources</span></a>
   </li>  
     </ul>
   </li>
@@ -392,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This page provides an overview of Plotnine’s most important concepts and corresponding syntax. Throughout this overview, we’ll focus on reproducing the plot below, which looks at city (<code>cty</code>) versus highway mileage (<code>hwy</code>) across different years of cars:</p>
-<div id="09efa4e6" class="cell" data-execution_count="1">
+<div id="3ba4650c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
@@ -434,7 +430,7 @@ Note
 <section id="specifying-data" class="level2">
 <h2 class="anchored" data-anchor-id="specifying-data">Specifying data</h2>
 <p>Every plot in Plotnine starts with passing data to the <code>ggplot()</code> function. The data can be a Pandas or Polars DataFrame. Plotnine works best when the data is in a <a href="https://aeturrell.github.io/python4DS/data-tidy.html">tidy format</a>, which tends to be longer—with more rows and fewer columns.</p>
-<div id="76aa666e" class="cell" data-execution_count="2">
+<div id="72529521" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -452,7 +448,7 @@ Note
 <h2 class="anchored" data-anchor-id="aes-mapping"><code>aes()</code> mapping</h2>
 <p>The <code>aes()</code> function maps columns of data onto graphical attributes–such as colors, shapes, or x and y coordinates. (The name <code>aes()</code> is short for aesthetic.)</p>
 <p>We can map the <code>cty</code> and <code>hwy</code> columns to the x- and y- coordinates in the plot using the code below:</p>
-<div id="42533e2a" class="cell" data-execution_count="3">
+<div id="ef73862c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot(data<span class="op">=</span>mpg, mapping <span class="op">=</span> aes(x <span class="op">=</span> <span class="st">"cty"</span>, y <span class="op">=</span> <span class="st">"hwy"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -467,7 +463,7 @@ Note
 <h2 class="anchored" data-anchor-id="geom_-objects"><code>geom_*()</code> objects</h2>
 <p>Functions starting with <code>geom_*()</code> specify geometric objects (geoms) to add to the plot. Geoms determine <em>how</em> to turn mapped data into visual elements–such as points, lines, or even boxplots.</p>
 <p>Here is how we can map the <code>cty</code> and <code>hwy</code> columns to points with a smooth trend line on top:</p>
-<div id="ea536f80" class="cell" data-execution_count="4">
+<div id="5e1bbafe" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to create a scatterplot</span></span>
@@ -488,7 +484,7 @@ Note
 <h2 class="anchored" data-anchor-id="scale_-translations"><code>scale_*()</code> translations</h2>
 <p>The <code>scale_*()</code> functions customize the styling of visual elements from a data mapping. This includes color palettes, axis spacing (e.g.&nbsp;log scale), axis limits, and more. Scales can set the names on guides like axes, legends, and colorbars.</p>
 <p>The names of scales follow the pattern <code>scale_&lt;aesthetic&gt;_&lt;type&gt;</code>, where <code>&lt;aesthetic&gt;</code> is the name of an aesthetic attribute, like <code>x</code>, <code>y</code>, or <code>color</code>. If we want to use the <code>plasma</code> palette for color, we can use the code below:</p>
-<div id="52b84414" class="cell" data-execution_count="5">
+<div id="5316b4f3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"displ"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -506,7 +502,7 @@ Note
 <section id="position_-adjustments" class="level2">
 <h2 class="anchored" data-anchor-id="position_-adjustments"><code>position_*()</code> adjustments</h2>
 <p>The <code>position_*()</code> functions adjust the position of elements in the plot. For example, by adding a small amount of random noise (jitter) to the x- and y- coordinates of points, so they don’t cover each other.</p>
-<div id="afd88a8c" class="cell" data-execution_count="6">
+<div id="c172d6bc" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"displ"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add a small amount of jitter</span></span>
@@ -524,7 +520,7 @@ Note
 <section id="facet_-subplots" class="level2">
 <h2 class="anchored" data-anchor-id="facet_-subplots"><code>facet_*()</code> subplots</h2>
 <p>Facets split a plot into multiple subplots. The two facet functions, <code>facet_grid()</code> and <code>facet_wrap()</code>, determine how to split the data. For example, we can create a grid of plots based on the <code>year</code> and <code>drv</code> columns:</p>
-<div id="a44aaa3e" class="cell" data-execution_count="7">
+<div id="dc6230b5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -544,7 +540,7 @@ Note
 <h2 class="anchored" data-anchor-id="coord_-projections"><code>coord_*()</code> projections</h2>
 <p>The <code>coord_*()</code> functions specify the coordinate system of the plot. Currently, only a few coordinate systems are available. However, in the future systems like <code>coord_polar()</code> will allow for plotting using polar coordinates.</p>
 <p>The code below uses <code>coord_fixed()</code> to ensure that the x- and y- axes have the same spacing.</p>
-<div id="a41ab5c4" class="cell" data-execution_count="8">
+<div id="683eb31a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -563,7 +559,7 @@ Note
 <h2 class="anchored" data-anchor-id="theme_-styling"><code>theme_*()</code> styling</h2>
 <p>Themes control the style of all aspects of the plot that are not decided by the data. This includes the position of the legend, the color of the axes, the size of the text, and much more.</p>
 <p>Use the <code>theme_*()</code> functions to start with a pre-made theme, or the general <code>theme()</code> function to create a new custom theme. Use the <code>element_*()</code> functions to configure new theme settings.</p>
-<div id="e3806922" class="cell" data-execution_count="9">
+<div id="fa709cad" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>, colour<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -586,7 +582,7 @@ Note
 <section id="putting-it-together" class="level2">
 <h2 class="anchored" data-anchor-id="putting-it-together">Putting it together</h2>
 <p>Finally, we put all the pieces together into the original plot:</p>
-<div id="6a6967e7" class="cell" data-execution_count="10">
+<div id="a35261e0" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"cty"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(mapping<span class="op">=</span>aes(colour<span class="op">=</span><span class="st">"displ"</span>))</span>

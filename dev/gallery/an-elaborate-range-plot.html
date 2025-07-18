@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-72329d7a58af5ea5ba42aa57462dba9a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-167b476174dea9c2aed737ddb5f4eea1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -163,10 +163,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../external-resources.html">
- <span class="dropdown-text">External Resources</span></a>
-  </li>  
     </ul>
   </li>
 </ul>
@@ -235,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/an-elaborate-range-plot.png" class="preview-image img-fluid"></p>
-<div id="08a3ef8d" class="cell" data-execution_count="2">
+<div id="0e1fc297" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This notebook uses the polars package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -246,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Comparing the point to point difference of many similar variables</em></p>
 <p>Read the data.</p>
 <p>Source: Pew Research Global Attitudes Spring 2015</p>
-<div id="884cf286" class="cell" data-execution_count="3">
+<div id="136c46d4" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head <span class="op">-</span>n <span class="dv">20</span> <span class="st">"data/survey-social-media.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PSRAID,COUNTRY,Q145,Q146,Q70,Q74
@@ -271,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 100018,Ethiopia,Female,22,No, </code></pre>
 </div>
 </div>
-<div id="423515f1" class="cell" data-execution_count="4">
+<div id="19e5bb33" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    COUNTRY<span class="op">=</span><span class="st">"country"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Q145<span class="op">=</span><span class="st">"gender"</span>,</span>
@@ -370,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Create age groups for users of social media</p>
-<div id="780c9898" class="cell" data-execution_count="5">
+<div id="d9e15976" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yes_no <span class="op">=</span> [<span class="st">"Yes"</span>, <span class="st">"No"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>valid_age_groups <span class="op">=</span> [<span class="st">"18-34"</span>, <span class="st">"35-49"</span>, <span class="st">"50+"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -462,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Top 14 countries by response rate to the social media question.</p>
-<div id="e5524bfb" class="cell" data-execution_count="6">
+<div id="3bd0fcdd" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_column(column, fmt):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Format column using python format"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fmt(s):</span>
@@ -558,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="b71112ce" class="cell" data-execution_count="7">
+<div id="995fc49a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>segment_data <span class="op">=</span> (</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    point_data.group_by(<span class="st">"country"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -660,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Format the floating point data that will be plotted into strings</p>
 <p>First plot</p>
-<div id="5b61871a" class="cell" data-execution_count="8">
+<div id="7ff258d2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>xgap <span class="op">=</span> <span class="dv">112</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,7 +728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Tweak it</p>
-<div id="4341cccb" class="cell" data-execution_count="9">
+<div id="c23d1803" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The right column (youngest-oldest gap) location</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>xgap <span class="op">=</span> <span class="dv">115</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>

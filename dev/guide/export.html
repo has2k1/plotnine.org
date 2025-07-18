@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c5b3008417511be1896b218a7240bb42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-aea6238f2250672874d1f5ad1cc722f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,10 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../external-resources.html">
- <span class="dropdown-text">External Resources</span></a>
   </li>  
     </ul>
   </li>
@@ -432,7 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="c7e7fc3e" class="cell" data-execution_count="1">
+<div id="d5feba57" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -441,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="displaying-plots">Displaying plots</h2>
 <p>By default, plots in Jupyter and Quarto should be displayed automatically.</p>
 <p>For example, this website is built with Quarto, but the code below should also cause a plot to appear in a Jupyter notebook.</p>
-<div id="bc1f0281" class="cell" data-execution_count="2">
+<div id="9ab3bfa1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
@@ -462,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If you want to explicitly display a plot, use the <code>.show()</code> method.</p>
-<div id="2941595b" class="cell" data-execution_count="3">
+<div id="82103c4a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -484,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="saving-plots" class="level2">
 <h2 class="anchored" data-anchor-id="saving-plots">Saving plots</h2>
 <p>Use the <code>.save()</code> method to save a plot to a file. It takes as its first argument the name of the file to save the plot to.</p>
-<div id="401020f3" class="cell" data-execution_count="4">
+<div id="2e6fbcc8" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p.save(<span class="st">"my_plot.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>By default, Plotnine tries to infer the file format from its name. For example, in the code above, Plotnine would save the plot in PNG format.</p>
@@ -497,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>theme()</code> settings.</li>
 <li><code>plotnine.options.set_option()</code> global options.</li>
 </ul>
-<div id="5ce38839" class="cell" data-execution_count="5">
+<div id="39377588" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(penguins, aes(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -521,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="handling-fonts-in-svg" class="level2">
 <h2 class="anchored" data-anchor-id="handling-fonts-in-svg">Handling fonts in svg</h2>
 <p>When plots using custom fonts are saved as an SVG, it may not display correctly on computers that do not have the fonts installed. Use the <code>svg_usefonts</code> argument in the <code>theme()</code> function to ensure that fonts are self-contained in the SVG file.</p>
-<div id="662d2692" class="cell" data-execution_count="6">
+<div id="49cf64e3" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> theme(svg_usefonts<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
