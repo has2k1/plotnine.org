@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../guide/themes-basics.html" rel="next">
+<link href="../guide/plot-composition.html" rel="next">
 <link href="../guide/labels.html" rel="prev">
 <link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/export.html">Polishing</a></li><li class="breadcrumb-item"><a href="../guide/annotations.html">Annotations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/labels.html">Polishing</a></li><li class="breadcrumb-item"><a href="../guide/annotations.html">Annotations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -254,6 +254,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Coordinate systems</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Save and display</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -267,12 +273,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide/export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Save and display</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../guide/labels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Labels and titles</span></a>
   </div>
@@ -281,6 +281,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../guide/annotations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Annotations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/plot-composition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot composition</span></a>
   </div>
 </li>
       </ul>
@@ -332,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../guide/operators.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Operators: `+`, `&gt;&gt;`</span></a>
+ <span class="menu-text">Operators: +, &gt;&gt;, |, /</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -366,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/export.html">Polishing</a></li><li class="breadcrumb-item"><a href="../guide/annotations.html">Annotations</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/labels.html">Polishing</a></li><li class="breadcrumb-item"><a href="../guide/annotations.html">Annotations</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Annotations</h1>
 </div>
@@ -429,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="319d83b1" class="cell" data-execution_count="1">
+<div id="b48568a9" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -437,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="annotate" class="level2">
 <h2 class="anchored" data-anchor-id="annotate"><code>annotate()</code></h2>
 <p>Use <code>annotate()</code> to write some text on a plot.</p>
-<div id="9701c4bc" class="cell" data-execution_count="2">
+<div id="49626604" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r_coef <span class="op">=</span> penguins[<span class="st">"flipper_length_mm"</span>].corr(penguins[<span class="st">"body_mass_g"</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins, aes(<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>))</span>
@@ -464,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Notice that the correlation coefficient is shown on the top-left of the plot. The first argument to annotate, specifies the geom to use (in this case, the <code>"text"</code> means to use <code>geom_text()</code>).</p>
 <p>In order to use annotate with another geom, pass the name of the geom as the first argument. For example, the code below draws a rectangle around the text.</p>
-<div id="f4a7247d" class="cell" data-execution_count="3">
+<div id="6d7024c2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> annotate(<span class="st">"rect"</span>, xmin<span class="op">=</span><span class="dv">170</span>, xmax<span class="op">=</span><span class="dv">190</span>, ymin<span class="op">=</span><span class="dv">5500</span>, ymax<span class="op">=</span><span class="dv">6000</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -479,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geom_textpath_effects..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textpath_effects..."><code>geom_text(path_effects=...)</code></h2>
 <p>Use the <code>geom_text(path_effects=...)</code> argument to add more complex styling to your text. This argument takes a list of objects created by the <code>matplotlib.patheffects</code> submodule.</p>
-<div id="237541c9" class="cell" data-execution_count="4">
+<div id="48f8818b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patheffects <span class="im">as</span> pe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>effect <span class="op">=</span> [</span>
@@ -504,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geom_textadjust_text..." class="level2">
 <h2 class="anchored" data-anchor-id="geom_textadjust_text..."><code>geom_text(adjust_text=...)</code></h2>
 <p>Use the <code>geom_text(adjust_text=...)</code> argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the <code>adjustText</code> package’s <code>adjust_text()</code> function.</p>
-<div id="4248007f" class="cell" data-execution_count="5">
+<div id="1214bd28" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -513,10 +519,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(adjust_text<span class="op">=</span>{<span class="st">"arrowprops"</span>: {<span class="st">"arrowstyle"</span>: <span class="st">"-"</span>}})</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 [ 0.67065736 -0.18052969]
-37 [ 0.46193259 -0.37284541]
-35 [ 0.56723086 -0.98205719]
-36 [0.15882416 0.38849116]</code></pre>
+<pre><code>0 [-0.24742449 -0.86230165]
+37 [-0.59362614  0.5122877 ]
+35 [ 0.14194785 -0.77549635]
+36 [ 0.67179853 -0.72263223]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -533,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="emphasis-with-shading" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-shading">Emphasis with shading</h2>
-<div id="469953d8" class="cell" data-execution_count="6">
+<div id="499363cf" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> huron</span>
@@ -572,7 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="emphasis-with-arrows" class="level2">
 <h2 class="anchored" data-anchor-id="emphasis-with-arrows">Emphasis with arrows</h2>
-<div id="4bd4d206" class="cell" data-execution_count="7">
+<div id="a4915f10" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> economics</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -599,10 +605,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        nudge_x<span class="op">=-</span><span class="dv">100</span>,</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/runner/work/plotnine.org/plotnine.org/.venv/lib/python3.12/site-packages/plotnine/scales/scale_datetime.py:87: FutureWarning: Passing a string to `breaks` will not work in future versions. Use `date_breaks='10 years'`</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="annotations_files/figure-html/cell-8-output-1.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="annotations_files/figure-html/cell-8-output-2.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1018,8 +1027,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../guide/themes-basics.html" class="pagination-link" aria-label="Theme basics">
-        <span class="nav-page-text">Theme basics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../guide/plot-composition.html" class="pagination-link" aria-label="Plot composition">
+        <span class="nav-page-text">Plot composition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

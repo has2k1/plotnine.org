@@ -253,6 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Coordinate systems</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Save and display</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -266,12 +272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide/export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Save and display</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../guide/labels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Labels and titles</span></a>
   </div>
@@ -280,6 +280,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../guide/annotations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Annotations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/plot-composition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot composition</span></a>
   </div>
 </li>
       </ul>
@@ -331,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../guide/operators.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Operators: `+`, `&gt;&gt;`</span></a>
+ <span class="menu-text">Operators: +, &gt;&gt;, |, /</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -399,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This document is a translation of the <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">ggplot2 aesthetic specification</a>.</p>
-<div id="29c8fb5a" class="cell" data-execution_count="1">
+<div id="a472b035" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -413,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>A missing value (e.g.&nbsp;None, np.nan, pd.NA), for a completely transparent colour.</p></li>
 </ul>
 <p>Here’s an example of listing CSS color names matplotlib supports:</p>
-<div id="32110170" class="cell" data-execution_count="2">
+<div id="5cbbd503" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> colors <span class="im">as</span> mcolors</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n_colors <span class="op">=</span> <span class="bu">len</span>(mcolors.CSS4_COLORS)</span>
@@ -451,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Line types can be specified with:</p>
 <ul>
 <li><p>A <strong>name</strong>: solid, dashed, dotted, dashdot, as shown below:</p>
-<div id="a35d35a8" class="cell" data-execution_count="3">
+<div id="5c0a46d5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lty <span class="op">=</span> [</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"solid"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dashed"</span>,</span>
@@ -463,14 +469,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lty"</span>: lty</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}) </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>(ggplot(linetypes, aes(<span class="dv">0</span>, <span class="st">"y"</span>)) <span class="op">+</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  geom_segment(aes(xend <span class="op">=</span> <span class="dv">5</span>, yend <span class="op">=</span> <span class="st">"y"</span>, linetype <span class="op">=</span> <span class="st">"lty"</span>)) <span class="op">+</span> </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  scale_linetype_identity(guide<span class="op">=</span><span class="va">None</span>) <span class="op">+</span> </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  geom_text(aes(label <span class="op">=</span> <span class="st">"lty"</span>), nudge_y <span class="op">=</span> <span class="fl">0.2</span>, ha<span class="op">=</span><span class="st">"left"</span>) <span class="op">+</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  scale_x_continuous(name<span class="op">=</span><span class="va">None</span>, breaks <span class="op">=</span> <span class="va">None</span>) <span class="op">+</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  scale_y_reverse(name<span class="op">=</span><span class="va">None</span>, breaks <span class="op">=</span> <span class="va">None</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ggplot(linetypes, aes(<span class="dv">0</span>, <span class="st">"y"</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_segment(aes(xend<span class="op">=</span><span class="dv">5</span>, yend<span class="op">=</span><span class="st">"y"</span>, linetype<span class="op">=</span><span class="st">"lty"</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"lty"</span>), nudge_y<span class="op">=</span><span class="fl">0.2</span>, ha<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_reverse(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_linetype_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -480,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div></li>
 <li><p>The lengths of on/off stretches of line. This is done with a tuple of the form <code>(offset, (on, off, ...))</code>.</p>
-<div id="0c7ae936" class="cell" data-execution_count="4">
+<div id="b91d9311" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lty <span class="op">=</span> [</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, (<span class="dv">1</span>, <span class="dv">1</span>)),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, (<span class="dv">1</span>, <span class="dv">8</span>)),</span>
@@ -498,12 +505,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    ggplot(linetypes, aes(<span class="dv">0</span>, <span class="st">"y"</span>))</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_segment(aes(xend<span class="op">=</span><span class="dv">5</span>, yend<span class="op">=</span><span class="st">"y"</span>, linetype<span class="op">=</span><span class="st">"lty"</span>))</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_linetype_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    geom_text(aes(label<span class="op">=</span><span class="st">"lty"</span>), nudge_y<span class="op">=</span><span class="fl">0.2</span>, ha<span class="op">=</span><span class="st">"left"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_reverse(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"lty"</span>), nudge_y<span class="op">=</span><span class="fl">0.2</span>, ha<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_reverse(name<span class="op">=</span><span class="va">None</span>, breaks<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_linetype_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -531,23 +537,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], <span class="st">"y"</span>: [<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>]})</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> xlim(<span class="fl">0.5</span>, <span class="fl">3.5</span>) <span class="op">+</span> ylim(<span class="dv">0</span>, <span class="dv">10</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>, lineend <span class="op">=</span> <span class="st">"round"</span>) <span class="op">+</span> </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>, lineend<span class="op">=</span><span class="st">"round"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>, lineend <span class="op">=</span> <span class="st">"square"</span>) <span class="op">+</span> </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>, lineend<span class="op">=</span><span class="st">"square"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="da37929b" class="cell quarto-layout-panel" data-execution_count="5" data-layout-nrow="1">
+<div id="78582249" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="aesthetic-specification_files/figure-html/cell-6-output-1.png" class="img-fluid" alt="A plot showing a line with an angle. A thinner red line is placed over a thicker black line. The black line ends where the red line ends." width="1400"></p>
@@ -564,24 +570,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], <span class="st">"y"</span>: [<span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">9</span>]})</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> ylim(<span class="dv">0</span>, <span class="dv">10</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>, linejoin <span class="op">=</span> <span class="st">"mitre"</span>) <span class="op">+</span> </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>, linejoin<span class="op">=</span><span class="st">"mitre"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  base <span class="op">+</span> </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">10</span>, linejoin <span class="op">=</span> <span class="st">"bevel"</span>) <span class="op">+</span> </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  geom_path(size <span class="op">=</span> <span class="dv">1</span>, colour <span class="op">=</span> <span class="st">"red"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    base</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">10</span>, linejoin<span class="op">=</span><span class="st">"bevel"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_path(size<span class="op">=</span><span class="dv">1</span>, colour<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="7270d477" class="cell quarto-layout-panel" data-execution_count="6" data-layout-nrow="1">
+<div id="b269a812" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="aesthetic-specification_files/figure-html/cell-7-output-1.png" class="img-fluid" alt="A plot showing a thin red line on top of a thick black line shaped like   the letter 'V'. The corner in the black V-shape is rounded." width="1400"></p>
@@ -606,44 +612,126 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="point">Point</h2>
 <section id="sec:shape-spec" class="level3">
 <h3 class="anchored" data-anchor-id="sec:shape-spec">Shape</h3>
-<p>Shapes take five types of values:</p>
+<!--
+TODO: Document all ways of specifying shapes.
+Shapes take five types of values:
+*   A character string or an integer for a point type, as specified in [matplotlib.markers](https://matplotlib.org/stable/api/markers_api.html#):
+-->
 <ul>
-<li>A string for a point type, as specified in <a href="https://matplotlib.org/stable/api/markers_api.html#">matplotlib.markers</a>:</li>
-</ul>
-<div id="f18ca574" class="cell" data-execution_count="7">
+<li><p>A character string or an integer for a point type, as specified in <a href="https://matplotlib.org/stable/api/markers_api.html#">matplotlib.markers</a>:</p>
+<div id="e9a91a2e" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.scales.scale_shape <span class="im">import</span> shapes, unfilled_shapes</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>shape_points <span class="op">=</span> [<span class="op">*</span>shapes, <span class="op">*</span>unfilled_shapes, <span class="st">"none"</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>n_shapes <span class="op">=</span> <span class="bu">len</span>(shape_points)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>shapes <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"shape"</span>: shape_points,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"shape_text"</span>: [<span class="bu">repr</span>(x) <span class="cf">if</span> <span class="bu">str</span>(x).isdigit() <span class="cf">else</span> x <span class="cf">for</span> x <span class="kw">in</span> shape_points],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"x"</span>: [x <span class="op">%</span> <span class="dv">5</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(n_shapes)],</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"y"</span>: [<span class="op">-</span>(x <span class="op">//</span> <span class="dv">5</span>) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(n_shapes)],</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    ggplot(shapes, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(shape<span class="op">=</span><span class="st">"shape"</span>), size<span class="op">=</span><span class="dv">5</span>, fill<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"shape_text"</span>), nudge_x<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_shape_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> expand_limits(x<span class="op">=</span><span class="fl">4.1</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-8-output-1.png" alt="A 5-by-5 grid of point symbols annotated by the numbers that can be used to represent the symbols. From left to right, the first 15 symbols are lines or open shapes, the next 5 symbols are solid shapes and the last 5 symbols are filled shaped." width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-8-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
+</div></li>
+<li><p>Shape path and mathtex (specified in the bottom of <a href="https://matplotlib.org/stable/api/markers_api.html#">matplotlib.markers</a> table):</p>
+<div id="3dac73f3" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (num, type, angle)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pentagon <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">60</span>)             <span class="co"># type 0: polygon</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>five_point_star <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">60</span>)      <span class="co"># type 1: star</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>five_point_asterisk <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">60</span>)  <span class="co"># type 2: asterisk</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> [pentagon, five_point_star, five_point_asterisk, <span class="st">"$</span><span class="ch">\\</span><span class="st">alpha$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta$"</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>shape_text <span class="op">=</span> [x.replace(<span class="st">"$"</span>, <span class="st">"</span><span class="ch">\\</span><span class="st">$"</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>) <span class="cf">else</span> x <span class="cf">for</span> x <span class="kw">in</span> shape]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>shapes <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"shape"</span>: shape,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"shape_text"</span>: shape_text,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"x"</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(shape))),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"y"</span>: [<span class="dv">0</span>] <span class="op">*</span> <span class="bu">len</span>(shape),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    ggplot(shapes, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(shape<span class="op">=</span><span class="st">"shape"</span>), size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"shape_text"</span>), nudge_y<span class="op">=-</span><span class="fl">0.1</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_shape_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_void()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#+ theme(figure_size=(6, 2))</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> expand_limits(y<span class="op">=</span>[<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">0.2</span>], x<span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="bu">len</span>(shape) <span class="op">-</span> <span class="fl">0.5</span>])</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="aesthetic-specification_files/figure-html/cell-9-output-1.png" width="1400" height="1000" class="figure-img"></p>
+</figure>
 </div>
-<ul>
-<li><code>None</code> to draw nothing.</li>
+</div>
+</div></li>
+<li><p>Custom matplotlib <a href="https://matplotlib.org/stable/api/path_api.html#matplotlib.path.Path">path objects</a> as a literal mapping:</p>
+<div id="fd88742d" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mtcars</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.path <span class="im">import</span> Path</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>star <span class="op">=</span> Path.unit_regular_star(<span class="dv">6</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> Path.unit_circle()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>cut_star <span class="op">=</span> Path(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    vertices<span class="op">=</span>[<span class="op">*</span>circle.vertices, <span class="op">*</span>star.vertices[::<span class="op">-</span><span class="dv">1</span>]],</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    codes<span class="op">=</span>[<span class="op">*</span>circle.codes, <span class="op">*</span>star.codes]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"wt"</span>, <span class="st">"mpg"</span>))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(shape<span class="op">=</span>cut_star, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="aesthetic-specification_files/figure-html/cell-10-output-1.png" width="1400" height="1000" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div></li>
 </ul>
 </section>
 <section id="color-and-fill-1" class="level3">
 <h3 class="anchored" data-anchor-id="color-and-fill-1">Color and fill</h3>
 <p>While <code>color</code> applies to all shapes, <code>fill</code> only applies to shapes with red fill in the plot above. The size of the filled part is controlled by <code>size</code>, the size of the stroke is controlled by <code>stroke</code>. Each is measured in mm, and the total size of the point is the sum of the two. Note that the size is constant along the diagonal in the following figure.</p>
-<div id="65c73742" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> (</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  pd.DataFrame({<span class="st">"size"</span>: [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>]})</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  .merge(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame({<span class="st">"stroke"</span>: [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>]}), how<span class="op">=</span><span class="st">"cross"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ggplot(sizes, aes(<span class="st">"size"</span>, <span class="st">"stroke"</span>, size <span class="op">=</span> <span class="st">"size"</span>, stroke <span class="op">=</span> <span class="st">"stroke"</span>)) <span class="op">+</span> </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  geom_abline(slope <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, intercept <span class="op">=</span> <span class="dv">6</span>, colour <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="dv">6</span>) <span class="op">+</span> </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  geom_point(shape <span class="op">=</span> <span class="st">"o"</span>, fill <span class="op">=</span> <span class="st">"red"</span>) <span class="op">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  scale_size_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="33e0ed78" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> pd.DataFrame({<span class="st">"size"</span>: [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>]}).merge(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame({<span class="st">"stroke"</span>: [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>]}), how<span class="op">=</span><span class="st">"cross"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    ggplot(sizes, aes(<span class="st">"size"</span>, <span class="st">"stroke"</span>, size<span class="op">=</span><span class="st">"size"</span>, stroke<span class="op">=</span><span class="st">"stroke"</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_abline(slope<span class="op">=-</span><span class="dv">1</span>, intercept<span class="op">=</span><span class="dv">6</span>, colour<span class="op">=</span><span class="st">"white"</span>, size<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(shape<span class="op">=</span><span class="st">"o"</span>, fill<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_size_identity(guide<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-9-output-1.png" alt="A plot showing a 4-by-4 grid of red points, the top 12 points with black outlines. The size of the points increases horizontally. The stroke of  the outlines of the points increases vertically. A white diagonal line with a negative slope marks that the 'stroke' versus 'size' trade-off has  similar total sizes." width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-11-output-1.png" alt="A plot showing a 4-by-4 grid of red points, the top 12 points with black outlines. The size of the points increases horizontally. The stroke of the outlines of the points increases vertically. A white diagonal line with a negative slope marks that the 'stroke' versus 'size' trade-off has similar total sizes." width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -655,16 +743,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="font-family" class="level3">
 <h3 class="anchored" data-anchor-id="font-family">Font family</h3>
 <p>There are only three fonts that are guaranteed to work everywhere: “sans” (the default), “serif”, or “mono”:</p>
-<div id="ebe7ec3d" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: <span class="dv">1</span>, <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], <span class="st">"family"</span>: [<span class="st">"sans-serif"</span>, <span class="st">"serif"</span>, <span class="st">"monospace"</span>]}</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"family"</span>, family<span class="op">=</span><span class="st">"family"</span>), size<span class="op">=</span><span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1d3517cb" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: <span class="dv">1</span>, <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], <span class="st">"family"</span>: [<span class="st">"sans-serif"</span>, <span class="st">"serif"</span>, <span class="st">"monospace"</span>]}</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"family"</span>, family<span class="op">=</span><span class="st">"family"</span>), size<span class="op">=</span><span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>findfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman
+findfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman
+findfont: Generic family 'serif' not found because none of the following families were found: Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman, Times New Roman</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-10-output-1.png" alt="A plot showing three text labels arranged vertically. The top label is 'sans' and is displayed in a sans-serif font. The middle label is 'serif' and is displayed in a serif font. The bottom label is 'mono' and is displayed in a monospaced font." width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-12-output-2.png" alt="A plot showing three text labels arranged vertically. The top label is 'sans' and is displayed in a sans-serif font. The middle label is 'serif' and is displayed in a serif font. The bottom label is 'mono' and is displayed in a monospaced font." width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -672,17 +765,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="font-weight" class="level3">
 <h3 class="anchored" data-anchor-id="font-weight">Font weight</h3>
-<p>Currently, font weight doesn’t seem to work in plotnine (see <a href="https://github.com/has2k1/plotnine/issues/940">this issue</a>). But once it does, code like this should work:</p>
-<div id="7b133af3" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], <span class="st">"fontweight"</span>: [<span class="st">"light"</span>, <span class="st">"normal"</span>, <span class="st">"bold"</span>, <span class="st">"heavy"</span>]}</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="dv">1</span>, <span class="st">"x"</span>)) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"fontweight"</span>), fontweight<span class="op">=</span><span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>There are two important considerations when using font weights:</p>
+<ul>
+<li>font family must support your intended font weight(s).</li>
+<li>fonts that bundle their multiple variants in one <code>.ttc</code> file may currently not be supported on your platform. (see <a href="https://github.com/has2k1/plotnine/issues/941">this issue</a>)</li>
+</ul>
+<div id="70faa2cf" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], <span class="st">"fontweight"</span>: [<span class="st">"light"</span>, <span class="st">"normal"</span>, <span class="st">"bold"</span>, <span class="st">"heavy"</span>]}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="dv">1</span>, <span class="st">"x"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        aes(label<span class="op">=</span><span class="st">"fontweight"</span>, fontweight<span class="op">=</span><span class="st">"fontweight"</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        family<span class="op">=</span><span class="st">"Dejavu Sans"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-11-output-1.png" alt="A plot showing four text labels arranged vertically. The top label is 'bold.italic' and is displayed in bold and italic. The next three labels are 'italic', 'bold' and 'normal' and are displayed in their respective styles." width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-13-output-1.png" alt="A plot showing four text labels arranged vertically. Top to bottom the labels are 'heavy', 'bold', 'normal' and 'light' and are displayed in in their respective styles as supported by the font." width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -690,15 +793,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="font-style" class="level3">
 <h3 class="anchored" data-anchor-id="font-style">Font style</h3>
-<p>Currently font style doesn’t seem to work in plotnine (see <a href="https://github.com/has2k1/plotnine/issues/941">this issue</a>). But once it does, code like this should work:</p>
-<div id="2b602dad" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"fontstyle"</span>: [<span class="st">"normal"</span>, <span class="st">"italic"</span>, <span class="st">"oblique"</span>]})</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="dv">1</span>, <span class="st">"x"</span>)) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"fontstyle"</span>, fontstyle<span class="op">=</span><span class="st">"fontstyle"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Similar to font weight, fonts that bundle multiple variants in one <code>.ttc</code> may not be supported (see <a href="https://github.com/has2k1/plotnine/issues/941">this issue</a>)</p>
+<div id="073a3601" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"fontstyle"</span>: [<span class="st">"normal"</span>, <span class="st">"italic"</span>, <span class="st">"oblique"</span>]})</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    ggplot(df, aes(<span class="dv">1</span>, <span class="st">"x"</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_text(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        aes(label<span class="op">=</span><span class="st">"fontstyle"</span>, fontstyle<span class="op">=</span><span class="st">"fontstyle"</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        family<span class="op">=</span><span class="st">"DejaVu Sans"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-12-output-1.png" width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-14-output-1.png" width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -715,21 +824,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>top = 1, middle = 0.5, bottom = 0</li>
 <li>left = 0, center = 0.5, right = 1</li>
 </ul>
-<div id="89260c44" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>just <span class="op">=</span> pd.DataFrame({<span class="st">"hjust"</span>: [<span class="st">"center"</span>, <span class="st">"right"</span>, <span class="st">"left"</span>], <span class="st">"x"</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]}).merge(pd.DataFrame({<span class="st">"vjust"</span>: [<span class="st">"center"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span>], <span class="st">"y"</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]}), how<span class="op">=</span><span class="st">"cross"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>just[<span class="st">"label"</span>] <span class="op">=</span> just[<span class="st">"hjust"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.cat(just[<span class="st">"vjust"</span>].astype(<span class="bu">str</span>), sep<span class="op">=</span><span class="st">", "</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ggplot(just, aes(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="op">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  geom_point(colour <span class="op">=</span> <span class="st">"grey"</span>, size <span class="op">=</span> <span class="dv">5</span>) <span class="op">+</span> </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  geom_text(aes(label <span class="op">=</span> <span class="st">"label"</span>, hjust <span class="op">=</span> <span class="st">"hjust"</span>, vjust <span class="op">=</span> <span class="st">"vjust"</span>))</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> expand_limits(x <span class="op">=</span> [<span class="op">-</span><span class="fl">.5</span>, <span class="fl">2.5</span>], y <span class="op">=</span> [<span class="op">-</span><span class="fl">.5</span>, <span class="fl">2.5</span>])</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6b7f590b" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>just <span class="op">=</span> pd.DataFrame({<span class="st">"hjust"</span>: [<span class="st">"center"</span>, <span class="st">"right"</span>, <span class="st">"left"</span>], <span class="st">"x"</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]}).merge(pd.DataFrame({<span class="st">"vjust"</span>: [<span class="st">"center"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span>], <span class="st">"y"</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]}), how<span class="op">=</span><span class="st">"cross"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>just[<span class="st">"label"</span>] <span class="op">=</span> just[<span class="st">"hjust"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.cat(just[<span class="st">"vjust"</span>].astype(<span class="bu">str</span>), sep<span class="op">=</span><span class="st">", "</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  ggplot(just, aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> geom_point(colour<span class="op">=</span><span class="st">"grey"</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">"label"</span>, hjust<span class="op">=</span><span class="st">"hjust"</span>, vjust<span class="op">=</span><span class="st">"vjust"</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">+</span> expand_limits(x<span class="op">=</span>[<span class="op">-</span><span class="fl">.5</span>, <span class="fl">2.5</span>], y<span class="op">=</span>[<span class="op">-</span><span class="fl">.5</span>, <span class="fl">2.5</span>])</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="aesthetic-specification_files/figure-html/cell-13-output-1.png" alt="A 3-by-3 grid of text on top of points, with horizontal text justification increasing from 0 to 1 on the x-axis and vertical  justification increasing from 0 to 1 on the y-axis. The points make it easier to see the relative placement of text." width="1400" height="1000" class="figure-img"></p>
+<p><img src="aesthetic-specification_files/figure-html/cell-15-output-1.png" alt="A 3-by-3 grid of text on top of points, with horizontal text justification increasing from 0 to 1 on the x-axis and vertical  justification increasing from 0 to 1 on the y-axis. The points make it easier to see the relative placement of text." width="1400" height="1000" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1142,8 +1251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../guide/operators.html" class="pagination-link" aria-label="Operators: `+`, `>>`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Operators: <code>+</code>, <code>&gt;&gt;</code></span>
+      <a href="../guide/operators.html" class="pagination-link" aria-label="Operators: +, >>, |, /">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Operators: +, &gt;&gt;, |, /</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
