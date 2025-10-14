@@ -162,9 +162,13 @@ anscombe_quartet.group_by("dataset", maintain_order=True).agg(
     pl.corr("x", "y").alias("correlation_xy"),
     (
         pl.struct("x", "y")
-        .map_elements(fit_lr, return_dtype=pl.Struct({"intercept": pl.Float64,
-                                                      "slope": pl.Float64,
-                                                      "r2": pl.Float64}))
+        .implode()
+        .map_elements(
+            fit_lr,
+            return_dtype=pl.Struct({
+               "intercept": pl.Float64, "slope": pl.Float64, "r2": pl.Float64
+            })
+        )
         .alias("lr")
     )
 ).unnest("lr")
