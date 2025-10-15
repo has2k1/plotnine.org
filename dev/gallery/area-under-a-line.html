@@ -8,7 +8,7 @@
 
 <meta name="author" content="Michael Chow">
 
-<title>Area Under Line – plotnine 0.15.0</title>
+<title>Area Under Line – plotnine 999.post20+g9b3109371</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-167b476174dea9c2aed737ddb5f4eea1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f26acbf1e6131c1dba37beb6fb9156ba.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,11 +106,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Area Under Line – plotnine 0.15.0">
+<meta property="og:title" content="Area Under Line – plotnine 999.post20+g9b3109371">
 <meta property="og:image" content="https://plotnine.org/gallery/img/large/area-under-a-line.png">
-<meta property="og:site_name" content="plotnine 0.15.0">
+<meta property="og:site_name" content="plotnine 999.post20+g9b3109371">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1400">
 </head>
@@ -125,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0</span>
+    <span class="navbar-title">plotnine 999.post20+g9b3109371</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -135,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../guide/install.html"> 
+    <a class="nav-link" href="../guide/introduction.html"> 
 <span class="menu-text">Guide</span></a>
   </li>  
   <li class="nav-item">
@@ -226,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/area-under-a-line.png" class="preview-image img-fluid"></p>
-<div id="47018fc6" class="cell" data-execution_count="2">
+<div id="f198f717" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -242,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default theme</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>theme_set(theme_linedraw())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="46443807" class="cell" data-execution_count="3">
+<div id="16267b21" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"unemploy"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -251,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(expand<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme_linedraw()</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure class="figure">
 <p><img src="area-under-a-line_files/figure-html/cell-4-output-1.png" width="672" height="480" class="figure-img"></p>

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Manipulate Date Breaks and Labels – plotnine 0.15.0</title>
+<title>Manipulate Date Breaks and Labels – plotnine 999.post20+g9b3109371</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-167b476174dea9c2aed737ddb5f4eea1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f26acbf1e6131c1dba37beb6fb9156ba.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,12 +109,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Manipulate Date Breaks and Labels – plotnine 0.15.0">
+<meta property="og:title" content="Manipulate Date Breaks and Labels – plotnine 999.post20+g9b3109371">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/gallery/img/large/manipulate-date-breaks-and-date-labels.png">
-<meta property="og:site_name" content="plotnine 0.15.0">
+<meta property="og:site_name" content="plotnine 999.post20+g9b3109371">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1400">
 </head>
@@ -129,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0</span>
+    <span class="navbar-title">plotnine 999.post20+g9b3109371</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -139,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../guide/install.html"> 
+    <a class="nav-link" href="../guide/introduction.html"> 
 <span class="menu-text">Guide</span></a>
   </li>  
   <li class="nav-item">
@@ -231,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/manipulate-date-breaks-and-date-labels.png" class="preview-image img-fluid"></p>
-<div id="fed34b31" class="cell" data-execution_count="2">
+<div id="12cee7b4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -249,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>theme_set(theme_linedraw())  <span class="co"># default theme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Using the <code>economics</code> dataset</p>
-<div id="b5c09885" class="cell" data-execution_count="3">
+<div id="cdd60966" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>economics.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -320,13 +321,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>How does the saving rate vary with time?</p>
-<div id="f0d86676" class="cell" data-execution_count="4">
+<div id="11d4c2ce" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(<span class="st">"date"</span>, <span class="st">"psavert"</span>))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-5-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -337,14 +338,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Yikes! the calculated breaks are awful, we need to intervene. We do so using the <a href="https://mizani.readthedocs.io/en/stable/breaks.html#mizani.breaks.breaks_date_width">breaks_date_width</a> and <a href="https://mizani.readthedocs.io/en/stable/labels.html#mizani.labels.label_date">label_date</a></p>
 <p>functions from mizani.</p>
 <p>Set breaks every 10 years</p>
-<div id="05f47e49" class="cell" data-execution_count="5">
+<div id="2b66ef99" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(<span class="st">"date"</span>, <span class="st">"psavert"</span>))</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_datetime(breaks<span class="op">=</span>breaks_date_width(<span class="st">"10 years"</span>))  <span class="co"># new</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-6-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -353,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>That is better. Since all the breaks are at the beginning of the year, we can omit the month and day. Using <code>label_date</code> we override the format string. For more on the options for the format string see the <a href="https://docs.python.org/library/datetime.html#strftime-strptime-behavior">strftime behavior</a>.</p>
-<div id="edb290ac" class="cell" data-execution_count="6">
+<div id="a0deee03" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(economics)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(aes(<span class="st">"date"</span>, <span class="st">"psavert"</span>))</span>
@@ -362,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    )  <span class="co"># modified</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -371,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can achieve the same result with a custom formating function.</p>
-<div id="3d494ae2" class="cell" data-execution_count="7">
+<div id="8e0c0d03" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> custom_label_date1(breaks):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to format the date</span></span>
@@ -387,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -396,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can use a custom formatting function to get results that are not obtainable with the <code>label_date</code> function. For example if we have monthly breaks over a handful of years we can mix date formats as follows; specify beginning of the year and every other month. Such tricks can be used reduce overcrowding.</p>
-<div id="04d82fab" class="cell" data-execution_count="8">
+<div id="fc1dc183" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -428,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -437,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We removed the labels but not the breaks, leaving behind dangling ticks for the skipped months. We can fix that by wrapping <code>breaks_date_width</code> around a filtering function.</p>
-<div id="c41b3a63" class="cell" data-execution_count="9">
+<div id="82138f73" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> custom_label_date3(breaks):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to format the date</span></span>
@@ -478,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(y<span class="op">=</span><span class="st">"personal saving rate"</span>)</span>
 <span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
 <p><img src="manipulate-date-breaks-and-date-labels_files/figure-html/cell-10-output-1.png" width="672" height="480" class="figure-img"></p>

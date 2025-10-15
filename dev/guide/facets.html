@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Facets (subplots) – plotnine 0.15.0</title>
+<title>Facets (subplots) – plotnine 999.post20+g9b3109371</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-aea6238f2250672874d1f5ad1cc722f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-79c55b0e9ca25212adc35bcfa4708e73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,12 +107,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Facets (subplots) – plotnine 0.15.0">
+<meta property="og:title" content="Facets (subplots) – plotnine 999.post20+g9b3109371">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/guide/facets_files/figure-html/cell-3-output-1.png">
-<meta property="og:site_name" content="plotnine 0.15.0">
+<meta property="og:site_name" content="plotnine 999.post20+g9b3109371">
 <meta property="og:image:height" content="2000">
 <meta property="og:image:width" content="2800">
 </head>
@@ -127,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0</span>
+    <span class="navbar-title">plotnine 999.post20+g9b3109371</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -137,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../guide/install.html" aria-current="page"> 
+    <a class="nav-link active" href="../guide/introduction.html" aria-current="page"> 
 <span class="menu-text">Guide</span></a>
   </li>  
   <li class="nav-item">
@@ -430,16 +431,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="285dca32" class="cell" data-execution_count="1">
+<div id="ea833cdd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mpg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here is a single big plot that you might want to split into subplots.</p>
-<div id="67b7ab66" class="cell" data-execution_count="2">
+<div id="a0f28cda" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>)) <span class="op">+</span> geom_point()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-3-output-1.png" width="1400" height="1000" class="figure-img"></p>
@@ -451,13 +452,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="facet_wrap-subplot-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="facet_wrap-subplot-sequence">facet_wrap(): subplot sequence</h2>
 <p>Use <code>facet_wrap()</code> to create a sequence of subplots. It accepts as its first argument the name of the column that should be used to split the data for subplots.</p>
-<div id="c3d723ca" class="cell" data-execution_count="3">
+<div id="6b6bbeda" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(show_legend<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"class"</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-4-output-1.png" width="1400" height="1000" class="figure-img"></p>
@@ -466,13 +467,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that by default <code>facet_wrap()</code> fills row-by-row, with defaults for the number of subplots per row and column. Use either the <code>ncol=</code> or <code>nrow=</code> argument to fix the number of plots per column or row, respectively.</p>
-<div id="8b7032f8" class="cell" data-execution_count="4">
+<div id="27814298" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>, color<span class="op">=</span><span class="st">"class"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(show_legend<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"class"</span>, ncol<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-5-output-1.png" width="1400" height="1000" class="figure-img"></p>
@@ -484,9 +485,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="facet_grid-subplot-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="facet_grid-subplot-matrix">facet_grid(): subplot matrix</h2>
 <p>Use <code>facet_grid()</code> to create a matrix of subplots. It accepts two column names as arguments, the first for the rows and the second for the columns.</p>
-<div id="26cc1d4a" class="cell" data-execution_count="5">
+<div id="43a2c3c2" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> facet_grid(<span class="st">"cyl"</span>, <span class="st">"year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-6-output-1.png" width="1400" height="1000" class="figure-img"></p>
@@ -498,9 +499,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="facetting-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="facetting-syntax">facetting syntax</h2>
 <p>Both <code>facet_wrap()</code> and <code>facet_grid()</code> support a special syntax for defining subplots. It takes the form <code>"var1 ~ var2 + var3"</code></p>
-<div id="f113c42c" class="cell" data-execution_count="6">
+<div id="5febcf35" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>)) <span class="op">+</span> geom_point() <span class="op">+</span> facet_grid(<span class="st">"cyl ~ year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-7-output-1.png" width="1400" height="1000" class="figure-img"></p>
@@ -514,13 +515,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="scales-for-freeing-axes" class="level2">
 <h2 class="anchored" data-anchor-id="scales-for-freeing-axes"><code>scales=</code> for freeing axes</h2>
 <p>By default, the x- and y-axes of each subplot have the same range. Use the <code>scales=</code> argument to allow each row or column to have its own range.</p>
-<div id="fc364eb8" class="cell" data-execution_count="7">
+<div id="459de0e7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mpg, aes(<span class="st">"displ"</span>, <span class="st">"hwy"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_grid(<span class="st">"cyl ~ year"</span>, scales<span class="op">=</span><span class="st">"free_y"</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <figure class="figure">
 <p><img src="facets_files/figure-html/cell-8-output-1.png" width="1400" height="1000" class="figure-img"></p>
