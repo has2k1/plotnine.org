@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/infant-deaths-in-north-carolina.png" class="preview-image img-fluid"></p>
-<div id="8dcab335" class="cell" data-execution_count="2">
+<div id="0886a896" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geodatasets</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Define some useful functions</p>
-<div id="0f342e3e" class="cell" data-execution_count="3">
+<div id="99312026" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> good_centroid(geometry):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate "good" centroids for polygons in the geometry</span></span>
@@ -296,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We are going to use a dataset from the <a href="https://geodatasets.readthedocs.io/en/latest/">geodatasets</a> package. We can explore the dataset providers at <code>geodatasets.data</code>, each of which has one or more datasets:</p>
 <p>We choose the dataset of Sudden Infant Death (SIDS) counts from counties in North Carolina. We can see some meta information about that dataset. You can view the details with <code>geodatasets.data.geoda.sids</code>.</p>
 <p>Download the dataset we want (it is automatically cached).</p>
-<div id="dae843fe" class="cell" data-execution_count="4">
+<div id="8c4a0600" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>geodatasets.fetch(<span class="st">"geoda sids"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading file 'sids.zip' from 'https://geodacenter.github.io/data-and-lab//data/sids.zip' to '/home/runner/.cache/geodatasets'.
@@ -304,7 +304,7 @@ Extracting 'sids/sids.gpkg' from '/home/runner/.cache/geodatasets/sids.zip' to '
 </div>
 </div>
 <p>Read data</p>
-<div id="41a8a455" class="cell" data-execution_count="5">
+<div id="3705e8e5" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sids <span class="op">=</span> gp.read_file(geodatasets.get_path(<span class="st">"geoda.sids"</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sids.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -430,7 +430,7 @@ Extracting 'sids/sids.gpkg' from '/home/runner/.cache/geodatasets/sids.zip' to '
 </div>
 </div>
 <p>The <code>sids</code> data has two periods <code>1974 - 1978</code> and <code>1979 - 1985</code>. For each period there is a number of births and a number of deaths. We want to visually compare the deaths per 1000 in each county for the two periods.</p>
-<div id="807a2b8f" class="cell" data-execution_count="6">
+<div id="0f754079" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sids.copy()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the death per 1000</span></span>
@@ -522,7 +522,7 @@ Extracting 'sids/sids.gpkg' from '/home/runner/.cache/geodatasets/sids.zip' to '
 </div>
 </div>
 <p>Plot the data</p>
-<div id="519ccc78" class="cell" data-execution_count="7">
+<div id="4285be00" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(data)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_map(aes(fill<span class="op">=</span><span class="st">"deaths_per_1k"</span>))</span>
