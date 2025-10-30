@@ -100,11 +100,16 @@ submodules-tags:
 
 ## Checkout released version
 checkout-release: submodules submodules-pull submodules-tags
-	 $(CHECKOUT_RELEASE)
+	$(CHECKOUT_RELEASE)
+	# In some cases (e.g. releasing a patch that isn't on the main branch),
+	# the original checked out version of plotnine is installed. We need
+	# to ensure the checked out version is the one installed.
+	cd plotnine && uv pip install -e ".[all]"
 
 ## Checkout released version
 checkout-pre-release: submodules submodules-pull submodules-tags
-	 $(CHECKOUT_PRE_RELEASE)
+	$(CHECKOUT_PRE_RELEASE)
+	cd plotnine && uv pip install -e ".[all]"
 
 ## Checkout the latest on the main branch
 checkout-main: submodules submodules-pull submodules-tags
