@@ -26,7 +26,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.12]
+        python-version: [3.13]
 
     steps:
       - name: Checkout Code
@@ -43,7 +43,6 @@ jobs:
           version: 1.8.16
 
       - name: Checkout Plotnine
-        shell: bash
         run: |
           make checkout-${{ inputs.plotnine-branch }}
           pushd plotnine; echo $(git tag -l --contains HEAD | head -n 1); popd
@@ -54,9 +53,9 @@ jobs:
           make site-cold
 
       - name: Environment Information
-        shell: bash
         run: |
           ls -la
+          uv pip list
 
       - name: Upload Artifacts of the Built Documentation
         if: ${{ inputs.target-folder == '' }}
