@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Guitar Neck ### – plotnine 0.14.1.post1+g8a3eb883</title>
+<title>Guitar Neck ### – plotnine 999.post20+g8acd36e93</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +66,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f26acbf1e6131c1dba37beb6fb9156ba.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,22 +104,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script defer="" data-domain="plotnine.org" src="https://plausible.io/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Guitar Neck ### – plotnine 0.14.1.post1+g8a3eb883">
+<meta property="og:title" content="Guitar Neck ### – plotnine 999.post20+g8acd36e93">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="plotnine {{< var version >}}">
+<meta property="og:site_name" content="plotnine 999.post20+g8acd36e93">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">plotnine 0.14.1.post1+g8a3eb883</span>
+    <span class="navbar-title">plotnine 999.post20+g8acd36e93</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -125,6 +132,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../guide/introduction.html"> 
+<span class="menu-text">Guide</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../reference/index.html"> 
 <span class="menu-text">Reference</span></a>
@@ -137,10 +148,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../tutorials/index.html"> 
-<span class="menu-text">Tutorials</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Pages</span>
@@ -149,14 +156,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../changelog.html">
  <span class="dropdown-text">Changelog</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../external-resources.html">
- <span class="dropdown-text">External Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../about.html">
- <span class="dropdown-text">About Plotnine</span></a>
   </li>  
     </ul>
   </li>
@@ -203,8 +202,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:49.365901Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:49.365545Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.425452Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.424587Z&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:43.228961Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:43.228635Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:43.460032Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:43.459718Z&quot;}}" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
@@ -218,13 +217,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    element_line,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    element_rect,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mizani.transforms <span class="im">import</span> trans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mizani.transforms <span class="im">import</span> trans</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Using a transformed x-axis to visualise guitar chords</em></p>
 <p>The x-axis is transformed to resemble the narrowing width of frets on a 25.5 inch Strat. To do that we create custom transformation.</p>
 <p>The key parts of <em>any</em> transform object are the <code>transform</code> and <code>inverse</code> functions.</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.429076Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.428751Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.434785Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.434250Z&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> frets_trans(trans):</span>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:43.461427Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:43.461348Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:43.463695Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:43.463508Z&quot;}}" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> frets_trans(trans):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Frets Transformation</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
@@ -254,12 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># non-linearity of the scale.</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        _major <span class="op">=</span> cls.inverse(major)</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        minor <span class="op">=</span> cls.transform(np.linspace(<span class="op">*</span>_major, cls.number_of_frets))</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> minor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> minor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The above transform is different from most in that, breaks and minor breaks do not change. This is common of very specialized scales. It can also be a key requirement when creating graphics for demontration purposes.</p>
 <p>Some chord Data</p>
-<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.437940Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.437702Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:50.443628Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:50.443028Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notes: the 0 fret is an open strum, all other frets are played half-way between fret bars.</span></span>
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:43.464803Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:43.464746Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:43.467132Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:43.466858Z&quot;}}" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notes: the 0 fret is an open strum, all other frets are played half-way between fret bars.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The strings are 1:low E, 2: A, 3: D, 4: G, 5: B, 6: E</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c_chord <span class="op">=</span> pd.DataFrame({<span class="st">"Fret"</span>: [<span class="dv">0</span>, <span class="fl">2.5</span>, <span class="fl">1.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">0</span>], <span class="st">"String"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -272,11 +271,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Fret"</span>: [<span class="fl">2.5</span>, <span class="fl">4.5</span>, <span class="fl">6.5</span>, <span class="fl">8.5</span>, <span class="fl">11.5</span>, <span class="fl">11.5</span>, <span class="fl">14.5</span>, <span class="fl">16.5</span>, <span class="fl">18.5</span>, <span class="fl">20.5</span>],</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"String"</span>: [<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="fl">3.5</span>],</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Visualizing the chord</p>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-05T11:30:50.446505Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-05T11:30:50.446274Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-05T11:30:51.133645Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-05T11:30:51.132775Z&quot;}" data-scrolled="true" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-06-20T13:07:43.468152Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-06-20T13:07:43.468084Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-06-20T13:07:43.715532Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-06-20T13:07:43.715333Z&quot;}}" data-scrolled="true" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gallery, elaborate</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Look and feel of the graphic</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>neck_color <span class="op">=</span> <span class="st">"#FFDDCC"</span></span>
@@ -300,13 +299,159 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_y_continuous(breaks<span class="op">=</span><span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">7</span>), minor_breaks<span class="op">=</span>[])</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> guides(color<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> neck_theme</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="scale_x_continuous_files/figure-html/cell-5-output-1.png" width="1000" height="200" class="figure-img"></p>
-</figure>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/.venv/lib/python3.13/site-packages/IPython/core/formatters.py:984</span>, in <span class="ansi-cyan-fg">IPythonDisplayFormatter.__call__</span><span class="ansi-blue-fg">(self, obj)</span>
+<span class="ansi-green-fg">    982</span> method = get_real_method(obj, <span style="color:rgb(0,135,0)">self</span>.print_method)
+<span class="ansi-green-fg">    983</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> method <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">984</span>     <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    985</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:149</span>, in <span class="ansi-cyan-fg">ggplot._ipython_display_</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">    142</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">_ipython_display_</span>(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg">    143</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""</span>
+<span class="ansi-green-fg">    144</span> <span style="font-style:italic" class="ansi-yellow-fg">    Display plot in the output of the cell</span>
+<span class="ansi-green-fg">    145</span> 
+<span class="ansi-green-fg">    146</span> <span style="font-style:italic" class="ansi-yellow-fg">    This method will always be called when a ggplot object is the</span>
+<span class="ansi-green-fg">    147</span> <span style="font-style:italic" class="ansi-yellow-fg">    last in the cell.</span>
+<span class="ansi-green-fg">    148</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">149</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_display</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:190</span>, in <span class="ansi-cyan-fg">ggplot._display</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">    187</span>     <span style="color:rgb(0,135,0)">self</span>.theme = <span style="color:rgb(0,135,0)">self</span>.theme.to_retina()
+<span class="ansi-green-fg">    189</span> buf = BytesIO()
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">190</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">buf</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">png</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">if</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">==</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">retina</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">else</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">verbose</span><span class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    191</span> figure_size_px = <span style="color:rgb(0,135,0)">self</span>.theme._figure_size_px
+<span class="ansi-green-fg">    192</span> display_func = get_display_function(<span style="color:rgb(0,135,0)">format</span>, figure_size_px)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:702</span>, in <span class="ansi-cyan-fg">ggplot.save</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg">    653</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">save</span>(
+<span class="ansi-green-fg">    654</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg">    655</span>     filename: Optional[<span style="color:rgb(0,135,0)">str</span> | Path | BytesIO] = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    664</span>     **kwargs: Any,
+<span class="ansi-green-fg">    665</span> ):
+<span class="ansi-green-fg">    666</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""</span>
+<span class="ansi-green-fg">    667</span> <span style="font-style:italic" class="ansi-yellow-fg">    Save a ggplot object as an image file</span>
+<span class="ansi-green-fg">    668</span> 
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    700</span> <span style="font-style:italic" class="ansi-yellow-fg">        Additional arguments to pass to matplotlib `savefig()`.</span>
+<span class="ansi-green-fg">    701</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">702</span>     sv = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save_helper</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    703</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    704</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    705</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    706</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">width</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">width</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    707</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">height</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">height</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    708</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">units</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">units</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    709</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">dpi</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dpi</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    710</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">limitsize</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">limitsize</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    711</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">verbose</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">verbose</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    712</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    713</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    715</span>     <span style="font-weight:bold;color:rgb(0,135,0)">with</span> plot_context(<span style="color:rgb(0,135,0)">self</span>).rc_context:
+<span class="ansi-green-fg">    716</span>         sv.figure.savefig(**sv.kwargs)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:650</span>, in <span class="ansi-cyan-fg">ggplot.save_helper</span><span class="ansi-blue-fg">(self, filename, format, path, width, height, units, dpi, limitsize, verbose, **kwargs)</span>
+<span class="ansi-green-fg">    647</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> dpi <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    648</span>     <span style="color:rgb(0,135,0)">self</span>.theme = <span style="color:rgb(0,135,0)">self</span>.theme + theme(dpi=dpi)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">650</span> figure = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">draw</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">show</span><span class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    651</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> mpl_save_view(figure, fig_kwargs)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:322</span>, in <span class="ansi-cyan-fg">ggplot.draw</span><span class="ansi-blue-fg">(self, show)</span>
+<span class="ansi-green-fg">    319</span>     <span style="color:rgb(0,135,0)">self</span>._create_figure()
+<span class="ansi-green-fg">    320</span> figure = <span style="color:rgb(0,135,0)">self</span>.figure
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">322</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_build</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    324</span> <span style="font-style:italic;color:rgb(95,135,135)"># setup</span>
+<span class="ansi-green-fg">    325</span> <span style="color:rgb(0,135,0)">self</span>.axs = <span style="color:rgb(0,135,0)">self</span>.facet.setup(<span style="color:rgb(0,135,0)">self</span>)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/ggplot.py:423</span>, in <span class="ansi-cyan-fg">ggplot._build</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">    420</span>     layers.map(npscales)
+<span class="ansi-green-fg">    422</span> <span style="font-style:italic;color:rgb(95,135,135)"># Train coordinate system</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">423</span> <span class="ansi-yellow-bg">layout</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">setup_panel_params</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">coordinates</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    425</span> <span style="font-style:italic;color:rgb(95,135,135)"># fill in the defaults</span>
+<span class="ansi-green-fg">    426</span> layers.use_defaults_after_scale(scales)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/facets/layout.py:198</span>, in <span class="ansi-cyan-fg">Layout.setup_panel_params</span><span class="ansi-blue-fg">(self, coord)</span>
+<span class="ansi-green-fg">    196</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> i, j <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span>.layout[cols].itertuples(index=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>):
+<span class="ansi-green-fg">    197</span>     i, j = i - <span class="ansi-green-fg">1</span>, j - <span class="ansi-green-fg">1</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">198</span>     params = <span class="ansi-yellow-bg">coord</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">setup_panel_params</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    199</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">panel_scales_x</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">panel_scales_y</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">j</span><span class="ansi-yellow-bg">]</span>
+<span class="ansi-green-fg">    200</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    201</span>     <span style="color:rgb(0,135,0)">self</span>.panel_params.append(params)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/coords/coord_cartesian.py:88</span>, in <span class="ansi-cyan-fg">coord_cartesian.setup_panel_params</span><span class="ansi-blue-fg">(self, scale_x, scale_y)</span>
+<span class="ansi-green-fg">     84</span>     sv = scale.view(limits=coord_limits, <span style="color:rgb(0,135,0)">range</span>=ranges.range)
+<span class="ansi-green-fg">     85</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> sv
+<span class="ansi-green-fg">     87</span> out = panel_view(
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">88</span>     x=<span class="ansi-yellow-bg">get_scale_view</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">scale_x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">limits</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">)</span>,
+<span class="ansi-green-fg">     89</span>     y=get_scale_view(scale_y, <span style="color:rgb(0,135,0)">self</span>.limits.y),
+<span class="ansi-green-fg">     90</span> )
+<span class="ansi-green-fg">     91</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> out
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/coords/coord_cartesian.py:84</span>, in <span class="ansi-cyan-fg">coord_cartesian.setup_panel_params.&lt;locals&gt;.get_scale_view</span><span class="ansi-blue-fg">(scale, limits)</span>
+<span class="ansi-green-fg">     80</span> expansion = scale.default_expansion(expand=<span style="color:rgb(0,135,0)">self</span>.expand)
+<span class="ansi-green-fg">     81</span> ranges = scale.expand_limits(
+<span class="ansi-green-fg">     82</span>     scale.final_limits, expansion, coord_limits, identity_trans()
+<span class="ansi-green-fg">     83</span> )
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">84</span> sv = <span class="ansi-yellow-bg">scale</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">view</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">limits</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">coord_limits</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">range</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ranges</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">range</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">     85</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> sv
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/scales/scale_continuous.py:328</span>, in <span class="ansi-cyan-fg">scale_continuous.view</span><span class="ansi-blue-fg">(self, limits, range)</span>
+<span class="ansi-green-fg">    325</span> labels = <span style="color:rgb(0,135,0)">self</span>.get_labels(breaks)
+<span class="ansi-green-fg">    327</span> ubreaks = <span style="color:rgb(0,135,0)">self</span>.get_breaks(<span style="color:rgb(0,135,0)">range</span>)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">328</span> minor_breaks = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_minor_breaks</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">ubreaks</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">range</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    330</span> sv = scale_view(
+<span class="ansi-green-fg">    331</span>     scale=<span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg">    332</span>     aesthetics=<span style="color:rgb(0,135,0)">self</span>.aesthetics,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    338</span>     minor_breaks=minor_breaks,
+<span class="ansi-green-fg">    339</span> )
+<span class="ansi-green-fg">    340</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> sv
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/plotnine/scales/scale_continuous.py:473</span>, in <span class="ansi-cyan-fg">scale_continuous.get_minor_breaks</span><span class="ansi-blue-fg">(self, major, limits)</span>
+<span class="ansi-green-fg">    471</span>     minor_breaks = []
+<span class="ansi-green-fg">    472</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">self</span>.minor_breaks <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">473</span>     minor_breaks: Sequence[<span style="color:rgb(0,135,0)">float</span>] = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_trans</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">minor_breaks</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    474</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">major</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">limits</span>
+<span class="ansi-green-fg">    475</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>  <span style="font-style:italic;color:rgb(95,135,135)"># pyright: ignore</span>
+<span class="ansi-green-fg">    476</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(<span style="color:rgb(0,135,0)">self</span>.minor_breaks, <span style="color:rgb(0,135,0)">int</span>):
+<span class="ansi-green-fg">    477</span>     minor_breaks: Sequence[<span style="color:rgb(0,135,0)">float</span>] = <span style="color:rgb(0,135,0)">self</span>._trans.minor_breaks(
+<span class="ansi-green-fg">    478</span>         major,
+<span class="ansi-green-fg">    479</span>         limits,
+<span class="ansi-green-fg">    480</span>         <span style="color:rgb(0,135,0)">self</span>.minor_breaks,  <span style="font-style:italic;color:rgb(95,135,135)"># pyright: ignore</span>
+<span class="ansi-green-fg">    481</span>     )
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 30</span>, in <span class="ansi-cyan-fg">frets_trans.minor_breaks</span><span class="ansi-blue-fg">(cls, major, limits)</span>
+<span class="ansi-green-fg">     24</span> <span style="color:rgb(175,0,255)">@classmethod</span>
+<span class="ansi-green-fg">     25</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">minor_breaks</span>(<span style="color:rgb(0,135,0)">cls</span>, major, limits):
+<span class="ansi-green-fg">     26</span>     <span style="font-style:italic;color:rgb(95,135,135)"># The major breaks as passed to this method are in transformed space.</span>
+<span class="ansi-green-fg">     27</span>     <span style="font-style:italic;color:rgb(95,135,135)"># The minor breaks are calculated in data space to reveal the</span>
+<span class="ansi-green-fg">     28</span>     <span style="font-style:italic;color:rgb(95,135,135)"># non-linearity of the scale.</span>
+<span class="ansi-green-fg">     29</span>     _major = <span style="color:rgb(0,135,0)">cls</span>.inverse(major)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">30</span>     minor = <span style="color:rgb(0,135,0)">cls</span>.transform(<span class="ansi-yellow-bg">np</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">linspace</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">_major</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">cls</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">number_of_frets</span><span class="ansi-yellow-bg">)</span>)
+<span class="ansi-green-fg">     31</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> minor
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/scm/python/plotnine/.venv/lib/python3.13/site-packages/numpy/_core/function_base.py:121</span>, in <span class="ansi-cyan-fg">linspace</span><span class="ansi-blue-fg">(start, stop, num, endpoint, retstep, dtype, axis, device)</span>
+<span class="ansi-green-fg">     25</span> <span style="color:rgb(175,0,255)">@array_function_dispatch</span>(_linspace_dispatcher)
+<span class="ansi-green-fg">     26</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">linspace</span>(start, stop, num=<span class="ansi-green-fg">50</span>, endpoint=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>, retstep=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>, dtype=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">     27</span>              axis=<span class="ansi-green-fg">0</span>, *, device=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">     28</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""</span>
+<span class="ansi-green-fg">     29</span> <span style="font-style:italic" class="ansi-yellow-fg">    Return evenly spaced numbers over a specified interval.</span>
+<span class="ansi-green-fg">     30</span> 
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    119</span> 
+<span class="ansi-green-fg">    120</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">121</span>     num = <span class="ansi-yellow-bg">operator</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">index</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">num</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    122</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> num &lt; <span class="ansi-green-fg">0</span>:
+<span class="ansi-green-fg">    123</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-fg">    124</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Number of samples, </span><span style="font-weight:bold;color:rgb(175,95,135)">%s</span><span class="ansi-yellow-fg">, must be non-negative.</span><span class="ansi-yellow-fg">"</span> % num
+<span class="ansi-green-fg">    125</span>         )
+
+<span class="ansi-red-fg">TypeError</span>: 'numpy.float64' object cannot be interpreted as an integer</pre>
 </div>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;plotnine.ggplot.ggplot at 0x120e718c0&gt;</code></pre>
 </div>
 </div>
 <p><strong>Credit</strong>: This example was motivated by <a href="https://github.com/jonvitale">Jonathan Vitale</a> who wanted to create graphics for a guitar scale trainer.</p>
@@ -315,239 +460,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/plotnine\.org");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/plotnine\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -555,199 +703,162 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Proudly supported by <a href="https://posit.co"><img src="https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg" class="img-fluid" alt="Posit" width="65"></a></p>
-</div>   
-    <div class="nav-footer-center">
-<p>Developed by: Hassan Kibirige, License: <a href="../../license.html">MIT</a></p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
 
 
 
