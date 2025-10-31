@@ -13,7 +13,9 @@ SITE_DIR=$(SOURCE_DIR)/_site
 #
 # Given that we are in a python project (pyproject.toml), it is gauranteed
 # to be from a virtual environment.
-PYTHON ?= uv run --active python
+# Use --no-sync to avoid side-effects. Without it, we could install plotnine
+# before we checkout the version we want.
+PYTHON ?= uv run --no-sync --active python
 
 # We want to use the same virtual environment for any commands that are
 # run in secondary makefiles (make -C ...). We export the path to python
@@ -21,10 +23,10 @@ PYTHON ?= uv run --active python
 # that refer to python using that variable. e.g.
 # plotnine has
 #
-#    PYTHON ?= uv run --active python
+#    PYTHON ?= uv run --no-sync --active python
 #
 # which would give precedence to the contents of the environment variable.
-export PYTHON=$(shell uv run --active which python)
+export PYTHON=$(shell uv run --no-sync --active which python)
 
 # NOTE: Take care not to use tabs in any programming flow outside the
 # make target
@@ -101,15 +103,10 @@ submodules-tags:
 ## Checkout released version
 checkout-release: submodules submodules-pull submodules-tags
 	$(CHECKOUT_RELEASE)
-	# In some cases (e.g. releasing a patch that isn't on the main branch),
-	# the original checked out version of plotnine is installed. We need
-	# to ensure the checked out version is the one installed.
-	cd plotnine && uv pip install -e ".[all]"
 
 ## Checkout released version
 checkout-pre-release: submodules submodules-pull submodules-tags
 	$(CHECKOUT_PRE_RELEASE)
-	cd plotnine && uv pip install -e ".[all]"
 
 ## Checkout the latest on the main branch
 checkout-main: submodules submodules-pull submodules-tags
