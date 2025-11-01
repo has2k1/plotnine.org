@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Pecking Orders and Prime Cuts – plotnine 999.post20+g8acd36e93</title>
+<title>Pecking Orders and Prime Cuts – plotnine 0.15.1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,10 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Pecking Orders and Prime Cuts – plotnine 999.post20+g8acd36e93">
+<meta property="og:title" content="Pecking Orders and Prime Cuts – plotnine 0.15.1">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/gallery/img/large/pecking-orders-and-prime-cuts.png">
-<meta property="og:site_name" content="plotnine 999.post20+g8acd36e93">
+<meta property="og:site_name" content="plotnine 0.15.1">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1400">
 </head>
@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 999.post20+g8acd36e93</span>
+    <span class="navbar-title">plotnine 0.15.1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -241,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/pecking-orders-and-prime-cuts.png" class="preview-image img-fluid"></p>
-<div id="7328ba40" class="cell" data-execution_count="2">
+<div id="9f17482a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    aes,</span>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> meat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>geom_line()</code> connects the dots, and is useful for time series data.</p>
-<div id="15d36072" class="cell" data-execution_count="3">
+<div id="3600382f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>meat.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Make it tidy.</p>
-<div id="67052196" class="cell" data-execution_count="4">
+<div id="c9871532" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meat_long <span class="op">=</span> meat.melt(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"date"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"beef"</span>, <span class="st">"veal"</span>, <span class="st">"pork"</span>, <span class="st">"lamb_and_mutton"</span>, <span class="st">"broilers"</span>, <span class="st">"turkey"</span>],</span>
@@ -398,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>First try</p>
-<div id="f3ccde26" class="cell" data-execution_count="5">
+<div id="1a7b53c8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -413,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It looks crowded because each there is more than one monthly entry at each x-point. We can get a single trend line by getting a monthly aggregate of the weights.</p>
-<div id="bc57d2d4" class="cell" data-execution_count="6">
+<div id="c102ae91" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg <span class="op">=</span> meat_long.groupby(<span class="st">"date"</span>).agg({<span class="st">"weight"</span>: <span class="st">"sum"</span>}).reset_index()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meat_long_monthly_agg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -493,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="a-single-trend-line" class="level3">
 <h3 class="anchored" data-anchor-id="a-single-trend-line">A Single Trend Line</h3>
-<div id="345c46ee" class="cell" data-execution_count="7">
+<div id="18bc8a93" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -507,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Add some style</p>
-<div id="dd5b6cd6" class="cell" data-execution_count="8">
+<div id="083130f2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long_monthly_agg, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -527,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="multiple-trend-lines" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-trend-lines">Multiple Trend Lines</h3>
-<div id="c25eade9" class="cell" data-execution_count="9">
+<div id="db03b1bd" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, group<span class="op">=</span><span class="st">"animal"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -544,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Make each group be a different color.</p>
-<div id="7bb3790a" class="cell" data-execution_count="10">
+<div id="a3f34a41" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(meat_long, aes(x<span class="op">=</span><span class="st">"date"</span>, y<span class="op">=</span><span class="st">"weight"</span>, color<span class="op">=</span><span class="st">"animal"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line()</span>
@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-trend-line-per-facet" class="level3">
 <h3 class="anchored" data-anchor-id="a-trend-line-per-facet">A Trend Line Per Facet</h3>
 <p>Plot each group on a separate panel. The legend is no longer required and we adjust to the smaller panels by reducing the <code>size</code> of the line, <code>size</code> of the text and the number of grid lines.</p>
-<div id="37c16950" class="cell" data-execution_count="11">
+<div id="e70268ee" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> titled(strip_title):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join(s.title() <span class="cf">if</span> s <span class="op">!=</span> <span class="st">"and"</span> <span class="cf">else</span> s <span class="cf">for</span> s <span class="kw">in</span> strip_title.split(<span class="st">"_"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>

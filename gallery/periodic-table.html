@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Periodic Table – plotnine 999.post20+g8acd36e93</title>
+<title>Periodic Table – plotnine 0.15.1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,10 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Periodic Table – plotnine 999.post20+g8acd36e93">
+<meta property="og:title" content="Periodic Table – plotnine 0.15.1">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/gallery/img/large/periodic-table.png">
-<meta property="og:site_name" content="plotnine 999.post20+g8acd36e93">
+<meta property="og:site_name" content="plotnine 0.15.1">
 <meta property="og:image:height" content="1200">
 <meta property="og:image:width" content="2400">
 </head>
@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 999.post20+g8acd36e93</span>
+    <span class="navbar-title">plotnine 0.15.1</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/periodic-table.png" class="preview-image img-fluid"></p>
-<div id="f8cbe3f8" class="cell" data-execution_count="2">
+<div id="015dc021" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Graphing of highly organised tabular information</em></p>
 <p>Read the data.</p>
-<div id="f29e7057" class="cell" data-execution_count="3">
+<div id="28417871" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elements <span class="op">=</span> pd.read_csv(<span class="st">"data/elements.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>elements.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -417,24 +417,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Alter the data types of the information that will be plotted. This makes it convenient to work with.</p>
-<div id="c3ef705c" class="cell" data-execution_count="4">
+<div id="4c3933ab" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"group"</span>] <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> g <span class="op">==</span> <span class="st">"-"</span> <span class="cf">else</span> <span class="bu">int</span>(g) <span class="cf">for</span> g <span class="kw">in</span> elements.group]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"bonding type"</span>] <span class="op">=</span> elements[<span class="st">"bonding type"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"metal"</span>] <span class="op">=</span> elements[<span class="st">"metal"</span>].astype(<span class="st">"category"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>elements[<span class="st">"atomic_number"</span>] <span class="op">=</span> elements[<span class="st">"atomic number"</span>].astype(<span class="bu">str</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The periodic table has two tables, a <code>top</code> and <code>bottom</code>. The elements in the <code>top</code> have groups, and those in the <code>bottom</code> have no groups. We make separate dataframes for both – they have different alignments.</p>
-<div id="57a03260" class="cell" data-execution_count="5">
+<div id="e1248c35" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> elements.query(<span class="st">"group != -1"</span>).copy()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bottom <span class="op">=</span> elements.query(<span class="st">"group == -1"</span>).copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>top</code> table is nice and well behaving. The <code>x</code> location of the elements indicate the group and the <code>y</code> locations the period.</p>
-<div id="8ec5dac7" class="cell" data-execution_count="6">
+<div id="06be9f56" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"x"</span>] <span class="op">=</span> top.group</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>top[<span class="st">"y"</span>] <span class="op">=</span> top.period</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>bottom</code> table has 2 rows, with the <code>atomic number</code> increasing to the right. We create an <code>x</code> based on the <code>atomic number</code> and add a <code>horizontal shift</code>. As the dataframe is ordered by <code>atomic number</code>, the operation is easier. The <code>bottom</code> elements are labelled with a “period”. We add a vertical shift to give us a good <code>y</code> location that gives the appearance of two tables.</p>
-<div id="6680db78" class="cell" data-execution_count="7">
+<div id="2883821c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nrows <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>hshift <span class="op">=</span> <span class="fl">3.5</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>vshift <span class="op">=</span> <span class="dv">3</span></span>
@@ -442,12 +442,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bottom[<span class="st">"y"</span>] <span class="op">=</span> bottom.period <span class="op">+</span> vshift</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will be plotting using tiles and we want to have some space between the tiles. We have set the <code>x</code> and <code>y</code> locations above to take up a unit of space. To get a good effect, the tile dimensions should be less than 1.</p>
-<div id="bd887ff1" class="cell" data-execution_count="8">
+<div id="a7fc07b4" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tile_width <span class="op">=</span> <span class="fl">0.95</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tile_height <span class="op">=</span> <span class="fl">0.95</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>First peak</p>
-<div id="1534b597" class="cell" data-execution_count="9">
+<div id="f180bae8" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The table upside down. We could have been more careful when creating the <code>y</code> locations since the periods are drawn in descending order. But, we can fix that with a <code>reverse</code> scale.</p>
-<div id="5ed1b557" class="cell" data-execution_count="10">
+<div id="cc7eb7c9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_tile(top, aes(width<span class="op">=</span>tile_width, height<span class="op">=</span>tile_height))</span>
@@ -478,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let us apply some color to it.</p>
-<div id="6e0e3d59" class="cell" data-execution_count="11">
+<div id="1e5fd8f7" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)  <span class="co"># new</span></span>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Goal: To add text to the tiles</p>
 <p>There are four pieces of text that we shall add to the tiles, that is 4 <code>geom_text</code> additions. As we have two tables, that comes to 8 <code>geom_text</code> additions. When any <code>geom</code> is added to a <code>ggplot</code> object, behind the scenes a layer is created and added. We can create a group of layers that can be added to a <code>ggplot</code> object in one go using a list.</p>
 <p>We use a function that accepts a dataframe, and returns a list of geoms.</p>
-<div id="c6268afd" class="cell" data-execution_count="12">
+<div id="b1be89c7" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner_text(data):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    layers <span class="op">=</span> [</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        geom_text(</span>
@@ -522,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> layers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="22b0c3a4" class="cell" data-execution_count="13">
+<div id="81688aa5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -541,7 +541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It is crowded in there and the tiles do not have equal dimentions. Use the <code>theme</code> create a larger figure. <code>coord_equal</code> give us equal units along the axes, this makes the tiles square.</p>
-<div id="b202b7d7" class="cell" data-execution_count="14">
+<div id="91abaf2f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It is has all the information we want, except one for complication. Elements <code>Lu</code> and <code>Lr</code> also belong in the bottom table. One way to show this duality is to have tiles with two colors split horizontally.</p>
 <p>The colors are determined by the <code>metal</code> field, and we know the <code>x</code> and <code>y</code> locations. We create a dataframe with this information to create a half-tile. A half-tile is centered at the quarter mark.</p>
-<div id="c289d769" class="cell" data-execution_count="15">
+<div id="78edf354" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>split_df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"x"</span>: <span class="dv">3</span> <span class="op">-</span> tile_width <span class="op">/</span> <span class="dv">4</span>,</span>
@@ -572,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="bca4cf9d" class="cell" data-execution_count="16">
+<div id="6064561d" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
@@ -594,7 +594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Change the <code>fill</code> color for a different look and use a <code>theme</code> that clears out all the clutter.</p>
-<div id="a41fbfc7" class="cell" data-execution_count="17">
+<div id="c360f493" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> guides</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
@@ -625,13 +625,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Add the group number along the top most row of each column, and period number along the left side of the top table.</p>
 <p>For the period number, we set the <code>breaks</code> on the <code>y scale</code>.</p>
-<div id="23b43174" class="cell" data-execution_count="18">
+<div id="2ff4ef9c" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The location of the group number is the top most (and therefore smallest period)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># element with the group</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>groupdf <span class="op">=</span> top.groupby(<span class="st">"group"</span>).agg(y<span class="op">=</span>(<span class="st">"period"</span>, <span class="st">"min"</span>)).reset_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally,</p>
-<div id="2ffc0c40" class="cell" data-execution_count="19">
+<div id="7928c8c7" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    ggplot(aes(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> aes(fill<span class="op">=</span><span class="st">"metal"</span>)</span>
