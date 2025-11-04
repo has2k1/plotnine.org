@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hassan Kibirige">
 
-<title>Counts and Percentages in Bar Plots – plotnine 0.15.0a7</title>
+<title>Counts and Percentages in Bar Plots – plotnine 999.post20+g6f7488eb9</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-light-bg="#D2AABD" data-light-fg="#421030"></script>
 
 
-<meta property="og:title" content="Counts and Percentages in Bar Plots – plotnine 0.15.0a7">
+<meta property="og:title" content="Counts and Percentages in Bar Plots – plotnine 999.post20+g6f7488eb9">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://plotnine.org/gallery/img/large/counts-and-percentages-in-bar-plots.png">
-<meta property="og:site_name" content="plotnine 0.15.0a7">
+<meta property="og:site_name" content="plotnine 999.post20+g6f7488eb9">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1400">
 </head>
@@ -127,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">plotnine 0.15.0a7</span>
+    <span class="navbar-title">plotnine 999.post20+g6f7488eb9</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 <p><img src="img/large/counts-and-percentages-in-bar-plots.png" class="preview-image img-fluid"></p>
-<div id="61b252b5" class="cell" data-execution_count="2">
+<div id="7e4208f8" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> (</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ggplot,</span>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> mtcars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can plot a bar graph and easily show the counts for each bar</p>
-<div id="ccf6e6c8" class="cell" data-execution_count="3">
+<div id="0d42bc7e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        aes(label<span class="op">=</span>after_stat(<span class="st">"count"</span>)), stat<span class="op">=</span><span class="st">"count"</span>, nudge_y<span class="op">=</span><span class="fl">0.125</span>, va<span class="op">=</span><span class="st">"bottom"</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-4-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>stat_count</code> also calculates proportions (as <code>prop</code>) and a proportion can be converted to a percentage.</p>
-<div id="c526032f" class="cell" data-execution_count="4">
+<div id="2ec3d397" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"</span><span class="sc">{:.1f}</span><span class="st">% "</span>,</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-5-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -292,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>These are clearly wrong percentages. The system puts each bar in a separate group. We need to tell it to put all bars in the panel in single group, so that the percentage are what we expect.</p>
-<div id="575dcebf" class="cell" data-execution_count="5">
+<div id="d1e0c272" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"</span><span class="sc">{:.1f}</span><span class="st">%"</span>,</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-6-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Without <code>group=1</code>, you can calculate the proportion / percentage after statistics have been calculated. This works because mapping expressions are evaluated across the whole panel. It can work when you have more than 1 categorical.</p>
-<div id="3a73a442" class="cell" data-execution_count="6">
+<div id="833490ed" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -325,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"</span><span class="sc">{:.1f}</span><span class="st">%"</span>,</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-7-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -341,7 +341,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <ol type="1">
 <li>Using two <code>geom_text</code> layers.</li>
 </ol>
-<div id="c43ced85" class="cell" data-execution_count="7">
+<div id="169a4f8c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -361,7 +361,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        format_string<span class="op">=</span><span class="st">"(</span><span class="sc">{:.1f}</span><span class="st">%)"</span>,</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-8-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -372,7 +372,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <ol start="2" type="1">
 <li>Using a function to combine the counts and percentages</li>
 </ol>
-<div id="9e44e273" class="cell" data-execution_count="8">
+<div id="014ddf41" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> combine(counts, percentages):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    fmt <span class="op">=</span> <span class="st">"</span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{:.1f}</span><span class="st">%)"</span>.<span class="bu">format</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [fmt(c, p) <span class="cf">for</span> c, p <span class="kw">in</span> <span class="bu">zip</span>(counts, percentages)]</span>
@@ -388,7 +388,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"bottom"</span>,</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-9-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -397,7 +397,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 </div>
 </div>
 <p>It works with facetting.</p>
-<div id="8d0bc397" class="cell" data-execution_count="9">
+<div id="30b9b999" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(cyl)"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar()</span>
@@ -410,7 +410,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"am"</span>)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-10-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -422,7 +422,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <section id="percentages-when-you-have-more-than-one-categorical." class="level3">
 <h3 class="anchored" data-anchor-id="percentages-when-you-have-more-than-one-categorical.">Percentages when you have more than one categorical.</h3>
 <p><code>group = 1</code> does not work when you have more than one categories per <code>x</code> location.</p>
-<div id="e5dade19" class="cell" data-execution_count="10">
+<div id="68e1675c" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"dodge2"</span>)</span>
@@ -434,7 +434,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-11-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -443,7 +443,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 </div>
 </div>
 <p>You have to calculate the percentages after statistics for the panel have been calculated.</p>
-<div id="991142b1" class="cell" data-execution_count="11">
+<div id="9e2df254" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"dodge2"</span>)</span>
@@ -458,7 +458,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-12-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -470,7 +470,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 </section>
 <section id="bars-with-group-percentages" class="level3">
 <h3 class="anchored" data-anchor-id="bars-with-group-percentages">Bars with Group Percentages</h3>
-<div id="15403c92" class="cell" data-execution_count="12">
+<div id="249daa55" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prop_per_x(x, count):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Compute the proportion of the counts for each value of x</span></span>
@@ -494,7 +494,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-13-output-1.png" width="672" height="480" class="figure-img"></p>
@@ -505,7 +505,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 </section>
 <section id="stacked-bars-with-group-percentages" class="level3">
 <h3 class="anchored" data-anchor-id="stacked-bars-with-group-percentages">Stacked Bars with Group Percentages</h3>
-<div id="e32837ee" class="cell" data-execution_count="13">
+<div id="5d067c3e" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(mtcars, aes(<span class="st">"factor(cyl)"</span>, fill<span class="op">=</span><span class="st">"factor(am)"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bar(position<span class="op">=</span><span class="st">"fill"</span>)</span>
@@ -517,7 +517,7 @@ For more on why automatic grouping may work the way you want, see this [tutorial
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">9</span>,</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <figure class="figure">
 <p><img src="counts-and-percentages-in-bar-plots_files/figure-html/cell-14-output-1.png" width="672" height="480" class="figure-img"></p>
