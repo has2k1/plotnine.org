@@ -4827,7 +4827,7 @@
     "href": "gallery/weather-forecast.html#imports",
     "title": "Weather Forecast",
     "section": "Imports",
-    "text": "Imports\nThe code uses polars to read in the raw data and manipulate it to be ready to create the plot in plotnine. Here is an example table of raw data:\n\n\n\nDay\nLow\nHigh\nConditions\n\n\n\n\nToday\n65\n77\nCloudy\n\n\nMon\n61\n84\nSunny\n\n\nTue\n67\n93\nHot\n\n\nWed\n59\n76\nDrizzle\n\n\nThu\n54\n75\nWindy\n\n\nFri\n57\n81\nParty cloudy\n\n\nSat\n60\n71\nHeavy rain\n\n\n\n\nfrom io import StringIO\nimport polars as pl\nimport plotnine as p9\n\npl.__version__, p9.__version__\n\n('1.35.1', '999.post20+g6f7488eb9')"
+    "text": "Imports\nThe code uses polars to read in the raw data and manipulate it to be ready to create the plot in plotnine. Here is an example table of raw data:\n\n\n\nDay\nLow\nHigh\nConditions\n\n\n\n\nToday\n65\n77\nCloudy\n\n\nMon\n61\n84\nSunny\n\n\nTue\n67\n93\nHot\n\n\nWed\n59\n76\nDrizzle\n\n\nThu\n54\n75\nWindy\n\n\nFri\n57\n81\nParty cloudy\n\n\nSat\n60\n71\nHeavy rain\n\n\n\n\nfrom io import StringIO\nimport polars as pl\nimport plotnine as p9\n\npl.__version__, p9.__version__\n\n('1.35.1', '999.post20+g839603e88')"
   },
   {
     "objectID": "gallery/weather-forecast.html#import-data",
@@ -5219,14 +5219,14 @@
     "href": "changelog.html",
     "title": "Changelog",
     "section": "",
-    "text": "(not-yet-released)\n\n\n\nAdded plot_layout with which you can customise the layout of plots in composition."
+    "text": "(not-yet-released)\n\n\n\nAdded plot_layout with which you can customise the layout of plots in composition.\n\n\n\n\n\nFixed geom_smooth / stat_smooth when using a linear model via “lm” with weights for the model to do a weighted regression. This bug did not affect the formula API of the linear model. (#1005)"
   },
   {
     "objectID": "changelog.html#v0.16.0",
     "href": "changelog.html#v0.16.0",
     "title": "Changelog",
     "section": "",
-    "text": "(not-yet-released)\n\n\n\nAdded plot_layout with which you can customise the layout of plots in composition."
+    "text": "(not-yet-released)\n\n\n\nAdded plot_layout with which you can customise the layout of plots in composition.\n\n\n\n\n\nFixed geom_smooth / stat_smooth when using a linear model via “lm” with weights for the model to do a weighted regression. This bug did not affect the formula API of the linear model. (#1005)"
   },
   {
     "objectID": "changelog.html#v0.15.1",
@@ -5762,7 +5762,7 @@
     "href": "guide/annotations.html#geom_textadjust_text...",
     "title": "Annotations",
     "section": "geom_text(adjust_text=...)",
-    "text": "geom_text(adjust_text=...)\nUse the geom_text(adjust_text=...) argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the adjustText package’s adjust_text() function.\n\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg.drop_duplicates(\"model\"), aes(\"displ\", \"hwy\", label=\"model\"))\n    + geom_point()\n    + geom_text(adjust_text={\"arrowprops\": {\"arrowstyle\": \"-\"}})\n)\n\n0 [0.92388184 0.78935235]\n37 [ 0.62148532 -0.03095863]\n35 [-0.16819724 -0.56300656]\n36 [0.04667988 0.39459524]",
+    "text": "geom_text(adjust_text=...)\nUse the geom_text(adjust_text=...) argument to adjust the position of text labels so they don’t overlap. This argument takes a dictionary that gets passed to the adjustText package’s adjust_text() function.\n\nfrom plotnine.data import mpg\n\n(\n    ggplot(mpg.drop_duplicates(\"model\"), aes(\"displ\", \"hwy\", label=\"model\"))\n    + geom_point()\n    + geom_text(adjust_text={\"arrowprops\": {\"arrowstyle\": \"-\"}})\n)\n\n0 [-0.37209796 -0.52650526]\n37 [0.50611093 0.7798417 ]\n35 [-0.08732322 -0.90824326]\n36 [0.46283432 0.17629677]",
     "crumbs": [
       "Guide",
       "Polishing",
