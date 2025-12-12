@@ -63,7 +63,7 @@ export CHECKOUT_RELEASE
 
 define CHECKOUT_PRE_RELEASE
 	cd plotnine && \
-	VERSION=$$(git tag | grep -E '^[v]?[0-9]+\.[0-9]+\.[0-9]+a[0-9]+$$' | sort -V | tail -n 1) && \
+	VERSION=$$(git tag | grep -E '^[v]?[0-9]+\.[0-9]+\.[0-9]+rc[0-9]+$$' | sort -V | tail -n 1) && \
 	git checkout "$$VERSION"
 endef
 export CHECKOUT_PRE_RELEASE
